@@ -1,0 +1,5 @@
+{
+    "port": 5000,
+    "welcomeMessage": "Welcome to Wasabi!",
+    "enableLogging": true
+}
