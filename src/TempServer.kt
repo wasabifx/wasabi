@@ -16,7 +16,7 @@ import org.jboss.netty.buffer.ChannelBuffer
 import org.jboss.netty.channel.socket.nio.NioServerSocketChannelFactory
 import java.util.logging.Level
 import java.net.InetSocketAddress
-
+import javax.sql.rowset.spi.XmlWriter
 
 
 public class EchoServerHandler: SimpleChannelUpstreamHandler() {
@@ -36,14 +36,5 @@ public class EchoServerHandler: SimpleChannelUpstreamHandler() {
 
 }
 
-public class Request {
 
-}
-
-public class Response {
-
-    fun send(message: String): String {
-       return ""
-    }
-}
 

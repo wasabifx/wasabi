@@ -1,16 +1,18 @@
 package com.hadihariri.wasabi.test
 
-import org.junit.Test as test
-import com.hadihariri.wasabi.AppConfiguration
-import com.hadihariri.wasabi.AppServer
+import org.junit.Test as spec
 import kotlin.test.assertEquals
 import java.net.Socket
 import java.net.SocketAddress
 import java.net.InetSocketAddress
+import com.hadihariri.wasabi.routing.Routes
+import com.hadihariri.wasabi.app.AppServer
 
-public class AppServerConfigurationTests {
+public class ConfigSpecs {
 
-    test fun creating_an_app_server_without_explicit_configuration_should_use_default_debug_configuration() {
+    spec fun creating_an_app_server_without_explicit_configuration_should_use_default_debug_configuration() {
+
+
 
         val appServer = AppServer()
 
@@ -19,10 +21,10 @@ public class AppServerConfigurationTests {
         assertEquals("Welcome to Wasabi!", appServer.configuration.welcomeMessage)
         assertEquals(true, appServer.configuration.enableLogging)
 
-
+        appServer.stop()
     }
 
-    test fun creating_an_app_server_with_explicit_configuration_should_use_the_configuration_specified() {
+    spec fun creating_an_app_server_with_explicit_configuration_should_use_the_configuration_specified() {
 
         val appServer = AppServer("testData/production.json")
 
@@ -30,6 +32,7 @@ public class AppServerConfigurationTests {
         assertEquals("Welcome to Wasabi!", appServer.configuration.welcomeMessage)
         assertEquals(true, appServer.configuration.enableLogging)
 
+        appServer.stop()
     }
 
 

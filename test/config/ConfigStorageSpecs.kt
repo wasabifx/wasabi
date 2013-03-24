@@ -1,18 +1,18 @@
 package com.hadihariri.wasabi.test
 
-import org.junit.Test as test
-import com.hadihariri.wasabi.AppConfiguration
+import org.junit.Test as spec
 import kotlin.test.assertEquals
-import com.hadihariri.wasabi.ConfigurationStorage
 import kotlin.test.fails
-import com.hadihariri.wasabi.InvalidConfigurationException
 import com.sun.tools.javac.code.TargetType
 import java.io.File
 import kotlin.test.assertTrue
+import com.hadihariri.wasabi.configuration.ConfigurationStorage
+import com.hadihariri.wasabi.configuration.InvalidConfigurationException
+import com.hadihariri.wasabi.app.AppConfiguration
 
-public class ConfigurationStorageTests {
+public class ConfigStorageSpecs {
 
-    test fun loading_a_valid_configuration_file_should_correctly_load_all_values() {
+    spec fun loading_a_valid_configuration_file_should_correctly_load_all_values() {
 
         val configurationStorage = ConfigurationStorage()
 
@@ -25,7 +25,7 @@ public class ConfigurationStorageTests {
 
     }
 
-    test fun loading_a_non_existent_configuration_file_should_throw_invalid_configuration_exception() {
+    spec fun loading_a_non_existent_configuration_file_should_throw_invalid_configuration_exception() {
 
         val configurationStorage = ConfigurationStorage()
 
@@ -35,7 +35,7 @@ public class ConfigurationStorageTests {
         assertEquals(javaClass<InvalidConfigurationException>(), exception.javaClass)
     }
 
-    test fun loading_an_invalid_configuration_with_invalid_property_should_throw_invalid_configuration_exception_with_name_of_invalid_property() {
+    spec fun loading_an_invalid_configuration_with_invalid_property_should_throw_invalid_configuration_exception_with_name_of_invalid_property() {
 
         val configurationStorage = ConfigurationStorage()
 
@@ -45,7 +45,7 @@ public class ConfigurationStorageTests {
         assertEquals("Invalid property in configuration file: invalid_property", exception?.getMessage())
     }
 
-    test fun loading_an_invalid_configuration_with_invalid_json_should_throw_invalid_configuration_exception() {
+    spec fun loading_an_invalid_configuration_with_invalid_json_should_throw_invalid_configuration_exception() {
 
         val configurationStorage = ConfigurationStorage()
 
@@ -55,7 +55,7 @@ public class ConfigurationStorageTests {
         assertEquals("Invalid JSON in configuration file: [Source: testData/production_bad_json.json; line: 2, column: 6]", exception?.getMessage())
     }
 
-    test fun saving_a_configuration_to_file_should_save_it_correctly() {
+    spec fun saving_a_configuration_to_file_should_save_it_correctly() {
 
         val configurationStorage = ConfigurationStorage()
 

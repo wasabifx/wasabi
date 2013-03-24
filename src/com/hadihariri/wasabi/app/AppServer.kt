@@ -1,6 +1,11 @@
-package com.hadihariri.wasabi
+package com.hadihariri.wasabi.app
 
-public class AppServer(configurationFilename: String = "") {
+import com.hadihariri.wasabi.routing.Routes
+import com.hadihariri.wasabi.http.HttpServer
+import com.hadihariri.wasabi.configuration.ConfigurationStorage
+
+
+public class AppServer(configurationFilename: String = "", val routes: Routes = Routes()) {
 
     val configuration: AppConfiguration
 
@@ -15,7 +20,7 @@ public class AppServer(configurationFilename: String = "") {
             configuration = AppConfiguration()
         }
 
-        httpServer = HttpServer(configuration)
+        httpServer = HttpServer(configuration, routes)
     }
 
     public fun start() {
@@ -27,4 +32,6 @@ public class AppServer(configurationFilename: String = "") {
         httpServer.stop()
     }
 
+
 }
+

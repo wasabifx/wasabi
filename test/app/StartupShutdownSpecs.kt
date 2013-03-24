@@ -1,16 +1,17 @@
 
 
-import com.hadihariri.wasabi.AppServer
+
 import java.net.Socket
 import java.net.InetSocketAddress
-import org.junit.Test as test
+import org.junit.Test as spec
 import kotlin.test.assertEquals
 import kotlin.test.fails
 import java.net.ConnectException
+import com.hadihariri.wasabi.app.AppServer
 
-public class AppServerStartupShutdownTests {
+public class StartupShutdownSpecs {
 
-    test fun starting_an_app_server_should_open_the_specified_port_and_listen_for_connections() {
+    spec fun starting_an_app_server_should_open_the_specified_port_and_listen_for_connections() {
 
         val appServer = AppServer()
         val socket = Socket()
@@ -24,7 +25,7 @@ public class AppServerStartupShutdownTests {
         assertEquals(true, socket.isConnected())
     }
 
-    test fun stopping_an_app_server_should_no_longer_accept_connections() {
+    spec fun stopping_an_app_server_should_no_longer_accept_connections() {
 
         val appServer = AppServer()
         val socket = Socket()
