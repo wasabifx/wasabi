@@ -1,15 +1,12 @@
 package com.hadihariri.wasabi.http
 
-import org.jboss.netty.channel.socket.nio.NioServerSocketChannelFactory
-import org.jboss.netty.bootstrap.ServerBootstrap
 import java.util.concurrent.Executors
 import java.net.InetSocketAddress
 import com.hadihariri.wasabi.app.AppConfiguration
-import com.hadihariri.wasabi.http.PipelineFactory
-import org.jboss.netty.channel.SimpleChannelUpstreamHandler
-import org.jboss.netty.channel.ChannelHandlerContext
-import org.jboss.netty.channel.MessageEvent
 import com.hadihariri.wasabi.routing.Routes
+import io.netty.bootstrap.ServerBootstrap
+import io.netty.channel.nio.NioEventLoopGroup
+import io.netty.channel.socket.nio.NioServerSocketChannel
 
 
 public class HttpServer(private val configuration: AppConfiguration, private val routes: Routes) {
@@ -17,16 +14,18 @@ public class HttpServer(private val configuration: AppConfiguration, private val
     val bootstrap: ServerBootstrap
 
     {
-        bootstrap = ServerBootstrap(
-            NioServerSocketChannelFactory(
-                    Executors.newCachedThreadPool(),
-                    Executors.newCachedThreadPool()))
-        bootstrap.setPipelineFactory(PipelineFactory(routes))
+        bootstrap = ServerBootstrap()
+
+        bootstrap.group(NioEventLoopGroup(), NioEventLoopGroup())
+        bootstrap.channel(javaClass<NioServerSocketChannel>())
+        bootstrap.childHandler(ServerInitializer(routes))
+
     }
 
 
     public fun start() {
-        bootstrap.bind(InetSocketAddress(configuration.port))
+        val channel = bootstrap.bind(configuration.port)?.sync()?.channel()
+        channel?.closeFuture()?.sync()
     }
 
     public fun stop() {

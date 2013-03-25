@@ -1,11 +1,10 @@
 package com.hadihariri.wasabi.http
 
-import org.jboss.netty.channel.MessageEvent
 
-public class Response(private val nexus: MessageEvent) {
+public class Response(private val nexus: Any) {
 
     fun write(data: Any) {
-        nexus.getChannel()?.write(data)
+       // nexus.getChannel()?.write(data)
     }
 
     fun send(message: String) {

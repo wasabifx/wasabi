@@ -9,12 +9,10 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="KotlinRuntime" level="project" />
-    <orderEntry type="library" name="netty-3.6.3.Final" level="project" />
-    <orderEntry type="library" name="netty-3.6.3.Final-sources" level="project" />
-    <orderEntry type="library" name="spek" level="project" />
     <orderEntry type="library" name="commons-codec-1.6" level="project" />
     <orderEntry type="library" name="junit:junit:4.9" level="project" />
     <orderEntry type="library" name="org.codehaus.jackson:jackson-mapper-asl:1.9.12" level="project" />
+    <orderEntry type="library" name="netty-all-4.0.0.CR1-sources" level="project" />
   </component>
 </module>
 
