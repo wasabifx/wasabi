@@ -1,9 +1,9 @@
-package com.hadihariri.wasabi.routing
+package org.wasabi.routing
 
 import java.util.ArrayList
-import com.hadihariri.wasabi.http.Request
-import com.hadihariri.wasabi.http.Response
-import com.hadihariri.wasabi.http.HttpMethod
+import org.wasabi.http.Request
+import org.wasabi.http.Response
+import org.wasabi.http.HttpMethod
 
 public class Routes {
 

@@ -1,8 +1,8 @@
-import com.hadihariri.wasabi
+import org.wasabi
 import javax.security.auth.login.Configuration
-import com.hadihariri.wasabi.http.HttpServer
-import com.hadihariri.wasabi.app.AppConfiguration
-import com.hadihariri.wasabi.app.AppServer
+import org.wasabi.http.HttpServer
+import org.wasabi.app.AppConfiguration
+import org.wasabi.app.AppServer
 
 fun main(args: Array<String>) {
 

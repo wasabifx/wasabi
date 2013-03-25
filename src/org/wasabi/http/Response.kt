@@ -1,4 +1,4 @@
-package com.hadihariri.wasabi.http
+package org.wasabi.http
 
 
 public class Response(private val nexus: Any) {

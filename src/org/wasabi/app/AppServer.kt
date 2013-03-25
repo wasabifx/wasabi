@@ -1,8 +1,8 @@
-package com.hadihariri.wasabi.app
+package org.wasabi.app
 
-import com.hadihariri.wasabi.routing.Routes
-import com.hadihariri.wasabi.http.HttpServer
-import com.hadihariri.wasabi.configuration.ConfigurationStorage
+import org.wasabi.routing.Routes
+import org.wasabi.http.HttpServer
+import org.wasabi.configuration.ConfigurationStorage
 
 
 public class AppServer(configurationFilename: String = "", val routes: Routes = Routes()) {

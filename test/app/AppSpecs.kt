@@ -1,7 +1,7 @@
-package com.hadihariri.wasabi.test
+package org.wasabi.test
 
 import org.junit.Test as spec
-import com.hadihariri.wasabi.app.AppServer
+import org.wasabi.app.AppServer
 import org.apache.http.client.HttpClient
 import org.apache.http.impl.client.DefaultHttpClient
 import org.apache.http.client.methods.HttpGet

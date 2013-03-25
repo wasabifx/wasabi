@@ -1,11 +1,11 @@
-package com.hadihariri.wasabi.http
+package org.wasabi.http
 
 import io.netty.channel.ChannelInitializer
 import io.netty.channel.socket.SocketChannel
 import io.netty.handler.codec.http.HttpRequestDecoder
 import io.netty.handler.codec.http.HttpResponseEncoder
 import java.nio.channels.Channels
-import com.hadihariri.wasabi.routing.Routes
+import org.wasabi.routing.Routes
 
 
 public class ServerInitializer(private val routes: Routes): ChannelInitializer<SocketChannel>() {

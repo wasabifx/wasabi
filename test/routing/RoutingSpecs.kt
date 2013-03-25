@@ -1,16 +1,16 @@
-package com.hadihariri.wasabi.test
+package org.wasabi.test
 
 import org.junit.Test as spec
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
-import com.hadihariri.wasabi.routing.Routes
+import org.wasabi.routing.Routes
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized.Parameters
 import java.util.ArrayList
 import kotlin.test.assertNull
 import kotlin.test.fails
-import com.hadihariri.wasabi.routing.RoutingException
-import com.hadihariri.wasabi.http.HttpMethod
+import org.wasabi.routing.RoutingException
+import org.wasabi.http.HttpMethod
 
 
 public class RoutingSpecs {

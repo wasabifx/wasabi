@@ -1,4 +1,4 @@
-package com.hadihariri.wasabi.routing
+package org.wasabi.routing
 
 public class RoutingException(message: String): Exception(message) {
 }

@@ -1,4 +1,4 @@
-package com.hadihariri.wasabi.app
+package org.wasabi.app
 
 import org.codehaus.jackson.map.ObjectMapper
 import java.io.File

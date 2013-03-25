@@ -1,9 +1,9 @@
-package com.hadihariri.wasabi.http
+package org.wasabi.http
 
 import java.util.concurrent.Executors
 import java.net.InetSocketAddress
-import com.hadihariri.wasabi.app.AppConfiguration
-import com.hadihariri.wasabi.routing.Routes
+import org.wasabi.app.AppConfiguration
+import org.wasabi.routing.Routes
 import io.netty.bootstrap.ServerBootstrap
 import io.netty.channel.nio.NioEventLoopGroup
 import io.netty.channel.socket.nio.NioServerSocketChannel

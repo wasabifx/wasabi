@@ -1,4 +1,4 @@
-package com.hadihariri.wasabi.configuration
+package org.wasabi.configuration
 
 
 

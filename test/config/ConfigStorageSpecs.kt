@@ -1,4 +1,4 @@
-package com.hadihariri.wasabi.test
+package org.wasabi.test
 
 import org.junit.Test as spec
 import kotlin.test.assertEquals
@@ -6,9 +6,9 @@ import kotlin.test.fails
 import com.sun.tools.javac.code.TargetType
 import java.io.File
 import kotlin.test.assertTrue
-import com.hadihariri.wasabi.configuration.ConfigurationStorage
-import com.hadihariri.wasabi.configuration.InvalidConfigurationException
-import com.hadihariri.wasabi.app.AppConfiguration
+import org.wasabi.configuration.ConfigurationStorage
+import org.wasabi.configuration.InvalidConfigurationException
+import org.wasabi.app.AppConfiguration
 
 public class ConfigStorageSpecs {
 

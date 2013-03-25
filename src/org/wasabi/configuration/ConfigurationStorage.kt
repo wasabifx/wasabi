@@ -1,11 +1,11 @@
-package com.hadihariri.wasabi.configuration
+package org.wasabi.configuration
 
 import org.codehaus.jackson.map.ObjectMapper
 import java.io.File
 import org.codehaus.jackson.map.exc.UnrecognizedPropertyException
 import org.codehaus.jackson.JsonParseException
-import com.hadihariri.wasabi.app.AppConfiguration
-import com.hadihariri.wasabi.configuration.InvalidConfigurationException
+import org.wasabi.app.AppConfiguration
+import org.wasabi.configuration.InvalidConfigurationException
 
 public class ConfigurationStorage {
 

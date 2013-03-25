@@ -1,12 +1,12 @@
-package com.hadihariri.wasabi.test
+package org.wasabi.test
 
 import org.junit.Test as spec
 import kotlin.test.assertEquals
 import java.net.Socket
 import java.net.SocketAddress
 import java.net.InetSocketAddress
-import com.hadihariri.wasabi.routing.Routes
-import com.hadihariri.wasabi.app.AppServer
+import org.wasabi.routing.Routes
+import org.wasabi.app.AppServer
 
 public class ConfigSpecs {
 

@@ -1,4 +1,4 @@
-package com.hadihariri.wasabi.http
+package org.wasabi.http
 
 public enum class HttpMethod {
     GET

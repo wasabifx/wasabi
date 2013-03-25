@@ -7,7 +7,7 @@ import org.junit.Test as spec
 import kotlin.test.assertEquals
 import kotlin.test.fails
 import java.net.ConnectException
-import com.hadihariri.wasabi.app.AppServer
+import org.wasabi.app.AppServer
 
 public class StartupShutdownSpecs {
 
