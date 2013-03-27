@@ -24,7 +24,6 @@ public class RouteHandler(private val routes: Routes): ChannelInboundMessageHand
 
         if (msg is HttpRequest) {
             request = Request(msg)
-
             try {
                 handler = routes.findHandler(request?.method, request?.uri)
             } catch (e: RoutingException) {

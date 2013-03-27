@@ -33,15 +33,12 @@ public class RoutingSpecs {
         routingTable.addRoute(HttpMethod.GET, "/", { request, response -> (response.send(""))})
         routingTable.addRoute(HttpMethod.POST, "/second", { request, response -> (response.send("second"))})
         routingTable.addRoute(HttpMethod.POST, "/third", { request, response -> (response.send("third"))})
-       // routingTable.addRoute(HttpMethod.POST, "/parameters/:id", { request, response -> (null)})
 
         val handler1 = routingTable.findHandler(HttpMethod.GET, "/")
         val handler2 = routingTable.findHandler(HttpMethod.POST, "/third")
-       // val handler3 = routingTable.findHandler(HttpMethod.POST, "/parameters/2")
 
         assertNotNull(handler1)
         assertNotNull(handler2)
-      //  assertNotNull(handler3)
     }
 
     spec fun finding_a_handler_in_the_routing_table_when_no_match_found_should_throw_exception() {
