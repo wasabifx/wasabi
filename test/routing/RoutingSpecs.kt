@@ -30,9 +30,9 @@ public class RoutingSpecs {
         // Parameterized tests suck so badly in JUnit, this is a hack for now
         val routingTable = Routes()
 
-        routingTable.addRoute(HttpMethod.GET, "/", { request, response -> (null)})
-        routingTable.addRoute(HttpMethod.POST, "/second", { request, response -> (null)})
-        routingTable.addRoute(HttpMethod.POST, "/third", { request, response -> (null)})
+        routingTable.addRoute(HttpMethod.GET, "/", { request, response -> (response.send(""))})
+        routingTable.addRoute(HttpMethod.POST, "/second", { request, response -> (response.send("second"))})
+        routingTable.addRoute(HttpMethod.POST, "/third", { request, response -> (response.send("third"))})
        // routingTable.addRoute(HttpMethod.POST, "/parameters/:id", { request, response -> (null)})
 
         val handler1 = routingTable.findHandler(HttpMethod.GET, "/")

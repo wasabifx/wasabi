@@ -23,9 +23,12 @@ public class HttpServer(private val configuration: AppConfiguration, private val
     }
 
 
-    public fun start() {
+    public fun start(wait: Boolean = true) {
         val channel = bootstrap.bind(configuration.port)?.sync()?.channel()
-        channel?.closeFuture()?.sync()
+
+        if (wait) {
+            channel?.closeFuture()?.sync();
+        }
     }
 
     public fun stop() {

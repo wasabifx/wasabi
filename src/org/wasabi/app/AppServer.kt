@@ -23,8 +23,8 @@ public class AppServer(configurationFilename: String = "", val routes: Routes = 
         httpServer = HttpServer(configuration, routes)
     }
 
-    public fun start() {
-        httpServer.start()
+    public fun start(wait: Boolean = true) {
+        httpServer.start(wait)
 
     }
 

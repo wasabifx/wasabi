@@ -13,6 +13,7 @@
     <orderEntry type="library" name="junit:junit:4.9" level="project" />
     <orderEntry type="library" name="org.codehaus.jackson:jackson-mapper-asl:1.9.12" level="project" />
     <orderEntry type="library" name="netty-all-4.0.0.CR1-sources" level="project" />
+    <orderEntry type="library" name="org.mockito:mockito-all:1.9.5" level="project" />
   </component>
 </module>
 
