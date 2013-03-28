@@ -9,7 +9,7 @@ public class Routes {
 
     val routeStorage = ArrayList<Route>()
 
-    public fun addRoute(method: HttpMethod, path: String, handler: (Request, Response) -> Unit) {
+    private fun addRoute(method: HttpMethod, path: String, handler: (Request, Response) -> Unit) {
         routeStorage.add(Route(method, path, handler))
     }
 

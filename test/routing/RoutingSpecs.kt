@@ -19,7 +19,7 @@ public class RoutingSpecs {
 
         val routingTable = Routes()
 
-        routingTable.addRoute(HttpMethod.GET, "/", { request, response -> (null)})
+        routingTable.get("/", { request, response -> (null)})
 
         assertEquals(1, routingTable.routeStorage.count())
     }
@@ -30,9 +30,9 @@ public class RoutingSpecs {
         // Parameterized tests suck so badly in JUnit, this is a hack for now
         val routingTable = Routes()
 
-        routingTable.addRoute(HttpMethod.GET, "/", { request, response -> (response.send(""))})
-        routingTable.addRoute(HttpMethod.POST, "/second", { request, response -> (response.send("second"))})
-        routingTable.addRoute(HttpMethod.POST, "/third", { request, response -> (response.send("third"))})
+        routingTable.get("/", { request, response -> (response.send(""))})
+        routingTable.post("/second", { request, response -> (response.send("second"))})
+        routingTable.post("/third", { request, response -> (response.send("third"))})
 
         val handler1 = routingTable.findHandler(HttpMethod.GET, "/")
         val handler2 = routingTable.findHandler(HttpMethod.POST, "/third")
@@ -45,9 +45,9 @@ public class RoutingSpecs {
 
         val routingTable = Routes()
 
-        routingTable.addRoute(HttpMethod.GET, "/", { request, response -> (null)})
-        routingTable.addRoute(HttpMethod.POST, "/second", { request, response -> (null)})
-        routingTable.addRoute(HttpMethod.POST, "/third", { request, response -> (null)})
+        routingTable.get( "/", { request, response -> (null)})
+        routingTable.post( "/second", { request, response -> (null)})
+        routingTable.post( "/third", { request, response -> (null)})
 
 
         val exception = fails({routingTable.findHandler(HttpMethod.POST, "/secondo")})

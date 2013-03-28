@@ -8,6 +8,7 @@ public class Request(private val httpRequest: HttpRequest) {
     val uri  = httpRequest.getUri()!!
     val method =  mapNettyHttpMethodToOwn(httpRequest.getMethod())
     val host = getHeader("Host").takeWhile { it != ':' }
+    val port = (getHeader("Host").dropWhile { it != ':' }).drop(1).toInt() ?: 80
     val keepAlive = getHeader("Connection").compareToIgnoreCase("keep-alive") == 0
     val cacheControl = getHeader("Cache-Control")
     val userAgent = getHeader("User-Agent")
@@ -15,6 +16,8 @@ public class Request(private val httpRequest: HttpRequest) {
     val acceptEncoding = getHeader("Accept-Encoding").split(",")
     val acceptLanguage = getHeader("Accept-Language").split(",")
     val acceptCharset = getHeader("Accept-Charset").split(",")
+
+
 
 
 
@@ -27,8 +30,6 @@ public class Request(private val httpRequest: HttpRequest) {
 // Query
 // RouteParams
 // PostFields
-// Port
-//Host=localhost:3000
 
 
 }

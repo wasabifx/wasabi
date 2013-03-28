@@ -19,8 +19,8 @@ object TestServer {
     }
 
     public fun loadDefaultRoutes() {
-        appServer.routes.addRoute(HttpMethod.GET, "/", { req, res -> res.send("Root")})
-        appServer.routes.addRoute(HttpMethod.GET, "/first", { req, res -> res.send("First")})
+        appServer.routes.get("/", { req, res -> res.send("Root")})
+        appServer.routes.get("/first", { req, res -> res.send("First")})
     }
 }
 
@@ -36,6 +36,9 @@ public fun Get(url: String): String {
     httpGet.setHeader("Connection", "keep-alive")
     httpGet.setHeader("Cache-Control", "max-age=0")
     httpGet.setHeader("Accept", "Accept=text/html,application/xhtml+xml,application/xml")
+    httpGet.setHeader("Accept-Encoding", "gzip,deflate,sdch")
+    httpGet.setHeader("Accept-Language", "en-US,en;q=0.8")
+    httpGet.setHeader("Accept-Charset", "ISO-8859-1,utf-8;q=0.7,*;q=0.3")
 
 
     return httpClient.execute(httpGet, responseHandler)!!
