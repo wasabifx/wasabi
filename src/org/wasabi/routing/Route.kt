@@ -7,10 +7,11 @@ import org.wasabi.http.HttpMethod
 
 public class Route(val method: HttpMethod, val path: String, val handler: (Request, Response) -> Unit) {
 
-    public fun isMatch(method: HttpMethod, path: String): Boolean {
-        return (this.path == path && this.method == method)
+    public fun matchesPath(path: String): Boolean {
+        return (this.path == path)
 
     }
 
 
 }
+

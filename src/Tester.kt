@@ -13,4 +13,12 @@ fun main(args: Array<String>) {
     server.routes.get("/good",{ req, res -> res.send("Well this means that routes now work!")})
     server.routes.get("/",{ req, res -> res.send("Hello, how are you")})
     server.start()
+
+
+
+
 }
+
+
+
+

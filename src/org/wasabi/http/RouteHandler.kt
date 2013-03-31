@@ -13,7 +13,8 @@ import io.netty.handler.codec.http.HttpResponseStatus
 import io.netty.channel.ChannelFutureListener
 import io.netty.buffer.Unpooled
 import io.netty.util.CharsetUtil
-import org.wasabi.routing.RoutingException
+import org.wasabi.routing.MethodNotAllowedException
+import org.wasabi.routing.RouteNotFoundException
 
 public class RouteHandler(private val routes: Routes): ChannelInboundMessageHandlerAdapter<Any>() {
     var handler: ((Request, Response) -> Unit)? = null
@@ -26,8 +27,11 @@ public class RouteHandler(private val routes: Routes): ChannelInboundMessageHand
             request = Request(msg)
             try {
                 handler = routes.findHandler(request?.method, request?.uri)
-            } catch (e: RoutingException) {
-                sendResponse(ctx!!, 404, "Not Found")
+            } catch (e: MethodNotAllowedException) {
+                sendResponse(ctx!!, 405, e.message)
+                // TODO: Add Allow header with methods allowed
+            } catch (e: RouteNotFoundException) {
+                sendResponse(ctx!!, 404, e.message)
             }
         }
 

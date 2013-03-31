@@ -9,8 +9,8 @@ import org.junit.runners.Parameterized.Parameters
 import java.util.ArrayList
 import kotlin.test.assertNull
 import kotlin.test.fails
-import org.wasabi.routing.RoutingException
 import org.wasabi.http.HttpMethod
+import org.wasabi.routing.MethodNotAllowedException
 
 
 public class RoutingSpecs {
@@ -41,7 +41,7 @@ public class RoutingSpecs {
         assertNotNull(handler2)
     }
 
-    spec fun finding_a_handler_in_the_routing_table_when_no_match_found_should_throw_exception() {
+    spec fun finding_a_handler_in_the_routing_table_when_path_found_but_not_method_throw_exception_method_not_permitted() {
 
         val routingTable = Routes()
 
@@ -50,9 +50,9 @@ public class RoutingSpecs {
         routingTable.post( "/third", { request, response -> (null)})
 
 
-        val exception = fails({routingTable.findHandler(HttpMethod.POST, "/secondo")})
+        val exception = fails({routingTable.findHandler(HttpMethod.GET, "/second")})
 
-        assertEquals(javaClass<RoutingException>(), exception.javaClass)
+        assertEquals(javaClass<MethodNotAllowedException>(), exception.javaClass)
 
     }
 

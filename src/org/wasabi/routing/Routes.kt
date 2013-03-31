@@ -16,11 +16,14 @@ public class Routes {
     public fun findHandler(method: HttpMethod, path: String): (Request, Response) -> Unit {
 
         for (route in routeStorage) {
-            if (route.isMatch(method, path)) {
-                return route.handler
+            if (route.matchesPath(path)) {
+                if (route.method == method) {
+                    return route.handler
+                }
+                throw MethodNotAllowedException("Method not allowed")
             }
         }
-        throw RoutingException("Routing entry not found")
+        throw RouteNotFoundException("Routing entry not found")
 
     }
 
