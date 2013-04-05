@@ -7,47 +7,49 @@ import org.wasabi.http.HttpMethod
 
 public object Routes {
 
-    val routeStorage = hashMapOf<String, ArrayList<Route>>()
+    val routeStorage = ArrayList<Route>()
 
-    private fun addRoute(method: HttpMethod, path: String, handler: (Request, Response) -> Unit) {
-        //routeStorage.map(path -> Route(path, method, handler))
+    private fun addRoute(method: HttpMethod, path: String, handler: RouteHandler.() -> Unit) {
+        routeStorage.add(Route(path, method, handler))
     }
 
-    public fun findHandler(method: HttpMethod, path: String): (Request, Response) -> Unit {
+    public fun findHandler(method: HttpMethod, path: String): RouteHandler.() -> Unit {
 
-        for (route in routeStorage) {
-            if (route.matchesPath(path)) {
-                if (route.method == method) {
-                    return route.handler
-                }
-                throw MethodNotAllowedException(route.toString())
-            }
+        val matchingPaths = routeStorage.filter { it.path == path }
+        if (matchingPaths.count() == 0) {
+            throw RouteNotFoundException("Routing entry not found")
         }
-        throw RouteNotFoundException("Routing entry not found")
+
+        val matchingVerb = (matchingPaths.filter { it.method == method }).first
+
+        if (matchingVerb != null) {
+            return matchingVerb.handler
+        }
+        throw MethodNotAllowedException("Method not allowed", Array<HttpMethod>(matchingPaths.size(), { i -> matchingPaths.get(i).method}))
 
     }
 
-    public fun get(path: String, handler: (Request, Response) -> Unit) {
+    public fun get(path: String, handler: RouteHandler.() -> Unit) {
         addRoute(HttpMethod.GET, path, handler)
     }
 
-    public fun post(path: String, handler: (Request, Response) -> Unit) {
+    public fun post(path: String, handler: RouteHandler.() -> Unit) {
         addRoute(HttpMethod.POST, path, handler)
     }
 
-    public fun put(path: String, handler: (Request, Response) -> Unit) {
+    public fun put(path: String, handler: RouteHandler.() -> Unit) {
         addRoute(HttpMethod.PUT, path, handler)
     }
 
-    public fun head(path: String, handler: (Request, Response) -> Unit) {
+    public fun head(path: String, handler: RouteHandler.() -> Unit) {
         addRoute(HttpMethod.HEAD, path, handler)
     }
 
-    public fun delete(path: String, handler: (Request, Response) -> Unit) {
+    public fun delete(path: String, handler: RouteHandler.() -> Unit) {
         addRoute(HttpMethod.DELETE, path, handler)
     }
 
-    public fun options(path: String, handler: (Request, Response) -> Unit) {
+    public fun options(path: String, handler: RouteHandler.() -> Unit) {
         addRoute(HttpMethod.OPTIONS, path, handler)
     }
 
@@ -57,24 +59,27 @@ public object Routes {
 
 }
 
-fun String.get(handler: (Request, Response) -> Unit) {
+public fun String.get(handler: RouteHandler.() -> Unit) {
     Routes.get(this, handler)
 }
 
-fun String.post(handler: (Request, Response) -> Unit) {
+public fun String.post(handler: RouteHandler.() -> Unit) {
     Routes.post(this, handler)
 }
 
-fun String.delete(handler: (Request, Response) -> Unit) {
+public fun String.delete(handler: RouteHandler.() -> Unit) {
     Routes.delete(this, handler)
 }
-fun String.put(handler: (Request, Response) -> Unit) {
+
+public fun String.put(handler: RouteHandler.() -> Unit) {
     Routes.put(this, handler)
 }
-fun String.options(handler: (Request, Response) -> Unit) {
+
+public fun String.options(handler: RouteHandler.() -> Unit) {
     Routes.options(this, handler)
 }
-fun String.head(handler: (Request, Response) -> Unit) {
+
+fun String.head(handler: RouteHandler.() -> Unit) {
     Routes.head(this, handler)
 }
 

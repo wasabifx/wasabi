@@ -6,6 +6,8 @@ import org.wasabi.app.AppServer
 import org.wasabi.routing.Routes
 import org.wasabi.http.Request
 import org.wasabi.http.Response
+import org.wasabi.routing.RouteHandler
+import org.wasabi.routing.*
 
 fun main(args: Array<String>) {
 
@@ -13,24 +15,14 @@ fun main(args: Array<String>) {
 
    // server.get("/", { req, res -> res.send("object")})
 
-    Routes.get("/good",{ req, res -> res.send("Well this means that routes now work!")})
-    Routes.get("/",{ req, res -> res.send("Hello, how are you")})
+    Routes.get("/good",{    response.send("Well this means that routes now work!")})
+    Routes.get("/",{ response.send("Hello, how are you")})
+
+    "/customer" get { response.send("abc") }
+
+
     server.start()
 
-    verb("/customer", {
-
-    })
 }
 
 
-fun verb(url: String, handler: VerbHandler.() -> Unit) {
-
-}
-
-public class VerbHandler(val request: Request, val response: Response) {
-
-    public fun send(obj: Any) {
-
-    }
-
-}

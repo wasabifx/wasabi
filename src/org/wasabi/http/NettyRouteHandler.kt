@@ -15,9 +15,9 @@ import io.netty.buffer.Unpooled
 import io.netty.util.CharsetUtil
 import org.wasabi.routing.MethodNotAllowedException
 import org.wasabi.routing.RouteNotFoundException
+import org.wasabi.routing.RouteHandler
 
-public class RouteHandler(private val routes: Routes): ChannelInboundMessageHandlerAdapter<Any>() {
-    var handler: ((Request, Response) -> Unit)? = null
+public class NettyRouteHandler(private val routes: Routes): ChannelInboundMessageHandlerAdapter<Any>() {
     var request: Request? = null
 
     public override fun messageReceived(ctx: ChannelHandlerContext?, msg: Any?) {
@@ -25,22 +25,24 @@ public class RouteHandler(private val routes: Routes): ChannelInboundMessageHand
 
         if (msg is HttpRequest) {
             request = Request(msg)
-            try {
-                handler = routes.findHandler(request?.method, request?.uri)
-            } catch (e: MethodNotAllowedException) {
-                sendResponse(ctx!!, 405, e.message)
-                // TODO: Add Allow header with methods allowed
-            } catch (e: RouteNotFoundException) {
-                sendResponse(ctx!!, 404, e.message)
-            }
         }
 
         if (msg is HttpContent) {
             if (msg is LastHttpContent) {
+                try {
+                    val handler = routes.findHandler(request?.method, request?.uri)
+                    val h : RouteHandler.() -> Unit = handler!!
+                    val rh = RouteHandler(request!!, Response(ctx!!))
+                    rh.h()
+                    ctx?.flush()?.addListener(ChannelFutureListener.CLOSE)
+                } catch (e: MethodNotAllowedException) {
+                    sendResponse(ctx!!, 405, e.message)
+                    // TODO: Add Allow header with methods allowed
+                } catch (e: RouteNotFoundException) {
+                    sendResponse(ctx!!, 404, e.message)
+                }
 
-                handler?.invoke(request!!, Response(ctx!!))
 
-                ctx?.flush()?.addListener(ChannelFutureListener.CLOSE)
             }
         }
 

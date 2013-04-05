@@ -18,7 +18,7 @@ public class RoutingSpecs {
     spec fun adding_an_entry_to_routing_table_should_store_it() {
 
 
-        Routes.get("/", { request, response -> (null)})
+        Routes.get("/", { })
 
         assertEquals(1, Routes.getNumberOfRoutes())
     }
@@ -28,9 +28,9 @@ public class RoutingSpecs {
 
 
 
-        Routes.get("/", { request, response -> (response.send(""))})
-        Routes.post("/second", { request, response -> (response.send("second"))})
-        Routes.post("/third", { request, response -> (response.send("third"))})
+        Routes.get("/", { response.send("")})
+        Routes.post("/second", { response.send("second")})
+        Routes.post("/third", { response.send("third")})
 
         val handler1 = Routes.findHandler(HttpMethod.GET, "/")
         val handler2 = Routes.findHandler(HttpMethod.POST, "/third")
@@ -43,9 +43,9 @@ public class RoutingSpecs {
 
 
 
-        Routes.get( "/", { request, response -> (null)})
-        Routes.post( "/second", { request, response -> (null)})
-        Routes.post( "/third", { request, response -> (null)})
+        Routes.get( "/", { })
+        Routes.post( "/second", { })
+        Routes.post( "/third", { })
 
 
         val exception = fails({Routes.findHandler(HttpMethod.GET, "/second")})

@@ -18,7 +18,7 @@ public class ResourceSpecs {
     spec(timeout=1000) fun a_get_on_an_existing_resource_should_return_it() {
 
 
-        Routes.get("/", { request, response -> response.send("Hello")})
+        Routes.get("/", {  response.send("Hello")})
 
         TestServer.start()
 

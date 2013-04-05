@@ -20,8 +20,8 @@ object TestServer {
     }
 
     public fun loadDefaultRoutes() {
-        Routes.get("/", { req, res -> res.send("Root")})
-        Routes.get("/first", { req, res -> res.send("First")})
+        Routes.get("/", { response.send("Root")})
+        Routes.get("/first", { response.send("First")})
     }
 }
 

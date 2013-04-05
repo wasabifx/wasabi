@@ -14,7 +14,7 @@ public class ServerInitializer(private val routes: Routes): ChannelInitializer<S
         //   pipeline.addFirst("connect", ConnectHandler())
         pipeline?.addLast("decoder", HttpRequestDecoder())
         pipeline?.addLast("encoder", HttpResponseEncoder())
-        pipeline?.addLast("handler", RouteHandler(routes))
+        pipeline?.addLast("handler", NettyRouteHandler(routes))
     }
 
 }

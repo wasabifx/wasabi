@@ -1,4 +1,6 @@
 package org.wasabi.routing
 
-public class MethodNotAllowedException(val message: String): Exception(message) {
+import org.wasabi.http.HttpMethod
+
+public class MethodNotAllowedException(val message: String, val allowedMethods: Array<HttpMethod>): Exception(message) {
 }

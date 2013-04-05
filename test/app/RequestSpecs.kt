@@ -29,19 +29,19 @@ public class RequestSpecs {
 
         Routes.get("/",
         {
-            req, res ->
 
-                uri = req.uri
-                host = req.host
-                port = req.port
-                userAgent = req.userAgent
-                keepAlive = req.keepAlive
-                cacheControl = req.cacheControl
-                accept = req.accept
-                acceptEncoding = req.acceptEncoding
-                acceptLanguage = req.acceptLanguage
-                acceptCharset = req.acceptCharset
-                res.send("/")
+
+                uri = request.uri
+                host = request.host
+                port = request.port
+                userAgent = request.userAgent
+                keepAlive = request.keepAlive
+                cacheControl = request.cacheControl
+                accept = request.accept
+                acceptEncoding = request.acceptEncoding
+                acceptLanguage = request.acceptLanguage
+                acceptCharset = request.acceptCharset
+                response.send("/")
 
         })
         TestServer.start()
