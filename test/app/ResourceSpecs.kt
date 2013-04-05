@@ -11,13 +11,14 @@ import org.wasabai.test.TestServer
 import org.wasabai.test.Get
 import kotlin.test.fails
 import org.apache.http.client.HttpResponseException
+import org.wasabi.routing.Routes
 
 public class ResourceSpecs {
 
     spec(timeout=1000) fun a_get_on_an_existing_resource_should_return_it() {
 
 
-        TestServer.appServer.routes.get("/", { request, response -> response.send("Hello")})
+        Routes.get("/", { request, response -> response.send("Hello")})
 
         TestServer.start()
 

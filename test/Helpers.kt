@@ -5,6 +5,7 @@ import org.apache.http.impl.client.BasicResponseHandler
 import org.apache.http.impl.client.DefaultHttpClient
 import org.apache.http.client.methods.HttpGet
 import org.wasabi.http.HttpMethod
+import org.wasabi.routing.Routes
 
 object TestServer {
 
@@ -19,8 +20,8 @@ object TestServer {
     }
 
     public fun loadDefaultRoutes() {
-        appServer.routes.get("/", { req, res -> res.send("Root")})
-        appServer.routes.get("/first", { req, res -> res.send("First")})
+        Routes.get("/", { req, res -> res.send("Root")})
+        Routes.get("/first", { req, res -> res.send("First")})
     }
 }
 

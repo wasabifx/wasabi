@@ -9,7 +9,7 @@ import io.netty.channel.nio.NioEventLoopGroup
 import io.netty.channel.socket.nio.NioServerSocketChannel
 
 
-public class HttpServer(private val configuration: AppConfiguration, private val routes: Routes) {
+public class HttpServer(private val configuration: AppConfiguration) {
 
     val bootstrap: ServerBootstrap
 
@@ -18,7 +18,7 @@ public class HttpServer(private val configuration: AppConfiguration, private val
 
         bootstrap.group(NioEventLoopGroup(), NioEventLoopGroup())
         bootstrap.channel(javaClass<NioServerSocketChannel>())
-        bootstrap.childHandler(ServerInitializer(routes))
+        bootstrap.childHandler(ServerInitializer(Routes))
 
     }
 

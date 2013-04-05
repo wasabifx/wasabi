@@ -7,6 +7,7 @@ import org.wasabai.test.Get
 import org.wasabi.http.HttpMethod
 import kotlin.test.assertEquals
 import java.util.ArrayList
+import org.wasabi.routing.Routes
 
 
 public class RequestSpecs {
@@ -26,7 +27,7 @@ public class RequestSpecs {
         var acceptCharset =  Array<String>(0, {""})
 
 
-        TestServer.appServer.routes.get("/",
+        Routes.get("/",
         {
             req, res ->
 

@@ -5,12 +5,12 @@ import org.wasabi.http.Request
 import org.wasabi.http.Response
 import org.wasabi.http.HttpMethod
 
-public class Routes {
+public object Routes {
 
-    val routeStorage = ArrayList<Route>()
+    val routeStorage = hashMapOf<String, ArrayList<Route>>()
 
     private fun addRoute(method: HttpMethod, path: String, handler: (Request, Response) -> Unit) {
-        routeStorage.add(Route(method, path, handler))
+        //routeStorage.map(path -> Route(path, method, handler))
     }
 
     public fun findHandler(method: HttpMethod, path: String): (Request, Response) -> Unit {
@@ -20,7 +20,7 @@ public class Routes {
                 if (route.method == method) {
                     return route.handler
                 }
-                throw MethodNotAllowedException("Method not allowed")
+                throw MethodNotAllowedException(route.toString())
             }
         }
         throw RouteNotFoundException("Routing entry not found")
@@ -51,11 +51,32 @@ public class Routes {
         addRoute(HttpMethod.OPTIONS, path, handler)
     }
 
-
-
-
-
-
+    public fun getNumberOfRoutes(): Int {
+        return routeStorage.size()
+    }
 
 }
+
+fun String.get(handler: (Request, Response) -> Unit) {
+    Routes.get(this, handler)
+}
+
+fun String.post(handler: (Request, Response) -> Unit) {
+    Routes.post(this, handler)
+}
+
+fun String.delete(handler: (Request, Response) -> Unit) {
+    Routes.delete(this, handler)
+}
+fun String.put(handler: (Request, Response) -> Unit) {
+    Routes.put(this, handler)
+}
+fun String.options(handler: (Request, Response) -> Unit) {
+    Routes.options(this, handler)
+}
+fun String.head(handler: (Request, Response) -> Unit) {
+    Routes.head(this, handler)
+}
+
+
 

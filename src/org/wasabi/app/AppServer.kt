@@ -5,7 +5,7 @@ import org.wasabi.http.HttpServer
 import org.wasabi.configuration.ConfigurationStorage
 
 
-public class AppServer(configurationFilename: String = "", val routes: Routes = Routes()) {
+public class AppServer(configurationFilename: String = "") {
 
     val configuration: AppConfiguration
 
@@ -20,7 +20,7 @@ public class AppServer(configurationFilename: String = "", val routes: Routes = 
             configuration = AppConfiguration()
         }
 
-        httpServer = HttpServer(configuration, routes)
+        httpServer = HttpServer(configuration)
     }
 
     public fun start(wait: Boolean = true) {
