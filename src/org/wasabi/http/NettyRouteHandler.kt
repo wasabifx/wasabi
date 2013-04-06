@@ -31,7 +31,7 @@ public class NettyRouteHandler(private val routes: Routes): ChannelInboundMessag
         if (msg is HttpContent) {
             if (msg is LastHttpContent) {
                 try {
-                    val handler = routes.findRouteHandler(request?.method, request?.uri)
+                    val handler = routes.findRouteHandler(request?.method!!, request?.uri!!)
                     val h : RouteHandler.() -> Unit = handler!!
                     val rh = RouteHandler(request!!, Response(ctx!!))
                     rh.h()
@@ -50,7 +50,7 @@ public class NettyRouteHandler(private val routes: Routes): ChannelInboundMessag
 
     }
     public override fun exceptionCaught(ctx: ChannelHandlerContext?, cause: Throwable?) {
-        setStatusCode(ctx!!, 500, cause?.getMessage())
+        setStatusCode(ctx!!, 500, cause?.getMessage()!!)
     }
 
     fun setStatusCode(ctx: ChannelHandlerContext, statusCode: Int, text: String) {

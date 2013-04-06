@@ -43,7 +43,7 @@ public fun delete(url: String): HttpClientResponse {
     httpDelete.setHeader("Accept-Charset", "ISO-8859-1,utf-8;q=0.7,*;q=0.3")
 
 
-    return HttpClientResponse(httpDelete.getAllHeaders(), httpClient.execute(httpDelete, responseHandler)!!)
+    return HttpClientResponse(httpDelete.getAllHeaders()!!, httpClient.execute(httpDelete, responseHandler)!!)
 
 }
 
@@ -64,7 +64,7 @@ public fun get(url: String): HttpClientResponse {
     httpGet.setHeader("Accept-Charset", "ISO-8859-1,utf-8;q=0.7,*;q=0.3")
 
 
-    return HttpClientResponse(httpGet.getAllHeaders(), httpClient.execute(httpGet, responseHandler)!!)
+    return HttpClientResponse(httpGet.getAllHeaders()!!, httpClient.execute(httpGet, responseHandler)!!)
 
 }
 
