@@ -10,6 +10,10 @@ public object Routes {
     val routeStorage = ArrayList<Route>()
 
     private fun addRoute(method: HttpMethod, path: String, handler: RouteHandler.() -> Unit) {
+        val existingRoute = routeStorage.filter { it.path == path && it.method == method}
+        if (existingRoute.count() >= 1) {
+            throw RouteAlreadyExistsException(existingRoute.first!!)
+        }
         routeStorage.add(Route(path, method, handler))
     }
 

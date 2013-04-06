@@ -11,6 +11,7 @@ import kotlin.test.assertNull
 import kotlin.test.fails
 import org.wasabi.http.HttpMethod
 import org.wasabi.routing.MethodNotAllowedException
+import org.wasabi.routing.RouteAlreadyExistsException
 
 
 public class RoutingSpecs {
@@ -54,5 +55,13 @@ public class RoutingSpecs {
 
     }
 
+    spec fun adding_a_second_route_in_the_routing_table_with_matching_path_and_method_should_throw_exception_indicating_route_exists() {
+        Routes.get( "/", {})
+        Routes.get( "/a", {})
+        val exception = fails { Routes.get( "/", {}) }
+
+        assertEquals(javaClass<RouteAlreadyExistsException>(), exception.javaClass)
+        assertEquals("Path / with method GET already exists", exception?.getMessage())
+    }
 }
 
