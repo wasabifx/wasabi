@@ -32,8 +32,8 @@ public class RoutingSpecs {
         Routes.post("/second", { response.send("second")})
         Routes.post("/third", { response.send("third")})
 
-        val handler1 = Routes.findHandler(HttpMethod.GET, "/")
-        val handler2 = Routes.findHandler(HttpMethod.POST, "/third")
+        val handler1 = Routes.findRouteHandler(HttpMethod.GET, "/")
+        val handler2 = Routes.findRouteHandler(HttpMethod.POST, "/third")
 
         assertNotNull(handler1)
         assertNotNull(handler2)
@@ -48,7 +48,7 @@ public class RoutingSpecs {
         Routes.post( "/third", { })
 
 
-        val exception = fails({Routes.findHandler(HttpMethod.GET, "/second")})
+        val exception = fails({Routes.findRouteHandler(HttpMethod.GET, "/second")})
 
         assertEquals(javaClass<MethodNotAllowedException>(), exception.javaClass)
 

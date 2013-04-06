@@ -8,10 +8,11 @@ import org.apache.http.client.methods.HttpGet
 import kotlin.test.assertEquals
 import org.apache.http.impl.client.BasicResponseHandler
 import org.wasabai.test.TestServer
-import org.wasabai.test.Get
+import org.wasabai.test.get
 import kotlin.test.fails
 import org.apache.http.client.HttpResponseException
 import org.wasabi.routing.Routes
+import org.wasabai.test.delete
 
 public class ResourceSpecs {
 
@@ -22,7 +23,7 @@ public class ResourceSpecs {
 
         TestServer.start()
 
-        val response = Get("http://localhost:3000")
+        val response = get("http://localhost:3000")
 
         assertEquals("Hello", response)
 
@@ -34,13 +35,27 @@ public class ResourceSpecs {
 
         TestServer.start()
 
-        val exception = fails({Get("http://localhost:3000/nothing")})
+        val exception = fails { get("http://localhost:3000/nothing")}
 
         assertEquals(javaClass<HttpResponseException>(),exception.javaClass)
-        assertEquals("Not Found",exception!!.getMessage())
+        assertEquals("Not found",exception!!.getMessage())
 
         TestServer.stop()
 
+    }
+
+    spec(timeout=1000) fun a_get_on_an_existing_resource_with_invalid_verb_should_return_405_with_message_method_not_allowed_and_header_of_allowed_methods() {
+
+        Routes.get("/", {  response.send("Hello")})
+
+        TestServer.start()
+
+        val exception = fails { delete("http://localhost:3000") }
+
+        assertEquals(javaClass<HttpResponseException>(), exception.javaClass)
+        assertEquals("Method not allowed", exception!!.getMessage())
+
+        TestServer.stop()
     }
 
 }

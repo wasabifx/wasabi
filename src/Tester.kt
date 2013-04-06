@@ -18,7 +18,7 @@ fun main(args: Array<String>) {
     Routes.get("/good",{    response.send("Well this means that routes now work!")})
     Routes.get("/",{ response.send("Hello, how are you")})
 
-    "/customer" get { response.send("abc") }
+    "/customer" post { response.send("abc") }
 
 
     server.start()

@@ -13,17 +13,17 @@ public object Routes {
         routeStorage.add(Route(path, method, handler))
     }
 
-    public fun findHandler(method: HttpMethod, path: String): RouteHandler.() -> Unit {
+    public fun findRouteHandler(method: HttpMethod, path: String): RouteHandler.() -> Unit {
 
         val matchingPaths = routeStorage.filter { it.path == path }
         if (matchingPaths.count() == 0) {
             throw RouteNotFoundException("Routing entry not found")
         }
 
-        val matchingVerb = (matchingPaths.filter { it.method == method }).first
+        val matchingVerbs = (matchingPaths.filter { it.method == method })
 
-        if (matchingVerb != null) {
-            return matchingVerb.handler
+        if (matchingVerbs.count() == 1) {
+            return matchingVerbs.first!!.handler
         }
         throw MethodNotAllowedException("Method not allowed", Array<HttpMethod>(matchingPaths.size(), { i -> matchingPaths.get(i).method}))
 

@@ -6,6 +6,7 @@ import org.apache.http.impl.client.DefaultHttpClient
 import org.apache.http.client.methods.HttpGet
 import org.wasabi.http.HttpMethod
 import org.wasabi.routing.Routes
+import org.apache.http.client.methods.HttpDelete
 
 object TestServer {
 
@@ -25,7 +26,27 @@ object TestServer {
     }
 }
 
-public fun Get(url: String): String {
+public fun delete(url: String): String {
+    val httpClient = DefaultHttpClient()
+
+
+    val responseHandler = BasicResponseHandler()
+
+    val httpDelete = HttpDelete(url)
+    httpDelete.setHeader("User-Agent", "test-client")
+    httpDelete.setHeader("Connection", "keep-alive")
+    httpDelete.setHeader("Cache-Control", "max-age=0")
+    httpDelete.setHeader("Accept", "Accept=text/html,application/xhtml+xml,application/xml")
+    httpDelete.setHeader("Accept-Encoding", "gzip,deflate,sdch")
+    httpDelete.setHeader("Accept-Language", "en-US,en;q=0.8")
+    httpDelete.setHeader("Accept-Charset", "ISO-8859-1,utf-8;q=0.7,*;q=0.3")
+
+
+    return httpClient.execute(httpDelete, responseHandler)!!
+
+}
+
+public fun get(url: String): String {
 
     val httpClient = DefaultHttpClient()
 
@@ -45,6 +66,7 @@ public fun Get(url: String): String {
     return httpClient.execute(httpGet, responseHandler)!!
 
 }
+
 
 
 

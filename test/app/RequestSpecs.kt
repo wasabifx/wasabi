@@ -3,7 +3,7 @@ package org.wasabi.test
 
 import org.junit.Test as spec
 import org.wasabai.test.TestServer
-import org.wasabai.test.Get
+import org.wasabai.test.get
 import org.wasabi.http.HttpMethod
 import kotlin.test.assertEquals
 import java.util.ArrayList
@@ -14,7 +14,6 @@ public class RequestSpecs {
 
     spec fun request_should_contain_all_fields() {
 
-     //   var host = ""
         var uri = ""
         var port = 0
         var host = ""
@@ -46,7 +45,7 @@ public class RequestSpecs {
         })
         TestServer.start()
 
-        Get("http://localhost:3000")
+        get("http://localhost:3000")
 
         assertEquals("/", uri);
         assertEquals("localhost", host);
