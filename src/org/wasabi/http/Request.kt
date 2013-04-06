@@ -6,7 +6,7 @@ import io.netty.handler.codec.http.HttpRequest
 public class Request(private val httpRequest: HttpRequest) {
 
     val uri  = httpRequest.getUri()!!
-    val method =  mapNettyHttpMethodToOwn(httpRequest.getMethod())
+    val method =  mapNettyHttpMethodToOwn(httpRequest.getMethod()!!)
     val host = getHeader("Host").takeWhile { it != ':' }
     val port = (getHeader("Host").dropWhile { it != ':' }).drop(1).toInt() ?: 80
     val keepAlive = getHeader("Connection").compareToIgnoreCase("keep-alive") == 0

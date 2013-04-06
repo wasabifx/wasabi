@@ -1,7 +1,7 @@
 <component name="libraryTable">
-  <library name="commons-codec-1.6">
+  <library name="httpcore-4.2.3">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/lib/commons-codec-1.6.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/httpcore-4.2.3.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

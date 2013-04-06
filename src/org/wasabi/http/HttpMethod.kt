@@ -21,7 +21,7 @@ fun mapNettyHttpMethodToOwn(nettyMethod: io.netty.handler.codec.http.HttpMethod)
         io.netty.handler.codec.http.HttpMethod.OPTIONS -> return HttpMethod.OPTIONS
         io.netty.handler.codec.http.HttpMethod.HEAD -> return HttpMethod.HEAD
         else -> {
-            throw HttpMethodNotSupportedException(nettyMethod.toString())
+            throw HttpMethodNotSupportedException(nettyMethod.toString()!!)
         }
     }
 
