@@ -10,8 +10,8 @@ public class AppServer(configurationFilename: String = "") {
     val configuration: AppConfiguration
 
     private val httpServer: HttpServer
-    {
 
+    {
         if (configurationFilename != "") {
 
             val configurationStorage = ConfigurationStorage()

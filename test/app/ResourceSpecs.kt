@@ -16,7 +16,7 @@ import org.wasabai.test.delete
 
 public class ResourceSpecs {
 
-    spec(timeout=1000) fun a_get_on_an_existing_resource_should_return_it() {
+    spec(timeout=5000) fun a_get_on_an_existing_resource_should_return_it() {
 
 
         Routes.get("/", {  response.send("Hello")})
@@ -25,13 +25,13 @@ public class ResourceSpecs {
 
         val response = get("http://localhost:3000")
 
-        assertEquals("Hello", response)
+        assertEquals("Hello", response.body)
 
         TestServer.stop()
 
     }
 
-    spec(timeout=1000) fun a_get_on_an_non_existing_resource_should_return_a_404_with_message_Not_Found() {
+    spec(timeout=5000) fun a_get_on_an_non_existing_resource_should_return_a_404_with_message_Not_Found() {
 
         TestServer.start()
 
@@ -44,7 +44,7 @@ public class ResourceSpecs {
 
     }
 
-    spec(timeout=1000) fun a_get_on_an_existing_resource_with_invalid_verb_should_return_405_with_message_method_not_allowed_and_header_of_allowed_methods() {
+    spec(timeout=5000) fun a_get_on_an_existing_resource_with_invalid_verb_should_return_405_with_message_method_not_allowed_and_header_of_allowed_methods() {
 
         Routes.get("/", {  response.send("Hello")})
 

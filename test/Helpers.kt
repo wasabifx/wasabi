@@ -7,6 +7,7 @@ import org.apache.http.client.methods.HttpGet
 import org.wasabi.http.HttpMethod
 import org.wasabi.routing.Routes
 import org.apache.http.client.methods.HttpDelete
+import org.apache.http.Header
 
 object TestServer {
 
@@ -26,7 +27,7 @@ object TestServer {
     }
 }
 
-public fun delete(url: String): String {
+public fun delete(url: String): HttpClientResponse {
     val httpClient = DefaultHttpClient()
 
 
@@ -42,11 +43,11 @@ public fun delete(url: String): String {
     httpDelete.setHeader("Accept-Charset", "ISO-8859-1,utf-8;q=0.7,*;q=0.3")
 
 
-    return httpClient.execute(httpDelete, responseHandler)!!
+    return HttpClientResponse(httpDelete.getAllHeaders(), httpClient.execute(httpDelete, responseHandler)!!)
 
 }
 
-public fun get(url: String): String {
+public fun get(url: String): HttpClientResponse {
 
     val httpClient = DefaultHttpClient()
 
@@ -63,10 +64,11 @@ public fun get(url: String): String {
     httpGet.setHeader("Accept-Charset", "ISO-8859-1,utf-8;q=0.7,*;q=0.3")
 
 
-    return httpClient.execute(httpGet, responseHandler)!!
+    return HttpClientResponse(httpGet.getAllHeaders(), httpClient.execute(httpGet, responseHandler)!!)
 
 }
 
+data public class HttpClientResponse(val headers: Array<Header>, val body: String)
 
 
 

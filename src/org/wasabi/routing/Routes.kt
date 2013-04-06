@@ -61,6 +61,9 @@ public object Routes {
         return routeStorage.size()
     }
 
+    public fun clearAll() {
+        routeStorage.clear()
+    }
 }
 
 public fun String.get(handler: RouteHandler.() -> Unit) {

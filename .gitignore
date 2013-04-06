@@ -11,5 +11,5 @@ out/
 *.dotsettings
 *.dotsettings.*
 ~$*
-.idea/
+.idea/workspace.xml
 .DS_Store/
