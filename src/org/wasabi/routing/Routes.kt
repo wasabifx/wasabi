@@ -4,6 +4,8 @@ import java.util.ArrayList
 import org.wasabi.http.Request
 import org.wasabi.http.Response
 import org.wasabi.http.HttpMethod
+import java.lang.annotation.RetentionPolicy
+import java.lang.annotation.Retention
 
 public object Routes {
 
