@@ -14,14 +14,14 @@ import org.wasabi.routing.MethodNotAllowedException
 import org.wasabi.routing.RouteAlreadyExistsException
 
 
-public class RoutingSpecs {
+public class RoutesSpecs {
 
     spec fun adding_an_entry_to_routing_table_should_store_it() {
 
-
+        Routes.clearAll()
         Routes.get("/", { })
 
-        assertEquals(1, Routes.getNumberOfRoutes())
+        assertEquals(1, Routes.size())
     }
 
 
@@ -29,6 +29,7 @@ public class RoutingSpecs {
 
 
 
+        Routes.clearAll()
         Routes.get("/", { response.send("")})
         Routes.post("/second", { response.send("second")})
         Routes.post("/third", { response.send("third")})
@@ -44,6 +45,7 @@ public class RoutingSpecs {
 
 
 
+        Routes.clearAll()
         Routes.get( "/", { })
         Routes.post( "/second", { })
         Routes.post( "/third", { })
@@ -56,6 +58,7 @@ public class RoutingSpecs {
     }
 
     spec fun adding_a_second_route_in_the_routing_table_with_matching_path_and_method_should_throw_exception_indicating_route_exists() {
+        Routes.clearAll()
         Routes.get( "/", {})
         Routes.get( "/a", {})
         val exception = fails { Routes.get( "/", {}) }

@@ -61,7 +61,7 @@ public object Routes {
         addRoute(HttpMethod.OPTIONS, path, handler)
     }
 
-    public fun getNumberOfRoutes(): Int {
+    public fun size(): Int {
         return routeStorage.size()
     }
 
