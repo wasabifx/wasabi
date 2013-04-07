@@ -21,11 +21,15 @@ fun main(args: Array<String>) {
 
     "/customer" post { response.send("abc") }
 
-
+               "/customer" get { }
 
     server.start()
 
 }
+
+
+
+
 
 
 

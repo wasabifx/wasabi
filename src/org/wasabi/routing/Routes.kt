@@ -7,6 +7,8 @@ import org.wasabi.http.HttpMethod
 import java.lang.annotation.RetentionPolicy
 import java.lang.annotation.Retention
 
+Retention(RetentionPolicy.RUNTIME) annotation class resource
+
 public object Routes {
 
     val routeStorage = ArrayList<Route>()
@@ -91,6 +93,5 @@ public fun String.options(handler: RouteHandler.() -> Unit) {
 fun String.head(handler: RouteHandler.() -> Unit) {
     Routes.head(this, handler)
 }
-
 
 
