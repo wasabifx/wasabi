@@ -36,11 +36,13 @@ public fun delete(url: String, headers: HashMap<String, String>): HttpClientResp
     val responseHandler = BasicResponseHandler()
 
     val httpDelete = HttpDelete(url)
+
     for ((key, value) in headers) {
         httpDelete.setHeader(key, value)
     }
 
-    return HttpClientResponse(httpDelete.getAllHeaders()!!, httpClient.execute(httpDelete, responseHandler)!!)
+    val responseHeaders = httpDelete.getAllHeaders()!!
+    return HttpClientResponse(responseHeaders, httpClient.execute(httpDelete, responseHandler)!!)
 
 }
 

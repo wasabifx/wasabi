@@ -59,10 +59,9 @@ public class ConfigStorageSpecs {
 
         val configurationStorage = ConfigurationStorage()
 
-        val configuration = AppConfiguration()
 
         val file = File.createTempFile("configuration", ".json")
-        configurationStorage.saveToFile(configuration, file.getAbsolutePath())
+        configurationStorage.saveToFile(AppConfiguration(), file.getAbsolutePath())
 
         val text = file.readText(defaultCharset)
 

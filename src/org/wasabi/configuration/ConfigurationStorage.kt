@@ -17,12 +17,13 @@ public class ConfigurationStorage {
 
         if (jsonFile.exists()) {
             try {
+
                 val configuration = objectMapper.readValue<AppConfiguration>(jsonFile, javaClass<AppConfiguration>())
 
-                if (configuration == null) {
-                    return AppConfiguration()
-                } else  {
+                if (configuration != null) {
                     return configuration
+                } else {
+                    throw InvalidConfigurationException("Could not read configuration")
                 }
             } catch (exception: UnrecognizedPropertyException) {
                 throw InvalidConfigurationException("Invalid property in configuration file: " + exception.getUnrecognizedPropertyName())

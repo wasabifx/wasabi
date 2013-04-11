@@ -5,21 +5,11 @@ import org.wasabi.http.HttpServer
 import org.wasabi.configuration.ConfigurationStorage
 
 
-public class AppServer(configurationFilename: String = "") {
-
-    val configuration: AppConfiguration
+public class AppServer(val configuration: AppConfiguration = AppConfiguration()) {
 
     private val httpServer: HttpServer
 
     {
-        if (configurationFilename != "") {
-
-            val configurationStorage = ConfigurationStorage()
-            configuration = configurationStorage.loadFromFile(configurationFilename)
-        } else {
-            configuration = AppConfiguration()
-        }
-
         httpServer = HttpServer(configuration)
     }
 

@@ -71,6 +71,9 @@ public class ResourceSpecs {
         assertEquals(javaClass<HttpResponseException>(), exception.javaClass)
         assertEquals("Method not allowed", exception!!.getMessage())
 
+        // for some reason HttpClient does not return allow header even though it is being set (verified with REST client in IDEA and curl)
+        //  assertEquals("Allow: GET", headers["Allow"])
+
         TestServer.stop()
     }
 

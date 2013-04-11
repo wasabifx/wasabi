@@ -20,6 +20,7 @@ import io.netty.handler.codec.http.DefaultHttpResponse
 
 public class NettyRouteHandler(private val routes: Routes): ChannelInboundMessageHandlerAdapter<Any>() {
     var request: Request? = null
+    val response = Response()
 
     public override fun messageReceived(ctx: ChannelHandlerContext?, msg: Any?) {
         // just a prototype...
@@ -34,14 +35,19 @@ public class NettyRouteHandler(private val routes: Routes): ChannelInboundMessag
                 try {
                     val handler = routes.findRouteHandler(request?.method!!, request?.uri!!.split('?')[0])
                     val h : RouteHandler.() -> Unit = handler!!
-                    val rh = RouteHandler(request!!, Response(ctx!!))
+                    val rh = RouteHandler(request!!, response)
                     rh.h()
-                    ctx.flush()?.addListener(ChannelFutureListener.CLOSE)
+                    response.writeResponse(ctx!!)
                 } catch (e: MethodNotAllowedException) {
-                    setStatusCode(ctx!!, 405, "Method not allowed")
-                    // TODO: Add Allow header with methods allowed
+                    response.statusCode = 405
+                    response.statusDescription = "Method not allowed"
+                    response.allow = e.allowedMethods.makeString(",")
+                    response.writeResponse(ctx!!)
+
                 } catch (e: RouteNotFoundException) {
-                    setStatusCode(ctx!!, 404, "Not found")
+                    response.statusCode = 404
+                    response.statusDescription = "Not found"
+                    response.writeResponse(ctx!!)
                 }
 
 
@@ -50,30 +56,14 @@ public class NettyRouteHandler(private val routes: Routes): ChannelInboundMessag
 
 
     }
+
     public override fun exceptionCaught(ctx: ChannelHandlerContext?, cause: Throwable?) {
-        setStatusCode(ctx!!, 500, cause?.getMessage()!!)
+        response.statusCode = 500
+        response.statusDescription = cause?.getMessage()!!
+        response.writeResponse(ctx!!)
     }
 
-    fun setStatusCode(ctx: ChannelHandlerContext, statusCode: Int, text: String) {
-        var response = DefaultFullHttpResponse(HttpVersion("HTTP", 1, 1, true), HttpResponseStatus(statusCode,text))
-        ctx.nextOutboundMessageBuffer()?.add(response)
-        ctx.flush()?.addListener(ChannelFutureListener.CLOSE)
-    }
-
-    fun setHeader(ctx: ChannelHandlerContext) {
-
-    }
-
-    fun sendResponse(ctx: ChannelHandlerContext) {
-        ctx.flush()?.addListener(ChannelFutureListener.CLOSE)
-    }
 
 
 }
 
-public class OutboundResponse() {
-
-    public var statusCode: Int = 200
-    public var statusText: String = ""
-
-}
