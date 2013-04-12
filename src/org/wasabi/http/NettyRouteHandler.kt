@@ -37,20 +37,12 @@ public class NettyRouteHandler(private val routes: Routes): ChannelInboundMessag
                     val h : RouteHandler.() -> Unit = handler!!
                     val rh = RouteHandler(request!!, response)
                     rh.h()
-                    response.writeResponse(ctx!!)
                 } catch (e: MethodNotAllowedException) {
-                    response.statusCode = 405
-                    response.statusDescription = "Method not allowed"
-                    response.allow = e.allowedMethods.makeString(",")
-                    response.writeResponse(ctx!!)
-
+                    response.setStatusCode(405, "Method not allowed")
                 } catch (e: RouteNotFoundException) {
-                    response.statusCode = 404
-                    response.statusDescription = "Not found"
-                    response.writeResponse(ctx!!)
+                    response.setStatusCode(404, "Not found")
                 }
-
-
+                response.writeResponse(ctx!!)
             }
         }
 
@@ -58,8 +50,7 @@ public class NettyRouteHandler(private val routes: Routes): ChannelInboundMessag
     }
 
     public override fun exceptionCaught(ctx: ChannelHandlerContext?, cause: Throwable?) {
-        response.statusCode = 500
-        response.statusDescription = cause?.getMessage()!!
+        response.setStatusCode(500, cause?.getMessage()!!)
         response.writeResponse(ctx!!)
     }
 

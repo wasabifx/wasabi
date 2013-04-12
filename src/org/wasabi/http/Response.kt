@@ -25,6 +25,10 @@ public class Response() {
         buffer = message
     }
 
+    public fun setStatusCode(statusCode: Int, statusDescription: String) {
+        this.statusCode = statusCode
+        this.statusDescription = statusDescription
+    }
     public fun writeResponse(ctx: ChannelHandlerContext) {
         var response = DefaultFullHttpResponse(HttpVersion("HTTP", 1, 1, true), HttpResponseStatus(statusCode,statusDescription),  Unpooled.copiedBuffer(buffer, CharsetUtil.UTF_8))
         addHeaders(response)

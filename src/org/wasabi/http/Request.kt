@@ -5,11 +5,12 @@ import io.netty.handler.codec.http.HttpRequest
 import java.util.Dictionary
 import org.wasabi.routing.QueryParams
 import java.util.ArrayList
+import io.netty.handler.codec.http.HttpMethod
 
 public class Request(private val httpRequest: HttpRequest) {
 
     public val uri: String  = httpRequest.getUri()!!.split('?')[0]
-    public val method: HttpMethod =  mapNettyHttpMethodToOwn(httpRequest.getMethod()!!)
+    public val method: HttpMethod =  httpRequest.getMethod()!!
     public val host: String = getHeader("Host").takeWhile { it != ':' }
     public val port : Int = (getHeader("Host").dropWhile { it != ':' }).drop(1).toInt() ?: 80
     public val keepAlive: Boolean  = getHeader("Connection").compareToIgnoreCase("keep-alive") == 0

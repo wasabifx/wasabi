@@ -4,7 +4,6 @@ import org.wasabi.app.AppServer
 import org.apache.http.impl.client.BasicResponseHandler
 import org.apache.http.impl.client.DefaultHttpClient
 import org.apache.http.client.methods.HttpGet
-import org.wasabi.http.HttpMethod
 import org.wasabi.routing.Routes
 import org.apache.http.client.methods.HttpDelete
 import org.apache.http.Header

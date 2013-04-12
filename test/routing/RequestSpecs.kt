@@ -4,7 +4,6 @@ package org.wasabi.test
 import org.junit.Test as spec
 import org.wasabai.test.TestServer
 import org.wasabai.test.get
-import org.wasabi.http.HttpMethod
 import kotlin.test.assertEquals
 import java.util.ArrayList
 import org.wasabi.routing.Routes

@@ -9,9 +9,9 @@ import org.junit.runners.Parameterized.Parameters
 import java.util.ArrayList
 import kotlin.test.assertNull
 import kotlin.test.fails
-import org.wasabi.http.HttpMethod
 import org.wasabi.routing.MethodNotAllowedException
 import org.wasabi.routing.RouteAlreadyExistsException
+import io.netty.handler.codec.http.HttpMethod
 
 
 public class RoutesSpecs {

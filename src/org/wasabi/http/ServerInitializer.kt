@@ -11,7 +11,6 @@ import org.wasabi.routing.Routes
 public class ServerInitializer(private val routes: Routes): ChannelInitializer<SocketChannel>() {
     protected override fun initChannel(ch: SocketChannel?) {
         val pipeline = ch?.pipeline()
-        //   pipeline.addFirst("connect", ConnectHandler())
         pipeline?.addLast("decoder", HttpRequestDecoder())
         pipeline?.addLast("encoder", HttpResponseEncoder())
         pipeline?.addLast("handler", NettyRouteHandler(routes))

@@ -3,9 +3,9 @@ package org.wasabi.routing
 import java.util.ArrayList
 import org.wasabi.http.Request
 import org.wasabi.http.Response
-import org.wasabi.http.HttpMethod
 import java.lang.annotation.RetentionPolicy
 import java.lang.annotation.Retention
+import io.netty.handler.codec.http.HttpMethod
 
 Retention(RetentionPolicy.RUNTIME) annotation class resource
 

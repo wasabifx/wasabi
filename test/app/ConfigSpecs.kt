@@ -21,14 +21,12 @@ public class ConfigSpecs {
 
     spec fun creating_an_app_server_with_explicit_configuration_should_use_the_configuration_specified() {
 
+
         val appServer = AppServer(
-                object: AppConfiguration() {
-                    {
-                        port = 5000
-                        welcomeMessage = "Hello there!"
-                        enableLogging = false
-                    }
-        })
+                AppConfiguration(
+                        port = 5000,
+                        welcomeMessage = "Hello there!",
+                        enableLogging = false))
 
         assertEquals(5000, appServer.configuration.port)
         assertEquals("Hello there!", appServer.configuration.welcomeMessage)
