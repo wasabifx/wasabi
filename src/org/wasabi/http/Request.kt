@@ -24,6 +24,7 @@ public class Request(private val httpRequest: HttpRequest) {
     public val acceptCharset: Array<String> = getHeader("Accept-Charset").split(",")
     public val queryParams : QueryParams = QueryParams()
     public val routeParams : RouteParams = RouteParams()
+    public val body: String = ""
 
     private fun getHeader(header: String): String {
 

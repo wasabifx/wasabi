@@ -32,6 +32,7 @@ public class NettyRouteHandler(routeLocator: RouteLocator): ChannelInboundMessag
         }
 
         if (msg is HttpContent) {
+            response.buffer = msg.data().toString()
             if (msg is LastHttpContent) {
                 try {
                     val route = findRoute(request?.uri!!.split('?')[0], request?.method!!)
