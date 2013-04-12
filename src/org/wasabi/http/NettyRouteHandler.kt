@@ -34,9 +34,9 @@ public class NettyRouteHandler(private val routes: Routes): ChannelInboundMessag
             if (msg is LastHttpContent) {
                 try {
                     val handler = routes.findRouteHandler(request?.method!!, request?.uri!!.split('?')[0])
-                    val h : RouteHandler.() -> Unit = handler!!
-                    val rh = RouteHandler(request!!, response)
-                    rh.h()
+                    val handlerExtension : RouteHandler.() -> Unit = handler!!
+                    val routeHandler = RouteHandler(request!!, response)
+                    routeHandler.handlerExtension()
                 } catch (e: MethodNotAllowedException) {
                     response.setStatusCode(405, "Method not allowed")
                 } catch (e: RouteNotFoundException) {

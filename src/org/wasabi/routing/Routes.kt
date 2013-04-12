@@ -14,7 +14,7 @@ public object Routes {
     val routeStorage = ArrayList<Route>()
 
     private fun addRoute(method: HttpMethod, path: String, handler: RouteHandler.() -> Unit) {
-        val existingRoute = routeStorage.filter { it.path == path && it.method == method}
+        val existingRoute = routeStorage.filter { it.matchesPath(path) && it.method == method}
         if (existingRoute.count() >= 1) {
             throw RouteAlreadyExistsException(existingRoute.first!!)
         }
@@ -23,7 +23,7 @@ public object Routes {
 
     public fun findRouteHandler(method: HttpMethod, path: String): RouteHandler.() -> Unit {
 
-        val matchingPaths = routeStorage.filter { it.path == path }
+        val matchingPaths = routeStorage.filter { it.matchesPath(path) }
         if (matchingPaths.count() == 0) {
             throw RouteNotFoundException("Routing entry not found")
         }
