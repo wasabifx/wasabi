@@ -12,11 +12,12 @@ import kotlin.test.fails
 import org.wasabi.routing.MethodNotAllowedException
 import org.wasabi.routing.RouteAlreadyExistsException
 import io.netty.handler.codec.http.HttpMethod
+import org.wasabi.routing.PatternAndVerbMatchingRouteLocator
 
 
 public class RoutesSpecs {
 
-    spec fun adding_an_entry_to_routing_table_should_store_it() {
+    spec fun adding_a_route_to_routing_table_should_store_it() {
 
         Routes.clearAll()
         Routes.get("/", { })
@@ -25,7 +26,7 @@ public class RoutesSpecs {
     }
 
 
-    spec fun finding_a_handler_in_the_routing_table_by_matching_method_and_path_should_return_handler() {
+    spec fun finding_a_route_in_the_routing_table_by_matching_method_and_path_should_return_route() {
 
 
 
@@ -34,14 +35,30 @@ public class RoutesSpecs {
         Routes.post("/second", { response.send("second")})
         Routes.post("/third", { response.send("third")})
 
-        val handler1 = Routes.findRouteHandler(HttpMethod.GET, "/")
-        val handler2 = Routes.findRouteHandler(HttpMethod.POST, "/third")
+        val routeLocator = PatternAndVerbMatchingRouteLocator()
 
-        assertNotNull(handler1)
-        assertNotNull(handler2)
+        val route1 = routeLocator.findRoute("/", HttpMethod.GET)
+        val route2 = routeLocator.findRoute("/third", HttpMethod.POST)
+
+        assertNotNull(route1)
+        assertNotNull(route2)
     }
 
-    spec fun finding_a_handler_in_the_routing_table_when_path_found_but_not_method_throw_exception_method_not_permitted() {
+    spec fun finding_a_route_in_the_routing_table_with_parameters_and_matching_method_should_return_route() {
+        Routes.clearAll()
+        Routes.post("/third", { response.send("third")})
+        Routes.get("/first/:parent/:child/ending", { response.send("")})
+
+        val routeLocator = PatternAndVerbMatchingRouteLocator()
+
+        val route1 = routeLocator.findRoute("/first/forest/trees/ENDING", HttpMethod.GET)
+
+        assertNotNull(route1)
+
+    }
+
+
+    spec fun finding_a_route_in_the_routing_table_when_path_found_but_not_method_throw_exception_method_not_permitted() {
 
 
 
@@ -50,12 +67,14 @@ public class RoutesSpecs {
         Routes.post( "/second", { })
         Routes.post( "/third", { })
 
+        val routeLocator = PatternAndVerbMatchingRouteLocator()
 
-        val exception = fails({Routes.findRouteHandler(HttpMethod.GET, "/second")})
+        val exception = fails({routeLocator.findRoute("/second", HttpMethod.GET)})
 
         assertEquals(javaClass<MethodNotAllowedException>(), exception.javaClass)
 
     }
+
 
     spec fun adding_a_second_route_in_the_routing_table_with_matching_path_and_method_should_throw_exception_indicating_route_exists() {
         Routes.clearAll()

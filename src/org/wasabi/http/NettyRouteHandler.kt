@@ -17,8 +17,9 @@ import org.wasabi.routing.MethodNotAllowedException
 import org.wasabi.routing.RouteNotFoundException
 import org.wasabi.routing.RouteHandler
 import io.netty.handler.codec.http.DefaultHttpResponse
+import org.wasabi.routing.RouteLocator
 
-public class NettyRouteHandler(private val routes: Routes): ChannelInboundMessageHandlerAdapter<Any>() {
+public class NettyRouteHandler(routeLocator: RouteLocator): ChannelInboundMessageHandlerAdapter<Any>(), RouteLocator by routeLocator {
     var request: Request? = null
     val response = Response()
 
@@ -33,12 +34,14 @@ public class NettyRouteHandler(private val routes: Routes): ChannelInboundMessag
         if (msg is HttpContent) {
             if (msg is LastHttpContent) {
                 try {
-                    val handler = routes.findRouteHandler(request?.method!!, request?.uri!!.split('?')[0])
-                    val handlerExtension : RouteHandler.() -> Unit = handler!!
+                    val route = findRoute(request?.uri!!.split('?')[0], request?.method!!)
+                    request?.routeParams?.copyFrom(route.params)
+                    val handlerExtension : RouteHandler.() -> Unit = route!!.handler
                     val routeHandler = RouteHandler(request!!, response)
                     routeHandler.handlerExtension()
                 } catch (e: MethodNotAllowedException) {
                     response.setStatusCode(405, "Method not allowed")
+
                 } catch (e: RouteNotFoundException) {
                     response.setStatusCode(404, "Not found")
                 }

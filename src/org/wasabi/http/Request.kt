@@ -3,9 +3,11 @@ package org.wasabi.http
 import org.apache.http.client.methods.HttpRequestBase
 import io.netty.handler.codec.http.HttpRequest
 import java.util.Dictionary
-import org.wasabi.routing.QueryParams
+import org.wasabi.routing.BaseParams
 import java.util.ArrayList
 import io.netty.handler.codec.http.HttpMethod
+import org.wasabi.routing.RouteParams
+import org.wasabi.routing.QueryParams
 
 public class Request(private val httpRequest: HttpRequest) {
 
@@ -20,7 +22,8 @@ public class Request(private val httpRequest: HttpRequest) {
     public val acceptEncoding: Array<String> = getHeader("Accept-Encoding").split(",")
     public val acceptLanguage: Array<String> = getHeader("Accept-Language").split(",")
     public val acceptCharset: Array<String> = getHeader("Accept-Charset").split(",")
-    public val queryParams: QueryParams = QueryParams()
+    public val queryParams : QueryParams = QueryParams()
+    public val routeParams : RouteParams = RouteParams()
 
     private fun getHeader(header: String): String {
 
@@ -44,7 +47,6 @@ public class Request(private val httpRequest: HttpRequest) {
     }
 
 // Cookie=jetbrains.charisma.main.security.PRINCIPAL=OWM3N2U5ZTllM2Y1ZWI2ZjUwMjM2MjRiNzdmOTE1MTkwMWZkNmU5ZTA5MDNkZjdjYzgzMGNkN2RiMjU1NzUyZTpoaGFyaXJp
-// RouteParams
 // PostFields
 
 

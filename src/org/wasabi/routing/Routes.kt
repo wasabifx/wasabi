@@ -11,30 +11,14 @@ Retention(RetentionPolicy.RUNTIME) annotation class resource
 
 public object Routes {
 
-    val routeStorage = ArrayList<Route>()
+    private val routeStorage = ArrayList<Route>()
 
     private fun addRoute(method: HttpMethod, path: String, handler: RouteHandler.() -> Unit) {
-        val existingRoute = routeStorage.filter { it.matchesPath(path) && it.method == method}
+        val existingRoute = routeStorage.filter { it.path == path && it.method == method}
         if (existingRoute.count() >= 1) {
             throw RouteAlreadyExistsException(existingRoute.first!!)
         }
-        routeStorage.add(Route(path, method, handler))
-    }
-
-    public fun findRouteHandler(method: HttpMethod, path: String): RouteHandler.() -> Unit {
-
-        val matchingPaths = routeStorage.filter { it.matchesPath(path) }
-        if (matchingPaths.count() == 0) {
-            throw RouteNotFoundException("Routing entry not found")
-        }
-
-        val matchingVerbs = (matchingPaths.filter { it.method == method })
-
-        if (matchingVerbs.count() == 1) {
-            return matchingVerbs.first!!.handler
-        }
-        throw MethodNotAllowedException("Method not allowed", Array<HttpMethod>(matchingPaths.size(), { i -> matchingPaths.get(i).method}))
-
+        routeStorage.add(Route(path, method, RouteParams(), handler))
     }
 
     public fun get(path: String, handler: RouteHandler.() -> Unit) {
@@ -67,6 +51,10 @@ public object Routes {
 
     public fun clearAll() {
         routeStorage.clear()
+    }
+
+    public fun getAllRoutes(): ArrayList<Route> {
+        return routeStorage
     }
 }
 

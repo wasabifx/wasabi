@@ -15,11 +15,11 @@ public class Response() {
 
     public var etag: String = ""
     public var location: String = ""
-    public var statusCode: Int = 200
-    public var statusDescription: String = ""
     public var allow: String = ""
     public var buffer: String = ""
 
+    private var statusCode: Int = 200
+    private var statusDescription: String = ""
 
     fun send(message: String) {
         buffer = message

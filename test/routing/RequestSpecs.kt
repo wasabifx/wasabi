@@ -7,6 +7,8 @@ import org.wasabai.test.get
 import kotlin.test.assertEquals
 import java.util.ArrayList
 import org.wasabi.routing.Routes
+import org.wasabi.routing.BaseParams
+import org.wasabi.routing.RouteParams
 import org.wasabi.routing.QueryParams
 
 
@@ -36,9 +38,11 @@ public class RequestSpecs {
         var acceptLanguage =  Array<String>(0, {""})
         var acceptCharset =  Array<String>(0, {""})
         var queryParams = QueryParams()
+        var routeParams = RouteParams()
 
 
-        Routes.get("/",
+
+        Routes.get("/customer/:id/:section",
         {
 
 
@@ -53,14 +57,15 @@ public class RequestSpecs {
                 acceptLanguage = request.acceptLanguage
                 acceptCharset = request.acceptCharset
                 queryParams = request.queryParams
+                routeParams = request.routeParams
                 response.send("/")
 
         })
         TestServer.start()
 
-        get("http://localhost:3000?param1=value1&param2=value2", headers)
+        get("http://localhost:3000/customer/10/valid?param1=value1&param2=value2", headers)
 
-        assertEquals("/", uri);
+        assertEquals("/customer/10/valid", uri);
         assertEquals("localhost", host);
         assertEquals(3000, port);
         assertEquals("test-client", userAgent);
@@ -73,6 +78,8 @@ public class RequestSpecs {
         assertEquals(2, queryParams.size())
         assertEquals("value1",queryParams["param1"])
         assertEquals("value2",queryParams["param2"])
+        assertEquals("10", routeParams["id"])
+        assertEquals("valid", routeParams["section"])
         TestServer.stop()
 
 

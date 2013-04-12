@@ -6,6 +6,7 @@ import io.netty.handler.codec.http.HttpRequestDecoder
 import io.netty.handler.codec.http.HttpResponseEncoder
 import java.nio.channels.Channels
 import org.wasabi.routing.Routes
+import org.wasabi.routing.PatternAndVerbMatchingRouteLocator
 
 
 public class ServerInitializer(private val routes: Routes): ChannelInitializer<SocketChannel>() {
@@ -13,7 +14,7 @@ public class ServerInitializer(private val routes: Routes): ChannelInitializer<S
         val pipeline = ch?.pipeline()
         pipeline?.addLast("decoder", HttpRequestDecoder())
         pipeline?.addLast("encoder", HttpResponseEncoder())
-        pipeline?.addLast("handler", NettyRouteHandler(routes))
+        pipeline?.addLast("handler", NettyRouteHandler(PatternAndVerbMatchingRouteLocator()))
     }
 
 }
