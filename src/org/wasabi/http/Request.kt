@@ -26,6 +26,7 @@ public class Request(private val httpRequest: HttpRequest) {
     public var routeParams: RouteParams = RouteParams()
     public var bodyParams: BodyParams = BodyParams()
     public var contentType: String = getHeader("Content-Type")
+    public var chunked: Boolean = getHeader("Transfer-Encoding").compareToIgnoreCase("chunked") == 0
 
     private fun getHeader(header: String): String {
 

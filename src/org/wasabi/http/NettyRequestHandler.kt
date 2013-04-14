@@ -22,15 +22,14 @@ import io.netty.handler.codec.http.multipart.HttpPostRequestDecoder
 import io.netty.handler.codec.http.HttpMethod
 import io.netty.handler.codec.http.multipart.DefaultHttpDataFactory
 
-public class NettyRouteHandler(routeLocator: RouteLocator, parserLocator: ParserLocator): ChannelInboundMessageHandlerAdapter<Any>(),
-                                                                                    RouteLocator by routeLocator,
-                                                                                    ParserLocator by parserLocator
-                                                                                    {
+public class NettyRequestHandler(routeLocator: RouteLocator, parserLocator: ParserLocator): ChannelInboundMessageHandlerAdapter<Any>(), RouteLocator by routeLocator, ParserLocator by parserLocator {
+
     var request: Request? = null
     var body = ""
     val response = Response()
     var decoder : HttpPostRequestDecoder? = null
     val factory = DefaultHttpDataFactory(DefaultHttpDataFactory.MINSIZE)
+    var chunkedTransfer = false
 
 
     public override fun messageReceived(ctx: ChannelHandlerContext?, msg: Any?) {
@@ -42,30 +41,27 @@ public class NettyRouteHandler(routeLocator: RouteLocator, parserLocator: Parser
 
             if (request!!.method == HttpMethod.POST || request!!.method == HttpMethod.PUT) {
                 decoder = HttpPostRequestDecoder(factory, msg)
+                chunkedTransfer = request!!.chunked
             }
 
         }
 
         if (msg is HttpContent) {
-            // this isn't going to work for files. We need to stream.
-            if (msg.data()!!.isReadable()) {
-                body += msg.data()!!.toString(CharsetUtil.UTF_8)
+            decoder?.offer(msg)
+            if (chunkedTransfer) {
+                processChunkedContent()
+            } else {
+                processCompleteContent()
             }
+
             if (msg is LastHttpContent) {
                 try {
                     val route = findRoute(request!!.uri!!.split('?')[0], request!!.method!!)
                     request!!.routeParams = route.params
-                    // this is wrong since it only assumes multi-part parsing
-                    val parser = locateParser(request!!.contentType)
-                    if (parser != null) {
-                        request!!.bodyParams = parser.parseBody(body)
-                    }
-
                     val handlerExtension : RouteHandler.() -> Unit = route!!.handler
                     val routeHandler = RouteHandler(request!!, response)
                     routeHandler.handlerExtension()
-
-                // TODO: Errors need to be delegated to error handlers
+               // TODO: Errors need to be delegated to error handlers
                 } catch (e: MethodNotAllowedException) {
                     response.setStatusCode(405, "Method not allowed")
 
@@ -78,6 +74,20 @@ public class NettyRouteHandler(routeLocator: RouteLocator, parserLocator: Parser
 
 
     }
+
+
+    private fun processChunkedContent() {
+
+        // TODO
+
+    }
+
+    private fun processCompleteContent() {
+
+        // TODO
+    }
+
+
 
     public override fun exceptionCaught(ctx: ChannelHandlerContext?, cause: Throwable?) {
         response.setStatusCode(500, cause?.getMessage()!!)
