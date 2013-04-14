@@ -85,6 +85,40 @@ public class RequestSpecs {
 
     }
 
+    spec fun url_with_no_route_params_should_return_empty_route_params() {
+
+        val headers = hashMapOf(
+                "User-Agent" to "test-client",
+                "Connection" to "keep-alive",
+                "Cache-Control" to "max-age=0",
+                "Accept" to "Accept=text/html,application/xhtml+xml,application/xml",
+                "Accept-Encoding" to "gzip,deflate,sdch",
+                "Accept-Language" to "en-US,en;q=0.8",
+                "Accept-Charset" to "ISO-8859-1,utf-8;q=0.7,*;q=0.3"
+
+        )
+
+        var routeParams = RouteParams()
+
+
+
+        Routes.get("/customer/",
+                {
+
+
+                    routeParams = request.routeParams
+                    response.send("/")
+
+                })
+        TestServer.start()
+
+        get("http://localhost:3000/customer", headers)
+
+        assertEquals(0, routeParams.size())
+        TestServer.stop()
+
+
+    }
 
 
 }

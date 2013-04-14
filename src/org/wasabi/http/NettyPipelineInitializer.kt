@@ -9,12 +9,13 @@ import org.wasabi.routing.Routes
 import org.wasabi.routing.PatternAndVerbMatchingRouteLocator
 
 
-public class ServerInitializer(private val routes: Routes): ChannelInitializer<SocketChannel>() {
+public class NettyPipelineInitializer(private val routes: Routes): ChannelInitializer<SocketChannel>() {
     protected override fun initChannel(ch: SocketChannel?) {
         val pipeline = ch?.pipeline()
         pipeline?.addLast("decoder", HttpRequestDecoder())
         pipeline?.addLast("encoder", HttpResponseEncoder())
-        pipeline?.addLast("handler", NettyRouteHandler(PatternAndVerbMatchingRouteLocator()))
+        pipeline?.addlast("httpdecoder", HttpPostRequestDecoder())
+        pipeline?.addLast("handler", NettyRouteHandler(PatternAndVerbMatchingRouteLocator(), ContentTypeParserLocator()))
     }
 
 }

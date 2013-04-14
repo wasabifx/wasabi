@@ -14,7 +14,7 @@ import org.apache.http.client.HttpResponseException
 import org.wasabi.routing.Routes
 import org.wasabai.test.delete
 
-public class ResourceSpecs {
+public class UrlRequestingSpecs {
 
     val headers = hashMapOf(
             "User-Agent" to "test-client",

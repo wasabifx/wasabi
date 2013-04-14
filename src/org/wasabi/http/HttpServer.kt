@@ -18,7 +18,7 @@ public class HttpServer(private val configuration: AppConfiguration) {
 
         bootstrap.group(NioEventLoopGroup(), NioEventLoopGroup())
         bootstrap.channel(javaClass<NioServerSocketChannel>())
-        bootstrap.childHandler(ServerInitializer(Routes))
+        bootstrap.childHandler(NettyPipelineInitializer(Routes))
 
     }
 

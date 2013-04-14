@@ -6,8 +6,8 @@ import java.util.Collections
 
 public open class BaseParams {
 
-    val _map = HashMap<String, String>()
-    val _list = ArrayList<String>()
+    private val _map = HashMap<String, String>()
+    private val _list = ArrayList<String>()
 
     fun get(name : String) : String? {
         return _map[name]
@@ -49,14 +49,6 @@ public open class BaseParams {
         return map
     }
 
-    // TODO: Shit!
-    fun copyFrom(params: BaseParams) {
-        _map.clear()
-        _map.putAll(params._map)
-        _list.clear()
-        for (i in params._list) {
-            _list.add(i)
-        }
-    }
+
 
 }
