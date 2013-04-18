@@ -52,17 +52,21 @@ public class Request(private val httpRequest: HttpRequest) {
         }
     }
 
-    public fun parseBodyParams(httpData: MutableList<InterfaceHttpData>) {
-        for(entry in httpData) {
-            if (entry.getHttpDataType() == HttpDataType.Attribute) {
-                val attribute = entry as Attribute
-                bodyParams[attribute.getHttpDataType()!!.name()] = attribute.getValue().toString()
-            }
+    public fun parseBodyParams(httpDataList: MutableList<InterfaceHttpData>) {
+        for(entry in httpDataList) {
+            addBodyParam(entry)
         }
 
     }
+
+    public fun addBodyParam(httpData: InterfaceHttpData) {
+        // TODO: Add support for other types of attributes (namely file)
+        if (httpData.getHttpDataType() == HttpDataType.Attribute) {
+            val attribute = httpData as Attribute
+            bodyParams[attribute.getName().toString()] = attribute.getValue().toString()
+        }
+    }
 // Cookie=jetbrains.charisma.main.security.PRINCIPAL=OWM3N2U5ZTllM2Y1ZWI2ZjUwMjM2MjRiNzdmOTE1MTkwMWZkNmU5ZTA5MDNkZjdjYzgzMGNkN2RiMjU1NzUyZTpoaGFyaXJp
-// PostFields
 
 
 }

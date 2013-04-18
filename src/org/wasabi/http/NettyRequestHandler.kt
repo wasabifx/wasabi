@@ -25,6 +25,7 @@ import io.netty.handler.codec.http.multipart.InterfaceHttpData
 import io.netty.handler.codec.http.multipart.HttpPostRequestDecoder.NotEnoughDataDecoderException
 import io.netty.handler.codec.http.multipart.InterfaceHttpData.HttpDataType
 import io.netty.handler.codec.http.multipart.Attribute
+import io.netty.handler.codec.http.multipart.HttpPostRequestDecoder.EndOfDataDecoderException
 
 public class NettyRequestHandler(routeLocator: RouteLocator, parserLocator: ParserLocator): ChannelInboundMessageHandlerAdapter<Any>(), RouteLocator by routeLocator, ParserLocator by parserLocator {
 
@@ -51,13 +52,14 @@ public class NettyRequestHandler(routeLocator: RouteLocator, parserLocator: Pars
         }
 
         if (msg is HttpContent) {
-            decoder?.offer(msg)
-            if (chunkedTransfer) {
-                processChunkedContent()
-            } else {
-                processCompleteContent()
+            if (decoder != null) {
+                decoder!!.offer(msg)
+                if (chunkedTransfer) {
+                    processChunkedContent()
+                } else {
+                    processCompleteContent()
+                }
             }
-
             if (msg is LastHttpContent) {
                 try {
                     val route = findRoute(request!!.uri!!.split('?')[0], request!!.method!!)
@@ -81,24 +83,23 @@ public class NettyRequestHandler(routeLocator: RouteLocator, parserLocator: Pars
 
 
     private fun processChunkedContent() {
-
-      /*  try {
+        try {
             while (decoder!!.hasNext()) {
                 val data = decoder!!.next()
-
-
+                request?.addBodyParam(data!!)
             }
+        } catch (e: EndOfDataDecoderException) {
+
         }
-*/
     }
 
     private fun processCompleteContent() {
 
         var httpData: MutableList<InterfaceHttpData>?
         try {
-            httpData = decoder!!.getBodyHttpDatas()
+            httpData = decoder?.getBodyHttpDatas()
             if (httpData != null) {
-                request!!.parseBodyParams(httpData!!)
+                request?.parseBodyParams(httpData!!)
             }
         } catch (e: NotEnoughDataDecoderException) {
             // TODO: Handle error here

@@ -17,7 +17,7 @@ import org.apache.http.message.BasicNameValuePair
 
 public class RequestSpecs {
 
-    spec fun request_should_contain_all_fields() {
+    spec fun request_with_get_should_contain_all_fields() {
 
         val headers = hashMapOf(
                 "User-Agent" to "test-client",
@@ -88,7 +88,7 @@ public class RequestSpecs {
 
     }
 
-    spec fun bodyParams_should_contain_fields_submitted_in_post_request() {
+    spec fun request_with_url_form_encoded_post_should_contain_post_fields_in_bodyParams() {
 
         val headers = hashMapOf(
                 "User-Agent" to "test-client",
