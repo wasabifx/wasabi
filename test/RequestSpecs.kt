@@ -16,7 +16,10 @@ import org.apache.http.message.BasicNameValuePair
 
 
 public class RequestSpecs {
-
+     {
+         // TODO: Horrible hack
+         TestServer.start()
+     }
     spec fun request_with_get_should_contain_all_fields() {
 
         val headers = hashMapOf(
@@ -64,7 +67,6 @@ public class RequestSpecs {
                 response.send("/")
 
         })
-        TestServer.start()
 
         get("http://localhost:3000/customer/10/valid?param1=value1&param2=value2", headers)
 
@@ -83,7 +85,6 @@ public class RequestSpecs {
         assertEquals("value2",queryParams["param2"])
         assertEquals("10", routeParams["id"])
         assertEquals("valid", routeParams["section"])
-        TestServer.stop()
 
 
     }
@@ -114,7 +115,6 @@ public class RequestSpecs {
                     response.send("/")
 
                 })
-        TestServer.start()
 
         val fields = arrayListOf<BasicNameValuePair>(BasicNameValuePair("name", "joe"), BasicNameValuePair("email", "joe@joe.com"))
         postForm("http://localhost:3000/customer", headers, fields)
@@ -122,7 +122,6 @@ public class RequestSpecs {
         assertEquals(2, bodyParams.size())
         assertEquals("joe", bodyParams["name"])
         assertEquals("joe@joe.com", bodyParams["email"])
-        TestServer.stop()
 
 
     }

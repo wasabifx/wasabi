@@ -32,6 +32,8 @@ object TestServer {
         Routes.get("/", { response.send("Root")})
         Routes.get("/first", { response.send("First")})
     }
+
+    public val isRunning : Boolean = appServer.isRunning
 }
 
 private fun makeRequest(url: String, headers: HashMap<String, String>, request: HttpRequestBase): HttpClientResponse {
