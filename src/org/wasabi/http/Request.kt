@@ -8,6 +8,9 @@ import java.util.ArrayList
 import io.netty.handler.codec.http.HttpMethod
 import org.wasabi.routing.RouteParams
 import org.wasabi.routing.QueryParams
+import io.netty.handler.codec.http.multipart.InterfaceHttpData
+import io.netty.handler.codec.http.multipart.InterfaceHttpData.HttpDataType
+import io.netty.handler.codec.http.multipart.Attribute
 
 public class Request(private val httpRequest: HttpRequest) {
 
@@ -49,6 +52,15 @@ public class Request(private val httpRequest: HttpRequest) {
         }
     }
 
+    public fun parseBodyParams(httpData: MutableList<InterfaceHttpData>) {
+        for(entry in httpData) {
+            if (entry.getHttpDataType() == HttpDataType.Attribute) {
+                val attribute = entry as Attribute
+                bodyParams[attribute.getHttpDataType()!!.name()] = attribute.getValue().toString()
+            }
+        }
+
+    }
 // Cookie=jetbrains.charisma.main.security.PRINCIPAL=OWM3N2U5ZTllM2Y1ZWI2ZjUwMjM2MjRiNzdmOTE1MTkwMWZkNmU5ZTA5MDNkZjdjYzgzMGNkN2RiMjU1NzUyZTpoaGFyaXJp
 // PostFields
 

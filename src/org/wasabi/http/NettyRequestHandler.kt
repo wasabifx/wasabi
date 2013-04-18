@@ -21,6 +21,10 @@ import org.wasabi.routing.RouteLocator
 import io.netty.handler.codec.http.multipart.HttpPostRequestDecoder
 import io.netty.handler.codec.http.HttpMethod
 import io.netty.handler.codec.http.multipart.DefaultHttpDataFactory
+import io.netty.handler.codec.http.multipart.InterfaceHttpData
+import io.netty.handler.codec.http.multipart.HttpPostRequestDecoder.NotEnoughDataDecoderException
+import io.netty.handler.codec.http.multipart.InterfaceHttpData.HttpDataType
+import io.netty.handler.codec.http.multipart.Attribute
 
 public class NettyRequestHandler(routeLocator: RouteLocator, parserLocator: ParserLocator): ChannelInboundMessageHandlerAdapter<Any>(), RouteLocator by routeLocator, ParserLocator by parserLocator {
 
@@ -39,7 +43,7 @@ public class NettyRequestHandler(routeLocator: RouteLocator, parserLocator: Pars
             request = Request(msg)
             request!!.parseQueryParams()
 
-            if (request!!.method == HttpMethod.POST || request!!.method == HttpMethod.PUT) {
+            if (request!!.method == HttpMethod.POST) {
                 decoder = HttpPostRequestDecoder(factory, msg)
                 chunkedTransfer = request!!.chunked
             }
@@ -78,13 +82,28 @@ public class NettyRequestHandler(routeLocator: RouteLocator, parserLocator: Pars
 
     private fun processChunkedContent() {
 
-        // TODO
+      /*  try {
+            while (decoder!!.hasNext()) {
+                val data = decoder!!.next()
 
+
+            }
+        }
+*/
     }
 
     private fun processCompleteContent() {
 
-        // TODO
+        var httpData: MutableList<InterfaceHttpData>?
+        try {
+            httpData = decoder!!.getBodyHttpDatas()
+            if (httpData != null) {
+                request!!.parseBodyParams(httpData!!)
+            }
+        } catch (e: NotEnoughDataDecoderException) {
+            // TODO: Handle error here
+        }
+
     }
 
 

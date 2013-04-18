@@ -21,7 +21,6 @@ fun main(args: Array<String>) {
 
     "/customer" post { response.send("abc") }
 
-
     server.start()
 
 }

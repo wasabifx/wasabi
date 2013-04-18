@@ -10,6 +10,9 @@ import org.wasabi.routing.Routes
 import org.wasabi.routing.BaseParams
 import org.wasabi.routing.RouteParams
 import org.wasabi.routing.QueryParams
+import org.wasabi.http.BodyParams
+import org.wasabai.test.postForm
+import org.apache.http.message.BasicNameValuePair
 
 
 public class RequestSpecs {
@@ -85,7 +88,7 @@ public class RequestSpecs {
 
     }
 
-    spec fun url_with_no_route_params_should_return_empty_route_params() {
+    spec fun bodyParams_should_contain_fields_submitted_in_post_request() {
 
         val headers = hashMapOf(
                 "User-Agent" to "test-client",
@@ -98,23 +101,27 @@ public class RequestSpecs {
 
         )
 
-        var routeParams = RouteParams()
+        var bodyParams = BodyParams()
 
 
 
-        Routes.get("/customer/",
+
+        Routes.post("/customer/",
                 {
 
 
-                    routeParams = request.routeParams
+                    bodyParams = request.bodyParams
                     response.send("/")
 
                 })
         TestServer.start()
 
-        get("http://localhost:3000/customer", headers)
+        val fields = arrayListOf<BasicNameValuePair>(BasicNameValuePair("name", "joe"), BasicNameValuePair("email", "joe@joe.com"))
+        postForm("http://localhost:3000/customer", headers, fields)
 
-        assertEquals(0, routeParams.size())
+        assertEquals(2, bodyParams.size())
+        assertEquals("joe", bodyParams["name"])
+        assertEquals("joe@joe.com", bodyParams["email"])
         TestServer.stop()
 
 
