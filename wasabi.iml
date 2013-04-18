@@ -8,7 +8,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="KotlinRuntime" level="project" />
+    <orderEntry type="library" name="KotlinJavaRuntime" level="project" />
     <orderEntry type="library" name="junit:junit:4.9" level="project" />
     <orderEntry type="library" name="org.codehaus.jackson:jackson-mapper-asl:1.9.12" level="project" />
     <orderEntry type="library" name="org.mockito:mockito-all:1.9.5" level="project" />
