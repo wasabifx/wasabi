@@ -3,7 +3,6 @@ package org.wasabi.test
 import org.junit.Test as spec
 import kotlin.test.assertEquals
 import kotlin.test.fails
-import com.sun.tools.javac.code.TargetType
 import java.io.File
 import kotlin.test.assertTrue
 import org.wasabi.configuration.ConfigurationStorage
