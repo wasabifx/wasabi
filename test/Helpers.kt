@@ -14,6 +14,7 @@ import org.apache.http.HttpEntity
 import org.apache.http.client.entity.UrlEncodedFormEntity
 import java.util.ArrayList
 import org.apache.http.message.BasicNameValuePair
+import org.apache.http.client.methods.HttpRequestBase
 
 object TestServer {
 
@@ -33,52 +34,29 @@ object TestServer {
     }
 }
 
-// TODO: Refactor and clean-up all these verbs
+private fun makeRequest(url: String, headers: HashMap<String, String>, request: HttpRequestBase): HttpClientResponse {
+    val httpClient = DefaultHttpClient()
+    val responseHandler = BasicResponseHandler()
+    for ((key, value) in headers) {
+        request.setHeader(key, value)
+    }
+    val responseHeaders = request.getAllHeaders()
+    return HttpClientResponse(responseHeaders!!, httpClient.execute(request, responseHandler)!!)
+}
 
 public fun delete(url: String, headers: HashMap<String, String>): HttpClientResponse {
-    val httpClient = DefaultHttpClient()
-
-
-    val responseHandler = BasicResponseHandler()
-
-    val httpDelete = HttpDelete(url)
-
-    for ((key, value) in headers) {
-        httpDelete.setHeader(key, value)
-    }
-
-    val responseHeaders = httpDelete.getAllHeaders()!!
-    return HttpClientResponse(responseHeaders, httpClient.execute(httpDelete, responseHandler)!!)
-
+    return makeRequest(url, headers, HttpDelete(url))
 }
 
 public fun get(url: String, headers: HashMap<String,String>): HttpClientResponse {
-
-    val httpClient = DefaultHttpClient()
-
-
-    val responseHandler = BasicResponseHandler()
-
-    val httpGet = HttpGet(url)
-    for ((key, value) in headers) {
-        httpGet.setHeader(key, value)
-    }
-
-
-    return HttpClientResponse(httpGet.getAllHeaders()!!, httpClient.execute(httpGet, responseHandler)!!)
-
+    return makeRequest(url, headers, HttpGet(url))
 }
 
 public fun postForm(url: String, headers: HashMap<String, String>, fields: ArrayList<BasicNameValuePair>): HttpClientResponse {
-    val httpClient = DefaultHttpClient()
-
-    val responseHandler = BasicResponseHandler()
-
     val httpPost = HttpPost(url)
     val entity = UrlEncodedFormEntity(fields, "UTF-8")
     httpPost.setEntity(entity)
-
-    return HttpClientResponse(httpPost.getAllHeaders()!!, httpClient.execute(httpPost, responseHandler)!!)
+    return makeRequest(url, headers, httpPost)
 }
 
 data public class HttpClientResponse(val headers: Array<Header>, val body: String)
