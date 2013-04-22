@@ -28,6 +28,7 @@ public class Request(private val httpRequest: HttpRequest) {
     public val queryParams : QueryParams = QueryParams()
     public var routeParams: RouteParams = RouteParams()
     public var bodyParams: BodyParams = BodyParams()
+    public var cookies: Set<Cookie> = setOf<Cookie>()
     public var contentType: String = getHeader("Content-Type")
     public var chunked: Boolean = getHeader("Transfer-Encoding").compareToIgnoreCase("chunked") == 0
 

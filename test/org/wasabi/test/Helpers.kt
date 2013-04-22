@@ -55,9 +55,10 @@ public fun get(url: String, headers: HashMap<String,String>): HttpClientResponse
     return makeRequest(headers, HttpGet(url))
 }
 
-public fun postForm(url: String, headers: HashMap<String, String>, fields: ArrayList<BasicNameValuePair>): HttpClientResponse {
+public fun postForm(url: String, headers: HashMap<String, String>, fields: ArrayList<BasicNameValuePair>, chunked: Boolean = false): HttpClientResponse {
     val httpPost = HttpPost(url)
     val entity = UrlEncodedFormEntity(fields, "UTF-8")
+    entity.setChunked(chunked)
     httpPost.setEntity(entity)
     return makeRequest(headers, httpPost)
 }

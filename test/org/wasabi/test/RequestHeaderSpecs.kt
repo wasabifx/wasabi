@@ -13,9 +13,11 @@ import org.wasabi.routing.QueryParams
 import org.wasabi.http.BodyParams
 import org.wasabai.test.postForm
 import org.apache.http.message.BasicNameValuePair
+import org.junit.Ignore
+import org.wasabi.http.Cookie
 
 
-public class RequestSpecs: TestServerContext() {
+public class RequestHeaderSpecs: TestServerContext() {
 
     spec fun request_with_get_should_contain_all_fields() {
 
@@ -115,6 +117,71 @@ public class RequestSpecs: TestServerContext() {
 
         val fields = arrayListOf<BasicNameValuePair>(BasicNameValuePair("name", "joe"), BasicNameValuePair("email", "joe@joe.com"))
         postForm("http://localhost:3000/customer", headers, fields)
+
+        assertEquals(2, bodyParams.size())
+        assertEquals("joe", bodyParams["name"])
+        assertEquals("joe@joe.com", bodyParams["email"])
+
+
+    }
+
+
+    spec fun setting_a_cookie_when_making_a_request_should_set_the_cookie_value_in_the_request() {
+
+        val headers = hashMapOf(
+                "User-Agent" to "test-client",
+                "Connection" to "keep-alive",
+                "Cache-Control" to "max-age=0",
+                "Accept" to "Accept=text/html,application/xhtml+xml,application/xml",
+                "Accept-Encoding" to "gzip,deflate,sdch",
+                "Accept-Language" to "en-US,en;q=0.8",
+                "Accept-Charset" to "ISO-8859-1,utf-8;q=0.7,*;q=0.3"
+
+        )
+
+        var cookies = Cookie()
+
+        Routes.get("/", {
+
+            cookies = request.cookies
+
+        })
+
+
+
+
+    }
+
+
+    Ignore("Fix Chunk encoding") spec fun request_with_url_form_encoded_post_and_chunked_encoding_should_contain_post_fields_in_bodyParams() {
+
+        val headers = hashMapOf(
+                "User-Agent" to "test-client",
+                "Connection" to "keep-alive",
+                "Cache-Control" to "max-age=0",
+                "Accept" to "Accept=text/html,application/xhtml+xml,application/xml",
+                "Accept-Encoding" to "gzip,deflate,sdch",
+                "Accept-Language" to "en-US,en;q=0.8",
+                "Accept-Charset" to "ISO-8859-1,utf-8;q=0.7,*;q=0.3"
+
+        )
+
+        var bodyParams = BodyParams()
+
+
+
+
+        Routes.post("/customer/",
+                {
+
+
+                    bodyParams = request.bodyParams
+                    response.send("/")
+
+                })
+
+        val fields = arrayListOf<BasicNameValuePair>(BasicNameValuePair("name", "joe"), BasicNameValuePair("email", "joe@joe.com"))
+        postForm("http://localhost:3000/customer", headers, fields, true)
 
         assertEquals(2, bodyParams.size())
         assertEquals("joe", bodyParams["name"])
