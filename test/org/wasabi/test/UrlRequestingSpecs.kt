@@ -14,7 +14,8 @@ import org.apache.http.client.HttpResponseException
 import org.wasabi.routing.Routes
 import org.wasabai.test.delete
 
-public class UrlRequestingSpecs {
+public class UrlRequestingSpecs: TestServerContext() {
+
 
     val headers = hashMapOf(
             "User-Agent" to "test-client",
@@ -33,13 +34,10 @@ public class UrlRequestingSpecs {
         Routes.clearAll()
         Routes.get("/", {  response.send("Hello")})
 
-        TestServer.start()
 
         val response = get("http://localhost:3000", headers)
 
         assertEquals("Hello", response.body)
-
-        TestServer.stop()
 
     }
 
@@ -48,14 +46,11 @@ public class UrlRequestingSpecs {
 
 
         Routes.clearAll()
-        TestServer.start()
-
         val exception = fails { get("http://localhost:3000/nothing", headers)}
 
         assertEquals(javaClass<HttpResponseException>(),exception.javaClass)
         assertEquals("Not found",exception!!.getMessage())
 
-        TestServer.stop()
 
     }
 
@@ -64,8 +59,6 @@ public class UrlRequestingSpecs {
         Routes.clearAll()
         Routes.get("/", {  response.send("Hello")})
 
-        TestServer.start()
-
         val exception = fails { delete("http://localhost:3000", headers) }
 
         assertEquals(javaClass<HttpResponseException>(), exception.javaClass)
@@ -73,8 +66,6 @@ public class UrlRequestingSpecs {
 
         // for some reason HttpClient does not return allow header even though it is being set (verified with REST client in IDEA and curl)
         //  assertEquals("Allow: GET", headers["Allow"])
-
-        TestServer.stop()
     }
 
 }

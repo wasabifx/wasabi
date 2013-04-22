@@ -15,11 +15,8 @@ import org.wasabai.test.postForm
 import org.apache.http.message.BasicNameValuePair
 
 
-public class RequestSpecs {
-     {
-         // TODO: Horrible hack
-         TestServer.start()
-     }
+public class RequestSpecs: TestServerContext() {
+
     spec fun request_with_get_should_contain_all_fields() {
 
         val headers = hashMapOf(

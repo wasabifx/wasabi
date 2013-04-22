@@ -21,7 +21,9 @@ object TestServer {
     public val appServer: AppServer = AppServer()
 
     public fun start() {
-        appServer.start(false)
+        if (!appServer.isRunning) {
+            appServer.start(false)
+        }
     }
 
     public fun stop() {
@@ -33,10 +35,9 @@ object TestServer {
         Routes.get("/first", { response.send("First")})
     }
 
-    public val isRunning : Boolean = appServer.isRunning
 }
 
-private fun makeRequest(url: String, headers: HashMap<String, String>, request: HttpRequestBase): HttpClientResponse {
+private fun makeRequest(headers: HashMap<String, String>, request: HttpRequestBase): HttpClientResponse {
     val httpClient = DefaultHttpClient()
     val responseHandler = BasicResponseHandler()
     for ((key, value) in headers) {
@@ -47,18 +48,18 @@ private fun makeRequest(url: String, headers: HashMap<String, String>, request: 
 }
 
 public fun delete(url: String, headers: HashMap<String, String>): HttpClientResponse {
-    return makeRequest(url, headers, HttpDelete(url))
+    return makeRequest(headers, HttpDelete(url))
 }
 
 public fun get(url: String, headers: HashMap<String,String>): HttpClientResponse {
-    return makeRequest(url, headers, HttpGet(url))
+    return makeRequest(headers, HttpGet(url))
 }
 
 public fun postForm(url: String, headers: HashMap<String, String>, fields: ArrayList<BasicNameValuePair>): HttpClientResponse {
     val httpPost = HttpPost(url)
     val entity = UrlEncodedFormEntity(fields, "UTF-8")
     httpPost.setEntity(entity)
-    return makeRequest(url, headers, httpPost)
+    return makeRequest(headers, httpPost)
 }
 
 data public class HttpClientResponse(val headers: Array<Header>, val body: String)
