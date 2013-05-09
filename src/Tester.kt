@@ -19,7 +19,14 @@ fun main(args: Array<String>) {
     Routes.get("/",{ response.send("Hello, how are you")})
 
 
-    "/customer" post { response.send("abc") }
+    "/customer/:id" get {
+
+        response.send("Hello!")
+
+
+    }
+
+
 
     server.start()
 

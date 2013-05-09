@@ -139,13 +139,15 @@ public class RequestHeaderSpecs: TestServerContext() {
 
         )
 
-        var cookies = Cookie()
+        var cookies = setOf<Cookie>()
 
         Routes.get("/", {
 
             cookies = request.cookies
 
         })
+
+        assertEquals("Hello", cookies.)
 
 
 
