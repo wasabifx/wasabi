@@ -15,6 +15,7 @@ import org.apache.http.client.entity.UrlEncodedFormEntity
 import java.util.ArrayList
 import org.apache.http.message.BasicNameValuePair
 import org.apache.http.client.methods.HttpRequestBase
+import org.apache.http.impl.cookie.BasicClientCookie
 
 object TestServer {
 
@@ -43,6 +44,11 @@ private fun makeRequest(headers: HashMap<String, String>, request: HttpRequestBa
     for ((key, value) in headers) {
         request.setHeader(key, value)
     }
+    val cookie = BasicClientCookie("someCookie", "someCookieValue")
+    cookie.setPath(request.getURI()?.getPath())
+    cookie.setDomain("localhost")
+    val cookieStore = httpClient.getCookieStore()
+    cookieStore?.addCookie(cookie)
     val responseHeaders = request.getAllHeaders()
     return HttpClientResponse(responseHeaders!!, httpClient.execute(request, responseHandler)!!)
 }

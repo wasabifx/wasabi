@@ -1,4 +1,4 @@
 package org.wasabi.routing
 
-public class RouteParams: BaseParams() {
+public class RouteParams: BaseParams<String>() {
 }

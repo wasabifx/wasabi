@@ -26,6 +26,9 @@ import io.netty.handler.codec.http.multipart.HttpPostRequestDecoder.NotEnoughDat
 import io.netty.handler.codec.http.multipart.InterfaceHttpData.HttpDataType
 import io.netty.handler.codec.http.multipart.Attribute
 import io.netty.handler.codec.http.multipart.HttpPostRequestDecoder.EndOfDataDecoderException
+import java.util.Collections
+import io.netty.handler.codec.http.CookieDecoder
+import java.util.Collection
 
 public class NettyRequestHandler(routeLocator: RouteLocator, parserLocator: ParserLocator): ChannelInboundMessageHandlerAdapter<Any>(), RouteLocator by routeLocator, ParserLocator by parserLocator {
 
@@ -37,12 +40,14 @@ public class NettyRequestHandler(routeLocator: RouteLocator, parserLocator: Pars
     var chunkedTransfer = false
 
 
+
     public override fun messageReceived(ctx: ChannelHandlerContext?, msg: Any?) {
         // just a prototype...
 
         if (msg is HttpRequest) {
             request = Request(msg)
             request!!.parseQueryParams()
+            request!!.parseCookies()
 
             if (request!!.method == HttpMethod.POST) {
                 decoder = HttpPostRequestDecoder(factory, msg)
@@ -74,6 +79,7 @@ public class NettyRequestHandler(routeLocator: RouteLocator, parserLocator: Pars
                 } catch (e: RouteNotFoundException) {
                     response.setStatusCode(404, "Not found")
                 }
+
                 response.writeResponse(ctx!!)
             }
         }

@@ -11,6 +11,7 @@ import org.wasabi.routing.QueryParams
 import io.netty.handler.codec.http.multipart.InterfaceHttpData
 import io.netty.handler.codec.http.multipart.InterfaceHttpData.HttpDataType
 import io.netty.handler.codec.http.multipart.Attribute
+import io.netty.handler.codec.http.CookieDecoder
 
 public class Request(private val httpRequest: HttpRequest) {
 
@@ -28,7 +29,7 @@ public class Request(private val httpRequest: HttpRequest) {
     public val queryParams : QueryParams = QueryParams()
     public var routeParams: RouteParams = RouteParams()
     public var bodyParams: BodyParams = BodyParams()
-    public var cookies: Set<Cookie> = setOf<Cookie>()
+    public var cookies: Cookies = Cookies()
     public var contentType: String = getHeader("Content-Type")
     public var chunked: Boolean = getHeader("Transfer-Encoding").compareToIgnoreCase("chunked") == 0
 
@@ -53,6 +54,18 @@ public class Request(private val httpRequest: HttpRequest) {
         }
     }
 
+    public fun parseCookies() {
+
+        val cookieHeader = getHeader("Cookie")
+        if (cookieHeader != null) {
+            val cookieSet = CookieDecoder.decode(cookieHeader)
+            for (cookie in cookieSet?.iterator()) {
+                cookies[cookie.getName().toString()] = Cookie(cookie.getName().toString(), cookie.getValue().toString(), cookie.getPath().toString(), cookie.getDomain().toString(), cookie.isSecure())
+            }
+        }
+
+    }
+
     public fun parseBodyParams(httpDataList: MutableList<InterfaceHttpData>) {
         for(entry in httpDataList) {
             addBodyParam(entry)
@@ -67,7 +80,6 @@ public class Request(private val httpRequest: HttpRequest) {
             bodyParams[attribute.getName().toString()] = attribute.getValue().toString()
         }
     }
-// Cookie=jetbrains.charisma.main.security.PRINCIPAL=OWM3N2U5ZTllM2Y1ZWI2ZjUwMjM2MjRiNzdmOTE1MTkwMWZkNmU5ZTA5MDNkZjdjYzgzMGNkN2RiMjU1NzUyZTpoaGFyaXJp
 
 
 }

@@ -15,6 +15,7 @@ import org.wasabai.test.postForm
 import org.apache.http.message.BasicNameValuePair
 import org.junit.Ignore
 import org.wasabi.http.Cookie
+import org.wasabi.http.Cookies
 
 
 public class RequestHeaderSpecs: TestServerContext() {
@@ -139,15 +140,18 @@ public class RequestHeaderSpecs: TestServerContext() {
 
         )
 
-        var cookies = setOf<Cookie>()
+        var cookies = Cookies()
 
         Routes.get("/", {
 
             cookies = request.cookies
+            response.send("Nothing")
 
         })
+        get("http://localhost:3000/", headers)
 
-        assertEquals("Hello", cookies.)
+        assertEquals("someCookieValue", cookies["someCookie"]?.value)
+
 
 
 

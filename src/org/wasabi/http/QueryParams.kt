@@ -1,4 +1,4 @@
 package org.wasabi.routing
 
-public class QueryParams: BaseParams() {
+public class QueryParams: BaseParams<String>() {
 }
