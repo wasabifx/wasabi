@@ -17,9 +17,11 @@ public class Response() {
     public var location: String = ""
     public var allow: String = ""
     public var buffer: String = ""
+    public var contentType: String = ""
 
     private var statusCode: Int = 200
     private var statusDescription: String = ""
+
 
     fun send(message: String) {
         buffer = message
@@ -34,6 +36,18 @@ public class Response() {
         addHeaders(response)
         ctx.nextOutboundMessageBuffer()?.add(response)
         ctx.flush()?.addListener(ChannelFutureListener.CLOSE)
+    }
+
+    public fun setContentType(contentType: String) {
+        this.contentType = contentType
+    }
+
+    public fun setContentType(contentType: ContentType) {
+        setContentType(contentType.toContentTypeString())
+    }
+
+    public fun setHeader(name: String, value: String) {
+
     }
 
     private fun addHeaders(response: DefaultHttpResponse) {

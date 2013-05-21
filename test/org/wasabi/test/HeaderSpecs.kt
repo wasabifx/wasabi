@@ -18,7 +18,7 @@ import org.wasabi.http.Cookie
 import org.wasabi.http.Cookies
 
 
-public class RequestHeaderSpecs: TestServerContext() {
+public class HeaderSpecs: TestServerContext() {
 
     spec fun request_with_get_should_contain_all_fields() {
 

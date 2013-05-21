@@ -8,6 +8,7 @@ import org.wasabi.http.Request
 import org.wasabi.http.Response
 import org.wasabi.routing.RouteHandler
 import org.wasabi.routing.*
+import org.wasabi.http.ContentType
 
 fun main(args: Array<String>) {
 
@@ -18,11 +19,13 @@ fun main(args: Array<String>) {
     Routes.get("/good",{    response.send("Well this means that routes now work!")})
     Routes.get("/",{ response.send("Hello, how are you")})
 
+    println(ContentType.TextPlain.toContentTypeString())
 
     "/customer/:id" get {
 
-        response.send("Hello!")
 
+        response.send("Hello!")
+        response.setContentType(ContentType.TextHtml)
 
     }
 
