@@ -13,14 +13,15 @@ import io.netty.channel.ChannelInboundMessageHandlerAdapter
 
 public class Response() {
 
+    // TODO: Clean all this up. Internal headers
     public var etag: String = ""
     public var location: String = ""
     public var allow: String = ""
     public var buffer: String = ""
     public var contentType: String = ""
 
-    private var statusCode: Int = 200
-    private var statusDescription: String = ""
+    public var statusCode: Int = 200
+    public var statusDescription: String = ""
 
 
     fun send(message: String) {
@@ -30,12 +31,6 @@ public class Response() {
     public fun setStatusCode(statusCode: Int, statusDescription: String) {
         this.statusCode = statusCode
         this.statusDescription = statusDescription
-    }
-    public fun writeResponse(ctx: ChannelHandlerContext) {
-        var response = DefaultFullHttpResponse(HttpVersion("HTTP", 1, 1, true), HttpResponseStatus(statusCode,statusDescription),  Unpooled.copiedBuffer(buffer, CharsetUtil.UTF_8))
-        addHeaders(response)
-        ctx.nextOutboundMessageBuffer()?.add(response)
-        ctx.flush()?.addListener(ChannelFutureListener.CLOSE)
     }
 
     public fun setContentType(contentType: String) {
@@ -47,12 +42,8 @@ public class Response() {
     }
 
     public fun setHeader(name: String, value: String) {
-
+        // TODO:
     }
 
-    private fun addHeaders(response: DefaultHttpResponse) {
-        if (allow != "") {
-            response.headers()?.add("Allow", allow)
-        }
-    }
+
 }

@@ -79,14 +79,22 @@ public class NettyRequestHandler(routeLocator: RouteLocator, parserLocator: Pars
                 } catch (e: RouteNotFoundException) {
                     response.setStatusCode(404, "Not found")
                 }
-
-                response.writeResponse(ctx!!)
+                writeResponse(ctx!!, response)
             }
         }
 
 
     }
 
+
+    private fun writeResponse(ctx: ChannelHandlerContext, response: Response) {
+        var httpResponse = DefaultFullHttpResponse(HttpVersion("HTTP", 1, 1, true), HttpResponseStatus(response.statusCode,response.statusDescription),  Unpooled.copiedBuffer(response.buffer, CharsetUtil.UTF_8))
+        if (response.allow != "") {
+            httpResponse.headers()?.add("Allow", response.allow)
+        }
+        ctx.nextOutboundMessageBuffer()?.add(httpResponse)
+        ctx.flush()?.addListener(ChannelFutureListener.CLOSE)
+    }
 
     private fun processChunkedContent() {
         try {
@@ -117,7 +125,7 @@ public class NettyRequestHandler(routeLocator: RouteLocator, parserLocator: Pars
 
     public override fun exceptionCaught(ctx: ChannelHandlerContext?, cause: Throwable?) {
         response.setStatusCode(500, cause?.getMessage()!!)
-        response.writeResponse(ctx!!)
+        writeResponse(ctx!!, response)
     }
 
 

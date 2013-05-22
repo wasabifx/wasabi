@@ -19,13 +19,11 @@ fun main(args: Array<String>) {
     Routes.get("/good",{    response.send("Well this means that routes now work!")})
     Routes.get("/",{ response.send("Hello, how are you")})
 
-    println(ContentType.TextPlain.toContentTypeString())
 
     "/customer/:id" get {
 
 
         response.send("Hello!")
-        response.setContentType(ContentType.TextHtml)
 
     }
 
