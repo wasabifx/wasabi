@@ -3,15 +3,13 @@ package org.wasabi.http
 import org.apache.http.client.methods.HttpRequestBase
 import io.netty.handler.codec.http.HttpRequest
 import java.util.Dictionary
-import org.wasabi.routing.BaseParams
 import java.util.ArrayList
 import io.netty.handler.codec.http.HttpMethod
-import org.wasabi.routing.RouteParams
-import org.wasabi.routing.QueryParams
 import io.netty.handler.codec.http.multipart.InterfaceHttpData
 import io.netty.handler.codec.http.multipart.InterfaceHttpData.HttpDataType
 import io.netty.handler.codec.http.multipart.Attribute
 import io.netty.handler.codec.http.CookieDecoder
+import java.util.HashMap
 
 public class Request(private val httpRequest: HttpRequest) {
 
@@ -26,10 +24,10 @@ public class Request(private val httpRequest: HttpRequest) {
     public val acceptEncoding: Array<String> = getHeader("Accept-Encoding").split(",")
     public val acceptLanguage: Array<String> = getHeader("Accept-Language").split(",")
     public val acceptCharset: Array<String> = getHeader("Accept-Charset").split(",")
-    public val queryParams : QueryParams = QueryParams()
-    public var routeParams: RouteParams = RouteParams()
-    public var bodyParams: BodyParams = BodyParams()
-    public var cookies: Cookies = Cookies()
+    public val queryParams : HashMap<String, String> = HashMap<String, String>()
+    public var routeParams: HashMap<String, String> = HashMap<String, String>()
+    public var bodyParams: HashMap<String, String> = HashMap<String, String>()
+    public var cookies: HashMap<String, Cookie> = HashMap<String, Cookie>()
     public var contentType: String = getHeader("Content-Type")
     public var chunked: Boolean = getHeader("Transfer-Encoding").compareToIgnoreCase("chunked") == 0
 

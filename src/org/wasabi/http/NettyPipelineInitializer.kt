@@ -14,7 +14,7 @@ public class NettyPipelineInitializer(private val routes: Routes): ChannelInitia
         val pipeline = ch?.pipeline()
         pipeline?.addLast("decoder", HttpRequestDecoder())
         pipeline?.addLast("encoder", HttpResponseEncoder())
-        pipeline?.addLast("handler", NettyRequestHandler(PatternAndVerbMatchingRouteLocator(), ContentTypeParserLocator()))
+        pipeline?.addLast("handler", NettyRequestHandler(PatternAndVerbMatchingRouteLocator()))
     }
 
 }

@@ -7,15 +7,11 @@ import org.wasabai.test.get
 import kotlin.test.assertEquals
 import java.util.ArrayList
 import org.wasabi.routing.Routes
-import org.wasabi.routing.BaseParams
-import org.wasabi.routing.RouteParams
-import org.wasabi.routing.QueryParams
-import org.wasabi.http.BodyParams
 import org.wasabai.test.postForm
 import org.apache.http.message.BasicNameValuePair
 import org.junit.Ignore
 import org.wasabi.http.Cookie
-import org.wasabi.http.Cookies
+import java.util.HashMap
 
 
 public class HeaderSpecs: TestServerContext() {
@@ -43,8 +39,8 @@ public class HeaderSpecs: TestServerContext() {
         var acceptEncoding =  Array<String>(0, {""})
         var acceptLanguage =  Array<String>(0, {""})
         var acceptCharset =  Array<String>(0, {""})
-        var queryParams = QueryParams()
-        var routeParams = RouteParams()
+        var queryParams = HashMap<String, String>()
+        var routeParams = HashMap<String, String>()
 
 
 
@@ -102,7 +98,7 @@ public class HeaderSpecs: TestServerContext() {
 
         )
 
-        var bodyParams = BodyParams()
+        var bodyParams = HashMap<String, String>()
 
 
 
@@ -140,7 +136,7 @@ public class HeaderSpecs: TestServerContext() {
 
         )
 
-        var cookies = Cookies()
+        var cookies = HashMap<String, Cookie>()
 
         Routes.get("/", {
 
@@ -172,7 +168,7 @@ public class HeaderSpecs: TestServerContext() {
 
         )
 
-        var bodyParams = BodyParams()
+        var bodyParams = HashMap<String, String>()
 
 
 

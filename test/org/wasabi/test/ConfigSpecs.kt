@@ -15,7 +15,7 @@ public class ConfigSpecs {
         val appServer = AppServer()
 
         assertEquals(3000, appServer.configuration.port)
-        assertEquals("Welcome to Wasabi!", appServer.configuration.welcomeMessage)
+        assertEquals("Server starting on port 3000", appServer.configuration.welcomeMessage)
         assertEquals(true, appServer.configuration.enableLogging)
     }
 

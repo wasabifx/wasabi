@@ -65,7 +65,7 @@ public class ConfigStorageSpecs {
         val text = file.readText(defaultCharset)
 
         assertTrue(file.exists())
-        assertEquals("{\"port\":3000,\"welcomeMessage\":\"Welcome to Wasabi!\",\"enableLogging\":true}", text)
+        assertEquals("{\"port\":3000,\"welcomeMessage\":\"Server starting on port 3000\",\"enableLogging\":true}", text)
 
     }
 }

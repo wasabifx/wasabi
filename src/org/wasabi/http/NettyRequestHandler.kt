@@ -29,8 +29,9 @@ import io.netty.handler.codec.http.multipart.HttpPostRequestDecoder.EndOfDataDec
 import java.util.Collections
 import io.netty.handler.codec.http.CookieDecoder
 import java.util.Collection
+import io.netty.handler.codec.http.HttpResponse
 
-public class NettyRequestHandler(routeLocator: RouteLocator, parserLocator: ParserLocator): ChannelInboundMessageHandlerAdapter<Any>(), RouteLocator by routeLocator, ParserLocator by parserLocator {
+public class NettyRequestHandler(routeLocator: RouteLocator): ChannelInboundMessageHandlerAdapter<Any>(), RouteLocator by routeLocator {
 
     var request: Request? = null
     var body = ""
@@ -42,7 +43,6 @@ public class NettyRequestHandler(routeLocator: RouteLocator, parserLocator: Pars
 
 
     public override fun messageReceived(ctx: ChannelHandlerContext?, msg: Any?) {
-        // just a prototype...
 
         if (msg is HttpRequest) {
             request = Request(msg)
@@ -74,10 +74,11 @@ public class NettyRequestHandler(routeLocator: RouteLocator, parserLocator: Pars
                     routeHandler.handlerExtension()
                // TODO: Errors need to be delegated to error handlers
                 } catch (e: MethodNotAllowedException) {
-                    response.setStatusCode(405, "Method not allowed")
+                    response.setAllowedMethods(e.allowedMethods)
+                    response.setStatus(405, "Method not allowed")
 
                 } catch (e: RouteNotFoundException) {
-                    response.setStatusCode(404, "Not found")
+                    response.setStatus(404, "Not found")
                 }
                 writeResponse(ctx!!, response)
             }
@@ -89,13 +90,19 @@ public class NettyRequestHandler(routeLocator: RouteLocator, parserLocator: Pars
 
     private fun writeResponse(ctx: ChannelHandlerContext, response: Response) {
         var httpResponse = DefaultFullHttpResponse(HttpVersion("HTTP", 1, 1, true), HttpResponseStatus(response.statusCode,response.statusDescription),  Unpooled.copiedBuffer(response.buffer, CharsetUtil.UTF_8))
-        if (response.allow != "") {
-            httpResponse.headers()?.add("Allow", response.allow)
-        }
         ctx.nextOutboundMessageBuffer()?.add(httpResponse)
+        addResponseHeaders(httpResponse, response)
         ctx.flush()?.addListener(ChannelFutureListener.CLOSE)
     }
 
+    private fun addResponseHeaders(httpResponse: HttpResponse, response: Response) {
+        if (response.allow != "") {
+            httpResponse.headers()?.add("Allow", response.allow)
+        }
+        for (header in response.extraHeaders) {
+            httpResponse.headers()?.add(header.key, header.value)
+        }
+    }
     private fun processChunkedContent() {
         try {
             while (decoder!!.hasNext()) {
@@ -124,7 +131,7 @@ public class NettyRequestHandler(routeLocator: RouteLocator, parserLocator: Pars
 
 
     public override fun exceptionCaught(ctx: ChannelHandlerContext?, cause: Throwable?) {
-        response.setStatusCode(500, cause?.getMessage()!!)
+        response.setStatus(500, cause?.getMessage()!!)
         writeResponse(ctx!!, response)
     }
 

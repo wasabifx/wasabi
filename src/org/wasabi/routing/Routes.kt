@@ -1,6 +1,7 @@
 package org.wasabi.routing
 
 import java.util.ArrayList
+import java.util.HashMap
 import org.wasabi.http.Request
 import org.wasabi.http.Response
 import java.lang.annotation.RetentionPolicy
@@ -18,7 +19,7 @@ public object Routes {
         if (existingRoute.count() >= 1) {
             throw RouteAlreadyExistsException(existingRoute.first!!)
         }
-        routeStorage.add(Route(path, method, RouteParams(), handler))
+        routeStorage.add(Route(path, method, HashMap<String, String>(), handler))
     }
 
     public fun get(path: String, handler: RouteHandler.() -> Unit) {

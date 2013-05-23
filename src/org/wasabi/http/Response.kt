@@ -9,40 +9,51 @@ import io.netty.handler.codec.http.HttpResponseStatus
 import io.netty.handler.codec.http.DefaultFullHttpResponse
 import io.netty.channel.ChannelFutureListener
 import io.netty.channel.ChannelInboundMessageHandlerAdapter
+import java.util.HashMap
+import io.netty.handler.codec.http.HttpMethod
 
 
 public class Response() {
 
-    // TODO: Clean all this up. Internal headers
+    public val extraHeaders: HashMap<String, String> = HashMap<String, String>()
+
+    public var buffer : String = ""
+        private set
     public var etag: String = ""
+        private set
     public var location: String = ""
-    public var allow: String = ""
-    public var buffer: String = ""
+        private set
     public var contentType: String = ""
-
+        private set
     public var statusCode: Int = 200
+        private set
     public var statusDescription: String = ""
-
+        private set
+    public var allow: String = ""
+        private set
 
     fun send(message: String) {
         buffer = message
     }
 
-    public fun setStatusCode(statusCode: Int, statusDescription: String) {
+    public fun setStatus(statusCode: Int, statusDescription: String) {
         this.statusCode = statusCode
         this.statusDescription = statusDescription
     }
 
-    public fun setContentType(contentType: String) {
+    public fun setResponseContentType(contentType: String) {
         this.contentType = contentType
     }
 
-    public fun setContentType(contentType: ContentType) {
-        setContentType(contentType.toContentTypeString())
+    public fun setResponseContentType(contentType: ContentType) {
+        setResponseContentType(contentType.toContentTypeString())
     }
 
-    public fun setHeader(name: String, value: String) {
-        // TODO:
+    public fun setAllowedMethods(allowedMethods: Array<HttpMethod>) {
+        allow = allowedMethods.makeString(",")
+    }
+    public fun addExtraHeader(name: String, value: String) {
+        extraHeaders[name] = value
     }
 
 
