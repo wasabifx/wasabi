@@ -30,8 +30,9 @@ import java.util.Collections
 import io.netty.handler.codec.http.CookieDecoder
 import java.util.Collection
 import io.netty.handler.codec.http.HttpResponse
+import org.wasabi.app.AppServer
 
-public class NettyRequestHandler(routeLocator: RouteLocator): ChannelInboundMessageHandlerAdapter<Any>(), RouteLocator by routeLocator {
+public class NettyRequestHandler(private val appServer: AppServer, routeLocator: RouteLocator): ChannelInboundMessageHandlerAdapter<Any>(), RouteLocator by routeLocator {
 
     var request: Request? = null
     var body = ""
@@ -71,7 +72,21 @@ public class NettyRequestHandler(routeLocator: RouteLocator): ChannelInboundMess
                     request!!.routeParams = route.params
                     val handlerExtension : RouteHandler.() -> Unit = route!!.handler
                     val routeHandler = RouteHandler(request!!, response)
-                    routeHandler.handlerExtension()
+                    var stop = false
+                    for (interceptor in appServer.beforeRequestInterceptors) {
+                        if (!interceptor.handle(request!!, response)) {
+                            stop = true
+                            break
+                        }
+                    }
+                    if (!stop) {
+                        routeHandler.handlerExtension()
+                    }
+                    for (interceptor in appServer.afterRequestInterceptors) {
+                        if (!interceptor.handle(request!!, response)) {
+                            break
+                        }
+                    }
                // TODO: Errors need to be delegated to error handlers
                 } catch (e: MethodNotAllowedException) {
                     response.setAllowedMethods(e.allowedMethods)
@@ -80,7 +95,16 @@ public class NettyRequestHandler(routeLocator: RouteLocator): ChannelInboundMess
                 } catch (e: RouteNotFoundException) {
                     response.setStatus(404, "Not found")
                 }
-                writeResponse(ctx!!, response)
+                var stop = false
+                for (interceptor in appServer.beforeResponseInterceptors) {
+                    if (!interceptor.handle(request!!, response)) {
+                        stop = true
+                        break
+                    }
+                }
+                if (!stop) {
+                    writeResponse(ctx!!, response)
+                }
             }
         }
 

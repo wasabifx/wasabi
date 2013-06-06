@@ -57,6 +57,10 @@ public object Routes {
     public fun getAllRoutes(): ArrayList<Route> {
         return routeStorage
     }
+
+    public fun intercept(path: String, ocurrence: InterceptorOccurence, handler: RouteHandler.() -> Unit) {
+
+    }
 }
 
 public fun String.get(handler: RouteHandler.() -> Unit) {
@@ -83,4 +87,7 @@ fun String.head(handler: RouteHandler.() -> Unit) {
     Routes.head(this, handler)
 }
 
+fun String.intercept(position: InterceptorOccurence, handler: RouteHandler.() -> Unit) {
+    Routes.intercept(this, position, handler)
+}
 

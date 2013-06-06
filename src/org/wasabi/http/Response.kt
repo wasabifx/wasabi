@@ -11,6 +11,7 @@ import io.netty.channel.ChannelFutureListener
 import io.netty.channel.ChannelInboundMessageHandlerAdapter
 import java.util.HashMap
 import io.netty.handler.codec.http.HttpMethod
+import org.codehaus.jackson.map.ObjectMapper
 
 
 public class Response() {
@@ -32,8 +33,20 @@ public class Response() {
     public var allow: String = ""
         private set
 
-    fun send(message: String) {
+    fun send(message: String, contentType: ContentType = ContentType.TextPlain) {
         buffer = message
+        this.contentType = contentType.toString()
+    }
+
+    fun send(obj: Any, contentType: ContentType = ContentType.ApplicationJson) {
+        this.contentType = contentType.toString()
+
+        val objectMapper = ObjectMapper()
+
+
+        buffer = objectMapper.writeValueAsString(obj)!!
+
+
     }
 
     public fun setStatus(statusCode: Int, statusDescription: String) {
