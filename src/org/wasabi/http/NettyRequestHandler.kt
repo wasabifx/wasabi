@@ -81,12 +81,13 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
                     }
                     if (!stop) {
                         routeHandler.handlerExtension()
-                    }
-                    for (interceptor in appServer.afterRequestInterceptors) {
-                        if (!interceptor.handle(request!!, response)) {
-                            break
+                        for (interceptor in appServer.afterRequestInterceptors) {
+                            if (!interceptor.handle(request!!, response)) {
+                                break
+                            }
                         }
                     }
+
                // TODO: Errors need to be delegated to error handlers
                 } catch (e: MethodNotAllowedException) {
                     response.setAllowedMethods(e.allowedMethods)

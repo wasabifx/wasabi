@@ -30,10 +30,16 @@ public class Request(private val httpRequest: HttpRequest) {
     public var cookies: HashMap<String, Cookie> = HashMap<String, Cookie>()
     public var contentType: String = getHeader("Content-Type")
     public var chunked: Boolean = getHeader("Transfer-Encoding").compareToIgnoreCase("chunked") == 0
+    public var authorization: String = getHeader("Authorization")
 
     private fun getHeader(header: String): String {
 
-        return httpRequest.headers()?.get(header).toString()
+        var value = httpRequest.headers()?.get(header)
+        if (value != null) {
+            return value.toString()
+        } else {
+            return ""
+        }
     }
 
     public fun parseQueryParams() {

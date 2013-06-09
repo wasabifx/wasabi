@@ -8,6 +8,7 @@ import org.wasabi.http.Response
 import org.wasabi.routing.RouteHandler
 import org.wasabi.routing.*
 import org.wasabi.http.ContentType
+import org.wasabi.interceptors.BasicAuthenticationInterceptor
 
 fun main(args: Array<String>) {
 
@@ -15,7 +16,7 @@ fun main(args: Array<String>) {
 
 
     server.configuration.enableLogging = true
-
+    server.beforeRequestInterceptors.add(BasicAuthenticationInterceptor({ (user: String, pass: String) -> user == pass }))
    // server.get("/", { req, res -> res.send("object")})
 
     Routes.get("/good",{    response.send("Well this means that routes now work!")})

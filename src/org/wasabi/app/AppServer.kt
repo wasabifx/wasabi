@@ -15,7 +15,7 @@ import org.wasabi.interceptors.BeforeResponseInterceptor
 
 public class AppServer(val configuration: AppConfiguration = AppConfiguration()) {
 
-    public val beforeRequestInterceptors: ArrayList<BeforeRequestInterceptor> = ArrayList<BeforeRequestInterceptor>()
+    public val beforeRequestInterceptors: ArrayList<BeforeRequestInterceptor> = arrayListOf<BeforeRequestInterceptor>()
     public val afterRequestInterceptors: ArrayList<AfterRequestInterceptor> = ArrayList<AfterRequestInterceptor>()
     public val beforeResponseInterceptors: ArrayList<BeforeResponseInterceptor> = ArrayList<BeforeResponseInterceptor>()
 
