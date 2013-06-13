@@ -94,6 +94,7 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
                     response.setStatus(405, "Method not allowed")
 
                 } catch (e: RouteNotFoundException) {
+                    response.send("Not found")
                     response.setStatus(404, "Not found")
                 }
                 var stop = false

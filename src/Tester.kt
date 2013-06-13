@@ -16,12 +16,27 @@ fun main(args: Array<String>) {
 
 
     server.configuration.enableLogging = true
-    server.beforeRequestInterceptors.add(BasicAuthenticationInterceptor({ (user: String, pass: String) -> user == pass }))
-   // server.get("/", { req, res -> res.send("object")})
 
-    Routes.get("/good",{    response.send("Well this means that routes now work!")})
-//    server.Routes.get("/",{ response.send("Hello, how are you")})
+    server.beforeRequestInterceptors.add(BasicAuthenticationInterceptor("secure area", { (user: String, pass: String) -> user == pass }))
 
+
+
+                //      Why not return the function to call next().....
+
+
+
+  //  Routes.get("*");
+
+
+
+    Routes.get("/good", {
+
+
+
+        response.send("Well this means that routes now work!")
+
+
+    })
 
     "/customer/:id" get {
 
@@ -34,9 +49,6 @@ fun main(args: Array<String>) {
     server.start()
 
 }
-
-
-
 
 
 

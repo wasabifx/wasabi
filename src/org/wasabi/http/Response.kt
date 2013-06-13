@@ -24,7 +24,7 @@ public class Response() {
         private set
     public var location: String = ""
         private set
-    public var contentType: String = ""
+    public var contentType: String = ContentType.TextPlain.toContentTypeString()
         private set
     public var statusCode: Int = 200
         private set

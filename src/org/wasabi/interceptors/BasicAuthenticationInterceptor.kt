@@ -6,10 +6,10 @@ import org.wasabi.http.Response
 import org.wasabi.http.ContentType
 import org.apache.commons.codec.binary;
 import io.netty.handler.codec.base64.Base64Decoder
-import org.apache.commons.codec.binary.Base64
+import org.wasabi.encoding.decode
 
 
-public class BasicAuthenticationInterceptor(val callback: (String, String) -> Boolean): BeforeRequestInterceptor {
+public class BasicAuthenticationInterceptor(val realm: String, val callback: (String, String) -> Boolean): BeforeRequestInterceptor {
     override fun handle(request: Request, response: Response): Boolean {
 
         if (request.authorization != "") {
@@ -23,16 +23,7 @@ public class BasicAuthenticationInterceptor(val callback: (String, String) -> Bo
         response.setStatus(401, "Authentication Failed")
         response.setResponseContentType(ContentType.TextPlain)
         response.send("Authentication Failed")
-        response.addExtraHeader("WWW-Authenticate", "Basic Realm=Secure")
+        response.addExtraHeader("WWW-Authenticate", "Basic Realm=${realm}")
         return false
-    }
-}
-
-// TODO: Move this out
-fun String.decode(encoding: String): String {
-    if (encoding == "base64") {
-        return String(Base64.decodeBase64(this)!!)
-    } else {
-        throw IllegalArgumentException()
     }
 }
