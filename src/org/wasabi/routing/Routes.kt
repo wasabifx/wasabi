@@ -14,36 +14,36 @@ public object Routes {
 
     private val routeStorage = ArrayList<Route>()
 
-    private fun addRoute(method: HttpMethod, path: String, handler: RouteHandler.() -> Unit) {
+    private fun addRoute(method: HttpMethod, path: String, vararg handler: RouteHandler.() -> Unit) {
         val existingRoute = routeStorage.filter { it.path == path && it.method == method}
         if (existingRoute.count() >= 1) {
             throw RouteAlreadyExistsException(existingRoute.first!!)
         }
-        routeStorage.add(Route(path, method, HashMap<String, String>(), handler))
+        routeStorage.add(Route(path, method, HashMap<String, String>(), *handler))
     }
 
-    public fun get(path: String, handler: RouteHandler.() -> Unit) {
-        addRoute(HttpMethod.GET, path, handler)
+    public fun get(path: String, vararg handlers: RouteHandler.() -> Unit) {
+        addRoute(HttpMethod.GET, path, *handlers)
     }
 
-    public fun post(path: String, handler: RouteHandler.() -> Unit) {
-        addRoute(HttpMethod.POST, path, handler)
+    public fun post(path: String, vararg handlers: RouteHandler.() -> Unit) {
+        addRoute(HttpMethod.POST, path, *handlers)
     }
 
-    public fun put(path: String, handler: RouteHandler.() -> Unit) {
-        addRoute(HttpMethod.PUT, path, handler)
+    public fun put(path: String, vararg handlers: RouteHandler.() -> Unit) {
+        addRoute(HttpMethod.PUT, path, *handlers)
     }
 
-    public fun head(path: String, handler: RouteHandler.() -> Unit) {
-        addRoute(HttpMethod.HEAD, path, handler)
+    public fun head(path: String, vararg handlers: RouteHandler.() -> Unit) {
+        addRoute(HttpMethod.HEAD, path, *handlers)
     }
 
-    public fun delete(path: String, handler: RouteHandler.() -> Unit) {
-        addRoute(HttpMethod.DELETE, path, handler)
+    public fun delete(path: String, vararg handlers: RouteHandler.() -> Unit) {
+        addRoute(HttpMethod.DELETE, path, *handlers)
     }
 
-    public fun options(path: String, handler: RouteHandler.() -> Unit) {
-        addRoute(HttpMethod.OPTIONS, path, handler)
+    public fun options(path: String, vararg handler: RouteHandler.() -> Unit) {
+        addRoute(HttpMethod.OPTIONS, path, *handler)
     }
 
     public fun size(): Int {

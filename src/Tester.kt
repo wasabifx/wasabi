@@ -15,28 +15,32 @@ fun main(args: Array<String>) {
     val server = AppServer()
 
 
-    server.configuration.enableLogging = true
+ //   server.configuration.enableLogging = true
 
-    server.beforeRequestInterceptors.add(BasicAuthenticationInterceptor("secure area", { (user: String, pass: String) -> user == pass }))
+  //  server.beforeRequestInterceptors.add(BasicAuthenticationInterceptor("secure area", { (user: String, pass: String) -> user == pass }))
 
 
-
-                //      Why not return the function to call next().....
 
 
 
   //  Routes.get("*");
 
 
+    Routes.get("/customer",
+            basicAuthentication,
+            {
+                log.write("Logging it all out")
+                next()
+            },
+            {
+                response.send(customer)
+            }
+    )
 
-    Routes.get("/good", {
 
 
 
-        response.send("Well this means that routes now work!")
 
-
-    })
 
     "/customer/:id" get {
 
@@ -50,10 +54,15 @@ fun main(args: Array<String>) {
 
 }
 
+val basicAuthentication: RouteHandler.() -> Unit = {
+    response.send("a")
+    next()
+}
 
+object customer {}
+object log {
+fun write(a: String) {
 
-
-
-
-
+}
+}
 

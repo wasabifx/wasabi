@@ -15,8 +15,8 @@ import org.wasabi.interceptors.BeforeResponseInterceptor
 
 public class AppServer(val configuration: AppConfiguration = AppConfiguration()) {
 
-    public val beforeRequestInterceptors: ArrayList<BeforeRequestInterceptor> = arrayListOf<BeforeRequestInterceptor>()
-    public val afterRequestInterceptors: ArrayList<AfterRequestInterceptor> = ArrayList<AfterRequestInterceptor>()
+    public val beforeRequestHandlers: ArrayList<BeforeRequestInterceptor> = arrayListOf<BeforeRequestInterceptor>()
+    public val afterRequestHandlers: ArrayList<AfterRequestInterceptor> = ArrayList<AfterRequestInterceptor>()
     public val beforeResponseInterceptors: ArrayList<BeforeResponseInterceptor> = ArrayList<BeforeResponseInterceptor>()
 
     private var logger = LoggerFactory.getLogger(javaClass<AppServer>())
@@ -26,7 +26,7 @@ public class AppServer(val configuration: AppConfiguration = AppConfiguration())
     {
         httpServer = HttpServer(this)
         if (configuration.enableLogging) {
-            beforeRequestInterceptors.add(0, LoggerInterceptor())
+            beforeRequestHandlers.add(0, LoggerInterceptor())
         }
     }
 

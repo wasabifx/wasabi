@@ -12,7 +12,6 @@ public class InterceptorSpecs {
         Routes.intercept("/books", InterceptorOccurence.PreRequest, {
 
 
-            handled = true
 
         })
 

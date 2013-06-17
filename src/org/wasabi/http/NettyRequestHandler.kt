@@ -70,8 +70,22 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
                 try {
                     val route = findRoute(request!!.uri!!.split('?')[0], request!!.method!!)
                     request!!.routeParams = route.params
-                    val handlerExtension : RouteHandler.() -> Unit = route!!.handler
-                    val routeHandler = RouteHandler(request!!, response)
+
+
+                    for (handler in route!!.handler) {
+
+                        val handlerExtension : RouteHandler.() -> Unit = handler
+                        val routeHandler = RouteHandler(request!!, response)
+
+                        routeHandler.handlerExtension()
+                        if (!routeHandler.executeNext) {
+                            break
+                        }
+                    }
+
+
+
+/*
                     var stop = false
                     for (interceptor in appServer.beforeRequestInterceptors) {
                         if (!interceptor.handle(request!!, response)) {
@@ -87,6 +101,7 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
                             }
                         }
                     }
+*/
 
                // TODO: Errors need to be delegated to error handlers
                 } catch (e: MethodNotAllowedException) {
