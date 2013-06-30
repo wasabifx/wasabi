@@ -3,7 +3,6 @@ package org.wasabi.test
 import org.junit.Test as spec
 import kotlin.test.assertEquals
 import kotlin.test.assertNotNull
-import org.wasabi.routing.Routes
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized.Parameters
 import java.util.ArrayList
@@ -13,16 +12,17 @@ import org.wasabi.routing.MethodNotAllowedException
 import org.wasabi.routing.RouteAlreadyExistsException
 import io.netty.handler.codec.http.HttpMethod
 import org.wasabi.routing.PatternAndVerbMatchingRouteLocator
+import org.wasabai.test.TestServer
 
 
 public class RoutesSpecs {
 
     spec fun adding_a_route_to_routing_table_should_store_it() {
 
-        Routes.clearAll()
-        Routes.get("/", { })
+        TestServer.reset()
+        TestServer.appServer.get("/", { })
 
-        assertEquals(1, Routes.size())
+        assertEquals(1, TestServer.appServer.routes.size())
     }
 
 
@@ -30,12 +30,12 @@ public class RoutesSpecs {
 
 
 
-        Routes.clearAll()
-        Routes.get("/", { response.send("")})
-        Routes.post("/second", { response.send("second")})
-        Routes.post("/third", { response.send("third")})
+        TestServer.reset()
+        TestServer.appServer.get("/", { response.send("")})
+        TestServer.appServer.post("/second", { response.send("second")})
+        TestServer.appServer.post("/third", { response.send("third")})
 
-        val routeLocator = PatternAndVerbMatchingRouteLocator()
+        val routeLocator = PatternAndVerbMatchingRouteLocator(TestServer.routes)
 
         val route1 = routeLocator.findRoute("/", HttpMethod.GET)
         val route2 = routeLocator.findRoute("/third", HttpMethod.POST)
@@ -45,11 +45,11 @@ public class RoutesSpecs {
     }
 
     spec fun finding_a_route_in_the_routing_table_with_parameters_and_matching_method_should_return_route() {
-        Routes.clearAll()
-        Routes.post("/third", { response.send("third")})
-        Routes.get("/first/:parent/:child/ending", { response.send("")})
+        TestServer.reset()
+        TestServer.appServer.post("/third", { response.send("third")})
+        TestServer.appServer.get("/first/:parent/:child/ending", { response.send("")})
 
-        val routeLocator = PatternAndVerbMatchingRouteLocator()
+        val routeLocator = PatternAndVerbMatchingRouteLocator(TestServer.routes)
 
         val route1 = routeLocator.findRoute("/first/forest/trees/ENDING", HttpMethod.GET)
 
@@ -62,12 +62,12 @@ public class RoutesSpecs {
 
 
 
-        Routes.clearAll()
-        Routes.get( "/", { })
-        Routes.post( "/second", { })
-        Routes.post( "/third", { })
+        TestServer.reset()
+        TestServer.appServer.get( "/", { })
+        TestServer.appServer.post( "/second", { })
+        TestServer.appServer.post( "/third", { })
 
-        val routeLocator = PatternAndVerbMatchingRouteLocator()
+        val routeLocator = PatternAndVerbMatchingRouteLocator(TestServer.routes)
 
         val exception = fails({routeLocator.findRoute("/second", HttpMethod.GET)})
 
@@ -77,10 +77,10 @@ public class RoutesSpecs {
 
 
     spec fun adding_a_second_route_in_the_routing_table_with_matching_path_and_method_should_throw_exception_indicating_route_exists() {
-        Routes.clearAll()
-        Routes.get( "/", {})
-        Routes.get( "/a", {})
-        val exception = fails { Routes.get( "/", {}) }
+        TestServer.reset()
+        TestServer.appServer.get( "/", {})
+        TestServer.appServer.get( "/a", {})
+        val exception = fails { TestServer.appServer.get( "/", {}) }
 
         assertEquals(javaClass<RouteAlreadyExistsException>(), exception.javaClass)
         assertEquals("Path / with method GET already exists", exception?.getMessage())

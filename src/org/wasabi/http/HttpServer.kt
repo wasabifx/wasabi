@@ -3,7 +3,6 @@ package org.wasabi.http
 import java.util.concurrent.Executors
 import java.net.InetSocketAddress
 import org.wasabi.app.AppConfiguration
-import org.wasabi.routing.Routes
 import io.netty.bootstrap.ServerBootstrap
 import io.netty.channel.nio.NioEventLoopGroup
 import io.netty.channel.socket.nio.NioServerSocketChannel

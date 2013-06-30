@@ -1,8 +1,10 @@
 package org.wasabi.routing
 
 import io.netty.handler.codec.http.HttpMethod
+import org.wasabi.app.AppServer
+import java.util.ArrayList
 
-public class PatternAndVerbMatchingRouteLocator: RouteLocator {
+public class PatternAndVerbMatchingRouteLocator(val routes: ArrayList<Route>): RouteLocator {
 
     private fun compareSegments(route: Route, path2: String): Boolean {
 
@@ -27,7 +29,7 @@ public class PatternAndVerbMatchingRouteLocator: RouteLocator {
     }
 
     override fun findRoute(path: String, method: HttpMethod): Route {
-        val matchingPaths = Routes.getAllRoutes().filter { compareSegments(it, path) }
+        val matchingPaths = routes.filter { compareSegments(it, path) }
         if (matchingPaths.count() == 0) {
             throw RouteNotFoundException("Routing entry not found")
         }

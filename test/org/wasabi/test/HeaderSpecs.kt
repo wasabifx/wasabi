@@ -6,7 +6,6 @@ import org.wasabai.test.TestServer
 import org.wasabai.test.get
 import kotlin.test.assertEquals
 import java.util.ArrayList
-import org.wasabi.routing.Routes
 import org.wasabai.test.postForm
 import org.apache.http.message.BasicNameValuePair
 import org.junit.Ignore
@@ -44,7 +43,7 @@ public class HeaderSpecs: TestServerContext() {
 
 
 
-        Routes.get("/customer/:id/:section",
+        TestServer.appServer.get("/customer/:id/:section",
         {
 
 
@@ -103,7 +102,7 @@ public class HeaderSpecs: TestServerContext() {
 
 
 
-        Routes.post("/customer/",
+        TestServer.appServer.post("/customer/",
                 {
 
 
@@ -138,7 +137,7 @@ public class HeaderSpecs: TestServerContext() {
 
         var cookies = HashMap<String, Cookie>()
 
-        Routes.get("/", {
+        TestServer.appServer.get("/", {
 
             cookies = request.cookies
             response.send("Nothing")
@@ -173,7 +172,7 @@ public class HeaderSpecs: TestServerContext() {
 
 
 
-        Routes.post("/customer/",
+        TestServer.appServer.post("/customer/",
                 {
 
 

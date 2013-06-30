@@ -11,7 +11,6 @@ import org.wasabai.test.TestServer
 import org.wasabai.test.get
 import kotlin.test.fails
 import org.apache.http.client.HttpResponseException
-import org.wasabi.routing.Routes
 import org.wasabai.test.delete
 
 public class UrlRequestingSpecs: TestServerContext() {
@@ -31,8 +30,8 @@ public class UrlRequestingSpecs: TestServerContext() {
     spec(timeout=5000) fun a_get_on_an_existing_resource_should_return_it() {
 
 
-        Routes.clearAll()
-        Routes.get("/", {  response.send("Hello")})
+        TestServer.reset()
+        TestServer.appServer.get("/", {  response.send("Hello")})
 
 
         val response = get("http://localhost:3000", headers)
@@ -45,7 +44,7 @@ public class UrlRequestingSpecs: TestServerContext() {
 
 
 
-        Routes.clearAll()
+        TestServer.reset()
         val exception = fails { get("http://localhost:3000/nothing", headers)}
 
         assertEquals(javaClass<HttpResponseException>(),exception.javaClass)
@@ -56,8 +55,8 @@ public class UrlRequestingSpecs: TestServerContext() {
 
     spec(timeout=5000) fun a_get_on_an_existing_resource_with_invalid_verb_should_return_405_with_message_method_not_allowed_and_header_of_allowed_methods() {
 
-        Routes.clearAll()
-        Routes.get("/", {  response.send("Hello")})
+        TestServer.reset()
+        TestServer.appServer.get("/", {  response.send("Hello")})
 
         val exception = fails { delete("http://localhost:3000", headers) }
 

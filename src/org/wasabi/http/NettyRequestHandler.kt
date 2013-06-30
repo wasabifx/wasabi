@@ -2,7 +2,6 @@ package org.wasabi.http
 
 import io.netty.channel.ChannelInboundMessageHandlerAdapter
 import io.netty.channel.ChannelHandlerContext
-import org.wasabi.routing.Routes
 import io.netty.handler.codec.http.HttpRequest
 import io.netty.handler.codec.http.DefaultFullHttpResponse
 import io.netty.handler.codec.http
@@ -85,17 +84,17 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
 
 
 
-/*
-                    var stop = false
-                    for (interceptor in appServer.beforeRequestInterceptors) {
+
+/*                    var stop = false
+                    for (interceptor in appServer.beforeRequestHandlers) {
                         if (!interceptor.handle(request!!, response)) {
                             stop = true
                             break
                         }
-                    }
-                    if (!stop) {
+                    }*/
+      /*              if (!stop) {
                         routeHandler.handlerExtension()
-                        for (interceptor in appServer.afterRequestInterceptors) {
+                        for (interceptor in appServer.afterRequestHandlers) {
                             if (!interceptor.handle(request!!, response)) {
                                 break
                             }
@@ -113,13 +112,13 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
                     response.setStatus(404, "Not found")
                 }
                 var stop = false
-                for (interceptor in appServer.beforeResponseInterceptors) {
+          /*      for (interceptor in appServer.beforeResponseHandler) {
                     if (!interceptor.handle(request!!, response)) {
                         stop = true
                         break
                     }
                 }
-                if (!stop) {
+             */   if (!stop) {
                     writeResponse(ctx!!, response)
                 }
             }

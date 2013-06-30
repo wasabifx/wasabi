@@ -8,7 +8,6 @@ import org.wasabi.http.Response
 import org.wasabi.routing.RouteHandler
 import org.wasabi.routing.*
 import org.wasabi.http.ContentType
-import org.wasabi.interceptors.BasicAuthenticationInterceptor
 
 fun main(args: Array<String>) {
 
@@ -25,8 +24,8 @@ fun main(args: Array<String>) {
 
   //  Routes.get("*");
 
-
-    Routes.get("/customer",
+   //  server.beforeRequestHandlers.add(basicAuthentication)
+    server.get("/customer",
             basicAuthentication,
             {
                 log.write("Logging it all out")
@@ -41,13 +40,6 @@ fun main(args: Array<String>) {
 
 
 
-
-    "/customer/:id" get {
-
-
-        response.send("Hello!")
-
-    }
 
 
     server.start()

@@ -5,7 +5,6 @@ import kotlin.test.assertEquals
 import java.net.Socket
 import java.net.SocketAddress
 import java.net.InetSocketAddress
-import org.wasabi.routing.Routes
 import org.wasabi.app.AppServer
 import org.wasabi.app.AppConfiguration
 

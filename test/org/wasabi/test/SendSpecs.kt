@@ -3,11 +3,11 @@ package org.wasabi.test
 
 
 import org.junit.Test as spec
-import org.wasabi.routing.Routes
 import org.wasabai.test.get
 import kotlin.test.assertEquals
 import org.wasabi.http.ContentType
-import org.wasabi.routing.InterceptorOccurence
+import org.wasabi.routing.InterceptOn
+import org.wasabai.test.TestServer
 
 public class SendSpecs: TestServerContext() {
 
@@ -24,11 +24,7 @@ public class SendSpecs: TestServerContext() {
 
         )
 
-        Routes.intercept("*", InterceptorOccurence.PostRequest, {
-
-          //  encode(response.buffer)
-        })
-        Routes.get("/customer/10", {
+        TestServer.appServer.get("/customer/10", {
 
             val obj = object {
                 val name = "John"
