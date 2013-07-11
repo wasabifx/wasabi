@@ -8,31 +8,25 @@ import org.wasabi.http.Response
 import org.wasabi.routing.RouteHandler
 import org.wasabi.routing.*
 import org.wasabi.http.ContentType
+import org.wasabi.interceptors.BasicAuthenticationInterceptor
 
 fun main(args: Array<String>) {
 
     val server = AppServer()
 
-
- //   server.configuration.enableLogging = true
-
-  //  server.beforeRequestInterceptors.add(BasicAuthenticationInterceptor("secure area", { (user: String, pass: String) -> user == pass }))
+    server.intercept(BasicAuthenticationInterceptor("secure area", { (user: String, pass: String) -> user == pass}), "*")
 
 
 
-
-
-  //  Routes.get("*");
-
-   //  server.beforeRequestHandlers.add(basicAuthentication)
     server.get("/customer",
-            basicAuthentication,
+         //   basicAuthentication,
             {
                 log.write("Logging it all out")
                 next()
             },
             {
-                response.send(customer)
+
+                response.send("Something")
             }
     )
 

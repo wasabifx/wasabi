@@ -22,9 +22,7 @@ public class AppServer(val configuration: AppConfiguration = AppConfiguration())
     private var running = false
 
     public val routes: ArrayList<Route> = ArrayList<Route>()
-
-
-    private val interceptors = ArrayList<InterceptorEntry>()
+    public val interceptors : ArrayList<InterceptorEntry>  = ArrayList<InterceptorEntry>()
 
 
     private fun addRoute(method: HttpMethod, path: String, vararg handler: RouteHandler.() -> Unit) {
