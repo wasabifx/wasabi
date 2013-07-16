@@ -16,6 +16,9 @@ import org.apache.http.message.BasicNameValuePair
 import org.apache.http.client.methods.HttpRequestBase
 import org.apache.http.impl.cookie.BasicClientCookie
 import org.wasabi.routing.Route
+import org.apache.http.HttpResponse
+import org.apache.http.util.EntityUtils
+import javax.swing.text.html.parser.Entity
 
 object TestServer {
 
@@ -46,7 +49,6 @@ object TestServer {
 
 private fun makeRequest(headers: HashMap<String, String>, request: HttpRequestBase): HttpClientResponse {
     val httpClient = DefaultHttpClient()
-    val responseHandler = BasicResponseHandler()
     for ((key, value) in headers) {
         request.setHeader(key, value)
     }
@@ -55,8 +57,11 @@ private fun makeRequest(headers: HashMap<String, String>, request: HttpRequestBa
     cookie.setDomain("localhost")
     val cookieStore = httpClient.getCookieStore()
     cookieStore?.addCookie(cookie)
-    val responseHeaders = request.getAllHeaders()
-    return HttpClientResponse(responseHeaders!!, httpClient.execute(request, responseHandler)!!)
+
+    val response = httpClient.execute(request)!!
+
+    val body = EntityUtils.toString(response.getEntity())!!
+    return HttpClientResponse(response.getAllHeaders()!!, body)
 }
 
 public fun delete(url: String, headers: HashMap<String, String>): HttpClientResponse {
@@ -76,6 +81,5 @@ public fun postForm(url: String, headers: HashMap<String, String>, fields: Array
 }
 
 data public class HttpClientResponse(val headers: Array<Header>, val body: String)
-
 
 

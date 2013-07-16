@@ -69,5 +69,8 @@ public class Response() {
         extraHeaders[name] = value
     }
 
+    public fun setCacheControl(cacheControl: CacheControl) {
+        addExtraHeader("Cache-Control", cacheControl.toString())
+    }
 
 }
