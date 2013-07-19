@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="exodus">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/lib/exodus" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$PROJECT_DIR$/lib/exodus" recursive="false" />
+  </library>
+</component>

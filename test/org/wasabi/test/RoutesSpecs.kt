@@ -12,7 +12,7 @@ import org.wasabi.routing.MethodNotAllowedException
 import org.wasabi.routing.RouteAlreadyExistsException
 import io.netty.handler.codec.http.HttpMethod
 import org.wasabi.routing.PatternAndVerbMatchingRouteLocator
-import org.wasabai.test.TestServer
+import org.wasabi.test.TestServer
 
 
 public class RoutesSpecs {

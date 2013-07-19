@@ -7,11 +7,11 @@ import org.apache.http.impl.client.DefaultHttpClient
 import org.apache.http.client.methods.HttpGet
 import kotlin.test.assertEquals
 import org.apache.http.impl.client.BasicResponseHandler
-import org.wasabai.test.TestServer
-import org.wasabai.test.get
+import org.wasabi.test.TestServer
+import org.wasabi.test.get
 import kotlin.test.fails
 import org.apache.http.client.HttpResponseException
-import org.wasabai.test.delete
+import org.wasabi.test.delete
 
 public class UrlRequestingSpecs: TestServerContext() {
 
@@ -20,7 +20,7 @@ public class UrlRequestingSpecs: TestServerContext() {
             "User-Agent" to "test-client",
             "Connection" to "keep-alive",
             "Cache-Control" to "max-age=0",
-            "Accept" to "Accept=text/html,application/xhtml+xml,application/xml",
+            "Accept" to "text/html,application/xhtml+xml,application/xml",
             "Accept-Encoding" to "gzip,deflate,sdch",
             "Accept-Language" to "en-US,en;q=0.8",
             "Accept-Charset" to "ISO-8859-1,utf-8;q=0.7,*;q=0.3"
@@ -62,9 +62,7 @@ public class UrlRequestingSpecs: TestServerContext() {
 
         assertEquals(javaClass<HttpResponseException>(), exception.javaClass)
         assertEquals("Method not allowed", exception!!.getMessage())
-
-        // for some reason HttpClient does not return allow header even though it is being set (verified with REST client in IDEA and curl)
-        //  assertEquals("Allow: GET", headers["Allow"])
+        assertEquals("Allow: GET", headers["Allow"])
     }
 
 }

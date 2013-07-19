@@ -1,6 +1,8 @@
 package org.wasabi.http
 
 
+
+// TODO: Use object chaining instead of this.
 public enum  class ContentType {
 
     fun toContentTypeString(): String {

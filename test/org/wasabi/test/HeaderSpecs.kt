@@ -2,11 +2,11 @@ package org.wasabi.test
 
 
 import org.junit.Test as spec
-import org.wasabai.test.TestServer
-import org.wasabai.test.get
+import org.wasabi.test.TestServer
+import org.wasabi.test.get
 import kotlin.test.assertEquals
 import java.util.ArrayList
-import org.wasabai.test.postForm
+import org.wasabi.test.postForm
 import org.apache.http.message.BasicNameValuePair
 import org.junit.Ignore
 import org.wasabi.http.Cookie
@@ -21,7 +21,7 @@ public class HeaderSpecs: TestServerContext() {
                 "User-Agent" to "test-client",
                 "Connection" to "keep-alive",
                 "Cache-Control" to "max-age=0",
-                "Accept" to "Accept=text/html,application/xhtml+xml,application/xml",
+                "Accept" to "text/html,application/xhtml+xml,application/xml",
                 "Accept-Encoding" to "gzip,deflate,sdch",
                 "Accept-Language" to "en-US,en;q=0.8",
                 "Accept-Charset" to "ISO-8859-1,utf-8;q=0.7,*;q=0.3"
@@ -90,7 +90,7 @@ public class HeaderSpecs: TestServerContext() {
                 "User-Agent" to "test-client",
                 "Connection" to "keep-alive",
                 "Cache-Control" to "max-age=0",
-                "Accept" to "Accept=text/html,application/xhtml+xml,application/xml",
+                "Accept" to "text/html,application/xhtml+xml,application/xml",
                 "Accept-Encoding" to "gzip,deflate,sdch",
                 "Accept-Language" to "en-US,en;q=0.8",
                 "Accept-Charset" to "ISO-8859-1,utf-8;q=0.7,*;q=0.3"
@@ -128,7 +128,7 @@ public class HeaderSpecs: TestServerContext() {
                 "User-Agent" to "test-client",
                 "Connection" to "keep-alive",
                 "Cache-Control" to "max-age=0",
-                "Accept" to "Accept=text/html,application/xhtml+xml,application/xml",
+                "Accept" to "text/html,application/xhtml+xml,application/xml",
                 "Accept-Encoding" to "gzip,deflate,sdch",
                 "Accept-Language" to "en-US,en;q=0.8",
                 "Accept-Charset" to "ISO-8859-1,utf-8;q=0.7,*;q=0.3"
@@ -160,7 +160,7 @@ public class HeaderSpecs: TestServerContext() {
                 "User-Agent" to "test-client",
                 "Connection" to "keep-alive",
                 "Cache-Control" to "max-age=0",
-                "Accept" to "Accept=text/html,application/xhtml+xml,application/xml",
+                "Accept" to "text/html,application/xhtml+xml,application/xml",
                 "Accept-Encoding" to "gzip,deflate,sdch",
                 "Accept-Language" to "en-US,en;q=0.8",
                 "Accept-Charset" to "ISO-8859-1,utf-8;q=0.7,*;q=0.3"

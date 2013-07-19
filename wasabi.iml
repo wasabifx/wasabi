@@ -19,6 +19,7 @@
     <orderEntry type="library" name="KotlinJavaRuntime" level="project" />
     <orderEntry type="library" name="slf4j-simple-1.7.5-sources" level="project" />
     <orderEntry type="library" name="slf4j-api-1.7.5-sources" level="project" />
+    <orderEntry type="library" name="exodus" level="project" />
   </component>
 </module>
 

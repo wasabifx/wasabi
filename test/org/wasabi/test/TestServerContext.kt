@@ -1,4 +1,4 @@
-import org.wasabai.test.TestServer
+import org.wasabi.test.TestServer
 
 open public class TestServerContext {
     {

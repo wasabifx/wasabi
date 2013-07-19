@@ -3,11 +3,11 @@ package org.wasabi.test
 
 
 import org.junit.Test as spec
-import org.wasabai.test.get
+import org.wasabi.test.get
 import kotlin.test.assertEquals
 import org.wasabi.http.ContentType
 import org.wasabi.routing.InterceptOn
-import org.wasabai.test.TestServer
+import org.wasabi.test.TestServer
 
 public class SendSpecs: TestServerContext() {
 
@@ -17,7 +17,7 @@ public class SendSpecs: TestServerContext() {
                 "User-Agent" to "test-client",
                 "Connection" to "keep-alive",
                 "Cache-Control" to "max-age=0",
-                "Accept" to "Accept=application/json",
+                "Accept" to "application/json",
                 "Accept-Encoding" to "gzip,deflate,sdch",
                 "Accept-Language" to "en-US,en;q=0.8",
                 "Accept-Charset" to "ISO-8859-1,utf-8;q=0.7,*;q=0.3"

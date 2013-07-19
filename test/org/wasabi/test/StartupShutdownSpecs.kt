@@ -8,7 +8,7 @@ import kotlin.test.assertEquals
 import kotlin.test.fails
 import java.net.ConnectException
 import org.wasabi.app.AppServer
-import org.wasabai.test.TestServer
+import org.wasabi.test.TestServer
 
 public class StartupShutdownSpecs {
 

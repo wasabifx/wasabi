@@ -1,8 +1,8 @@
 package org.wasabi.test
 
 import org.junit.Test as spec
-import org.wasabai.test.TestServer
-import org.wasabai.test.get
+import org.wasabi.test.TestServer
+import org.wasabi.test.get
 import kotlin.test.assertEquals
 import org.wasabi.http.CacheControl
 

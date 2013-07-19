@@ -1,4 +1,4 @@
-package org.wasabai.test
+package org.wasabi.test
 
 import org.wasabi.app.AppServer
 import org.apache.http.impl.client.BasicResponseHandler
