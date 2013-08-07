@@ -12,6 +12,11 @@ import io.netty.channel.ChannelInboundMessageHandlerAdapter
 import java.util.HashMap
 import io.netty.handler.codec.http.HttpMethod
 import org.codehaus.jackson.map.ObjectMapper
+import java.nio.file.Files
+import java.nio.file.Paths
+import java.io.File
+import javax.activation.MimetypesFileTypeMap
+import org.wasabi.routing.ResourceNotFoundException
 
 
 public class Response() {
@@ -32,10 +37,32 @@ public class Response() {
         private set
     public var allow: String = ""
         private set
+    public var absolutePathFileToStream: String = ""
+        private set
 
     fun send(message: String, contentType: ContentType = ContentType.TextPlain) {
         buffer = message
         this.contentType = contentType.toString()
+    }
+
+    fun streamFile(filename: String, explicitContentType: String = "") {
+
+        val file = File(filename)
+        if (file.exists()) {
+            this.absolutePathFileToStream = file.getAbsolutePath()
+            var fileContentType : String?
+            if (explicitContentType  == "") {
+                var mimeTypesMap : MimetypesFileTypeMap? = MimetypesFileTypeMap()
+                fileContentType = mimeTypesMap!!.getContentType(file)
+            } else {
+                fileContentType = explicitContentType
+            }
+            setResponseContentType(fileContentType ?: "application/unknown")
+            addExtraHeader("Content-Length", file.length().toString())
+            // TODO: Caching and redirect here too?
+        } else {
+            throw ResourceNotFoundException("Not found")
+        }
     }
 
     fun send(obj: Any, contentType: ContentType = ContentType.ApplicationJson) {

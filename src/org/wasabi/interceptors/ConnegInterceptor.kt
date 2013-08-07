@@ -23,7 +23,7 @@ public class ConnegInterceptor(): Interceptor {
             when (connegType) {
                 ACCEPT_HEADER -> contentType = request.accept.makeString(",")
                 QUERY_PARAM -> contentType = request.queryParams[queryParameterName] ?: ""
-                EXTENSION -> contentType = request.uri // fix to get actual .extension
+                EXTENSION -> contentType = request.uri // TODO: fix to get actual .extension
                 else -> {
                     throw IllegalArgumentException("unknown conneg")
                 }
@@ -59,3 +59,4 @@ fun AppServer.conneg(path: String = "*", body:ConnegInterceptor.()->Unit)  {
     conneg.body()
     intercept(conneg, path, InterceptOn.PostRequest)
 }
+

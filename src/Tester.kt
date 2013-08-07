@@ -1,3 +1,4 @@
+
 import org.wasabi
 import javax.security.auth.login.Configuration
 import org.wasabi.http.HttpServer
@@ -13,6 +14,10 @@ import org.wasabi.http.CacheControl
 import org.wasabi.http.NegotiateOn
 import org.wasabi.interceptors.ConnegInterceptor
 import org.wasabi.interceptors.conneg
+import Testing.*
+import org.wasabi.interceptors.static
+import org.wasabi.interceptors.favicon
+
 
 fun main(args: Array<String>) {
 
@@ -30,12 +35,14 @@ fun main(args: Array<String>) {
         onQueryParameter("format")
     }
 
+
     server.intercept(ConnegInterceptor().onAcceptHeader().onExtension().onQueryParameter("format"))
 
 
           server.intercept(BasicAuthenticationInterceptor("secure area", { (user: String, pass: String) -> user == pass}), "*")
 
-
+    server.static("/public")
+    server.favicon("/public/favicon.ico")
 
 
 
@@ -81,9 +88,17 @@ fun main(args: Array<String>) {
                     response.send(customer)
                 })
 
+        server.get("/all", someHandler)
+       // server.get("/onmore", ::someOtherFunc)
 
         server.start()
 
+
+
+}
+
+
+fun someOtherFunc() {
 
 }
 

@@ -32,7 +32,7 @@ public class PatternAndVerbMatchingRouteLocator(val routes: ArrayList<Route>): R
     override fun findRoute(path: String, method: HttpMethod): Route {
         val matchingPaths = routes.filter { compareRouteSegments(it, path) }
         if (matchingPaths.count() == 0) {
-            throw RouteNotFoundException("Routing entry not found")
+            throw ResourceNotFoundException("Routing entry not found")
         }
 
         val matchingVerbs = (matchingPaths.filter { it.method == method })

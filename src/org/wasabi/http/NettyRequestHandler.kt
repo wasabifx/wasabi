@@ -13,7 +13,7 @@ import io.netty.channel.ChannelFutureListener
 import io.netty.buffer.Unpooled
 import io.netty.util.CharsetUtil
 import org.wasabi.routing.MethodNotAllowedException
-import org.wasabi.routing.RouteNotFoundException
+import org.wasabi.routing.ResourceNotFoundException
 import org.wasabi.routing.RouteHandler
 import io.netty.handler.codec.http.DefaultHttpResponse
 import org.wasabi.routing.RouteLocator
@@ -35,6 +35,9 @@ import org.wasabi.routing.InterceptOn
 import org.wasabi.routing.InterceptorEntry
 import java.util.ArrayList
 import org.wasabi.routing.Route
+import io.netty.handler.stream.ChunkedFile
+import java.io.RandomAccessFile
+
 
 public class NettyRequestHandler(private val appServer: AppServer, routeLocator: RouteLocator): ChannelInboundMessageHandlerAdapter<Any>(), RouteLocator by routeLocator {
 
@@ -74,34 +77,39 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
             }
             if (msg is LastHttpContent) {
                 try {
-                    val route = findRoute(request!!.uri!!.split('?')[0], request!!.method!!)
-                    request!!.routeParams = route.params
+                    // process all interceptors that are global
+                    var continueRequest = false
 
-                    var stop = false;
+                    continueRequest = runInterceptors(preRequestInterceptors)
 
-                    stop = runInterceptors(preRequestInterceptors, route)
+                    if (continueRequest) {
+                        val route = findRoute(request!!.uri!!.split('?')[0], request!!.method!!)
+                        request!!.routeParams = route.params
 
-                    if (!stop) {
-                        for (handler in route!!.handler) {
+                        continueRequest = runInterceptors(preRequestInterceptors, route)
 
-                            val handlerExtension : RouteHandler.() -> Unit = handler
-                            val routeHandler = RouteHandler(request!!, response)
+                        if (continueRequest) {
+                            for (handler in route!!.handler) {
 
-                            routeHandler.handlerExtension()
-                            if (!routeHandler.executeNext) {
-                                break
+                                val handlerExtension : RouteHandler.() -> Unit = handler
+                                val routeHandler = RouteHandler(request!!, response)
+
+                                routeHandler.handlerExtension()
+                                if (!routeHandler.executeNext) {
+                                    break
+                                }
                             }
-                        }
-                        stop = runInterceptors(postRequestInterceptors, route)
-                        if (!stop) {
-                            writeResponse(ctx!!, response)
+                            continueRequest = runInterceptors(postRequestInterceptors, route)
+                            if (continueRequest) {
+                                writeResponse(ctx!!, response)
+                            }
                         }
                     }
                 } catch (e: MethodNotAllowedException) {
                     response.setAllowedMethods(e.allowedMethods)
                     response.setStatus(405, "Method not allowed")
 
-                } catch (e: RouteNotFoundException) {
+                } catch (e: ResourceNotFoundException) {
                     response.send("Not found")
                     response.setStatus(404, "Not found")
                 }
@@ -112,26 +120,44 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
 
     }
 
-    private fun runInterceptors(interceptors: List<InterceptorEntry>, route: Route): Boolean {
-        for (interceptorEntry in interceptors.filter { interceptorPathMatches(route, it.path) }) {
+    private fun runInterceptors(interceptors: List<InterceptorEntry>, route: Route? = null): Boolean {
+        var interceptorsToRun : List<InterceptorEntry>
+        if (route == null) {
+            interceptorsToRun = interceptors.filter { it.path == "*"}
+        } else {
+            interceptorsToRun = interceptors.filter { compareRouteSegments(route, it.path)}
+        }
+        for (interceptorEntry in interceptorsToRun) {
             val interceptor = interceptorEntry.interceptor
             if (!interceptor.intercept(request!!, response)) {
-                return true
+                return false
             }
 
         }
-        return false
+        return true
     }
 
-    private fun interceptorPathMatches(route: Route, interceptorPath: String): Boolean {
-        return interceptorPath == "*" || compareRouteSegments(route, interceptorPath)
-    }
+
 
     private fun writeResponse(ctx: ChannelHandlerContext, response: Response) {
-        var httpResponse = DefaultFullHttpResponse(HttpVersion("HTTP", 1, 1, true), HttpResponseStatus(response.statusCode,response.statusDescription),  Unpooled.copiedBuffer(response.buffer, CharsetUtil.UTF_8))
-        ctx.nextOutboundMessageBuffer()?.add(httpResponse)
-        addResponseHeaders(httpResponse, response)
-        ctx.flush()?.addListener(ChannelFutureListener.CLOSE)
+        var httpResponse : HttpResponse
+        if (response.absolutePathFileToStream != "") {
+            httpResponse = DefaultFullHttpResponse(HttpVersion("HTTP", 1, 1, true), HttpResponseStatus(response.statusCode, response.statusDescription))
+            addResponseHeaders(httpResponse, response)
+            ctx.write(httpResponse)
+
+            var raf = RandomAccessFile(response.absolutePathFileToStream, "r");
+            var fileLength = raf.length();
+
+            var writeFuture = ctx.write(ChunkedFile(raf, 0, fileLength, 8192));
+
+            writeFuture!!.addListener(ChannelFutureListener.CLOSE)
+        }  else {
+            httpResponse = DefaultFullHttpResponse(HttpVersion("HTTP", 1, 1, true), HttpResponseStatus(response.statusCode,response.statusDescription),  Unpooled.copiedBuffer(response.buffer, CharsetUtil.UTF_8))
+            addResponseHeaders(httpResponse, response)
+            ctx.write(httpResponse)
+            ctx.flush()?.addListener(ChannelFutureListener.CLOSE)
+        }
     }
 
     private fun addResponseHeaders(httpResponse: HttpResponse, response: Response) {
@@ -139,7 +165,9 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
             httpResponse.headers()?.add("Allow", response.allow)
         }
         for (header in response.extraHeaders) {
-            httpResponse.headers()?.add(header.key, header.value)
+            if (header.value != "") {
+                httpResponse.headers()?.add(header.key, header.value)
+            }
         }
     }
     private fun processChunkedContent() {

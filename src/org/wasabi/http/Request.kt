@@ -14,6 +14,8 @@ import java.util.HashMap
 public class Request(private val httpRequest: HttpRequest) {
 
     public val uri: String  = httpRequest.getUri()!!.split('?')[0]
+    public val document: String = uri.drop(uri.lastIndexOf("/") + 1)
+    public val path: String = uri.take(uri.lastIndexOf("/"))
     public val method: HttpMethod =  httpRequest.getMethod()!!
     public val host: String = getHeader("Host").takeWhile { it != ':' }
     public val port : Int = (getHeader("Host").dropWhile { it != ':' }).drop(1).toInt() ?: 80

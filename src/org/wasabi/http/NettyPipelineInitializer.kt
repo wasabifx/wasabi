@@ -7,6 +7,7 @@ import io.netty.handler.codec.http.HttpResponseEncoder
 import java.nio.channels.Channels
 import org.wasabi.routing.PatternAndVerbMatchingRouteLocator
 import org.wasabi.app.AppServer
+import io.netty.handler.stream.ChunkedWriteHandler
 
 
 public class NettyPipelineInitializer(private val appServer: AppServer): ChannelInitializer<SocketChannel>() {
@@ -14,6 +15,7 @@ public class NettyPipelineInitializer(private val appServer: AppServer): Channel
         val pipeline = ch?.pipeline()
         pipeline?.addLast("decoder", HttpRequestDecoder())
         pipeline?.addLast("encoder", HttpResponseEncoder())
+        pipeline?.addLast("chunkedWriter", ChunkedWriteHandler());
         pipeline?.addLast("handler", NettyRequestHandler(appServer, PatternAndVerbMatchingRouteLocator(appServer.routes)))
     }
 

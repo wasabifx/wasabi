@@ -61,9 +61,6 @@ public class AppServer(val configuration: AppConfiguration = AppConfiguration())
     }
 
 
-    public fun getx(path: String, vararg handlers: Pair<String, (RouteHandler.() -> Unit)>) {
-
-    }
 
     public fun get(path: String, vararg handlers: RouteHandler.() -> Unit) {
         addRoute(HttpMethod.GET, path, *handlers)

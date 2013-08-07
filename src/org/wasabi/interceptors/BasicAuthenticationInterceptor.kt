@@ -8,6 +8,7 @@ import org.apache.commons.codec.binary;
 import io.netty.handler.codec.base64.Base64Decoder
 import org.wasabi.encoding.decode
 import org.wasabi.routing.RouteHandler
+import org.wasabi.app.AppServer
 
 public class BasicAuthenticationInterceptor(val realm: String, val callback: (String, String) -> Boolean): Interceptor {
     override fun intercept(request: Request, response: Response): Boolean {
@@ -25,4 +26,9 @@ public class BasicAuthenticationInterceptor(val realm: String, val callback: (St
         response.addExtraHeader("WWW-Authenticate", "Basic Realm=${realm}")
         return false
     }
+}
+
+
+fun AppServer.basicAuthentication(realm: String, callback: (String, String) -> Boolean) {
+    intercept(BasicAuthenticationInterceptor(realm, callback))
 }
