@@ -9,14 +9,14 @@ import org.wasabi.routing.ResourceNotFoundException
 import io.netty.handler.codec.http.HttpMethod
 
 
-public class StaticFileInterceptor(val path: String): Interceptor {
+public class StaticFileInterceptor(val folder: String): Interceptor {
     override fun intercept(request: Request, response: Response): Boolean {
-        if (request.method == HttpMethod.GET && request.path.startsWith(path)) {
+        if (request.method == HttpMethod.GET && request.path.startsWith(folder)) {
             var fullPath: String;
-            if (path.startsWith("/")) {
+            if (folder.startsWith("/")) {
                 fullPath = request.uri.dropWhile { it == '/' }
             } else {
-                fullPath = path + "/" + request.uri
+                fullPath = folder + "/" + request.uri
             }
             response.streamFile(fullPath)
             return false
@@ -26,7 +26,7 @@ public class StaticFileInterceptor(val path: String): Interceptor {
 
 }
 
-fun AppServer.static(path: String) {
-    val staticInterceptor = StaticFileInterceptor(path)
-    intercept(staticInterceptor, "*", InterceptOn.PreRequest)
+fun AppServer.serveStaticFilesFromFolder(folder: String) {
+    val staticInterceptor = StaticFileInterceptor(folder)
+    intercept(staticInterceptor)
 }

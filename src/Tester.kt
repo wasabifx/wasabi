@@ -15,8 +15,9 @@ import org.wasabi.http.NegotiateOn
 import org.wasabi.interceptors.ConnegInterceptor
 import org.wasabi.interceptors.conneg
 import Testing.*
-import org.wasabi.interceptors.static
-import org.wasabi.interceptors.favicon
+import org.wasabi.interceptors.serveStaticFilesFromFolder
+import org.wasabi.interceptors.serveFavIconAs
+import org.wasabi.interceptors.serveErrorsFromFolder
 
 
 fun main(args: Array<String>) {
@@ -41,9 +42,9 @@ fun main(args: Array<String>) {
 
           server.intercept(BasicAuthenticationInterceptor("secure area", { (user: String, pass: String) -> user == pass}), "*")
 
-    server.static("/public")
-    server.favicon("/public/favicon.ico")
-
+    server.serveStaticFilesFromFolder("/public")
+    server.serveFavIconAs("/public/favicon.ico")
+    server.serveErrorsFromFolder("/public")
 
 
         //    fun any(handler : RouteHandler.() -> Unit) : Pair<String, RouteHandler.() -> Unit> = "**/*//*" to handler
