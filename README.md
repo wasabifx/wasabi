@@ -29,7 +29,23 @@ Getting Started
   
   server.start()
 ```
-#### Handlers ####
+
+
+### The AppServer ###
+Each Wasabi application is composed of a single *AppServer* on which you define your handlers. A handler can respond to any of the HTTP verbs: GET, POST, PUT, DELETE, OPTIONS, HEAD. 
+A normal application consists of a section where you define a series of parameters for the applications followed by your handlers (i.e. your routing table). 
+
+```kotlin
+  
+  var appServer = AppServer()
+  
+  server.get("/customers", { .... } )
+  server.post("/customer", { .... } )
+  
+  server.start()
+```
+
+### Handlers ###
 In Wasabi, every request is processed by one or more handlers. In the previous example, we are responding to a GET to "/"  with the text "Hello World!". 
 You can chain handlers. For instance, if you want to log information about a request (this is actually built-in so no need to do it manually), you could do
 
@@ -48,21 +64,6 @@ You can chain handlers. For instance, if you want to log information about a req
 ```
 
 By calling *next()* on each handler, the processing will continue. 
-
-### The AppServer ###
-Each Wasabi application is composed of a single *AppServer* on which you define your handlers. A handler can respond to any of the HTTP verbs: GET, POST, PUT, DELETE, OPTIONS, HEAD. 
-A normal application consists of a section where you define a series of parameters for the applications followed by your handlers (i.e. your routing table). 
-
-```kotlin
-  
-  var appServer = AppServer()
-  
-  server.get("/customers", { .... } )
-  server.post("/customer", { .... } )
-  
-  server.start()
-```
-
 ### Organization of Handlers ###
 
 ### Interceptors ###
