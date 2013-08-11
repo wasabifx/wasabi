@@ -16,12 +16,11 @@ might require an HTTP API.
 It is not an MVC framework. There is no View Engine or templating language. You can combine it with client-side frameworks such 
 as AngularJS or Ember. If you want a fully-fledged MVC framework in Kotlin, take a look at [Kara](http://www.karaframework.com)
 
+####Current Status
+In development. 
 
-Getting Started
----------------
-
-Hello World HTTP Server
-
+The Hello World of Wasabi
+-------------------------
 ```kotlin
   var server = AppServer()
   
@@ -29,4 +28,7 @@ Hello World HTTP Server
   
   server.start()
 ```
+
+
+
 
