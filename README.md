@@ -63,6 +63,8 @@ You can chain route handlers. For instance, if you want to log information about
   )
 ```
 
+By calling *next()* on each handler, the processing will continue. 
+
 
 #### Route Parameters ####
 Wasabi supports route parameters. Define as many parameters as you like using : followed by the name of the parameter. Access it via request.routeParams["name"]
@@ -86,7 +88,6 @@ Access form parameters using bodyParams property of the request.
   server.post("/customer", { val customerNameFromForm = request.bodyParams["name"] } )
 ```  
 
-By calling *next()* on each handler, the processing will continue. 
 ### Organization of Handlers ###
 
 ### Interceptors ###
