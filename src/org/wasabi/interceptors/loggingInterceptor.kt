@@ -5,6 +5,7 @@ import org.wasabi.http.Response
 import org.slf4j.LoggerFactory
 import org.wasabi.routing.RouteHandler
 import org.wasabi.app.AppServer
+import org.wasabi.routing.InterceptOn
 
 public class LoggingInterceptor: Interceptor {
     override fun intercept(request: Request, response: Response): Boolean {
@@ -13,4 +14,8 @@ public class LoggingInterceptor: Interceptor {
         return true
     }
 
+}
+
+fun AppServer.logRequests() {
+    intercept(LoggingInterceptor(), "*", InterceptOn.PreRequest)
 }

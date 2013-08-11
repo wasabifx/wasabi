@@ -12,12 +12,13 @@ import org.wasabi.http.ContentType
 import org.wasabi.interceptors.BasicAuthenticationInterceptor
 import org.wasabi.http.CacheControl
 import org.wasabi.http.NegotiateOn
-import org.wasabi.interceptors.ConnegInterceptor
+import org.wasabi.interceptors.ContentNegotiationPrioritizerInterceptor
 import org.wasabi.interceptors.conneg
 import Testing.*
 import org.wasabi.interceptors.serveStaticFilesFromFolder
 import org.wasabi.interceptors.serveFavIconAs
 import org.wasabi.interceptors.serveErrorsFromFolder
+import org.wasabi.interceptors.conneg
 
 
 fun main(args: Array<String>) {
@@ -37,14 +38,15 @@ fun main(args: Array<String>) {
     }
 
 
-    server.intercept(ConnegInterceptor().onAcceptHeader().onExtension().onQueryParameter("format"))
+    server.intercept(ContentNegotiationPrioritizerInterceptor().onAcceptHeader().onExtension().onQueryParameter("format"))
 
 
-          server.intercept(BasicAuthenticationInterceptor("secure area", { (user: String, pass: String) -> user == pass}), "*")
+   //       server.intercept(BasicAuthenticationInterceptor("secure area", { (user: String, pass: String) -> user == pass}), "*")
 
     server.serveStaticFilesFromFolder("/public")
     server.serveFavIconAs("/public/favicon.ico")
     server.serveErrorsFromFolder("/public")
+    //server.negotiateContent()
 
 
         //    fun any(handler : RouteHandler.() -> Unit) : Pair<String, RouteHandler.() -> Unit> = "**/*//*" to handler
@@ -67,7 +69,7 @@ fun main(args: Array<String>) {
 
         */
 
-        server.get("/customer",
+        server.get("/book",
                 {
 
                     log.write("Logging it all out")
@@ -75,9 +77,16 @@ fun main(args: Array<String>) {
                 },
 
                 {
+                    negotiate {
 
-                    response.setCacheControl(CacheControl.NoCache)
-                    response.send("Something")
+                        on("text/html") {response.send("Something about me")}
+
+                        on("application/json") {
+                            response.send("{title: 'Something about me', isbn: 'IS454-12123-A23232'}")
+                        }
+                    }
+
+                    response.send(Book("Something about me", "IS454-12123-A23232", "Biography", Author("Joe", "Smith")))
                 }
         )
 
@@ -99,6 +108,13 @@ fun main(args: Array<String>) {
 }
 
 
+
+public class Author(val firstName: String, val lastName: String) {
+
+}
+class Book(val title: String, val isbn: String, val genre: String, val author: Author) {
+
+}
 fun someOtherFunc() {
 
 }
@@ -108,10 +124,22 @@ val basicAuthentication: RouteHandler.() -> Unit = {
     next()
 }
 
-object customer {}
+object customer {
+
+}
 object log {
 fun write(a: String) {
 
 }
 }
 
+
+
+/*
+this.contentType = contentType.toString()
+
+        val objectMapper = ObjectMapper()
+
+
+buffer = objectMapper.writeValueAsString(obj)!!
+*/

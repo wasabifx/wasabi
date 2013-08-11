@@ -23,8 +23,6 @@ public class Response() {
 
     public val extraHeaders: HashMap<String, String> = HashMap<String, String>()
 
-    public var buffer : String = ""
-        private set
     public var etag: String = ""
         private set
     public var location: String = ""
@@ -37,19 +35,26 @@ public class Response() {
         private set
     public var allow: String = ""
         private set
-    public var absolutePathFileToStream: String = ""
+    public var absolutePathToFileToStream: String = ""
         private set
+    public var objectToSend: Any? = null
+        private set
+    public var sendBuffer : String = ""
+        private set
+    public var overrideContentNegotiation: Boolean = false
 
-    fun send(message: String, contentType: ContentType = ContentType.TextPlain) {
-        buffer = message
+/*
+    public fun send(message: String, contentType: ContentType = ContentType.TextPlain) {
+        sendBuffer = message
         this.contentType = contentType.toString()
     }
+*/
 
-    fun streamFile(filename: String, explicitContentType: String = "") {
+    public fun streamFile(filename: String, explicitContentType: String = "") {
 
         val file = File(filename)
         if (file.exists()) {
-            this.absolutePathFileToStream = file.getAbsolutePath()
+            this.absolutePathToFileToStream = file.getAbsolutePath()
             var fileContentType : String?
             if (explicitContentType  == "") {
                 var mimeTypesMap : MimetypesFileTypeMap? = MimetypesFileTypeMap()
@@ -65,15 +70,16 @@ public class Response() {
         }
     }
 
-    fun send(obj: Any, contentType: ContentType = ContentType.ApplicationJson) {
-        this.contentType = contentType.toString()
+    public fun send(obj: Any) {
+        if (obj is String) {
+            sendBuffer = obj
+        } else {
+            objectToSend = obj
+        }
+    }
 
-        val objectMapper = ObjectMapper()
-
-
-        buffer = objectMapper.writeValueAsString(obj)!!
-
-
+    public fun overrideSendBuffer(value: String) {
+        sendBuffer = value
     }
 
     public fun setStatus(statusCode: Int, statusDescription: String) {

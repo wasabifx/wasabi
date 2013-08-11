@@ -39,6 +39,7 @@ import io.netty.handler.stream.ChunkedFile
 import java.io.RandomAccessFile
 
 
+// TODO: This class needs cleaning up
 public class NettyRequestHandler(private val appServer: AppServer, routeLocator: RouteLocator): ChannelInboundMessageHandlerAdapter<Any>(), RouteLocator by routeLocator {
 
     var request: Request? = null
@@ -79,18 +80,18 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
             if (msg is LastHttpContent) {
                 try {
                     // process all interceptors that are global
-                    var continueRequest = false
+                    var continueRequest : Boolean
 
                     continueRequest = runInterceptors(preRequestInterceptors)
 
                     if (continueRequest) {
-                        val route = findRoute(request!!.uri!!.split('?')[0], request!!.method!!)
+                        val route = findRoute(request!!.uri.split('?')[0], request!!.method)
                         request!!.routeParams = route.params
 
                         continueRequest = runInterceptors(preRequestInterceptors, route)
 
                         if (continueRequest) {
-                            for (handler in route!!.handler) {
+                            for (handler in route.handler) {
 
                                 val handlerExtension : RouteHandler.() -> Unit = handler
                                 val routeHandler = RouteHandler(request!!, response)
@@ -109,27 +110,30 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
                 } catch (e: MethodNotAllowedException) {
                     response.setAllowedMethods(e.allowedMethods)
                     response.setStatus(405, "Method not allowed")
-                    runInterceptors(errorInterceptors)
+                    handleErrorResponse(ctx!!)
                 } catch (e: ResourceNotFoundException) {
                     response.setStatus(404, "Not found")
-                    runInterceptors(errorInterceptors)
+                    handleErrorResponse(ctx!!)
                 } catch (e: Exception) {
                     response.setStatus(500, "Internal Server Error: ${e.getMessage()}")
-                    runInterceptors(errorInterceptors)
+                    handleErrorResponse(ctx!!)
                 }
-                writeResponse(ctx!!, response)
             }
         }
 
 
     }
 
+    private fun handleErrorResponse(ctx: ChannelHandlerContext) {
+        runInterceptors(errorInterceptors)
+        writeResponse(ctx, response)
+    }
     private fun runInterceptors(interceptors: List<InterceptorEntry>, route: Route? = null): Boolean {
         var interceptorsToRun : List<InterceptorEntry>
         if (route == null) {
             interceptorsToRun = interceptors.filter { it.path == "*"}
         } else {
-            interceptorsToRun = interceptors.filter { compareRouteSegments(route, it.path)}
+            interceptorsToRun = interceptors.filter { it.path == "*" || compareRouteSegments(route, it.path)}
         }
         for (interceptorEntry in interceptorsToRun) {
             val interceptor = interceptorEntry.interceptor
@@ -145,19 +149,19 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
 
     private fun writeResponse(ctx: ChannelHandlerContext, response: Response) {
         var httpResponse : HttpResponse
-        if (response.absolutePathFileToStream != "") {
+        if (response.absolutePathToFileToStream != "") {
             httpResponse = DefaultFullHttpResponse(HttpVersion("HTTP", 1, 1, true), HttpResponseStatus(response.statusCode, response.statusDescription))
             addResponseHeaders(httpResponse, response)
             ctx.write(httpResponse)
 
-            var raf = RandomAccessFile(response.absolutePathFileToStream, "r");
+            var raf = RandomAccessFile(response.absolutePathToFileToStream, "r");
             var fileLength = raf.length();
 
             var writeFuture = ctx.write(ChunkedFile(raf, 0, fileLength, 8192));
 
             writeFuture!!.addListener(ChannelFutureListener.CLOSE)
         }  else {
-            var data = response.buffer
+            var data = response.sendBuffer
             if (data == "") {
                 data = response.statusDescription
             }
@@ -185,7 +189,7 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
                 request?.addBodyParam(data!!)
             }
         } catch (e: EndOfDataDecoderException) {
-
+            // TODO: Handle error here
         }
     }
 
@@ -207,7 +211,7 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
 
     public override fun exceptionCaught(ctx: ChannelHandlerContext?, cause: Throwable?) {
         response.setStatus(500, cause?.getMessage()!!)
-        writeResponse(ctx!!, response)
+        handleErrorResponse(ctx!!)
     }
 
 

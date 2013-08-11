@@ -33,9 +33,9 @@ public class Request(private val httpRequest: HttpRequest) {
     public var contentType: String = getHeader("Content-Type")
     public var chunked: Boolean = getHeader("Transfer-Encoding").compareToIgnoreCase("chunked") == 0
     public var authorization: String = getHeader("Authorization")
+    public var session: Any? = null
 
     private fun getHeader(header: String): String {
-
         var value = httpRequest.headers()?.get(header)
         if (value != null) {
             return value.toString()
@@ -45,7 +45,6 @@ public class Request(private val httpRequest: HttpRequest) {
     }
 
     public fun parseQueryParams() {
-
         val urlParams = httpRequest.getUri()!!.split('?')
         if (urlParams.size == 2) {
             val queryNameValuePair = urlParams[1].split("&")
@@ -61,13 +60,10 @@ public class Request(private val httpRequest: HttpRequest) {
     }
 
     public fun parseCookies() {
-
         val cookieHeader = getHeader("Cookie")
-        if (cookieHeader != null) {
-            val cookieSet = CookieDecoder.decode(cookieHeader)
-            for (cookie in cookieSet?.iterator()) {
-                cookies[cookie.getName().toString()] = Cookie(cookie.getName().toString(), cookie.getValue().toString(), cookie.getPath().toString(), cookie.getDomain().toString(), cookie.isSecure())
-            }
+        val cookieSet = CookieDecoder.decode(cookieHeader)
+        for (cookie in cookieSet?.iterator()) {
+            cookies[cookie.getName().toString()] = Cookie(cookie.getName().toString(), cookie.getValue().toString(), cookie.getPath().toString(), cookie.getDomain().toString(), cookie.isSecure())
         }
 
     }
@@ -76,7 +72,6 @@ public class Request(private val httpRequest: HttpRequest) {
         for(entry in httpDataList) {
             addBodyParam(entry)
         }
-
     }
 
     public fun addBodyParam(httpData: InterfaceHttpData) {

@@ -8,7 +8,7 @@ import org.wasabi.routing.InterceptOn
 import java.util.PriorityQueue
 
 
-public class ConnegInterceptor(): Interceptor {
+public class ContentNegotiationPrioritizerInterceptor(): Interceptor {
     val ACCEPT_HEADER = 0
     val QUERY_PARAM = 1
     val EXTENSION = 2
@@ -30,32 +30,30 @@ public class ConnegInterceptor(): Interceptor {
             }
 
         }
-        if (contentType != "") {
-            // find serializer and serialize.
-        }
+       // response.setRequestedContentType(contentType)
         return true
     }
 
-    fun onAcceptHeader(): ConnegInterceptor {
+    fun onAcceptHeader(): ContentNegotiationPrioritizerInterceptor {
         orderQueue.add(ACCEPT_HEADER)
         return this
     }
 
-    fun onQueryParameter(queryParameterName: String = "format"): ConnegInterceptor {
+    fun onQueryParameter(queryParameterName: String = "format"): ContentNegotiationPrioritizerInterceptor {
         this.queryParameterName = queryParameterName
         orderQueue.add(QUERY_PARAM)
         return this
     }
 
-    fun onExtension(): ConnegInterceptor {
+    fun onExtension(): ContentNegotiationPrioritizerInterceptor {
         orderQueue.add(EXTENSION)
         return this
     }
 
 }
 
-fun AppServer.conneg(path: String = "*", body:ConnegInterceptor.()->Unit)  {
-    val conneg = ConnegInterceptor()
+fun AppServer.conneg(path: String = "*", body: ContentNegotiationPrioritizerInterceptor.()->Unit)  {
+    val conneg = ContentNegotiationPrioritizerInterceptor()
     conneg.body()
     intercept(conneg, path, InterceptOn.PostRequest)
 }
