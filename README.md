@@ -84,7 +84,7 @@ Access query parameters using queryParams property of the request.
 Access form parameters using bodyParams property of the request.
 ```kotlin
   server.post("/customer", { val customerNameFromForm = request.bodyParams["name"] } )
-  
+```  
 
 By calling *next()* on each handler, the processing will continue. 
 ### Organization of Handlers ###
