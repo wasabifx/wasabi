@@ -4,7 +4,7 @@ Wasabi - An HTTP Framework
 #### Description ####
 An HTTP Framework built with [Kotlin](http://kotlin.jetbrains.org) for the JVM. 
 
-Wasabi combines the expressivness of Kotlin, with the power of Netty and the simplicity of Express.js (and other Sinatra-inspired web frameworks)
+Wasabi combines the conciseness and expressiveness of Kotlin, the power of Netty and the simplicity of Express.js (and other Sinatra-inspired web frameworks)
 to provide an easy to use HTTP framework
 
 #### What it is ####
@@ -12,8 +12,10 @@ An HTTP framework that allows you to easily create back-end services for a web a
 might require an HTTP API.
 
 #### What it is not ####
-It is not an MVC framework. There is no View Engine or templating language. You can combine it with client-side frameworks such 
+**It is not an MVC framework**. There is no View Engine or templating language. You can combine it with client-side frameworks such 
 as AngularJS or Ember. If you want a fully-fledged MVC framework in Kotlin, take a look at [Kara](http://www.karaframework.com)
+**It is not a REST framework**. Primarily because there's no such thing, and while calling it REST might sell better, it would be false. However it does provide (and will provide) 
+features that allow you to create resource-orientated systems that help comply with ReSTful constraints.
 
 #### Current Status ####
 In development. 
