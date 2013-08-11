@@ -1,5 +1,4 @@
-##Wasabi
-A Web Framework
+Wasabi - A Web Framework
 ------------------
 
 ####Description
