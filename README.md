@@ -25,7 +25,7 @@ Getting Started
 ```kotlin
   var server = AppServer()
   
-  server.get("/", { response.send("Hello World!") }
+  server.get("/", { response.send("Hello World!") })
   
   server.start()
 ```
