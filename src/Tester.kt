@@ -19,6 +19,7 @@ import org.wasabi.interceptors.serveStaticFilesFromFolder
 import org.wasabi.interceptors.serveFavIconAs
 import org.wasabi.interceptors.serveErrorsFromFolder
 import org.wasabi.interceptors.conneg
+import org.wasabi.interceptors.negotiateContent
 
 
 fun main(args: Array<String>) {
@@ -46,8 +47,8 @@ fun main(args: Array<String>) {
     server.serveStaticFilesFromFolder("/public")
     server.serveFavIconAs("/public/favicon.ico")
     server.serveErrorsFromFolder("/public")
-    //server.negotiateContent()
 
+    server.negotiateContent()
 
         //    fun any(handler : RouteHandler.() -> Unit) : Pair<String, RouteHandler.() -> Unit> = "**/*//*" to handler
         //    fun String.to(handler : RouteHandler.() -> Unit) : Pair<String, RouteHandler.() -> Unit> = this to handler
@@ -97,7 +98,6 @@ fun main(args: Array<String>) {
                 {
                     response.send(customer)
                 })
-
         server.get("/all", someHandler)
        // server.get("/onmore", ::someOtherFunc)
 
@@ -106,6 +106,8 @@ fun main(args: Array<String>) {
 
 
 }
+
+
 
 
 
