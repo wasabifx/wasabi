@@ -32,8 +32,8 @@ Getting Started
 
 
 ### The AppServer ###
-Each Wasabi application is composed of a single *AppServer* on which you define your handlers. A handler can respond to any of the HTTP verbs: GET, POST, PUT, DELETE, OPTIONS, HEAD. 
-A normal application consists of a section where you define a series of parameters for the applications followed by your handlers (i.e. your routing table). 
+Each Wasabi application is composed of a single *AppServer* on which you define your handlers. A route handler can respond to any of the HTTP verbs: GET, POST, PUT, DELETE, OPTIONS, HEAD. 
+A normal application consists of a section where you define a series of handlers for the applications followed by your handlers (i.e. your routing table). 
 
 ```kotlin
   
@@ -45,9 +45,9 @@ A normal application consists of a section where you define a series of paramete
   server.start()
 ```
 
-### Handlers ###
-In Wasabi, every request is processed by one or more handlers. In the previous example, we are responding to a GET to "/"  with the text "Hello World!". 
-You can chain handlers. For instance, if you want to log information about a request (this is actually built-in so no need to do it manually), you could do
+### Route Handlers ###
+In Wasabi, every request is processed by one or more route handlers. In the previous example, we are responding to a GET to "/"  with the text "Hello World!". 
+You can chain route handlers. For instance, if you want to log information about a request (this is actually built-in so no need to do it manually), you could do
 
 ```kotlin
   server.get("/",
@@ -63,12 +63,35 @@ You can chain handlers. For instance, if you want to log information about a req
   )
 ```
 
+
+#### Route Parameters ####
+Wasabi supports route parameters. Define as many parameters as you like using : followed by the name of the parameter. Access it via request.routeParams["name"]
+
+```kotlin
+   server.get("/customer/:id", { val customerId = request.routeParams["id"] } )
+```
+
+#### Query Parameters ####
+Access query parameters using queryParams property of the request. 
+
+  http://localhost:3000/customer?name=Joe
+  
+```kotlin
+  server.get("/customer", { val customerName = request.queryParams["name"] } )
+```
+
+#### Form Parameters ####
+Access form parameters using bodyParams property of the request.
+```kotlin
+  server.post("/customer", { val customerNameFromForm = request.bodyParams["name"] } )
+  
+
 By calling *next()* on each handler, the processing will continue. 
 ### Organization of Handlers ###
 
 ### Interceptors ###
 In addition to handlers, Wasabi also has interceptors. Think of interceptors as a way to add functionality to every request, or a those matching a certain route pattern.
 
-
+## TODO ##
 
 
