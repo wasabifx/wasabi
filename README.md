@@ -65,6 +65,18 @@ You can chain route handlers. For instance, if you want to log information about
 
 By calling *next()* on each handler, the processing will continue. 
 
+All verbs on *AppServer* have the following signature
+
+```kotlin
+    public fun get(path: String, vararg handlers: RouteHandler.() -> Unit) {
+        addRoute(HttpMethod.GET, path, *handlers)
+    }
+```
+
+where you can pass one or multiple route handlers. Each one of these is an extension method to the class *RouteHandler*. This class has various properties, amongst which are
+*request* and *response*. That is how you can access these properties from inside each of the functions without an explicit declaration. 
+
+
 
 #### Route Parameters ####
 Wasabi supports route parameters. Define as many parameters as you like using : followed by the name of the parameter. Access it via request.routeParams["name"]
@@ -88,7 +100,8 @@ Access form parameters using bodyParams property of the request.
   server.post("/customer", { val customerNameFromForm = request.bodyParams["name"] } )
 ```  
 
-### Organization of Handlers ###
+### Organization of Route Handlers and Application layout ###
+// TODO 
 
 ### Interceptors ###
 In addition to handlers, Wasabi also has interceptors. Think of interceptors as a way to add functionality to every request, or a those matching a certain route pattern.
@@ -141,6 +154,7 @@ Most interceptor add extension methods to *AppServer* to make them easier (and m
 * Clean up code. A lot of TODO's in there. And some ugly stuff too. 
 * Add missing unit tests
 * Finish implementation of some things and make them production ready
+* A lot of missing functionality such as support for static binding to GET/POST
 
 Contributions
 -------------
