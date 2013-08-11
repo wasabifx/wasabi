@@ -3,9 +3,9 @@ Wasabi - A Web Framework
 
 ####Description
 
-A Web Framework built with [Kotlin](http://kotlin.jetbrains.org). 
+A Web Framework built with [Kotlin](http://kotlin.jetbrains.org) for the JVM. 
 
-Wasabi combines the expressivness of Kotlin, with the power of Netty and the simplicity of Express.js (and other Sinatra inspired web frameworks)
+Wasabi combines the expressivness of Kotlin, with the power of Netty and the simplicity of Express.js (and other Sinatra-inspired web frameworks)
 to provide an easy to use HTTP framework
 
 ####What it is
