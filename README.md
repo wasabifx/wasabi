@@ -14,6 +14,7 @@ might require an HTTP API.
 #### What it is not ####
 **It is not an MVC framework**. There is no View Engine or templating language. You can combine it with client-side frameworks such 
 as AngularJS or Ember. If you want a fully-fledged MVC framework in Kotlin, take a look at [Kara](http://www.karaframework.com)
+
 **It is not a REST framework**. Primarily because there's no such thing, and while calling it REST might sell better, it would be false. However it does provide (and will provide) 
 features that allow you to create resource-orientated systems that help comply with ReSTful constraints.
 
