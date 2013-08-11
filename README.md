@@ -17,4 +17,16 @@ It is not an MVC framework. There is no View Engine or templating language. You 
 as AngularJS or Ember. If you want a fully-fledged MVC framework in Kotlin, take a look at [Kara](http://www.karaframework.com)
 
 
+Getting Started
+---------------
+
+Hello World HTTP Server
+
+```kotlin
+  var server = AppServer()
+  
+  server.get("/", { response.send("Hello World!") }
+  
+  server.start()
+```
 
