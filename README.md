@@ -33,7 +33,7 @@ Getting Started
 
 ### The AppServer ###
 Each Wasabi application is composed of a single *AppServer* on which you define your handlers. A route handler can respond to any of the HTTP verbs: GET, POST, PUT, DELETE, OPTIONS, HEAD. 
-A normal application consists of a section where you define a series of handlers for the applications followed by your handlers (i.e. your routing table). 
+A normal application consists of a section where you define a series of parameters for the application, followed by your handlers (i.e. your routing table). 
 
 ```kotlin
   
@@ -92,7 +92,58 @@ Access form parameters using bodyParams property of the request.
 
 ### Interceptors ###
 In addition to handlers, Wasabi also has interceptors. Think of interceptors as a way to add functionality to every request, or a those matching a certain route pattern.
+An intercpetor implements the following trait
+
+```kotlin
+  public trait Interceptor {
+    fun intercept(request: Request, response: Response): Boolean
+  }
+```
+
+You return true if you want the process to continue or false if you want to interrupt the request.
+
+To add an interceptor to the application, you use
+
+```kotlin
+  server.interceptor(MyInterceptor(), path, position)
+```
+
+where path can be a specific route or *** to match all routes. Position indicates when the intercept occurs. Possible positions are
+
+```kotlin
+  public enum class InterceptOn {
+      PreRequest
+      PostRequest
+      Error
+  }
+```
+
+Out of the box, the following interceptors are available 
+
+* BasicAuthenticationInterceptor: Basic authentication
+* ContentNegotiationInterceptor: Automatic Content negotation
+* FavIconInterceptor: Support for favicon
+* StaticFileInterceptor: Support for serving static files
+* LoggingInterceptor: Logging
+* SessionManagementInterceptor: Session Management support
+
+Most interceptor add extension methods to *AppServer* to make them easier (and more descriptive) to use. For instance the
+*ContentNegotiationInterceptor* and *StaticFileInterceptor*  would be used as so
+
+```kotlin
+  val appServer = AppServer()
+  
+  server.negotiateContent()
+  server.serveStaticFilesFromFolder("/public") 
+```
 
 ## TODO ##
+* Clean up code. A lot of TODO's in there. And some ugly stuff too. 
+* Add missing unit tests
+* Finish implementation of some things and make them production ready
+
+Contributions
+-------------
+There's a lot of work still pending and any help would be appreciated. Pull Requests welcome!
 
 
