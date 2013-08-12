@@ -35,7 +35,7 @@ Getting Started
 
 
 ### The AppServer ###
-Each Wasabi application is composed of a single *AppServer* on which you define your handlers. A route handler can respond to any of the HTTP verbs: GET, POST, PUT, DELETE, OPTIONS, HEAD. 
+Each Wasabi application is composed of a single *AppServer* on which you define route handlers. A route handler can respond to any of the HTTP verbs: GET, POST, PUT, DELETE, OPTIONS, HEAD. 
 A normal application consists of a section where you define a series of parameters for the application, followed by your handlers (i.e. your routing table). 
 
 ```kotlin
