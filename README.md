@@ -141,6 +141,7 @@ Out of the box, the following interceptors are available
 * FavIconInterceptor: Support for favicon
 * StaticFileInterceptor: Support for serving static files
 * LoggingInterceptor: Logging
+* FileBasedErrorInterceptor: Customize error messages based on convention (e.g. 404.html)
 * SessionManagementInterceptor: Session Management support
 
 Most interceptor add extension methods to *AppServer* to make them easier (and more descriptive) to use. For instance the
