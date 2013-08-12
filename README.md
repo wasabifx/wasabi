@@ -159,6 +159,8 @@ Most interceptor add extension methods to *AppServer* to make them easier (and m
 * Add missing unit tests
 * Finish implementation of some things and make them production ready
 * A lot of missing functionality such as support for static binding to GET/POST
+* A Runner
+* Performance checks. No performance testing has been made. 
 
 Contributions
 -------------
