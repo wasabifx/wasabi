@@ -6,7 +6,7 @@ import org.wasabi.http.Response
 import org.wasabi.http.ContentType
 import org.apache.commons.codec.binary;
 import io.netty.handler.codec.base64.Base64Decoder
-import org.wasabi.encoding.decode
+import org.wasabi.encoding.decodeBase64
 import org.wasabi.routing.RouteHandler
 import org.wasabi.app.AppServer
 
@@ -14,7 +14,7 @@ public class BasicAuthenticationInterceptor(val realm: String, val callback: (St
     override fun intercept(request: Request, response: Response): Boolean {
         if (request.authorization != "") {
             val credentialsBase64Encoded = request.authorization.dropWhile { it != ' ' }
-            val credentialsDecoded = credentialsBase64Encoded.decode("base64")
+            val credentialsDecoded = credentialsBase64Encoded.decodeBase64("base64")
             val credentials = credentialsDecoded.split(':')
             if (callback(credentials[0], credentials[1])) {
                 return true

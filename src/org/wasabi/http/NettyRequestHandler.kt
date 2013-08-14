@@ -32,7 +32,7 @@ import io.netty.handler.codec.http.HttpResponse
 import org.wasabi.app.AppServer
 import org.wasabi.interceptors.Interceptor
 import org.wasabi.routing.InterceptOn
-import org.wasabi.routing.InterceptorEntry
+import org.wasabi.interceptors.InterceptorEntry
 import java.util.ArrayList
 import org.wasabi.routing.Route
 import io.netty.handler.stream.ChunkedFile
@@ -101,12 +101,11 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
                                     break
                                 }
                             }
-                            continueRequest = runInterceptors(postRequestInterceptors, route)
-                            if (continueRequest) {
-                                writeResponse(ctx!!, response)
-                            }
+                            runInterceptors(postRequestInterceptors, route)
+
                         }
                     }
+                    writeResponse(ctx!!, response)
                 } catch (e: MethodNotAllowedException) {
                     response.setAllowedMethods(e.allowedMethods)
                     response.setStatus(405, "Method not allowed")

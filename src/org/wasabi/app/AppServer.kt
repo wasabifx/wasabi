@@ -11,7 +11,7 @@ import io.netty.handler.codec.http.HttpMethod
 import org.wasabi.routing.RouteHandler
 import org.wasabi.routing.RouteAlreadyExistsException
 import java.util.HashMap
-import org.wasabi.routing.InterceptorEntry
+import org.wasabi.interceptors.InterceptorEntry
 import org.wasabi.interceptors.LoggingInterceptor
 import org.wasabi.interceptors.Interceptor
 
@@ -40,12 +40,20 @@ public class AppServer(val configuration: AppConfiguration = AppConfiguration())
         }
     }
 
+    /**
+     *  Returns true if the Server is running.
+     */
     public val isRunning: Boolean
         get ()
         {
             return running
         }
 
+    /**
+     * Starts the server
+     *
+     * @param   wait
+     */
     public fun start(wait: Boolean = true) {
         logger!!.info(configuration.welcomeMessage)
 
@@ -61,7 +69,9 @@ public class AppServer(val configuration: AppConfiguration = AppConfiguration())
     }
 
 
-
+    /**
+     *
+     */
     public fun get(path: String, vararg handlers: RouteHandler.() -> Unit) {
         addRoute(HttpMethod.GET, path, *handlers)
     }
