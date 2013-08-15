@@ -9,7 +9,7 @@ import java.util.ArrayList
 import org.wasabi.routing.Route
 import io.netty.handler.codec.http.HttpMethod
 import org.wasabi.routing.RouteHandler
-import org.wasabi.routing.RouteAlreadyExistsException
+import org.wasabi.exceptions.RouteAlreadyExistsException
 import java.util.HashMap
 import org.wasabi.interceptors.InterceptorEntry
 import org.wasabi.interceptors.LoggingInterceptor

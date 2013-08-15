@@ -12,8 +12,8 @@ import io.netty.handler.codec.http.HttpResponseStatus
 import io.netty.channel.ChannelFutureListener
 import io.netty.buffer.Unpooled
 import io.netty.util.CharsetUtil
-import org.wasabi.routing.MethodNotAllowedException
-import org.wasabi.routing.ResourceNotFoundException
+import org.wasabi.exceptions.MethodNotAllowedHttpException
+import org.wasabi.exceptions.ResourceNotFoundHttpException
 import org.wasabi.routing.RouteHandler
 import io.netty.handler.codec.http.DefaultHttpResponse
 import org.wasabi.routing.RouteLocator
@@ -106,12 +106,12 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
                         }
                     }
                     writeResponse(ctx!!, response)
-                } catch (e: MethodNotAllowedException) {
+                } catch (e: MethodNotAllowedHttpException) {
                     response.setAllowedMethods(e.allowedMethods)
-                    response.setStatus(405, "Method not allowed")
+                    response.setStatus(e.statusCode, e.statusDescription)
                     handleErrorResponse(ctx!!)
-                } catch (e: ResourceNotFoundException) {
-                    response.setStatus(404, "Not found")
+                } catch (e: ResourceNotFoundHttpException) {
+                    response.setStatus(e.statusCode, e.statusDescription)
                     handleErrorResponse(ctx!!)
                 } catch (e: Exception) {
                     response.setStatus(500, "Internal Server Error: ${e.getMessage()}")

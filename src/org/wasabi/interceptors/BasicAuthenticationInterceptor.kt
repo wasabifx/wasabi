@@ -29,6 +29,6 @@ public class BasicAuthenticationInterceptor(val realm: String, val callback: (St
 }
 
 
-fun AppServer.useBasicAuthentication(realm: String, callback: (String, String) -> Boolean) {
-    intercept(BasicAuthenticationInterceptor(realm, callback))
+fun AppServer.useBasicAuthentication(realm: String, callback: (String, String) -> Boolean, path: String = "*") {
+    intercept(BasicAuthenticationInterceptor(realm, callback), path)
 }

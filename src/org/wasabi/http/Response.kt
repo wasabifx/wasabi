@@ -16,7 +16,7 @@ import java.nio.file.Files
 import java.nio.file.Paths
 import java.io.File
 import javax.activation.MimetypesFileTypeMap
-import org.wasabi.routing.ResourceNotFoundException
+import org.wasabi.exceptions.ResourceNotFoundHttpException
 
 
 public class Response() {
@@ -66,7 +66,7 @@ public class Response() {
             addExtraHeader("Content-Length", file.length().toString())
             // TODO: Caching and redirect here too?
         } else {
-            throw ResourceNotFoundException("Not found")
+            throw ResourceNotFoundHttpException()
         }
     }
 

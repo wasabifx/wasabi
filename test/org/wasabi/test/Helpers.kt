@@ -20,6 +20,13 @@ import org.apache.http.HttpResponse
 import org.apache.http.util.EntityUtils
 import javax.swing.text.html.parser.Entity
 
+
+open public class TestServerContext {
+    {
+        TestServer.start()
+    }
+}
+
 object TestServer {
 
     public val appServer: AppServer = AppServer()
@@ -61,7 +68,7 @@ private fun makeRequest(headers: HashMap<String, String>, request: HttpRequestBa
     val response = httpClient.execute(request)!!
 
     val body = EntityUtils.toString(response.getEntity())!!
-    return HttpClientResponse(response.getAllHeaders()!!, body)
+    return HttpClientResponse(response.getAllHeaders()!!, body, response.getStatusLine()?.getStatusCode(), response.getStatusLine()?.getReasonPhrase() ?: "")
 }
 
 public fun delete(url: String, headers: HashMap<String, String>): HttpClientResponse {
@@ -80,6 +87,6 @@ public fun postForm(url: String, headers: HashMap<String, String>, fields: Array
     return makeRequest(headers, httpPost)
 }
 
-data public class HttpClientResponse(val headers: Array<Header>, val body: String)
+data public class HttpClientResponse(val headers: Array<Header>, val body: String, val statusCode: Int, val statusDescription: String)
 
 

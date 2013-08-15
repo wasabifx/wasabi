@@ -6,7 +6,7 @@ import kotlin.test.assertEquals
 
 public class StaticFileInterceptorSpecs: TestServerContext() {
 
-    spec fun requesting_an_existing_static_file_when_using_static_file_interceptor_should_return_the_file() {
+    spec fun requesting_an_existing_static_file_should_return_the_file() {
 
 
         TestServer.reset()
@@ -22,7 +22,7 @@ public class StaticFileInterceptorSpecs: TestServerContext() {
 
     }
 
-    spec fun requesting_an_non_existing_static_file_when_using_static_file_interceptor_should_404() {
+    spec fun requesting_an_non_existing_static_file_should_404() {
 
 
         TestServer.reset()
@@ -31,7 +31,8 @@ public class StaticFileInterceptorSpecs: TestServerContext() {
         val response = get("http://localhost:3000/public/test1.html", hashMapOf())
 
 
-        assertEquals("Not found", response.body)
+        assertEquals("Not found", response.statusDescription)
+        assertEquals(404, response.statusCode)
 
 
 

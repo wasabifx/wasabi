@@ -8,8 +8,8 @@ import org.junit.runners.Parameterized.Parameters
 import java.util.ArrayList
 import kotlin.test.assertNull
 import kotlin.test.fails
-import org.wasabi.routing.MethodNotAllowedException
-import org.wasabi.routing.RouteAlreadyExistsException
+import org.wasabi.exceptions.MethodNotAllowedHttpException
+import org.wasabi.exceptions.RouteAlreadyExistsException
 import io.netty.handler.codec.http.HttpMethod
 import org.wasabi.routing.PatternAndVerbMatchingRouteLocator
 import org.wasabi.test.TestServer
@@ -71,7 +71,7 @@ public class RoutesSpecs {
 
         val exception = fails({routeLocator.findRoute("/second", HttpMethod.GET)})
 
-        assertEquals(javaClass<MethodNotAllowedException>(), exception.javaClass)
+        assertEquals(javaClass<MethodNotAllowedHttpException>(), exception.javaClass)
 
     }
 

@@ -3,6 +3,8 @@ package org.wasabi.routing
 import io.netty.handler.codec.http.HttpMethod
 import org.wasabi.app.AppServer
 import java.util.ArrayList
+import org.wasabi.exceptions.ResourceNotFoundHttpException
+import org.wasabi.exceptions.MethodNotAllowedHttpException
 
 public class PatternAndVerbMatchingRouteLocator(val routes: ArrayList<Route>): RouteLocator {
 
@@ -32,7 +34,7 @@ public class PatternAndVerbMatchingRouteLocator(val routes: ArrayList<Route>): R
     override fun findRoute(path: String, method: HttpMethod): Route {
         val matchingPaths = routes.filter { compareRouteSegments(it, path) }
         if (matchingPaths.count() == 0) {
-            throw ResourceNotFoundException("Routing entry not found")
+            throw ResourceNotFoundHttpException("Routing entry not found")
         }
 
         val matchingVerbs = (matchingPaths.filter { it.method == method })
@@ -40,7 +42,7 @@ public class PatternAndVerbMatchingRouteLocator(val routes: ArrayList<Route>): R
         if (matchingVerbs.count() == 1) {
             return matchingVerbs.first!!
         }
-        throw MethodNotAllowedException("Method not allowed", Array<HttpMethod>(matchingPaths.size(), { i -> matchingPaths.get(i).method}))
+        throw MethodNotAllowedHttpException(allowedMethods = Array<HttpMethod>(matchingPaths.size(), { i -> matchingPaths.get(i).method}))
 
     }
 
