@@ -12,8 +12,6 @@ import io.netty.handler.codec.http.HttpResponseStatus
 import io.netty.channel.ChannelFutureListener
 import io.netty.buffer.Unpooled
 import io.netty.util.CharsetUtil
-import org.wasabi.exceptions.MethodNotAllowedHttpException
-import org.wasabi.exceptions.ResourceNotFoundHttpException
 import org.wasabi.routing.RouteHandler
 import io.netty.handler.codec.http.DefaultHttpResponse
 import org.wasabi.routing.RouteLocator
@@ -37,6 +35,8 @@ import java.util.ArrayList
 import org.wasabi.routing.Route
 import io.netty.handler.stream.ChunkedFile
 import java.io.RandomAccessFile
+import org.wasabi.routing.InvalidMethodException
+import org.wasabi.routing.RouteNotFoundException
 
 
 // TODO: This class needs cleaning up
@@ -105,28 +105,22 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
 
                         }
                     }
-                    writeResponse(ctx!!, response)
-                } catch (e: MethodNotAllowedHttpException) {
+                } catch (e: InvalidMethodException)  {
                     response.setAllowedMethods(e.allowedMethods)
-                    response.setStatus(e.statusCode, e.statusDescription)
-                    handleErrorResponse(ctx!!)
-                } catch (e: ResourceNotFoundHttpException) {
-                    response.setStatus(e.statusCode, e.statusDescription)
-                    handleErrorResponse(ctx!!)
+                    response.setHttpStatus(HttpStatusCodes.MethodNotAllowed)
+                } catch (e: RouteNotFoundException) {
+                    response.setHttpStatus(HttpStatusCodes.NotFound)
                 } catch (e: Exception) {
-                    response.setStatus(500, "Internal Server Error: ${e.getMessage()}")
-                    handleErrorResponse(ctx!!)
+                    // TODO: Log actual message
+                    response.setHttpStatus(HttpStatusCodes.InternalServerError)
                 }
+                writeResponse(ctx!!, response)
             }
         }
 
 
     }
 
-    private fun handleErrorResponse(ctx: ChannelHandlerContext) {
-        runInterceptors(errorInterceptors)
-        writeResponse(ctx, response)
-    }
     private fun runInterceptors(interceptors: List<InterceptorEntry>, route: Route? = null): Boolean {
         var interceptorsToRun : List<InterceptorEntry>
         if (route == null) {
@@ -148,6 +142,9 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
 
     private fun writeResponse(ctx: ChannelHandlerContext, response: Response) {
         var httpResponse : HttpResponse
+        if (response.statusCode / 100 == 4 || response.statusCode / 100 == 5) {
+            runInterceptors(errorInterceptors)
+        }
         if (response.absolutePathToFileToStream != "") {
             httpResponse = DefaultFullHttpResponse(HttpVersion("HTTP", 1, 1, true), HttpResponseStatus(response.statusCode, response.statusDescription))
             addResponseHeaders(httpResponse, response)
@@ -209,8 +206,9 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
 
 
     public override fun exceptionCaught(ctx: ChannelHandlerContext?, cause: Throwable?) {
-        response.setStatus(500, cause?.getMessage()!!)
-        handleErrorResponse(ctx!!)
+        // TODO: Log actual message
+        response.setHttpStatus(HttpStatusCodes.InternalServerError)
+        writeResponse(ctx!!, response)
     }
 
 

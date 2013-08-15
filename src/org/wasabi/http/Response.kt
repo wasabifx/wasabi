@@ -16,7 +16,6 @@ import java.nio.file.Files
 import java.nio.file.Paths
 import java.io.File
 import javax.activation.MimetypesFileTypeMap
-import org.wasabi.exceptions.ResourceNotFoundHttpException
 
 
 public class Response() {
@@ -43,13 +42,6 @@ public class Response() {
         private set
     public var overrideContentNegotiation: Boolean = false
 
-/*
-    public fun send(message: String, contentType: ContentType = ContentType.TextPlain) {
-        sendBuffer = message
-        this.contentType = contentType.toString()
-    }
-*/
-
     public fun streamFile(filename: String, explicitContentType: String = "") {
 
         val file = File(filename)
@@ -66,7 +58,7 @@ public class Response() {
             addExtraHeader("Content-Length", file.length().toString())
             // TODO: Caching and redirect here too?
         } else {
-            throw ResourceNotFoundHttpException()
+            setHttpStatus(HttpStatusCodes.NotFound)
         }
     }
 
@@ -82,9 +74,14 @@ public class Response() {
         sendBuffer = value
     }
 
-    public fun setStatus(statusCode: Int, statusDescription: String) {
+    public fun setHttpStatus(statusCode: Int, statusDescription: String) {
         this.statusCode = statusCode
         this.statusDescription = statusDescription
+    }
+
+    public fun setHttpStatus(httpStatus: HttpStatusCodes) {
+        statusCode = httpStatus.statusCode
+        statusDescription = httpStatus.statusDescription
     }
 
     public fun setResponseContentType(contentType: String) {

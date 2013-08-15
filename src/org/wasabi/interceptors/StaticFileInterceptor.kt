@@ -5,7 +5,6 @@ import org.wasabi.http.Response
 import org.wasabi.app.AppServer
 import org.wasabi.routing.InterceptOn
 import java.io.File
-import org.wasabi.exceptions.ResourceNotFoundHttpException
 import io.netty.handler.codec.http.HttpMethod
 
 

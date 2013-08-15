@@ -9,6 +9,7 @@ import io.netty.handler.codec.base64.Base64Decoder
 import org.wasabi.encoding.decodeBase64
 import org.wasabi.routing.RouteHandler
 import org.wasabi.app.AppServer
+import org.wasabi.http.HttpStatusCodes
 
 public class BasicAuthenticationInterceptor(val realm: String, val callback: (String, String) -> Boolean): Interceptor {
     override fun intercept(request: Request, response: Response): Boolean {
@@ -20,7 +21,7 @@ public class BasicAuthenticationInterceptor(val realm: String, val callback: (St
                 return true
             }
         }
-        response.setStatus(401, "Authentication Failed")
+        response.setHttpStatus(HttpStatusCodes.Unauthorized)
         response.setResponseContentType(ContentType.TextPlain)
         response.send("Authentication Failed")
         response.addExtraHeader("WWW-Authenticate", "Basic Realm=${realm}")

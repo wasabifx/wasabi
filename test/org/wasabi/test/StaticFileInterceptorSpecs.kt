@@ -31,7 +31,7 @@ public class StaticFileInterceptorSpecs: TestServerContext() {
         val response = get("http://localhost:3000/public/test1.html", hashMapOf())
 
 
-        assertEquals("Not found", response.statusDescription)
+        assertEquals("Not Found", response.statusDescription)
         assertEquals(404, response.statusCode)
 
 
