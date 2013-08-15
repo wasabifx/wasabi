@@ -16,10 +16,6 @@ public class StaticFileInterceptorSpecs: TestServerContext() {
 
 
         assertEquals("<!DOCTYPE html><head><title></title></head><body>This is an example static file</body></html>", response.body)
-
-
-
-
     }
 
     spec fun requesting_an_non_existing_static_file_should_404() {
@@ -33,10 +29,6 @@ public class StaticFileInterceptorSpecs: TestServerContext() {
 
         assertEquals("Not Found", response.statusDescription)
         assertEquals(404, response.statusCode)
-
-
-
-
     }
 
 }

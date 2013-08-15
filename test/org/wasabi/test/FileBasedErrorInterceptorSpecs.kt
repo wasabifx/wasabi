@@ -4,6 +4,7 @@ import org.junit.Test as spec
 import org.wasabi.interceptors.serveStaticFilesFromFolder
 import kotlin.test.assertEquals
 import org.wasabi.interceptors.serveErrorsFromFolder
+import org.wasabi.http.HttpStatusCodes
 
 public class FileBasedErrorInterceptorSpecs : TestServerContext() {
 
@@ -16,8 +17,6 @@ public class FileBasedErrorInterceptorSpecs : TestServerContext() {
 
         assertEquals(404, response.statusCode)
         assertEquals("<!DOCTYPE html><head><title></title></head><body>Custom File 404</body></html>", response.body)
-
-
     }
 
     spec fun when_an_error_occurs_and_corresponding_error_file_does_not_exist_it_should_serve_default_error_file() {
@@ -25,11 +24,10 @@ public class FileBasedErrorInterceptorSpecs : TestServerContext() {
         TestServer.reset()
         TestServer.appServer.serveErrorsFromFolder("/public")
 
+        TestServer.appServer.get("/notvalid", { response.setHttpStatus(HttpStatusCodes.Forbidden)})
         val response = get("http://localhost:3000/notvalid", hashMapOf())
 
-        assertEquals(401, response.statusCode)
-        assertEquals("<!DOCTYPE html><head><title></title></head><body>Custom File 404</body></html>", response.body)
-
-
+        assertEquals(403, response.statusCode)
+        assertEquals("<!DOCTYPE html><head><title></title></head><body>Standard Error File</body></html>", response.body)
     }
 }
