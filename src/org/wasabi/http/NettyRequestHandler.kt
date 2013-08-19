@@ -142,6 +142,7 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
 
     private fun writeResponse(ctx: ChannelHandlerContext, response: Response) {
         var httpResponse : HttpResponse
+        response.setResponseCookies()
         if (response.statusCode / 100 == 4 || response.statusCode / 100 == 5) {
             runInterceptors(errorInterceptors)
         }

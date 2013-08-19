@@ -2,6 +2,7 @@ package org.wasabi.routing
 
 import org.wasabi.http.Request
 import org.wasabi.http.Response
+import org.wasabi.http.HttpStatusCodes
 
 public class RouteHandler(val request: Request, val response: Response)  {
 
@@ -12,11 +13,16 @@ public class RouteHandler(val request: Request, val response: Response)  {
         executeNext = true
     }
 
+    // I'm not too happy with this solution because while it does provide
+    // a nice DSL for negotiation, technically it does not belong in RouteHandler.
+    // It would be part of response and as the content negotiation is an interceptor
+    // it should be completely self-contained...but what the hell. (H.H.)
+
     public fun negotiate(negotiation: () -> Unit) {
         response.overrideContentNegotiation = true
         negotiation()
         if (!contentNegotiated) {
-            // TODO: throw exception that cannot negotiate content
+            response.setHttpStatus(HttpStatusCodes.UnsupportedMediaType)
         }
     }
 
@@ -29,7 +35,6 @@ public class RouteHandler(val request: Request, val response: Response)  {
                 func()
                 contentNegotiated = true
             }
-            // if valid set contentNegotiated to true
         }
     }
 

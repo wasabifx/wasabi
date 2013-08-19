@@ -16,6 +16,8 @@ import java.nio.file.Files
 import java.nio.file.Paths
 import java.io.File
 import javax.activation.MimetypesFileTypeMap
+import io.netty.handler.codec.http.ServerCookieEncoder
+import io.netty.handler.codec.http.DefaultCookie
 
 
 public class Response() {
@@ -41,6 +43,8 @@ public class Response() {
     public var sendBuffer : String = ""
         private set
     public var overrideContentNegotiation: Boolean = false
+    public val cookies : HashMap<String, Cookie> = HashMap<String, Cookie>()
+
 
     public fun streamFile(filename: String, explicitContentType: String = "") {
 
@@ -97,6 +101,14 @@ public class Response() {
     }
     public fun addExtraHeader(name: String, value: String) {
         extraHeaders[name] = value
+    }
+
+    public fun setResponseCookies() {
+        for (cookie in cookies) {
+            val name = cookie.value.name.toString()
+            val value = cookie.value.value.toString()
+            addExtraHeader("Set-Cookie", ServerCookieEncoder.encode(name, value).toString())
+        }
     }
 
     public fun setCacheControl(cacheControl: CacheControl) {

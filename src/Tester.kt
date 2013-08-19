@@ -14,12 +14,12 @@ import org.wasabi.http.CacheControl
 import org.wasabi.http.NegotiateOn
 import org.wasabi.interceptors.ContentNegotiationPrioritizerInterceptor
 import org.wasabi.interceptors.conneg
-import Testing.*
 import org.wasabi.interceptors.serveStaticFilesFromFolder
 import org.wasabi.interceptors.serveFavIconAs
 import org.wasabi.interceptors.serveErrorsFromFolder
 import org.wasabi.interceptors.conneg
 import org.wasabi.interceptors.negotiateContent
+import org.wasabi.http.Cookie
 
 
 fun main(args: Array<String>) {
@@ -94,13 +94,19 @@ fun main(args: Array<String>) {
 
 
 
+        server.get("/set_cookie", {
+            response.cookies["user"] = Cookie("user", "hadi", "/", "", false)
+            response.send("cookie is set")
+        })
 
+        server.get("/get_cookie", {
+            response.send(request.cookies["user"]!!.value)
+        })
         server.get("/customer/:id",
                 {
                     response.send(customer)
                 })
-        server.get("/all", someHandler)
-       // server.get("/onmore", ::someOtherFunc)
+      //  server.get("/onmore", ::someOtherFunc)
 
         server.start()
 
@@ -118,7 +124,7 @@ public class Author(val firstName: String, val lastName: String) {
 class Book(val title: String, val isbn: String, val genre: String, val author: Author) {
 
 }
-fun someOtherFunc() {
+fun RouteHandler.someOtherFunc() {
 
 }
 
