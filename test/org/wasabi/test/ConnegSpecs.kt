@@ -4,7 +4,7 @@ import org.junit.Test as spec
 import org.wasabi.test.TestServer
 import org.wasabi.test.get
 import kotlin.test.assertEquals
-import org.wasabi.interceptors.conneg
+import org.wasabi.interceptors.parseContentNegotiationHeaders
 
 
 public class ConnegSpecs: TestServerContext() {
@@ -21,7 +21,7 @@ public class ConnegSpecs: TestServerContext() {
 
         )
 
-        TestServer.appServer.conneg() {
+        TestServer.appServer.parseContentNegotiationHeaders() {
             onAcceptHeader()
         }
 

@@ -23,10 +23,10 @@ public class Request(private val httpRequest: HttpRequest) {
     public val keepAlive: Boolean  = getHeader("Connection").compareToIgnoreCase("keep-alive") == 0
     public val cacheControl: String = getHeader("Cache-Control")
     public val userAgent: String = getHeader("User-Agent")
-    public val accept: Array<String> = getHeader("Accept").split(",")
-    public val acceptEncoding: Array<String> = getHeader("Accept-Encoding").split(",")
-    public val acceptLanguage: Array<String> = getHeader("Accept-Language").split(",")
-    public val acceptCharset: Array<String> = getHeader("Accept-Charset").split(",")
+    public val accept: Array<String> = getHeader("Accept").split(";")
+    public val acceptEncoding: Array<String> = getHeader("Accept-Encoding").split(";")
+    public val acceptLanguage: Array<String> = getHeader("Accept-Language").split(";")
+    public val acceptCharset: Array<String> = getHeader("Accept-Charset").split(";")
     public val queryParams : HashMap<String, String> = HashMap<String, String>()
     public var routeParams: HashMap<String, String> = HashMap<String, String>()
     public var bodyParams: HashMap<String, String> = HashMap<String, String>()
@@ -37,6 +37,11 @@ public class Request(private val httpRequest: HttpRequest) {
 
     public var session: Session? = null
 
+    public fun init() {
+        parseQueryParams()
+        parseCookies()
+    }
+
     private fun getHeader(header: String): String {
         var value = httpRequest.headers()?.get(header)
         if (value != null) {
@@ -46,7 +51,7 @@ public class Request(private val httpRequest: HttpRequest) {
         }
     }
 
-    public fun parseQueryParams() {
+    private fun parseQueryParams() {
         val urlParams = httpRequest.getUri()!!.split('?')
         if (urlParams.size == 2) {
             val queryNameValuePair = urlParams[1].split("&")
@@ -61,7 +66,7 @@ public class Request(private val httpRequest: HttpRequest) {
         }
     }
 
-    public fun parseCookies() {
+    private fun parseCookies() {
         val cookieHeader = getHeader("Cookie")
         val cookieSet = CookieDecoder.decode(cookieHeader)
         for (cookie in cookieSet?.iterator()) {

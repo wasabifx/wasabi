@@ -18,6 +18,7 @@ import java.io.File
 import javax.activation.MimetypesFileTypeMap
 import io.netty.handler.codec.http.ServerCookieEncoder
 import io.netty.handler.codec.http.DefaultCookie
+import java.util.ArrayList
 
 
 public class Response() {
@@ -38,12 +39,18 @@ public class Response() {
         private set
     public var absolutePathToFileToStream: String = ""
         private set
-    public var objectToSend: Any? = null
-        private set
-    public var sendBuffer : String = ""
+    public var sendBuffer: Any? = null
         private set
     public var overrideContentNegotiation: Boolean = false
     public val cookies : HashMap<String, Cookie> = HashMap<String, Cookie>()
+    // DISCLAIMER (HACK / TODO): I hate this. I really do. It doesn't belong here. It's part of the request
+    // but this would imply changing a load of crap and the question isn't whether I have the
+    // time now to change it but whether that would actually solve the problem. Somehow this needs to
+    // be referenced in the response. I'm not happy with it. I really am not, but I think the time
+    // has come to move on and revisit this later. And as they say, don't judge a developer by a single
+    // line of code. Yours truly, Hadi Hariri. (@hhariri in case you want to humiliate me in public forum)
+    public var requestedContentTypes: ArrayList<String> = arrayListOf()
+
 
 
     public fun streamFile(filename: String, explicitContentType: String = "") {
@@ -67,15 +74,17 @@ public class Response() {
     }
 
     public fun send(obj: Any) {
-        if (obj is String) {
-            sendBuffer = obj
-        } else {
-            objectToSend = obj
-        }
+        sendBuffer = obj
     }
 
-    public fun overrideSendBuffer(value: String) {
-        sendBuffer = value
+    public fun negotiate(vararg negotiations: Pair<String, Response.() -> Unit>) {
+        for ((contentType, func) in negotiations) {
+            if (requestedContentTypes.any { it.compareToIgnoreCase(contentType) == 0}) {
+                func()
+                return
+            }
+        }
+        setHttpStatus(HttpStatusCodes.UnsupportedMediaType)
     }
 
     public fun setHttpStatus(statusCode: Int, statusDescription: String) {
@@ -116,3 +125,5 @@ public class Response() {
     }
 
 }
+
+fun String.with(handler : Response.() -> Unit) : Pair<String, Response.() -> Unit> = this to handler

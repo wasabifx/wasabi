@@ -24,7 +24,7 @@ public class HeaderSpecs: TestServerContext() {
                 "Accept" to "text/html,application/xhtml+xml,application/xml",
                 "Accept-Encoding" to "gzip,deflate,sdch",
                 "Accept-Language" to "en-US,en;q=0.8",
-                "Accept-Charset" to "ISO-8859-1,utf-8;q=0.7,*;q=0.3"
+                "Accept-Charset" to "ISO-8859-1,utf-8;q=0.7,*"
 
         )
 
@@ -71,10 +71,10 @@ public class HeaderSpecs: TestServerContext() {
         assertEquals("test-client", userAgent);
         assertEquals(true, keepAlive);
         assertEquals("max-age=0", cacheControl);
-        assertEquals(3, accept.size);
-        assertEquals(3, acceptEncoding.size);
+        assertEquals(1, accept.size);
+        assertEquals(1, acceptEncoding.size);
         assertEquals(2, acceptLanguage.size);
-        assertEquals(3, acceptCharset.size);
+        assertEquals(2, acceptCharset.size);
         assertEquals(2, queryParams.size())
         assertEquals("value1",queryParams["param1"])
         assertEquals("value2",queryParams["param2"])
@@ -93,7 +93,7 @@ public class HeaderSpecs: TestServerContext() {
                 "Accept" to "text/html,application/xhtml+xml,application/xml",
                 "Accept-Encoding" to "gzip,deflate,sdch",
                 "Accept-Language" to "en-US,en;q=0.8",
-                "Accept-Charset" to "ISO-8859-1,utf-8;q=0.7,*;q=0.3"
+                "Accept-Charset" to "ISO-8859-1,utf-8;q=0.7,*"
 
         )
 
@@ -131,7 +131,7 @@ public class HeaderSpecs: TestServerContext() {
                 "Accept" to "text/html,application/xhtml+xml,application/xml",
                 "Accept-Encoding" to "gzip,deflate,sdch",
                 "Accept-Language" to "en-US,en;q=0.8",
-                "Accept-Charset" to "ISO-8859-1,utf-8;q=0.7,*;q=0.3"
+                "Accept-Charset" to "ISO-8859-1,utf-8;q=0.7,*"
 
         )
 

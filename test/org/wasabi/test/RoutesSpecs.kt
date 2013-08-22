@@ -37,8 +37,8 @@ public class RoutesSpecs {
 
         val routeLocator = PatternAndVerbMatchingRouteLocator(TestServer.routes)
 
-        val route1 = routeLocator.findRoute("/", HttpMethod.GET)
-        val route2 = routeLocator.findRoute("/third", HttpMethod.POST)
+        val route1 = routeLocator.findRouteHandlers("/", HttpMethod.GET)
+        val route2 = routeLocator.findRouteHandlers("/third", HttpMethod.POST)
 
         assertNotNull(route1)
         assertNotNull(route2)
@@ -51,7 +51,7 @@ public class RoutesSpecs {
 
         val routeLocator = PatternAndVerbMatchingRouteLocator(TestServer.routes)
 
-        val route1 = routeLocator.findRoute("/first/forest/trees/ENDING", HttpMethod.GET)
+        val route1 = routeLocator.findRouteHandlers("/first/forest/trees/ENDING", HttpMethod.GET)
 
         assertNotNull(route1)
 
@@ -69,7 +69,7 @@ public class RoutesSpecs {
 
         val routeLocator = PatternAndVerbMatchingRouteLocator(TestServer.routes)
 
-        val exception = fails({routeLocator.findRoute("/second", HttpMethod.GET)})
+        val exception = fails({routeLocator.findRouteHandlers("/second", HttpMethod.GET)})
 
         assertEquals(javaClass<InvalidMethodException>(), exception.javaClass)
 

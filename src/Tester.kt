@@ -12,14 +12,15 @@ import org.wasabi.http.ContentType
 import org.wasabi.interceptors.BasicAuthenticationInterceptor
 import org.wasabi.http.CacheControl
 import org.wasabi.http.NegotiateOn
-import org.wasabi.interceptors.ContentNegotiationPrioritizerInterceptor
-import org.wasabi.interceptors.conneg
+import org.wasabi.interceptors.parseContentNegotiationHeaders
 import org.wasabi.interceptors.serveStaticFilesFromFolder
 import org.wasabi.interceptors.serveFavIconAs
 import org.wasabi.interceptors.serveErrorsFromFolder
-import org.wasabi.interceptors.conneg
+import org.wasabi.interceptors.parseContentNegotiationHeaders
 import org.wasabi.interceptors.negotiateContent
 import org.wasabi.http.Cookie
+import org.wasabi.http.with
+import org.wasabi.interceptors.ContentNegotiationParserInterceptor
 
 
 fun main(args: Array<String>) {
@@ -32,14 +33,14 @@ fun main(args: Array<String>) {
     // customer/10.json
 
 
-    server.conneg() {
+    server.parseContentNegotiationHeaders() {
         onAcceptHeader()
         onExtension()
         onQueryParameter("format")
     }
 
 
-    server.intercept(ContentNegotiationPrioritizerInterceptor().onAcceptHeader().onExtension().onQueryParameter("format"))
+    server.intercept(ContentNegotiationParserInterceptor().onAcceptHeader().onExtension().onQueryParameter("format"))
 
 
    //       server.intercept(BasicAuthenticationInterceptor("secure area", { (user: String, pass: String) -> user == pass}), "*")
@@ -79,16 +80,11 @@ fun main(args: Array<String>) {
                 },
 
                 {
-                    negotiate {
+                    response.negotiate (
+                            "text/html" with { send("Something") }
 
-                        on("text/html") {response.send("Something about me")}
-
-                        on("application/json") {
-                            response.send("{title: 'Something about me', isbn: 'IS454-12123-A23232'}")
-                        }
-                    }
-
-                    response.send(Book("Something about me", "IS454-12123-A23232", "Biography", Author("Joe", "Smith")))
+                    )
+                    //response.send(Book("Something about me", "IS454-12123-A23232", "Biography", Author("Joe", "Smith")))
                 }
         )
 

@@ -20,6 +20,7 @@ public class ConfigurationStorage {
 
                 val configuration = objectMapper.readValue<AppConfiguration>(jsonFile, javaClass<AppConfiguration>())
 
+
                 if (configuration != null) {
                     return configuration
                 } else {

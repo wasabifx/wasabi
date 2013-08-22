@@ -58,8 +58,7 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
 
         if (msg is HttpRequest) {
             request = Request(msg)
-            request!!.parseQueryParams()
-            request!!.parseCookies()
+            request!!.init()
 
             if (request!!.method == HttpMethod.POST) {
                 decoder = HttpPostRequestDecoder(factory, msg)
@@ -85,13 +84,13 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
                     continueRequest = runInterceptors(preRequestInterceptors)
 
                     if (continueRequest) {
-                        val route = findRoute(request!!.uri.split('?')[0], request!!.method)
-                        request!!.routeParams = route.params
+                        val routeHandlers = findRouteHandlers(request!!.uri.split('?')[0], request!!.method)
+                        request!!.routeParams = routeHandlers.params
 
-                        continueRequest = runInterceptors(preRequestInterceptors, route)
+                        continueRequest = runInterceptors(preRequestInterceptors, routeHandlers)
 
                         if (continueRequest) {
-                            for (handler in route.handler) {
+                            for (handler in routeHandlers.handler) {
 
                                 val handlerExtension : RouteHandler.() -> Unit = handler
                                 val routeHandler = RouteHandler(request!!, response)
@@ -101,7 +100,7 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
                                     break
                                 }
                             }
-                            runInterceptors(postRequestInterceptors, route)
+                            runInterceptors(postRequestInterceptors, routeHandlers)
 
                         }
                     }
@@ -158,9 +157,14 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
 
             writeFuture!!.addListener(ChannelFutureListener.CLOSE)
         }  else {
-            var data = response.sendBuffer
-            if (data == "") {
-                data = response.statusDescription
+            // TODO: This needs finishing otherwise serialization of objects won't work
+            var data : String = ""
+            if (response.sendBuffer is String) {
+                if (response.sendBuffer != "") {
+                    data = (response.sendBuffer as String)
+                } else {
+                    data = response.statusDescription
+                }
             }
             httpResponse = DefaultFullHttpResponse(HttpVersion("HTTP", 1, 1, true), HttpResponseStatus(response.statusCode,response.statusDescription),  Unpooled.copiedBuffer(data, CharsetUtil.UTF_8))
             addResponseHeaders(httpResponse, response)

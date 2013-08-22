@@ -1,10 +1,7 @@
 package org.wasabi.serializers
 
-public class XmlSerializer: Serializer {
+public class XmlSerializer: Serializer("text/xml", "text/vnd\\.\\w*\\+xml", "application/xml", "application/vnd\\.\\w*\\+xml") {
     override fun serialize(input: Any): String {
         throw UnsupportedOperationException()
-    }
-    override fun canSerialize(contentType: String): Boolean {
-        return contentType.contains("/xml")
     }
 }
