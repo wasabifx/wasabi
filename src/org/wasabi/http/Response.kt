@@ -19,6 +19,7 @@ import javax.activation.MimetypesFileTypeMap
 import io.netty.handler.codec.http.ServerCookieEncoder
 import io.netty.handler.codec.http.DefaultCookie
 import java.util.ArrayList
+import org.wasabi.serializers.Serializer
 
 
 public class Response() {
@@ -50,6 +51,8 @@ public class Response() {
     // has come to move on and revisit this later. And as they say, don't judge a developer by a single
     // line of code. Yours truly, Hadi Hariri. (@hhariri in case you want to humiliate me in public forum)
     public var requestedContentTypes: ArrayList<String> = arrayListOf()
+    public var negotiatedMediaType: String = ""
+
 
 
 
@@ -78,9 +81,10 @@ public class Response() {
     }
 
     public fun negotiate(vararg negotiations: Pair<String, Response.() -> Unit>) {
-        for ((contentType, func) in negotiations) {
-            if (requestedContentTypes.any { it.compareToIgnoreCase(contentType) == 0}) {
+        for ((mediaType, func) in negotiations) {
+            if (requestedContentTypes.any { it.compareToIgnoreCase(mediaType) == 0}) {
                 func()
+                negotiatedMediaType = mediaType
                 return
             }
         }

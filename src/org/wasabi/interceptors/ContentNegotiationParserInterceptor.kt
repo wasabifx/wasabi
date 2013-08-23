@@ -7,20 +7,22 @@ import org.wasabi.app.AppServer
 import org.wasabi.routing.InterceptOn
 import java.util.PriorityQueue
 import java.util.HashMap
+import java.util.LinkedList
 
 
 public class ContentNegotiationParserInterceptor(val mappings: HashMap<String, String> = HashMap()): Interceptor {
     val ACCEPT_HEADER = 0
     val QUERY_PARAM = 1
     val EXTENSION = 2
-    val orderQueue = PriorityQueue<Int>()
+    val orderQueue = LinkedList<Int>()
     var queryParameterName = ""
 
     override fun intercept(request: Request, response: Response): Boolean {
         var contentType = ""
 
+        response.requestedContentTypes.clear()
         while (contentType == "" && orderQueue.size() > 0) {
-            var connegType = orderQueue.poll()
+            var connegType = orderQueue.removeFirst()
             when (connegType) {
                 ACCEPT_HEADER -> {
                     for (mediaTypes in request.accept) {

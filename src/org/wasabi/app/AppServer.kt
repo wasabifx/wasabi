@@ -14,6 +14,9 @@ import java.util.HashMap
 import org.wasabi.interceptors.InterceptorEntry
 import org.wasabi.interceptors.LoggingInterceptor
 import org.wasabi.interceptors.Interceptor
+import org.wasabi.serializers.Serializer
+import org.wasabi.serializers.JsonSerializer
+import org.wasabi.serializers.XmlSerializer
 
 public class AppServer(val configuration: AppConfiguration = AppConfiguration()) {
 
@@ -23,6 +26,7 @@ public class AppServer(val configuration: AppConfiguration = AppConfiguration())
 
     public val routes: ArrayList<Route> = ArrayList<Route>()
     public val interceptors : ArrayList<InterceptorEntry>  = ArrayList<InterceptorEntry>()
+    public val serializers: ArrayList<Serializer> = arrayListOf(JsonSerializer(), XmlSerializer())
 
 
     private fun addRoute(method: HttpMethod, path: String, vararg handler: RouteHandler.() -> Unit) {

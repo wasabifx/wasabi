@@ -58,6 +58,8 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
 
         if (msg is HttpRequest) {
             request = Request(msg)
+            request!!.accept.mapTo(response.requestedContentTypes, { it.key })
+
 
             if (request!!.method == HttpMethod.POST) {
                 decoder = HttpPostRequestDecoder(factory, msg)
@@ -156,16 +158,25 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
 
             writeFuture!!.addListener(ChannelFutureListener.CLOSE)
         }  else {
-            // TODO: This needs finishing otherwise serialization of objects won't work
-            var data : String = ""
+            // TODO: Make this a stream
+            var buffer = ""
             if (response.sendBuffer is String) {
                 if (response.sendBuffer != "") {
-                    data = (response.sendBuffer as String)
+                    buffer = (response.sendBuffer as String)
                 } else {
-                    data = response.statusDescription
+                    buffer = response.statusDescription
+                }
+            } else {
+                if (response.negotiatedMediaType != "") {
+                    val serializer = appServer.serializers.find { it.canSerialize(response.negotiatedMediaType) }
+                    if (serializer != null) {
+                        buffer = serializer.serialize(response.sendBuffer!!)
+                    } else {
+                        response.setHttpStatus(HttpStatusCodes.UnsupportedMediaType)
+                    }
                 }
             }
-            httpResponse = DefaultFullHttpResponse(HttpVersion("HTTP", 1, 1, true), HttpResponseStatus(response.statusCode,response.statusDescription),  Unpooled.copiedBuffer(data, CharsetUtil.UTF_8))
+            httpResponse = DefaultFullHttpResponse(HttpVersion("HTTP", 1, 1, true), HttpResponseStatus(response.statusCode,response.statusDescription),  Unpooled.copiedBuffer(buffer, CharsetUtil.UTF_8))
             addResponseHeaders(httpResponse, response)
             ctx.write(httpResponse)
             ctx.flush()?.addListener(ChannelFutureListener.CLOSE)

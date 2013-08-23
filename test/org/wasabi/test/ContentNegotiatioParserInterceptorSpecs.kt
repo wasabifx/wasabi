@@ -18,7 +18,7 @@ public class ContentNegotiatioParserInterceptorSpecs: TestServerContext() {
                 "User-Agent" to "test-client",
                 "Connection" to "keep-alive",
                 "Cache-Control" to "max-age=0",
-                "Accept" to "application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5",
+                "Accept" to "text/plain;q=0.8,application/xml,application/xhtml+xml,text/html;q=0.9",
                 "Accept-Encoding" to "gzip,deflate,sdch",
                 "Accept-Language" to "en-US,en;q=0.8",
                 "Accept-Charset" to "ISO-8859-1,utf-8;q=0.7,*"
@@ -39,8 +39,8 @@ public class ContentNegotiatioParserInterceptorSpecs: TestServerContext() {
 
         get("http://localhost:3000/contentTypes", headers)
 
-        assertEquals("application/xml", sanitizedRequestedContentTypes.get(0))
-        assertEquals("application/xhtml+xml", sanitizedRequestedContentTypes.get(1))
+        assertEquals("application/xhtml+xml", sanitizedRequestedContentTypes.get(0))
+        assertEquals("application/xml", sanitizedRequestedContentTypes.get(1))
         assertEquals("text/html", sanitizedRequestedContentTypes.get(2))
         assertEquals("text/plain", sanitizedRequestedContentTypes.get(3))
 
@@ -53,6 +53,8 @@ public class ContentNegotiatioParserInterceptorSpecs: TestServerContext() {
 
         TestServer.appServer.parseContentNegotiationHeaders {
             onQueryParameter()
+            onAcceptHeader()
+            onExtension()
         }
 
         val headers = hashMapOf(
