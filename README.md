@@ -154,12 +154,104 @@ Most interceptor add extension methods to *AppServer* to make them easier (and m
   server.negotiateContent()
   server.serveStaticFilesFromFolder("/public") 
 ```
+ ## Content Negotiation ##
+ Wasabi ships with content negotiation out of the box, via a couple of interceptors. In particular:
+
+ * ContentNegotiationParserInterceptor (still looking for a better name)
+   Allows you to indicate to Wasabi to not only take into account Accept Headers but also Query Fields and Extensions on documents
+
+ * ContentNegotiationInterceptor
+   Does the actual content negotiation, finding the appropriate serializer.
+
+ ### How it works ###
+
+ #### Content Negotiation Parsing ####
+ Sometimes you want to not only do Content Negotiation using the Accept headers, but also using a query field (for instance *format=json*)
+ or extensions to documents (e.g. /customer.json).
+
+ The ContentNegotiationParser allows you to do this. Easiest way to use it is via the extension function:
+
+ ```kotlin
+    server.parseContentNegotiationHeaders() {
+        onQueryParameter("format")
+        onExtension()
+        onAcceptHeader()
+    }
+ ```
+
+ Based on the order in which you pass in onAcceptHeader, onExtension and onQueryParameter defines the priority. Above for instance
+ first the Query Parameter is taking into account, then extension and lastly the Accept Header
+
+ *QueryParameter* defaults to the query parameter *format* but you can pass in a different one. Both *onExtension* and *onQueryParameter*
+ also take a list of mappings, which an array of extension to media type. By default *json* maps to *application/json* and *xml* to *application/xml*
+
+ #### Automatic Content Negotiation ####
+ If you want to Content Negotiation to happen automatically, just add the *ContentNegotiationInterceptor* to your interceptors, or
+ use the extension method *negotiateContent*. That's all that is required. You can then just send and object you want and Wasabi
+ will automatically serialize it and send it back to the client.
+
+ ```kotlin
+   server.get("/customer/:id", {
+
+
+        val customer = getCustomerById(request.params["id"])
+
+        response.send(customer)
+   }
+ ```
+
+Wasabi will automatically serialize that into Json, Xml or any other media type supported (see Serializers below)
+
+#### Manual ####
+If you need to manually override Content Negotiation, you can do so using the *negotiate* function on *response*
+
+```kotlin
+ server.get("/customer/:id", {
+
+
+        val customer = getCustomerById(request.params["id"])
+
+        response.negotiate (
+            "text/html" with { send("Joe Smith") },
+            "application/json" with { send(customer) }
+        }
+
+
+}
+```
+
+*negotiate* signature is:
+
+```kotlin
+    public fun negotiate(vararg negotiations: Pair<String, Response.() -> Unit>)
+```
+
+You can pass in an unlimited number of media type, functions. Also, as the function is an extension function to *Response*, you have
+access to the response functions directly. That is why we can just write *send* as opposed to *response.send*.
+
+Note that even if you use manual content negotiation, Wasabi will still try and serialize the object for you based on the media type.
+
+### Serializers ###
+
+Both manual as well as automatic Content Negotiation use serializers. Wasabi ships with Json and XML (TODO) serializers. These are
+defined as a property of the *AppServer*.
+
+Each Serializer can take as parameters a variable number of strings which define regular expressions for the media types it can handle. JsonSerializer
+for instance takes:
+
+```kotlin
+public class JsonSerializer(): Serializer("application/json", "application/vnd\\.\\w*\\+json")
+```
+
+
+
 
 ## TODO ##
-* Clean up code. A lot of TODO's in there. And some ugly stuff too. 
+* Clean up code.
+* Fix a lot of TODO's in there. And some ugly stuff too.
 * Add missing unit tests
 * Finish implementation of some things and make them production ready
-* A lot of missing functionality such as support for static binding to GET/POST
+* Missing functionality such as support for static binding to GET/POST
 * A Runner
 * Performance checks. No performance testing has been made. 
 
