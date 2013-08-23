@@ -58,7 +58,6 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
 
         if (msg is HttpRequest) {
             request = Request(msg)
-            request!!.init()
 
             if (request!!.method == HttpMethod.POST) {
                 decoder = HttpPostRequestDecoder(factory, msg)
@@ -85,7 +84,7 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
 
                     if (continueRequest) {
                         val routeHandlers = findRouteHandlers(request!!.uri.split('?')[0], request!!.method)
-                        request!!.routeParams = routeHandlers.params
+                        request!!.routeParams.putAll(routeHandlers.params)
 
                         continueRequest = runInterceptors(preRequestInterceptors, routeHandlers)
 

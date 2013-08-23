@@ -11,6 +11,7 @@ import org.apache.http.message.BasicNameValuePair
 import org.junit.Ignore
 import org.wasabi.http.Cookie
 import java.util.HashMap
+import java.util.SortedMap
 
 
 public class HeaderSpecs: TestServerContext() {
@@ -21,7 +22,7 @@ public class HeaderSpecs: TestServerContext() {
                 "User-Agent" to "test-client",
                 "Connection" to "keep-alive",
                 "Cache-Control" to "max-age=0",
-                "Accept" to "text/html,application/xhtml+xml,application/xml",
+                "Accept" to "text/html,application/xhtml+xml;q=0.4,application/xml",
                 "Accept-Encoding" to "gzip,deflate,sdch",
                 "Accept-Language" to "en-US,en;q=0.8",
                 "Accept-Charset" to "ISO-8859-1,utf-8;q=0.7,*"
@@ -34,10 +35,10 @@ public class HeaderSpecs: TestServerContext() {
         var userAgent = ""
         var keepAlive = false
         var cacheControl = ""
-        var accept =  Array<String>(0, {""})
-        var acceptEncoding =  Array<String>(0, {""})
-        var acceptLanguage =  Array<String>(0, {""})
-        var acceptCharset =  Array<String>(0, {""})
+        var accept =  sortedMapOf<String, Int>()
+        var acceptEncoding =  sortedMapOf<String, Int>()
+        var acceptLanguage =  sortedMapOf<String, Int>()
+        var acceptCharset =  sortedMapOf<String, Int>()
         var queryParams = HashMap<String, String>()
         var routeParams = HashMap<String, String>()
 
@@ -71,10 +72,11 @@ public class HeaderSpecs: TestServerContext() {
         assertEquals("test-client", userAgent);
         assertEquals(true, keepAlive);
         assertEquals("max-age=0", cacheControl);
-        assertEquals(1, accept.size);
-        assertEquals(1, acceptEncoding.size);
+        assertEquals(3, accept.size);
+        assertEquals(4, accept["application/xhtml+xml"])
+        assertEquals(3, acceptEncoding.size);
         assertEquals(2, acceptLanguage.size);
-        assertEquals(2, acceptCharset.size);
+        assertEquals(3, acceptCharset.size);
         assertEquals(2, queryParams.size())
         assertEquals("value1",queryParams["param1"])
         assertEquals("value2",queryParams["param2"])

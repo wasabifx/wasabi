@@ -23,12 +23,8 @@ public class ContentNegotiationParserInterceptor(val mappings: HashMap<String, S
             var connegType = orderQueue.poll()
             when (connegType) {
                 ACCEPT_HEADER -> {
-                    // TODO: Take into account weight when adding to requestedContentType (q param)
                     for (mediaTypes in request.accept) {
-                        val sanitized = mediaTypes.split(',')
-                        for (entry in sanitized) {
-                            response.requestedContentTypes.add(entry)
-                        }
+                        response.requestedContentTypes.add(mediaTypes.key)
                     }
                 }
                 QUERY_PARAM -> {
