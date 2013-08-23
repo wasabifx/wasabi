@@ -160,8 +160,8 @@ Most interceptor add extension methods to *AppServer* to make them easier (and m
   server.negotiateContent()
   server.serveStaticFilesFromFolder("/public") 
 ```
- ## Content Negotiation ##
- Wasabi ships with content negotiation out of the box, via a couple of interceptors. In particular:
+## Content Negotiation ##
+Wasabi ships with content negotiation out of the box, via a couple of interceptors. In particular:
 
  * ContentNegotiationParserInterceptor (still looking for a better name)
    Allows you to indicate to Wasabi to not only take into account Accept Headers but also Query Fields and Extensions on documents
@@ -169,34 +169,35 @@ Most interceptor add extension methods to *AppServer* to make them easier (and m
  * ContentNegotiationInterceptor
    Does the actual content negotiation, finding the appropriate serializer.
 
- ### How it works ###
+### How it works ###
 
- #### Content Negotiation Parsing ####
- Sometimes you want to not only do Content Negotiation using the Accept headers, but also using a query field (for instance *format=json*)
- or extensions to documents (e.g. /customer.json).
+#### Content Negotiation Parsing ####
+Sometimes you want to not only do Content Negotiation using the Accept headers, but also using a query field (for instance *format=json*)
+or extensions to documents (e.g. /customer.json).
 
- The ContentNegotiationParser allows you to do this. Easiest way to use it is via the extension function:
+The ContentNegotiationParser allows you to do this. Easiest way to use it is via the extension function:
 
- ```kotlin
-    server.parseContentNegotiationHeaders() {
-        onQueryParameter("format")
-        onExtension()
-        onAcceptHeader()
-    }
- ```
+```kotlin
+   server.parseContentNegotiationHeaders() {
+       onQueryParameter("format")
+       onExtension()
+       onAcceptHeader()
+   }
 
- Based on the order in which you pass in onAcceptHeader, onExtension and onQueryParameter defines the priority. Above for instance
- first the Query Parameter is taking into account, then extension and lastly the Accept Header
+```
 
- *QueryParameter* defaults to the query parameter *format* but you can pass in a different one. Both *onExtension* and *onQueryParameter*
- also take a list of mappings, which an array of extension to media type. By default *json* maps to *application/json* and *xml* to *application/xml*
+Based on the order in which you pass in onAcceptHeader, onExtension and onQueryParameter defines the priority. Above for instance
+first the Query Parameter is taking into account, then extension and lastly the Accept Header
 
- #### Automatic Content Negotiation ####
- If you want to Content Negotiation to happen automatically, just add the *ContentNegotiationInterceptor* to your interceptors, or
- use the extension method *negotiateContent*. That's all that is required. You can then just send and object you want and Wasabi
- will automatically serialize it and send it back to the client.
+*QueryParameter* defaults to the query parameter *format* but you can pass in a different one. Both *onExtension* and *onQueryParameter*
+also take a list of mappings, which an array of extension to media type. By default *json* maps to *application/json* and *xml* to *application/xml*
 
- ```kotlin
+#### Automatic Content Negotiation ####
+If you want to Content Negotiation to happen automatically, just add the *ContentNegotiationInterceptor* to your interceptors, or
+use the extension method *negotiateContent*. That's all that is required. You can then just send and object you want and Wasabi
+will automatically serialize it and send it back to the client.
+
+```kotlin
    server.get("/customer/:id", {
 
 
@@ -204,7 +205,7 @@ Most interceptor add extension methods to *AppServer* to make them easier (and m
 
         response.send(customer)
    }
- ```
+```
 
 Wasabi will automatically serialize that into Json, Xml or any other media type supported (see Serializers below)
 
@@ -212,7 +213,7 @@ Wasabi will automatically serialize that into Json, Xml or any other media type 
 If you need to manually override Content Negotiation, you can do so using the *negotiate* function on *response*
 
 ```kotlin
- server.get("/customer/:id", {
+   server.get("/customer/:id", {
 
 
         val customer = getCustomerById(request.params["id"])
@@ -248,9 +249,6 @@ for instance takes:
 ```kotlin
 public class JsonSerializer(): Serializer("application/json", "application/vnd\\.\\w*\\+json")
 ```
-
-
-
 
 ## TODO ##
 * Clean up code.
