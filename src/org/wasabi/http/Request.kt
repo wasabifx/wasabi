@@ -10,6 +10,8 @@ import io.netty.handler.codec.http.multipart.InterfaceHttpData.HttpDataType
 import io.netty.handler.codec.http.multipart.Attribute
 import io.netty.handler.codec.http.CookieDecoder
 import java.util.HashMap
+import java.util.Comparator
+import java.util.SortedMap
 
 public class Request(private val httpRequest: HttpRequest) {
 
@@ -23,23 +25,37 @@ public class Request(private val httpRequest: HttpRequest) {
     public val keepAlive: Boolean  = getHeader("Connection").compareToIgnoreCase("keep-alive") == 0
     public val cacheControl: String = getHeader("Cache-Control")
     public val userAgent: String = getHeader("User-Agent")
-    public val accept: Array<String> = getHeader("Accept").split(";")
-    public val acceptEncoding: Array<String> = getHeader("Accept-Encoding").split(";")
-    public val acceptLanguage: Array<String> = getHeader("Accept-Language").split(";")
-    public val acceptCharset: Array<String> = getHeader("Accept-Charset").split(";")
-    public val queryParams : HashMap<String, String> = HashMap<String, String>()
-    public var routeParams: HashMap<String, String> = HashMap<String, String>()
-    public var bodyParams: HashMap<String, String> = HashMap<String, String>()
-    public var cookies: HashMap<String, Cookie> = HashMap<String, Cookie>()
-    public var contentType: String = getHeader("Content-Type")
-    public var chunked: Boolean = getHeader("Transfer-Encoding").compareToIgnoreCase("chunked") == 0
-    public var authorization: String = getHeader("Authorization")
+    public val accept: SortedMap<String, Int> = parseAcceptHeader("Accept")
+    public val acceptEncoding: SortedMap<String, Int> = parseAcceptHeader("Accept-Encoding")
+    public val acceptLanguage: SortedMap<String, Int> = parseAcceptHeader("Accept-Language")
+    public val acceptCharset: SortedMap<String, Int> = parseAcceptHeader("Accept-Charset")
+    public val queryParams : HashMap<String, String> = parseQueryParams()
+    public val routeParams: HashMap<String, String> = HashMap<String, String>()
+    public val bodyParams: HashMap<String, String> = HashMap<String, String>()
+    public val cookies: HashMap<String, Cookie> = parseCookies()
+    public val contentType: String = getHeader("Content-Type")
+    public val chunked: Boolean = getHeader("Transfer-Encoding").compareToIgnoreCase("chunked") == 0
+    public val authorization: String = getHeader("Authorization")
 
     public var session: Session? = null
 
-    public fun init() {
-        parseQueryParams()
-        parseCookies()
+
+
+    private fun parseAcceptHeader(header: String): SortedMap<String, Int> {
+
+        val parsed = hashMapOf<String, Int>()
+        val entries = getHeader(header).split(',')
+        for (entry in entries) {
+            val parts = entry.split(';')
+            val mediaType = parts[0]
+            var weight = 1
+            if (parts.size == 2) {
+                val float = parts[1].drop(2).toFloat() * 10
+                weight = float.toInt()
+            }
+            parsed.put(mediaType, weight)
+        }
+        return parsed.toSortedMap<String, Int>()
     }
 
     private fun getHeader(header: String): String {
@@ -51,28 +67,31 @@ public class Request(private val httpRequest: HttpRequest) {
         }
     }
 
-    private fun parseQueryParams() {
+    private fun parseQueryParams(): HashMap<String, String> {
+        val queryParamsList = hashMapOf<String, String>()
         val urlParams = httpRequest.getUri()!!.split('?')
         if (urlParams.size == 2) {
             val queryNameValuePair = urlParams[1].split("&")
             for (entry in queryNameValuePair) {
                 val nameValuePair = entry.split('=')
                 if (nameValuePair.size == 2) {
-                    queryParams[nameValuePair[0]] = nameValuePair[1]
+                    queryParamsList[nameValuePair[0]] = nameValuePair[1]
                 } else {
-                    queryParams[nameValuePair[0]] = ""
+                    queryParamsList[nameValuePair[0]] = ""
                 }
            }
         }
+        return queryParamsList
     }
 
-    private fun parseCookies() {
+    private fun parseCookies(): HashMap<String, Cookie> {
         val cookieHeader = getHeader("Cookie")
         val cookieSet = CookieDecoder.decode(cookieHeader)
+        val cookieList = hashMapOf<String, Cookie>()
         for (cookie in cookieSet?.iterator()) {
-            cookies[cookie.getName().toString()] = Cookie(cookie.getName().toString(), cookie.getValue().toString(), cookie.getPath().toString(), cookie.getDomain().toString(), cookie.isSecure())
+            cookieList[cookie.getName().toString()] = Cookie(cookie.getName().toString(), cookie.getValue().toString(), cookie.getPath().toString(), cookie.getDomain().toString(), cookie.isSecure())
         }
-
+        return cookieList
     }
 
     public fun parseBodyParams(httpDataList: MutableList<InterfaceHttpData>) {
