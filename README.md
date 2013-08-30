@@ -113,8 +113,11 @@ Access form parameters using bodyParams property of the request.
 // TODO 
 
 ### Interceptors ###
-In addition to handlers, Wasabi also has interceptors. Think of interceptors as a way to add functionality to every request, or a those matching a certain route pattern.
-Some frameworks have popularized the term *middleware* to refer to something that intercepts a request/response. We do not agree with such a broad and somewhat ambiguous term. We like to name things as close to what they actually represent in the real world.
+In addition to handlers, Wasabi also has interceptors. These allow you to intercept a request and decide whether you
+want it to continue or not (returning false would stop processing). Since you have access to both the request and response, you can 
+do whatever you need. Think of interceptors as a way to add functionality to every request, or a those matching a certain route pattern.
+Some frameworks have popularized the term *middleware* to refer to something that intercepts a request/response. 
+I do not agree with such a broad and somewhat ambiguous term. I like to name things as close to what they actually do.
 An intercpetor implements the following trait
 
 ```kotlin
