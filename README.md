@@ -110,7 +110,91 @@ Access form parameters using bodyParams property of the request.
 ```  
 
 ### Organization of Route Handlers and Application layout ###
-// TODO 
+
+How you layout the code for your application or group your routes depends largely on your own choice. One thing I've always been
+against is forcing people to group routes per class for instance. Having said that, there are some bounds you need to stay in. 
+
+*Option 1 
+Defining logic for each route handler inline:
+
+```kotlin
+   val appServer = AppServer()
+   
+   appServer.get("/customer", { response.send(customers) })
+```
+
+For very simple operations this might be ok however, it will soon become unmaintainable. 
+
+*Option 2
+Define route handlers as functions and reference them:
+
+```
+   val appServer = AppServer()
+   
+   appServer.get("/customer", getCustomers)
+```
+
+This means that your definition of route handlers pretty much becomes a routing table, which is what it should be. 
+
+This is the preferred option. You can then group functions however way you want:
+
+*Grouping by files
+Group similar routes in its own file. As Kotlin allows top level functions, you do not need to have a class to group functions.
+As such, you could have a file name *CustomerRouteHandlers.kt* for instance with:
+
+```kotlin
+val getCustomers = routeHandler {
+
+  response.send(customers)
+
+}
+
+val getCustomerById = routeHandler {
+  ...
+}  
+```
+
+routeHandler is a syntatic sugar to define the type of the route handler. You could also have writte that as:
+
+```kotlin
+val getCustomers : RouteHandler.() -> Unit = {
+
+  response.send(customers)
+
+}
+
+val getCustomerById  : RouteHandler.() -> Unit = {
+  ...
+}  
+```
+
+Grouping by class
+If for some reason you want to group by class, you can do so. Best way is to use a class object 
+
+```kotlin
+public class CustomerRoutes {
+
+    class object {
+
+        val createCustomer = routeHandler {
+
+        }
+
+    }
+
+}
+```
+
+*Note*
+Kotlin allows you to refer to a function by name using :: syntax. In principle you could also do:
+```kotlin
+   appServer.get("/customer", ::getCustomer)
+```
+and not require an explicit variable declaration for the function. However, this currently does not work with extension functions
+but hopefully will in the future.
+
+
+   
 
 ### Interceptors ###
 In addition to handlers, Wasabi also has interceptors. These allow you to intercept a request and decide whether you
