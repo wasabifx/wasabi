@@ -88,6 +88,10 @@ fun main(args: Array<String>) {
                 }
         )
 
+        server.put("/customer", {
+            response.send(request.bodyParams["name"].toString())
+        })
+
 
 
         server.get("/set_cookie", {

@@ -14,3 +14,6 @@ public class RouteHandler(val request: Request, val response: Response)  {
 
 }
 
+fun routeHandler(f: RouteHandler.()->Unit) = f
+
+

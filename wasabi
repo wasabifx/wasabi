@@ -1,0 +1,26 @@
+#!/bin/bash --posix
+
+#`$KOTLIN_HOME/bin/kotlinc-jvm out/artifacts/wasabi.jar`
+
+# determine where Wasabi is installed
+export WASABI_HOME="$( cd -P "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# get the jars needed for the classpath
+JARS="$WASABI_HOME/lib/*.jar"
+
+CP_JARS="$WASABI_HOME/out/artifacts/wasabi.jar"
+for JAR in $JARS
+do
+    case $JAR in
+    *-sources.jar)
+        ;;
+    *-javadoc.jar)
+        ;;
+    *)
+        CP_JARS="$JAR:$CP_JARS"
+        ;;
+    esac
+done
+
+#echo $CP_JARS
+java -DWASABI_HOME="$WASABI_HOME" -classpath "$CP_JARS" org.wasabi.WasabiPackage "$@"
