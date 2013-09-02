@@ -37,6 +37,8 @@ import io.netty.handler.stream.ChunkedFile
 import java.io.RandomAccessFile
 import org.wasabi.routing.InvalidMethodException
 import org.wasabi.routing.RouteNotFoundException
+import org.wasabi.deserializers.Deserializer
+import java.nio.ByteBuffer
 
 
 // TODO: This class needs cleaning up
@@ -45,13 +47,13 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
     var request: Request? = null
     var body = ""
     val response = Response()
+    var chunkedTransfer = false
     var decoder : HttpPostRequestDecoder? = null
     val factory = DefaultHttpDataFactory(DefaultHttpDataFactory.MINSIZE)
-    var chunkedTransfer = false
     val preRequestInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.PreRequest }
     val postRequestInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.PostRequest }
     val errorInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.Error }
-
+    var deserializer : Deserializer? = null
 
 
     public override fun messageReceived(ctx: ChannelHandlerContext?, msg: Any?) {
@@ -60,22 +62,24 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
             request = Request(msg)
             request!!.accept.mapTo(response.requestedContentTypes, { it.key })
 
-
-            if (request!!.method == HttpMethod.POST) {
-                decoder = HttpPostRequestDecoder(factory, msg)
-                chunkedTransfer = request!!.chunked
+            if (request!!.method == HttpMethod.POST || request!!.method == HttpMethod.PUT || request!!.method == HttpMethod.PATCH) {
+                deserializer = appServer.deserializers.find { it.canDeserialize(request!!.contentType)}
+                // TODO: Re-do this as it's now considering special case for multi-part
+                if (request!!.contentType.contains("application/x-www-form-urlencoded") || request!!.contentType.contains("multipart/form-data")) {
+                    decoder = HttpPostRequestDecoder(factory, msg)
+                    chunkedTransfer = request!!.chunked
+                }
             }
+
 
         }
 
         if (msg is HttpContent) {
-            if (decoder != null) {
-                decoder!!.offer(msg)
-                if (chunkedTransfer) {
-                    processChunkedContent()
-                } else {
-                    processCompleteContent()
-                }
+
+            if (deserializer != null) {
+                // TODO: Add support for chunked transfer
+
+                deserializeBody(msg)
             }
             if (msg is LastHttpContent) {
                 try {
@@ -143,6 +147,8 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
     private fun writeResponse(ctx: ChannelHandlerContext, response: Response) {
         var httpResponse : HttpResponse
         response.setResponseCookies()
+        // TODO: Implement once you have CORS properly supported
+        response.addExtraHeader("Access-Control-Allow-Origin", "*")
         if (response.statusCode / 100 == 4 || response.statusCode / 100 == 5) {
             runInterceptors(errorInterceptors)
         }
@@ -193,32 +199,6 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
             }
         }
     }
-    private fun processChunkedContent() {
-        try {
-            while (decoder!!.hasNext()) {
-                val data = decoder!!.next()
-                request?.addBodyParam(data!!)
-            }
-        } catch (e: EndOfDataDecoderException) {
-            // TODO: Handle error here
-        }
-    }
-
-    private fun processCompleteContent() {
-
-        var httpData: MutableList<InterfaceHttpData>?
-        try {
-            httpData = decoder?.getBodyHttpDatas()
-            if (httpData != null) {
-                request?.parseBodyParams(httpData!!)
-            }
-        } catch (e: NotEnoughDataDecoderException) {
-            // TODO: Handle error here
-        }
-
-    }
-
-
 
     public override fun exceptionCaught(ctx: ChannelHandlerContext?, cause: Throwable?) {
         // TODO: Log actual message
@@ -226,6 +206,17 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
         writeResponse(ctx!!, response)
     }
 
+
+    private fun deserializeBody(msg: HttpContent) {
+        // TODO: Re-structure all this and fix it as it requires a special case for decoder
+        if (decoder != null) {
+            decoder!!.offer(msg)
+            request!!.bodyParams.putAll(deserializer!!.deserialize(decoder!!.getBodyHttpDatas()!!))
+        } else {
+            // TODO: Add support for CharSet
+            request!!.bodyParams.putAll(deserializer!!.deserialize(msg.data()?.array()?.toString("UTF-8")))
+        }
+    }
 
 
 }

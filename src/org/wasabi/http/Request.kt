@@ -5,14 +5,13 @@ import io.netty.handler.codec.http.HttpRequest
 import java.util.Dictionary
 import java.util.ArrayList
 import io.netty.handler.codec.http.HttpMethod
-import io.netty.handler.codec.http.multipart.InterfaceHttpData
-import io.netty.handler.codec.http.multipart.InterfaceHttpData.HttpDataType
-import io.netty.handler.codec.http.multipart.Attribute
 import io.netty.handler.codec.http.CookieDecoder
 import java.util.HashMap
 import java.util.Comparator
 import java.util.SortedMap
-
+import io.netty.handler.codec.http.multipart.InterfaceHttpData
+import io.netty.handler.codec.http.multipart.InterfaceHttpData.HttpDataType
+import io.netty.handler.codec.http.multipart.Attribute
 
 
 public class Request(private val httpRequest: HttpRequest) {
@@ -96,6 +95,7 @@ public class Request(private val httpRequest: HttpRequest) {
         return cookieList
     }
 
+
     public fun parseBodyParams(httpDataList: MutableList<InterfaceHttpData>) {
         for(entry in httpDataList) {
             addBodyParam(entry)
@@ -109,6 +109,7 @@ public class Request(private val httpRequest: HttpRequest) {
             bodyParams[attribute.getName().toString()] = attribute.getValue().toString()
         }
     }
+
 
 
 }

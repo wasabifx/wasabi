@@ -23,4 +23,4 @@ do
 done
 
 #echo $CP_JARS
-java -DWASABI_HOME="$WASABI_HOME" -classpath "$CP_JARS" org.wasabi.WasabiPackage "$@"
+java -DWASABI_HOME="$WASABI_HOME" -classpath "$CP_JARS" personserver.PersonserverPackage "$@"

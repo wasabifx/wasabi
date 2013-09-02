@@ -29,7 +29,7 @@ public class Response() {
     public var etag: String = ""
         private set
     public var location: String = ""
-        private set
+
     public var contentType: String = ContentType.TextPlain.toContentTypeString()
         private set
     public var statusCode: Int = 200

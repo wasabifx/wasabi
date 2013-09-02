@@ -17,6 +17,10 @@ import org.wasabi.interceptors.Interceptor
 import org.wasabi.serializers.Serializer
 import org.wasabi.serializers.JsonSerializer
 import org.wasabi.serializers.XmlSerializer
+import org.wasabi.deserializers.Deserializer
+import org.wasabi.deserializers.MultiPartFormDataDeserializer
+import org.wasabi.deserializers.JsonDeserializer
+
 
 public class AppServer(val configuration: AppConfiguration = AppConfiguration()) {
 
@@ -27,6 +31,7 @@ public class AppServer(val configuration: AppConfiguration = AppConfiguration())
     public val routes: ArrayList<Route> = ArrayList<Route>()
     public val interceptors : ArrayList<InterceptorEntry>  = ArrayList<InterceptorEntry>()
     public val serializers: ArrayList<Serializer> = arrayListOf(JsonSerializer(), XmlSerializer())
+    public val deserializers: ArrayList<Deserializer> = arrayListOf(MultiPartFormDataDeserializer(), JsonDeserializer())
 
 
     private fun addRoute(method: HttpMethod, path: String, vararg handler: RouteHandler.() -> Unit) {

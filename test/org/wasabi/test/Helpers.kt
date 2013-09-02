@@ -83,6 +83,7 @@ public fun postForm(url: String, headers: HashMap<String, String>, fields: Array
     val httpPost = HttpPost(url)
     val entity = UrlEncodedFormEntity(fields, "UTF-8")
     entity.setChunked(chunked)
+    httpPost.setHeader("Content-Type", "application/x-www-form-urlencoded")
     httpPost.setEntity(entity)
     return makeRequest(headers, httpPost)
 }
