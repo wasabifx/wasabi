@@ -45,6 +45,21 @@ sourceSets {
     }
 }
 
+apply plugin: 'maven'
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "http://repository.jetbrains.com/wasabi") {
+                authentication(userName: deploy_username, password: deploy_password)
+            }
+            pom.groupId = "org.wasabi"
+            pom.artifactId = "wasabi"
+            pom.version = "0.1-SNAPSHOT"
+        }
+    }
+}
+
 task wrapper(type: Wrapper) {
     gradleVersion = '1.6'
 }
