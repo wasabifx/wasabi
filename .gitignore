@@ -14,3 +14,4 @@ out/
 .idea/workspace.xml
 .DS_Store/
 lib/kotlin-runtime.jar
+build/
