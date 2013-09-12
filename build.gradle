@@ -1,0 +1,50 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:0.6.69'
+    }
+}
+
+apply plugin: 'kotlin'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.codehaus.jackson:jackson-mapper-asl:1.9.12",
+            "io.netty:netty-all:4.0.0.CR1",
+            "commons-codec:commons-codec:1.6",
+            "commons-logging:commons-logging:1.1.1",
+            "org.apache.httpcomponents:httpclient:4.2.3",
+            "org.apache.httpcomponents:httpcore:4.2.3",
+            "org.slf4j:slf4j-api:1.7.5",
+            "org.slf4j:slf4j-simple:1.7.5",
+            "org.jetbrains.kotlin:kotlin-stdlib:0.6.69"
+    testCompile "junit:junit:4.9",
+         "org.mockito:mockito-all:1.9.5"
+}
+
+sourceSets {
+    main {
+        kotlin {
+            kotlin {
+              srcDir "src"
+            }
+        }
+    }
+
+    test {
+        kotlin {
+            kotlin {
+                srcDir "test"
+            }
+        }
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.6'
+}
