@@ -34,9 +34,9 @@ fun main(args: Array<String>) {
 
 
     server.parseContentNegotiationHeaders() {
-        onAcceptHeader()
         onExtension()
         onQueryParameter("format")
+        onAcceptHeader()
     }
 
 

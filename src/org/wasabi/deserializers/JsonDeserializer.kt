@@ -6,7 +6,7 @@ import org.codehaus.jackson.JsonFactory
 import org.codehaus.jackson.`type`.*
 
 
-public class JsonDeserializer: Deserializer("application/json", "application/vnd\\.\\w*\\+json") {
+public class JsonDeserializer: Deserializer("application/json", "application/json;charset=\\w*\\W*\\w*") {
     // TODO: This is temp as it doesn't correctly handle x.y properties
     override fun deserialize(input: Any): HashMap<String, String> {
         val mapper = ObjectMapper()

@@ -11,13 +11,22 @@ import java.util.Date
 
 
 val getPersons = routeHandler {
+
     response.send(people)
 }
 
 
 
 
+
+
+
+
+
+
+
 val getPersonById = routeHandler {
+
     val person = people.find { it.id == request.routeParams["id"]?.toInt()}
     if (person != null) {
         response.send(person)
@@ -25,7 +34,11 @@ val getPersonById = routeHandler {
         response.setHttpStatus(HttpStatusCodes.NotFound)
     }
 }
-  // {"name":"Paul Stack", "email": "paul@stackit.com", "profession": "Vagrant Pusher"}
+
+
+
+
+
 val createPerson = routeHandler {
     val person = Person(people.count()+1,
                         request.bodyParams["name"].toString(),
@@ -36,7 +49,9 @@ val createPerson = routeHandler {
     people.add(person)
     response.setHttpStatus(HttpStatusCodes.Created)
     response.location = "/person/${person.id}"
+
 }
+
 
 
 
@@ -45,6 +60,8 @@ public class CustomerRoutes {
     class object {
 
         val createPerson = routeHandler {
+
+
 
         }
 

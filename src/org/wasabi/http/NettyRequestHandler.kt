@@ -109,6 +109,8 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
 
                         }
                     }
+                    // Run global interceptors again
+                    continueRequest = runInterceptors(postRequestInterceptors)
                 } catch (e: InvalidMethodException)  {
                     response.setAllowedMethods(e.allowedMethods)
                     response.setHttpStatus(HttpStatusCodes.MethodNotAllowed)
@@ -128,9 +130,9 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
     private fun runInterceptors(interceptors: List<InterceptorEntry>, route: Route? = null): Boolean {
         var interceptorsToRun : List<InterceptorEntry>
         if (route == null) {
-            interceptorsToRun = interceptors.filter { it.path == "*"}
+            interceptorsToRun = interceptors.filter { it.path == "*" }
         } else {
-            interceptorsToRun = interceptors.filter { it.path == "*" || compareRouteSegments(route, it.path)}
+            interceptorsToRun = interceptors.filter { compareRouteSegments(route, it.path)}
         }
         for (interceptorEntry in interceptorsToRun) {
             val interceptor = interceptorEntry.interceptor
@@ -148,7 +150,9 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
         var httpResponse : HttpResponse
         response.setResponseCookies()
         // TODO: Implement once you have CORS properly supported
+        response.addExtraHeader("Access-Control-Request-Method", "GET, POST, PUT")
         response.addExtraHeader("Access-Control-Allow-Origin", "*")
+        response.addExtraHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
         if (response.statusCode / 100 == 4 || response.statusCode / 100 == 5) {
             runInterceptors(errorInterceptors)
         }

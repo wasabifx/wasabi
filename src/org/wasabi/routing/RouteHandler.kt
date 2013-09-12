@@ -17,3 +17,31 @@ public class RouteHandler(val request: Request, val response: Response)  {
 fun routeHandler(f: RouteHandler.()->Unit) = f
 
 
+
+
+fun String.badabing() {
+    this.toUpperCase()
+}
+
+fun abc() {
+
+    "hello".badabing()
+
+}
+
+fun def(a: (Int) -> Int) {
+   hhh {
+       input
+   }
+}
+class Customer(val input: String, val output: String) {
+
+
+
+}
+
+fun hhh(func: Customer.() -> Unit) {
+
+
+
+}

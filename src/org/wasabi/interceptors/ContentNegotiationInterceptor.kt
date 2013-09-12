@@ -12,7 +12,7 @@ import org.wasabi.http.HttpStatusCodes
 
 public class ContentNegotiationInterceptor(val serializers: List<Serializer>): Interceptor {
     override fun intercept(request: Request, response: Response): Boolean {
-            if (response.negotiatedMediaType == "") {
+            if (response.negotiatedMediaType == "" && (response.sendBuffer != null) && !(response.sendBuffer is String)) {
                 for (requestedContentType in response.requestedContentTypes) {
                     val serializer = serializers.find { it.canSerialize(requestedContentType) }
                     if (serializer != null) {
@@ -26,6 +26,12 @@ public class ContentNegotiationInterceptor(val serializers: List<Serializer>): I
             return true
     }
 }
+
+
+
+
+
+
 
 
 fun AppServer.negotiateContent() {
