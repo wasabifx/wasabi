@@ -16,3 +16,4 @@ out/
 lib/kotlin-runtime.jar
 build/
 .gradle/
+gradle.properties

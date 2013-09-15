@@ -24,12 +24,12 @@
     <orderEntry type="library" exported="" name="httpcore-4.2.3" level="project" />
     <orderEntry type="library" exported="" name="slf4j-api-1.7.5" level="project" />
     <orderEntry type="library" exported="" name="slf4j-simple-1.7.5" level="project" />
-    <orderEntry type="library" exported="" name="kotlin-stdlib-0.6.69" level="project" />
     <orderEntry type="library" exported="" name="jackson-core-asl-1.9.12" level="project" />
-    <orderEntry type="library" exported="" name="kotlin-runtime-0.6.69" level="project" />
     <orderEntry type="library" scope="TEST" name="junit-4.9" level="project" />
     <orderEntry type="library" scope="TEST" name="mockito-all-1.9.5" level="project" />
     <orderEntry type="library" scope="TEST" name="hamcrest-core-1.1" level="project" />
+    <orderEntry type="library" exported="" name="kotlin-stdlib-0.6.317" level="project" />
+    <orderEntry type="library" exported="" name="kotlin-runtime-0.6.317" level="project" />
   </component>
 </module>
 

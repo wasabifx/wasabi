@@ -10,7 +10,8 @@ import org.wasabi.app.AppServer
 import io.netty.handler.stream.ChunkedWriteHandler
 
 
-public class NettyPipelineInitializer(private val appServer: AppServer): ChannelInitializer<SocketChannel>() {
+public class NettyPipelineInitializer(private val appServer: AppServer):
+                        ChannelInitializer<SocketChannel>() {
     protected override fun initChannel(ch: SocketChannel?) {
         val pipeline = ch?.pipeline()
         pipeline?.addLast("decoder", HttpRequestDecoder())
@@ -20,3 +21,6 @@ public class NettyPipelineInitializer(private val appServer: AppServer): Channel
     }
 
 }
+
+
+

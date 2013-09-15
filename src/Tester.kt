@@ -81,9 +81,15 @@ fun main(args: Array<String>) {
 
                 {
                     response.negotiate (
-                            "text/html" with { send("Something") }
+
+                            "text/html" with { send("Something")
+                            }
 
                     )
+
+
+
+
                     //response.send(Book("Something about me", "IS454-12123-A23232", "Biography", Author("Joe", "Smith")))
                 }
         )
