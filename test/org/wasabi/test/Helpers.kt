@@ -1,38 +1,40 @@
 package org.wasabi.test
 
 import org.wasabi.app.AppServer
-import org.apache.http.impl.client.BasicResponseHandler
 import org.apache.http.impl.client.DefaultHttpClient
 import org.apache.http.client.methods.HttpGet
 import org.apache.http.client.methods.HttpDelete
 import org.apache.http.Header
 import java.util.HashMap
-import java.util.Dictionary
 import org.apache.http.client.methods.HttpPost
-import org.apache.http.HttpEntity
 import org.apache.http.client.entity.UrlEncodedFormEntity
 import java.util.ArrayList
 import org.apache.http.message.BasicNameValuePair
 import org.apache.http.client.methods.HttpRequestBase
 import org.apache.http.impl.cookie.BasicClientCookie
 import org.wasabi.routing.Route
-import org.apache.http.HttpResponse
 import org.apache.http.util.EntityUtils
-import javax.swing.text.html.parser.Entity
-
+import org.junit.Before
+import org.junit.After
 
 open public class TestServerContext {
-    {
+    Before fun initServer(): Unit {
         TestServer.start()
+        TestServer.reset()
+    }
+
+    After fun shutdownServer(): Unit {
+        TestServer.stop()
     }
 }
 
 object TestServer {
 
-    public val appServer: AppServer = AppServer()
+    public var appServer: AppServer = AppServer()
 
     public fun start() {
         if (!appServer.isRunning) {
+            appServer = AppServer()
             appServer.start(false)
         }
     }
