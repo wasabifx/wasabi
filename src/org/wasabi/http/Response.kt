@@ -12,8 +12,6 @@ import io.netty.channel.ChannelInboundMessageHandlerAdapter
 import java.util.HashMap
 import io.netty.handler.codec.http.HttpMethod
 import org.codehaus.jackson.map.ObjectMapper
-import java.nio.file.Files
-import java.nio.file.Paths
 import java.io.File
 import javax.activation.MimetypesFileTypeMap
 import io.netty.handler.codec.http.ServerCookieEncoder
