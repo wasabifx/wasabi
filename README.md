@@ -343,6 +343,10 @@ public class JsonSerializer(): Serializer("application/json", "application/vnd\\
 There is a [Google Groups](https://groups.google.com/forum/#!forum/wasabifx) where we can provide support and have discussions on future directions, etc. 
 
 ## TODO ##
+Full list of issues logged on [YouTrack](http://hhariri.cloudapp.net:8080/issue/WA)
+
+General overview of big things:
+
 * Clean up code.
 * Fix a lot of TODO's in there. And some ugly stuff too.
 * Add missing unit tests
