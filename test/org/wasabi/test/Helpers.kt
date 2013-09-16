@@ -70,7 +70,7 @@ private fun makeRequest(headers: HashMap<String, String>, request: HttpRequestBa
     val response = httpClient.execute(request)!!
 
     val body = EntityUtils.toString(response.getEntity())!!
-    return HttpClientResponse(response.getAllHeaders()!!, body, response.getStatusLine()?.getStatusCode(), response.getStatusLine()?.getReasonPhrase() ?: "")
+    return HttpClientResponse(response.getAllHeaders()!!, body, response.getStatusLine()?.getStatusCode()!!, response.getStatusLine()?.getReasonPhrase() ?: "")
 }
 
 public fun delete(url: String, headers: HashMap<String, String>): HttpClientResponse {
