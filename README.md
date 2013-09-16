@@ -338,6 +338,10 @@ for instance takes:
 public class JsonSerializer(): Serializer("application/json", "application/vnd\\.\\w*\\+json")
 ```
 
+
+## Support ##
+There is a [Google Groups](https://groups.google.com/forum/#!forum/wasabifx) where we can provide support and have discussions on future directions, etc. 
+
 ## TODO ##
 * Clean up code.
 * Fix a lot of TODO's in there. And some ugly stuff too.
@@ -346,6 +350,7 @@ public class JsonSerializer(): Serializer("application/json", "application/vnd\\
 * Missing functionality such as support for static binding to GET/POST
 * A Runner
 * Performance checks. No performance testing has been made. 
+
 
 Contributions
 -------------
