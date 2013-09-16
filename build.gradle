@@ -1,6 +1,9 @@
 buildscript {
-    project.ext.kotlin_version = '0.6.69'
+    project.ext.kotlin_version = '0.1-SNAPSHOT'
     repositories {
+        maven {
+            url "https://oss.sonatype.org/content/repositories/snapshots"
+        }
         mavenCentral()
     }
     dependencies {
@@ -11,6 +14,9 @@ buildscript {
 apply plugin: 'kotlin'
 
 repositories {
+    maven {
+        url "https://oss.sonatype.org/content/repositories/snapshots"
+    }
     mavenCentral()
 }
 
@@ -32,19 +38,15 @@ dependencies {
 sourceSets {
     main {
         kotlin {
-            kotlin {
-              srcDir "src"
-            }
+            srcDir "src"
         }
     }
 
     test {
         kotlin {
-            kotlin {
-                srcDir "test"
+             srcDir "test"
             }
         }
-    }
     main.java.srcDirs += 'src/main/kotlin'
 }
 
