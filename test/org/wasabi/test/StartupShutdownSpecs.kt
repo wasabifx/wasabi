@@ -9,6 +9,7 @@ import kotlin.test.fails
 import java.net.ConnectException
 import org.wasabi.app.AppServer
 import org.wasabi.test.TestServer
+import org.junit.Ignore
 
 public class StartupShutdownSpecs {
 
