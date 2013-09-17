@@ -27,7 +27,7 @@ public class StartupShutdownSpecs {
         TestServer.stop()
     }
 
-    Ignore("For some reason failing on TC server") spec fun stopping_an_app_server_should_no_longer_accept_connections() {
+    spec fun stopping_an_app_server_should_no_longer_accept_connections() {
 
         TestServer.start()
         val socket = Socket()
