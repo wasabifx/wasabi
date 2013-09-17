@@ -1,0 +1,115 @@
+task args
+args.map = [:]
+
+tasks.addRule("Pattern: <property>=<value>: Passes arguments to the scripts") { String taskName ->
+    def match = taskName =~ /(.*?)=(.*?$)/
+    if(match){
+        args.map[match[0][1]] = match[0][2]
+        task(taskName) << {
+        }
+    }
+}
+
+
+task help << {
+    println ('Welcome to Wasabi')
+    println ('')
+    println ('To get started run: gradle -q server dir={directory} appName={appName}')
+    println ('')
+    println ('where {directory} hosts your app. Your app will be called {appName} name')
+    println ('e.g.: gradle -q server dir=~/home/project/myAppfolder appName=myApp')
+}
+
+task setup(dependsOn: args) << {
+    if (!args.map.dir || !args.map.appName) {
+        throw new GradleException('You need to specify a directory and appName')
+    } else {
+        def directory = new File(args.map.dir)
+        directory.mkdirs()
+        println('Creating directory $dir ...')
+        def sourcedir = new File(args.map.dir + '/src')
+        sourcedir.mkdirs()
+        println('Creating src directory ...')
+        def testdir = new File(args.map.dir + '/test')
+        testdir.mkdirs()
+        println('Creating test directory ...')
+    }
+}
+
+task gradle(dependsOn: setup) << {
+        println('Creating gradle build file ...')
+        def gradleFile = new File(args.map.dir+'/build.gradle')
+        gradleFile.append('buildscript {\n' +
+                '    repositories {\n' +
+                '        mavenCentral()\n' +
+                '        maven {\n' +
+                '            url "https://oss.sonatype.org/content/repositories/snapshots"\n' +
+                '        }\n' +
+                '    }\n' +
+                '    dependencies {\n' +
+                '        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:0.1-SNAPSHOT"\n' +
+                '    }\n' +
+                '}\n' +
+                '\n' +
+                'apply plugin: \'kotlin\'\n' +
+                'apply plugin: \'application\'\n' +
+                '\n' +
+                'mainClassName = \'' + args.map.appName + '\'\n' +
+                '\n' +
+                'repositories {\n' +
+                '    maven {\n' +
+                '       url "https://oss.sonatype.org/content/repositories/snapshots"\n' +
+                '    }\n' +
+                '    mavenCentral()\n' +
+                '    maven {\n' +
+                '        url "http://repository.jetbrains.com/all"\n' +
+                '    }\n' +
+                '}\n' +
+                '\n' +
+                'dependencies {\n' +
+                '    compile "org.wasabi:wasabi:0.1-SNAPSHOT",\n' +
+                '            "org.jetbrains.kotlin:kotlin-stdlib:0.1-SNAPSHOT"\n' +
+                '}\n' +
+                'sourceSets {\n'+
+                    'main {\n'+
+                    '    kotlin {\n'+
+                    '        srcDir "src"\n'+
+                    '    }\n'+
+                    '}\n'+
+
+                    'test {\n'+
+                    '    kotlin {\n'+
+                    '        srcDir "test"\n'+
+                    '    }\n'+
+                    '}\n'+
+                    'main.java.srcDirs += \'src/\'\n'+
+                '\n}'
+
+
+        )
+}
+
+
+
+task server(dependsOn: 'gradle') << {
+        println('Creating server ...')
+        def serverFile = new File(args.map.dir+'/src/server.kt')
+        serverFile.append('package ' + args.map.appName +'\n' +
+                '\n' +
+                'import org.wasabi.app.AppServer\n'+
+                '\n' +
+                'fun main(args: Array<String>) {\n' +
+                '\n' +
+                '    val server = AppServer()\n' +
+                '\n' +
+                '\n' +
+                '    // insert routes here\n' +
+                '    server.get("/", { response.send ("Hello Wasabi")})\n' +
+                '\n' +
+                '    server.start()\n' +
+                '\n' +
+                '}')
+
+        println('Done!')
+
+}
