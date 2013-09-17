@@ -26,7 +26,7 @@ task setup(dependsOn: args) << {
     } else {
         def directory = new File(args.map.dir)
         directory.mkdirs()
-        println('Creating directory $dir ...')
+        println('Creating directory $args.map.dir ...')
         def sourcedir = new File(args.map.dir + '/src')
         sourcedir.mkdirs()
         println('Creating src directory ...')
@@ -40,14 +40,19 @@ task gradle(dependsOn: setup) << {
         println('Creating gradle build file ...')
         def gradleFile = new File(args.map.dir+'/build.gradle')
         gradleFile.append('buildscript {\n' +
+                '    project.ext.kotlin_version = \'0.1-SNAPSHOT\'\n' +
                 '    repositories {\n' +
-                '        mavenCentral()\n' +
                 '        maven {\n' +
                 '            url "https://oss.sonatype.org/content/repositories/snapshots"\n' +
                 '        }\n' +
+                '        mavenCentral()\n' +
+                '        maven {\n' +
+                '            url "http://oss.sonatype.org/content/repositories/snapshots"\n' +
+                '        }\n' +
                 '    }\n' +
                 '    dependencies {\n' +
-                '        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:0.1-SNAPSHOT"\n' +
+                '        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"\n' +
+                '        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$ext.kotlin_version"\n' +
                 '    }\n' +
                 '}\n' +
                 '\n' +
@@ -64,11 +69,15 @@ task gradle(dependsOn: setup) << {
                 '    maven {\n' +
                 '        url "http://repository.jetbrains.com/all"\n' +
                 '    }\n' +
+                '    maven {\n' +
+                '       url "http://oss.sonatype.org/content/repositories/snapshots"\n' +
+                '    }\n' +
                 '}\n' +
                 '\n' +
                 'dependencies {\n' +
                 '    compile "org.wasabi:wasabi:0.1-SNAPSHOT",\n' +
-                '            "org.jetbrains.kotlin:kotlin-stdlib:0.1-SNAPSHOT"\n' +
+                '            "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"\n' +
+                '    compile "org.jetbrains.kotlin:kotlin-stdlib:$ext.kotlin_version"\n'+
                 '}\n' +
                 'sourceSets {\n'+
                     'main {\n'+
