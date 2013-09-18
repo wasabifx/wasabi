@@ -1,11 +1,12 @@
 <component name="libraryTable">
   <library name="kotlin-runtime-0.1-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/artifacts-24/filestore/org.jetbrains.kotlin/kotlin-runtime/0.1-SNAPSHOT/jar/5c126593a04e1738ee57096c906feb1a17d37c47/kotlin-runtime-0.1-SNAPSHOT.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/artifacts-24/filestore/org.jetbrains.kotlin/kotlin-runtime/0.1-SNAPSHOT/jar/23db74c2ebf7937a951b2ae50bfdcdb7878c104a/kotlin-runtime-0.1-SNAPSHOT.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
       <root url="jar://$USER_HOME$/.gradle/caches/artifacts-24/filestore/org.jetbrains.kotlin/kotlin-runtime/0.1-SNAPSHOT/source/9cfe0f243d8a8f5850dac2fdc5f330d0aa9b65e/kotlin-runtime-0.1-SNAPSHOT-sources.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/artifacts-24/filestore/org.jetbrains.kotlin/kotlin-runtime/0.1-SNAPSHOT/source/5e39caa9caf61923b556b43b9191f6185e6fc274/kotlin-runtime-0.1-SNAPSHOT-sources.jar!/" />
     </SOURCES>
   </library>
 </component>
