@@ -42,7 +42,7 @@ task createGradle(dependsOn: setup) << {
         def gradleFile = new File(args.map.dir+'/build.gradle')
         gradleFile.append("""\
 buildscript {
-    project.ext.kotlin_version = '0.6.69'
+    project.ext.kotlin_version = '0.6.350'
     repositories {
         mavenCentral()
         maven {
