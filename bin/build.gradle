@@ -38,7 +38,7 @@ task setup(dependsOn: args) << {
 }
 
 task createGradle(dependsOn: setup) << {
-        println('Creating gradle build file ...')
+        println('Creating build.gradle file ...')
         def gradleFile = new File(args.map.dir+'/build.gradle')
         gradleFile.append("""\
 buildscript {
@@ -73,6 +73,16 @@ dependencies {
     compile "org.wasabi:wasabi:0.1-SNAPSHOT"
     compile "org.jetbrains.kotlin:kotlin-stdlib:\$kotlin_version"
 
+}
+
+sourceSets {
+    main {
+        kotlin {
+            srcDir "src"
+        }
+    }
+
+    main.java.srcDirs += 'src/main/kotlin'
 }
 
 task wrapper(type: Wrapper) {
