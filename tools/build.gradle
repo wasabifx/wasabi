@@ -15,25 +15,31 @@ task help << {
     println ("""\
 Welcome to Wasabi
 
-To get started run: gradle -q server dir={directory} appName={appName}
+To get started run: gradle -q server dir={directory} package={package}
 
-where {directory} hosts your app. Your app will be called {appName} name
-e.g.: gradle -q server dir=~/home/project/myAppfolder appName=myApp""")
+e.g.: gradle -q server dir=~/home/project/myAppfolder package=org.domain
+
+""")
+
+
+
 }
 
 task setup(dependsOn: args) << {
-    if (!args.map.dir || !args.map.appName) {
-        throw new GradleException('You need to specify a directory and appName')
+    if (!args.map.dir || !args.map.package) {
+        throw new GradleException('You need to specify a dir and package parameters')
     } else {
         def directory = new File(args.map.dir)
+        println('Here we go...\n')
         directory.mkdirs()
-        println('Creating directory $args.map.dir ...')
+        println('Creating directory ' + args.map.dir + '...')
         def sourcedir = new File(args.map.dir + '/src/main/kotlin')
         sourcedir.mkdirs()
         println('Creating src directory ...')
         def testdir = new File(args.map.dir + '/src/test/kotlin')
         testdir.mkdirs()
         println('Creating test directory ...')
+
     }
 }
 
@@ -57,7 +63,7 @@ buildscript {
 apply plugin: 'kotlin'
 apply plugin: 'application'
 
-mainClassName = '${args.map.appName}'
+mainClassName = '${args.map.package}.FIXTHIS_FIRST_LETTER_UPPERCASE_DROP_DOMAIN_SUFFIXPackage'
 
 repositories {
     mavenCentral()
@@ -76,12 +82,16 @@ dependencies {
 }
 
 sourceSets {
-    main {
-        kotlin {
-            srcDir "src"
+    src {
+        main {
+            kotlin
         }
     }
-
+    test {
+        main {
+            kotlin
+        }
+    }
     main.java.srcDirs += 'src/main/kotlin'
 }
 
@@ -97,7 +107,7 @@ task server(dependsOn: createGradle) << {
         println('Creating server ...')
         def serverFile = new File(args.map.dir+'/src/main/kotlin/server.kt')
         serverFile.append("""\
-package ${args.map.appName}
+package ${args.map.package}
 
 import org.wasabi.app.AppServer
 
@@ -112,6 +122,40 @@ fun main(args: Array<String>) {
 
 }
 """)
-        println('Done!')
+
+        println('Creating configuration file ...')
+        def configFile = new File(args.map.dir+'/src/main/kotlin/production.json')
+
+        configFile.append("""\
+{
+    "port": 3000,
+    "welcomeMessage": "Welcome to Wasabi!",
+    "enableLogging": true
+}
+
+
+
+""")
+
+    println('Done!')
+
+    println("""
+
+You can now import your Gradle project into your favorite IDE or use an editor.
+A default template has been created for you called server.kt. Define your routes there.
+
+Once you're ready to deploy, run:
+
+gradle distZip
+
+This will create a zip file with your application under build/distributions.
+Inside the zip there is a bin folder with two files named the same as your application.
+One is a shell script for Linux/OSX, the other for Windows. Running it will start your application.
+
+Have fun!
+
+
+
+""")
 
 }

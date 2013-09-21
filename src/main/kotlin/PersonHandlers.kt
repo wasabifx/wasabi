@@ -1,13 +1,15 @@
+package org.wasabi
+
 import org.wasabi.routing.RouteHandler
 import java.util.ArrayList
-import personserver.people
 import org.wasabi.http.Response
 import org.wasabi.http.Request
 import org.wasabi.http.HttpStatusCodes
 import org.wasabi.http.with
 import org.wasabi.routing.routeHandler
-import personserver.Person
 import java.util.Date
+
+
 
 
 val getPersons = routeHandler {

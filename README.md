@@ -39,6 +39,22 @@ Getting Started
   server.start()
 ```
 
+#### Starting a new application ####
+The easiest way to use Wasabi is with Gradle. Create the build.gradle file and import it into your IDE.
+
+To create this file you can either:
+
+* Have Gradle generate the file for you (easiest) running the build.gradle file under tools (Recommended). To use this option
+  download the file in (\tools\build.gradle)[LINK TO THIS] and type
+
+  ```
+    gradle -q help
+  ```
+  for more info
+
+* Create it manually. See the (sample for the structure)[LINK TO GRADLE SAMPLE]. Make sure you fill in the TODOs
+
+ the Gradle file manually or have Gr
 
 ### The AppServer ###
 Each Wasabi application is composed of a single *AppServer* on which you define route handlers. A route handler can respond to any of the HTTP verbs: GET, POST, PUT, DELETE, OPTIONS, HEAD. 

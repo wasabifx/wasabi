@@ -1,4 +1,4 @@
-package personserver
+package org.wasabi
 
 import org.wasabi.app.AppServer
 import org.wasabi.interceptors.negotiateContent
