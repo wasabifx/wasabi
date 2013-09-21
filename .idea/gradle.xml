@@ -5,7 +5,7 @@
       <GradleProjectSettings>
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="useAutoImport" value="true" />
+        <option name="gradleHome" value="$USER_HOME$/tools/gradle" />
       </GradleProjectSettings>
     </option>
   </component>

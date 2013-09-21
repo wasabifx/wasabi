@@ -45,12 +45,14 @@ dependencies {
 }
 
 sourceSets {
-    main {
-        kotlin {
-            srcDir "src"
+    src {
+        main {
+            kotlin
         }
     }
-
+    test {
+        kotlin
+    }
     main.java.srcDirs += 'src/main/kotlin'
 }
 

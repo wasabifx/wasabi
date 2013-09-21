@@ -1,5 +1,11 @@
+public static String getDomain(String s) {
+     String[] f = s.split('\\.')
+     return f[1].capitalize()
+}
 task args
 args.map = [:]
+
+defaultTasks 'help'
 
 tasks.addRule("Pattern: <property>=<value>: Passes arguments to the scripts") { String taskName ->
     def match = taskName =~ /(.*?)=(.*?$)/
@@ -46,6 +52,9 @@ task setup(dependsOn: args) << {
 task createGradle(dependsOn: setup) << {
         println('Creating build.gradle file ...')
         def gradleFile = new File(args.map.dir+'/build.gradle')
+       
+         
+        def mainClass = args.map.package + '.' + getDomain(args.map.package) + 'Package'
         gradleFile.append("""\
 buildscript {
     project.ext.kotlin_version = '0.6.350'
@@ -63,7 +72,7 @@ buildscript {
 apply plugin: 'kotlin'
 apply plugin: 'application'
 
-mainClassName = '${args.map.package}.FIXTHIS_FIRST_LETTER_UPPERCASE_DROP_DOMAIN_SUFFIXPackage'
+mainClassName = '${mainClass}'
 
 repositories {
     mavenCentral()
@@ -123,19 +132,7 @@ fun main(args: Array<String>) {
 }
 """)
 
-        println('Creating configuration file ...')
-        def configFile = new File(args.map.dir+'/src/main/kotlin/production.json')
 
-        configFile.append("""\
-{
-    "port": 3000,
-    "welcomeMessage": "Welcome to Wasabi!",
-    "enableLogging": true
-}
-
-
-
-""")
 
     println('Done!')
 

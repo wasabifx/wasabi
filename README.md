@@ -48,14 +48,14 @@ The easiest way to use Wasabi is with Gradle.
   To create this file you can either:
 
   a. Have Gradle generate the file for you (easiest) running the build.gradle file under tools (Recommended). To use this option
-     download the file in (\tools\build.gradle)[LINK TO THIS] and type
+     download the file in (\tools\build.gradle)[tools/build.gradle] and type
 
      ```
-       gradle -q help
+       gradle 
      ```
      for more info
 
-  b. Create it manually. See the (sample for the structure)[LINK TO GRADLE SAMPLE]. Make sure you fill in the TODOs
+  b. Create it manually. See the (sample for the structure)[tools/sample.gradle]. Make sure you fill in the TODOs
 
   the Gradle file manually or have Gr
 
