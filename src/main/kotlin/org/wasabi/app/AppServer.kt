@@ -22,7 +22,7 @@ import org.wasabi.deserializers.MultiPartFormDataDeserializer
 import org.wasabi.deserializers.JsonDeserializer
 
 
-public class AppServer(val configuration: AppConfiguration = AppConfiguration()) {
+public open class AppServer(val configuration: AppConfiguration = AppConfiguration()) {
 
     private val logger = LoggerFactory.getLogger(javaClass<AppServer>())
     private val httpServer: HttpServer

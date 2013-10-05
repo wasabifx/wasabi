@@ -1,13 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="GradleSettings">
-    <option name="linkedExternalProjectsSettings">
-      <GradleProjectSettings>
-        <option name="distributionType" value="DEFAULT_WRAPPED" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleHome" value="$USER_HOME$/tools/gradle" />
-      </GradleProjectSettings>
-    </option>
+    <option name="gradleHome" value="$USER_HOME$/tools/gradle" />
+    <option name="linkedProjectPath" value="$PROJECT_DIR$/build.gradle" />
   </component>
 </project>
 

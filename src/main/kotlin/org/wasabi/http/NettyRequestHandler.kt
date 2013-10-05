@@ -113,12 +113,12 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
                     continueRequest = runInterceptors(postRequestInterceptors)
                 } catch (e: InvalidMethodException)  {
                     response.setAllowedMethods(e.allowedMethods)
-                    response.setHttpStatus(HttpStatusCodes.MethodNotAllowed)
+                    response.setStatus(StatusCodes.MethodNotAllowed)
                 } catch (e: RouteNotFoundException) {
-                    response.setHttpStatus(HttpStatusCodes.NotFound)
+                    response.setStatus(StatusCodes.NotFound)
                 } catch (e: Exception) {
                     // TODO: Log actual message
-                    response.setHttpStatus(HttpStatusCodes.InternalServerError)
+                    response.setStatus(StatusCodes.InternalServerError)
                 }
                 writeResponse(ctx!!, response)
             }
@@ -182,7 +182,7 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
                     if (serializer != null) {
                         buffer = serializer.serialize(response.sendBuffer!!)
                     } else {
-                        response.setHttpStatus(HttpStatusCodes.UnsupportedMediaType)
+                        response.setStatus(StatusCodes.UnsupportedMediaType)
                     }
                 }
             }
@@ -206,7 +206,7 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
 
     public override fun exceptionCaught(ctx: ChannelHandlerContext?, cause: Throwable?) {
         // TODO: Log actual message
-        response.setHttpStatus(HttpStatusCodes.InternalServerError)
+        response.setStatus(StatusCodes.InternalServerError)
         writeResponse(ctx!!, response)
     }
 

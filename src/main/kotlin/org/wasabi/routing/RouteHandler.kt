@@ -2,9 +2,10 @@ package org.wasabi.routing
 
 import org.wasabi.http.Request
 import org.wasabi.http.Response
-import org.wasabi.http.HttpStatusCodes
+import org.wasabi.http.StatusCodes
+import org.wasabi.http.ContentType
 
-public class RouteHandler(public val request: Request, public val response: Response)  {
+public class RouteHandler(val request: Request, val response: Response)  {
 
     var executeNext = false
 

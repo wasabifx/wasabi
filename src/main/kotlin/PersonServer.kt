@@ -7,8 +7,14 @@ import java.util.HashMap
 import org.wasabi.interceptors.serveFavIconAs
 import java.util.Date
 import java.util.Calendar
-import org.wasabi.http.HttpStatusCodes
+import org.wasabi.http.StatusCodes
 import org.wasabi.http.with
+import org.wasabi.getPersons
+import org.wasabi.getPersonById
+import org.wasabi.createPerson
+import org.wasabi.http.ContentType
+import org.wasabi.app.AppConfiguration
+import org.wasabi.configuration.ConfigurationStorage
 
 
 data class Person(val id: Int, val name: String, val email: String, val profession: String, val dateJoined: Date, val level: Int)
@@ -38,15 +44,28 @@ fun main(args: Array<String>) {
 
     appServer.get("/person/:id", getPersonById)
 
-    appServer.post("/person", createPerson
+    appServer.post("/person", createPerson)
 
-    )
+    appServer.get("/something", {
 
+        response.negotiate (
+
+                "text/html" with { send("Hello")},
+
+                "application/json" with { send("..fdfdfdfd")}
+
+        )
+
+
+    })
+
+
+    appServer.get("/js", { response.send(people, "application/json") })
 
     appServer.options("/person",
     {
         response.addExtraHeader("Allow", "GET, PUT, POST")
-        response.setHttpStatus(HttpStatusCodes.OK)
+        response.setStatus(StatusCodes.OK)
 
     })
 

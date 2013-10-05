@@ -9,7 +9,15 @@ import org.wasabi.configuration.InvalidConfigurationException
 
 public class ConfigurationStorage {
 
-    fun loadFromFile(jsonFilename: String): AppConfiguration {
+    public fun loadProduction(): AppConfiguration {
+        return loadFromFile("production.json")
+    }
+
+    public fun loadDebug(): AppConfiguration {
+        return loadFromFile("debug.json")
+    }
+
+    public fun loadFromFile(jsonFilename: String): AppConfiguration {
 
         val objectMapper = ObjectMapper()
 
@@ -37,7 +45,7 @@ public class ConfigurationStorage {
         }
     }
 
-    fun saveToFile(configuration: AppConfiguration, jsonFilename: String) {
+    public fun saveToFile(configuration: AppConfiguration, jsonFilename: String) {
 
         val objectMapper = ObjectMapper()
 

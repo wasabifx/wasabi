@@ -7,7 +7,7 @@ import org.wasabi.app.AppServer
 import org.wasabi.routing.InterceptOn
 import org.wasabi.serializers.JsonSerializer
 import org.wasabi.serializers.XmlSerializer
-import org.wasabi.http.HttpStatusCodes
+import org.wasabi.http.StatusCodes
 
 
 public class ContentNegotiationInterceptor(val serializers: List<Serializer>): Interceptor {
@@ -20,7 +20,7 @@ public class ContentNegotiationInterceptor(val serializers: List<Serializer>): I
                         return true
                     }
                 }
-                response.setHttpStatus(HttpStatusCodes.UnsupportedMediaType)
+                response.setStatus(StatusCodes.UnsupportedMediaType)
                 return false
             }
             return true

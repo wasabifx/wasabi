@@ -25,58 +25,51 @@ public class Response() {
     public val extraHeaders: HashMap<String, String> = HashMap<String, String>()
 
     public var etag: String = ""
-        private set
     public var location: String = ""
-
-    public var contentType: String = ContentType.TextPlain.toContentTypeString()
-        private set
+    public var contentType: String = ContentType.TextPlain.convertToString()
     public var statusCode: Int = 200
-        private set
     public var statusDescription: String = ""
-        private set
     public var allow: String = ""
-        private set
     public var absolutePathToFileToStream: String = ""
         private set
     public var sendBuffer: Any? = null
         private set
     public var overrideContentNegotiation: Boolean = false
     public val cookies : HashMap<String, Cookie> = HashMap<String, Cookie>()
-    // DISCLAIMER (HACK / TODO): I hate this. I really do. It doesn't belong here. It's part of the request
-    // but this would imply changing a load of crap and the question isn't whether I have the
-    // time now to change it but whether that would actually solve the problem. Somehow this needs to
-    // be referenced in the response. I'm not happy with it. I really am not, but I think the time
-    // has come to move on and revisit this later. And as they say, don't judge a developer by a single
-    // line of code. Yours truly, Hadi Hariri. (@hhariri in case you want to humiliate me in public forum)
     public var requestedContentTypes: ArrayList<String> = arrayListOf()
     public var negotiatedMediaType: String = ""
 
 
 
 
-    public fun streamFile(filename: String, explicitContentType: String = "") {
+    public fun streamFile(filename: String, contentType: String = "*/*") {
 
         val file = File(filename)
         if (file.exists()) {
             this.absolutePathToFileToStream = file.getAbsolutePath()
             var fileContentType : String?
-            if (explicitContentType  == "") {
+            if (contentType == "*/*") {
                 var mimeTypesMap : MimetypesFileTypeMap? = MimetypesFileTypeMap()
                 fileContentType = mimeTypesMap!!.getContentType(file)
             } else {
-                fileContentType = explicitContentType
+                fileContentType = contentType
             }
-            setResponseContentType(fileContentType ?: "application/unknown")
+            this.contentType = fileContentType ?: "application/unknown"
             addExtraHeader("Content-Length", file.length().toString())
             // TODO: Caching and redirect here too?
         } else {
-            setHttpStatus(HttpStatusCodes.NotFound)
+            setStatus(StatusCodes.NotFound)
         }
     }
 
-    public fun send(obj: Any) {
+
+    public fun send(obj: Any, contentType: String = "*/*") {
         sendBuffer = obj
+        if (contentType != "*/*") {
+            negotiatedMediaType = contentType
+        }
     }
+
 
     public fun negotiate(vararg negotiations: Pair<String, Response.() -> Unit>) {
         for ((mediaType, func) in negotiations) {
@@ -86,30 +79,23 @@ public class Response() {
                 return
             }
         }
-        setHttpStatus(HttpStatusCodes.UnsupportedMediaType)
+        setStatus(StatusCodes.UnsupportedMediaType)
     }
 
-    public fun setHttpStatus(statusCode: Int, statusDescription: String) {
+    public fun setStatus(statusCode: Int, statusDescription: String) {
         this.statusCode = statusCode
         this.statusDescription = statusDescription
     }
 
-    public fun setHttpStatus(httpStatus: HttpStatusCodes) {
+    public fun setStatus(httpStatus: StatusCodes) {
         statusCode = httpStatus.statusCode
         statusDescription = httpStatus.statusDescription
-    }
-
-    public fun setResponseContentType(contentType: String) {
-        this.contentType = contentType
-    }
-
-    public fun setResponseContentType(contentType: ContentType) {
-        setResponseContentType(contentType.toContentTypeString())
     }
 
     public fun setAllowedMethods(allowedMethods: Array<HttpMethod>) {
         allow = allowedMethods.makeString(",")
     }
+
     public fun addExtraHeader(name: String, value: String) {
         extraHeaders[name] = value
     }

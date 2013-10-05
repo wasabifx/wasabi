@@ -94,4 +94,42 @@ public class ContentNegotiationSpecs : TestServerContext() {
 
     }
 
+
+    spec fun sending_content_type_when_using_send_should_serialize_using_the_requested_content_type() {
+
+        TestServer.reset()
+
+        val headers = hashMapOf(
+                "User-Agent" to "test-client",
+                "Connection" to "keep-alive",
+                "Cache-Control" to "max-age=0",
+                "Accept" to "application/json",
+                "Accept-Encoding" to "gzip,deflate,sdch",
+                "Accept-Language" to "en-US,en;q=0.8",
+                "Accept-Charset" to "ISO-8859-1,utf-8;q=0.7,*;q=0.3"
+
+        )
+
+        TestServer.appServer.get("/customer/10", {
+
+
+            val obj = object {
+                val name = "Joe"
+                val email = "Joe@smith.com"
+
+            }
+
+            response.send(obj, "application/json")
+
+        })
+
+        val response = get("http://localhost:3000/customer/10", headers)
+
+        assertEquals("{\"name\":\"Joe\",\"email\":\"Joe@smith.com\"}",response.body)
+
+
+
+
+
+    }
 }

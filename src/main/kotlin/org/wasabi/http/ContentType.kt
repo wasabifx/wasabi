@@ -5,7 +5,7 @@ package org.wasabi.http
 // TODO: Use object chaining instead of this.
 public enum  class ContentType {
 
-    fun toContentTypeString(): String {
+    open fun convertToString(): String {
         // TODO: Clean up.
         val str  = this.toString()
         var o = ""
@@ -19,6 +19,11 @@ public enum  class ContentType {
         return o.trimLeading("/")
     }
 
+    All {
+        override fun convertToString(): String {
+            return "*/*"
+        }
+    }
     TextPlain
     TextHtml
     ApplicationJson
