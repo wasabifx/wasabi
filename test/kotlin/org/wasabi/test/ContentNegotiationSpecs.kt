@@ -17,7 +17,6 @@ public class ContentNegotiationSpecs : TestServerContext() {
     spec fun sending_an_object_should_encode_and_send_based_on_contentType() {
 
         TestServer.reset()
-        TestServer.appServer.negotiateContent()
 
         val headers = hashMapOf(
                 "User-Agent" to "test-client",
@@ -55,7 +54,6 @@ public class ContentNegotiationSpecs : TestServerContext() {
     spec fun manual_negotiation_should_execute_correct_body_structure_and_serialize_if_necessary() {
 
         TestServer.reset()
-        TestServer.appServer.negotiateContent()
 
         val headers = hashMapOf(
                 "User-Agent" to "test-client",

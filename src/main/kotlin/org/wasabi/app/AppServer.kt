@@ -20,6 +20,8 @@ import org.wasabi.serializers.XmlSerializer
 import org.wasabi.deserializers.Deserializer
 import org.wasabi.deserializers.MultiPartFormDataDeserializer
 import org.wasabi.deserializers.JsonDeserializer
+import org.wasabi.interceptors.negotiateContent
+import org.wasabi.interceptors.ContentNegotiationInterceptor
 
 
 public open class AppServer(val configuration: AppConfiguration = AppConfiguration()) {
@@ -32,6 +34,7 @@ public open class AppServer(val configuration: AppConfiguration = AppConfigurati
     public val interceptors : ArrayList<InterceptorEntry>  = ArrayList<InterceptorEntry>()
     public val serializers: ArrayList<Serializer> = arrayListOf(JsonSerializer(), XmlSerializer())
     public val deserializers: ArrayList<Deserializer> = arrayListOf(MultiPartFormDataDeserializer(), JsonDeserializer())
+
 
 
     private fun addRoute(method: HttpMethod, path: String, vararg handler: RouteHandler.() -> Unit) {
@@ -64,6 +67,10 @@ public open class AppServer(val configuration: AppConfiguration = AppConfigurati
      * @param   wait
      */
     public fun start(wait: Boolean = true) {
+        if (configuration.negotiateContent) {
+            interceptors.remove(javaClass<ContentNegotiationInterceptor>())
+            negotiateContent()
+        }
         logger!!.info(configuration.welcomeMessage)
 
         running = true
