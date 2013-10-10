@@ -380,4 +380,6 @@ Contributions
 -------------
 There's a lot of work still pending and any help would be appreciated. Pull Requests welcome!
 
-
+License
+-------
+Licensed under Apache 2 OSS License
