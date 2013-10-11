@@ -39,6 +39,7 @@ import org.wasabi.routing.InvalidMethodException
 import org.wasabi.routing.RouteNotFoundException
 import org.wasabi.deserializers.Deserializer
 import java.nio.ByteBuffer
+import org.slf4j.LoggerFactory
 
 
 // TODO: This class needs cleaning up
@@ -50,10 +51,13 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
     var chunkedTransfer = false
     var decoder : HttpPostRequestDecoder? = null
     val factory = DefaultHttpDataFactory(DefaultHttpDataFactory.MINSIZE)
+    val preParsingInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.PreParsing }
     val preRequestInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.PreRequest }
     val postRequestInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.PostRequest }
+    val postSerializationInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.PostSerialization }
     val errorInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.Error }
     var deserializer : Deserializer? = null
+    private var log = LoggerFactory.getLogger(javaClass<NettyRequestHandler>())
 
 
     public override fun messageReceived(ctx: ChannelHandlerContext?, msg: Any?) {
@@ -76,16 +80,20 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
 
         if (msg is HttpContent) {
 
+            log!!.debug("About to preparse")
+
+            runInterceptors(preParsingInterceptors)
+
             if (deserializer != null) {
                 // TODO: Add support for chunked transfer
-
                 deserializeBody(msg)
             }
             if (msg is LastHttpContent) {
                 try {
-                    // process all interceptors that are global
+
                     var continueRequest : Boolean
 
+                    // process all interceptors that are global
                     continueRequest = runInterceptors(preRequestInterceptors)
 
                     if (continueRequest) {
@@ -111,13 +119,14 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
                     }
                     // Run global interceptors again
                     continueRequest = runInterceptors(postRequestInterceptors)
+
                 } catch (e: InvalidMethodException)  {
                     response.setAllowedMethods(e.allowedMethods)
                     response.setStatus(StatusCodes.MethodNotAllowed)
                 } catch (e: RouteNotFoundException) {
                     response.setStatus(StatusCodes.NotFound)
                 } catch (e: Exception) {
-                    // TODO: Log actual message
+                    log!!.debug("Exception during web invocation: ${e.getMessage()}")
                     response.setStatus(StatusCodes.InternalServerError)
                 }
                 writeResponse(ctx!!, response)
@@ -187,6 +196,17 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
                 }
             }
             httpResponse = DefaultFullHttpResponse(HttpVersion("HTTP", 1, 1, true), HttpResponseStatus(response.statusCode,response.statusDescription),  Unpooled.copiedBuffer(buffer, CharsetUtil.UTF_8))
+
+            try {
+                // process all interceptors that are post serialization
+                runInterceptors(postSerializationInterceptors)
+            }
+            catch(e: Exception)
+            {
+               response.setStatus(StatusCodes.InternalServerError)
+                // TODO Should we flush the body contents here?
+            }
+
             addResponseHeaders(httpResponse, response)
             ctx.write(httpResponse)
             ctx.flush()?.addListener(ChannelFutureListener.CLOSE)
