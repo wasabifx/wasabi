@@ -8,5 +8,6 @@ import java.io.File
 public data class AppConfiguration(
      var port: Int = 3000,
      var welcomeMessage: String = "Server starting on port $port",
+     var negotiateContent: Boolean = true,
      var enableLogging: Boolean = true)
 
