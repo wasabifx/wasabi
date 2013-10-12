@@ -358,6 +358,33 @@ for instance takes:
 public class JsonSerializer(): Serializer("application/json", "application/vnd\\.\\w*\\+json")
 ```
 
+## CORS Support ##
+Wasabi provides CORS support via an Interceptor. You can enable CORS support in multiple ways:
+
+* Via AppConfiguration.enableCORSGlobally - which enables CORS for all routes, all verbs, all origins
+* Programatically using server.enableCORSGlobally - same as above
+* Programatically using server.enablesCORS([...COREntry...]) - providing an array of CORSEntry's
+
+Each CORSEntry consists of:
+
+```kotlin
+public class CORSEntry(val path: String = "*",
+                       val origins: String = "*",
+                       val methods: String = "GET, POST, PUT, DELETE",
+                       val headers: String = "Origin, X-Requested-With, Content-Type, Accept",
+                       val credentials: String = "",
+                       val preflightMaxAge: String = "") {
+
+}
+```
+
+with the corresponding defaults. Obviously you should only have one default. 
+
+## Auto Options Support ##
+Wasabi can automatically respond to OPTIONS for a specific path. You can enable this in multiple ways:
+
+* Via AppConfiguration.enableAutoOptions 
+* Programatically using server.enableAutoOptions - same as above
 
 ## Support ##
 There is a [Google Groups](https://groups.google.com/forum/#!forum/wasabifx) where we can provide support and have discussions on future directions, etc. 
