@@ -15,6 +15,9 @@ import org.wasabi.createPerson
 import org.wasabi.http.ContentType
 import org.wasabi.app.AppConfiguration
 import org.wasabi.configuration.ConfigurationStorage
+import org.wasabi.interceptors.enableAutoOptions
+import org.wasabi.interceptors.enableCORS
+import org.wasabi.http.CORSEntry
 
 
 data class Person(val id: Int, val name: String, val email: String, val profession: String, val dateJoined: Date, val level: Int)
@@ -38,6 +41,8 @@ fun main(args: Array<String>) {
     val appServer = AppServer()
 
     appServer.negotiateContent()
+    appServer.enableAutoOptions()
+    appServer.enableCORS(arrayListOf(CORSEntry()))
 
 
     appServer.get("/person", getPersons)
@@ -61,13 +66,6 @@ fun main(args: Array<String>) {
 
 
     appServer.get("/js", { response.send(people, "application/json") })
-
-    appServer.options("/person",
-    {
-        response.addExtraHeader("Allow", "GET, PUT, POST")
-        response.setStatus(StatusCodes.OK)
-
-    })
 
 
     appServer.start()

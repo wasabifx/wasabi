@@ -16,6 +16,7 @@ import org.wasabi.routing.Route
 import org.apache.http.util.EntityUtils
 import org.junit.Before
 import org.junit.After
+import org.apache.http.client.methods.HttpOptions
 
 open public class TestServerContext {
     Before fun initServer(): Unit {
@@ -80,6 +81,11 @@ public fun delete(url: String, headers: HashMap<String, String>): HttpClientResp
 public fun get(url: String, headers: HashMap<String,String>): HttpClientResponse {
     return makeRequest(headers, HttpGet(url))
 }
+
+public fun options(url: String, headers: HashMap<String, String> = hashMapOf()): HttpClientResponse {
+    return makeRequest(headers, HttpOptions(url))
+}
+
 
 public fun postForm(url: String, headers: HashMap<String, String>, fields: ArrayList<BasicNameValuePair>, chunked: Boolean = false): HttpClientResponse {
     val httpPost = HttpPost(url)

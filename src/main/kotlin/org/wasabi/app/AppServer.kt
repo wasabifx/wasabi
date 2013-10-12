@@ -21,6 +21,8 @@ import org.wasabi.deserializers.Deserializer
 import org.wasabi.deserializers.MultiPartFormDataDeserializer
 import org.wasabi.deserializers.JsonDeserializer
 import org.wasabi.interceptors.negotiateContent
+import org.wasabi.interceptors.enableAutoOptions
+import org.wasabi.interceptors.enableCORSGlobally
 import org.wasabi.interceptors.ContentNegotiationInterceptor
 
 
@@ -47,11 +49,23 @@ public open class AppServer(val configuration: AppConfiguration = AppConfigurati
 
     {
         httpServer = HttpServer(this)
+        init()
+    }
+
+    public fun init() {
         if (configuration.enableLogging) {
             intercept(LoggingInterceptor())
         }
+        if (configuration.negotiateContent) {
+            negotiateContent()
+        }
+        if (configuration.enableAutoOptions) {
+            enableAutoOptions()
+        }
+        if (configuration.enableCORSGlobally) {
+            enableCORSGlobally()
+        }
     }
-
     /**
      *  Returns true if the Server is running.
      */
@@ -67,10 +81,6 @@ public open class AppServer(val configuration: AppConfiguration = AppConfigurati
      * @param   wait
      */
     public fun start(wait: Boolean = true) {
-        if (configuration.negotiateContent) {
-            interceptors.remove(javaClass<ContentNegotiationInterceptor>())
-            negotiateContent()
-        }
         logger!!.info(configuration.welcomeMessage)
 
         running = true

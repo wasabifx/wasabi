@@ -27,7 +27,7 @@ public class HttpServer(private val appServer: AppServer) {
         val channel = bootstrap.bind(appServer.configuration.port)?.sync()?.channel()
 
         if (wait) {
-            channel?.closeFuture()?.sync();
+            channel?.closeFuture()?.sync()
         }
     }
 

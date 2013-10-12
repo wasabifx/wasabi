@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module type="JAVA_MODULE" version="4">
+<module external.linked.project.path="$MODULE_DIR$" external.root.project.path="$MODULE_DIR$" external.system.id="GRADLE" type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
@@ -15,20 +15,20 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" scope="TEST" name="junit-4.9" level="project" />
-    <orderEntry type="library" exported="" name="kotlin-stdlib-0.6.602" level="project" />
     <orderEntry type="library" exported="" name="jackson-mapper-asl-1.9.12" level="project" />
+    <orderEntry type="library" exported="" name="netty-all-4.0.0.CR1" level="project" />
+    <orderEntry type="library" exported="" name="commons-codec-1.6" level="project" />
+    <orderEntry type="library" exported="" name="commons-logging-1.1.1" level="project" />
+    <orderEntry type="library" exported="" name="httpclient-4.2.3" level="project" />
     <orderEntry type="library" exported="" name="httpcore-4.2.3" level="project" />
     <orderEntry type="library" exported="" name="slf4j-api-1.7.5" level="project" />
-    <orderEntry type="library" scope="TEST" name="mockito-all-1.9.5" level="project" />
-    <orderEntry type="library" exported="" name="netty-all-4.0.0.CR1" level="project" />
     <orderEntry type="library" exported="" name="slf4j-simple-1.7.5" level="project" />
-    <orderEntry type="library" exported="" name="commons-logging-1.1.1" level="project" />
-    <orderEntry type="library" exported="" name="kotlin-runtime-0.6.602" level="project" />
-    <orderEntry type="library" exported="" name="httpclient-4.2.3" level="project" />
-    <orderEntry type="library" scope="TEST" name="hamcrest-core-1.1" level="project" />
-    <orderEntry type="library" exported="" name="commons-codec-1.6" level="project" />
+    <orderEntry type="library" exported="" name="kotlin-stdlib-0.6.602" level="project" />
     <orderEntry type="library" exported="" name="jackson-core-asl-1.9.12" level="project" />
+    <orderEntry type="library" exported="" name="kotlin-runtime-0.6.602" level="project" />
+    <orderEntry type="library" scope="TEST" name="junit-4.9" level="project" />
+    <orderEntry type="library" scope="TEST" name="mockito-all-1.9.5" level="project" />
+    <orderEntry type="library" scope="TEST" name="hamcrest-core-1.1" level="project" />
   </component>
 </module>
 

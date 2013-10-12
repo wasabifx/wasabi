@@ -30,6 +30,7 @@ public class HeaderSpecs: TestServerContext() {
         )
 
         var uri = ""
+        var path = ""
         var port = 0
         var host = ""
         var userAgent = ""
@@ -49,6 +50,7 @@ public class HeaderSpecs: TestServerContext() {
 
 
                 uri = request.uri
+                path = request.path
                 host = request.host
                 port = request.port
                 userAgent = request.userAgent
@@ -66,7 +68,8 @@ public class HeaderSpecs: TestServerContext() {
 
         get("http://localhost:3000/customer/10/valid?param1=value1&param2=value2", headers)
 
-        assertEquals("/customer/10/valid", uri);
+        assertEquals("/customer/10/valid?param1=value1&param2=value2", uri);
+        assertEquals("/customer/10/valid", path);
         assertEquals("localhost", host);
         assertEquals(3000, port);
         assertEquals("test-client", userAgent);

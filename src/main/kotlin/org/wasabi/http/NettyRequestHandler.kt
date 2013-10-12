@@ -149,10 +149,6 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
     private fun writeResponse(ctx: ChannelHandlerContext, response: Response) {
         var httpResponse : HttpResponse
         response.setResponseCookies()
-        // TODO: Implement once you have CORS properly supported
-        response.addExtraHeader("Access-Control-Request-Method", "GET, POST, PUT")
-        response.addExtraHeader("Access-Control-Allow-Origin", "*")
-        response.addExtraHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
         if (response.statusCode / 100 == 4 || response.statusCode / 100 == 5) {
             runInterceptors(errorInterceptors)
         }

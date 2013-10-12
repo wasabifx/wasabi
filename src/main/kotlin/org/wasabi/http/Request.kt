@@ -16,9 +16,9 @@ import io.netty.handler.codec.http.multipart.Attribute
 
 public class Request(private val httpRequest: HttpRequest) {
 
-    public val uri: String  = httpRequest.getUri()!!.split('?')[0]
+    public val uri: String  = httpRequest.getUri()!!
     public val document: String = uri.drop(uri.lastIndexOf("/") + 1)
-    public val path: String = uri.take(uri.lastIndexOf("/"))
+    public val path: String = uri.split('?')[0]
     public val method: HttpMethod =  httpRequest.getMethod()!!
     public val host: String = getHeader("Host").takeWhile { it != ':' }
     public val isSecure: Boolean = false // TODO: getHeader("Protocol").compareToIgnoreCase("HTTPS") == 0
