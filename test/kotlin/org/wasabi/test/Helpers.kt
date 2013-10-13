@@ -17,6 +17,7 @@ import org.apache.http.util.EntityUtils
 import org.junit.Before
 import org.junit.After
 import org.apache.http.client.methods.HttpOptions
+import org.apache.http.params.BasicHttpParams
 
 open public class TestServerContext {
     Before fun initServer(): Unit {
@@ -71,15 +72,25 @@ private fun makeRequest(headers: HashMap<String, String>, request: HttpRequestBa
     val response = httpClient.execute(request)!!
 
     val body = EntityUtils.toString(response.getEntity())!!
-    return HttpClientResponse(response.getAllHeaders()!!, body, response.getStatusLine()?.getStatusCode()!!, response.getStatusLine()?.getReasonPhrase() ?: "")
+    val responseHeaders = response.getAllHeaders()!!
+
+    return HttpClientResponse(responseHeaders, body,
+            response.getStatusLine()?.getStatusCode()!!,
+            response.getStatusLine()?.getReasonPhrase() ?: "")
+
+
 }
 
 public fun delete(url: String, headers: HashMap<String, String>): HttpClientResponse {
     return makeRequest(headers, HttpDelete(url))
 }
 
-public fun get(url: String, headers: HashMap<String,String>): HttpClientResponse {
-    return makeRequest(headers, HttpGet(url))
+public fun get(url: String, headers: HashMap<String,String> = hashMapOf()): HttpClientResponse {
+    val get = HttpGet(url)
+    val params = BasicHttpParams()
+    params.setParameter("http.protocol.handle-redirects",false)
+    get.setParams(params)
+    return makeRequest(headers, get)
 }
 
 public fun options(url: String, headers: HashMap<String, String> = hashMapOf()): HttpClientResponse {

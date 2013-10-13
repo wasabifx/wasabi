@@ -5,7 +5,6 @@ import java.util.ArrayList
 import org.wasabi.http.Response
 import org.wasabi.http.Request
 import org.wasabi.http.StatusCodes
-import org.wasabi.http.with
 import org.wasabi.routing.routeHandler
 import java.util.Date
 

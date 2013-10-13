@@ -8,8 +8,8 @@ import kotlin.test.assertEquals
 import org.wasabi.http.ContentType
 import org.wasabi.routing.InterceptOn
 import org.wasabi.test.TestServer
-import org.wasabi.interceptors.negotiateContent
-import org.wasabi.http.with
+import org.wasabi.interceptors.enableContentNegotiation
+import org.wasabi.routing.with
 
 
 public class ContentNegotiationSpecs : TestServerContext() {

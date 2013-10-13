@@ -41,6 +41,10 @@ public class Response() {
 
 
 
+    public fun redirect(url: String, redirectType: StatusCodes = StatusCodes.Found) {
+        setStatus(redirectType)
+        location = url
+    }
 
     public fun streamFile(filename: String, contentType: String = "*/*") {
 
@@ -97,10 +101,12 @@ public class Response() {
     }
 
     public fun addExtraHeader(name: String, value: String) {
-        extraHeaders[name] = value
+        if (value != ""){
+            extraHeaders[name] = value
+        }
     }
 
-    public fun setResponseCookies() {
+    private fun setResponseCookies() {
         for (cookie in cookies) {
             val name = cookie.value.name.toString()
             val value = cookie.value.value.toString()
@@ -112,6 +118,10 @@ public class Response() {
         addExtraHeader("Cache-Control", cacheControl.toString())
     }
 
+    public fun setHeaders() {
+        setResponseCookies()
+        addExtraHeader("E-Tag", etag)
+        addExtraHeader("Location", location)
+    }
 }
 
-fun String.with(handler : Response.() -> Unit) : Pair<String, Response.() -> Unit> = this to handler

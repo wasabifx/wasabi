@@ -3,7 +3,7 @@ package org.wasabi.test
 import org.junit.Test as spec
 import java.util.ArrayList
 import kotlin.test.assertEquals
-import org.wasabi.interceptors.negotiateContent
+import org.wasabi.interceptors.enableContentNegotiation
 import org.wasabi.interceptors.parseContentNegotiationHeaders
 
 public class ContentNegotiatioParserInterceptorSpecs: TestServerContext() {

@@ -1,14 +1,13 @@
 package org.wasabi
 
 import org.wasabi.app.AppServer
-import org.wasabi.interceptors.negotiateContent
+import org.wasabi.interceptors.enableContentNegotiation
 import java.util.ArrayList
 import java.util.HashMap
 import org.wasabi.interceptors.serveFavIconAs
 import java.util.Date
 import java.util.Calendar
 import org.wasabi.http.StatusCodes
-import org.wasabi.http.with
 import org.wasabi.getPersons
 import org.wasabi.getPersonById
 import org.wasabi.createPerson
@@ -18,6 +17,7 @@ import org.wasabi.configuration.ConfigurationStorage
 import org.wasabi.interceptors.enableAutoOptions
 import org.wasabi.interceptors.enableCORS
 import org.wasabi.http.CORSEntry
+import org.wasabi.interceptors.enableCORSGlobally
 
 
 data class Person(val id: Int, val name: String, val email: String, val profession: String, val dateJoined: Date, val level: Int)
@@ -40,9 +40,9 @@ fun main(args: Array<String>) {
 
     val appServer = AppServer()
 
-    appServer.negotiateContent()
+    appServer.enableContentNegotiation()
     appServer.enableAutoOptions()
-    appServer.enableCORS(arrayListOf(CORSEntry()))
+    appServer.enableCORSGlobally()
 
 
     appServer.get("/person", getPersons)
@@ -51,16 +51,9 @@ fun main(args: Array<String>) {
 
     appServer.post("/person", createPerson)
 
-    appServer.get("/something", {
+    appServer.get("/redirect", {
 
-        response.negotiate (
-
-                "text/html" with { send("Hello")},
-
-                "application/json" with { send("..fdfdfdfd")}
-
-        )
-
+      response.redirect("http://www.google.com")
 
     })
 
