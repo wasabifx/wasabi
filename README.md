@@ -392,9 +392,15 @@ There is a [Google Groups](https://groups.google.com/forum/#!forum/wasabifx) whe
 Full list of issues logged on [YouTrack](http://hhariri.cloudapp.net:8080/issues/WA)
 
 
+
 Contributions
 -------------
-There's a lot of work still pending and any help would be appreciated. Pull Requests welcome!
+There's a lot of work still pending and any help would be appreciated. Pull Requests welcome! 
+
+We have the project building on TeamCity.
+
+
+(http://teamcity.jetbrains.com/app/rest/builds/buildType:(id:Wasabi_FullBuild)/statusIcon)
 
 License
 -------
