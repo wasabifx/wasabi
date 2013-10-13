@@ -400,7 +400,7 @@ There's a lot of work still pending and any help would be appreciated. Pull Requ
 We have the project building on TeamCity.
 
 [sourcecode language="html"]
-<pre><a href="http://teamcity.jetbrains.com/viewType.html?buildTypeId=Wasabi_FullBuild">
+<a href="http://teamcity.jetbrains.com/viewType.html?buildTypeId=Wasabi_FullBuild">
 <img src="http://teamcity.jetbrains.com/app/rest/builds/buildType:(id:Wasabi_FullBuild)/statusIcon"/>
 </a>
 [/sourcecode]
