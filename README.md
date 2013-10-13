@@ -391,16 +391,6 @@ There is a [Google Groups](https://groups.google.com/forum/#!forum/wasabifx) whe
 ## TODO ##
 Full list of issues logged on [YouTrack](http://hhariri.cloudapp.net:8080/issues/WA)
 
-General overview of big things:
-
-* Clean up code.
-* Fix a lot of TODO's in there. And some ugly stuff too.
-* Add missing unit tests
-* Finish implementation of some things and make them production ready
-* Missing functionality such as support for static binding to GET/POST
-* A Runner
-* Performance checks. No performance testing has been made. 
-
 
 Contributions
 -------------
