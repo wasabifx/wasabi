@@ -397,13 +397,11 @@ Contributions
 -------------
 There's a lot of work still pending and any help would be appreciated. Pull Requests welcome! 
 
-We have the project building on TeamCity.
+We have the project building on TeamCity. Click on the Icon to go to the build
 
-[sourcecode language="html"]
 <a href="http://teamcity.jetbrains.com/viewType.html?buildTypeId=Wasabi_FullBuild">
 <img src="http://teamcity.jetbrains.com/app/rest/builds/buildType:(id:Wasabi_FullBuild)/statusIcon"/>
 </a>
-[/sourcecode]
 
 
 
