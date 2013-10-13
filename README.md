@@ -301,8 +301,7 @@ first the Query Parameter is taking into account, then extension and lastly the 
 also take a list of mappings, which an array of extension to media type. By default *json* maps to *application/json* and *xml* to *application/xml*
 
 #### Automatic Content Negotiation ####
-If you want to Content Negotiation to happen automatically, just add the *ContentNegotiationInterceptor* to your interceptors, or
-use the extension method *negotiateContent*. That's all that is required. You can then just send and object you want and Wasabi
+By default Content Negotiation is enabled. You can disable it via the AppConfiguration. You can then just send and object you want and Wasabi
 will automatically serialize it and send it back to the client.
 
 ```kotlin
