@@ -1,9 +1,9 @@
 package org.wasabi.routing
 
 public enum class InterceptOn {
-    PreParsing
     PreRequest
+    PreExecution
+    PostExecution
     PostRequest
-    PostSerialization
     Error
 }

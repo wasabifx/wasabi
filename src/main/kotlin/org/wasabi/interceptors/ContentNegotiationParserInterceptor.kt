@@ -73,6 +73,6 @@ public class ContentNegotiationParserInterceptor(val mappings: HashMap<String, S
 fun AppServer.parseContentNegotiationHeaders(path: String = "*", mappings: HashMap<String, String> = hashMapOf(Pair("json","application/json"), Pair("xml", "application/xml")), body: ContentNegotiationParserInterceptor.()->Unit)  {
     val conneg = ContentNegotiationParserInterceptor(mappings)
     conneg.body()
-    intercept(conneg, path, InterceptOn.PostRequest)
+    intercept(conneg, path, InterceptOn.PostExecution)
 }
 

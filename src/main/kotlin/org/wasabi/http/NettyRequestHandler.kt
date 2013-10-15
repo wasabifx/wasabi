@@ -51,10 +51,10 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
     var chunkedTransfer = false
     var decoder : HttpPostRequestDecoder? = null
     val factory = DefaultHttpDataFactory(DefaultHttpDataFactory.MINSIZE)
-    val preParsingInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.PreParsing }
-    val preRequestInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.PreRequest }
-    val postRequestInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.PostRequest }
-    val postSerializationInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.PostSerialization }
+    val preParsingInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.PreRequest }
+    val preRequestInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.PreExecution }
+    val postRequestInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.PostExecution }
+    val postSerializationInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.PostRequest }
     val errorInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.Error }
     var deserializer : Deserializer? = null
     private var log = LoggerFactory.getLogger(javaClass<NettyRequestHandler>())
