@@ -51,10 +51,10 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
     var chunkedTransfer = false
     var decoder : HttpPostRequestDecoder? = null
     val factory = DefaultHttpDataFactory(DefaultHttpDataFactory.MINSIZE)
-    val preParsingInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.PreRequest }
-    val preRequestInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.PreExecution }
-    val postRequestInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.PostExecution }
-    val postSerializationInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.PostRequest }
+    val preRequestInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.PreRequest }
+    val preExecutionInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.PreExecution }
+    val postExecutionInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.PostExecution }
+    val postRequestInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.PostRequest }
     val errorInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.Error }
     var deserializer : Deserializer? = null
     private var log = LoggerFactory.getLogger(javaClass<NettyRequestHandler>())
@@ -82,7 +82,7 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
 
             log!!.debug("About to preparse")
 
-            runInterceptors(preParsingInterceptors)
+            runInterceptors(preRequestInterceptors)
 
             if (deserializer != null) {
                 // TODO: Add support for chunked transfer
@@ -94,13 +94,13 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
                     var continueRequest : Boolean
 
                     // process all interceptors that are global
-                    continueRequest = runInterceptors(preRequestInterceptors)
+                    continueRequest = runInterceptors(preExecutionInterceptors)
 
                     if (continueRequest) {
                         val routeHandlers = findRouteHandlers(request!!.uri.split('?')[0], request!!.method)
                         request!!.routeParams.putAll(routeHandlers.params)
 
-                        continueRequest = runInterceptors(preRequestInterceptors, routeHandlers)
+                        continueRequest = runInterceptors(preExecutionInterceptors, routeHandlers)
 
                         if (continueRequest) {
                             for (handler in routeHandlers.handler) {
@@ -113,12 +113,12 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
                                     break
                                 }
                             }
-                            runInterceptors(postRequestInterceptors, routeHandlers)
+                            runInterceptors(postExecutionInterceptors, routeHandlers)
 
                         }
                     }
                     // Run global interceptors again
-                    continueRequest = runInterceptors(postRequestInterceptors)
+                    continueRequest = runInterceptors(postExecutionInterceptors)
 
                 } catch (e: InvalidMethodException)  {
                     response.setAllowedMethods(e.allowedMethods)
@@ -199,7 +199,7 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
 
             try {
                 // process all interceptors that are post serialization
-                runInterceptors(postSerializationInterceptors)
+                runInterceptors(postRequestInterceptors)
             }
             catch(e: Exception)
             {
