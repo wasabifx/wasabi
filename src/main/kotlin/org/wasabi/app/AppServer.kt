@@ -122,7 +122,7 @@ public open class AppServer(val configuration: AppConfiguration = AppConfigurati
         addRoute(HttpMethod.OPTIONS, path, *handler)
     }
 
-    public fun intercept(interceptor: Interceptor, path: String = "*", interceptOn: InterceptOn = InterceptOn.PreRequest) {
+    public fun intercept(interceptor: Interceptor, path: String = "*", interceptOn: InterceptOn = InterceptOn.PreExecution) {
         interceptors.add(InterceptorEntry(interceptor, path, interceptOn))
     }
 

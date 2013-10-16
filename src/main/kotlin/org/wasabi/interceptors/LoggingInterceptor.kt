@@ -17,5 +17,5 @@ public class LoggingInterceptor: Interceptor {
 }
 
 fun AppServer.logRequests() {
-    intercept(LoggingInterceptor(), "*", InterceptOn.PreRequest)
+    intercept(LoggingInterceptor(), "*", InterceptOn.PreExecution)
 }

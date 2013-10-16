@@ -33,7 +33,6 @@ public class ContentNegotiationInterceptor(val serializers: List<Serializer>): I
 
 
 
-
-fun AppServer.enableContentNegotiation() {
-    intercept(ContentNegotiationInterceptor(serializers), "*", InterceptOn.PostRequest)
+fun AppServer.negotiateContent() {
+    intercept(ContentNegotiationInterceptor(serializers), "*", InterceptOn.PostExecution)
 }
