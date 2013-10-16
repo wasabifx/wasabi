@@ -80,56 +80,59 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
 
         if (msg is HttpContent) {
 
+            var continueRequest : Boolean
+
             log!!.debug("About to preparse")
 
-            runInterceptors(preRequestInterceptors)
+            continueRequest = runInterceptors(preRequestInterceptors)
 
-            if (deserializer != null) {
-                // TODO: Add support for chunked transfer
-                deserializeBody(msg)
-            }
-            if (msg is LastHttpContent) {
-                try {
+            if (continueRequest) {
+                if (deserializer != null) {
+                    // TODO: Add support for chunked transfer
+                    deserializeBody(msg)
+                }
+                if (msg is LastHttpContent) {
+                    try {
 
-                    var continueRequest : Boolean
 
-                    // process all interceptors that are global
-                    continueRequest = runInterceptors(preExecutionInterceptors)
-
-                    if (continueRequest) {
-                        val routeHandlers = findRouteHandlers(request!!.uri.split('?')[0], request!!.method)
-                        request!!.routeParams.putAll(routeHandlers.params)
-
-                        continueRequest = runInterceptors(preExecutionInterceptors, routeHandlers)
+                        // process all interceptors that are global
+                        continueRequest = runInterceptors(preExecutionInterceptors)
 
                         if (continueRequest) {
-                            for (handler in routeHandlers.handler) {
+                            val routeHandlers = findRouteHandlers(request!!.uri.split('?')[0], request!!.method)
+                            request!!.routeParams.putAll(routeHandlers.params)
 
-                                val handlerExtension : RouteHandler.() -> Unit = handler
-                                val routeHandler = RouteHandler(request!!, response)
+                            continueRequest = runInterceptors(preExecutionInterceptors, routeHandlers)
 
-                                routeHandler.handlerExtension()
-                                if (!routeHandler.executeNext) {
-                                    break
+                            if (continueRequest) {
+                                for (handler in routeHandlers.handler) {
+
+                                    val handlerExtension : RouteHandler.() -> Unit = handler
+                                    val routeHandler = RouteHandler(request!!, response)
+
+                                    routeHandler.handlerExtension()
+                                    if (!routeHandler.executeNext) {
+                                        break
+                                    }
                                 }
+                                runInterceptors(postExecutionInterceptors, routeHandlers)
+
                             }
-                            runInterceptors(postExecutionInterceptors, routeHandlers)
-
                         }
-                    }
-                    // Run global interceptors again
-                    continueRequest = runInterceptors(postExecutionInterceptors)
+                        // Run global interceptors again
+                        continueRequest = runInterceptors(postExecutionInterceptors)
 
-                } catch (e: InvalidMethodException)  {
-                    response.setAllowedMethods(e.allowedMethods)
-                    response.setStatus(StatusCodes.MethodNotAllowed)
-                } catch (e: RouteNotFoundException) {
-                    response.setStatus(StatusCodes.NotFound)
-                } catch (e: Exception) {
-                    log!!.debug("Exception during web invocation: ${e.getMessage()}")
-                    response.setStatus(StatusCodes.InternalServerError)
+                    } catch (e: InvalidMethodException)  {
+                        response.setAllowedMethods(e.allowedMethods)
+                        response.setStatus(StatusCodes.MethodNotAllowed)
+                    } catch (e: RouteNotFoundException) {
+                        response.setStatus(StatusCodes.NotFound)
+                    } catch (e: Exception) {
+                        log!!.debug("Exception during web invocation: ${e.getMessage()}")
+                        response.setStatus(StatusCodes.InternalServerError)
+                    }
+                    writeResponse(ctx!!, response)
                 }
-                writeResponse(ctx!!, response)
             }
         }
 
@@ -191,20 +194,12 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
                     }
                 }
             }
-            httpResponse = DefaultFullHttpResponse(HttpVersion("HTTP", 1, 1, true), HttpResponseStatus(response.statusCode,response.statusDescription),  Unpooled.copiedBuffer(buffer, CharsetUtil.UTF_8))
-
-            try {
-                // process all interceptors that are post serialization
-                runInterceptors(postRequestInterceptors)
+            val continueRequest = runInterceptors(postRequestInterceptors)
+            if (continueRequest) {
+                httpResponse = DefaultFullHttpResponse(HttpVersion("HTTP", 1, 1, true), HttpResponseStatus(response.statusCode,response.statusDescription),  Unpooled.copiedBuffer(buffer, CharsetUtil.UTF_8))
+                addResponseHeaders(httpResponse, response)
+                ctx.write(httpResponse)
             }
-            catch(e: Exception)
-            {
-               response.setStatus(StatusCodes.InternalServerError)
-                // TODO Should we flush the body contents here?
-            }
-
-            addResponseHeaders(httpResponse, response)
-            ctx.write(httpResponse)
             ctx.flush()?.addListener(ChannelFutureListener.CLOSE)
         }
     }

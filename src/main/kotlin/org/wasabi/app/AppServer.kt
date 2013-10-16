@@ -20,10 +20,10 @@ import org.wasabi.serializers.XmlSerializer
 import org.wasabi.deserializers.Deserializer
 import org.wasabi.deserializers.MultiPartFormDataDeserializer
 import org.wasabi.deserializers.JsonDeserializer
-import org.wasabi.interceptors.enableContentNegotiation
 import org.wasabi.interceptors.enableAutoOptions
 import org.wasabi.interceptors.enableCORSGlobally
 import org.wasabi.interceptors.ContentNegotiationInterceptor
+import org.wasabi.interceptors.enableContentNegotiation
 
 
 public open class AppServer(val configuration: AppConfiguration = AppConfiguration()) {
@@ -56,7 +56,7 @@ public open class AppServer(val configuration: AppConfiguration = AppConfigurati
         if (configuration.enableLogging) {
             intercept(LoggingInterceptor())
         }
-        if (configuration.negotiateContent) {
+        if (configuration.enableContentNegotiation) {
             enableContentNegotiation()
         }
         if (configuration.enableAutoOptions) {

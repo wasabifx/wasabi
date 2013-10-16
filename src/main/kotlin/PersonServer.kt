@@ -1,7 +1,6 @@
 package org.wasabi
 
 import org.wasabi.app.AppServer
-import org.wasabi.interceptors.enableContentNegotiation
 import java.util.ArrayList
 import java.util.HashMap
 import org.wasabi.interceptors.serveFavIconAs
@@ -18,6 +17,7 @@ import org.wasabi.interceptors.enableAutoOptions
 import org.wasabi.interceptors.enableCORS
 import org.wasabi.http.CORSEntry
 import org.wasabi.interceptors.enableCORSGlobally
+import org.wasabi.interceptors.enableContentNegotiation
 
 
 data class Person(val id: Int, val name: String, val email: String, val profession: String, val dateJoined: Date, val level: Int)
