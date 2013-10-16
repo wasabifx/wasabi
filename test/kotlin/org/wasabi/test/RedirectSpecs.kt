@@ -6,7 +6,7 @@ import org.wasabi.http.StatusCodes
 
 public class RedirectSpecs: TestServerContext() {
 
-    spec fun redirect_should_set_status_code_and_location() {
+    spec fun redirect_should_set_status_code_to_found_and_location_header_to_new_location() {
 
         TestServer.reset()
         TestServer.appServer.get("/redirect", {
