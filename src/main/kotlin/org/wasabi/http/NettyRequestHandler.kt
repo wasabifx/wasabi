@@ -40,6 +40,16 @@ import org.wasabi.routing.RouteNotFoundException
 import org.wasabi.deserializers.Deserializer
 import java.nio.ByteBuffer
 import org.slf4j.LoggerFactory
+import io.netty.handler.codec.http.websocketx.WebSocketFrame
+import io.netty.handler.codec.http.websocketx.CloseWebSocketFrame
+import io.netty.handler.codec.http.websocketx.WebSocketServerHandshaker
+import io.netty.handler.codec.http.FullHttpRequest
+import io.netty.handler.codec.http.websocketx.WebSocketServerHandshakerFactory
+import io.netty.handler.codec.http.websocketx.PingWebSocketFrame
+import io.netty.handler.codec.http.websocketx.PongWebSocketFrame
+import io.netty.handler.codec.http.websocketx.TextWebSocketFrame
+import io.netty.handler.codec.http.websocketx.BinaryWebSocketFrame
+import io.netty.handler.codec.http.DefaultHttpRequest
 
 
 // TODO: This class needs cleaning up
@@ -57,10 +67,66 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
     val postRequestInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.PostRequest }
     val errorInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.Error }
     var deserializer : Deserializer? = null
+
+    private var handshaker : WebSocketServerHandshaker? = null;
+
+    private final var WEBSOCKET_PATH : String = "/websocket"
+
     private var log = LoggerFactory.getLogger(javaClass<NettyRequestHandler>())
 
 
     public override fun messageReceived(ctx: ChannelHandlerContext?, msg: Any?) {
+
+        log!!.info("messageReceived")
+
+        if (msg is WebSocketFrame)
+        {
+            handleWebSocketRequest(ctx, msg)
+            return
+        }
+
+
+        if (msg is HttpRequest || msg is HttpContent)
+        {
+            handleStandardHttpRequest(ctx, msg)
+            return
+        }
+    }
+
+    private fun handleWebSocketRequest(ctx: ChannelHandlerContext?, webSocketFrame: WebSocketFrame)
+    {
+        log!!.info("handleWebSocketRequest")
+
+        // Check for closing websocket frame
+        if (webSocketFrame is CloseWebSocketFrame)
+        {
+            handshaker?.close(ctx?.channel(), webSocketFrame.retain() as CloseWebSocketFrame)
+
+        }
+
+        if (webSocketFrame is PingWebSocketFrame)
+        {
+            ctx?.channel()?.write(PongWebSocketFrame())
+        }
+
+
+        if (!(webSocketFrame is TextWebSocketFrame)) {
+            throw UnsupportedOperationException();
+        }
+
+        if ( webSocketFrame is BinaryWebSocketFrame)
+
+        // Send the uppercase string back.
+        log!!.debug("${ctx?.channel()} received ${request.toString()}")
+
+        ctx?.channel()?.write(TextWebSocketFrame(request.toString().toUpperCase()))
+
+
+    }
+
+    private fun handleStandardHttpRequest(ctx: ChannelHandlerContext?, msg: Any?)
+    {
+        log!!.info("handleStandardHttpRequest")
 
         if (msg is HttpRequest) {
             request = Request(msg)
@@ -74,15 +140,11 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
                     chunkedTransfer = request!!.chunked
                 }
             }
-
-
         }
 
         if (msg is HttpContent) {
 
             var continueRequest : Boolean
-
-            log!!.debug("About to preparse")
 
             continueRequest = runInterceptors(preRequestInterceptors)
 
@@ -93,7 +155,6 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
                 }
                 if (msg is LastHttpContent) {
                     try {
-
 
                         // process all interceptors that are global
                         continueRequest = runInterceptors(preExecutionInterceptors)
@@ -134,8 +195,21 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
                     writeResponse(ctx!!, response)
                 }
             }
-        }
 
+            // TODO implement his correctly and setup websocket de/encoders in initial pipeline,
+            // TODO then add route definition/handling and firing interceptors
+            // TODO Currently stubbed in based on Netty examples.
+            // Setup Handshake
+            var wsFactory : WebSocketServerHandshakerFactory = WebSocketServerHandshakerFactory(getWebSocketLocation(msg as HttpRequest), null, false);
+
+            handshaker = wsFactory.newHandshaker(msg as HttpRequest)
+
+            if (handshaker == null) {
+                WebSocketServerHandshakerFactory.sendUnsupportedWebSocketVersionResponse(ctx?.channel());
+            } else {
+                handshaker?.handshake(ctx?.channel(), msg as FullHttpRequest);
+            }
+        }
 
     }
 
@@ -231,6 +305,10 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
             // TODO: Add support for CharSet
             request!!.bodyParams.putAll(deserializer!!.deserialize(msg.data()?.array()?.toString("UTF-8")!!))
         }
+    }
+
+    private fun getWebSocketLocation(request: HttpRequest) : String {
+        return "ws://" + request.headers()?.get("Host") + WEBSOCKET_PATH;
     }
 
 
