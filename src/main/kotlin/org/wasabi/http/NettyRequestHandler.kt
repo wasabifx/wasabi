@@ -77,10 +77,12 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
     private var log = LoggerFactory.getLogger(javaClass<NettyRequestHandler>())
 
     override fun channelRead0(ctx: ChannelHandlerContext?, msg: Any?) {
-        log!!.info("messageReceived")
 
         if (msg is WebSocketFrame)
         {
+            // TODO implement this correctly,
+            // TODO then add route (channel) definition/handling and firing interceptors
+            // TODO Currently stubbed in based on Netty examples.
             handleWebSocketRequest(ctx, msg)
         }
 
@@ -99,6 +101,7 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
                 if (handshaker == null) {
                     WebSocketServerHandshakerFactory.sendUnsupportedWebSocketVersionResponse(ctx?.channel());
                 } else {
+                    // TODO investigate further what to do here .... currently = cast exception.
                     handshaker?.handshake(ctx?.channel(), msg as FullHttpRequest);
                 }
                 return
@@ -129,7 +132,9 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
             throw UnsupportedOperationException();
         }
 
-        if ( webSocketFrame is BinaryWebSocketFrame)
+        /**if ( webSocketFrame is BinaryWebSocketFrame) {
+
+        }*/
 
         // Send the uppercase string back.
         log!!.debug("${ctx?.channel()} received ${request.toString()}")
@@ -141,13 +146,9 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
 
     private fun handleStandardHttpRequest(ctx: ChannelHandlerContext?, msg: Any?)
     {
-        log!!.info("handleStandardHttpRequest")
-
         if (msg is HttpRequest) {
-            log!!.info("Is HttpRequest")
             request = Request(msg)
 
-            log!!.info("HttpRequest created verb: ${request?.method}")
             request!!.accept.mapTo(response.requestedContentTypes, { it.key })
 
             if (request!!.method == HttpMethod.POST || request!!.method == HttpMethod.PUT || request!!.method == HttpMethod.PATCH) {
@@ -162,11 +163,8 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
 
         if (msg is HttpContent) {
 
-            log!!.info("HTTPContent")
-
             var continueRequest : Boolean
 
-            log!!.info("preRequestInterceptors")
             continueRequest = runInterceptors(preRequestInterceptors)
 
             if (continueRequest) {
@@ -177,20 +175,14 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
                 if (msg is LastHttpContent) {
                     try {
 
-                        log!!.info("LastHttpContent")
-
                         // process all interceptors that are global
                         continueRequest = runInterceptors(preExecutionInterceptors)
-
-                        log!!.info("global preExecutionInterceptors")
 
                         if (continueRequest) {
                             val routeHandlers = findRouteHandlers(request!!.uri.split('?')[0], request!!.method)
                             request!!.routeParams.putAll(routeHandlers.params)
 
                             continueRequest = runInterceptors(preExecutionInterceptors, routeHandlers)
-
-                            log!!.info("preExecutionInterceptors")
 
                             if (continueRequest) {
                                 for (handler in routeHandlers.handler) {
@@ -204,13 +196,11 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
                                     }
                                 }
                                 runInterceptors(postExecutionInterceptors, routeHandlers)
-                                log!!.info("postExecutionInterceptors")
 
                             }
                         }
                         // Run global interceptors again
                         continueRequest = runInterceptors(postExecutionInterceptors)
-                        log!!.info("global postExecutionInterceptors")
 
                     } catch (e: InvalidMethodException)  {
                         response.setAllowedMethods(e.allowedMethods)
@@ -224,11 +214,6 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
                     writeResponse(ctx!!, response)
                 }
             }
-
-            // TODO implement his correctly and setup websocket de/encoders in initial pipeline,
-            // TODO then add route definition/handling and firing interceptors
-            // TODO Currently stubbed in based on Netty examples.
-
         }
 
     }
