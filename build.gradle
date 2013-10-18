@@ -29,7 +29,7 @@ repositories {
 
 dependencies {
     compile "org.codehaus.jackson:jackson-mapper-asl:1.9.12",
-            "io.netty:netty-all:4.0.0.CR1",
+            "io.netty:netty-all:4.0.10.Final",
             "commons-codec:commons-codec:1.6",
             "commons-logging:commons-logging:1.1.1",
             "org.apache.httpcomponents:httpclient:4.2.3",
@@ -62,7 +62,7 @@ uploadArchives {
     repositories {
         mavenDeployer {
             repository(url: "http://repository.jetbrains.com/wasabi") {
-                authentication(userName: deploy_username, password: deploy_password)
+               
             }
             pom.groupId = "org.wasabi"
             pom.artifactId = "wasabi"

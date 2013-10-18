@@ -12,11 +12,18 @@ import org.wasabi.app.AppServer
 public class HttpServer(private val appServer: AppServer) {
 
     val bootstrap: ServerBootstrap
+    val primaryGroup : NioEventLoopGroup
+    val workerGroup :  NioEventLoopGroup
 
     {
+        // Define worker groups
+        primaryGroup = NioEventLoopGroup()
+        workerGroup = NioEventLoopGroup()
+
+        // Initialize bootstrap of server
         bootstrap = ServerBootstrap()
 
-        bootstrap.group(NioEventLoopGroup(), NioEventLoopGroup())
+        bootstrap.group(primaryGroup, workerGroup)
         bootstrap.channel(javaClass<NioServerSocketChannel>())
         bootstrap.childHandler(NettyPipelineInitializer(appServer))
 
@@ -32,7 +39,15 @@ public class HttpServer(private val appServer: AppServer) {
     }
 
     public fun stop() {
-        bootstrap.shutdown()
+
+        // Shutdown all event loops
+        primaryGroup.shutdownGracefully()
+        workerGroup.shutdownGracefully()
+
+        // Wait till all threads are terminated
+        primaryGroup.terminationFuture()?.sync()
+        workerGroup.terminationFuture()?.sync()
+
     }
 
 

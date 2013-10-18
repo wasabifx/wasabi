@@ -1,6 +1,5 @@
 package org.wasabi.http
 
-import io.netty.channel.ChannelInboundMessageHandlerAdapter
 import io.netty.channel.ChannelHandlerContext
 import io.netty.handler.codec.http.HttpRequest
 import io.netty.handler.codec.http.DefaultFullHttpResponse
@@ -50,10 +49,13 @@ import io.netty.handler.codec.http.websocketx.PongWebSocketFrame
 import io.netty.handler.codec.http.websocketx.TextWebSocketFrame
 import io.netty.handler.codec.http.websocketx.BinaryWebSocketFrame
 import io.netty.handler.codec.http.DefaultHttpRequest
+import io.netty.handler.codec.http.HttpHeaders
+import io.netty.channel.ChannelInboundHandlerAdapter
+import io.netty.channel.SimpleChannelInboundHandler
 
 
 // TODO: This class needs cleaning up
-public class NettyRequestHandler(private val appServer: AppServer, routeLocator: RouteLocator): ChannelInboundMessageHandlerAdapter<Any>(), RouteLocator by routeLocator {
+public class NettyRequestHandler(private val appServer: AppServer, routeLocator: RouteLocator): SimpleChannelInboundHandler<Any?>(), RouteLocator by routeLocator {
 
     var request: Request? = null
     var body = ""
@@ -74,24 +76,37 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
 
     private var log = LoggerFactory.getLogger(javaClass<NettyRequestHandler>())
 
-
-    public override fun messageReceived(ctx: ChannelHandlerContext?, msg: Any?) {
-
+    override fun channelRead0(ctx: ChannelHandlerContext?, msg: Any?) {
         log!!.info("messageReceived")
 
         if (msg is WebSocketFrame)
         {
             handleWebSocketRequest(ctx, msg)
-            return
         }
 
 
         if (msg is HttpRequest || msg is HttpContent)
         {
+            // Here we catch the upgrade request and setup handshaker factory to negotiate client connection
+            if ( msg is HttpRequest && (msg as HttpRequest).headers()?.get(HttpHeaders.Names.UPGRADE) == "websocket")
+            {
+                log!!.info("websocket upgrade")
+                // Setup Handshake
+                var wsFactory : WebSocketServerHandshakerFactory = WebSocketServerHandshakerFactory(getWebSocketLocation(msg as HttpRequest), null, false);
+
+                handshaker = wsFactory.newHandshaker(msg as HttpRequest)
+
+                if (handshaker == null) {
+                    WebSocketServerHandshakerFactory.sendUnsupportedWebSocketVersionResponse(ctx?.channel());
+                } else {
+                    handshaker?.handshake(ctx?.channel(), msg as FullHttpRequest);
+                }
+                return
+            }
             handleStandardHttpRequest(ctx, msg)
-            return
         }
     }
+
 
     private fun handleWebSocketRequest(ctx: ChannelHandlerContext?, webSocketFrame: WebSocketFrame)
     {
@@ -129,7 +144,10 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
         log!!.info("handleStandardHttpRequest")
 
         if (msg is HttpRequest) {
+            log!!.info("Is HttpRequest")
             request = Request(msg)
+
+            log!!.info("HttpRequest created verb: ${request?.method}")
             request!!.accept.mapTo(response.requestedContentTypes, { it.key })
 
             if (request!!.method == HttpMethod.POST || request!!.method == HttpMethod.PUT || request!!.method == HttpMethod.PATCH) {
@@ -144,8 +162,11 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
 
         if (msg is HttpContent) {
 
+            log!!.info("HTTPContent")
+
             var continueRequest : Boolean
 
+            log!!.info("preRequestInterceptors")
             continueRequest = runInterceptors(preRequestInterceptors)
 
             if (continueRequest) {
@@ -156,14 +177,20 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
                 if (msg is LastHttpContent) {
                     try {
 
+                        log!!.info("LastHttpContent")
+
                         // process all interceptors that are global
                         continueRequest = runInterceptors(preExecutionInterceptors)
+
+                        log!!.info("global preExecutionInterceptors")
 
                         if (continueRequest) {
                             val routeHandlers = findRouteHandlers(request!!.uri.split('?')[0], request!!.method)
                             request!!.routeParams.putAll(routeHandlers.params)
 
                             continueRequest = runInterceptors(preExecutionInterceptors, routeHandlers)
+
+                            log!!.info("preExecutionInterceptors")
 
                             if (continueRequest) {
                                 for (handler in routeHandlers.handler) {
@@ -177,11 +204,13 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
                                     }
                                 }
                                 runInterceptors(postExecutionInterceptors, routeHandlers)
+                                log!!.info("postExecutionInterceptors")
 
                             }
                         }
                         // Run global interceptors again
                         continueRequest = runInterceptors(postExecutionInterceptors)
+                        log!!.info("global postExecutionInterceptors")
 
                     } catch (e: InvalidMethodException)  {
                         response.setAllowedMethods(e.allowedMethods)
@@ -199,16 +228,7 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
             // TODO implement his correctly and setup websocket de/encoders in initial pipeline,
             // TODO then add route definition/handling and firing interceptors
             // TODO Currently stubbed in based on Netty examples.
-            // Setup Handshake
-            var wsFactory : WebSocketServerHandshakerFactory = WebSocketServerHandshakerFactory(getWebSocketLocation(msg as HttpRequest), null, false);
 
-            handshaker = wsFactory.newHandshaker(msg as HttpRequest)
-
-            if (handshaker == null) {
-                WebSocketServerHandshakerFactory.sendUnsupportedWebSocketVersionResponse(ctx?.channel());
-            } else {
-                handshaker?.handshake(ctx?.channel(), msg as FullHttpRequest);
-            }
         }
 
     }
@@ -274,7 +294,9 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
                 addResponseHeaders(httpResponse, response)
                 ctx.write(httpResponse)
             }
-            ctx.flush()?.addListener(ChannelFutureListener.CLOSE)
+
+            ctx.flush()
+            ctx.channel()?.close()
         }
     }
 
@@ -303,12 +325,12 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
             request!!.bodyParams.putAll(deserializer!!.deserialize(decoder!!.getBodyHttpDatas()!!))
         } else {
             // TODO: Add support for CharSet
-            request!!.bodyParams.putAll(deserializer!!.deserialize(msg.data()?.array()?.toString("UTF-8")!!))
+            request!!.bodyParams.putAll(deserializer!!.deserialize(msg.content()?.array()?.toString("UTF-8")!!))
         }
     }
 
     private fun getWebSocketLocation(request: HttpRequest) : String {
-        return "ws://" + request.headers()?.get("Host") + WEBSOCKET_PATH;
+        return "ws://" + request.headers()?.get(HttpHeaders.Names.HOST);
     }
 
 

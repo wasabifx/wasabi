@@ -8,7 +8,6 @@ import io.netty.buffer.Unpooled
 import io.netty.handler.codec.http.HttpResponseStatus
 import io.netty.handler.codec.http.DefaultFullHttpResponse
 import io.netty.channel.ChannelFutureListener
-import io.netty.channel.ChannelInboundMessageHandlerAdapter
 import java.util.HashMap
 import io.netty.handler.codec.http.HttpMethod
 import org.codehaus.jackson.map.ObjectMapper
