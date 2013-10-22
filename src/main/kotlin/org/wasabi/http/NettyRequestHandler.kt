@@ -135,9 +135,12 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
         }*/
 
         // Send the uppercase string back.
-        log!!.debug("${ctx?.channel()} received ${request.toString()}")
+        var frame = webSocketFrame as TextWebSocketFrame
+        var foo = frame.text()
 
-        ctx?.channel()?.write(TextWebSocketFrame(request.toString().toUpperCase()))
+        log!!.info("Received ${foo}")
+
+        ctx?.channel()?.write(TextWebSocketFrame(foo?.toUpperCase()))
 
 
     }
