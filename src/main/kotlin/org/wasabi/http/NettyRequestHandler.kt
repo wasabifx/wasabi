@@ -72,8 +72,6 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
 
     private var handshaker : WebSocketServerHandshaker? = null;
 
-    private final var WEBSOCKET_PATH : String = "/websocket"
-
     private var log = LoggerFactory.getLogger(javaClass<NettyRequestHandler>())
 
     override fun channelRead0(ctx: ChannelHandlerContext?, msg: Any?) {
@@ -87,7 +85,7 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
         }
 
 
-        if (msg is HttpRequest || msg is HttpContent)
+        if (msg is FullHttpRequest)
         {
             // Here we catch the upgrade request and setup handshaker factory to negotiate client connection
             if ( msg is HttpRequest && (msg as HttpRequest).headers()?.get(HttpHeaders.Names.UPGRADE) == "websocket")
