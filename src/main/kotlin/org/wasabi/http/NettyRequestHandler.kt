@@ -90,13 +90,13 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
             // Here we catch the upgrade request and setup handshaker factory to negotiate client connection
             if ( msg is HttpRequest && (msg as HttpRequest).headers()?.get(HttpHeaders.Names.UPGRADE) == "websocket")
             {
-                // TODO Grab URL from request and store handshaker and associated 'channelHandler' to accept subsequent
-                // websocket requests. routehandler must match one of the regestered handlers.
-                // routehandlers are of course referenced by url or 'channel'.
-                // Effectively initial handshake associates handshake with channelHandler by looking up the appropriate
-                // handler by the current request url and gracefully failing the handshake if none exist.
+                // TODO Grab URL from request during handshake and store channel and associated 'channelHandler' to accept subsequent
+                // websocket requests. channelHandler must match one of the registered handlers.
+                // channelHandlers are of course referenced by url or 'channel'.
+                // Effectively initial handshake associates channel with channelHandler by looking up the appropriate
+                // handler by the current request url and gracefully failing the handshake if none exist(404).
                 // subsequent websocket requests are automatically forwarded to the channelHandler associated with the
-                // handshake thereafter. Need to look further into how security is intended to be handled based on spec.
+                // channel thereafter. Need to look further into how security is intended to be handled based on spec.
 
                 log!!.info("websocket upgrade")
                 // Setup Handshake
