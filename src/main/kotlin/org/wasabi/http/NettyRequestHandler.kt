@@ -90,16 +90,20 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
             // Here we catch the upgrade request and setup handshaker factory to negotiate client connection
             if ( msg is HttpRequest && (msg as HttpRequest).headers()?.get(HttpHeaders.Names.UPGRADE) == "websocket")
             {
+                // TODO Grab URL from request and store handshaker and associated 'routehandler' to accept subsequent
+                // websocket requests. routehandler must match one of the regestered handlers.
+
                 log!!.info("websocket upgrade")
                 // Setup Handshake
                 var wsFactory : WebSocketServerHandshakerFactory = WebSocketServerHandshakerFactory(getWebSocketLocation(msg as HttpRequest), null, false);
 
                 handshaker = wsFactory.newHandshaker(msg as HttpRequest)
 
+                log!!.info(handshaker?.uri().toString())
+
                 if (handshaker == null) {
                     WebSocketServerHandshakerFactory.sendUnsupportedWebSocketVersionResponse(ctx?.channel());
                 } else {
-                    // TODO investigate further what to do here .... currently = cast exception.
                     handshaker?.handshake(ctx?.channel(), msg as FullHttpRequest);
                 }
                 return
