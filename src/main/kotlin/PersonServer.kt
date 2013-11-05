@@ -18,6 +18,10 @@ import org.wasabi.interceptors.enableCORS
 import org.wasabi.http.CORSEntry
 import org.wasabi.interceptors.enableCORSGlobally
 import org.wasabi.interceptors.enableContentNegotiation
+import io.netty.handler.codec.http.websocketx.PingWebSocketFrame
+import io.netty.handler.codec.http.websocketx.PongWebSocketFrame
+import io.netty.handler.codec.http.websocketx.TextWebSocketFrame
+import org.slf4j.LoggerFactory
 
 
 data class Person(val id: Int, val name: String, val email: String, val profession: String, val dateJoined: Date, val level: Int)
@@ -32,7 +36,7 @@ val people =  arrayListOf<Person>(
         Person(2, "Joe Smith", "joe@somewhere.com", "Marketing", setDate(2007, 11, 3), 2),
         Person(3, "Jenny Jackson", "jenny@gmail.com", "Non Sleeper", setDate(2011, 6, 3), 1))
 
-
+private var log = LoggerFactory.getLogger(javaClass<AppServer>())
 
 fun main(args: Array<String>) {
 
@@ -59,6 +63,30 @@ fun main(args: Array<String>) {
 
 
     appServer.get("/js", { response.send(people, "application/json") })
+
+    appServer.channel("/person", {
+        if (frame is PingWebSocketFrame)
+        {
+            ctx?.channel()?.write(PongWebSocketFrame())
+        }
+
+
+        if (!(frame is TextWebSocketFrame)) {
+            throw UnsupportedOperationException();
+        }
+
+        /**if ( webSocketFrame is BinaryWebSocketFrame) {
+
+        }*/
+
+        // Send the uppercase string back.
+        var frame = frame as TextWebSocketFrame
+        var foo = frame.text()
+
+        log!!.info("Received ${foo}")
+
+        ctx?.channel()?.write(TextWebSocketFrame(foo?.toUpperCase()))
+    })
 
 
     appServer.start()

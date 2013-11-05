@@ -52,10 +52,11 @@ import io.netty.handler.codec.http.DefaultHttpRequest
 import io.netty.handler.codec.http.HttpHeaders
 import io.netty.channel.ChannelInboundHandlerAdapter
 import io.netty.channel.SimpleChannelInboundHandler
+import org.wasabi.routing.ChannelLocator
 
 
 // TODO: This class needs cleaning up
-public class NettyRequestHandler(private val appServer: AppServer, routeLocator: RouteLocator): SimpleChannelInboundHandler<Any?>(), RouteLocator by routeLocator {
+public class NettyRequestHandler(private val appServer: AppServer, routeLocator: RouteLocator, channelLocator: ChannelLocator): SimpleChannelInboundHandler<Any?>(), RouteLocator by routeLocator {
 
     var request: Request? = null
     var body = ""
@@ -126,31 +127,10 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
         if (webSocketFrame is CloseWebSocketFrame)
         {
             handshaker?.close(ctx?.channel(), webSocketFrame.retain() as CloseWebSocketFrame)
-
-        }
-
-        if (webSocketFrame is PingWebSocketFrame)
-        {
-            ctx?.channel()?.write(PongWebSocketFrame())
         }
 
 
-        if (!(webSocketFrame is TextWebSocketFrame)) {
-            throw UnsupportedOperationException();
-        }
-
-        /**if ( webSocketFrame is BinaryWebSocketFrame) {
-
-        }*/
-
-        // Send the uppercase string back.
-        var frame = webSocketFrame as TextWebSocketFrame
-        var foo = frame.text()
-
-        log!!.info("Received ${foo}")
-
-        ctx?.channel()?.write(TextWebSocketFrame(foo?.toUpperCase()))
-
+         // TODO match path and call channel handler.
 
     }
 
