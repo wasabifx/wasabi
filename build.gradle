@@ -1,5 +1,5 @@
 buildscript {
-    project.ext.kotlin_version = '0.6.602'
+    project.ext.kotlin_version = '0.6.1315'
     repositories {
         mavenCentral()
         maven {
@@ -72,5 +72,5 @@ uploadArchives {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.6'
+    gradleVersion = '1.8'
 }

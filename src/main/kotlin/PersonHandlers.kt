@@ -11,7 +11,10 @@ import java.util.Date
 
 val getPersons = routeHandler {
 
-    response.send(people)
+
+    response.send(people, "application/json")
+
+
 }
 
 val getPersonById = routeHandler {

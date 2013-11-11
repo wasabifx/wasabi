@@ -57,8 +57,7 @@ fun main(args: Array<String>) {
 
     })
 
-
-    appServer.get("/js", { response.send(people, "application/json") })
+   appServer.get("/js", { response.send(people, "application/json") })
 
 
     appServer.start()
