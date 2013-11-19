@@ -12,6 +12,7 @@ import io.netty.channel.ChannelFutureListener
 import io.netty.buffer.Unpooled
 import io.netty.util.CharsetUtil
 import org.wasabi.routing.RouteHandler
+import org.wasabi.routing.ChannelLocator
 import io.netty.handler.codec.http.DefaultHttpResponse
 import org.wasabi.routing.RouteLocator
 import io.netty.handler.codec.http.multipart.HttpPostRequestDecoder
@@ -79,9 +80,6 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
 
         if (msg is WebSocketFrame)
         {
-            // TODO implement this correctly,
-            // TODO then add route (channel) definition/handling and firing interceptors
-            // TODO Currently stubbed in based on Netty examples.
             handleWebSocketRequest(ctx, msg)
         }
 
@@ -104,6 +102,8 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
                 var wsFactory : WebSocketServerHandshakerFactory = WebSocketServerHandshakerFactory(getWebSocketLocation(msg as HttpRequest), null, false);
 
                 handshaker = wsFactory.newHandshaker(msg as HttpRequest)
+
+                // TODO Make sure handler for uri the upgrade is requested against exists. bail with 404 if none set.
 
                 log!!.info(handshaker?.uri().toString())
 
@@ -305,7 +305,7 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
     }
 
     private fun getWebSocketLocation(request: HttpRequest) : String {
-        return "ws://" + request.headers()?.get(HttpHeaders.Names.HOST);
+        return "ws://" + request.getUri();
     }
 
 
