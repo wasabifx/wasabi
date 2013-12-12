@@ -1,169 +1,69 @@
 package org.wasabi.http
 
 
-enum class StatusCodes {
+enum class StatusCodes(val code: Int) {
 
-    abstract val statusCode: Int
-    open val statusDescription: String
+    open val description: String
         get() = this.toString().replaceAll("([A-Z])", " $1")
 
     // 1XX
-    Continue {
-        override val statusCode: Int = 100
-    }
-    SwitchingProtocols {
-        override val statusCode: Int = 101
-    }
-    Processing {
-        override val statusCode: Int = 102
-    }
-
-
+    Continue: StatusCodes(100)
+    SwitchingProtocols: StatusCodes(101)
+    Processing: StatusCodes(102)
     // 2XX
-    OK {
-        override val statusCode: Int = 200
-    }
-    Created {
-        override val statusCode: Int = 201
-    }
-    Accepted {
-        override val statusCode: Int = 202
-    }
-    NonAuthoritativeInformation {
-        override val statusCode: Int = 203
-    }
-    NoContent {
-        override val statusCode: Int = 204
 
-    }
-    ResetContent {
-        override val statusCode: Int = 205
-
-    }
-    PartialContent {
-        override val statusCode: Int = 206
-
-    }
+    OK: StatusCodes(200)
+    Created: StatusCodes(201)
+    Accepted: StatusCodes(202)
+    NonAuthoritativeInformation: StatusCodes(203)
+    NoContent: StatusCodes(204)
+    ResetContent: StatusCodes(205)
+    PartialContent: StatusCodes(206)
 
     // 3XX
-    MultipleChoices {
-        override val statusCode: Int = 300
-    }
-    MovedPermanently {
-        override val statusCode: Int = 301
-    }
-    Found {
-        override val statusCode: Int = 302
-    }
-    SeeOther {
-        override val statusCode: Int = 303
-    }
-    NotModified {
-        override val statusCode: Int = 304
-    }
-    UseProxy {
-        override val statusCode: Int = 305
-    }
-    SwitchProxy {
-        override val statusCode: Int = 306
-    }
-    TemporaryRedirect {
-        override val statusCode: Int = 307
-    }
-    PermanentRedirect {
-        override val statusCode: Int = 308
-    }
+    MultipleChoices: StatusCodes(300)
+    MovedPermanently: StatusCodes(301)
+    Found: StatusCodes(302)
+    SeeOther: StatusCodes(303)
+    NotModified: StatusCodes(304)
+    UseProxy: StatusCodes(305)
+    SwitchProxy: StatusCodes(306)
+    TemporaryRedirect: StatusCodes(307)
+    PermanentRedirect: StatusCodes(308)
 
     // 4XX
-    BadRequest {
-        override val statusCode: Int = 400
+    BadRequest: StatusCodes(400)
+    Unauthorized: StatusCodes(401)
+    PaymentRequired: StatusCodes(402)
+    Forbidden: StatusCodes(403)
+    NotFound: StatusCodes(404)
+    MethodNotAllowed: StatusCodes(405)
+    NotAcceptable: StatusCodes(406)
+    ProxyAuthenticationRequired: StatusCodes(407)
+    RequestTimeout: StatusCodes(408)
+    Conflict: StatusCodes(409)
+    Gone: StatusCodes(410)
+    LengthRequired: StatusCodes(411)
+    PreconditionFailed: StatusCodes(412)
+    RequestEntityTooLarge: StatusCodes(413)
+    RequestURITooLarge: StatusCodes(414) {
+        override val description: String = "Request-URI Too Large"
     }
-    Unauthorized {
-        override val statusCode: Int = 401
-    }
-    PaymentRequired {
-        override val statusCode: Int = 402
-    }
-    Forbidden {
-        override val statusCode: Int = 403
-    }
-    NotFound {
-        override val statusCode: Int = 404
-    }
-    MethodNotAllowed {
-        override val statusCode: Int = 405
-    }
-    NotAcceptable {
-        override val statusCode: Int = 406
-    }
-    ProxyAuthenticationRequired {
-        override val statusCode: Int = 407
-    }
-    RequestTimeout {
-        override val statusCode: Int = 408
-    }
-    Conflict {
-        override val statusCode: Int = 409
-    }
-    Gone {
-        override val statusCode: Int = 410
-    }
-    LengthRequired {
-        override val statusCode: Int = 411
-    }
-    PreconditionFailed {
-        override val statusCode: Int = 412
-    }
-    RequestEntityTooLarge {
-        override val statusCode: Int = 413
-    }
-    RequestURITooLarge {
-        override val statusCode: Int = 414
-        override val statusDescription : String = "Request-URI Too Large"
-    }
-    UnsupportedMediaType {
-        override val statusCode: Int = 415
-    }
-    RequestedRageNotSatisfiable {
-        override val statusCode: Int = 416
-    }
-    ExceptionFailed {
-        override val statusCode: Int = 417
-    }
-    TooManyRequests {
-        override val statusCode: Int = 429
-    }
-    RequestHeaderFieldTooLarge {
-        override val statusCode: Int = 431
-    }
+    UnsupportedMediaType: StatusCodes(415)
+    RequestedRageNotSatisfiable: StatusCodes(416)
+    ExceptionFailed: StatusCodes(417)
+    TooManyRequests: StatusCodes(429)
+    RequestHeaderFieldTooLarge: StatusCodes(431)
 
     // 5XX
-    InternalServerError {
-        override val statusCode: Int = 500
-    }
-    NotImplemented {
-        override val statusCode: Int = 501
-    }
-    BadGateway {
-        override val statusCode: Int = 502
-    }
-    ServiceUnavailable {
-        override val statusCode: Int = 503
-    }
-    GatewayTimeout {
-        override val statusCode: Int = 504
-    }
-    VersionNotSupported {
-        override val statusCode: Int = 505
-    }
-    VariantAlsoNegotiates {
-        override val statusCode: Int = 506
-    }
-    InsufficientStorage {
-        override val statusCode: Int = 507
-    }
-    BandwidthLimitExceeded {
-        override val statusCode: Int = 509
-    }
+    InternalServerError: StatusCodes(500)
+    NotImplemented: StatusCodes(501)
+    BadGateway: StatusCodes(502)
+    ServiceUnavailable: StatusCodes(503)
+    GatewayTimeout: StatusCodes(504)
+    VersionNotSupported: StatusCodes(505)
+    VariantAlsoNegotiates: StatusCodes(506)
+    InsufficientStorage: StatusCodes(507)
+    BandwidthLimitExceeded: StatusCodes(509)
 
 }

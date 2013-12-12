@@ -15,7 +15,7 @@ public class RedirectSpecs: TestServerContext() {
 
         val response = get("http://localhost:3000/redirect", hashMapOf())
 
-        assertEquals(StatusCodes.Found.statusCode, response.statusCode)
+        assertEquals(StatusCodes.Found.code, response.statusCode)
         assertEquals("http://www.google.com", response.headers.filter { it.getName() == "Location" }.first().getValue())
 
 
