@@ -22,15 +22,15 @@
     <orderEntry type="library" exported="" name="Gradle: commons-logging-1.1.1" level="project" />
     <orderEntry type="library" exported="" name="Gradle: commons-codec-1.6" level="project" />
     <orderEntry type="library" exported="" name="Gradle: netty-all-4.0.0.CR1" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: kotlin-runtime-0.6.1670" level="project" />
     <orderEntry type="library" exported="" name="Gradle: jackson-core-asl-1.9.12" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: mockito-all-1.9.5" level="project" />
     <orderEntry type="library" exported="" name="Gradle: slf4j-simple-1.7.5" level="project" />
-    <orderEntry type="library" exported="" name="Gradle: kotlin-stdlib-0.6.1670" level="project" />
     <orderEntry type="library" exported="" name="Gradle: httpclient-4.2.3" level="project" />
     <orderEntry type="library" exported="" name="Gradle: httpcore-4.2.3" level="project" />
     <orderEntry type="library" exported="" name="Gradle: slf4j-api-1.7.5" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: junit-4.9" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: kotlin-runtime-0.6.1673" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: kotlin-stdlib-0.6.1673" level="project" />
   </component>
 </module>
 

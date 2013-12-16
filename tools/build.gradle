@@ -57,7 +57,7 @@ task createGradle(dependsOn: setup) << {
         def mainClass = args.map.package + '.' + getDomain(args.map.package) + 'Package'
         gradleFile.append("""\
 buildscript {
-    project.ext.kotlin_version = '0.6.1670'
+    project.ext.kotlin_version = '0.6.1673'
     repositories {
         mavenCentral()
         maven {
@@ -105,7 +105,7 @@ sourceSets {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.6'
+    gradleVersion = '1.8'
 }
 """)
 }
