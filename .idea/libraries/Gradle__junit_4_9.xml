@@ -2,9 +2,11 @@
   <library name="Gradle: junit-4.9">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/junit/junit/4.9/jar/1013627e3993319870863a020034004717505815/junit-4.9.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/junit/junit/4.9/jar/1013627e3993319870863a020034004717505815/junit-4.9.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/junit/junit/4.9/source/84b903feddab2bd58f5ab2fc0c5c636df42df74d/junit-4.9-sources.jar!/" />
       <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/junit/junit/4.9/source/84b903feddab2bd58f5ab2fc0c5c636df42df74d/junit-4.9-sources.jar!/" />
     </SOURCES>
   </library>

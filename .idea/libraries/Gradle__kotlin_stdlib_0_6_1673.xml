@@ -6,6 +6,7 @@
     <JAVADOC />
     <SOURCES>
       <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jetbrains.kotlin/kotlin-stdlib/0.6.1673/source/e436649bbb07f85b37c4bc0daf64fdb97318532a/kotlin-stdlib-0.6.1673-sources.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jetbrains.kotlin/kotlin-stdlib/0.6.1673/source/e436649bbb07f85b37c4bc0daf64fdb97318532a/kotlin-stdlib-0.6.1673-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

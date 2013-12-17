@@ -6,6 +6,7 @@
     <JAVADOC />
     <SOURCES>
       <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jetbrains.kotlin/kotlin-runtime/0.6.1673/source/a71ed5755f8658a7f2ff3c7e057ef0ffffd15e25/kotlin-runtime-0.6.1673-sources.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/artifacts-26/filestore/org.jetbrains.kotlin/kotlin-runtime/0.6.1673/source/a71ed5755f8658a7f2ff3c7e057ef0ffffd15e25/kotlin-runtime-0.6.1673-sources.jar!/" />
     </SOURCES>
   </library>
 </component>
