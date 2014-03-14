@@ -248,7 +248,7 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
             // TODO: Make this a stream
             var buffer = ""
             if (response.sendBuffer is String) {
-                if (response.sendBuffer != "") {
+                if (response.sendBuffer as String != "") {
                     buffer = (response.sendBuffer as String)
                 } else {
                     buffer = response.statusDescription

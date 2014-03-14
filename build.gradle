@@ -1,5 +1,5 @@
 buildscript {
-    project.ext.kotlin_version = '0.6.602'
+    project.ext.kotlin_version = '0.7+'
     repositories {
         mavenCentral()
         maven {
@@ -29,7 +29,7 @@ repositories {
 
 dependencies {
     compile "org.codehaus.jackson:jackson-mapper-asl:1.9.12",
-            "io.netty:netty-all:4.0.10.Final",
+            "io.netty:netty-all:4.0.17.Final",
             "commons-codec:commons-codec:1.6",
             "commons-logging:commons-logging:1.1.1",
             "org.apache.httpcomponents:httpclient:4.2.3",
