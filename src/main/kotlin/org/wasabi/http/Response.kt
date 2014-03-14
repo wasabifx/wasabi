@@ -91,8 +91,8 @@ public class Response() {
     }
 
     public fun setStatus(httpStatus: StatusCodes) {
-        statusCode = httpStatus.statusCode
-        statusDescription = httpStatus.statusDescription
+        statusCode = httpStatus.code
+        statusDescription = httpStatus.description
     }
 
     public fun setAllowedMethods(allowedMethods: Array<HttpMethod>) {

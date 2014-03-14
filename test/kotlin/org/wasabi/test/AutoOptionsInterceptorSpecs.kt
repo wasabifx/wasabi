@@ -28,7 +28,7 @@ public class AutoOptionsInterceptorSpecs : TestServerContext() {
 
         val response = options("http://localhost:3000/person")
 
-        assertEquals(StatusCodes.MethodNotAllowed.statusCode, response.statusCode)
+        assertEquals(StatusCodes.MethodNotAllowed.code, response.statusCode)
     }
 
 }
