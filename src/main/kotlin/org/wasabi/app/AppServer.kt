@@ -24,6 +24,9 @@ import org.wasabi.interceptors.enableAutoOptions
 import org.wasabi.interceptors.enableCORSGlobally
 import org.wasabi.interceptors.ContentNegotiationInterceptor
 import org.wasabi.interceptors.enableContentNegotiation
+import org.wasabi.websocket.Channel
+import org.wasabi.websocket.ChannelHandler
+import org.wasabi.routing.ChannelAlreadyExistsException
 
 
 public open class AppServer(val configuration: AppConfiguration = AppConfiguration()) {
@@ -33,10 +36,10 @@ public open class AppServer(val configuration: AppConfiguration = AppConfigurati
     private var running = false
 
     public val routes: ArrayList<Route> = ArrayList<Route>()
+    public val channels: ArrayList<Channel> = ArrayList<Channel>()
     public val interceptors : ArrayList<InterceptorEntry>  = ArrayList<InterceptorEntry>()
     public val serializers: ArrayList<Serializer> = arrayListOf(JsonSerializer(), XmlSerializer())
     public val deserializers: ArrayList<Deserializer> = arrayListOf(MultiPartFormDataDeserializer(), JsonDeserializer())
-
 
 
     private fun addRoute(method: HttpMethod, path: String, vararg handler: RouteHandler.() -> Unit) {
@@ -45,6 +48,14 @@ public open class AppServer(val configuration: AppConfiguration = AppConfigurati
             throw RouteAlreadyExistsException(existingRoute.first!!)
         }
         routes.add(Route(path, method, HashMap<String, String>(), *handler))
+    }
+
+    private fun addChannel(path: String, vararg handler: ChannelHandler.() -> Unit) {
+        var existingChannel = channels.filter{ it.path == path }
+        if (existingChannel.count() >= 1) {
+            throw ChannelAlreadyExistsException(existingChannel.first!!)
+        }
+        channels.add(Channel(path, *handler))
     }
 
     {
@@ -120,6 +131,10 @@ public open class AppServer(val configuration: AppConfiguration = AppConfigurati
 
     public fun options(path: String, vararg handler: RouteHandler.() -> Unit) {
         addRoute(HttpMethod.OPTIONS, path, *handler)
+    }
+
+    public fun channel(path: String, vararg handler: ChannelHandler.() -> Unit) {
+        addChannel(path, *handler)
     }
 
     public fun intercept(interceptor: Interceptor, path: String = "*", interceptOn: InterceptOn = InterceptOn.PreExecution) {

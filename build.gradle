@@ -1,5 +1,7 @@
 buildscript {
-    project.ext.kotlin_version = '0.6.1673'
+
+    project.ext.kotlin_version = '0.7+'
+
     repositories {
         mavenCentral()
         maven {
@@ -29,7 +31,7 @@ repositories {
 
 dependencies {
     compile "org.codehaus.jackson:jackson-mapper-asl:1.9.12",
-            "io.netty:netty-all:4.0.0.CR1",
+            "io.netty:netty-all:4.0.17.Final",
             "commons-codec:commons-codec:1.6",
             "commons-logging:commons-logging:1.1.1",
             "org.apache.httpcomponents:httpclient:4.2.3",
@@ -62,7 +64,7 @@ uploadArchives {
     repositories {
         mavenDeployer {
             repository(url: "http://repository.jetbrains.com/wasabi") {
-                authentication(userName: deploy_username, password: deploy_password)
+               
             }
             pom.groupId = "org.wasabi"
             pom.artifactId = "wasabi"
@@ -72,5 +74,5 @@ uploadArchives {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.8'
+    gradleVersion = '1.9'
 }
