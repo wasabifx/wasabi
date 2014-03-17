@@ -22,7 +22,7 @@ public class Request(private val httpRequest: HttpRequest) {
     public val method: HttpMethod =  httpRequest.getMethod()!!
     public val host: String = getHeader("Host").takeWhile { it != ':' }
     public val isSecure: Boolean = false // TODO: getHeader("Protocol").compareToIgnoreCase("HTTPS") == 0
-    public val port : Int = (getHeader("Host").dropWhile { it != ':' }).drop(1).toInt() ?: 80
+    public val port : Int = (getHeader("Host").dropWhile { it != ':' }).drop(1).toInt()
     public val keepAlive: Boolean  = getHeader("Connection").compareToIgnoreCase("keep-alive") == 0
     public val cacheControl: String = getHeader("Cache-Control")
     public val userAgent: String = getHeader("User-Agent")

@@ -11,5 +11,6 @@ public data class AppConfiguration(
      var enableContentNegotiation: Boolean = true,
      var enableLogging: Boolean = true,
      var enableAutoOptions: Boolean = false,
-     var enableCORSGlobally: Boolean = false)
+     var enableCORSGlobally: Boolean = false,
+     var sessionLifetime: Int = 600)
 

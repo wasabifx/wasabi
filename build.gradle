@@ -37,7 +37,8 @@ dependencies {
             "org.apache.httpcomponents:httpclient:4.2.3",
             "org.apache.httpcomponents:httpcore:4.2.3",
             "org.slf4j:slf4j-api:1.7.5",
-            "org.slf4j:slf4j-simple:1.7.5"
+            "org.slf4j:slf4j-simple:1.7.5",
+            "joda-time:joda-time:2.3"
 
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 

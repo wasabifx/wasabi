@@ -37,7 +37,7 @@ public class ContentNegotiationParserInterceptor(val mappings: HashMap<String, S
                     }
                 }
                 EXTENSION -> {
-                    request.document.dropWhile { it != '.' }?.let {
+                    request.document.dropWhile { it != '.' }.let {
                         mappings.get(it)?.let {
                             response.requestedContentTypes.add(it.toString())
                         }
