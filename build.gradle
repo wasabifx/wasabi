@@ -20,7 +20,7 @@ buildscript {
 if (hasProperty("teamcity")) {
     version = teamcity["build.number"]
 } else
-    version = "0.1.m7"
+    version = "0.1-SNAPSHOT"
 
 apply plugin: 'kotlin'
 
@@ -65,20 +65,45 @@ sourceSets {
 }
 
 apply plugin: 'maven'
+apply plugin: 'maven-publish'
 
-uploadArchives {
-    repositories {
-        mavenDeployer {
-            repository(url: "http://repository.jetbrains.com/wasabi") {
-               
-            }
-            pom.groupId = "org.wasabi"
-            pom.artifactId = "wasabi"
-            pom.version = version
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            groupId = "org.wasabi"
+            artifactId = "wasabi"
+            version = "${version}"
+
+            from components.java
         }
     }
+
+
+    repositories {
+        maven {
+            url "http://repository.jetbrains.com/wasabi"
+            if (rootProject.hasProperty("deploy_username") && rootProject.hasProperty("deploy_password")) {
+                credentials {
+                    username "${rootProject.deploy_username}"
+                    password "${rootProject.deploy_password}"
+                }
+            }
+        }
+    }
+
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.9'
+    gradleVersion = '1.11'
+
+    doLast() {
+        def gradleOpts = "-XX:MaxPermSize=300m -Xmx1024m"
+        def gradlew_sh = file("gradlew")
+        def gradlew_bat = file("gradlew.bat")
+        gradlew_sh.text = gradlew_sh.text.replace("DEFAULT_JVM_OPTS=",
+                "GRADLE_OPTS=\"$gradleOpts \$GRADLE_OPTS\"\nDEFAULT_JVM_OPTS=")
+        gradlew_bat.text = gradlew_bat.text.replace("set DEFAULT_JVM_OPTS=",
+                "set GRADLE_OPTS=$gradleOpts %GRADLE_OPTS%\nset DEFAULT_JVM_OPTS=")
+
+    }
 }
