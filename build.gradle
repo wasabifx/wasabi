@@ -1,18 +1,12 @@
 buildscript {
-
-    project.ext.kotlin_version = '0.7.270'
-
-    repositories {
+   project.ext.kotlin_version = '0.7.270'
+   repositories {
         mavenCentral()
         maven {
             url "https://oss.sonatype.org/content/repositories/snapshots"
         }
-        maven {
-            url 'http://oss.sonatype.org/content/repositories/snapshots'
-        }
     }
     dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$ext.kotlin_version"
     }
 }
@@ -26,9 +20,6 @@ apply plugin: 'kotlin'
 
 repositories {
     mavenCentral()
-    maven {
-        url 'http://oss.sonatype.org/content/repositories/snapshots'
-    }
     maven {
         url 'http://oss.sonatype.org/content/repositories/snapshots'
     }

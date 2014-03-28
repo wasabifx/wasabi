@@ -65,6 +65,7 @@ public class HeaderSpecs: TestServerContext() {
                 routeParams = request.routeParams
                 response.send("/")
 
+
         })
 
         get("http://localhost:3000/customer/10/valid?param1=value1&param2=value2", headers)

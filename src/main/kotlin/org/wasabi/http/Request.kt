@@ -37,6 +37,7 @@ public class Request(private val httpRequest: HttpRequest) {
     public val contentType: String = getHeader("Content-Type")
     public val chunked: Boolean = getHeader("Transfer-Encoding").compareToIgnoreCase("chunked") == 0
     public val authorization: String = getHeader("Authorization")
+    public val rawHeaders: List<Pair<String, String>> = httpRequest.headers()!!.map({ it.key to it.value })
 
     public var session: Session? = null
 
