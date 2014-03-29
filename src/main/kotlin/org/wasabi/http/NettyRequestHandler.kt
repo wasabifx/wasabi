@@ -54,6 +54,8 @@ import io.netty.handler.codec.http.HttpHeaders
 import io.netty.channel.ChannelInboundHandlerAdapter
 import io.netty.channel.SimpleChannelInboundHandler
 import org.wasabi.routing.ChannelLocator
+import io.netty.channel.ChannelProgressiveFuture
+import io.netty.channel.ChannelProgressiveFutureListener
 
 
 // TODO: This class needs cleaning up
@@ -80,7 +82,7 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
 
         if (msg is WebSocketFrame)
         {
-            handleWebSocketRequest(ctx, msg)
+            handleWebSocketRequest(ctx!!, msg)
         }
 
 
@@ -108,9 +110,9 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
                 log!!.info(handshaker?.uri().toString())
 
                 if (handshaker == null) {
-                    WebSocketServerHandshakerFactory.sendUnsupportedWebSocketVersionResponse(ctx?.channel());
+                    WebSocketServerHandshakerFactory.sendUnsupportedWebSocketVersionResponse(ctx?.channel()!!);
                 } else {
-                    handshaker?.handshake(ctx?.channel(), msg as FullHttpRequest);
+                    handshaker?.handshake(ctx?.channel()!!, msg as FullHttpRequest);
                 }
                 return
             }
@@ -119,7 +121,7 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
     }
 
 
-    private fun handleWebSocketRequest(ctx: ChannelHandlerContext?, webSocketFrame: WebSocketFrame)
+    private fun handleWebSocketRequest(ctx: ChannelHandlerContext, webSocketFrame: WebSocketFrame)
     {
         log!!.info("handleWebSocketRequest")
 
@@ -190,7 +192,7 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
                             }
                         }
                         // Run global interceptors again
-                        continueRequest = runInterceptors(postExecutionInterceptors)
+                        runInterceptors(postExecutionInterceptors)
 
                     } catch (e: InvalidMethodException)  {
                         response.setAllowedMethods(e.allowedMethods)
@@ -225,8 +227,6 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
         return true
     }
 
-
-
     private fun writeResponse(ctx: ChannelHandlerContext, response: Response) {
         var httpResponse : HttpResponse
         response.setHeaders()
@@ -234,16 +234,19 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
             runInterceptors(errorInterceptors)
         }
         if (response.absolutePathToFileToStream != "") {
-            httpResponse = DefaultFullHttpResponse(HttpVersion("HTTP", 1, 1, true), HttpResponseStatus(response.statusCode, response.statusDescription))
+            httpResponse = DefaultHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK);
             addResponseHeaders(httpResponse, response)
             ctx.write(httpResponse)
 
             var raf = RandomAccessFile(response.absolutePathToFileToStream, "r");
             var fileLength = raf.length();
 
-            var writeFuture = ctx.write(ChunkedFile(raf, 0, fileLength, 8192));
+            var writeFuture = ctx.write(ChunkedFile(raf, 0, fileLength, 8192), ctx.newProgressivePromise());
 
-            writeFuture!!.addListener(ChannelFutureListener.CLOSE)
+
+            var lastContentFuture = ctx.writeAndFlush(LastHttpContent.EMPTY_LAST_CONTENT)
+
+            lastContentFuture.addListener(ChannelFutureListener.CLOSE)
         }  else {
             // TODO: Make this a stream
             var buffer = ""
@@ -271,7 +274,7 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
             }
 
             ctx.flush()
-            ctx.channel()?.close()
+            ctx.channel().close()
         }
     }
 
@@ -286,7 +289,7 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
         }
     }
 
-    public override fun exceptionCaught(ctx: ChannelHandlerContext?, cause: Throwable?) {
+    public override fun exceptionCaught(ctx: ChannelHandlerContext, cause: Throwable?) {
         // TODO: Log actual message
         response.setStatus(StatusCodes.InternalServerError)
         writeResponse(ctx!!, response)
