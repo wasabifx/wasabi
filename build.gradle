@@ -54,7 +54,9 @@ sourceSets {
         }
     }
     test {
-        kotlin
+        main {
+            kotlin
+        }
     }
     main.java.srcDirs += 'src/main/kotlin'
 }
