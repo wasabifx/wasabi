@@ -1,0 +1,44 @@
+<root>
+    <item name='io.netty.channel.local.LocalChannel io.netty.channel.ChannelMetadata metadata()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.local.LocalChannel void doWrite(io.netty.channel.ChannelOutboundBuffer) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.local.LocalEventLoopGroup io.netty.util.concurrent.EventExecutor newChild(java.util.concurrent.ThreadFactory, java.lang.Object...) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.local.LocalEventLoopGroup io.netty.util.concurrent.EventExecutor newChild(java.util.concurrent.ThreadFactory, java.lang.Object...) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.local.LocalChannel io.netty.channel.ChannelConfig config()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.local.LocalChannel void doBind(java.net.SocketAddress) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.local.LocalServerChannel io.netty.channel.ChannelConfig config()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.local.LocalServerChannel void doBind(java.net.SocketAddress) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.local.LocalAddress ANY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.local.LocalChannel io.netty.channel.AbstractChannel.AbstractUnsafe newUnsafe()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.local.LocalAddress int compareTo(io.netty.channel.local.LocalAddress) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.local.LocalEventLoopGroup io.netty.util.concurrent.EventExecutor newChild(java.util.concurrent.ThreadFactory, java.lang.Object...)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.local.LocalAddress int compareTo(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

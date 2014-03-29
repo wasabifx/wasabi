@@ -1,0 +1,71 @@
+<root>
+    <item name='io.netty.handler.codec.protobuf.ProtobufDecoder ProtobufDecoder(com.google.protobuf.MessageLite) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.protobuf.ProtobufDecoder ProtobufDecoder(com.google.protobuf.MessageLite, com.google.protobuf.ExtensionRegistry) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepender void encode(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf, io.netty.buffer.ByteBuf) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepender void encode(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf, io.netty.buffer.ByteBuf) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepender void encode(io.netty.channel.ChannelHandlerContext, java.lang.Object, io.netty.buffer.ByteBuf) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepender void encode(io.netty.channel.ChannelHandlerContext, java.lang.Object, io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepender void encode(io.netty.channel.ChannelHandlerContext, java.lang.Object, io.netty.buffer.ByteBuf) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.protobuf.ProtobufEncoder void encode(io.netty.channel.ChannelHandlerContext, java.lang.Object, java.util.List) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.protobuf.ProtobufVarint32FrameDecoder void decode(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf, java.util.List&lt;java.lang.Object&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.protobuf.ProtobufEncoder void encode(io.netty.channel.ChannelHandlerContext, java.lang.Object, java.util.List) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.protobuf.ProtobufVarint32FrameDecoder void decode(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf, java.util.List&lt;java.lang.Object&gt;) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.protobuf.ProtobufDecoder void decode(io.netty.channel.ChannelHandlerContext, java.lang.Object, java.util.List) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.protobuf.ProtobufVarint32FrameDecoder void decode(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf, java.util.List&lt;java.lang.Object&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.protobuf.ProtobufDecoder void decode(io.netty.channel.ChannelHandlerContext, java.lang.Object, java.util.List) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.protobuf.ProtobufDecoder void decode(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf, java.util.List&lt;java.lang.Object&gt;) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.protobuf.ProtobufDecoder void decode(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf, java.util.List&lt;java.lang.Object&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.protobuf.ProtobufEncoder void encode(io.netty.channel.ChannelHandlerContext, java.lang.Object, java.util.List) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+</root>

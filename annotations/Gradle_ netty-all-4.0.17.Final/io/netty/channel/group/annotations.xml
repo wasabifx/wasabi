@@ -1,0 +1,341 @@
+<root>
+    <item name='io.netty.channel.group.DefaultChannelGroup io.netty.channel.group.ChannelGroupFuture write(java.lang.Object, io.netty.channel.group.ChannelMatcher) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.group.ChannelMatchers io.netty.channel.group.ChannelMatcher all()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.group.ChannelGroupException ChannelGroupException(java.util.Collection&lt;java.util.Map.Entry&lt;io.netty.channel.Channel,java.lang.Throwable&gt;&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.group.ChannelGroup io.netty.channel.group.ChannelGroupFuture write(java.lang.Object, io.netty.channel.group.ChannelMatcher)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.group.ChannelGroup io.netty.channel.group.ChannelGroupFuture writeAndFlush(java.lang.Object, io.netty.channel.group.ChannelMatcher)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.group.DefaultChannelGroup io.netty.channel.group.ChannelGroupFuture write(java.lang.Object)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.group.DefaultChannelGroup io.netty.channel.group.ChannelGroupFuture writeAndFlush(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.group.ChannelGroup io.netty.channel.group.ChannelGroup flush()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.group.ChannelGroup io.netty.channel.group.ChannelGroupFuture writeAndFlush(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.group.DefaultChannelGroup io.netty.channel.group.ChannelGroupFuture close()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.group.ChannelGroupFuture io.netty.channel.group.ChannelGroupFuture awaitUninterruptibly()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.group.DefaultChannelGroup java.lang.String name()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.group.DefaultChannelGroup io.netty.channel.group.ChannelGroup flush(io.netty.channel.group.ChannelMatcher)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.group.DefaultChannelGroup io.netty.channel.group.ChannelGroupFuture write(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.group.ChannelGroup io.netty.channel.group.ChannelGroupFuture disconnect()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.group.DefaultChannelGroup io.netty.channel.group.ChannelGroupFuture flushAndWrite(java.lang.Object, io.netty.channel.group.ChannelMatcher) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.group.DefaultChannelGroup io.netty.channel.group.ChannelGroupFuture writeAndFlush(java.lang.Object, io.netty.channel.group.ChannelMatcher)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.group.ChannelGroup io.netty.channel.group.ChannelGroupFuture write(java.lang.Object)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.group.ChannelGroup io.netty.channel.group.ChannelGroupFuture write(java.lang.Object, io.netty.channel.group.ChannelMatcher) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.group.ChannelGroup io.netty.channel.group.ChannelGroupFuture writeAndFlush(java.lang.Object, io.netty.channel.group.ChannelMatcher) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.group.ChannelGroup io.netty.channel.group.ChannelGroupFuture writeAndFlush(java.lang.Object)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.group.DefaultChannelGroup io.netty.channel.group.ChannelGroupFuture disconnect()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.group.ChannelGroup io.netty.channel.group.ChannelGroup flush(io.netty.channel.group.ChannelMatcher)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.group.ChannelGroupFuture io.netty.channel.group.ChannelGroupFuture addListener(io.netty.util.concurrent.GenericFutureListener&lt;? extends io.netty.util.concurrent.Future&lt;? super java.lang.Void&gt;&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.group.ChannelMatchers io.netty.channel.group.ChannelMatcher isNotInstanceOf(java.lang.Class&lt;? extends io.netty.channel.Channel&gt;)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.group.DefaultChannelGroup java.util.Iterator&lt;io.netty.channel.Channel&gt; iterator()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.group.DefaultChannelGroup int compareTo(io.netty.channel.group.ChannelGroup) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.group.ChannelGroup io.netty.channel.group.ChannelGroupFuture write(java.lang.Object, io.netty.channel.group.ChannelMatcher) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.group.ChannelGroupFuture io.netty.channel.group.ChannelGroupFuture addListeners(io.netty.util.concurrent.GenericFutureListener&lt;? extends io.netty.util.concurrent.Future&lt;? super java.lang.Void&gt;&gt;...) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.group.ChannelGroup io.netty.channel.group.ChannelGroupFuture deregister()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.group.ChannelGroup io.netty.channel.group.ChannelGroupFuture close()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.group.ChannelGroupFuture io.netty.channel.group.ChannelGroupFuture await()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.group.ChannelMatchers io.netty.channel.group.ChannelMatcher isServerChannel()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.group.ChannelGroupFuture io.netty.channel.group.ChannelGroupFuture sync()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.group.ChannelGroup io.netty.channel.group.ChannelGroupFuture close(io.netty.channel.group.ChannelMatcher)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.group.ChannelGroup io.netty.channel.group.ChannelGroupFuture write(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.group.ChannelGroupFuture io.netty.channel.group.ChannelGroupFuture removeListeners(io.netty.util.concurrent.GenericFutureListener&lt;? extends io.netty.util.concurrent.Future&lt;? super java.lang.Void&gt;&gt;...) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.group.ChannelMatchers io.netty.channel.group.ChannelMatcher compose(io.netty.channel.group.ChannelMatcher...) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.group.ChannelGroup io.netty.channel.group.ChannelGroupFuture flushAndWrite(java.lang.Object)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.group.DefaultChannelGroup io.netty.channel.group.ChannelGroupFuture writeAndFlush(java.lang.Object)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.group.ChannelGroupFuture io.netty.channel.group.ChannelGroupFuture addListeners(io.netty.util.concurrent.GenericFutureListener&lt;? extends io.netty.util.concurrent.Future&lt;? super java.lang.Void&gt;&gt;...)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.group.ChannelGroup io.netty.channel.group.ChannelGroupFuture deregister(io.netty.channel.group.ChannelMatcher)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.group.ChannelMatchers io.netty.channel.group.ChannelMatcher isNot(io.netty.channel.Channel)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.group.DefaultChannelGroup io.netty.channel.group.ChannelGroupFuture deregister(io.netty.channel.group.ChannelMatcher)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.group.ChannelMatchers io.netty.channel.group.ChannelMatcher invert(io.netty.channel.group.ChannelMatcher)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.group.ChannelMatchers io.netty.channel.group.ChannelMatcher is(io.netty.channel.Channel)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.group.DefaultChannelGroup io.netty.channel.group.ChannelGroupFuture disconnect(io.netty.channel.group.ChannelMatcher) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.group.ChannelMatchers io.netty.channel.group.ChannelMatcher isNonServerChannel()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.group.ChannelGroupFuture io.netty.channel.group.ChannelGroupFuture removeListeners(io.netty.util.concurrent.GenericFutureListener&lt;? extends io.netty.util.concurrent.Future&lt;? super java.lang.Void&gt;&gt;...)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.group.DefaultChannelGroup io.netty.channel.group.ChannelGroupFuture flushAndWrite(java.lang.Object)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.group.ChannelGroup io.netty.channel.group.ChannelGroupFuture flushAndWrite(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.group.ChannelGroupFuture io.netty.channel.group.ChannelGroupFuture syncUninterruptibly()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.group.ChannelGroup io.netty.channel.group.ChannelGroupFuture flushAndWrite(java.lang.Object, io.netty.channel.group.ChannelMatcher)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.group.DefaultChannelGroup io.netty.channel.group.ChannelGroupFuture disconnect(io.netty.channel.group.ChannelMatcher)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.group.ChannelGroup io.netty.channel.group.ChannelGroupFuture deregister(io.netty.channel.group.ChannelMatcher) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.group.ChannelGroup io.netty.channel.group.ChannelGroupFuture close(io.netty.channel.group.ChannelMatcher) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.group.DefaultChannelGroup io.netty.channel.group.ChannelGroupFuture write(java.lang.Object, io.netty.channel.group.ChannelMatcher) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.group.DefaultChannelGroup io.netty.channel.group.ChannelGroupFuture deregister()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.group.DefaultChannelGroup io.netty.channel.group.ChannelGroupFuture close(io.netty.channel.group.ChannelMatcher)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.group.ChannelGroupFuture io.netty.channel.group.ChannelGroupFuture removeListener(io.netty.util.concurrent.GenericFutureListener&lt;? extends io.netty.util.concurrent.Future&lt;? super java.lang.Void&gt;&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.group.ChannelGroupFuture io.netty.channel.group.ChannelGroupFuture removeListener(io.netty.util.concurrent.GenericFutureListener&lt;? extends io.netty.util.concurrent.Future&lt;? super java.lang.Void&gt;&gt;)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.group.DefaultChannelGroup int compareTo(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.group.DefaultChannelGroup io.netty.channel.group.ChannelGroupFuture deregister(io.netty.channel.group.ChannelMatcher) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.group.DefaultChannelGroup io.netty.channel.group.ChannelGroupFuture flushAndWrite(java.lang.Object, io.netty.channel.group.ChannelMatcher)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.group.ChannelGroup io.netty.channel.group.ChannelGroupFuture disconnect(io.netty.channel.group.ChannelMatcher)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.group.ChannelGroup java.lang.String name()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.group.ChannelMatchers io.netty.channel.group.ChannelMatcher isInstanceOf(java.lang.Class&lt;? extends io.netty.channel.Channel&gt;)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.group.DefaultChannelGroup io.netty.channel.group.ChannelGroupFuture close(io.netty.channel.group.ChannelMatcher) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.group.ChannelGroup io.netty.channel.group.ChannelGroupFuture disconnect(io.netty.channel.group.ChannelMatcher) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.group.ChannelGroupFuture io.netty.channel.group.ChannelGroupFuture addListener(io.netty.util.concurrent.GenericFutureListener&lt;? extends io.netty.util.concurrent.Future&lt;? super java.lang.Void&gt;&gt;)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.group.DefaultChannelGroup io.netty.channel.group.ChannelGroupFuture flushAndWrite(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.group.DefaultChannelGroup DefaultChannelGroup(java.lang.String, io.netty.util.concurrent.EventExecutor) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.group.DefaultChannelGroup io.netty.channel.group.ChannelGroupFuture write(java.lang.Object, io.netty.channel.group.ChannelMatcher)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.group.DefaultChannelGroup io.netty.channel.group.ChannelGroupFuture writeAndFlush(java.lang.Object, io.netty.channel.group.ChannelMatcher) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.group.ChannelGroup io.netty.channel.group.ChannelGroupFuture flushAndWrite(java.lang.Object, io.netty.channel.group.ChannelMatcher) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.group.DefaultChannelGroup io.netty.channel.group.ChannelGroup flush()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>
