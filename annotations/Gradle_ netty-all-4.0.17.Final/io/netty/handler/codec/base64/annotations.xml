@@ -1,0 +1,101 @@
+<root>
+    <item name='io.netty.handler.codec.base64.Base64 io.netty.buffer.ByteBuf decode(io.netty.buffer.ByteBuf, io.netty.handler.codec.base64.Base64Dialect) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.base64.Base64 io.netty.buffer.ByteBuf decode(io.netty.buffer.ByteBuf, int, int, io.netty.handler.codec.base64.Base64Dialect) 3'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.base64.Base64 io.netty.buffer.ByteBuf encode(io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.base64.Base64Decoder Base64Decoder(io.netty.handler.codec.base64.Base64Dialect) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.base64.Base64 io.netty.buffer.ByteBuf decode(io.netty.buffer.ByteBuf, int, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.base64.Base64 io.netty.buffer.ByteBuf encode(io.netty.buffer.ByteBuf, int, int, io.netty.handler.codec.base64.Base64Dialect) 3'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.base64.Base64Decoder void decode(io.netty.channel.ChannelHandlerContext, java.lang.Object, java.util.List) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.base64.Base64 io.netty.buffer.ByteBuf encode(io.netty.buffer.ByteBuf, int, int, boolean, io.netty.handler.codec.base64.Base64Dialect) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.base64.Base64Encoder void encode(io.netty.channel.ChannelHandlerContext, java.lang.Object, java.util.List) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.base64.Base64 io.netty.buffer.ByteBuf encode(io.netty.buffer.ByteBuf, boolean, io.netty.handler.codec.base64.Base64Dialect) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.base64.Base64Encoder void encode(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf, java.util.List&lt;java.lang.Object&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.base64.Base64 io.netty.buffer.ByteBuf encode(io.netty.buffer.ByteBuf, boolean, io.netty.handler.codec.base64.Base64Dialect) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.base64.Base64Decoder void decode(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf, java.util.List&lt;java.lang.Object&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.base64.Base64 io.netty.buffer.ByteBuf decode(io.netty.buffer.ByteBuf, int, int, io.netty.handler.codec.base64.Base64Dialect) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.base64.Base64Dialect ORDERED'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.base64.Base64Encoder Base64Encoder(boolean, io.netty.handler.codec.base64.Base64Dialect) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.base64.Base64 io.netty.buffer.ByteBuf encode(io.netty.buffer.ByteBuf, io.netty.handler.codec.base64.Base64Dialect) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.base64.Base64 io.netty.buffer.ByteBuf encode(io.netty.buffer.ByteBuf, int, int, boolean, io.netty.handler.codec.base64.Base64Dialect) 4'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.base64.Base64 io.netty.buffer.ByteBuf decode(io.netty.buffer.ByteBuf, io.netty.handler.codec.base64.Base64Dialect) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.base64.Base64 io.netty.buffer.ByteBuf encode(io.netty.buffer.ByteBuf, int, int, io.netty.handler.codec.base64.Base64Dialect) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.base64.Base64 io.netty.buffer.ByteBuf encode(io.netty.buffer.ByteBuf, int, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.base64.Base64Decoder void decode(io.netty.channel.ChannelHandlerContext, java.lang.Object, java.util.List) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.base64.Base64 io.netty.buffer.ByteBuf encode(io.netty.buffer.ByteBuf, boolean) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.base64.Base64Dialect URL_SAFE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.base64.Base64Encoder void encode(io.netty.channel.ChannelHandlerContext, java.lang.Object, java.util.List) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.base64.Base64 io.netty.buffer.ByteBuf decode(io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.base64.Base64Dialect STANDARD'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.base64.Base64 io.netty.buffer.ByteBuf encode(io.netty.buffer.ByteBuf, int, int, boolean) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.base64.Base64Encoder void encode(io.netty.channel.ChannelHandlerContext, java.lang.Object, java.util.List) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.base64.Base64Encoder void encode(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf, java.util.List&lt;java.lang.Object&gt;) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.base64.Base64Decoder void decode(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf, java.util.List&lt;java.lang.Object&gt;) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.base64.Base64 io.netty.buffer.ByteBuf encode(io.netty.buffer.ByteBuf, io.netty.handler.codec.base64.Base64Dialect) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

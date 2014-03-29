@@ -1,0 +1,1037 @@
+<root>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyDataFrame io.netty.handler.codec.spdy.SpdyStreamFrame setLast(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHttpHeaders void removeUrl(io.netty.handler.codec.http.HttpMessage) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyRstStreamFrame io.netty.handler.codec.spdy.SpdyStreamFrame setStreamId(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdySynStreamFrame io.netty.handler.codec.spdy.SpdySynStreamFrame setStreamId(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders io.netty.handler.codec.spdy.SpdyHeaders remove(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyStreamFrame io.netty.handler.codec.spdy.SpdyStreamFrame setStreamId(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders void setVersion(int, io.netty.handler.codec.spdy.SpdyHeadersFrame, io.netty.handler.codec.http.HttpVersion) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyOrHttpChooser void decode(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf, java.util.List&lt;java.lang.Object&gt;) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders java.util.Set&lt;java.lang.String&gt; names()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdySettingsFrame io.netty.handler.codec.spdy.SpdySettingsFrame setValue(int, int, boolean, boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdySessionHandler void close(io.netty.channel.ChannelHandlerContext, io.netty.channel.ChannelPromise) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyFrameDecoder SpdyFrameDecoder(io.netty.handler.codec.spdy.SpdyVersion) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdySessionHandler void channelInactive(io.netty.channel.ChannelHandlerContext) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders void setHeader(io.netty.handler.codec.spdy.SpdyHeadersFrame, java.lang.String, java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHttpResponseStreamIdHandler void decode(io.netty.channel.ChannelHandlerContext, java.lang.Object, java.util.List&lt;java.lang.Object&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders void setHeader(io.netty.handler.codec.spdy.SpdyHeadersFrame, java.lang.String, java.lang.Iterable&lt;?&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdySessionHandler SpdySessionHandler(io.netty.handler.codec.spdy.SpdyVersion, boolean) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHttpHeaders.Names ASSOCIATED_TO_STREAM_ID'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyWindowUpdateFrame io.netty.handler.codec.spdy.SpdyWindowUpdateFrame setStreamId(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders void removeStatus(int, io.netty.handler.codec.spdy.SpdyHeadersFrame) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdySessionStatus PROTOCOL_ERROR'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyFrameDecoder void decode(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf, java.util.List&lt;java.lang.Object&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdySessionHandler void write(io.netty.channel.ChannelHandlerContext, java.lang.Object, io.netty.channel.ChannelPromise) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders void setHost(io.netty.handler.codec.spdy.SpdyHeadersFrame, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHttpDecoder SpdyHttpDecoder(io.netty.handler.codec.spdy.SpdyVersion, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders java.lang.String getHost(io.netty.handler.codec.spdy.SpdyHeadersFrame) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyStreamStatus STREAM_ALREADY_CLOSED'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyDataFrame io.netty.util.ReferenceCounted retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdySessionStatus io.netty.handler.codec.spdy.SpdySessionStatus valueOf(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyFrameEncoder void encode(io.netty.channel.ChannelHandlerContext, io.netty.handler.codec.spdy.SpdyFrame, io.netty.buffer.ByteBuf) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders void setVersion(int, io.netty.handler.codec.spdy.SpdyHeadersFrame, io.netty.handler.codec.http.HttpVersion) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyDataFrame DefaultSpdyDataFrame(int, io.netty.buffer.ByteBuf) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyHeaders io.netty.handler.codec.spdy.SpdyHeaders add(java.lang.String, java.lang.Iterable&lt;?&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyHeaders boolean contains(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders void removeVersion(int, io.netty.handler.codec.spdy.SpdyHeadersFrame) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHttpResponseStreamIdHandler void encode(io.netty.channel.ChannelHandlerContext, io.netty.handler.codec.http.HttpMessage, java.util.List&lt;java.lang.Object&gt;) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders.HttpNames STATUS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders java.lang.String getScheme(int, io.netty.handler.codec.spdy.SpdyHeadersFrame) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyVersion SPDY_3_1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdySynReplyFrame io.netty.handler.codec.spdy.SpdySynReplyFrame setInvalid()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHttpResponseStreamIdHandler void decode(io.netty.channel.ChannelHandlerContext, java.lang.Object, java.util.List&lt;java.lang.Object&gt;) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyOrHttpChooser void addHttpHandlers(io.netty.channel.ChannelHandlerContext) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdySettingsFrame io.netty.handler.codec.spdy.SpdySettingsFrame setClearPreviouslyPersistedSettings(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyHeaders io.netty.handler.codec.spdy.SpdyHeaders add(java.lang.String, java.lang.Iterable&lt;?&gt;)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyHeaders io.netty.handler.codec.spdy.SpdyHeaders set(java.lang.String, java.lang.Iterable&lt;?&gt;)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyHeadersFrame io.netty.handler.codec.spdy.SpdyStreamFrame setLast(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHttpHeaders java.lang.String getUrl(io.netty.handler.codec.http.HttpMessage) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyFrameEncoder SpdyFrameEncoder(io.netty.handler.codec.spdy.SpdyVersion, io.netty.handler.codec.spdy.SpdyHeaderBlockEncoder) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyWindowUpdateFrame io.netty.handler.codec.spdy.SpdyWindowUpdateFrame setDeltaWindowSize(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHttpHeaders void setAssociatedToStreamId(io.netty.handler.codec.http.HttpMessage, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdySynReplyFrame io.netty.handler.codec.spdy.SpdyStreamFrame setLast(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyOrHttpChooser void decode(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf, java.util.List&lt;java.lang.Object&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyHeaders java.lang.String get(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyHeaders io.netty.handler.codec.spdy.SpdyHeaders add(java.lang.String, java.lang.Iterable&lt;?&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyOrHttpChooser.SelectedProtocol UNKNOWN'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyHeadersFrame io.netty.handler.codec.spdy.SpdyStreamFrame setStreamId(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyFrameCodec SpdyFrameCodec(io.netty.handler.codec.spdy.SpdyVersion) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyOrHttpChooser void addSpdyHandlers(io.netty.channel.ChannelHandlerContext, io.netty.handler.codec.spdy.SpdyVersion) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyFrameEncoder SpdyFrameEncoder(io.netty.handler.codec.spdy.SpdyVersion, int, int, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyDataFrame io.netty.handler.codec.spdy.SpdyDataFrame setLast(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyHeaders java.util.List&lt;java.lang.String&gt; getAll(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHttpHeaders void removeScheme(io.netty.handler.codec.http.HttpMessage) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders void setMethod(int, io.netty.handler.codec.spdy.SpdyHeadersFrame, io.netty.handler.codec.http.HttpMethod) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyFrameDecoder SpdyFrameDecoder(io.netty.handler.codec.spdy.SpdyVersion, int, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHttpHeaders.Names STREAM_ID'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyOrHttpChooser void decode(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf, java.util.List&lt;java.lang.Object&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyFrameDecoder SpdyFrameDecoder(io.netty.handler.codec.spdy.SpdyVersion, int, io.netty.handler.codec.spdy.SpdyHeaderBlockDecoder) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyDataFrame io.netty.handler.codec.spdy.SpdyDataFrame retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyHeaders io.netty.handler.codec.spdy.SpdyHeaders add(java.lang.String, java.lang.Object)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyFrameEncoder void handlerAdded(io.netty.channel.ChannelHandlerContext) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyOrHttpChooser void addSpdyHandlers(io.netty.channel.ChannelHandlerContext, io.netty.handler.codec.spdy.SpdyVersion) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyStreamFrame io.netty.handler.codec.spdy.SpdyStreamFrame setStreamId(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyFrameEncoder SpdyFrameEncoder(io.netty.handler.codec.spdy.SpdyVersion) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyWindowUpdateFrame io.netty.handler.codec.spdy.SpdyWindowUpdateFrame setStreamId(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdySynStreamFrame io.netty.handler.codec.spdy.SpdySynStreamFrame setAssociatedToStreamId(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyPingFrame io.netty.handler.codec.spdy.SpdyPingFrame setId(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyOrHttpChooser.SelectedProtocol HTTP_1_1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHttpEncoder void encode(io.netty.channel.ChannelHandlerContext, java.lang.Object, java.util.List) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyDataFrame io.netty.buffer.ByteBuf content()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders java.util.List&lt;java.util.Map.Entry&lt;java.lang.String,java.lang.String&gt;&gt; entries()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHttpHeaders void removeStreamId(io.netty.handler.codec.http.HttpMessage) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHttpDecoder void decode(io.netty.channel.ChannelHandlerContext, java.lang.Object, java.util.List) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyDataFrame io.netty.buffer.ByteBufHolder retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders void setMethod(int, io.netty.handler.codec.spdy.SpdyHeadersFrame, io.netty.handler.codec.http.HttpMethod) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHttpResponseStreamIdHandler void encode(io.netty.channel.ChannelHandlerContext, java.lang.Object, java.util.List) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyDataFrame io.netty.handler.codec.spdy.SpdyDataFrame duplicate()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyDataFrame io.netty.buffer.ByteBufHolder copy()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyDataFrame io.netty.handler.codec.spdy.SpdyDataFrame setStreamId(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeadersFrame io.netty.handler.codec.spdy.SpdyHeadersFrame setTruncated()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyHeaders java.util.List&lt;java.util.Map.Entry&lt;java.lang.String,java.lang.String&gt;&gt; entries()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyStreamStatus int compareTo(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaderBlockRawDecoder SpdyHeaderBlockRawDecoder(io.netty.handler.codec.spdy.SpdyVersion, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaderBlockRawEncoder SpdyHeaderBlockRawEncoder(io.netty.handler.codec.spdy.SpdyVersion) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders void removeMethod(int, io.netty.handler.codec.spdy.SpdyHeadersFrame) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHttpEncoder void encode(io.netty.channel.ChannelHandlerContext, java.lang.Object, java.util.List) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyStreamStatus FRAME_TOO_LARGE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders.HttpNames PATH'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyOrHttpChooser.SelectedProtocol HTTP_1_0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdySettingsFrame io.netty.handler.codec.spdy.SpdySettingsFrame setPersisted(int, boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders io.netty.handler.codec.spdy.SpdyHeaders clear()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdySettingsFrame io.netty.handler.codec.spdy.SpdySettingsFrame setPersistValue(int, boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHttpDecoder void decode(io.netty.channel.ChannelHandlerContext, java.lang.Object, java.util.List) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdySettingsFrame io.netty.handler.codec.spdy.SpdySettingsFrame setValue(int, int, boolean, boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdySynStreamFrame io.netty.handler.codec.spdy.SpdySynStreamFrame setLast(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders void removeUrl(int, io.netty.handler.codec.spdy.SpdyHeadersFrame) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyDataFrame io.netty.buffer.ByteBufHolder duplicate()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdySettingsFrame io.netty.handler.codec.spdy.SpdySettingsFrame setClearPreviouslyPersistedSettings(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyHeaders io.netty.handler.codec.spdy.SpdyHeaders set(java.lang.String, java.lang.Iterable&lt;?&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHttpCodec SpdyHttpCodec(io.netty.handler.codec.spdy.SpdyVersion, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdySettingsFrame io.netty.handler.codec.spdy.SpdySettingsFrame setPersisted(int, boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyDataFrame io.netty.handler.codec.spdy.SpdyDataFrame retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyHeaders io.netty.handler.codec.spdy.SpdyHeaders remove(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyStreamStatus INVALID_STREAM'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders void removeScheme(int, io.netty.handler.codec.spdy.SpdyHeadersFrame) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHttpHeaders.Names SCHEME'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdySynStreamFrame io.netty.handler.codec.spdy.SpdySynStreamFrame setPriority(byte)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeadersFrame io.netty.handler.codec.spdy.SpdyHeaders headers()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHttpHeaders void setUrl(io.netty.handler.codec.http.HttpMessage, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyDataFrame io.netty.handler.codec.spdy.SpdyDataFrame copy()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyStreamFrame io.netty.handler.codec.spdy.SpdyStreamFrame setLast(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHttpEncoder void encode(io.netty.channel.ChannelHandlerContext, java.lang.Object, java.util.List) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdySynStreamFrame io.netty.handler.codec.spdy.SpdyHeadersFrame setInvalid()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaderBlockRawEncoder io.netty.buffer.ByteBuf encode(io.netty.handler.codec.spdy.SpdyHeadersFrame) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyRstStreamFrame io.netty.handler.codec.spdy.SpdyRstStreamFrame setLast(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders io.netty.handler.codec.spdy.SpdyHeaders add(java.lang.String, java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdySessionStatus int compareTo(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyDataFrame io.netty.handler.codec.spdy.SpdyDataFrame setLast(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyFrameEncoder void encode(io.netty.channel.ChannelHandlerContext, io.netty.handler.codec.spdy.SpdyFrame, io.netty.buffer.ByteBuf) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders void setUrl(int, io.netty.handler.codec.spdy.SpdyHeadersFrame, java.lang.String) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHttpEncoder SpdyHttpEncoder(io.netty.handler.codec.spdy.SpdyVersion) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHttpResponseStreamIdHandler void encode(io.netty.channel.ChannelHandlerContext, java.lang.Object, java.util.List) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdySettingsFrame io.netty.handler.codec.spdy.SpdySettingsFrame setValue(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdySynStreamFrame io.netty.handler.codec.spdy.SpdyHeadersFrame setStreamId(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders io.netty.handler.codec.spdy.SpdyHeaders add(java.lang.String, java.lang.Iterable&lt;?&gt;)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdySynReplyFrame io.netty.handler.codec.spdy.SpdyStreamFrame setStreamId(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders.HttpNames HOST'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyRstStreamFrame io.netty.handler.codec.spdy.SpdyRstStreamFrame setLast(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders io.netty.handler.codec.spdy.SpdyHeaders set(java.lang.String, java.lang.Iterable&lt;?&gt;)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdySynStreamFrame io.netty.handler.codec.spdy.SpdySynStreamFrame setInvalid()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders java.util.List&lt;java.lang.String&gt; getAll(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders java.lang.String get(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyDataFrame io.netty.handler.codec.spdy.SpdyDataFrame copy()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHttpResponseStreamIdHandler void encode(io.netty.channel.ChannelHandlerContext, java.lang.Object, java.util.List) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyHeadersFrame io.netty.handler.codec.spdy.SpdyHeadersFrame setInvalid()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyOrHttpChooser.SelectedProtocol SPDY_3_1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyStreamStatus io.netty.handler.codec.spdy.SpdyStreamStatus valueOf(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders io.netty.handler.codec.spdy.SpdyHeaders set(java.lang.String, java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdySessionStatus int compareTo(io.netty.handler.codec.spdy.SpdySessionStatus) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdySynReplyFrame io.netty.handler.codec.spdy.SpdyHeadersFrame setLast(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdySynStreamFrame io.netty.handler.codec.spdy.SpdySynStreamFrame setAssociatedToStreamId(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdySynReplyFrame io.netty.handler.codec.spdy.SpdySynReplyFrame setLast(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyGoAwayFrame io.netty.handler.codec.spdy.SpdyGoAwayFrame setStatus(io.netty.handler.codec.spdy.SpdySessionStatus)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdySynStreamFrame io.netty.handler.codec.spdy.SpdySynStreamFrame setStreamId(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyDataFrame io.netty.handler.codec.spdy.SpdyDataFrame retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyHeadersFrame io.netty.handler.codec.spdy.SpdyHeadersFrame setStreamId(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHttpHeaders void removeAssociatedToStreamId(io.netty.handler.codec.http.HttpMessage) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdySessionStatus java.lang.String getStatusPhrase()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyGoAwayFrame io.netty.handler.codec.spdy.SpdyGoAwayFrame setLastGoodStreamId(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeadersFrame io.netty.handler.codec.spdy.SpdyHeadersFrame setLast(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdySynStreamFrame io.netty.handler.codec.spdy.SpdyHeadersFrame setLast(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyStreamStatus int compareTo(io.netty.handler.codec.spdy.SpdyStreamStatus) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyRstStreamFrame io.netty.handler.codec.spdy.SpdyRstStreamFrame setStatus(io.netty.handler.codec.spdy.SpdyStreamStatus)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyStreamStatus java.lang.String toString()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyStreamStatus UNSUPPORTED_VERSION'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdySynReplyFrame io.netty.handler.codec.spdy.SpdyHeadersFrame setInvalid()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyFrameEncoder void encode(io.netty.channel.ChannelHandlerContext, java.lang.Object, io.netty.buffer.ByteBuf) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdySettingsFrame io.netty.handler.codec.spdy.SpdySettingsFrame removeValue(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyHeaders io.netty.handler.codec.spdy.SpdyHeaders remove(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdySessionHandler void channelRead(io.netty.channel.ChannelHandlerContext, java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdySynReplyFrame io.netty.handler.codec.spdy.SpdySynReplyFrame setStreamId(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyPingFrame io.netty.handler.codec.spdy.SpdyPingFrame setId(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdySynStreamFrame io.netty.handler.codec.spdy.SpdyStreamFrame setLast(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHttpHeaders java.lang.String getScheme(io.netty.handler.codec.http.HttpMessage) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders boolean contains(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders java.lang.String getUrl(int, io.netty.handler.codec.spdy.SpdyHeadersFrame) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyDataFrame io.netty.util.ReferenceCounted retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdySynReplyFrame io.netty.handler.codec.spdy.SpdySynReplyFrame setInvalid()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdySessionStatus OK'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyStreamStatus java.lang.String getStatusPhrase()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders.HttpNames METHOD'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyStreamStatus INTERNAL_ERROR'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders void setStatus(int, io.netty.handler.codec.spdy.SpdyHeadersFrame, io.netty.handler.codec.http.HttpResponseStatus) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdySessionHandler void exceptionCaught(io.netty.channel.ChannelHandlerContext, java.lang.Throwable) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyRstStreamFrame io.netty.handler.codec.spdy.SpdyRstStreamFrame setStreamId(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyFrameDecoder void decodeLast(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf, java.util.List&lt;java.lang.Object&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyDataFrame io.netty.buffer.ByteBuf content()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyDataFrame io.netty.handler.codec.spdy.SpdyDataFrame duplicate()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyGoAwayFrame io.netty.handler.codec.spdy.SpdyGoAwayFrame setLastGoodStreamId(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyOrHttpChooser.SelectedProtocol io.netty.handler.codec.spdy.SpdyOrHttpChooser.SelectedProtocol protocol(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyFrameCodec SpdyFrameCodec(io.netty.handler.codec.spdy.SpdyVersion, int, int, int, int, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyHeaders java.util.List&lt;java.lang.String&gt; getAll(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyHeaders io.netty.handler.codec.spdy.SpdyHeaders set(java.lang.String, java.lang.Iterable&lt;?&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHttpHeaders void setStreamId(io.netty.handler.codec.http.HttpMessage, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders void setStatus(int, io.netty.handler.codec.spdy.SpdyHeadersFrame, io.netty.handler.codec.http.HttpResponseStatus) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyStreamStatus INVALID_CREDENTIALS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyStreamStatus STREAM_IN_USE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyHeaders io.netty.handler.codec.spdy.SpdyHeaders add(java.lang.String, java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyRstStreamFrame io.netty.handler.codec.spdy.SpdyRstStreamFrame setStreamId(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdySessionHandler void channelRead(io.netty.channel.ChannelHandlerContext, java.lang.Object) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdySynStreamFrame io.netty.handler.codec.spdy.SpdySynStreamFrame setPriority(byte)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders void addHeader(io.netty.handler.codec.spdy.SpdyHeadersFrame, java.lang.String, java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdySynStreamFrame io.netty.handler.codec.spdy.SpdySynStreamFrame setInvalid()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyHeaders io.netty.handler.codec.spdy.SpdyHeaders set(java.lang.String, java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders java.lang.String getHeader(io.netty.handler.codec.spdy.SpdyHeadersFrame, java.lang.String, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdySettingsFrame io.netty.handler.codec.spdy.SpdySettingsFrame setPersistValue(int, boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHttpHeaders.Names URL'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdySynStreamFrame io.netty.handler.codec.spdy.SpdySynStreamFrame setLast(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHttpHeaders void setPriority(io.netty.handler.codec.http.HttpMessage, byte) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders void setScheme(int, io.netty.handler.codec.spdy.SpdyHeadersFrame, java.lang.String) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders void removeHost(io.netty.handler.codec.spdy.SpdyHeadersFrame) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyHeaders io.netty.handler.codec.spdy.SpdyHeaders set(java.lang.String, java.lang.Object)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHttpHeaders int getAssociatedToStreamId(io.netty.handler.codec.http.HttpMessage) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyStreamStatus FLOW_CONTROL_ERROR'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHttpHeaders void removePriority(io.netty.handler.codec.http.HttpMessage) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyDataFrame io.netty.handler.codec.spdy.SpdyDataFrame setStreamId(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyHeaders java.util.Set&lt;java.lang.String&gt; names()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyHeadersFrame io.netty.handler.codec.spdy.SpdyHeaders headers()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHttpHeaders void setScheme(io.netty.handler.codec.http.HttpMessage, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdySessionStatus java.lang.String toString()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyHeaders java.util.Iterator&lt;java.util.Map.Entry&lt;java.lang.String,java.lang.String&gt;&gt; iterator()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyDataFrame io.netty.handler.codec.spdy.SpdyStreamFrame setStreamId(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders io.netty.handler.codec.spdy.SpdyHeaders remove(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyRstStreamFrame io.netty.handler.codec.spdy.SpdyRstStreamFrame setStatus(io.netty.handler.codec.spdy.SpdyStreamStatus)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyDataFrame io.netty.buffer.ByteBufHolder retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdySynReplyFrame io.netty.handler.codec.spdy.SpdyHeadersFrame setStreamId(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyRstStreamFrame io.netty.handler.codec.spdy.SpdyStreamFrame setLast(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders java.lang.String getHeader(io.netty.handler.codec.spdy.SpdyHeadersFrame, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdySynReplyFrame io.netty.handler.codec.spdy.SpdySynReplyFrame setLast(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyGoAwayFrame io.netty.handler.codec.spdy.SpdyGoAwayFrame setStatus(io.netty.handler.codec.spdy.SpdySessionStatus)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyStreamStatus SpdyStreamStatus(int, java.lang.String) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyStreamStatus PROTOCOL_ERROR'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdySynReplyFrame io.netty.handler.codec.spdy.SpdySynReplyFrame setStreamId(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHttpHeaders.Names PRIORITY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders.HttpNames VERSION'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdySessionStatus INTERNAL_ERROR'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyDataFrame io.netty.handler.codec.spdy.SpdyDataFrame retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyHeaders io.netty.handler.codec.spdy.SpdyHeaders clear()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyStreamStatus REFUSED_STREAM'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders.HttpNames SCHEME'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyStreamFrame io.netty.handler.codec.spdy.SpdyStreamFrame setLast(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeadersFrame io.netty.handler.codec.spdy.SpdyHeadersFrame setStreamId(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdySettingsFrame io.netty.handler.codec.spdy.SpdySettingsFrame setValue(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHttpHeaders byte getPriority(io.netty.handler.codec.http.HttpMessage) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders io.netty.handler.codec.spdy.SpdyHeaders set(java.lang.String, java.lang.Object)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeadersFrame io.netty.handler.codec.spdy.SpdyHeadersFrame setInvalid()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders io.netty.handler.codec.spdy.SpdyHeaders add(java.lang.String, java.lang.Iterable&lt;?&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders io.netty.handler.codec.spdy.SpdyHeaders add(java.lang.String, java.lang.Object)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders EMPTY_HEADERS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdySynStreamFrame io.netty.handler.codec.spdy.SpdySynStreamFrame setUnidirectional(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyFrameDecoder void decode(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf, java.util.List&lt;java.lang.Object&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdySessionStatus SpdySessionStatus(int, java.lang.String) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyWindowUpdateFrame io.netty.handler.codec.spdy.SpdyWindowUpdateFrame setDeltaWindowSize(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders io.netty.handler.codec.spdy.SpdyHeaders set(java.lang.String, java.lang.Iterable&lt;?&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyHeadersFrame io.netty.handler.codec.spdy.SpdyHeadersFrame setTruncated()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyFrameEncoder void encode(io.netty.channel.ChannelHandlerContext, java.lang.Object, io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdySettingsFrame io.netty.handler.codec.spdy.SpdySettingsFrame removeValue(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdySynStreamFrame io.netty.handler.codec.spdy.SpdySynStreamFrame setUnidirectional(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdyHeadersFrame io.netty.handler.codec.spdy.SpdyHeadersFrame setLast(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.DefaultSpdySynStreamFrame io.netty.handler.codec.spdy.SpdyStreamFrame setStreamId(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyStreamStatus CANCEL'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders io.netty.handler.codec.spdy.SpdyHeaders add(java.lang.String, java.lang.Iterable&lt;?&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyFrameDecoder void decode(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf, java.util.List&lt;java.lang.Object&gt;) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders java.util.List&lt;java.lang.String&gt; getAll(java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdySessionHandler void write(io.netty.channel.ChannelHandlerContext, java.lang.Object, io.netty.channel.ChannelPromise) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders java.util.Iterator&lt;java.util.Map.Entry&lt;java.lang.String,java.lang.String&gt;&gt; iterator()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHeaders io.netty.handler.codec.spdy.SpdyHeaders set(java.lang.String, java.lang.Iterable&lt;?&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyFrameEncoder void encode(io.netty.channel.ChannelHandlerContext, java.lang.Object, io.netty.buffer.ByteBuf) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHttpDecoder SpdyHttpDecoder(io.netty.handler.codec.spdy.SpdyVersion, int, java.util.Map&lt;java.lang.Integer,io.netty.handler.codec.http.FullHttpMessage&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.spdy.SpdyHttpHeaders int getStreamId(io.netty.handler.codec.http.HttpMessage) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

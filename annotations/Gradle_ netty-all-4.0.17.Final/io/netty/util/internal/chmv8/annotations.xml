@@ -1,0 +1,449 @@
+<root>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 void forEachValue(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.Fun&lt;? super V,? extends U&gt;, io.netty.util.internal.chmv8.ConcurrentHashMapV8.Action&lt;? super U&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ForkJoinTask io.netty.util.internal.chmv8.ForkJoinTask&lt;?&gt; adapt(java.lang.Runnable) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 U searchKeys(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.Fun&lt;? super K,? extends U&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 long reduceEntriesToLong(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.ObjectToLong&lt;java.util.Map.Entry&lt;K,V&gt;&gt;, long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.LongByLongToLong) 3'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ForkJoinPool T invoke(io.netty.util.internal.chmv8.ForkJoinTask&lt;T&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ForkJoinTask void invokeAll(io.netty.util.internal.chmv8.ForkJoinTask&lt;?&gt;, io.netty.util.internal.chmv8.ForkJoinTask&lt;?&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 long reduceToLong(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.ObjectByObjectToLong&lt;? super K,? super V&gt;, long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.LongByLongToLong) 3'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 int reduceEntriesToInt(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.ObjectToInt&lt;java.util.Map.Entry&lt;K,V&gt;&gt;, int, io.netty.util.internal.chmv8.ConcurrentHashMapV8.IntByIntToInt) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ForkJoinTask io.netty.util.internal.chmv8.ForkJoinTask&lt;T&gt; adapt(java.lang.Runnable, T)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ForkJoinPool java.util.concurrent.Future submit(java.lang.Runnable)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 U reduce(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.BiFun&lt;? super K,? super V,? extends U&gt;, io.netty.util.internal.chmv8.ConcurrentHashMapV8.BiFun&lt;? super U,? super U,? extends U&gt;) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 V putIfAbsent(K, V) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 int reduceToInt(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.ObjectByObjectToInt&lt;? super K,? super V&gt;, int, io.netty.util.internal.chmv8.ConcurrentHashMapV8.IntByIntToInt) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 V remove(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 boolean remove(java.lang.Object, java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 int reduceValuesToInt(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.ObjectToInt&lt;? super V&gt;, int, io.netty.util.internal.chmv8.ConcurrentHashMapV8.IntByIntToInt) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 V get(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ForkJoinPool java.util.concurrent.Future submit(java.lang.Runnable, java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 V merge(K, V, io.netty.util.internal.chmv8.ConcurrentHashMapV8.BiFun&lt;? super V,? super V,? extends V&gt;) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ForkJoinTask void invokeAll(io.netty.util.internal.chmv8.ForkJoinTask&lt;?&gt;...) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 U search(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.BiFun&lt;? super K,? super V,? extends U&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ForkJoinPool io.netty.util.internal.chmv8.ForkJoinTask&lt;T&gt; submit(java.util.concurrent.Callable&lt;T&gt;)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ForkJoinTask void invokeAll(io.netty.util.internal.chmv8.ForkJoinTask&lt;?&gt;, io.netty.util.internal.chmv8.ForkJoinTask&lt;?&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 U reduceKeys(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.Fun&lt;? super K,? extends U&gt;, io.netty.util.internal.chmv8.ConcurrentHashMapV8.BiFun&lt;? super U,? super U,? extends U&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 U reduce(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.BiFun&lt;? super K,? super V,? extends U&gt;, io.netty.util.internal.chmv8.ConcurrentHashMapV8.BiFun&lt;? super U,? super U,? extends U&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8.ConcurrentHashMapSpliterator boolean tryAdvance(io.netty.util.internal.chmv8.ConcurrentHashMapV8.Action&lt;? super T&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ForkJoinPool defaultForkJoinWorkerThreadFactory'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 void forEachKey(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.Fun&lt;? super K,? extends U&gt;, io.netty.util.internal.chmv8.ConcurrentHashMapV8.Action&lt;? super U&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 int reduceKeysToInt(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.ObjectToInt&lt;? super K&gt;, int, io.netty.util.internal.chmv8.ConcurrentHashMapV8.IntByIntToInt) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 void forEachEntry(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.Action&lt;? super java.util.Map.Entry&lt;K,V&gt;&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ForkJoinPool ForkJoinPool(int, io.netty.util.internal.chmv8.ForkJoinPool.ForkJoinWorkerThreadFactory, java.lang.Thread.UncaughtExceptionHandler, boolean) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ForkJoinPool io.netty.util.internal.chmv8.ForkJoinTask&lt;?&gt; submit(java.lang.Runnable)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 void forEachValue(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.Action&lt;? super V&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8.KeySetView boolean addAll(java.util.Collection&lt;? extends K&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8.KeySetView boolean remove(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 U reduceValues(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.Fun&lt;? super V,? extends U&gt;, io.netty.util.internal.chmv8.ConcurrentHashMapV8.BiFun&lt;? super U,? super U,? extends U&gt;) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 V merge(K, V, io.netty.util.internal.chmv8.ConcurrentHashMapV8.BiFun&lt;? super V,? super V,? extends V&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 long reduceValuesToLong(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.ObjectToLong&lt;? super V&gt;, long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.LongByLongToLong) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 boolean replace(K, V, V) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ForkJoinPool.ForkJoinWorkerThreadFactory io.netty.util.internal.chmv8.ForkJoinWorkerThread newThread(io.netty.util.internal.chmv8.ForkJoinPool)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ForkJoinTask io.netty.util.internal.chmv8.ForkJoinTask&lt;T&gt; adapt(java.util.concurrent.Callable&lt;? extends T&gt;)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 U reduceEntries(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.Fun&lt;java.util.Map.Entry&lt;K,V&gt;,? extends U&gt;, io.netty.util.internal.chmv8.ConcurrentHashMapV8.BiFun&lt;? super U,? super U,? extends U&gt;) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.CountedCompleter io.netty.util.internal.chmv8.CountedCompleter&lt;?&gt; getRoot()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ForkJoinPool void managedBlock(io.netty.util.internal.chmv8.ForkJoinPool.ManagedBlocker) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ForkJoinPool java.util.concurrent.Future submit(java.util.concurrent.Callable)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ForkJoinPool java.util.concurrent.RunnableFuture&lt;T&gt; newTaskFor(java.lang.Runnable, T) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ForkJoinWorkerThread io.netty.util.internal.chmv8.ForkJoinPool getPool()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8.KeySetView io.netty.util.internal.chmv8.ConcurrentHashMapV8.ConcurrentHashMapSpliterator&lt;K&gt; spliterator166()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 long reduceToLong(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.ObjectByObjectToLong&lt;? super K,? super V&gt;, long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.LongByLongToLong) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ForkJoinWorkerThread ForkJoinWorkerThread(io.netty.util.internal.chmv8.ForkJoinPool) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 void forEachKey(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.Fun&lt;? super K,? extends U&gt;, io.netty.util.internal.chmv8.ConcurrentHashMapV8.Action&lt;? super U&gt;) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 io.netty.util.internal.chmv8.ConcurrentHashMapV8.KeySetView&lt;K,V&gt; keySet(V)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 U reduceValues(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.Fun&lt;? super V,? extends U&gt;, io.netty.util.internal.chmv8.ConcurrentHashMapV8.BiFun&lt;? super U,? super U,? extends U&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8.KeySetView void forEach(io.netty.util.internal.chmv8.ConcurrentHashMapV8.Action&lt;? super K&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 boolean containsValue(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ForkJoinTask io.netty.util.internal.chmv8.ForkJoinTask&lt;T&gt; adapt(java.util.concurrent.Callable&lt;? extends T&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ForkJoinTask V get(long, java.util.concurrent.TimeUnit) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 double reduceValuesToDouble(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.ObjectToDouble&lt;? super V&gt;, double, io.netty.util.internal.chmv8.ConcurrentHashMapV8.DoubleByDoubleToDouble) 3'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 java.util.Collection&lt;V&gt; values()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 io.netty.util.internal.chmv8.ConcurrentHashMapV8.KeySetView&lt;K,V&gt; keySet()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ForkJoinPool io.netty.util.internal.chmv8.ForkJoinTask&lt;T&gt; submit(java.lang.Runnable, T) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ForkJoinPool java.util.concurrent.Future submit(java.util.concurrent.Callable) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 V merge(K, V, io.netty.util.internal.chmv8.ConcurrentHashMapV8.BiFun&lt;? super V,? super V,? extends V&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 boolean replace(K, V, V) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ForkJoinPool boolean awaitTermination(long, java.util.concurrent.TimeUnit) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ForkJoinPool io.netty.util.internal.chmv8.ForkJoinTask&lt;T&gt; submit(java.util.concurrent.Callable&lt;T&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 U reduceEntries(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.Fun&lt;java.util.Map.Entry&lt;K,V&gt;,? extends U&gt;, io.netty.util.internal.chmv8.ConcurrentHashMapV8.BiFun&lt;? super U,? super U,? extends U&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 boolean contains(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 void forEach(io.netty.util.internal.chmv8.ConcurrentHashMapV8.BiAction&lt;? super K,? super V&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ForkJoinPool io.netty.util.internal.chmv8.ForkJoinTask&lt;T&gt; submit(io.netty.util.internal.chmv8.ForkJoinTask&lt;T&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 U searchValues(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.Fun&lt;? super V,? extends U&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ForkJoinTask io.netty.util.internal.chmv8.ForkJoinTask&lt;V&gt; fork()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 io.netty.util.internal.chmv8.ConcurrentHashMapV8.KeySetView&lt;K,V&gt; keySet(V) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ForkJoinPool java.util.List&lt;java.util.concurrent.Future&lt;T&gt;&gt; invokeAll(java.util.Collection&lt;? extends java.util.concurrent.Callable&lt;T&gt;&gt;)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 K reduceKeys(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.BiFun&lt;? super K,? super K,? extends K&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 V putIfAbsent(K, V) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ForkJoinPool java.util.concurrent.Future submit(java.lang.Runnable) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ForkJoinPool io.netty.util.internal.chmv8.ForkJoinTask&lt;?&gt; submit(java.lang.Runnable) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ForkJoinPool java.util.List&lt;java.util.concurrent.Future&lt;T&gt;&gt; invokeAll(java.util.Collection&lt;? extends java.util.concurrent.Callable&lt;T&gt;&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 long reduceValuesToLong(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.ObjectToLong&lt;? super V&gt;, long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.LongByLongToLong) 3'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 double reduceEntriesToDouble(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.ObjectToDouble&lt;java.util.Map.Entry&lt;K,V&gt;&gt;, double, io.netty.util.internal.chmv8.ConcurrentHashMapV8.DoubleByDoubleToDouble) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 io.netty.util.internal.chmv8.ConcurrentHashMapV8.KeySetView&lt;K,java.lang.Boolean&gt; newKeySet(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 V computeIfPresent(K, io.netty.util.internal.chmv8.ConcurrentHashMapV8.BiFun&lt;? super K,? super V,? extends V&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ForkJoinPool io.netty.util.internal.chmv8.ForkJoinTask&lt;T&gt; submit(java.lang.Runnable, T)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 void putAll(java.util.Map&lt;? extends K,? extends V&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 double reduceKeysToDouble(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.ObjectToDouble&lt;? super K&gt;, double, io.netty.util.internal.chmv8.ConcurrentHashMapV8.DoubleByDoubleToDouble) 3'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 double reduceToDouble(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.ObjectByObjectToDouble&lt;? super K,? super V&gt;, double, io.netty.util.internal.chmv8.ConcurrentHashMapV8.DoubleByDoubleToDouble) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 V replace(K, V) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 V compute(K, io.netty.util.internal.chmv8.ConcurrentHashMapV8.BiFun&lt;? super K,? super V,? extends V&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ForkJoinTask io.netty.util.internal.chmv8.ForkJoinTask&lt;T&gt; adapt(java.lang.Runnable, T) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 void forEach(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.BiFun&lt;? super K,? super V,? extends U&gt;, io.netty.util.internal.chmv8.ConcurrentHashMapV8.Action&lt;? super U&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 double reduceValuesToDouble(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.ObjectToDouble&lt;? super V&gt;, double, io.netty.util.internal.chmv8.ConcurrentHashMapV8.DoubleByDoubleToDouble) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 java.util.Map.Entry&lt;K,V&gt; reduceEntries(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.BiFun&lt;java.util.Map.Entry&lt;K,V&gt;,java.util.Map.Entry&lt;K,V&gt;,? extends java.util.Map.Entry&lt;K,V&gt;&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 boolean replace(K, V, V) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 io.netty.util.internal.chmv8.ConcurrentHashMapV8.KeySetView&lt;K,java.lang.Boolean&gt; newKeySet()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ForkJoinPool io.netty.util.internal.chmv8.ForkJoinTask&lt;T&gt; submit(io.netty.util.internal.chmv8.ForkJoinTask&lt;T&gt;)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ForkJoinTask io.netty.util.internal.chmv8.ForkJoinTask&lt;?&gt; adapt(java.lang.Runnable)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 V computeIfAbsent(K, io.netty.util.internal.chmv8.ConcurrentHashMapV8.Fun&lt;? super K,? extends V&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 double reduceKeysToDouble(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.ObjectToDouble&lt;? super K&gt;, double, io.netty.util.internal.chmv8.ConcurrentHashMapV8.DoubleByDoubleToDouble) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ForkJoinPool java.util.concurrent.RunnableFuture&lt;T&gt; newTaskFor(java.lang.Runnable, T)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ForkJoinPool java.util.concurrent.Future submit(java.lang.Runnable, java.lang.Object)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ForkJoinPool.ForkJoinWorkerThreadFactory io.netty.util.internal.chmv8.ForkJoinWorkerThread newThread(io.netty.util.internal.chmv8.ForkJoinPool) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8.KeySetView boolean contains(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 java.util.Enumeration&lt;V&gt; elements()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 V computeIfPresent(K, io.netty.util.internal.chmv8.ConcurrentHashMapV8.BiFun&lt;? super K,? super V,? extends V&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 V replace(K, V) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 java.util.Set&lt;java.util.Map.Entry&lt;K,V&gt;&gt; entrySet()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 V compute(K, io.netty.util.internal.chmv8.ConcurrentHashMapV8.BiFun&lt;? super K,? super V,? extends V&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 long reduceKeysToLong(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.ObjectToLong&lt;? super K&gt;, long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.LongByLongToLong) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ForkJoinTask java.util.Collection&lt;T&gt; invokeAll(java.util.Collection&lt;T&gt;)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 void forEach(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.BiFun&lt;? super K,? super V,? extends U&gt;, io.netty.util.internal.chmv8.ConcurrentHashMapV8.Action&lt;? super U&gt;) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 ConcurrentHashMapV8(java.util.Map&lt;? extends K,? extends V&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 V computeIfAbsent(K, io.netty.util.internal.chmv8.ConcurrentHashMapV8.Fun&lt;? super K,? extends V&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 long reduceEntriesToLong(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.ObjectToLong&lt;java.util.Map.Entry&lt;K,V&gt;&gt;, long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.LongByLongToLong) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 U searchEntries(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.Fun&lt;java.util.Map.Entry&lt;K,V&gt;,? extends U&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ForkJoinTask java.util.Collection&lt;T&gt; invokeAll(java.util.Collection&lt;T&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 double reduceEntriesToDouble(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.ObjectToDouble&lt;java.util.Map.Entry&lt;K,V&gt;&gt;, double, io.netty.util.internal.chmv8.ConcurrentHashMapV8.DoubleByDoubleToDouble) 3'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ForkJoinPool java.util.concurrent.RunnableFuture&lt;T&gt; newTaskFor(java.util.concurrent.Callable&lt;T&gt;)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 U reduceKeys(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.Fun&lt;? super K,? extends U&gt;, io.netty.util.internal.chmv8.ConcurrentHashMapV8.BiFun&lt;? super U,? super U,? extends U&gt;) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 V reduceValues(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.BiFun&lt;? super V,? super V,? extends V&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 int reduceEntriesToInt(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.ObjectToInt&lt;java.util.Map.Entry&lt;K,V&gt;&gt;, int, io.netty.util.internal.chmv8.ConcurrentHashMapV8.IntByIntToInt) 3'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 int reduceValuesToInt(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.ObjectToInt&lt;? super V&gt;, int, io.netty.util.internal.chmv8.ConcurrentHashMapV8.IntByIntToInt) 3'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 void forEachEntry(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.Fun&lt;java.util.Map.Entry&lt;K,V&gt;,? extends U&gt;, io.netty.util.internal.chmv8.ConcurrentHashMapV8.Action&lt;? super U&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 java.util.Enumeration&lt;K&gt; keys()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 int reduceToInt(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.ObjectByObjectToInt&lt;? super K,? super V&gt;, int, io.netty.util.internal.chmv8.ConcurrentHashMapV8.IntByIntToInt) 3'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ForkJoinPool void execute(java.lang.Runnable) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 double reduceToDouble(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.ObjectByObjectToDouble&lt;? super K,? super V&gt;, double, io.netty.util.internal.chmv8.ConcurrentHashMapV8.DoubleByDoubleToDouble) 3'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ForkJoinPool boolean awaitQuiescence(long, java.util.concurrent.TimeUnit) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 V put(K, V) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 void forEachValue(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.Fun&lt;? super V,? extends U&gt;, io.netty.util.internal.chmv8.ConcurrentHashMapV8.Action&lt;? super U&gt;) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 void forEach(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.BiAction&lt;? super K,? super V&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 void forEachKey(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.Action&lt;? super K&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8.KeySetView java.util.Iterator&lt;K&gt; iterator()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8.ConcurrentHashMapSpliterator void forEachRemaining(io.netty.util.internal.chmv8.ConcurrentHashMapV8.Action&lt;? super T&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 void replaceAll(io.netty.util.internal.chmv8.ConcurrentHashMapV8.BiFun&lt;? super K,? super V,? extends V&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 boolean containsKey(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ForkJoinPool void execute(io.netty.util.internal.chmv8.ForkJoinTask&lt;?&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 V getOrDefault(java.lang.Object, V) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 void forEachEntry(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.Fun&lt;java.util.Map.Entry&lt;K,V&gt;,? extends U&gt;, io.netty.util.internal.chmv8.ConcurrentHashMapV8.Action&lt;? super U&gt;) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 java.util.Set keySet()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 int reduceKeysToInt(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.ObjectToInt&lt;? super K&gt;, int, io.netty.util.internal.chmv8.ConcurrentHashMapV8.IntByIntToInt) 3'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ForkJoinPool java.util.concurrent.RunnableFuture&lt;T&gt; newTaskFor(java.util.concurrent.Callable&lt;T&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 V put(K, V) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8.KeySetView boolean add(K) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.chmv8.ConcurrentHashMapV8 long reduceKeysToLong(long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.ObjectToLong&lt;? super K&gt;, long, io.netty.util.internal.chmv8.ConcurrentHashMapV8.LongByLongToLong) 3'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>
