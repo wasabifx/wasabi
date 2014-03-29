@@ -25,6 +25,10 @@ repositories {
     }
 }
 
+compileKotlin {
+    kotlinOptions.annotations = file('annotations/Gradle_ netty-all-4.0.17.Final')
+}
+
 dependencies {
     compile "org.codehaus.jackson:jackson-mapper-asl:1.9.12",
             "io.netty:netty-all:4.0.17.Final",
