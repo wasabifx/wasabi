@@ -11,6 +11,6 @@ public class JsonDeserializer: Deserializer("application/json", "application/jso
     override fun deserialize(input: Any): HashMap<String, String> {
         val mapper = ObjectMapper()
         val map = mapper.readValue(input as String, javaClass<HashMap<String, String>>())!!
-        return map!!
+        return map
     }
 }

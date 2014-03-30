@@ -18,7 +18,6 @@ public class UrlRequestingSpecs: TestServerContext() {
 
     val headers = hashMapOf(
             "User-Agent" to "test-client",
-            "Connection" to "keep-alive",
             "Cache-Control" to "max-age=0",
             "Accept" to "text/html,application/xhtml+xml,application/xml",
             "Accept-Encoding" to "gzip,deflate,sdch",

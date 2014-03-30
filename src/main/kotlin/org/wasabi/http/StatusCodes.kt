@@ -1,11 +1,11 @@
 package org.wasabi.http
 
 
+
 enum class StatusCodes(val code: Int) {
 
     open val description: String
         get() = this.toString().replaceAll("([A-Z])", " $1")
-
     // 1XX
     Continue: StatusCodes(100)
     SwitchingProtocols: StatusCodes(101)

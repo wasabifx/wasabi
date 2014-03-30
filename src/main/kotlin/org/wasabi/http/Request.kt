@@ -22,8 +22,10 @@ public class Request(private val httpRequest: HttpRequest) {
     public val method: HttpMethod =  httpRequest.getMethod()!!
     public val host: String = getHeader("Host").takeWhile { it != ':' }
     public val isSecure: Boolean = false // TODO: getHeader("Protocol").compareToIgnoreCase("HTTPS") == 0
-    public val port : Int = (getHeader("Host").dropWhile { it != ':' }).drop(1).toInt() ?: 80
-    public val keepAlive: Boolean  = getHeader("Connection").compareToIgnoreCase("keep-alive") == 0
+
+    val urlPort = getHeader("Host").dropWhile { it != ':' }.drop(1)
+    public val port : Int = if (urlPort != "") urlPort.toInt() else 80
+    public val connection: String = getHeader("Connection")
     public val cacheControl: String = getHeader("Cache-Control")
     public val userAgent: String = getHeader("User-Agent")
     public val accept: SortedMap<String, Int> = parseAcceptHeader("Accept")
@@ -37,7 +39,7 @@ public class Request(private val httpRequest: HttpRequest) {
     public val contentType: String = getHeader("Content-Type")
     public val chunked: Boolean = getHeader("Transfer-Encoding").compareToIgnoreCase("chunked") == 0
     public val authorization: String = getHeader("Authorization")
-    public val rawHeaders: List<Pair<String, String>> = httpRequest.headers()!!.map({ it.key to it.value })
+    public val rawHeaders: List<Pair<String, String>> = httpRequest.headers().map({ it.key to it.value })
 
     public var session: Session? = null
 
@@ -61,7 +63,7 @@ public class Request(private val httpRequest: HttpRequest) {
     }
 
     private fun getHeader(header: String): String {
-        var value = httpRequest.headers()?.get(header)
+        var value = httpRequest.headers().get(header)
         if (value != null) {
             return value.toString()
         } else {

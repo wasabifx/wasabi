@@ -25,7 +25,6 @@ import io.netty.handler.codec.http.multipart.Attribute
 import io.netty.handler.codec.http.multipart.HttpPostRequestDecoder.EndOfDataDecoderException
 import java.util.Collections
 import io.netty.handler.codec.http.CookieDecoder
-import java.util.Collection
 import io.netty.handler.codec.http.HttpResponse
 import org.wasabi.app.AppServer
 import org.wasabi.interceptors.Interceptor
@@ -89,7 +88,7 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
         if (msg is FullHttpRequest)
         {
             // Here we catch the upgrade request and setup handshaker factory to negotiate client connection
-            if ( msg is HttpRequest && (msg as HttpRequest).headers()?.get(HttpHeaders.Names.UPGRADE) == "websocket")
+            if ( msg is HttpRequest && (msg as HttpRequest).headers().get(HttpHeaders.Names.UPGRADE) == "websocket")
             {
                 // TODO Grab URL from request during handshake and store channel and associated 'channelHandler' to accept subsequent
                 // websocket requests. channelHandler must match one of the registered handlers.
@@ -128,7 +127,7 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
         // Check for closing websocket frame
         if (webSocketFrame is CloseWebSocketFrame)
         {
-            handshaker?.close(ctx?.channel(), webSocketFrame.retain() as CloseWebSocketFrame)
+            handshaker?.close(ctx.channel(), webSocketFrame.retain())
         }
 
 
@@ -233,20 +232,23 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
         if (response.statusCode / 100 == 4 || response.statusCode / 100 == 5) {
             runInterceptors(errorInterceptors)
         }
+
         if (response.absolutePathToFileToStream != "") {
-            httpResponse = DefaultHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK);
+            httpResponse = DefaultHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus(response.statusCode, response.statusDescription));
             addResponseHeaders(httpResponse, response)
             ctx.write(httpResponse)
 
             var raf = RandomAccessFile(response.absolutePathToFileToStream, "r");
             var fileLength = raf.length();
 
-            var writeFuture = ctx.write(ChunkedFile(raf, 0, fileLength, 8192), ctx.newProgressivePromise());
+            ctx.write(ChunkedFile(raf, 0, fileLength, 8192), ctx.newProgressivePromise());
 
 
             var lastContentFuture = ctx.writeAndFlush(LastHttpContent.EMPTY_LAST_CONTENT)
 
-            lastContentFuture.addListener(ChannelFutureListener.CLOSE)
+            if (request!!.connection.compareToIgnoreCase("close") == 0) {
+                lastContentFuture.addListener(ChannelFutureListener.CLOSE)
+            }
         }  else {
             // TODO: Make this a stream
             var buffer = ""
@@ -272,19 +274,21 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
                 addResponseHeaders(httpResponse, response)
                 ctx.write(httpResponse)
             }
+            var lastContentFuture = ctx.writeAndFlush(LastHttpContent.EMPTY_LAST_CONTENT)
 
-            ctx.flush()
-            ctx.channel().close()
+            if (request!!.connection.compareToIgnoreCase("close") == 0) {
+                lastContentFuture.addListener(ChannelFutureListener.CLOSE)
+            }
         }
     }
 
     private fun addResponseHeaders(httpResponse: HttpResponse, response: Response) {
         if (response.allow != "") {
-            httpResponse.headers()?.add("Allow", response.allow)
+            httpResponse.headers().add("Allow", response.allow)
         }
         for (header in response.extraHeaders) {
             if (header.value != "") {
-                httpResponse.headers()?.add(header.key, header.value)
+                httpResponse.headers().add(header.key, header.value)
             }
         }
     }
@@ -292,7 +296,7 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
     public override fun exceptionCaught(ctx: ChannelHandlerContext, cause: Throwable?) {
         // TODO: Log actual message
         response.setStatus(StatusCodes.InternalServerError)
-        writeResponse(ctx!!, response)
+        writeResponse(ctx, response)
     }
 
 
@@ -300,10 +304,10 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
         // TODO: Re-structure all this and fix it as it requires a special case for decoder
         if (decoder != null) {
             decoder!!.offer(msg)
-            request!!.bodyParams.putAll(deserializer!!.deserialize(decoder!!.getBodyHttpDatas()!!))
+            request!!.bodyParams.putAll(deserializer!!.deserialize(decoder!!.getBodyHttpDatas()))
         } else {
             // TODO: Add support for CharSet
-            request!!.bodyParams.putAll(deserializer!!.deserialize(msg.content()?.array()?.toString("UTF-8")!!))
+            request!!.bodyParams.putAll(deserializer!!.deserialize(msg.content().array().toString("UTF-8")))
         }
     }
 

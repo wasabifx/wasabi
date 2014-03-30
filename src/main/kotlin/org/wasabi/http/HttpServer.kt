@@ -45,8 +45,8 @@ public class HttpServer(private val appServer: AppServer) {
         workerGroup.shutdownGracefully()
 
         // Wait till all threads are terminated
-        primaryGroup.terminationFuture()?.sync()
-        workerGroup.terminationFuture()?.sync()
+        primaryGroup.terminationFuture().sync()
+        workerGroup.terminationFuture().sync()
 
     }
 

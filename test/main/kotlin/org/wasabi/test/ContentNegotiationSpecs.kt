@@ -20,7 +20,6 @@ public class ContentNegotiationSpecs : TestServerContext() {
 
         val headers = hashMapOf(
                 "User-Agent" to "test-client",
-                "Connection" to "keep-alive",
                 "Cache-Control" to "max-age=0",
                 "Accept" to "application/json",
                 "Accept-Encoding" to "gzip,deflate,sdch",
@@ -57,7 +56,6 @@ public class ContentNegotiationSpecs : TestServerContext() {
 
         val headers = hashMapOf(
                 "User-Agent" to "test-client",
-                "Connection" to "keep-alive",
                 "Cache-Control" to "max-age=0",
                 "Accept" to "application/json",
                 "Accept-Encoding" to "gzip,deflate,sdch",
@@ -99,7 +97,6 @@ public class ContentNegotiationSpecs : TestServerContext() {
 
         val headers = hashMapOf(
                 "User-Agent" to "test-client",
-                "Connection" to "keep-alive",
                 "Cache-Control" to "max-age=0",
                 "Accept" to "application/json",
                 "Accept-Encoding" to "gzip,deflate,sdch",
