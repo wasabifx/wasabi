@@ -16,6 +16,7 @@ fun main(args: Array<String>) {
         onAcceptHeader()
     }
 
+
     server.get("/", {
         response.send(Customer(1, "Joe Smith"))
     })
