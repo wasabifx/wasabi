@@ -90,9 +90,9 @@ public class Response() {
         this.statusDescription = statusDescription
     }
 
-    public fun setStatus(httpStatus: StatusCodes) {
-        statusCode = httpStatus.code
-        statusDescription = httpStatus.description
+    public fun setStatus(statusCode: StatusCodes, statusDescription: String = statusCode.description) {
+        this.statusCode = statusCode.code
+        this.statusDescription = statusDescription
     }
 
     public fun setAllowedMethods(allowedMethods: Array<HttpMethod>) {

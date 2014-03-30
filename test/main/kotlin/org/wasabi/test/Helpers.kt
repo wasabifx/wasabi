@@ -67,14 +67,14 @@ private fun makeRequest(headers: HashMap<String, String>, request: HttpRequestBa
     cookie.setPath(request.getURI()?.getPath())
     cookie.setDomain("localhost")
     val cookieStore = httpClient.getCookieStore()
-    org.wasabi.test.makeRequest.cookieStore?.addCookie(org.wasabi.test.makeRequest.cookie)
+    cookieStore?.addCookie(cookie)
 
     val response = httpClient.execute(request)!!
 
     val body = EntityUtils.toString(response.getEntity())!!
     val responseHeaders = response.getAllHeaders()!!
 
-    return HttpClientResponse(responseHeaders, org.wasabi.test.makeRequest.body,
+    return HttpClientResponse(responseHeaders, body,
             response.getStatusLine()?.getStatusCode()!!,
             response.getStatusLine()?.getReasonPhrase() ?: "")
 
@@ -82,15 +82,15 @@ private fun makeRequest(headers: HashMap<String, String>, request: HttpRequestBa
 }
 
 public fun delete(url: String, headers: HashMap<String, String>): org.wasabi.test.HttpClientResponse {
-    return makeRequest(org.wasabi.test.delete.headers, HttpDelete(org.wasabi.test.delete.url))
+    return makeRequest(headers, HttpDelete(url))
 }
 
 public fun get(url: String, headers: HashMap<String,String> = hashMapOf()): org.wasabi.test.HttpClientResponse {
-    val get = HttpGet(org.wasabi.test.get.url)
+    val get = HttpGet(url)
     val params = BasicHttpParams()
     params.setParameter("http.protocol.handle-redirects",false)
     get.setParams(params)
-    return makeRequest(org.wasabi.test.get.headers, org.wasabi.test.get.get)
+    return makeRequest(headers, get)
 }
 
 public fun options(url: String, headers: HashMap<String, String> = hashMapOf()): HttpClientResponse {
@@ -99,8 +99,8 @@ public fun options(url: String, headers: HashMap<String, String> = hashMapOf()):
 
 
 public fun postForm(url: String, headers: HashMap<String, String>, fields: ArrayList<BasicNameValuePair>, chunked: Boolean = false): org.wasabi.test.HttpClientResponse {
-    val httpPost = HttpPost(org.wasabi.test.postForm.url)
-    val entity = UrlEncodedFormEntity(org.wasabi.test.postForm.fields, "UTF-8")
+    val httpPost = HttpPost(url)
+    val entity = UrlEncodedFormEntity(fields, "UTF-8")
     entity.setChunked(chunked)
     httpPost.setHeader("Content-Type", "application/x-www-form-urlencoded")
     httpPost.setEntity(entity)
