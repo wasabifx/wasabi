@@ -252,7 +252,9 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
         }  else {
             // TODO: Make this a stream
             var buffer = ""
-            if (response.sendBuffer is String) {
+            if (response.sendBuffer == null) {
+                buffer = response.statusDescription
+            } else if (response.sendBuffer is String) {
                 if (response.sendBuffer as String != "") {
                     buffer = (response.sendBuffer as String)
                 } else {
@@ -270,15 +272,14 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
             }
             val continueRequest = runInterceptors(postRequestInterceptors)
             if (continueRequest) {
-                httpResponse = DefaultFullHttpResponse(HttpVersion("HTTP", 1, 1, true), HttpResponseStatus(response.statusCode,response.statusDescription),  Unpooled.copiedBuffer(buffer, CharsetUtil.UTF_8))
+                httpResponse = DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus(response.statusCode,response.statusDescription),  Unpooled.copiedBuffer(buffer, CharsetUtil.UTF_8))
                 addResponseHeaders(httpResponse, response)
                 ctx.write(httpResponse)
             }
             var lastContentFuture = ctx.writeAndFlush(LastHttpContent.EMPTY_LAST_CONTENT)
 
-            if (request!!.connection.compareToIgnoreCase("close") == 0) {
-                lastContentFuture.addListener(ChannelFutureListener.CLOSE)
-            }
+            lastContentFuture.addListener(ChannelFutureListener.CLOSE)
+
         }
     }
 

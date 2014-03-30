@@ -36,6 +36,8 @@ dependencies {
             "commons-logging:commons-logging:1.1.1",
             "org.apache.httpcomponents:httpclient:4.2.3",
             "org.apache.httpcomponents:httpcore:4.2.3",
+            "org.codehaus.woodstox:woodstox-core-asl:4.1.4",
+            "com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.1.3",
             "org.slf4j:slf4j-api:1.7.5",
             "org.slf4j:slf4j-simple:1.7.5"
 

@@ -27,6 +27,7 @@ import org.wasabi.interceptors.enableContentNegotiation
 import org.wasabi.websocket.Channel
 import org.wasabi.websocket.ChannelHandler
 import org.wasabi.routing.ChannelAlreadyExistsException
+import org.wasabi.serializers.TextPlainSerializer
 
 
 public open class AppServer(val configuration: AppConfiguration = AppConfiguration()) {
@@ -38,7 +39,7 @@ public open class AppServer(val configuration: AppConfiguration = AppConfigurati
     public val routes: ArrayList<Route> = ArrayList<Route>()
     public val channels: ArrayList<Channel> = ArrayList<Channel>()
     public val interceptors : ArrayList<InterceptorEntry>  = ArrayList<InterceptorEntry>()
-    public val serializers: ArrayList<Serializer> = arrayListOf(JsonSerializer(), XmlSerializer())
+    public val serializers: ArrayList<Serializer> = arrayListOf(JsonSerializer(), XmlSerializer(), TextPlainSerializer())
     public val deserializers: ArrayList<Deserializer> = arrayListOf(MultiPartFormDataDeserializer(), JsonDeserializer())
 
 
