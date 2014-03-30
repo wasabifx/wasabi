@@ -14,7 +14,7 @@ public class ContentNegotiationInterceptor(val serializers: List<Serializer>): I
     override fun intercept(request: Request, response: Response): Boolean {
             if (response.negotiatedMediaType == "" && (response.sendBuffer != null) && !(response.sendBuffer is String)) {
                 for (requestedContentType in response.requestedContentTypes) {
-                    val serializer = serializers.find { it.canSerialize(requestedContentType) }
+                    val serializer = serializers.firstOrNull { it.canSerialize(requestedContentType) }
                     if (serializer != null) {
                         response.send(serializer.serialize(response.sendBuffer!!))
                         return true
