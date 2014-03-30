@@ -37,6 +37,7 @@ public class Response() {
     public val cookies : HashMap<String, Cookie> = HashMap<String, Cookie>()
     public var requestedContentTypes: ArrayList<String> = arrayListOf()
     public var negotiatedMediaType: String = ""
+    public var connection: String = "close"
 
 
 
@@ -121,6 +122,7 @@ public class Response() {
         setResponseCookies()
         addExtraHeader("E-Tag", etag)
         addExtraHeader("Location", location)
+        addExtraHeader("Connection", connection)
     }
 }
 

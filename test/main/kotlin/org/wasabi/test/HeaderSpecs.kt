@@ -21,7 +21,7 @@ public class HeaderSpecs: TestServerContext() {
 
         val headers = hashMapOf(
                 "User-Agent" to "test-client",
-                "Connection" to "keep-alive",
+                "Connection" to "close",
                 "Cache-Control" to "max-age=0",
                 "Accept" to "text/html,application/xhtml+xml;q=0.4,application/xml",
                 "Accept-Encoding" to "gzip,deflate,sdch",
@@ -35,7 +35,7 @@ public class HeaderSpecs: TestServerContext() {
         var port = 0
         var host = ""
         var userAgent = ""
-        var keepAlive = false
+        var connection = ""
         var cacheControl = ""
         var accept =  sortedMapOf<String, Int>()
         var acceptEncoding =  sortedMapOf<String, Int>()
@@ -55,7 +55,7 @@ public class HeaderSpecs: TestServerContext() {
                 host = request.host
                 port = request.port
                 userAgent = request.userAgent
-                keepAlive = request.keepAlive
+                connection = request.connection
                 cacheControl = request.cacheControl
                 accept = request.accept
                 acceptEncoding = request.acceptEncoding
@@ -75,7 +75,7 @@ public class HeaderSpecs: TestServerContext() {
         assertEquals("localhost", host);
         assertEquals(3000, port);
         assertEquals("test-client", userAgent);
-        assertEquals(true, keepAlive);
+        assertEquals("Close", connection);
         assertEquals("max-age=0", cacheControl);
         assertEquals(3, accept.size);
         assertEquals(4, accept["application/xhtml+xml"])
@@ -95,7 +95,6 @@ public class HeaderSpecs: TestServerContext() {
 
         val headers = hashMapOf(
                 "User-Agent" to "test-client",
-                "Connection" to "keep-alive",
                 "Cache-Control" to "max-age=0",
                 "Accept" to "text/html,application/xhtml+xml,application/xml",
                 "Accept-Encoding" to "gzip,deflate,sdch",
@@ -133,7 +132,6 @@ public class HeaderSpecs: TestServerContext() {
 
         val headers = hashMapOf(
                 "User-Agent" to "test-client",
-                "Connection" to "keep-alive",
                 "Cache-Control" to "max-age=0",
                 "Accept" to "text/html,application/xhtml+xml,application/xml",
                 "Accept-Encoding" to "gzip,deflate,sdch",
@@ -165,7 +163,6 @@ public class HeaderSpecs: TestServerContext() {
 
         val headers = hashMapOf(
                 "User-Agent" to "test-client",
-                "Connection" to "keep-alive",
                 "Cache-Control" to "max-age=0",
                 "Accept" to "text/html,application/xhtml+xml,application/xml",
                 "Accept-Encoding" to "gzip,deflate,sdch",

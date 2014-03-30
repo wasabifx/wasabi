@@ -63,6 +63,7 @@ private fun makeRequest(headers: HashMap<String, String>, request: HttpRequestBa
     for ((key, value) in headers) {
         request.setHeader(key, value)
     }
+    request.setHeader("Connection", "Close")
     val cookie = BasicClientCookie("someCookie", "someCookieValue")
     cookie.setPath(request.getURI()?.getPath())
     cookie.setDomain("localhost")

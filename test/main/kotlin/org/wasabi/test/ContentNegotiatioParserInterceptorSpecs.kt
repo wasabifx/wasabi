@@ -16,7 +16,6 @@ public class ContentNegotiatioParserInterceptorSpecs: TestServerContext() {
 
         val headers = hashMapOf(
                 "User-Agent" to "test-client",
-                "Connection" to "keep-alive",
                 "Cache-Control" to "max-age=0",
                 "Accept" to "text/plain;q=0.8,application/xml,application/xhtml+xml,text/html;q=0.9",
                 "Accept-Encoding" to "gzip,deflate,sdch",
@@ -59,7 +58,6 @@ public class ContentNegotiatioParserInterceptorSpecs: TestServerContext() {
 
         val headers = hashMapOf(
                 "User-Agent" to "test-client",
-                "Connection" to "keep-alive",
                 "Cache-Control" to "max-age=0",
                 "Accept" to "application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5",
                 "Accept-Encoding" to "gzip,deflate,sdch",
