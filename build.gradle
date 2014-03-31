@@ -24,7 +24,7 @@ repositories {
         url 'http://oss.sonatype.org/content/repositories/snapshots'
     }
 }
-a
+
 
 compileKotlin {
     kotlinOptions.annotations = file('annotations/Gradle_ netty-all-4.0.17.Final')

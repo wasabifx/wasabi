@@ -12,7 +12,7 @@ public class StaticFileInterceptorSpecs: TestServerContext() {
         TestServer.reset()
         TestServer.appServer.serveStaticFilesFromFolder("/public")
 
-        val response = get("http://localhost:3000/public/test.html", hashMapOf())
+        val response = get("http://localhost:${TestServer.definedPort}/public/test.html", hashMapOf())
 
 
         assertEquals("<!DOCTYPE html><head><title></title></head><body>This is an example static file</body></html>", response.body)
@@ -24,7 +24,7 @@ public class StaticFileInterceptorSpecs: TestServerContext() {
         TestServer.reset()
         TestServer.appServer.serveStaticFilesFromFolder("/public")
 
-        val response = get("http://localhost:3000/public/test1.html", hashMapOf())
+        val response = get("http://localhost:${TestServer.definedPort}/public/test1.html", hashMapOf())
 
 
         assertEquals("Not Found", response.statusDescription)
