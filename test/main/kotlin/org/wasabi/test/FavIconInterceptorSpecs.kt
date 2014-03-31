@@ -11,7 +11,7 @@ public class FavIconInterceptorSpecs: TestServerContext() {
         TestServer.reset()
         TestServer.appServer.serveFavIconAs("/public/favicon.ico")
 
-        val response = get("http://localhost:3000/favicon.ico", hashMapOf())
+        val response = get("http://localhost:${TestServer.definedPort}/favicon.ico", hashMapOf())
 
         assertEquals(200, response.statusCode)
 

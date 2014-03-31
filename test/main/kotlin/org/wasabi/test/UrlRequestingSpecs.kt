@@ -33,7 +33,7 @@ public class UrlRequestingSpecs: TestServerContext() {
         TestServer.appServer.get("/", {  response.send("Hello")})
 
 
-        val response = get("http://localhost:3000", headers)
+        val response = get("http://localhost:${TestServer.definedPort}", headers)
 
         assertEquals("Hello", response.body)
 
@@ -44,7 +44,7 @@ public class UrlRequestingSpecs: TestServerContext() {
 
 
         TestServer.reset()
-        val response = get("http://localhost:3000/nothing", headers)
+        val response = get("http://localhost:${TestServer.definedPort}/nothing", headers)
 
         assertEquals(404, response.statusCode)
         assertEquals("Not Found", response.statusDescription)
@@ -57,7 +57,7 @@ public class UrlRequestingSpecs: TestServerContext() {
         TestServer.reset()
         TestServer.appServer.get("/", {  response.send("Hello")})
 
-        val response = delete("http://localhost:3000", headers)
+        val response = delete("http://localhost:${TestServer.definedPort}", headers)
 
         assertEquals(405, response.statusCode)
         assertEquals("Method Not Allowed", response.statusDescription)

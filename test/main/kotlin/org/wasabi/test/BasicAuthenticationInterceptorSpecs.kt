@@ -13,7 +13,7 @@ public class BasicAuthenticationInterceptorSpecs : TestServerContext() {
 
         TestServer.appServer.get("/protected", { response.send("This should be proctected")})
 
-        val response = get("http://localhost:3000/protected", hashMapOf())
+        val response = get("http://localhost:${TestServer.definedPort}/protected", hashMapOf())
 
         assertEquals(401, response.statusCode)
 

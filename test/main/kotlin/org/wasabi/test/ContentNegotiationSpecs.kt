@@ -40,7 +40,7 @@ public class ContentNegotiationSpecs : TestServerContext() {
 
         })
 
-        val response = get("http://localhost:3000/customer/10", headers)
+        val response = get("http://localhost:${TestServer.definedPort}/customer/10", headers)
 
         assertEquals("{\"name\":\"Joe\",\"email\":\"Joe@smith.com\"}",response.body)
 
@@ -80,7 +80,7 @@ public class ContentNegotiationSpecs : TestServerContext() {
 
         })
 
-        val response = get("http://localhost:3000/customer/10", headers)
+        val response = get("http://localhost:${TestServer.definedPort}/customer/10", headers)
 
         assertEquals("{\"name\":\"Joe\",\"email\":\"Joe@smith.com\"}",response.body)
 
@@ -118,7 +118,7 @@ public class ContentNegotiationSpecs : TestServerContext() {
 
         })
 
-        val response = get("http://localhost:3000/customer/10", headers)
+        val response = get("http://localhost:${TestServer.definedPort}/customer/10", headers)
 
         assertEquals("{\"name\":\"Joe\",\"email\":\"Joe@smith.com\"}",response.body)
 

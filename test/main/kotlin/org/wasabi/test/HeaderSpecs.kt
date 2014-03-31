@@ -68,12 +68,12 @@ public class HeaderSpecs: TestServerContext() {
 
         })
 
-        get("http://localhost:3000/customer/10/valid?param1=value1&param2=value2", headers)
+        get("http://localhost:${TestServer.definedPort}/customer/10/valid?param1=value1&param2=value2", headers)
 
         assertEquals("/customer/10/valid?param1=value1&param2=value2", uri);
         assertEquals("/customer/10/valid", path);
         assertEquals("localhost", host);
-        assertEquals(3000, port);
+        assertEquals(TestServer.definedPort, port);
         assertEquals("test-client", userAgent);
         assertEquals("Close", connection);
         assertEquals("max-age=0", cacheControl);
@@ -118,7 +118,7 @@ public class HeaderSpecs: TestServerContext() {
                 })
 
         val fields = arrayListOf<BasicNameValuePair>(BasicNameValuePair("name", "joe"), BasicNameValuePair("email", "joe@joe.com"))
-        postForm("http://localhost:3000/customer", headers, fields)
+        postForm("http://localhost:${TestServer.definedPort}/customer", headers, fields)
 
         assertEquals(2, bodyParams.size())
         assertEquals("joe", bodyParams["name"])
@@ -148,7 +148,7 @@ public class HeaderSpecs: TestServerContext() {
             response.send("Nothing")
 
         })
-        get("http://localhost:3000/", headers)
+        get("http://localhost:${TestServer.definedPort}/", headers)
 
         assertEquals("someCookieValue", cookies["someCookie"]?.value)
 
@@ -186,7 +186,7 @@ public class HeaderSpecs: TestServerContext() {
                 })
 
         val fields = arrayListOf<BasicNameValuePair>(BasicNameValuePair("name", "joe"), BasicNameValuePair("email", "joe@joe.com"))
-        postForm("http://localhost:3000/customer", headers, fields, true)
+        postForm("http://localhost:${TestServer.definedPort}/customer", headers, fields, true)
 
         assertEquals(2, bodyParams.size())
         assertEquals("joe", bodyParams["name"])

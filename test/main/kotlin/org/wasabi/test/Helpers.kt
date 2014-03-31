@@ -18,26 +18,29 @@ import org.junit.Before
 import org.junit.After
 import org.apache.http.client.methods.HttpOptions
 import org.apache.http.params.BasicHttpParams
+import org.wasabi.app.AppConfiguration
+import java.util.Random
+import java.net.BindException
 
 open public class TestServerContext {
     Before fun initServer(): Unit {
-        org.wasabi.test.TestServer.start()
-        org.wasabi.test.TestServer.reset()
+        TestServer.start()
+        TestServer.reset()
     }
 
-    After fun shutdownServer(): Unit {
-        org.wasabi.test.TestServer.stop()
-    }
 }
 
 object TestServer {
 
-    public var appServer: AppServer = AppServer()
+    public val definedPort: Int = Random().nextInt(30000) + 5000
+    public var appServer: AppServer = AppServer(AppConfiguration(definedPort))
+    public var initialized: Boolean = false
 
     public fun start() {
-        if (!appServer.isRunning) {
-            org.wasabi.test.TestServer.appServer = AppServer()
+        try {
             appServer.start(false)
+        } catch (e: BindException) {
+
         }
     }
 

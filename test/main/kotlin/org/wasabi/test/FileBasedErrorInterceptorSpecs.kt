@@ -13,7 +13,7 @@ public class FileBasedErrorInterceptorSpecs : TestServerContext() {
         TestServer.reset()
         TestServer.appServer.serveErrorsFromFolder("/public")
 
-        val response = get("http://localhost:3000/notvalid", hashMapOf())
+        val response = get("http://localhost:${TestServer.definedPort}/notvalid", hashMapOf())
 
         assertEquals(404, response.statusCode)
         assertEquals("<!DOCTYPE html><head><title></title></head><body>Custom File 404</body></html>", response.body)
@@ -25,7 +25,7 @@ public class FileBasedErrorInterceptorSpecs : TestServerContext() {
         TestServer.appServer.serveErrorsFromFolder("/public")
 
         TestServer.appServer.get("/notvalid", { response.setStatus(StatusCodes.Forbidden)})
-        val response = get("http://localhost:3000/notvalid", hashMapOf())
+        val response = get("http://localhost:${TestServer.definedPort}/notvalid", hashMapOf())
 
         assertEquals(403, response.statusCode)
         assertEquals("<!DOCTYPE html><head><title></title></head><body>Standard Error File</body></html>", response.body)

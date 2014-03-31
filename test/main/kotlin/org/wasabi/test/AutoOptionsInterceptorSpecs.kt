@@ -15,7 +15,7 @@ public class AutoOptionsInterceptorSpecs : TestServerContext() {
         TestServer.appServer.post("/customer", {})
         TestServer.appServer.enableAutoOptions()
 
-        val response = options("http://localhost:3000/person")
+        val response = options("http://localhost:${TestServer.definedPort}/person")
 
         assertEquals("GET,POST", response.headers.filter { it.getName() == "Allow"}.first().getValue())
 
@@ -26,7 +26,7 @@ public class AutoOptionsInterceptorSpecs : TestServerContext() {
 
         TestServer.appServer.get("/person", {})
 
-        val response = options("http://localhost:3000/person")
+        val response = options("http://localhost:${TestServer.definedPort}/person")
 
         assertEquals(StatusCodes.MethodNotAllowed.code, response.statusCode)
     }

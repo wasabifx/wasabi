@@ -36,7 +36,7 @@ public class ContentNegotiatioParserInterceptorSpecs: TestServerContext() {
 
                 })
 
-        get("http://localhost:3000/contentTypes", headers)
+        get("http://localhost:${TestServer.definedPort}/contentTypes", headers)
 
         assertEquals("application/xhtml+xml", sanitizedRequestedContentTypes.get(0))
         assertEquals("application/xml", sanitizedRequestedContentTypes.get(1))
@@ -78,7 +78,7 @@ public class ContentNegotiatioParserInterceptorSpecs: TestServerContext() {
 
                 })
 
-        get("http://localhost:3000/contentTypes?format=json", headers)
+        get("http://localhost:${TestServer.definedPort}/contentTypes?format=json", headers)
 
         assertEquals("application/json", sanitizedRequestedContentTypes.get(0))
 
