@@ -1,5 +1,5 @@
 buildscript {
-   project.ext.kotlin_version = '0.7.270'
+   ext.kotlin_version = '0.7.270'
    repositories {
         mavenCentral()
         maven {
@@ -7,7 +7,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$ext.kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
@@ -46,7 +46,6 @@ dependencies {
 
     testCompile "junit:junit:4.9",
          "org.mockito:mockito-all:1.9.5"
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$ext.kotlin_version"
 }
 
 
@@ -61,17 +60,17 @@ test {
 }
 
 sourceSets {
-    src {
-        main {
-            kotlin
+    main {
+        kotlin {
+            srcDir "src/main/kotlin"
         }
     }
+
     test {
-        main {
-            kotlin
+        kotlin {
+            srcDir "test/main/kotlin"
         }
     }
-    main.java.srcDirs += 'src/main/kotlin'
 }
 
 apply plugin: 'maven'
