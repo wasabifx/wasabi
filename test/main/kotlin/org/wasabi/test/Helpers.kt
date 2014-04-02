@@ -27,6 +27,9 @@ open public class TestServerContext {
         TestServer.start()
         TestServer.reset()
     }
+    After fun closeServer(): Unit {
+        //TestServer.stop();
+    }
 
 }
 

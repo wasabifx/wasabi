@@ -9,7 +9,6 @@ public class AutoOptionsInterceptorSpecs : TestServerContext() {
 
     spec fun auto_options_should_return_all_methods_available_for_a_specific_resource () {
 
-        TestServer.reset()
         TestServer.appServer.get("/person", {})
         TestServer.appServer.post("/person", {})
         TestServer.appServer.post("/customer", {})
@@ -22,8 +21,8 @@ public class AutoOptionsInterceptorSpecs : TestServerContext() {
     }
 
     spec fun with_auto_options_disabled_options_should_return_method_not_allowed () {
-        TestServer.reset()
 
+        TestServer.appServer.configuration.enableAutoOptions = false
         TestServer.appServer.get("/person", {})
 
         val response = options("http://localhost:${TestServer.definedPort}/person")

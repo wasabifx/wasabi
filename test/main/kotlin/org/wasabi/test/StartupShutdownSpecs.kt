@@ -10,23 +10,24 @@ import java.net.ConnectException
 import org.wasabi.app.AppServer
 import org.wasabi.test.TestServer
 import org.junit.Ignore
+import org.wasabi.test.TestServerContext
 
-public class StartupShutdownSpecs {
+public class StartupShutdownSpecs : TestServerContext() {
 
     spec fun starting_an_app_server_should_open_the_specified_port_and_listen_for_connections() {
 
-        TestServer.start()
         val socket = Socket()
         val socketAddress = InetSocketAddress("localhost", TestServer.definedPort)
 
         socket.connect(socketAddress)
-        socket.close()
+        //socket.close()
 
         // not really required as socket would throw exception if it cannot connect
         assertEquals(true, socket.isConnected())
-        TestServer.stop()
+        socket.close()
     }
 
+    // TODO spark up a new instance to test this!
     Ignore("Server stopping has issues in tests....")
     spec fun stopping_an_app_server_should_no_longer_accept_connections() {
 

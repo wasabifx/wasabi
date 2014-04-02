@@ -28,8 +28,6 @@ public class UrlRequestingSpecs: TestServerContext() {
 
     spec(timeout=5000) fun a_get_on_an_existing_resource_should_return_it() {
 
-
-        TestServer.reset()
         TestServer.appServer.get("/", {  response.send("Hello")})
 
 
@@ -41,20 +39,15 @@ public class UrlRequestingSpecs: TestServerContext() {
 
     spec(timeout=5000) fun a_get_on_an_non_existing_resource_should_return_a_404_with_message_Not_Found() {
 
-
-
-        TestServer.reset()
         val response = get("http://localhost:${TestServer.definedPort}/nothing", headers)
 
         assertEquals(404, response.statusCode)
         assertEquals("Not Found", response.statusDescription)
 
-
     }
 
     spec(timeout=5000) fun a_get_on_an_existing_resource_with_invalid_verb_should_return_405_with_message_method_not_allowed_and_header_of_allowed_methods() {
 
-        TestServer.reset()
         TestServer.appServer.get("/", {  response.send("Hello")})
 
         val response = delete("http://localhost:${TestServer.definedPort}", headers)

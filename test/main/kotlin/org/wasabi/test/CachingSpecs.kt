@@ -10,7 +10,6 @@ public class CachingSpecs: TestServerContext() {
 
     spec fun setting_cache_control_should_set_cache_control_header_in_response() {
 
-        TestServer.reset()
         TestServer.appServer.get("/cachePolicy",{
             response.setCacheControl(CacheControl.NoCache)
             response.send("no-cache")
