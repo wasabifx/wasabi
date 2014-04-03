@@ -27,3 +27,6 @@ public class AutoOptionsInterceptor(val routes: ArrayList<Route>): Interceptor {
 fun AppServer.enableAutoOptions() {
     intercept(AutoOptionsInterceptor(routes))
 }
+fun AppServer.disableAutoOptions() {
+    this.interceptors.remove(AutoOptionsInterceptor(routes))
+}

@@ -4,6 +4,7 @@ import org.junit.Test as spec
 import org.wasabi.interceptors.enableAutoOptions
 import kotlin.test.assertEquals
 import org.wasabi.http.StatusCodes
+import org.wasabi.interceptors.disableAutoOptions
 
 public class AutoOptionsInterceptorSpecs : TestServerContext() {
 
@@ -23,6 +24,7 @@ public class AutoOptionsInterceptorSpecs : TestServerContext() {
 
     spec fun with_auto_options_disabled_options_should_return_method_not_allowed () {
         TestServer.reset()
+        TestServer.appServer.disableAutoOptions()
 
         TestServer.appServer.get("/person", {})
 

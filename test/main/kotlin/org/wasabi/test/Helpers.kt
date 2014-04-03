@@ -27,20 +27,20 @@ open public class TestServerContext {
         TestServer.start()
         TestServer.reset()
     }
-
 }
 
 object TestServer {
 
     public val definedPort: Int = Random().nextInt(30000) + 5000
     public var appServer: AppServer = AppServer(AppConfiguration(definedPort))
-    public var initialized: Boolean = false
 
     public fun start() {
-        try {
-            appServer.start(false)
-        } catch (e: BindException) {
-
+        if (!appServer.isRunning) {
+            try {
+                appServer.start(false)
+            } catch (e: BindException) {
+                println("Exception caught")
+            }
         }
     }
 
