@@ -12,8 +12,6 @@ import org.junit.Test as spec
     }
     Ignore("Session Management not implemented yet") spec fun should_store_session_data_in_the_session_object() {
 
-
-        TestServer.reset()
         TestServer.appServer.enableSessionSupport()
         TestServer.appServer.get("/set_session", {
             val session = request.session!!

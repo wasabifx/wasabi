@@ -8,7 +8,6 @@ public class FavIconInterceptorSpecs: TestServerContext() {
 
     spec fun requesting_favicon_should_return_favicon() {
 
-        TestServer.reset()
         TestServer.appServer.serveFavIconAs("/public/favicon.ico")
 
         val response = get("http://localhost:${TestServer.definedPort}/favicon.ico", hashMapOf())

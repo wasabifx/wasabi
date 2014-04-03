@@ -28,8 +28,6 @@ public class RoutesSpecs {
 
     spec fun finding_a_route_in_the_routing_table_by_matching_method_and_path_should_return_route() {
 
-
-
         TestServer.reset()
         TestServer.appServer.get("/", { response.send("")})
         TestServer.appServer.post("/second", { response.send("second")})
@@ -45,6 +43,7 @@ public class RoutesSpecs {
     }
 
     spec fun finding_a_route_in_the_routing_table_with_parameters_and_matching_method_should_return_route() {
+
         TestServer.reset()
         TestServer.appServer.post("/third", { response.send("third")})
         TestServer.appServer.get("/first/:parent/:child/ending", { response.send("")})
@@ -59,8 +58,6 @@ public class RoutesSpecs {
 
 
     spec fun finding_a_route_in_the_routing_table_when_path_found_but_not_method_throw_exception_method_not_permitted() {
-
-
 
         TestServer.reset()
         TestServer.appServer.get( "/", { })
@@ -77,6 +74,7 @@ public class RoutesSpecs {
 
 
     spec fun adding_a_second_route_in_the_routing_table_with_matching_path_and_method_should_throw_exception_indicating_route_exists() {
+
         TestServer.reset()
         TestServer.appServer.get( "/", {})
         TestServer.appServer.get( "/a", {})

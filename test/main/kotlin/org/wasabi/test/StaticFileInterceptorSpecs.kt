@@ -8,8 +8,6 @@ public class StaticFileInterceptorSpecs: TestServerContext() {
 
     spec fun requesting_an_existing_static_file_should_return_the_file() {
 
-
-        TestServer.reset()
         TestServer.appServer.serveStaticFilesFromFolder("/public")
 
         val response = get("http://localhost:${TestServer.definedPort}/public/test.html", hashMapOf())
@@ -20,8 +18,6 @@ public class StaticFileInterceptorSpecs: TestServerContext() {
 
     spec fun requesting_an_non_existing_static_file_should_404() {
 
-
-        TestServer.reset()
         TestServer.appServer.serveStaticFilesFromFolder("/public")
 
         val response = get("http://localhost:${TestServer.definedPort}/public/test1.html", hashMapOf())

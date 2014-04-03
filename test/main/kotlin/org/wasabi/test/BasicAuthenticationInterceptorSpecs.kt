@@ -8,7 +8,6 @@ public class BasicAuthenticationInterceptorSpecs : TestServerContext() {
 
     spec fun requesting_a_protected_resource_should_return_authentication_required () {
 
-        TestServer.reset()
         TestServer.appServer.useBasicAuthentication("protected", { (user, pass) -> user == pass }, "/protected")
 
         TestServer.appServer.get("/protected", { response.send("This should be proctected")})

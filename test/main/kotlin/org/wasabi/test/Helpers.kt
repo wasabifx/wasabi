@@ -16,6 +16,8 @@ import org.wasabi.routing.Route
 import org.apache.http.util.EntityUtils
 import org.junit.Before
 import org.junit.After
+import org.junit.BeforeClass
+import org.junit.AfterClass
 import org.apache.http.client.methods.HttpOptions
 import org.apache.http.params.BasicHttpParams
 import org.wasabi.app.AppConfiguration
@@ -23,8 +25,10 @@ import java.util.Random
 import java.net.BindException
 
 open public class TestServerContext {
-    Before fun initServer(): Unit {
+    Before fun initTest(): Unit {
         TestServer.start()
+    }
+    After fun postTest(): Unit {
         TestServer.reset()
     }
 }
@@ -35,12 +39,10 @@ object TestServer {
     public var appServer: AppServer = AppServer(AppConfiguration(definedPort))
 
     public fun start() {
-        if (!appServer.isRunning) {
-            try {
-                appServer.start(false)
-            } catch (e: BindException) {
-                println("Exception caught")
-            }
+        try {
+            appServer.start(false)
+        } catch (e: BindException) {
+
         }
     }
 

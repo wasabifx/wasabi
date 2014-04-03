@@ -16,8 +16,6 @@ public class ContentNegotiationSpecs : TestServerContext() {
 
     spec fun sending_an_object_should_encode_and_send_based_on_contentType() {
 
-        TestServer.reset()
-
         val headers = hashMapOf(
                 "User-Agent" to "test-client",
                 "Cache-Control" to "max-age=0",
@@ -51,8 +49,6 @@ public class ContentNegotiationSpecs : TestServerContext() {
     }
 
     spec fun manual_negotiation_should_execute_correct_body_structure_and_serialize_if_necessary() {
-
-        TestServer.reset()
 
         val headers = hashMapOf(
                 "User-Agent" to "test-client",
@@ -93,8 +89,6 @@ public class ContentNegotiationSpecs : TestServerContext() {
 
     spec fun sending_content_type_when_using_send_should_serialize_using_the_requested_content_type() {
 
-        TestServer.reset()
-
         val headers = hashMapOf(
                 "User-Agent" to "test-client",
                 "Cache-Control" to "max-age=0",
@@ -121,10 +115,6 @@ public class ContentNegotiationSpecs : TestServerContext() {
         val response = get("http://localhost:${TestServer.definedPort}/customer/10", headers)
 
         assertEquals("{\"name\":\"Joe\",\"email\":\"Joe@smith.com\"}",response.body)
-
-
-
-
 
     }
 }
