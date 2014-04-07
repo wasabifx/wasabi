@@ -15,10 +15,12 @@ fun main(args: Array<String>) {
     server.parseContentNegotiationHeaders() {
         onAcceptHeader()
     }
+    server.enableETag()
+
 
 
     server.get("/", {
-        response.send(Customer(1, "Joe Smith"))
+        response.send(Customer(1, "Mr. Joe Smith"))
     })
 
     server.start()

@@ -32,6 +32,7 @@ public class Request(private val httpRequest: HttpRequest) {
     public val acceptEncoding: SortedMap<String, Int> = parseAcceptHeader("Accept-Encoding")
     public val acceptLanguage: SortedMap<String, Int> = parseAcceptHeader("Accept-Language")
     public val acceptCharset: SortedMap<String, Int> = parseAcceptHeader("Accept-Charset")
+    public val ifNoneMatch: String = getHeader("If-None-Match")
     public val queryParams : HashMap<String, String> = parseQueryParams()
     public val routeParams: HashMap<String, String> = HashMap<String, String>()
     public val bodyParams: HashMap<String, String> = HashMap<String, String>()

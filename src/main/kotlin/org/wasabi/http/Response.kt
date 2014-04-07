@@ -119,7 +119,7 @@ public class Response() {
 
     public fun setHeaders() {
         setResponseCookies()
-        addExtraHeader("E-Tag", etag)
+        addExtraHeader("ETag", etag)
         addExtraHeader("Location", location)
     }
 }
