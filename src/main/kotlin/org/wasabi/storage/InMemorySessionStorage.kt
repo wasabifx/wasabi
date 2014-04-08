@@ -1,6 +1,7 @@
-package org.wasabi.interceptors
+package org.wasabi.storage
 
 import org.wasabi.http.Session
+import org.wasabi.storage.SessionStorage
 
 public class InMemorySessionStorage: SessionStorage {
 
