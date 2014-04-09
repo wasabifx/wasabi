@@ -12,5 +12,6 @@ public data class AppConfiguration(
      var enableLogging: Boolean = true,
      var enableAutoOptions: Boolean = false,
      var enableCORSGlobally: Boolean = false,
-     var sessionLifetime: Int = 600)
+     var sessionLifetime: Int = 600,
+     var sessionStorage: String = "org.wasabi.storage.InMemorySessionStorage")
 
