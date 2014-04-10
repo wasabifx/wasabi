@@ -10,7 +10,9 @@ import org.wasabi.storage.InMemorySessionStorage
 import java.util.UUID
 import java.util.Date
 
-public class SessionManagementInterceptor(val cookieKey: String = "_sessionID", sessionStorage: SessionStorage = InMemorySessionStorage()): Interceptor, SessionStorage by sessionStorage {
+public class SessionManagementInterceptor(val cookieKey: String = "_sessionID"): Interceptor {
+
+    val sessionStorage = org.wasabi.app.configuration.sessionStorage
 
     private fun generateSessionID(): String {
         // TODO: Tie this to IP/etc.
@@ -21,14 +23,14 @@ public class SessionManagementInterceptor(val cookieKey: String = "_sessionID", 
         val x = request.cookies[cookieKey]
         if (x != null && x.value != "") {
             // If we have a session bump the expiration time to keep it active
-            request.session = loadSession(request.session!!.id)
+            request.session = sessionStorage.loadSession(request.session!!.id)
             request.session!!.extendSession();
             // make sure the expiry is actually persisted
-            storeSession(request.session!!)
+            sessionStorage.storeSession(request.session!!)
             response.cookies[cookieKey] = Cookie(cookieKey, request.session!!.id, request.path, request.host, request.isSecure)
         } else {
             request.session = Session(generateSessionID())
-            storeSession(request.session!!)
+            sessionStorage.storeSession(request.session!!)
             response.cookies[cookieKey] = Cookie(cookieKey, request.session!!.id, request.path, request.host, request.isSecure)
         }
         return true

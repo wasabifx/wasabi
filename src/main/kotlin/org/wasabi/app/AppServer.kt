@@ -29,8 +29,9 @@ import org.wasabi.websocket.ChannelHandler
 import org.wasabi.routing.ChannelAlreadyExistsException
 import org.wasabi.serializers.TextPlainSerializer
 
+public var configuration : AppConfiguration = AppConfiguration()
 
-public open class AppServer(val configuration: AppConfiguration = AppConfiguration()) {
+public open class AppServer(customConfiguration: AppConfiguration = AppConfiguration()) {
 
     private val logger = LoggerFactory.getLogger(javaClass<AppServer>())
     private val httpServer: HttpServer
@@ -60,6 +61,7 @@ public open class AppServer(val configuration: AppConfiguration = AppConfigurati
     }
 
     {
+        configuration = customConfiguration
         httpServer = HttpServer(this)
         init()
     }
@@ -141,8 +143,6 @@ public open class AppServer(val configuration: AppConfiguration = AppConfigurati
     public fun intercept(interceptor: Interceptor, path: String = "*", interceptOn: InterceptOn = InterceptOn.PreExecution) {
         interceptors.add(InterceptorEntry(interceptor, path, interceptOn))
     }
-
-
 }
 
 

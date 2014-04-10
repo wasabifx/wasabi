@@ -7,6 +7,7 @@ import io.netty.bootstrap.ServerBootstrap
 import io.netty.channel.nio.NioEventLoopGroup
 import io.netty.channel.socket.nio.NioServerSocketChannel
 import org.wasabi.app.AppServer
+import org.wasabi.app.configuration
 
 
 public class HttpServer(private val appServer: AppServer) {
@@ -31,7 +32,7 @@ public class HttpServer(private val appServer: AppServer) {
 
 
     public fun start(wait: Boolean = true) {
-        val channel = bootstrap.bind(appServer.configuration.port)?.sync()?.channel()
+        val channel = bootstrap.bind(configuration.port)?.sync()?.channel()
 
         if (wait) {
             channel?.closeFuture()?.sync()
