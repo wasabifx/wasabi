@@ -24,6 +24,7 @@ public class Response() {
     public val extraHeaders: HashMap<String, String> = HashMap<String, String>()
 
     public var etag: String = ""
+    public var resourceId: String? = null
     public var location: String = ""
     public var contentType: String = ContentType.TextPlain.convertToString()
     public var statusCode: Int = 200

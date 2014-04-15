@@ -21,8 +21,8 @@ public class Request(private val httpRequest: HttpRequest) {
     public val path: String = uri.split('?')[0]
     public val method: HttpMethod =  httpRequest.getMethod()!!
     public val host: String = getHeader("Host").takeWhile { it != ':' }
-    public val isSecure: Boolean = false // TODO: getHeader("Protocol").compareToIgnoreCase("HTTPS") == 0
-
+    public val protocol: String = "http" // TODO: Fix this.
+    public val isSecure: Boolean = protocol.compareToIgnoreCase("https") == 0
     val urlPort = getHeader("Host").dropWhile { it != ':' }.drop(1)
     public val port : Int = if (urlPort != "") urlPort.toInt() else 80
     public val connection: String = getHeader("Connection")

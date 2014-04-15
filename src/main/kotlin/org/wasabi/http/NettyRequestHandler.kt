@@ -287,6 +287,12 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
         if (response.allow != "") {
             httpResponse.headers().add("Allow", response.allow)
         }
+        if (response.location != "") {
+            httpResponse.headers().add("Location", response.location)
+        }
+        if (response.etag != "") {
+            httpResponse.headers().add("ETag", response.etag)
+        }
         for (header in response.extraHeaders) {
             if (header.value != "") {
                 httpResponse.headers().add(header.key, header.value)
