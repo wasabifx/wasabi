@@ -24,7 +24,7 @@ public class BasicAuthenticationInterceptor(val realm: String, val callback: (St
         response.setStatus(StatusCodes.Unauthorized)
         response.contentType = ContentType.TextPlain.convertToString()
         response.send("Authentication Failed")
-        response.addExtraHeader("WWW-Authenticate", "Basic Realm=${realm}")
+        response.addRawHeader("WWW-Authenticate", "Basic Realm=${realm}")
         return false
     }
 }

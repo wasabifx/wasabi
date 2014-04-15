@@ -21,7 +21,7 @@ import org.wasabi.serializers.Serializer
 
 public class Response() {
 
-    public val extraHeaders: HashMap<String, String> = HashMap<String, String>()
+    public val rawHeaders: HashMap<String, String> = HashMap<String, String>()
 
     public var etag: String = ""
     public var resourceId: String? = null
@@ -59,7 +59,7 @@ public class Response() {
                 fileContentType = contentType
             }
             this.contentType = fileContentType ?: "application/unknown"
-            addExtraHeader("Content-Length", file.length().toString())
+            addRawHeader("Content-Length", file.length().toString())
             // TODO: Caching and redirect here too?
         } else {
             setStatus(StatusCodes.NotFound)
@@ -100,9 +100,9 @@ public class Response() {
         allow = allowedMethods.makeString(",")
     }
 
-    public fun addExtraHeader(name: String, value: String) {
+    public fun addRawHeader(name: String, value: String) {
         if (value != ""){
-            extraHeaders[name] = value
+            rawHeaders[name] = value
         }
     }
 
@@ -110,18 +110,18 @@ public class Response() {
         for (cookie in cookies) {
             val name = cookie.value.name.toString()
             val value = cookie.value.value.toString()
-            addExtraHeader("Set-Cookie", ServerCookieEncoder.encode(name, value).toString())
+            addRawHeader("Set-Cookie", ServerCookieEncoder.encode(name, value).toString())
         }
     }
 
     public fun setCacheControl(cacheControl: CacheControl) {
-        addExtraHeader("Cache-Control", cacheControl.toString())
+        addRawHeader("Cache-Control", cacheControl.toString())
     }
 
     public fun setHeaders() {
         setResponseCookies()
-        addExtraHeader("ETag", etag)
-        addExtraHeader("Location", location)
+        addRawHeader("ETag", etag)
+        addRawHeader("Location", location)
     }
 }
 

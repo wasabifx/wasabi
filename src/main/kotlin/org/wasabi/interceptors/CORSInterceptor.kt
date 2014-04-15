@@ -11,16 +11,16 @@ public class CORSInterceptor(val settings: ArrayList<CORSEntry>): Interceptor {
     override fun intercept(request: Request, response: Response): Boolean {
         for (setting in settings) {
             if (setting.path == "*" || request.path.matches(setting.path)) {
-                response.addExtraHeader("Access-Control-Request-Method", setting.methods)
-                response.addExtraHeader("Access-Control-Allow-Origin", setting.origins)
+                response.addRawHeader("Access-Control-Request-Method", setting.methods)
+                response.addRawHeader("Access-Control-Allow-Origin", setting.origins)
                 if (setting.headers != "") {
-                    response.addExtraHeader("Access-Control-Allow-Headers", setting.headers)
+                    response.addRawHeader("Access-Control-Allow-Headers", setting.headers)
                 }
                 if (setting.credentials != "") {
-                    response.addExtraHeader("Access-Control-Allow-Credentials", setting.credentials)
+                    response.addRawHeader("Access-Control-Allow-Credentials", setting.credentials)
                 }
                 if (setting.preflightMaxAge != "") {
-                    response.addExtraHeader("Access-Control-Max-Age", setting.preflightMaxAge)
+                    response.addRawHeader("Access-Control-Max-Age", setting.preflightMaxAge)
                 }
                 return true
             }

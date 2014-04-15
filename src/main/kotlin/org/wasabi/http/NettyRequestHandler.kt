@@ -228,7 +228,6 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
 
     private fun writeResponse(ctx: ChannelHandlerContext, response: Response) {
         var httpResponse : HttpResponse
-        response.setHeaders()
         if (response.statusCode / 100 == 4 || response.statusCode / 100 == 5) {
             runInterceptors(errorInterceptors)
         }
@@ -273,6 +272,7 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
             val continueRequest = runInterceptors(postRequestInterceptors)
             if (continueRequest) {
                 httpResponse = DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus(response.statusCode,response.statusDescription),  Unpooled.copiedBuffer(buffer, CharsetUtil.UTF_8))
+                response.setHeaders()
                 addResponseHeaders(httpResponse, response)
                 ctx.write(httpResponse)
             }
@@ -284,16 +284,7 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
     }
 
     private fun addResponseHeaders(httpResponse: HttpResponse, response: Response) {
-        if (response.allow != "") {
-            httpResponse.headers().add("Allow", response.allow)
-        }
-        if (response.location != "") {
-            httpResponse.headers().add("Location", response.location)
-        }
-        if (response.etag != "") {
-            httpResponse.headers().add("ETag", response.etag)
-        }
-        for (header in response.extraHeaders) {
+        for (header in response.rawHeaders) {
             if (header.value != "") {
                 httpResponse.headers().add(header.key, header.value)
             }

@@ -33,6 +33,8 @@ open public class TestServerContext {
     }
 }
 
+// TODO: Clean up response access for tests (switch to EasyHttp.jvm)
+
 object TestServer {
 
     public val definedPort: Int = Random().nextInt(30000) + 5000
