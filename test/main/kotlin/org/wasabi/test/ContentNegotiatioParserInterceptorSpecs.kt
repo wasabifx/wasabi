@@ -14,6 +14,7 @@ public class ContentNegotiatioParserInterceptorSpecs: TestServerContext() {
             onAcceptHeader()
         }
 
+
         val headers = hashMapOf(
                 "User-Agent" to "test-client",
                 "Cache-Control" to "max-age=0",
@@ -78,7 +79,7 @@ public class ContentNegotiatioParserInterceptorSpecs: TestServerContext() {
 
                 })
 
-        get("http://localhost:${TestServer.definedPort}/contentTypes?format=json", headers)
+        get("http://localhost/*/:${TestServer.definedPort}/contentTypes?format=json", headers)
 
         assertEquals("application/json", sanitizedRequestedContentTypes.get(0))
 

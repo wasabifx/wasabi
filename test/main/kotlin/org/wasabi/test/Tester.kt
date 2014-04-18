@@ -27,7 +27,10 @@ fun main(args: Array<String>) {
         response.send(Customer(1, "Mr. Joe Smith"))
     })
 
+
+
     server.post("/customer", {
+        // Add this to the database
         response.resourceId = "20";
         response.setStatus(StatusCodes.Created)
     })
