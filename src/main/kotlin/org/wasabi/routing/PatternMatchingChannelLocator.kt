@@ -12,6 +12,7 @@ import java.util.ArrayList
  */
 public class PatternMatchingChannelLocator(val channels: ArrayList<Channel>) : ChannelLocator {
     override fun findChannelHandler(path: String): Channel {
+        // TODO Strip ws:// from front of url provided by netty
         val matchingChannel = channels.filter { it.path == path }
         if (matchingChannel.count() == 0) {
             throw RouteNotFoundException()
