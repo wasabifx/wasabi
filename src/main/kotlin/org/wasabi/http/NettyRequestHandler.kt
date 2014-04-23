@@ -55,10 +55,11 @@ import io.netty.channel.SimpleChannelInboundHandler
 import org.wasabi.routing.ChannelLocator
 import io.netty.channel.ChannelProgressiveFuture
 import io.netty.channel.ChannelProgressiveFutureListener
+import javax.xml.ws.WebServiceException
 
 
 // TODO: This class needs cleaning up
-public class NettyRequestHandler(private val appServer: AppServer, routeLocator: RouteLocator, channelLocator: ChannelLocator): SimpleChannelInboundHandler<Any?>(), RouteLocator by routeLocator {
+public class NettyRequestHandler(private val appServer: AppServer, routeLocator: RouteLocator, channelLocator: ChannelLocator): SimpleChannelInboundHandler<Any?>(), RouteLocator by routeLocator, ChannelLocator by channelLocator {
 
     var request: Request? = null
     var body = ""
@@ -102,18 +103,30 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
                 // Setup Handshake
                 var wsFactory : WebSocketServerHandshakerFactory = WebSocketServerHandshakerFactory(getWebSocketLocation(msg as HttpRequest), null, false);
 
+                log!!.info("handshaker factory")
                 handshaker = wsFactory.newHandshaker(msg as HttpRequest)
 
-                // TODO Make sure handler for uri the upgrade is requested against exists. bail with 404 if none set.
+                log!!.info("find channel handler")
+                val channelHandler = findChannelHandler(request!!.uri)
 
-                log!!.info(handshaker?.uri().toString())
+                log!!.info("check for null")
+                if (channelHandler != null )
+                {
+                    log!!.info(handshaker?.uri().toString())
 
-                if (handshaker == null) {
-                    WebSocketServerHandshakerFactory.sendUnsupportedWebSocketVersionResponse(ctx?.channel()!!);
-                } else {
-                    handshaker?.handshake(ctx?.channel()!!, msg as FullHttpRequest);
+                    if (handshaker == null) {
+                        WebSocketServerHandshakerFactory.sendUnsupportedWebSocketVersionResponse(ctx?.channel()!!);
+                    } else {
+                        handshaker?.handshake(ctx?.channel()!!, msg as FullHttpRequest);
+                    }
+                    return
                 }
-                return
+
+                // If we don't have a channel handler for the requested URI return 404.
+                response.setStatus(StatusCodes.NotFound, "Websocket channel not found.")
+                writeResponse(ctx!!, response)
+
+
             }
             handleStandardHttpRequest(ctx, msg)
         }
