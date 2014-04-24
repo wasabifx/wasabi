@@ -56,6 +56,7 @@ import org.wasabi.routing.ChannelLocator
 import io.netty.channel.ChannelProgressiveFuture
 import io.netty.channel.ChannelProgressiveFutureListener
 import javax.xml.ws.WebServiceException
+import org.wasabi.websocket.ChannelHandler
 
 
 // TODO: This class needs cleaning up
@@ -111,7 +112,7 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
                 log!!.info(handshaker?.uri())
 
                 // Check we have a channel handler for the requested socket upgrade uri, throws if not found.
-                val foo = findChannelHandler(handshaker?.uri().toString())
+                findChannelHandler(handshaker?.uri().toString())
 
                 if (handshaker == null) {
                     WebSocketServerHandshakerFactory.sendUnsupportedWebSocketVersionResponse(ctx?.channel()!!);
@@ -119,9 +120,6 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
                     handshaker?.handshake(ctx?.channel()!!, msg as FullHttpRequest);
                 }
                 return
-
-
-
             }
             handleStandardHttpRequest(ctx, msg)
         }
@@ -130,17 +128,35 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
 
     private fun handleWebSocketRequest(ctx: ChannelHandlerContext, webSocketFrame: WebSocketFrame)
     {
-        log!!.info("handleWebSocketRequest")
-
         // Check for closing websocket frame
         if (webSocketFrame is CloseWebSocketFrame)
         {
             handshaker?.close(ctx.channel(), webSocketFrame.retain())
+            return
         }
 
+        // Send a ping response when one received
+        if (webSocketFrame is PingWebSocketFrame)
+        {
+            ctx.channel().write(PingWebSocketFrame(webSocketFrame.content().retain()))
+            return
+        }
 
-         // TODO match path and call channel handler.
+         // Find channel for uri
+        var channel = findChannelHandler(handshaker?.uri().toString())
 
+        // Currently we only support a single handler for a socket but since the underlying Netty object has
+        // an array declared for handlers we treat it as such.
+        for (handler in channel.handler) {
+
+            val handlerExtension : ChannelHandler.() -> Unit = handler
+            val routeHandler = ChannelHandler(ctx, webSocketFrame)
+
+            routeHandler.handlerExtension()
+            if (!routeHandler.executeNext) {
+                break
+            }
+        }
     }
 
     private fun handleStandardHttpRequest(ctx: ChannelHandlerContext?, msg: Any?)
