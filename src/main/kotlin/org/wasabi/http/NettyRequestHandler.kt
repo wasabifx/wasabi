@@ -107,24 +107,19 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
                 handshaker = wsFactory.newHandshaker(msg as HttpRequest)
 
                 log!!.info("find channel handler")
-                val channelHandler = findChannelHandler(request!!.uri)
 
-                log!!.info("check for null")
-                if (channelHandler != null )
-                {
-                    log!!.info(handshaker?.uri().toString())
+                log!!.info(handshaker?.uri())
 
-                    if (handshaker == null) {
-                        WebSocketServerHandshakerFactory.sendUnsupportedWebSocketVersionResponse(ctx?.channel()!!);
-                    } else {
-                        handshaker?.handshake(ctx?.channel()!!, msg as FullHttpRequest);
-                    }
-                    return
+                // Check we have a channel handler for the requested socket upgrade uri, throws if not found.
+                val foo = findChannelHandler(handshaker?.uri().toString())
+
+                if (handshaker == null) {
+                    WebSocketServerHandshakerFactory.sendUnsupportedWebSocketVersionResponse(ctx?.channel()!!);
+                } else {
+                    handshaker?.handshake(ctx?.channel()!!, msg as FullHttpRequest);
                 }
+                return
 
-                // If we don't have a channel handler for the requested URI return 404.
-                response.setStatus(StatusCodes.NotFound, "Websocket channel not found.")
-                writeResponse(ctx!!, response)
 
 
             }

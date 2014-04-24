@@ -2,6 +2,7 @@ package org.wasabi.routing
 
 import org.wasabi.websocket.Channel
 import java.util.ArrayList
+import org.slf4j.LoggerFactory
 
 /**
  * Created with IntelliJ IDEA.
@@ -11,11 +12,16 @@ import java.util.ArrayList
  * To change this template use File | Settings | File Templates.
  */
 public class PatternMatchingChannelLocator(val channels: ArrayList<Channel>) : ChannelLocator {
-    override fun findChannelHandler(path: String): Channel {
-        // TODO Strip ws:// from front of url provided by netty
-        val matchingChannel = channels.filter { it.path == path }
+
+    private var log = LoggerFactory.getLogger(javaClass<PatternMatchingChannelLocator>())
+
+    override fun findChannelHandler(channel: String): Channel {
+
+        log!!.info("Attempting to match channel: ${channel}")
+
+        val matchingChannel = channels.filter { it.path == channel.split("ws://")[1] }
         if (matchingChannel.count() == 0) {
-            throw RouteNotFoundException()
+            throw ChannelNotFoundException()
         }
 
         // We should only ever have one handler for a websocket channel
