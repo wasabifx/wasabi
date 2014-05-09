@@ -28,10 +28,10 @@ public class UrlRequestingSpecs: TestServerContext() {
 
     spec fun a_get_on_an_existing_resource_should_return_it() {
 
-        TestServer.appServer.get("/", {  response.send("Hello")})
+        TestServer.appServer.get("/hello", {  response.send("Hello")})
 
 
-        val response = get("http://localhost:${TestServer.definedPort}", headers)
+        val response = get("http://localhost:${TestServer.definedPort}/hello", headers)
 
         assertEquals("Hello", response.body)
 
@@ -49,9 +49,9 @@ public class UrlRequestingSpecs: TestServerContext() {
 
     spec fun a_get_on_an_existing_resource_with_invalid_verb_should_return_405_with_message_method_not_allowed_and_header_of_allowed_methods() {
 
-        TestServer.appServer.get("/", {  response.send("Hello")})
+        TestServer.appServer.get("/hello", {  response.send("Hello")})
 
-        val response = delete("http://localhost:${TestServer.definedPort}", headers)
+        val response = delete("http://localhost:${TestServer.definedPort}/hello", headers)
 
         assertEquals(405, response.statusCode)
         assertEquals("Method Not Allowed", response.statusDescription)
