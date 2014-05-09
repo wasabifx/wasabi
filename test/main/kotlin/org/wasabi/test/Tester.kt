@@ -6,6 +6,7 @@ import org.wasabi.interceptors.parseContentNegotiationHeaders
 import org.wasabi.http.StatusCodes
 import org.wasabi.interceptors.enableAutoLocation
 import org.wasabi.interceptors.enableETag
+import org.wasabi.interceptors.serveStaticFilesFromFolder
 
 data class Customer(val id: Int, val name: String)
 
@@ -20,6 +21,8 @@ fun main(args: Array<String>) {
     }
     server.enableETag()
     server.enableAutoLocation()
+    server.serveStaticFilesFromFolder("/public")
+
 
 
 

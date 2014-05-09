@@ -5,13 +5,14 @@ import org.wasabi.interceptors.serveStaticFilesFromFolder
 import kotlin.test.assertEquals
 import org.wasabi.interceptors.serveErrorsFromFolder
 import org.wasabi.http.StatusCodes
+import java.io.File
 
 public class FileBasedErrorInterceptorSpecs : TestServerContext() {
 
     spec fun when_an_error_occurs_and_corresponding_error_file_exists_it_should_serve_it() {
 
         TestServer.reset()
-        TestServer.appServer.serveErrorsFromFolder("/public")
+        TestServer.appServer.serveErrorsFromFolder("testData${File.separatorChar}public")
 
         val response = get("http://localhost:${TestServer.definedPort}/notvalid", hashMapOf())
 
@@ -22,7 +23,7 @@ public class FileBasedErrorInterceptorSpecs : TestServerContext() {
     spec fun when_an_error_occurs_and_corresponding_error_file_does_not_exist_it_should_serve_default_error_file() {
 
         TestServer.reset()
-        TestServer.appServer.serveErrorsFromFolder("/public")
+        TestServer.appServer.serveErrorsFromFolder("testData${File.separatorChar}public")
 
         TestServer.appServer.get("/notvalid", { response.setStatus(StatusCodes.Forbidden)})
         val response = get("http://localhost:${TestServer.definedPort}/notvalid", hashMapOf())

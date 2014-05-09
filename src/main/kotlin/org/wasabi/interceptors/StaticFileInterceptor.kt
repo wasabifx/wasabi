@@ -10,19 +10,16 @@ import io.netty.handler.codec.http.HttpMethod
 
 public class StaticFileInterceptor(val folder: String): Interceptor {
     override fun intercept(request: Request, response: Response): Boolean {
-        if (request.method == HttpMethod.GET && request.path.startsWith(folder)) {
-            var fullPath: String;
-            if (folder.startsWith("/")) {
-                fullPath = request.uri.dropWhile { it == '/' }
-            } else {
-                fullPath = folder + "/" + request.uri
+        if (request.method == HttpMethod.GET) {
+            val fullPath = "${folder}${request.uri}"
+            val file = File(fullPath)
+            if (file.exists()) {
+                response.streamFile(fullPath)
+                return false
             }
-            response.streamFile(fullPath)
-            return false
         }
         return true
     }
-
 }
 
 fun AppServer.serveStaticFilesFromFolder(folder: String) {

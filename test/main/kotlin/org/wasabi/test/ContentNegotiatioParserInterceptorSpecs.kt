@@ -79,7 +79,7 @@ public class ContentNegotiatioParserInterceptorSpecs: TestServerContext() {
 
                 })
 
-        get("http://localhost/*/:${TestServer.definedPort}/contentTypes?format=json", headers)
+        get("http://localhost:${TestServer.definedPort}/contentTypes?format=json", headers)
 
         assertEquals("application/json", sanitizedRequestedContentTypes.get(0))
 
