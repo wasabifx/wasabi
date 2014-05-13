@@ -305,7 +305,12 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
             request!!.bodyParams.putAll(deserializer!!.deserialize(decoder!!.getBodyHttpDatas()))
         } else {
             // TODO: Add support for CharSet
-            request!!.bodyParams.putAll(deserializer!!.deserialize(msg.content().array().toString("UTF-8")))
+            // TODO: This shouldn't be called if bodyParams is empty.
+            val buffer = msg.content()
+            if (buffer.isReadable()) {
+                var data = buffer.toString(CharsetUtil.UTF_8)
+                request!!.bodyParams.putAll(deserializer!!.deserialize(data!!))
+            }
         }
     }
 
