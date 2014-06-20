@@ -8,14 +8,14 @@ import org.wasabi.http.Cookie
 import java.util.UUID
 import java.util.Date
 
-public class SessionManagementInterceptor(val cookieKey: String = "_sessionID", sessionStorage: SessionStorage = InMemorySessionStorage()): Interceptor, SessionStorage by sessionStorage {
+public class SessionManagementInterceptor(val cookieKey: String = "_sessionID", sessionStorage: SessionStorage = InMemorySessionStorage()): Interceptor(), SessionStorage by sessionStorage {
 
     private fun generateSessionID(): String {
         // TODO: Tie this to IP/etc.
         return UUID.randomUUID().toString()
     }
 
-    override fun intercept(request: Request, response: Response): Boolean {
+    override fun intercept(request: Request, response: Response) {
         val x = request.cookies[cookieKey]
         if (x != null && x.value != "") {
             // If we have a session bump the expiration time to keep it active
@@ -26,7 +26,7 @@ public class SessionManagementInterceptor(val cookieKey: String = "_sessionID", 
             storeSession(request.session!!)
             response.cookies[cookieKey] = Cookie(cookieKey, request.session!!.id, request.path, request.host, request.isSecure)
         }
-        return true
+        next()
     }
 }
 

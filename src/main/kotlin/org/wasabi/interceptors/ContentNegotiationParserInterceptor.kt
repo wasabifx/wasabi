@@ -10,14 +10,14 @@ import java.util.HashMap
 import java.util.LinkedList
 
 
-public class ContentNegotiationParserInterceptor(val mappings: HashMap<String, String> = HashMap()): Interceptor {
+public class ContentNegotiationParserInterceptor(val mappings: HashMap<String, String> = HashMap()): Interceptor() {
     val ACCEPT_HEADER = 0
     val QUERY_PARAM = 1
     val EXTENSION = 2
     val orderQueue = LinkedList<Int>()
     var queryParameterName = ""
 
-    override fun intercept(request: Request, response: Response): Boolean {
+    override fun intercept(request: Request, response: Response) {
         var contentType = ""
 
         response.requestedContentTypes.clear()
@@ -49,7 +49,7 @@ public class ContentNegotiationParserInterceptor(val mappings: HashMap<String, S
             }
 
         }
-        return true
+        next()
     }
 
     fun onAcceptHeader(): ContentNegotiationParserInterceptor {

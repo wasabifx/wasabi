@@ -7,11 +7,11 @@ import org.wasabi.routing.RouteHandler
 import org.wasabi.app.AppServer
 import org.wasabi.routing.InterceptOn
 
-public class LoggingInterceptor: Interceptor {
-    override fun intercept(request: Request, response: Response): Boolean {
+public class LoggingInterceptor: Interceptor() {
+    override fun intercept(request: Request, response: Response) {
         var logger = LoggerFactory.getLogger(javaClass<LoggingInterceptor>())
         logger!!.info("[${request.method.toString()}] - ${request.uri}")
-        return true
+        next()
     }
 
 }

@@ -10,20 +10,19 @@ import org.wasabi.serializers.XmlSerializer
 import org.wasabi.http.StatusCodes
 
 
-public class ContentNegotiationInterceptor(val serializers: List<Serializer>): Interceptor {
-    override fun intercept(request: Request, response: Response): Boolean {
+public class ContentNegotiationInterceptor(val serializers: List<Serializer>): Interceptor() {
+    override fun intercept(request: Request, response: Response) {
             if (response.negotiatedMediaType == "" && (response.sendBuffer != null) && !(response.sendBuffer is String)) {
                 for (requestedContentType in response.requestedContentTypes) {
                     val serializer = serializers.firstOrNull { it.canSerialize(requestedContentType) }
                     if (serializer != null) {
                         response.send(serializer.serialize(response.sendBuffer!!))
-                        return true
+                        next()
                     }
                 }
                 response.setStatus(StatusCodes.UnsupportedMediaType)
-                return false
             }
-            return true
+            next()
     }
 }
 

@@ -154,76 +154,71 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
 
         if (msg is HttpContent) {
 
-            var continueRequest : Boolean
+            runInterceptors(preRequestInterceptors)
 
-            continueRequest = runInterceptors(preRequestInterceptors)
+            if (deserializer != null) {
+                // TODO: Add support for chunked transfer
+                deserializeBody(msg)
+            }
 
-            if (continueRequest) {
-                if (deserializer != null) {
-                    // TODO: Add support for chunked transfer
-                    deserializeBody(msg)
-                }
-                if (msg is LastHttpContent) {
-                    try {
+            if (msg is LastHttpContent) {
+                try {
 
-                        // process all interceptors that are global
-                        continueRequest = runInterceptors(preExecutionInterceptors)
+                    // process all interceptors that are global
+                    runInterceptors(preExecutionInterceptors)
 
-                        if (continueRequest) {
-                            val routeHandlers = findRouteHandlers(request!!.uri.split('?')[0], request!!.method)
-                            request!!.routeParams.putAll(routeHandlers.params)
+                    val routeHandlers = findRouteHandlers(request!!.uri.split('?')[0], request!!.method)
+                    request!!.routeParams.putAll(routeHandlers.params)
 
-                            continueRequest = runInterceptors(preExecutionInterceptors, routeHandlers)
+                    runInterceptors(preExecutionInterceptors, routeHandlers)
 
-                            if (continueRequest) {
-                                for (handler in routeHandlers.handler) {
+                    for (handler in routeHandlers.handler) {
 
-                                    val handlerExtension : RouteHandler.() -> Unit = handler
-                                    val routeHandler = RouteHandler(request!!, response)
+                        val handlerExtension : RouteHandler.() -> Unit = handler
+                        val routeHandler = RouteHandler(request!!, response)
 
-                                    routeHandler.handlerExtension()
-                                    if (!routeHandler.executeNext) {
-                                        break
-                                    }
-                                }
-                                runInterceptors(postExecutionInterceptors, routeHandlers)
-
-                            }
+                        routeHandler.handlerExtension()
+                        if (!routeHandler.executeNext) {
+                            break
                         }
-                        // Run global interceptors again
-                        runInterceptors(postExecutionInterceptors)
-
-                    } catch (e: InvalidMethodException)  {
-                        response.setAllowedMethods(e.allowedMethods)
-                        response.setStatus(StatusCodes.MethodNotAllowed)
-                    } catch (e: RouteNotFoundException) {
-                        response.setStatus(StatusCodes.NotFound)
-                    } catch (e: Exception) {
-                        log!!.debug("Exception during web invocation: ${e.getMessage()}")
-                        response.setStatus(StatusCodes.InternalServerError)
                     }
-                    writeResponse(ctx!!, response)
+
+                    runInterceptors(postExecutionInterceptors, routeHandlers)
+
+                    // Run global interceptors again
+                    runInterceptors(postExecutionInterceptors)
+
+                } catch (e: InvalidMethodException)  {
+                    response.setAllowedMethods(e.allowedMethods)
+                    response.setStatus(StatusCodes.MethodNotAllowed)
+                } catch (e: RouteNotFoundException) {
+                    response.setStatus(StatusCodes.NotFound)
+                } catch (e: Exception) {
+                    log!!.debug("Exception during web invocation: ${e.getMessage()}")
+                    response.setStatus(StatusCodes.InternalServerError)
                 }
+                writeResponse(ctx!!, response)
             }
         }
 
     }
 
-    private fun runInterceptors(interceptors: List<InterceptorEntry>, route: Route? = null): Boolean {
+    private fun runInterceptors(interceptors: List<InterceptorEntry>, route: Route? = null) {
         var interceptorsToRun : List<InterceptorEntry>
         if (route == null) {
             interceptorsToRun = interceptors.filter { it.path == "*" }
         } else {
-            interceptorsToRun = interceptors.filter { compareRouteSegments(route, it.path)}
+            interceptorsToRun = interceptors.filter { compareRouteSegments(route, it.path) }
         }
         for (interceptorEntry in interceptorsToRun) {
-            val interceptor = interceptorEntry.interceptor
-            if (!interceptor.intercept(request!!, response)) {
-                return false
-            }
 
+            val interceptor = interceptorEntry.interceptor
+            interceptor.intercept(request!!, response)
+
+            if (!interceptor.executeNext) {
+                break
+            }
         }
-        return true
     }
 
     private fun writeResponse(ctx: ChannelHandlerContext, response: Response) {
@@ -269,13 +264,13 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
                     }
                 }
             }
-            val continueRequest = runInterceptors(postRequestInterceptors)
-            if (continueRequest) {
-                httpResponse = DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus(response.statusCode,response.statusDescription),  Unpooled.copiedBuffer(buffer, CharsetUtil.UTF_8))
-                response.setHeaders()
-                addResponseHeaders(httpResponse, response)
-                ctx.write(httpResponse)
-            }
+            runInterceptors(postRequestInterceptors)
+
+            httpResponse = DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus(response.statusCode,response.statusDescription),  Unpooled.copiedBuffer(buffer, CharsetUtil.UTF_8))
+            response.setHeaders()
+            addResponseHeaders(httpResponse, response)
+            ctx.write(httpResponse)
+
             var lastContentFuture = ctx.writeAndFlush(LastHttpContent.EMPTY_LAST_CONTENT)
 
             lastContentFuture.addListener(ChannelFutureListener.CLOSE)

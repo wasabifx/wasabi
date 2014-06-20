@@ -7,15 +7,14 @@ import org.wasabi.app.AppServer
 import org.wasabi.routing.InterceptOn
 
 
-public class FavIconInterceptor(val icon: String): Interceptor {
+public class FavIconInterceptor(val icon: String): Interceptor() {
 
-    override fun intercept(request: Request, response: Response): Boolean {
+    override fun intercept(request: Request, response: Response) {
         if (request.method == HttpMethod.GET && request.uri.compareToIgnoreCase("/favicon.ico") == 0) {
             val path = sanitizePath(icon)
             response.streamFile(path, "image/x-icon")
-            return false
         }
-        return true
+        next()
     }
 
 }

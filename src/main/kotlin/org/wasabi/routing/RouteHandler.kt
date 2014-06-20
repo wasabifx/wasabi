@@ -17,8 +17,6 @@ public class RouteHandler(val request: Request, val response: Response)  {
 
 }
 
-
-
 fun routeHandler(f: RouteHandler.()->Unit) = f
 
 fun String.with(handler : Response.() -> Unit) : Pair<String, Response.() -> Unit> = this to handler

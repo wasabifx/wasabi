@@ -8,17 +8,16 @@ import java.io.File
 import io.netty.handler.codec.http.HttpMethod
 
 
-public class StaticFileInterceptor(val folder: String): Interceptor {
-    override fun intercept(request: Request, response: Response): Boolean {
+public class StaticFileInterceptor(val folder: String): Interceptor() {
+    override fun intercept(request: Request, response: Response) {
         if (request.method == HttpMethod.GET) {
             val fullPath = "${folder}${request.uri}"
             val file = File(fullPath)
             if (file.exists()) {
                 response.streamFile(fullPath)
-                return false
             }
         }
-        return true
+        next()
     }
 }
 

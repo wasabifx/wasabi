@@ -8,8 +8,8 @@ import java.util.ArrayList
 import org.wasabi.routing.Route
 import org.wasabi.http.StatusCodes
 
-public class AutoOptionsInterceptor(val routes: ArrayList<Route>): Interceptor {
-    override fun intercept(request: Request, response: Response): Boolean {
+public class AutoOptionsInterceptor(val routes: ArrayList<Route>): Interceptor() {
+    override fun intercept(request: Request, response: Response) {
         if (request.method == HttpMethod.OPTIONS) {
             val methods = routes.filter {
                 it.path == request.path
@@ -18,9 +18,8 @@ public class AutoOptionsInterceptor(val routes: ArrayList<Route>): Interceptor {
             }
             response.addRawHeader("Allow", methods.makeString(", "))
             response.setStatus(StatusCodes.OK)
-            return false
         }
-        return true
+        next()
     }
 }
 
