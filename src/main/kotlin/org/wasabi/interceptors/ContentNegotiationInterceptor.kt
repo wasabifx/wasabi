@@ -21,8 +21,9 @@ public class ContentNegotiationInterceptor(val serializers: List<Serializer>): I
                     }
                 }
                 response.setStatus(StatusCodes.UnsupportedMediaType)
+            } else {
+                next()
             }
-            next()
     }
 }
 

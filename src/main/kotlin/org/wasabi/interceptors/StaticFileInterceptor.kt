@@ -15,9 +15,12 @@ public class StaticFileInterceptor(val folder: String): Interceptor() {
             val file = File(fullPath)
             if (file.exists()) {
                 response.streamFile(fullPath)
+            } else {
+                next()
             }
+        } else {
+            next()
         }
-        next()
     }
 }
 

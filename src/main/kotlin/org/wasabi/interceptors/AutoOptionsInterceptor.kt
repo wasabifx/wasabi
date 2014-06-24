@@ -18,8 +18,9 @@ public class AutoOptionsInterceptor(val routes: ArrayList<Route>): Interceptor()
             }
             response.addRawHeader("Allow", methods.makeString(", "))
             response.setStatus(StatusCodes.OK)
+        } else {
+            next()
         }
-        next()
     }
 }
 

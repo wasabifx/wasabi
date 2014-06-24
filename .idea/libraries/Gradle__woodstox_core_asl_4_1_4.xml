@@ -2,9 +2,11 @@
   <library name="Gradle: woodstox-core-asl-4.1.4">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.codehaus.woodstox/woodstox-core-asl/4.1.4/79b82e7dfd5c24b228ea56456d6adce225259ec4/woodstox-core-asl-4.1.4.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.codehaus.woodstox/woodstox-core-asl/4.1.4/79b82e7dfd5c24b228ea56456d6adce225259ec4/woodstox-core-asl-4.1.4.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.codehaus.woodstox/woodstox-core-asl/4.1.4/a363593119d1ba7020996a8469d8dc548eb57982/woodstox-core-asl-4.1.4-sources.jar!/" />
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.codehaus.woodstox/woodstox-core-asl/4.1.4/a363593119d1ba7020996a8469d8dc548eb57982/woodstox-core-asl-4.1.4-sources.jar!/" />
     </SOURCES>
   </library>

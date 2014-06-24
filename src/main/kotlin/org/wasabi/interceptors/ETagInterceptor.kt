@@ -18,8 +18,9 @@ public class ETagInterceptor(private val objectTagFunc: (Any) -> String = { (obj
                 response.etag = objectTag
                 next()
             }
+        } else {
+            next()
         }
-        next()
     }
 }
 
