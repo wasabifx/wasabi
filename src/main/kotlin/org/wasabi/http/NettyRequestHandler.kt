@@ -77,6 +77,8 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
 
     private var log = LoggerFactory.getLogger(javaClass<NettyRequestHandler>())
 
+    private var bypassPipeline = false
+
     override fun channelRead0(ctx: ChannelHandlerContext?, msg: Any?) {
 
         if (msg is WebSocketFrame)
@@ -167,26 +169,25 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
                     // process all interceptors that are global
                     runInterceptors(preExecutionInterceptors)
 
+                    // Only need to check here to stop RouteNotFoundException
+                    if (!bypassPipeline) {
+
                     val routeHandlers = findRouteHandlers(request!!.uri.split('?')[0], request!!.method)
                     request!!.routeParams.putAll(routeHandlers.params)
 
+                    // process the route specific pre execution interceptors
                     runInterceptors(preExecutionInterceptors, routeHandlers)
 
-                    for (handler in routeHandlers.handler) {
+                    // Now that the global and route specific preexecution interceptors have run, execute the route handlers
+                    runHandlers(routeHandlers)
 
-                        val handlerExtension : RouteHandler.() -> Unit = handler
-                        val routeHandler = RouteHandler(request!!, response)
-
-                        routeHandler.handlerExtension()
-                        if (!routeHandler.executeNext) {
-                            break
-                        }
-                    }
-
+                    // process the route specific post execution interceptors
                     runInterceptors(postExecutionInterceptors, routeHandlers)
 
                     // Run global interceptors again
                     runInterceptors(postExecutionInterceptors)
+
+                    }
 
                 } catch (e: InvalidMethodException)  {
                     response.setAllowedMethods(e.allowedMethods)
@@ -203,7 +204,31 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
 
     }
 
+    private fun runHandlers(routeHandlers : Route)
+    {
+        // If the flag has been set no-op to allow the response to be flushed as is.
+        if (bypassPipeline)
+        {
+            return
+        }
+        for (handler in routeHandlers.handler) {
+
+            val handlerExtension : RouteHandler.() -> Unit = handler
+            val routeHandler = RouteHandler(request!!, response)
+
+            routeHandler.handlerExtension()
+            if (!routeHandler.executeNext) {
+                break
+            }
+        }
+    }
+
     private fun runInterceptors(interceptors: List<InterceptorEntry>, route: Route? = null) {
+        // If the flag has been set no-op to allow the response to be flushed as is.
+        if (bypassPipeline)
+        {
+            return
+        }
         var interceptorsToRun : List<InterceptorEntry>
         if (route == null) {
             interceptorsToRun = interceptors.filter { it.path == "*" }
@@ -216,6 +241,7 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
             interceptor.intercept(request!!, response)
 
             if (!interceptor.executeNext) {
+                bypassPipeline = true
                 break
             }
         }

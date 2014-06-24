@@ -14,7 +14,6 @@ public class FavIconInterceptor(val icon: String): Interceptor() {
             val path = sanitizePath(icon)
             response.streamFile(path, "image/x-icon")
         }
-        next()
     }
 
 }
