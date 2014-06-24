@@ -13,6 +13,8 @@ public class FavIconInterceptor(val icon: String): Interceptor() {
         if (request.method == HttpMethod.GET && request.uri.compareToIgnoreCase("/favicon.ico") == 0) {
             val path = sanitizePath(icon)
             response.streamFile(path, "image/x-icon")
+        } else {
+            next()
         }
     }
 
