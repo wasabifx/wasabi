@@ -10,6 +10,7 @@ import org.wasabi.routing.InterceptOn
 import org.wasabi.test.TestServer
 import org.wasabi.interceptors.enableContentNegotiation
 import org.wasabi.routing.with
+import org.wasabi.http.StatusCodes
 
 
 public class ContentNegotiationSpecs : TestServerContext() {
@@ -40,6 +41,7 @@ public class ContentNegotiationSpecs : TestServerContext() {
 
         val response = get("http://localhost:${TestServer.definedPort}/customer/10", headers)
 
+        assertEquals(StatusCodes.OK.code,response.statusCode)
         assertEquals("{\"name\":\"Joe\",\"email\":\"Joe@smith.com\"}",response.body)
 
 
@@ -78,6 +80,9 @@ public class ContentNegotiationSpecs : TestServerContext() {
 
         val response = get("http://localhost:${TestServer.definedPort}/customer/10", headers)
 
+
+
+        assertEquals(StatusCodes.OK.code,response.statusCode)
         assertEquals("{\"name\":\"Joe\",\"email\":\"Joe@smith.com\"}",response.body)
 
 
@@ -114,6 +119,7 @@ public class ContentNegotiationSpecs : TestServerContext() {
 
         val response = get("http://localhost:${TestServer.definedPort}/customer/10", headers)
 
+        assertEquals(StatusCodes.OK.code,response.statusCode)
         assertEquals("{\"name\":\"Joe\",\"email\":\"Joe@smith.com\"}",response.body)
 
     }

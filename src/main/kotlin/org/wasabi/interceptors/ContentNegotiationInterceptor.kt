@@ -16,11 +16,14 @@ public class ContentNegotiationInterceptor(val serializers: List<Serializer>): I
                 for (requestedContentType in response.requestedContentTypes) {
                     val serializer = serializers.firstOrNull { it.canSerialize(requestedContentType) }
                     if (serializer != null) {
-                        response.send(serializer.serialize(response.sendBuffer!!))
+                        response.negotiatedMediaType = requestedContentType
                         next()
+                        break;
                     }
                 }
-                response.setStatus(StatusCodes.UnsupportedMediaType)
+                if (response.negotiatedMediaType == "") {
+                    response.setStatus(StatusCodes.UnsupportedMediaType)
+                }
             } else {
                 next()
             }

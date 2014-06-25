@@ -99,7 +99,6 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
                 // handler by the current request url and gracefully failing the handshake if none exist(404).
                 // subsequent websocket requests are automatically forwarded to the channelHandler associated with the
                 // channel thereafter. Need to look further into how security is intended to be handled based on spec.
-
                 log!!.info("websocket upgrade")
                 // Setup Handshake
                 var wsFactory : WebSocketServerHandshakerFactory = WebSocketServerHandshakerFactory(getWebSocketLocation(msg as HttpRequest), null, false);
