@@ -134,6 +134,10 @@ public open class AppServer(val configuration: AppConfiguration = AppConfigurati
         addRoute(HttpMethod.OPTIONS, path, *handler)
     }
 
+    public fun patch(path: String, vararg handler: RouteHandler.() -> Unit) {
+        addRoute(HttpMethod.PATCH, path, *handler)
+    }
+
     public fun channel(path: String, vararg handler: ChannelHandler.() -> Unit) {
         addChannel(path, *handler)
     }
