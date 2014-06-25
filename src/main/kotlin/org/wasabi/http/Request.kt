@@ -16,15 +16,15 @@ import io.netty.handler.codec.http.multipart.Attribute
 
 public class Request(private val httpRequest: HttpRequest) {
 
-    public val uri: String  = httpRequest.getUri()!!
+    public val uri: String = httpRequest.getUri()!!
     public val document: String = uri.drop(uri.lastIndexOf("/") + 1)
     public val path: String = uri.split('?')[0]
-    public val method: HttpMethod =  httpRequest.getMethod()!!
+    public val method: HttpMethod = httpRequest.getMethod()!!
     public val host: String = getHeader("Host").takeWhile { it != ':' }
     public val protocol: String = "http" // TODO: Fix this.
     public val isSecure: Boolean = protocol.compareToIgnoreCase("https") == 0
     val urlPort = getHeader("Host").dropWhile { it != ':' }.drop(1)
-    public val port : Int = if (urlPort != "") urlPort.toInt() else 80
+    public val port: Int = if (urlPort != "") urlPort.toInt() else 80
     public val connection: String = getHeader("Connection")
     public val cacheControl: String = getHeader("Cache-Control")
     public val userAgent: String = getHeader("User-Agent")
@@ -33,7 +33,7 @@ public class Request(private val httpRequest: HttpRequest) {
     public val acceptLanguage: SortedMap<String, Int> = parseAcceptHeader("Accept-Language")
     public val acceptCharset: SortedMap<String, Int> = parseAcceptHeader("Accept-Charset")
     public val ifNoneMatch: String = getHeader("If-None-Match")
-    public val queryParams : HashMap<String, String> = parseQueryParams()
+    public val queryParams: HashMap<String, String> = parseQueryParams()
     public val routeParams: HashMap<String, String> = HashMap<String, String>()
     public val bodyParams: HashMap<String, String> = HashMap<String, String>()
     public val cookies: HashMap<String, Cookie> = parseCookies()
@@ -43,7 +43,6 @@ public class Request(private val httpRequest: HttpRequest) {
     public val rawHeaders: List<Pair<String, String>> = httpRequest.headers().map({ it.key to it.value })
 
     public var session: Session? = null
-
 
 
     private fun parseAcceptHeader(header: String): SortedMap<String, Int> {
@@ -63,14 +62,7 @@ public class Request(private val httpRequest: HttpRequest) {
         return parsed.toSortedMap<String, Int>()
     }
 
-    private fun getHeader(header: String): String {
-        var value = httpRequest.headers().get(header)
-        if (value != null) {
-            return value.toString()
-        } else {
-            return ""
-        }
-    }
+    private fun getHeader(header: String) = httpRequest.headers()[header] ?: ""
 
     private fun parseQueryParams(): HashMap<String, String> {
         val queryParamsList = hashMapOf<String, String>()
@@ -84,7 +76,7 @@ public class Request(private val httpRequest: HttpRequest) {
                 } else {
                     queryParamsList[nameValuePair[0]] = ""
                 }
-           }
+            }
         }
         return queryParamsList
     }
@@ -101,7 +93,7 @@ public class Request(private val httpRequest: HttpRequest) {
 
 
     public fun parseBodyParams(httpDataList: MutableList<InterfaceHttpData>) {
-        for(entry in httpDataList) {
+        for (entry in httpDataList) {
             addBodyParam(entry)
         }
     }
@@ -113,7 +105,6 @@ public class Request(private val httpRequest: HttpRequest) {
             bodyParams[attribute.getName().toString()] = attribute.getValue().toString()
         }
     }
-
 
 
 }
