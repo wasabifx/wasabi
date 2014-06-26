@@ -10,15 +10,9 @@ import org.junit.Ignore
 
 public class AutoOptionsInterceptorSpecs : TestServerContext() {
 
-    Ignore("Need to solve concurrent access to interceptors and routes first before passing this test")
     spec fun with_auto_options_disabled_options_should_return_method_not_allowed () {
 
         TestServer.appServer.get("/person", {})
-        TestServer.appServer.interceptors.forEach {
-            if (it.interceptor is AutoOptionsInterceptor) {
-                TestServer.appServer.interceptors.remove(it)
-            }
-        }
 
         val response = options("http://localhost:${TestServer.definedPort}/person")
 

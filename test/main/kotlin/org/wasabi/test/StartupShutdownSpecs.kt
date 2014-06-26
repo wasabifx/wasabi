@@ -27,19 +27,5 @@ public class StartupShutdownSpecs : TestServerContext() {
         socket.close()
     }
 
-    // TODO spark up a new instance to test this!
-    Ignore("Server stopping has issues in tests....")
-    spec fun stopping_an_app_server_should_no_longer_accept_connections() {
 
-        TestServer.start()
-        val socket = Socket()
-        val socketAddress = InetSocketAddress("localhost", TestServer.definedPort)
-
-
-        val exception = fails({ socket.connect(socketAddress)})
-        socket.close()
-
-        assertEquals(javaClass<ConnectException>(), exception.javaClass)
-
-    }
 }

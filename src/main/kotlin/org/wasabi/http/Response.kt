@@ -26,7 +26,7 @@ public class Response() {
     public var etag: String = ""
     public var resourceId: String? = null
     public var location: String = ""
-    public var contentType: String = ContentType.TextPlain.convertToString()
+    public var contentType: String = ContentType.Text.Plain.toString()
     public var statusCode: Int = 200
     public var statusDescription: String = ""
     public var allow: String = ""
