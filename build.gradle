@@ -77,6 +77,14 @@ sourceSets {
 apply plugin: 'maven'
 apply plugin: 'maven-publish'
 
+task sourceJar(type: Jar) {
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives sourceJar
+}
+
 publishing {
     publications {
         mavenJava(MavenPublication) {
@@ -85,6 +93,10 @@ publishing {
             version = "${version}"
 
             from components.java
+
+            artifact sourceJar {
+                classifier "sources"
+            }
         }
     }
 
