@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="Gradle: mockito-all-1.9.5">
+  <library name="Gradle: org.mockito:mockito-all:1.9.5">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.mockito/mockito-all/1.9.5/79a8984096fc6591c1e3690e07d41be506356fa5/mockito-all-1.9.5.jar!/" />
     </CLASSES>

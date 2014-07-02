@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="Gradle: httpclient-4.2.3">
+  <library name="Gradle: org.apache.httpcomponents:httpclient:4.2.3">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpclient/4.2.3/37ced84d839a02fb856255eca85f0a4be95aa634/httpclient-4.2.3.jar!/" />
     </CLASSES>

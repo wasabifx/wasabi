@@ -1,5 +1,5 @@
 <component name="libraryTable">
-  <library name="Gradle: joda-time-2.3">
+  <library name="Gradle: joda-time:joda-time:2.3">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/joda-time/joda-time/2.3/56498efd17752898cfcc3868c1b6211a07b12b8f/joda-time-2.3.jar!/" />
     </CLASSES>
