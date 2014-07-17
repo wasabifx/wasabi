@@ -135,6 +135,7 @@ public open class AppServer(val configuration: AppConfiguration = AppConfigurati
     }
 
     public fun patch(path: String, vararg handler: RouteHandler.() -> Unit) {
+        // TODO: Check
         addRoute(HttpMethod.PATCH, path, *handler)
     }
 
