@@ -100,6 +100,10 @@ public open class AppServer(val configuration: AppConfiguration = AppConfigurati
 
     }
 
+    /** 
+    * Stops the server
+    * 
+    */
     public fun stop() {
         httpServer.stop()
         logger!!.info("Server Stopped")
