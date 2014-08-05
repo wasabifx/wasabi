@@ -52,7 +52,7 @@ fun main(args: Array<String>) {
 
                 "text/html" with { send("Hello")},
 
-                "application/json" with { send("..fdfdfdfd")}
+                "application/json" with { send("..some custom Json?")}
 
         )
 
@@ -100,7 +100,6 @@ val createPerson = routeHandler {
             Date(),
             1)
     people.add(person)
-    response.setStatus(StatusCodes.Created)
-    response.location = "/person/${person.id}"
+    response.resourceId = person.id.toString()
 
 }

@@ -62,7 +62,7 @@ public class ConfigStorageSpecs {
         val file = File.createTempFile("configuration", ".json")
         configurationStorage.saveToFile(AppConfiguration(), file.getAbsolutePath())
 
-        val text = file.readText(defaultCharset)
+        file.readText(defaultCharset)
 
         assertTrue(file.exists())
 
