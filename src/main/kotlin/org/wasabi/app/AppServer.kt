@@ -100,10 +100,14 @@ public open class AppServer(val configuration: AppConfiguration = AppConfigurati
 
     }
 
+    /** 
+    * Stops the server
+    * 
+    */
     public fun stop() {
         httpServer.stop()
-        logger!!.info("Server Stopped")
         running = false
+        logger!!.info("Server Stopped")
     }
 
 
@@ -135,6 +139,7 @@ public open class AppServer(val configuration: AppConfiguration = AppConfigurati
     }
 
     public fun patch(path: String, vararg handler: RouteHandler.() -> Unit) {
+        // TODO: Check
         addRoute(HttpMethod.PATCH, path, *handler)
     }
 
