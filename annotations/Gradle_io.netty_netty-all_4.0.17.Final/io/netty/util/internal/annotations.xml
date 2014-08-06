@@ -1,0 +1,176 @@
+<root>
+    <item name='io.netty.util.internal.PlatformDependent java.io.File tmpdir()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.RecyclableArrayList boolean addAll(java.util.Collection&lt;?&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.RecyclableArrayList void add(int, java.lang.Object) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.PendingWrite io.netty.util.internal.PendingWrite newInstance(java.lang.Object, io.netty.util.concurrent.Promise&lt;java.lang.Void&gt;)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.StringUtil java.lang.String toHexStringPadded(byte[]) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.AppendableCharSequence java.lang.CharSequence subSequence(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.PlatformDependent java.util.concurrent.ConcurrentMap&lt;K,V&gt; newConcurrentHashMap(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.AppendableCharSequence io.netty.util.internal.AppendableCharSequence append(java.lang.CharSequence, int, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.AppendableCharSequence java.lang.Appendable append(char)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.EmptyArrays EMPTY_BYTE_BUFFERS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.JavassistTypeParameterMatcherGenerator io.netty.util.internal.TypeParameterMatcher generate(java.lang.Class&lt;?&gt;, java.lang.ClassLoader) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.AppendableCharSequence java.lang.Appendable append(java.lang.CharSequence, int, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.AppendableCharSequence io.netty.util.internal.AppendableCharSequence append(java.lang.CharSequence, int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.AppendableCharSequence java.lang.Appendable append(java.lang.CharSequence, int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.EmptyArrays EMPTY_OBJECTS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.EmptyArrays EMPTY_DOUBLES'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.RecyclableArrayList io.netty.util.internal.RecyclableArrayList newInstance()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.TypeParameterMatcher io.netty.util.internal.TypeParameterMatcher find(java.lang.Object, java.lang.Class&lt;?&gt;, java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.EmptyArrays EMPTY_SHORTS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.AppendableCharSequence java.lang.Appendable append(java.lang.CharSequence) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.PlatformDependent java.util.concurrent.ConcurrentMap&lt;K,V&gt; newConcurrentHashMap(int, float, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.RecyclableArrayList boolean add(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.TypeParameterMatcher io.netty.util.internal.TypeParameterMatcher get(java.lang.Class&lt;?&gt;)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.AppendableCharSequence io.netty.util.internal.AppendableCharSequence append(java.lang.CharSequence) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.AppendableCharSequence io.netty.util.internal.AppendableCharSequence append(java.lang.CharSequence)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.StringUtil java.lang.String[] split(java.lang.String, char) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.JavassistTypeParameterMatcherGenerator io.netty.util.internal.TypeParameterMatcher generate(java.lang.Class&lt;?&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.SystemPropertyUtil int getInt(java.lang.String, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.EmptyArrays EMPTY_STACK_TRACE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.AppendableCharSequence io.netty.util.internal.AppendableCharSequence append(char)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.SystemPropertyUtil java.lang.String get(java.lang.String, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.PlatformDependent void freeDirectBuffer(java.nio.ByteBuffer) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.PlatformDependent java.util.concurrent.ConcurrentMap&lt;K,V&gt; newConcurrentHashMap(int, float)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.ReadOnlyIterator ReadOnlyIterator(java.util.Iterator&lt;? extends T&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.PlatformDependent java.util.concurrent.ConcurrentMap&lt;K,V&gt; newConcurrentHashMap()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.StringUtil java.lang.String toHexString(byte[]) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.EmptyArrays EMPTY_FLOATS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.SystemPropertyUtil java.lang.String get(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.EmptyArrays EMPTY_INTS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.SystemPropertyUtil long getLong(java.lang.String, long) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.AppendableCharSequence java.lang.Appendable append(java.lang.CharSequence)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.EmptyArrays EMPTY_STRINGS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.EmptyArrays EMPTY_LONGS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.SystemPropertyUtil boolean getBoolean(java.lang.String, boolean) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.AppendableCharSequence java.lang.String substring(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.PlatformDependent java.util.concurrent.ConcurrentMap&lt;K,V&gt; newConcurrentHashMap(java.util.Map&lt;? extends K,? extends V&gt;)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.StringUtil T toHexString(T, byte[]) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.RecyclableArrayList java.lang.Object set(int, java.lang.Object) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.TypeParameterMatcher io.netty.util.internal.TypeParameterMatcher find(java.lang.Object, java.lang.Class&lt;?&gt;, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.AppendableCharSequence java.lang.String toString()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.RecyclableArrayList io.netty.util.internal.RecyclableArrayList newInstance(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.AppendableCharSequence io.netty.util.internal.AppendableCharSequence subSequence(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.RecyclableArrayList boolean addAll(int, java.util.Collection&lt;?&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.EmptyArrays EMPTY_BYTES'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.SystemPropertyUtil boolean contains(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.NativeLibraryLoader void load(java.lang.String, java.lang.ClassLoader) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.StringUtil T toHexStringPadded(T, byte[]) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.util.internal.EmptyArrays EMPTY_BOOLEANS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

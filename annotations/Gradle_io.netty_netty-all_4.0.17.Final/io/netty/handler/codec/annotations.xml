@@ -1,0 +1,362 @@
+<root>
+    <item name='io.netty.handler.codec.LengthFieldPrepender void encode(io.netty.channel.ChannelHandlerContext, java.lang.Object, io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.FixedLengthFrameDecoder void decode(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf, java.util.List&lt;java.lang.Object&gt;) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.LengthFieldBasedFrameDecoder io.netty.buffer.ByteBuf extractFrame(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf, int, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.ReplayingDecoder void callDecode(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf, java.util.List&lt;java.lang.Object&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.LengthFieldBasedFrameDecoder io.netty.buffer.ByteBuf extractFrame(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf, int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.ByteToMessageDecoder void channelRead(io.netty.channel.ChannelHandlerContext, java.lang.Object) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.DelimiterBasedFrameDecoder void decode(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf, java.util.List&lt;java.lang.Object&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.LengthFieldBasedFrameDecoder void decode(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf, java.util.List&lt;java.lang.Object&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.MessageToMessageCodec void encode(io.netty.channel.ChannelHandlerContext, OUTBOUND_IN, java.util.List&lt;java.lang.Object&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.ByteToMessageCodec void write(io.netty.channel.ChannelHandlerContext, java.lang.Object, io.netty.channel.ChannelPromise) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.DelimiterBasedFrameDecoder DelimiterBasedFrameDecoder(int, boolean, io.netty.buffer.ByteBuf) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.MessageToMessageEncoder void encode(io.netty.channel.ChannelHandlerContext, I, java.util.List&lt;java.lang.Object&gt;) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.DecoderResult UNFINISHED'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.ByteToMessageDecoder void handlerRemoved(io.netty.channel.ChannelHandlerContext) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.DelimiterBasedFrameDecoder DelimiterBasedFrameDecoder(int, io.netty.buffer.ByteBuf) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.MessageToMessageDecoder void channelRead(io.netty.channel.ChannelHandlerContext, java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.MessageToMessageEncoder void write(io.netty.channel.ChannelHandlerContext, java.lang.Object, io.netty.channel.ChannelPromise) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.LineBasedFrameDecoder void decode(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf, java.util.List&lt;java.lang.Object&gt;) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.MessageToByteEncoder void write(io.netty.channel.ChannelHandlerContext, java.lang.Object, io.netty.channel.ChannelPromise) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.LengthFieldBasedFrameDecoder io.netty.buffer.ByteBuf extractFrame(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf, int, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.DelimiterBasedFrameDecoder void decode(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf, java.util.List&lt;java.lang.Object&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.DecoderResult DecoderResult(java.lang.Throwable) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.ByteToMessageDecoder void channelInactive(io.netty.channel.ChannelHandlerContext) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.FixedLengthFrameDecoder java.lang.Object decode(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.ByteToMessageCodec void channelRead(io.netty.channel.ChannelHandlerContext, java.lang.Object) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.ByteToMessageDecoder void channelRead(io.netty.channel.ChannelHandlerContext, java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.LengthFieldBasedFrameDecoder java.lang.Object decode(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.MessageToMessageCodec void encode(io.netty.channel.ChannelHandlerContext, OUTBOUND_IN, java.util.List&lt;java.lang.Object&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.MessageToMessageEncoder void encode(io.netty.channel.ChannelHandlerContext, I, java.util.List&lt;java.lang.Object&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.DecoderResult SIGNAL_UNFINISHED'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.MessageToMessageCodec void write(io.netty.channel.ChannelHandlerContext, java.lang.Object, io.netty.channel.ChannelPromise) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.MessageToMessageDecoder void channelRead(io.netty.channel.ChannelHandlerContext, java.lang.Object) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.DelimiterBasedFrameDecoder java.lang.Object decode(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.DecoderResult io.netty.handler.codec.DecoderResult failure(java.lang.Throwable)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.LengthFieldPrepender void encode(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf, io.netty.buffer.ByteBuf) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.MessageToByteEncoder void encode(io.netty.channel.ChannelHandlerContext, I, io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.Delimiters io.netty.buffer.ByteBuf[] nulDelimiter()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.ByteToMessageDecoder void decodeLast(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf, java.util.List&lt;java.lang.Object&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.ReplayingDecoder void channelInactive(io.netty.channel.ChannelHandlerContext) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.DecoderResult SUCCESS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.FixedLengthFrameDecoder void decode(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf, java.util.List&lt;java.lang.Object&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.MessageToByteEncoder void encode(io.netty.channel.ChannelHandlerContext, I, io.netty.buffer.ByteBuf) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.MessageToMessageCodec void channelRead(io.netty.channel.ChannelHandlerContext, java.lang.Object) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.MessageToMessageCodec void decode(io.netty.channel.ChannelHandlerContext, INBOUND_IN, java.util.List&lt;java.lang.Object&gt;) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.ByteToMessageDecoder void decode(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf, java.util.List&lt;java.lang.Object&gt;) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.MessageToMessageDecoder void decode(io.netty.channel.ChannelHandlerContext, I, java.util.List&lt;java.lang.Object&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.LengthFieldBasedFrameDecoder LengthFieldBasedFrameDecoder(java.nio.ByteOrder, int, int, int, int, int, boolean) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.LineBasedFrameDecoder void decode(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf, java.util.List&lt;java.lang.Object&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.DelimiterBasedFrameDecoder DelimiterBasedFrameDecoder(int, io.netty.buffer.ByteBuf...) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.ByteToMessageCodec void write(io.netty.channel.ChannelHandlerContext, java.lang.Object, io.netty.channel.ChannelPromise) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.LengthFieldPrepender void encode(io.netty.channel.ChannelHandlerContext, java.lang.Object, io.netty.buffer.ByteBuf) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.ByteToMessageCodec void channelRead(io.netty.channel.ChannelHandlerContext, java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.MessageToByteEncoder void write(io.netty.channel.ChannelHandlerContext, java.lang.Object, io.netty.channel.ChannelPromise) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.Delimiters io.netty.buffer.ByteBuf[] lineDelimiter()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.DecoderResult SIGNAL_SUCCESS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.LengthFieldPrepender void encode(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf, io.netty.buffer.ByteBuf) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.LineBasedFrameDecoder java.lang.Object decode(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.DelimiterBasedFrameDecoder DelimiterBasedFrameDecoder(int, boolean, io.netty.buffer.ByteBuf...) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.ByteToMessageDecoder void channelReadComplete(io.netty.channel.ChannelHandlerContext) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.MessageToMessageEncoder void encode(io.netty.channel.ChannelHandlerContext, I, java.util.List&lt;java.lang.Object&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.LengthFieldBasedFrameDecoder void decode(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf, java.util.List&lt;java.lang.Object&gt;) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.DelimiterBasedFrameDecoder DelimiterBasedFrameDecoder(int, boolean, boolean, io.netty.buffer.ByteBuf...) 3'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.LengthFieldBasedFrameDecoder void decode(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf, java.util.List&lt;java.lang.Object&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.FixedLengthFrameDecoder void decode(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf, java.util.List&lt;java.lang.Object&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.MessageToMessageEncoder void write(io.netty.channel.ChannelHandlerContext, java.lang.Object, io.netty.channel.ChannelPromise) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.MessageToByteEncoder void encode(io.netty.channel.ChannelHandlerContext, I, io.netty.buffer.ByteBuf) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.MessageToMessageDecoder void decode(io.netty.channel.ChannelHandlerContext, I, java.util.List&lt;java.lang.Object&gt;) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.DelimiterBasedFrameDecoder void decode(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf, java.util.List&lt;java.lang.Object&gt;) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.MessageToMessageCodec void channelRead(io.netty.channel.ChannelHandlerContext, java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.MessageToMessageCodec void decode(io.netty.channel.ChannelHandlerContext, INBOUND_IN, java.util.List&lt;java.lang.Object&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.MessageToMessageCodec void encode(io.netty.channel.ChannelHandlerContext, OUTBOUND_IN, java.util.List&lt;java.lang.Object&gt;) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.DecoderResult io.netty.handler.codec.DecoderResult failure(java.lang.Throwable) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.ByteToMessageDecoder void decode(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf, java.util.List&lt;java.lang.Object&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.ByteToMessageDecoder void decode(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf, java.util.List&lt;java.lang.Object&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.LineBasedFrameDecoder void decode(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf, java.util.List&lt;java.lang.Object&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.MessageToMessageCodec void write(io.netty.channel.ChannelHandlerContext, java.lang.Object, io.netty.channel.ChannelPromise) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.DelimiterBasedFrameDecoder DelimiterBasedFrameDecoder(int, boolean, boolean, io.netty.buffer.ByteBuf) 3'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.LengthFieldPrepender void encode(io.netty.channel.ChannelHandlerContext, java.lang.Object, io.netty.buffer.ByteBuf) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.ByteToMessageDecoder void callDecode(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf, java.util.List&lt;java.lang.Object&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

@@ -1,0 +1,512 @@
+<root>
+    <item name='io.netty.channel.sctp.DefaultSctpServerChannelConfig io.netty.channel.ChannelConfig setMessageSizeEstimator(io.netty.channel.MessageSizeEstimator)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpServerChannelConfig io.netty.channel.sctp.SctpServerChannelConfig setBacklog(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.SctpChannelConfig io.netty.channel.sctp.SctpChannelConfig setRecvByteBufAllocator(io.netty.channel.RecvByteBufAllocator)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.sctp.SctpChannel io.netty.channel.sctp.SctpChannelConfig config()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.sctp.SctpChannelConfig io.netty.channel.sctp.SctpChannelConfig setInitMaxStreams(com.sun.nio.sctp.SctpStandardSocketOptions.InitMaxStreams)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.sctp.SctpNotificationHandler SctpNotificationHandler(io.netty.channel.sctp.SctpChannel) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.SctpChannelConfig io.netty.channel.sctp.SctpChannelConfig setWriteBufferHighWaterMark(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpServerChannelConfig io.netty.channel.ChannelConfig setMaxMessagesPerRead(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.SctpServerChannelConfig io.netty.channel.sctp.SctpServerChannelConfig setWriteBufferLowWaterMark(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpChannelConfig io.netty.channel.ChannelConfig setMessageSizeEstimator(io.netty.channel.MessageSizeEstimator)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.SctpChannelConfig io.netty.channel.sctp.SctpChannelConfig setAutoClose(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.sctp.SctpMessage io.netty.util.ReferenceCounted retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.SctpChannelOption SCTP_EXPLICIT_COMPLETE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpChannelConfig io.netty.channel.sctp.SctpChannelConfig setWriteBufferLowWaterMark(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.SctpServerChannelConfig io.netty.channel.sctp.SctpServerChannelConfig setBacklog(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpChannelConfig io.netty.channel.ChannelConfig setConnectTimeoutMillis(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.SctpChannelOption SCTP_FRAGMENT_INTERLEAVE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpChannelConfig io.netty.channel.ChannelConfig setAllocator(io.netty.buffer.ByteBufAllocator) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.SctpChannelOption SctpChannelOption(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpServerChannelConfig io.netty.channel.sctp.SctpServerChannelConfig setMessageSizeEstimator(io.netty.channel.MessageSizeEstimator) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpServerChannelConfig io.netty.channel.ChannelConfig setAutoClose(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.SctpServerChannelConfig io.netty.channel.sctp.SctpServerChannelConfig setSendBufferSize(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpChannelConfig io.netty.channel.ChannelConfig setAutoClose(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpServerChannelConfig io.netty.channel.sctp.SctpServerChannelConfig setAllocator(io.netty.buffer.ByteBufAllocator) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.SctpMessage io.netty.buffer.ByteBufHolder retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpChannelConfig io.netty.channel.sctp.SctpChannelConfig setAllocator(io.netty.buffer.ByteBufAllocator) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpServerChannelConfig io.netty.channel.sctp.SctpServerChannelConfig setAutoRead(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpServerChannelConfig io.netty.channel.sctp.SctpServerChannelConfig setRecvByteBufAllocator(io.netty.channel.RecvByteBufAllocator)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpChannelConfig io.netty.channel.sctp.SctpChannelConfig setMaxMessagesPerRead(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpServerChannelConfig io.netty.channel.sctp.SctpServerChannelConfig setConnectTimeoutMillis(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpServerChannelConfig io.netty.channel.sctp.SctpServerChannelConfig setAutoClose(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpChannelConfig io.netty.channel.sctp.SctpChannelConfig setSctpNoDelay(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.SctpServerChannelConfig io.netty.channel.sctp.SctpServerChannelConfig setMessageSizeEstimator(io.netty.channel.MessageSizeEstimator) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpChannelConfig io.netty.channel.ChannelConfig setAllocator(io.netty.buffer.ByteBufAllocator)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpServerChannelConfig io.netty.channel.sctp.SctpServerChannelConfig setMaxMessagesPerRead(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.SctpServerChannelConfig io.netty.channel.sctp.SctpServerChannelConfig setRecvByteBufAllocator(io.netty.channel.RecvByteBufAllocator) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpChannelConfig T getOption(io.netty.channel.ChannelOption&lt;T&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpChannelConfig io.netty.channel.ChannelConfig setRecvByteBufAllocator(io.netty.channel.RecvByteBufAllocator)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpChannelConfig io.netty.channel.sctp.SctpChannelConfig setConnectTimeoutMillis(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpServerChannelConfig io.netty.channel.ChannelConfig setWriteSpinCount(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpChannelConfig io.netty.channel.sctp.SctpChannelConfig setMessageSizeEstimator(io.netty.channel.MessageSizeEstimator) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.SctpServerChannelConfig io.netty.channel.sctp.SctpServerChannelConfig setMessageSizeEstimator(io.netty.channel.MessageSizeEstimator)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpChannelConfig io.netty.channel.sctp.SctpChannelConfig setWriteBufferHighWaterMark(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpServerChannelConfig io.netty.channel.sctp.SctpServerChannelConfig setInitMaxStreams(com.sun.nio.sctp.SctpStandardSocketOptions.InitMaxStreams)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpServerChannelConfig io.netty.channel.sctp.SctpServerChannelConfig setWriteBufferHighWaterMark(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.SctpMessage SctpMessage(int, int, io.netty.buffer.ByteBuf) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.SctpChannelOption SCTP_NODELAY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.SctpServerChannelConfig io.netty.channel.sctp.SctpServerChannelConfig setWriteBufferHighWaterMark(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.sctp.SctpServerChannelConfig io.netty.channel.sctp.SctpServerChannelConfig setAutoRead(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.sctp.SctpServerChannelConfig io.netty.channel.sctp.SctpServerChannelConfig setAllocator(io.netty.buffer.ByteBufAllocator) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.sctp.SctpServerChannelConfig io.netty.channel.sctp.SctpServerChannelConfig setRecvByteBufAllocator(io.netty.channel.RecvByteBufAllocator)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpChannelConfig io.netty.channel.sctp.SctpChannelConfig setSendBufferSize(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.SctpChannelConfig io.netty.channel.sctp.SctpChannelConfig setConnectTimeoutMillis(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpServerChannelConfig io.netty.channel.sctp.SctpServerChannelConfig setMessageSizeEstimator(io.netty.channel.MessageSizeEstimator)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpServerChannelConfig boolean setOption(io.netty.channel.ChannelOption&lt;T&gt;, T) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.sctp.SctpServerChannelConfig io.netty.channel.sctp.SctpServerChannelConfig setMaxMessagesPerRead(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.sctp.SctpMessage io.netty.util.ReferenceCounted retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpServerChannelConfig io.netty.channel.ChannelConfig setAllocator(io.netty.buffer.ByteBufAllocator) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpChannelConfig io.netty.channel.sctp.SctpChannelConfig setReceiveBufferSize(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpChannelConfig io.netty.channel.sctp.SctpChannelConfig setAutoClose(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.SctpServerChannelConfig io.netty.channel.sctp.SctpServerChannelConfig setInitMaxStreams(com.sun.nio.sctp.SctpStandardSocketOptions.InitMaxStreams)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpChannelConfig io.netty.channel.sctp.SctpChannelConfig setAutoRead(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.SctpServerChannelConfig io.netty.channel.sctp.SctpServerChannelConfig setWriteSpinCount(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpChannelConfig io.netty.channel.ChannelConfig setWriteBufferHighWaterMark(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpServerChannelConfig io.netty.channel.sctp.SctpServerChannelConfig setRecvByteBufAllocator(io.netty.channel.RecvByteBufAllocator) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpChannelConfig io.netty.channel.ChannelConfig setWriteBufferLowWaterMark(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpChannelConfig io.netty.channel.ChannelConfig setRecvByteBufAllocator(io.netty.channel.RecvByteBufAllocator) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpChannelConfig io.netty.channel.ChannelConfig setWriteSpinCount(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpServerChannelConfig io.netty.channel.ChannelConfig setMessageSizeEstimator(io.netty.channel.MessageSizeEstimator) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpChannelConfig DefaultSctpChannelConfig(io.netty.channel.sctp.SctpChannel, com.sun.nio.sctp.SctpChannel) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.SctpChannelConfig io.netty.channel.sctp.SctpChannelConfig setMessageSizeEstimator(io.netty.channel.MessageSizeEstimator) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.sctp.SctpChannelConfig io.netty.channel.sctp.SctpChannelConfig setAllocator(io.netty.buffer.ByteBufAllocator)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpServerChannelConfig io.netty.channel.ChannelConfig setRecvByteBufAllocator(io.netty.channel.RecvByteBufAllocator)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpServerChannelConfig DefaultSctpServerChannelConfig(io.netty.channel.sctp.SctpServerChannel, com.sun.nio.sctp.SctpServerChannel) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.SctpMessage SctpMessage(com.sun.nio.sctp.MessageInfo, io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpServerChannelConfig io.netty.channel.sctp.SctpServerChannelConfig setAllocator(io.netty.buffer.ByteBufAllocator)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.SctpMessage io.netty.buffer.ByteBufHolder copy()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpChannelConfig io.netty.channel.sctp.SctpChannelConfig setInitMaxStreams(com.sun.nio.sctp.SctpStandardSocketOptions.InitMaxStreams)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.SctpServerChannelConfig io.netty.channel.sctp.SctpServerChannelConfig setConnectTimeoutMillis(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.sctp.SctpChannelOption SCTP_DISABLE_FRAGMENTS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpServerChannelConfig boolean setOption(io.netty.channel.ChannelOption&lt;T&gt;, T) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.sctp.SctpChannelOption SCTP_PRIMARY_ADDR'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.SctpChannelOption SCTP_SET_PEER_PRIMARY_ADDR'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.SctpChannelConfig io.netty.channel.sctp.SctpChannelConfig setAllocator(io.netty.buffer.ByteBufAllocator) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.sctp.SctpMessage io.netty.channel.sctp.SctpMessage retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpServerChannelConfig io.netty.channel.ChannelConfig setConnectTimeoutMillis(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpServerChannelConfig io.netty.channel.sctp.SctpServerChannelConfig setWriteSpinCount(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.SctpMessage io.netty.channel.sctp.SctpMessage retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpChannelConfig io.netty.channel.sctp.SctpChannelConfig setAllocator(io.netty.buffer.ByteBufAllocator)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpChannelConfig io.netty.channel.ChannelConfig setMaxMessagesPerRead(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.SctpMessage io.netty.channel.sctp.SctpMessage copy()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpServerChannelConfig DefaultSctpServerChannelConfig(io.netty.channel.sctp.SctpServerChannel, com.sun.nio.sctp.SctpServerChannel) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpChannelConfig io.netty.channel.sctp.SctpChannelConfig setWriteSpinCount(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.SctpChannelConfig io.netty.channel.sctp.SctpChannelConfig setReceiveBufferSize(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.sctp.SctpChannelConfig io.netty.channel.sctp.SctpChannelConfig setWriteSpinCount(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpChannelConfig io.netty.channel.sctp.SctpChannelConfig setRecvByteBufAllocator(io.netty.channel.RecvByteBufAllocator) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.SctpMessage io.netty.buffer.ByteBufHolder retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpChannelConfig io.netty.channel.sctp.SctpChannelConfig setMessageSizeEstimator(io.netty.channel.MessageSizeEstimator)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpServerChannelConfig io.netty.channel.sctp.SctpServerChannelConfig setWriteBufferLowWaterMark(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpServerChannelConfig io.netty.channel.sctp.SctpServerChannelConfig setReceiveBufferSize(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpChannelConfig io.netty.channel.ChannelConfig setMessageSizeEstimator(io.netty.channel.MessageSizeEstimator) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpServerChannelConfig io.netty.channel.ChannelConfig setAllocator(io.netty.buffer.ByteBufAllocator)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.SctpMessage io.netty.buffer.ByteBufHolder duplicate()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.SctpChannelConfig io.netty.channel.sctp.SctpChannelConfig setRecvByteBufAllocator(io.netty.channel.RecvByteBufAllocator) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.sctp.SctpChannelConfig io.netty.channel.sctp.SctpChannelConfig setSendBufferSize(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.sctp.SctpChannelConfig io.netty.channel.sctp.SctpChannelConfig setWriteBufferLowWaterMark(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpChannelConfig boolean setOption(io.netty.channel.ChannelOption&lt;T&gt;, T) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.sctp.SctpChannelConfig io.netty.channel.sctp.SctpChannelConfig setMaxMessagesPerRead(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpServerChannelConfig io.netty.channel.sctp.SctpServerChannelConfig setSendBufferSize(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.SctpServerChannelConfig io.netty.channel.sctp.SctpServerChannelConfig setAllocator(io.netty.buffer.ByteBufAllocator)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.sctp.SctpChannelOption SCTP_INIT_MAXSTREAMS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpServerChannelConfig T getOption(io.netty.channel.ChannelOption&lt;T&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpChannelConfig DefaultSctpChannelConfig(io.netty.channel.sctp.SctpChannel, com.sun.nio.sctp.SctpChannel) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.SctpChannelConfig io.netty.channel.sctp.SctpChannelConfig setAutoRead(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpChannelConfig io.netty.channel.sctp.SctpChannelConfig setRecvByteBufAllocator(io.netty.channel.RecvByteBufAllocator)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.SctpChannelConfig io.netty.channel.sctp.SctpChannelConfig setMessageSizeEstimator(io.netty.channel.MessageSizeEstimator)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.sctp.SctpServerChannelConfig io.netty.channel.sctp.SctpServerChannelConfig setAutoClose(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.sctp.SctpChannelConfig io.netty.channel.sctp.SctpChannelConfig setSctpNoDelay(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.sctp.SctpMessage SctpMessage(com.sun.nio.sctp.MessageInfo, io.netty.buffer.ByteBuf) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpServerChannelConfig io.netty.channel.ChannelConfig setWriteBufferLowWaterMark(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.SctpServerChannel io.netty.channel.sctp.SctpServerChannelConfig config()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpServerChannelConfig io.netty.channel.ChannelConfig setRecvByteBufAllocator(io.netty.channel.RecvByteBufAllocator) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.SctpServerChannelConfig io.netty.channel.sctp.SctpServerChannelConfig setReceiveBufferSize(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.sctp.SctpMessage io.netty.channel.sctp.SctpMessage duplicate()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpServerChannelConfig io.netty.channel.ChannelConfig setAutoRead(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpChannelConfig boolean setOption(io.netty.channel.ChannelOption&lt;T&gt;, T) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpServerChannelConfig io.netty.channel.ChannelConfig setWriteBufferHighWaterMark(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.sctp.DefaultSctpChannelConfig io.netty.channel.ChannelConfig setAutoRead(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

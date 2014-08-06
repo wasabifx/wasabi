@@ -1,0 +1,38 @@
+<root>
+    <item name='io.netty.handler.codec.string.StringEncoder void encode(io.netty.channel.ChannelHandlerContext, java.lang.Object, java.util.List) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.string.StringEncoder StringEncoder(java.nio.charset.Charset) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.string.StringDecoder void decode(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf, java.util.List&lt;java.lang.Object&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.string.StringEncoder void encode(io.netty.channel.ChannelHandlerContext, java.lang.Object, java.util.List) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.string.StringDecoder void decode(io.netty.channel.ChannelHandlerContext, io.netty.buffer.ByteBuf, java.util.List&lt;java.lang.Object&gt;) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.string.StringEncoder void encode(io.netty.channel.ChannelHandlerContext, java.lang.CharSequence, java.util.List&lt;java.lang.Object&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.string.StringEncoder void encode(io.netty.channel.ChannelHandlerContext, java.lang.Object, java.util.List) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.string.StringDecoder StringDecoder(java.nio.charset.Charset) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.string.StringDecoder void decode(io.netty.channel.ChannelHandlerContext, java.lang.Object, java.util.List) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.string.StringDecoder void decode(io.netty.channel.ChannelHandlerContext, java.lang.Object, java.util.List) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

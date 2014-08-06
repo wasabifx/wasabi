@@ -1,0 +1,818 @@
+<root>
+    <item name='io.netty.handler.codec.http.multipart.HttpPostRequestDecoder HttpPostRequestDecoder(io.netty.handler.codec.http.HttpRequest) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.FileUpload io.netty.handler.codec.http.multipart.FileUpload retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MemoryAttribute int compareTo(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.AbstractMemoryHttpData void setContent(io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskFileUpload io.netty.handler.codec.http.multipart.HttpData retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpData io.netty.handler.codec.http.multipart.HttpData retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskFileUpload io.netty.handler.codec.http.multipart.FileUpload retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MemoryFileUpload io.netty.handler.codec.http.multipart.InterfaceHttpData.HttpDataType getHttpDataType()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.AbstractDiskHttpData byte[] get()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MemoryAttribute io.netty.util.ReferenceCounted retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DefaultHttpDataFactory io.netty.handler.codec.http.multipart.FileUpload createFileUpload(io.netty.handler.codec.http.HttpRequest, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.nio.charset.Charset, long) 3'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.InterfaceHttpData.HttpDataType FileUpload'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpPostRequestDecoder io.netty.handler.codec.http.multipart.HttpPostRequestDecoder offer(io.netty.handler.codec.http.HttpContent)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MemoryAttribute int compareTo(io.netty.handler.codec.http.multipart.InterfaceHttpData) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpDataFactory io.netty.handler.codec.http.multipart.Attribute createAttribute(io.netty.handler.codec.http.HttpRequest, java.lang.String, java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MemoryAttribute io.netty.handler.codec.http.multipart.Attribute retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MemoryFileUpload io.netty.buffer.ByteBufHolder copy()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpData io.netty.handler.codec.http.multipart.HttpData duplicate()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.AbstractHttpData void setCharset(java.nio.charset.Charset) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpData boolean renameTo(java.io.File) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.AbstractMemoryHttpData void setContent(java.io.File) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DefaultHttpDataFactory io.netty.handler.codec.http.multipart.FileUpload createFileUpload(io.netty.handler.codec.http.HttpRequest, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.nio.charset.Charset, long) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskAttribute int compareTo(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.InterfaceHttpData.HttpDataType Attribute'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskFileUpload io.netty.handler.codec.http.multipart.HttpData retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.AbstractDiskHttpData java.lang.String getPostfix()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MixedFileUpload void addContent(io.netty.buffer.ByteBuf, boolean) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MemoryAttribute int compareTo(io.netty.handler.codec.http.multipart.Attribute) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskFileUpload int compareTo(io.netty.handler.codec.http.multipart.FileUpload) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MemoryFileUpload io.netty.buffer.ByteBufHolder duplicate()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskAttribute io.netty.buffer.ByteBufHolder retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskAttribute io.netty.handler.codec.http.multipart.Attribute retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpPostRequestEncoder.EncoderMode RFC3986'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskAttribute DiskAttribute(java.lang.String, java.lang.String) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskAttribute void setValue(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskFileUpload io.netty.buffer.ByteBufHolder copy()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MemoryFileUpload int compareTo(io.netty.handler.codec.http.multipart.InterfaceHttpData) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskFileUpload io.netty.handler.codec.http.multipart.HttpData duplicate()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.AbstractDiskHttpData void setContent(java.io.InputStream) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MemoryFileUpload io.netty.buffer.ByteBufHolder retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MixedFileUpload io.netty.handler.codec.http.multipart.HttpData retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MixedFileUpload io.netty.handler.codec.http.multipart.FileUpload retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.AbstractHttpData name'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MemoryAttribute io.netty.util.ReferenceCounted retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskFileUpload java.lang.String getPostfix()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.AbstractDiskHttpData boolean renameTo(java.io.File) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskFileUpload java.lang.String getPrefix()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MemoryFileUpload io.netty.handler.codec.http.multipart.FileUpload retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskAttribute int compareTo(io.netty.handler.codec.http.multipart.Attribute) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpData java.lang.String getString(java.nio.charset.Charset)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpData void setContent(io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MemoryAttribute void addContent(io.netty.buffer.ByteBuf, boolean) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MixedAttribute void setValue(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MixedAttribute io.netty.util.ReferenceCounted retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MixedFileUpload void setCharset(java.nio.charset.Charset) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MixedFileUpload MixedFileUpload(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.nio.charset.Charset, long, long) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MemoryFileUpload io.netty.buffer.ByteBufHolder retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskFileUpload io.netty.handler.codec.http.multipart.FileUpload retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.AbstractHttpData io.netty.util.ReferenceCounted retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpPostRequestDecoder java.util.List&lt;io.netty.handler.codec.http.multipart.InterfaceHttpData&gt; getBodyHttpDatas()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.Attribute io.netty.handler.codec.http.multipart.Attribute retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MixedAttribute void setCharset(java.nio.charset.Charset) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskAttribute io.netty.handler.codec.http.multipart.HttpData duplicate()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskAttribute io.netty.handler.codec.http.multipart.HttpData copy()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MixedAttribute boolean renameTo(java.io.File) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskAttribute int compareTo(io.netty.handler.codec.http.multipart.InterfaceHttpData) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MixedFileUpload void setFilename(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MemoryAttribute io.netty.handler.codec.http.multipart.Attribute retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MemoryFileUpload io.netty.handler.codec.http.multipart.HttpData duplicate()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.InterfaceHttpData.HttpDataType InternalAttribute'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskAttribute io.netty.buffer.ByteBufHolder copy()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpDataFactory io.netty.handler.codec.http.multipart.Attribute createAttribute(io.netty.handler.codec.http.HttpRequest, java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MixedFileUpload void setContent(java.io.InputStream) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskFileUpload io.netty.util.ReferenceCounted retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.AbstractHttpData java.lang.String getName()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpPostRequestEncoder java.util.List&lt;io.netty.handler.codec.http.multipart.InterfaceHttpData&gt; getBodyListAttributes()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskAttribute io.netty.handler.codec.http.multipart.Attribute retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DefaultHttpDataFactory io.netty.handler.codec.http.multipart.Attribute createAttribute(io.netty.handler.codec.http.HttpRequest, java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MixedFileUpload io.netty.buffer.ByteBufHolder retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpPostRequestEncoder HttpPostRequestEncoder(io.netty.handler.codec.http.HttpRequest, boolean) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MemoryFileUpload io.netty.handler.codec.http.multipart.HttpData retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DefaultHttpDataFactory io.netty.handler.codec.http.multipart.Attribute createAttribute(io.netty.handler.codec.http.HttpRequest, java.lang.String, java.lang.String) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.AbstractHttpData io.netty.handler.codec.http.multipart.HttpData retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.FileUpload void setContentType(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskAttribute io.netty.buffer.ByteBufHolder duplicate()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MemoryFileUpload io.netty.handler.codec.http.multipart.HttpData copy()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MixedAttribute io.netty.buffer.ByteBufHolder retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.AbstractDiskHttpData void setContent(java.io.File) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MemoryFileUpload MemoryFileUpload(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.nio.charset.Charset, long) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.FileUpload io.netty.handler.codec.http.multipart.FileUpload duplicate()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpPostRequestEncoder void setBodyHttpDatas(java.util.List&lt;io.netty.handler.codec.http.multipart.InterfaceHttpData&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MixedAttribute void setContent(java.io.InputStream) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MixedAttribute io.netty.handler.codec.http.multipart.Attribute retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.FileUpload void setFilename(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MemoryFileUpload io.netty.util.ReferenceCounted retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpData io.netty.handler.codec.http.multipart.HttpData retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpPostRequestDecoder HttpPostRequestDecoder(io.netty.handler.codec.http.multipart.HttpDataFactory, io.netty.handler.codec.http.HttpRequest) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskFileUpload int compareTo(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.Attribute io.netty.handler.codec.http.multipart.Attribute retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskAttribute io.netty.handler.codec.http.multipart.Attribute copy()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpPostRequestDecoder HttpPostRequestDecoder(io.netty.handler.codec.http.multipart.HttpDataFactory, io.netty.handler.codec.http.HttpRequest, java.nio.charset.Charset) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskFileUpload io.netty.util.ReferenceCounted retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskFileUpload io.netty.handler.codec.http.multipart.FileUpload duplicate()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskAttribute java.lang.String getPostfix()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.Attribute io.netty.handler.codec.http.multipart.Attribute duplicate()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MemoryAttribute io.netty.buffer.ByteBufHolder retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MemoryAttribute io.netty.buffer.ByteBufHolder duplicate()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MixedFileUpload MixedFileUpload(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.nio.charset.Charset, long, long) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpPostRequestDecoder HttpPostRequestDecoder(io.netty.handler.codec.http.multipart.HttpDataFactory, io.netty.handler.codec.http.HttpRequest) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpPostRequestEncoder void addBodyFileUpload(java.lang.String, java.io.File, java.lang.String, boolean) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpPostRequestEncoder HttpPostRequestEncoder(io.netty.handler.codec.http.multipart.HttpDataFactory, io.netty.handler.codec.http.HttpRequest, boolean, java.nio.charset.Charset, io.netty.handler.codec.http.multipart.HttpPostRequestEncoder.EncoderMode) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MemoryAttribute io.netty.buffer.ByteBufHolder copy()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpPostBodyUtil.TransferEncodingMechanism BINARY'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpPostRequestDecoder HttpPostRequestDecoder(io.netty.handler.codec.http.multipart.HttpDataFactory, io.netty.handler.codec.http.HttpRequest, java.nio.charset.Charset) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.Attribute void setValue(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskAttribute io.netty.handler.codec.http.multipart.HttpData retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskAttribute io.netty.util.ReferenceCounted retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskAttribute java.lang.String getPrefix()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskAttribute io.netty.handler.codec.http.multipart.HttpData retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DefaultHttpDataFactory io.netty.handler.codec.http.multipart.Attribute createAttribute(io.netty.handler.codec.http.HttpRequest, java.lang.String, java.lang.String)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MemoryFileUpload void setContentType(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MixedAttribute void addContent(io.netty.buffer.ByteBuf, boolean) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskFileUpload int compareTo(io.netty.handler.codec.http.multipart.InterfaceHttpData) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.Attribute java.lang.String getValue()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskFileUpload io.netty.handler.codec.http.multipart.InterfaceHttpData.HttpDataType getHttpDataType()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpPostRequestEncoder HttpPostRequestEncoder(io.netty.handler.codec.http.multipart.HttpDataFactory, io.netty.handler.codec.http.HttpRequest, boolean, java.nio.charset.Charset, io.netty.handler.codec.http.multipart.HttpPostRequestEncoder.EncoderMode) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpData java.lang.String getString()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DefaultHttpDataFactory io.netty.handler.codec.http.multipart.FileUpload createFileUpload(io.netty.handler.codec.http.HttpRequest, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.nio.charset.Charset, long)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.AbstractHttpData io.netty.buffer.ByteBufHolder retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.AbstractDiskHttpData java.lang.String getPrefix()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.AbstractHttpData io.netty.util.ReferenceCounted retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MemoryFileUpload io.netty.handler.codec.http.multipart.FileUpload copy()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpPostRequestEncoder void addBodyHttpData(io.netty.handler.codec.http.multipart.InterfaceHttpData) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MemoryFileUpload MemoryFileUpload(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.nio.charset.Charset, long) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskAttribute void addContent(io.netty.buffer.ByteBuf, boolean) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpPostRequestEncoder io.netty.handler.codec.http.HttpRequest finalizeRequest()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MixedAttribute io.netty.util.ReferenceCounted retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MemoryAttribute MemoryAttribute(java.lang.String, java.lang.String) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MemoryAttribute io.netty.buffer.ByteBufHolder retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpPostRequestEncoder void addBodyFileUploads(java.lang.String, java.io.File[], java.lang.String[], boolean[]) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MemoryFileUpload io.netty.handler.codec.http.multipart.FileUpload retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskFileUpload void setContentType(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskFileUpload io.netty.buffer.ByteBufHolder retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskAttribute io.netty.util.ReferenceCounted retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MixedFileUpload io.netty.buffer.ByteBufHolder retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpPostRequestDecoder io.netty.handler.codec.http.multipart.HttpPostRequestDecoder offer(io.netty.handler.codec.http.HttpContent) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskAttribute io.netty.handler.codec.http.multipart.Attribute duplicate()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.AbstractMemoryHttpData void addContent(io.netty.buffer.ByteBuf, boolean) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskAttribute java.lang.String getValue()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpPostRequestDecoder HttpPostRequestDecoder(io.netty.handler.codec.http.multipart.HttpDataFactory, io.netty.handler.codec.http.HttpRequest, java.nio.charset.Charset) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MixedAttribute io.netty.handler.codec.http.multipart.HttpData retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpPostRequestEncoder HttpPostRequestEncoder(io.netty.handler.codec.http.multipart.HttpDataFactory, io.netty.handler.codec.http.HttpRequest, boolean, java.nio.charset.Charset, io.netty.handler.codec.http.multipart.HttpPostRequestEncoder.EncoderMode) 3'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskFileUpload DiskFileUpload(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.nio.charset.Charset, long) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MemoryFileUpload io.netty.util.ReferenceCounted retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MemoryAttribute io.netty.handler.codec.http.multipart.Attribute copy()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpData void setCharset(java.nio.charset.Charset) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpDataFactory io.netty.handler.codec.http.multipart.FileUpload createFileUpload(io.netty.handler.codec.http.HttpRequest, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.nio.charset.Charset, long) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MixedFileUpload void setContent(java.io.File) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MixedFileUpload io.netty.handler.codec.http.multipart.FileUpload retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskFileUpload DiskFileUpload(java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.nio.charset.Charset, long) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpPostRequestEncoder void addBodyFileUpload(java.lang.String, java.io.File, java.lang.String, boolean) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MixedFileUpload io.netty.handler.codec.http.multipart.HttpData retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpData void addContent(io.netty.buffer.ByteBuf, boolean) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MixedAttribute void setContent(io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.AbstractMemoryHttpData void setContent(java.io.InputStream) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MemoryFileUpload io.netty.handler.codec.http.multipart.FileUpload duplicate()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MixedFileUpload void setContentType(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskAttribute io.netty.handler.codec.http.multipart.InterfaceHttpData.HttpDataType getHttpDataType()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MemoryFileUpload int compareTo(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskFileUpload io.netty.buffer.ByteBufHolder duplicate()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpDataFactory io.netty.handler.codec.http.multipart.FileUpload createFileUpload(io.netty.handler.codec.http.HttpRequest, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.nio.charset.Charset, long) 3'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskFileUpload io.netty.handler.codec.http.multipart.HttpData copy()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MemoryAttribute io.netty.handler.codec.http.multipart.Attribute duplicate()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MemoryAttribute void setValue(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MixedFileUpload void setContent(io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.InterfaceHttpData io.netty.handler.codec.http.multipart.InterfaceHttpData.HttpDataType getHttpDataType()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MemoryFileUpload void setFilename(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpDataFactory io.netty.handler.codec.http.multipart.FileUpload createFileUpload(io.netty.handler.codec.http.HttpRequest, java.lang.String, java.lang.String, java.lang.String, java.lang.String, java.nio.charset.Charset, long)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskFileUpload io.netty.buffer.ByteBufHolder retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskFileUpload postfix'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.AbstractHttpData io.netty.handler.codec.http.multipart.HttpData retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.AbstractDiskHttpData java.lang.String getString(java.nio.charset.Charset)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.Attribute io.netty.handler.codec.http.multipart.Attribute copy()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.InterfaceHttpData java.lang.String getName()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskAttribute prefix'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.AbstractDiskHttpData void setContent(io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MemoryAttribute io.netty.handler.codec.http.multipart.HttpData retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpDataFactory io.netty.handler.codec.http.multipart.Attribute createAttribute(io.netty.handler.codec.http.HttpRequest, java.lang.String, java.lang.String) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MemoryAttribute io.netty.handler.codec.http.multipart.HttpData copy()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpData io.netty.handler.codec.http.multipart.HttpData copy()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MixedFileUpload io.netty.util.ReferenceCounted retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.AbstractHttpData io.netty.buffer.ByteBufHolder retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.AbstractDiskHttpData void addContent(io.netty.buffer.ByteBuf, boolean) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskFileUpload prefix'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MemoryAttribute io.netty.handler.codec.http.multipart.InterfaceHttpData.HttpDataType getHttpDataType()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MemoryFileUpload int compareTo(io.netty.handler.codec.http.multipart.FileUpload) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.AbstractMemoryHttpData boolean renameTo(java.io.File) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.FileUpload io.netty.handler.codec.http.multipart.FileUpload retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpData void setContent(java.io.InputStream) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskAttribute io.netty.buffer.ByteBufHolder retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpPostRequestEncoder HttpPostRequestEncoder(io.netty.handler.codec.http.multipart.HttpDataFactory, io.netty.handler.codec.http.HttpRequest, boolean) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MixedAttribute io.netty.handler.codec.http.multipart.HttpData retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.FileUpload io.netty.handler.codec.http.multipart.FileUpload copy()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpData byte[] get()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MemoryFileUpload io.netty.handler.codec.http.multipart.HttpData retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MemoryAttribute io.netty.handler.codec.http.multipart.HttpData retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpPostRequestEncoder void addBodyAttribute(java.lang.String, java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MixedAttribute io.netty.handler.codec.http.multipart.Attribute retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpPostBodyUtil.TransferEncodingMechanism BIT7'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpPostRequestEncoder void addBodyFileUploads(java.lang.String, java.io.File[], java.lang.String[], boolean[]) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MixedAttribute MixedAttribute(java.lang.String, java.lang.String, long) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpPostRequestEncoder HttpPostRequestEncoder(io.netty.handler.codec.http.multipart.HttpDataFactory, io.netty.handler.codec.http.HttpRequest, boolean) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MemoryAttribute io.netty.handler.codec.http.multipart.HttpData duplicate()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskFileUpload io.netty.handler.codec.http.multipart.FileUpload copy()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MixedAttribute void setContent(java.io.File) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MixedFileUpload io.netty.util.ReferenceCounted retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpPostRequestEncoder.EncoderMode RFC1738'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskFileUpload void setFilename(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.AbstractDiskHttpData java.lang.String getString()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpPostBodyUtil.TransferEncodingMechanism BIT8'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MixedAttribute io.netty.buffer.ByteBufHolder retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.DiskAttribute postfix'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.HttpData void setContent(java.io.File) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.handler.codec.http.multipart.MixedFileUpload boolean renameTo(java.io.File) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+</root>

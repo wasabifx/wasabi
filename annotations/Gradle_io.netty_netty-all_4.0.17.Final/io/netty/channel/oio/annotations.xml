@@ -1,0 +1,53 @@
+<root>
+    <item name='io.netty.channel.oio.AbstractOioChannel io.netty.channel.AbstractChannel.AbstractUnsafe newUnsafe()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.oio.OioByteStreamChannel void doWriteFileRegion(io.netty.channel.FileRegion) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.oio.OioEventLoopGroup OioEventLoopGroup(int, java.util.concurrent.ThreadFactory) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.oio.AbstractOioByteChannel io.netty.channel.ChannelMetadata metadata()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.oio.OioByteStreamChannel void doWriteBytes(io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.oio.OioByteStreamChannel void activate(java.io.InputStream, java.io.OutputStream) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.oio.AbstractOioByteChannel int doReadBytes(io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.oio.AbstractOioByteChannel void doWrite(io.netty.channel.ChannelOutboundBuffer) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.oio.OioByteStreamChannel int doReadBytes(io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.oio.AbstractOioByteChannel void doWriteBytes(io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.oio.OioByteStreamChannel void activate(java.io.InputStream, java.io.OutputStream) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.oio.AbstractOioChannel void doConnect(java.net.SocketAddress, java.net.SocketAddress) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.oio.AbstractOioByteChannel void doWriteFileRegion(io.netty.channel.FileRegion) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+</root>

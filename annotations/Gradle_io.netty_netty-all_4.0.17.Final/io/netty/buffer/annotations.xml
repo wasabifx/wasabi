@@ -1,0 +1,2795 @@
+<root>
+    <item name='io.netty.buffer.AbstractDerivedByteBuf io.netty.buffer.ByteBuf retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.ByteBuf setBytes(int, io.netty.buffer.ByteBuf) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf setLong(int, long)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledDirectByteBuf io.netty.buffer.ByteBuf getBytes(int, io.netty.buffer.ByteBuf, int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf getBytes(int, java.nio.ByteBuffer)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf skipBytes(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf getBytes(int, io.netty.buffer.ByteBuf, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.CompositeByteBuf setBytes(int, java.nio.ByteBuffer)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf int forEachByte(io.netty.buffer.ByteBufProcessor) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf writeBytes(io.netty.buffer.ByteBuf, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf ensureWritable(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf setZero(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ReadOnlyByteBuf io.netty.buffer.ByteBuf getBytes(int, byte[], int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledUnsafeDirectByteBuf io.netty.buffer.ByteBuf setBytes(int, byte[], int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SlicedByteBuf io.netty.buffer.ByteBuf setBytes(int, java.nio.ByteBuffer) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.ByteBuf internalComponent(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.ByteBuf getBytes(int, java.io.OutputStream, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBufAllocator DEFAULT'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledUnsafeDirectByteBuf io.netty.buffer.ByteBuf setBytes(int, io.netty.buffer.ByteBuf, int, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf clear()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledDirectByteBuf io.netty.buffer.ByteBuf readBytes(java.nio.ByteBuffer) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.Unpooled io.netty.buffer.ByteBuf wrappedBuffer(java.nio.ByteBuffer) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf readBytes(java.io.OutputStream, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf readBytes(io.netty.buffer.ByteBuf)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf getBytes(int, byte[]) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf setBytes(int, java.nio.ByteBuffer)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf setBytes(int, byte[], int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ReadOnlyByteBuf io.netty.buffer.ByteBuf getBytes(int, java.nio.ByteBuffer)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf writeBytes(java.nio.ByteBuffer)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf copy()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf slice()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf writerIndex(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf readBytes(java.nio.ByteBuffer)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.CompositeByteBuf setBytes(int, byte[], int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf ensureWritable(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBufUtil java.lang.String hexDump(io.netty.buffer.ByteBuf, int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.ByteBuf getBytes(int, byte[]) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf order(java.nio.ByteOrder) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBufAllocator alloc()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.CompositeByteBuf removeComponent(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf writeDouble(double)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ByteBuf byte[] array()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.UnpooledDirectByteBuf io.netty.buffer.ByteBuf getBytes(int, java.nio.ByteBuffer) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf int forEachByteDesc(int, int, io.netty.buffer.ByteBufProcessor) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf readBytes(java.nio.ByteBuffer) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.UnpooledUnsafeDirectByteBuf io.netty.buffer.ByteBuf getBytes(int, java.io.OutputStream, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.DuplicatedByteBuf int getBytes(int, java.nio.channels.GatheringByteChannel, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ByteBufInputStream ByteBufInputStream(io.netty.buffer.ByteBuf, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.ByteBufAllocator alloc()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf setInt(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ByteBufAllocator io.netty.buffer.CompositeByteBuf compositeDirectBuffer()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.DuplicatedByteBuf io.netty.buffer.ByteBuf getBytes(int, byte[], int, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf int forEachByte(int, int, io.netty.buffer.ByteBufProcessor) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.Unpooled io.netty.buffer.ByteBuf wrappedBuffer(int, byte[]...) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledUnsafeDirectByteBuf UnpooledUnsafeDirectByteBuf(io.netty.buffer.ByteBufAllocator, java.nio.ByteBuffer, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.Unpooled io.netty.buffer.ByteBuf unreleasableBuffer(io.netty.buffer.ByteBuf)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.ByteBuf setBytes(int, java.nio.ByteBuffer) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.DuplicatedByteBuf io.netty.buffer.ByteBuf setShort(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf writeBytes(io.netty.buffer.ByteBuf, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ByteBufUtil io.netty.buffer.ByteBuf encodeString(io.netty.buffer.ByteBufAllocator, java.nio.CharBuffer, java.nio.charset.Charset) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf int forEachByte(int, int, io.netty.buffer.ByteBufProcessor) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.DuplicatedByteBuf io.netty.buffer.ByteBuf getBytes(int, java.nio.ByteBuffer) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.UnpooledDirectByteBuf UnpooledDirectByteBuf(io.netty.buffer.ByteBufAllocator, java.nio.ByteBuffer, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf setBytes(int, byte[]) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf getBytes(int, java.io.OutputStream, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.CompositeByteBuf addComponents(int, java.lang.Iterable&lt;io.netty.buffer.ByteBuf&gt;)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledUnsafeDirectByteBuf io.netty.buffer.ByteBuf setBytes(int, java.nio.ByteBuffer)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledDirectByteBuf io.netty.buffer.ByteBuf setBytes(int, io.netty.buffer.ByteBuf, int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf setBytes(int, io.netty.buffer.ByteBuf, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledHeapByteBuf io.netty.buffer.ByteBuf getBytes(int, byte[], int, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf int getBytes(int, java.nio.channels.GatheringByteChannel, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf readBytes(java.io.OutputStream, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf getBytes(int, byte[])'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf int forEachByte(io.netty.buffer.ByteBufProcessor) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.CompositeByteBuf discardReadBytes()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf writeBytes(io.netty.buffer.ByteBuf, int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.ByteBuf retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf resetReaderIndex()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf getBytes(int, io.netty.buffer.ByteBuf) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf writeInt(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf getBytes(int, java.io.OutputStream, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf readBytes(java.nio.ByteBuffer)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.CompositeByteBuf discardSomeReadBytes()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf readBytes(byte[]) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ReadOnlyByteBuf io.netty.buffer.ByteBuf getBytes(int, io.netty.buffer.ByteBuf, int, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf getBytes(int, byte[])'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf setBytes(int, io.netty.buffer.ByteBuf)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.UnpooledDirectByteBuf UnpooledDirectByteBuf(io.netty.buffer.ByteBufAllocator, java.nio.ByteBuffer, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBufAllocator io.netty.buffer.CompositeByteBuf compositeBuffer(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBufUtil io.netty.buffer.ByteBuf encodeString(io.netty.buffer.ByteBufAllocator, java.nio.CharBuffer, java.nio.charset.Charset) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf setBytes(int, byte[]) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf readBytes(java.nio.ByteBuffer) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf readBytes(io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf order(java.nio.ByteOrder) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledHeapByteBuf int getBytes(int, java.nio.channels.GatheringByteChannel, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf setBytes(int, byte[], int, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.UnpooledDirectByteBuf io.netty.buffer.ByteBuf setInt(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf getBytes(int, java.nio.ByteBuffer)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBufUtil io.netty.buffer.ByteBuf encodeString(io.netty.buffer.ByteBufAllocator, java.nio.CharBuffer, java.nio.charset.Charset)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledDirectByteBuf int getBytes(int, java.nio.channels.GatheringByteChannel, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf setBytes(int, io.netty.buffer.ByteBuf, int, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ByteBufInputStream void readFully(byte[]) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.CompositeByteBuf addComponents(io.netty.buffer.ByteBuf...)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.CompositeByteBuf getBytes(int, io.netty.buffer.ByteBuf, int, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf getBytes(int, io.netty.buffer.ByteBuf)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf getBytes(int, byte[], int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.CompositeByteBuf setBytes(int, java.nio.ByteBuffer) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf setDouble(int, double)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.Unpooled io.netty.buffer.ByteBuf wrappedBuffer(int, io.netty.buffer.ByteBuf...) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf readBytes(byte[])'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf readBytes(io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledByteBufAllocator io.netty.buffer.ByteBuf newHeapBuffer(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.util.ReferenceCounted retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledDirectByteBuf io.netty.buffer.ByteBuf readBytes(byte[], int, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.Unpooled io.netty.buffer.ByteBuf copyMedium(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf setBytes(int, io.netty.buffer.ByteBuf, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.ByteBuf getBytes(int, byte[], int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf writeBytes(io.netty.buffer.ByteBuf, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.ByteBuf getBytes(int, io.netty.buffer.ByteBuf, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf setBytes(int, byte[]) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf markWriterIndex()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBufUtil io.netty.buffer.ByteBuf encodeString(io.netty.buffer.ByteBufAllocator, java.nio.CharBuffer, java.nio.charset.Charset) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf writeBytes(io.netty.buffer.ByteBuf, int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.AbstractDerivedByteBuf io.netty.util.ReferenceCounted retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf writeBytes(byte[])'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf setBytes(int, io.netty.buffer.ByteBuf)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf writeBytes(io.netty.buffer.ByteBuf)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf getBytes(int, byte[], int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.UnpooledHeapByteBuf io.netty.buffer.ByteBuf copy(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf setChar(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.UnpooledDirectByteBuf void freeDirect(java.nio.ByteBuffer) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledHeapByteBuf io.netty.buffer.ByteBuf getBytes(int, java.io.OutputStream, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf clear()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledHeapByteBuf io.netty.buffer.ByteBuf getBytes(int, java.io.OutputStream, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf java.nio.ByteBuffer[] nioBuffers(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf writeBytes(byte[], int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.DuplicatedByteBuf int forEachByte(int, int, io.netty.buffer.ByteBufProcessor) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf int forEachByte(int, int, io.netty.buffer.ByteBufProcessor) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.ByteBuf writeBytes(io.netty.buffer.ByteBuf, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf writeLong(long)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.Unpooled io.netty.buffer.ByteBuf copiedBuffer(io.netty.buffer.ByteBuf...) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf writeBytes(byte[])'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledDirectByteBuf UnpooledDirectByteBuf(io.netty.buffer.ByteBufAllocator, int, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SlicedByteBuf int forEachByte(int, int, io.netty.buffer.ByteBufProcessor) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ReadOnlyByteBuf io.netty.buffer.ByteBuf getBytes(int, byte[], int, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf markReaderIndex()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf setBytes(int, io.netty.buffer.ByteBuf, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBufAllocator io.netty.buffer.CompositeByteBuf compositeHeapBuffer()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBufAllocator io.netty.buffer.CompositeByteBuf compositeHeapBuffer(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf setBoolean(int, boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf duplicate()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf order(java.nio.ByteOrder) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ReadOnlyByteBuf int setBytes(int, java.io.InputStream, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf setBytes(int, io.netty.buffer.ByteBuf) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.SlicedByteBuf io.netty.buffer.ByteBuf setBytes(int, io.netty.buffer.ByteBuf, int, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf writeBytes(byte[])'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.ByteBuf getBytes(int, io.netty.buffer.ByteBuf, int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf setZero(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBufAllocator io.netty.buffer.CompositeByteBuf compositeDirectBuffer(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf setBytes(int, java.nio.ByteBuffer)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf writeChar(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledDirectByteBuf io.netty.buffer.ByteBuf readBytes(java.nio.ByteBuffer)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf byte[] array()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.DefaultByteBufHolder io.netty.buffer.ByteBufHolder retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf skipBytes(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf writeDouble(double)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf writeBytes(io.netty.buffer.ByteBuf, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf int forEachByteDesc(io.netty.buffer.ByteBufProcessor) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.ByteBuf discardSomeReadBytes()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf setShort(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ByteBufProcessor FIND_CR'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.CompositeByteBuf addComponents(int, io.netty.buffer.ByteBuf...)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf getBytes(int, io.netty.buffer.ByteBuf) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf resetReaderIndex()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf writeBytes(io.netty.buffer.ByteBuf, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.util.ReferenceCounted retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf writeShort(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf ensureWritable(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.DefaultByteBufHolder io.netty.util.ReferenceCounted retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf getBytes(int, io.netty.buffer.ByteBuf, int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf EmptyByteBuf(io.netty.buffer.ByteBufAllocator) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledDirectByteBuf int readBytes(java.nio.channels.GatheringByteChannel, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.ByteBuf internalComponentAtOffset(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf readBytes(byte[])'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf writeChar(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ByteBuf int forEachByteDesc(io.netty.buffer.ByteBufProcessor) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf getBytes(int, java.nio.ByteBuffer) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.Unpooled io.netty.buffer.ByteBuf wrappedBuffer(io.netty.buffer.ByteBuf...) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf readBytes(java.io.OutputStream, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf setShort(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf readBytes(byte[], int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf readBytes(byte[], int, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf markReaderIndex()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.CompositeByteBuf getBytes(int, java.io.OutputStream, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf skipBytes(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBufAllocator io.netty.buffer.CompositeByteBuf compositeBuffer()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ByteBufProcessor FIND_LINEAR_WHITESPACE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledHeapByteBuf UnpooledHeapByteBuf(io.netty.buffer.ByteBufAllocator, byte[], int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf readBytes(byte[])'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.util.ReferenceCounted retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.DefaultByteBufHolder DefaultByteBufHolder(io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledUnsafeDirectByteBuf io.netty.buffer.ByteBuf getBytes(int, byte[], int, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf java.nio.ByteBuffer[] nioBuffers()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf readBytes(java.nio.ByteBuffer)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledDirectByteBuf io.netty.buffer.ByteBuf getBytes(int, byte[], int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.Unpooled io.netty.buffer.ByteBuf copiedBuffer(char[], int, int, java.nio.charset.Charset) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.CompositeByteBuf retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledHeapByteBuf io.netty.buffer.ByteBuf setBytes(int, io.netty.buffer.ByteBuf, int, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledDirectByteBuf io.netty.buffer.ByteBuf setByte(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf setInt(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf setMedium(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.UnpooledUnsafeDirectByteBuf io.netty.buffer.ByteBuf getBytes(int, java.io.OutputStream, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ReadOnlyByteBuf io.netty.buffer.ByteBuf getBytes(int, java.io.OutputStream, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf writeBytes(byte[]) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf setChar(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.ByteBuf setBytes(int, io.netty.buffer.ByteBuf, int, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf markReaderIndex()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.Unpooled io.netty.buffer.ByteBuf copyShort(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf writeZero(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledUnsafeDirectByteBuf int setBytes(int, java.io.InputStream, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf slice(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf getBytes(int, byte[]) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf setBytes(int, byte[])'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf writeBytes(byte[]) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.UnpooledHeapByteBuf UnpooledHeapByteBuf(io.netty.buffer.ByteBufAllocator, byte[], int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.CompositeByteBuf addComponents(int, java.lang.Iterable&lt;io.netty.buffer.ByteBuf&gt;) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.CompositeByteBuf removeComponents(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf int forEachByte(io.netty.buffer.ByteBufProcessor) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf writeChar(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf int compareTo(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledDirectByteBuf io.netty.buffer.ByteBuf readBytes(java.io.OutputStream, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf int forEachByteDesc(io.netty.buffer.ByteBufProcessor) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf int compareTo(io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf setBytes(int, byte[])'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf setBytes(int, java.nio.ByteBuffer) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf resetReaderIndex()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf readBytes(io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf java.nio.ByteBuffer[] nioBuffers(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf getBytes(int, io.netty.buffer.ByteBuf, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.UnpooledDirectByteBuf io.netty.buffer.ByteBufAllocator alloc()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBufProcessor FIND_NON_LF'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledHeapByteBuf io.netty.buffer.ByteBuf getBytes(int, java.nio.ByteBuffer)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SlicedByteBuf io.netty.buffer.ByteBuf getBytes(int, java.nio.ByteBuffer) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ReadOnlyByteBuf ReadOnlyByteBuf(io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBufUtil java.lang.String hexDump(io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledUnsafeDirectByteBuf io.netty.buffer.ByteBuf getBytes(int, java.nio.ByteBuffer) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf discardSomeReadBytes()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.util.ReferenceCounted retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf readBytes(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf discardReadBytes()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SlicedByteBuf io.netty.buffer.ByteBuf getBytes(int, byte[], int, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf copy()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBufUtil io.netty.buffer.ByteBuf readBytes(io.netty.buffer.ByteBufAllocator, io.netty.buffer.ByteBuf, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf slice(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledDirectByteBuf io.netty.buffer.ByteBuf setMedium(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledHeapByteBuf io.netty.buffer.ByteBuf setBytes(int, java.nio.ByteBuffer) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf readBytes(io.netty.buffer.ByteBuf, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf readBytes(io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.ByteBuf readBytes(io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.SlicedByteBuf io.netty.buffer.ByteBuf setBytes(int, java.nio.ByteBuffer)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.PooledByteBufAllocator DEFAULT'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf ensureWritable(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.ByteBuf retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ReadOnlyByteBuf io.netty.buffer.ByteBuf setBytes(int, java.nio.ByteBuffer) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf writeBytes(java.nio.ByteBuffer) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf resetWriterIndex()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf readSlice(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledDirectByteBuf java.nio.ByteBuffer[] nioBuffers(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.Unpooled io.netty.buffer.ByteBuf wrappedBuffer(byte[]) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledByteBufAllocator DEFAULT'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.ByteBuf capacity(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledHeapByteBuf io.netty.buffer.ByteBuf setLong(int, long)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf getBytes(int, byte[], int, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ByteBufUtil io.netty.buffer.ByteBuf readBytes(io.netty.buffer.ByteBufAllocator, io.netty.buffer.ByteBuf, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.DefaultByteBufHolder io.netty.buffer.ByteBufHolder retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf setBytes(int, byte[])'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ByteBufOutputStream io.netty.buffer.ByteBuf buffer()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.DefaultByteBufHolder io.netty.buffer.ByteBufHolder copy()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf getBytes(int, java.nio.ByteBuffer)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBufUtil java.lang.String hexDump(io.netty.buffer.ByteBuf)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.CompositeByteBuf getBytes(int, java.nio.ByteBuffer) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf setBytes(int, io.netty.buffer.ByteBuf, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf setInt(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf writeBytes(byte[], int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf setFloat(int, float)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf readBytes(io.netty.buffer.ByteBuf, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledHeapByteBuf io.netty.buffer.ByteBuf setBytes(int, java.nio.ByteBuffer)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf writeBytes(byte[]) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf readBytes(io.netty.buffer.ByteBuf, int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.CompositeByteBuf addComponent(io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf int compareTo(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf getBytes(int, java.io.OutputStream, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf readerIndex(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf discardReadBytes()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf int forEachByteDesc(int, int, io.netty.buffer.ByteBufProcessor) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.ByteBuf writeBytes(java.nio.ByteBuffer) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf setBytes(int, io.netty.buffer.ByteBuf, int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledDirectByteBuf io.netty.buffer.ByteBuf getBytes(int, byte[], int, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf writerIndex(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.DuplicatedByteBuf io.netty.buffer.ByteBuf setBytes(int, java.nio.ByteBuffer) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.UnpooledUnsafeDirectByteBuf UnpooledUnsafeDirectByteBuf(io.netty.buffer.ByteBufAllocator, java.nio.ByteBuffer, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.DuplicatedByteBuf int forEachByteDesc(int, int, io.netty.buffer.ByteBufProcessor) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.UnpooledDirectByteBuf io.netty.buffer.ByteBuf readBytes(byte[], int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.ByteBuf getBytes(int, java.nio.ByteBuffer)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf writeBoolean(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.CompositeByteBuf addComponents(java.lang.Iterable&lt;io.netty.buffer.ByteBuf&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledUnsafeDirectByteBuf io.netty.buffer.ByteBuf setBytes(int, java.nio.ByteBuffer) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf duplicate()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf setBytes(int, byte[])'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.Unpooled io.netty.buffer.ByteBuf wrappedBuffer(byte[]...) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf setIndex(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBufAllocator io.netty.buffer.CompositeByteBuf compositeDirectBuffer(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.SlicedByteBuf io.netty.buffer.ByteBuf getBytes(int, java.nio.ByteBuffer)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf readBytes(io.netty.buffer.ByteBuf, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.CompositeByteBuf getBytes(int, io.netty.buffer.ByteBuf, int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf setBytes(int, io.netty.buffer.ByteBuf)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf setByte(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.DuplicatedByteBuf io.netty.buffer.ByteBuf capacity(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledDirectByteBuf io.netty.buffer.ByteBuf setBytes(int, java.nio.ByteBuffer) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf setByte(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBufAllocator io.netty.buffer.CompositeByteBuf compositeBuffer(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf getBytes(int, byte[]) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf writeBytes(java.nio.ByteBuffer) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.Unpooled io.netty.buffer.ByteBuf copiedBuffer(java.lang.CharSequence, java.nio.charset.Charset) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.util.ReferenceCounted retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf readBytes(io.netty.buffer.ByteBuf)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SlicedByteBuf io.netty.buffer.ByteBuf setBytes(int, byte[], int, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.CompositeByteBuf getBytes(int, java.nio.ByteBuffer)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBufProcessor FIND_NUL'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.CompositeByteBuf addComponent(int, io.netty.buffer.ByteBuf)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledUnsafeDirectByteBuf io.netty.buffer.ByteBufAllocator alloc()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf int getBytes(int, java.nio.channels.GatheringByteChannel, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf setBytes(int, io.netty.buffer.ByteBuf, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf writeInt(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf getBytes(int, io.netty.buffer.ByteBuf)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf markWriterIndex()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf int readBytes(java.nio.channels.GatheringByteChannel, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.DefaultByteBufHolder io.netty.util.ReferenceCounted retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf setBytes(int, io.netty.buffer.ByteBuf, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf writeShort(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf readBytes(io.netty.buffer.ByteBuf, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf writeShort(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ByteBuf int forEachByteDesc(int, int, io.netty.buffer.ByteBufProcessor) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf getBytes(int, io.netty.buffer.ByteBuf, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.Unpooled io.netty.buffer.ByteBuf copiedBuffer(java.lang.CharSequence, java.nio.charset.Charset) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf setBytes(int, io.netty.buffer.ByteBuf) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ByteBufOutputStream void writeBytes(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledHeapByteBuf io.netty.buffer.ByteBuf getBytes(int, io.netty.buffer.ByteBuf, int, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.ByteBuf setBytes(int, java.nio.ByteBuffer)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.Unpooled io.netty.buffer.ByteBuf copiedBuffer(java.nio.ByteBuffer) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ReadOnlyByteBuf io.netty.buffer.ByteBuf getBytes(int, java.io.OutputStream, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf resetReaderIndex()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf readBytes(io.netty.buffer.ByteBuf, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBufHolder io.netty.buffer.ByteBufHolder copy()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf writeZero(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledUnsafeDirectByteBuf UnpooledUnsafeDirectByteBuf(io.netty.buffer.ByteBufAllocator, int, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.Unpooled io.netty.buffer.ByteBuf copiedBuffer(char[], java.nio.charset.Charset) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf int setBytes(int, java.io.InputStream, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.Unpooled io.netty.buffer.ByteBuf copyInt(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBufHolder io.netty.buffer.ByteBufHolder duplicate()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf getBytes(int, io.netty.buffer.ByteBuf)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf getBytes(int, byte[], int, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.UnpooledHeapByteBuf io.netty.buffer.ByteBuf capacity(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SlicedByteBuf io.netty.buffer.ByteBuf getBytes(int, byte[], int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf writeByte(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf getBytes(int, byte[], int, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.CompositeByteBuf retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.DuplicatedByteBuf io.netty.buffer.ByteBuf getBytes(int, java.nio.ByteBuffer)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ReadOnlyByteBuf io.netty.buffer.ByteBuf getBytes(int, java.nio.ByteBuffer) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.ByteBuf readBytes(java.nio.ByteBuffer) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.UnpooledDirectByteBuf io.netty.buffer.ByteBuf setLong(int, long)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledDirectByteBuf io.netty.buffer.ByteBuf getBytes(int, java.io.OutputStream, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf readBytes(byte[], int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf CompositeByteBuf(io.netty.buffer.ByteBufAllocator, boolean, int, io.netty.buffer.ByteBuf...) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf setIndex(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf setZero(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.DuplicatedByteBuf io.netty.buffer.ByteBuf setInt(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.DuplicatedByteBuf io.netty.buffer.ByteBuf setBytes(int, io.netty.buffer.ByteBuf, int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractDerivedByteBuf io.netty.buffer.ByteBuf retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf resetWriterIndex()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf int forEachByte(io.netty.buffer.ByteBufProcessor) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledUnsafeDirectByteBuf java.nio.ByteBuffer[] nioBuffers(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf setBytes(int, io.netty.buffer.ByteBuf, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf slice()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf readBytes(byte[], int, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf getBytes(int, io.netty.buffer.ByteBuf, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.ByteBuf getBytes(int, byte[], int, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.ByteBuf writeBytes(io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf setBytes(int, io.netty.buffer.ByteBuf, int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.DuplicatedByteBuf io.netty.buffer.ByteBuf getBytes(int, io.netty.buffer.ByteBuf, int, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf setBytes(int, io.netty.buffer.ByteBuf, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf writeBytes(java.nio.ByteBuffer)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.Unpooled io.netty.buffer.ByteBuf copiedBuffer(java.lang.CharSequence, java.nio.charset.Charset)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf readBytes(byte[])'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf setLong(int, long)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf getBytes(int, java.nio.ByteBuffer) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.Unpooled io.netty.buffer.ByteBuf copiedBuffer(byte[]) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf copy(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf discardSomeReadBytes()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf int setBytes(int, java.io.InputStream, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.CompositeByteBuf addComponent(io.netty.buffer.ByteBuf)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.DuplicatedByteBuf io.netty.buffer.ByteBuf setBytes(int, byte[], int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf writeDouble(double)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf writeBytes(io.netty.buffer.ByteBuf, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ByteBufProcessor FIND_NON_NUL'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.ByteBuf setByte(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.DuplicatedByteBuf io.netty.buffer.ByteBuf getBytes(int, byte[], int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.DuplicatedByteBuf io.netty.buffer.ByteBuf getBytes(int, java.io.OutputStream, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.DuplicatedByteBuf DuplicatedByteBuf(io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledDirectByteBuf io.netty.buffer.ByteBuf capacity(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf readerIndex(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf int forEachByte(int, int, io.netty.buffer.ByteBufProcessor) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ReadOnlyByteBuf int forEachByte(int, int, io.netty.buffer.ByteBufProcessor) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf getBytes(int, io.netty.buffer.ByteBuf, int, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.ByteBuf writeBytes(byte[]) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ByteBuf int readBytes(java.nio.channels.GatheringByteChannel, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.UnpooledUnsafeDirectByteBuf io.netty.buffer.ByteBuf getBytes(int, byte[], int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.ByteBuf discardReadBytes()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledHeapByteBuf io.netty.buffer.ByteBuf getBytes(int, java.nio.ByteBuffer) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf readBytes(byte[]) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf discardSomeReadBytes()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf readBytes(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBufHolder io.netty.buffer.ByteBufHolder retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.SlicedByteBuf io.netty.buffer.ByteBuf getBytes(int, java.io.OutputStream, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf setBytes(int, byte[], int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.SlicedByteBuf io.netty.buffer.ByteBuf getBytes(int, io.netty.buffer.ByteBuf, int, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.Unpooled io.netty.buffer.ByteBuf copiedBuffer(java.nio.ByteBuffer...) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.CompositeByteBuf capacity(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf setBytes(int, io.netty.buffer.ByteBuf) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf writeLong(long)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf setBytes(int, io.netty.buffer.ByteBuf, int, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf setBytes(int, io.netty.buffer.ByteBuf, int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf markReaderIndex()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf order(java.nio.ByteOrder) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.util.ReferenceCounted retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.Unpooled io.netty.buffer.ByteBuf copyBoolean(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf writeBytes(io.netty.buffer.ByteBuf, int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf int compareTo(io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledHeapByteBuf io.netty.buffer.ByteBuf setBytes(int, io.netty.buffer.ByteBuf, int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledUnsafeDirectByteBuf io.netty.buffer.ByteBuf capacity(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf readBytes(byte[], int, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.UnpooledUnsafeDirectByteBuf io.netty.buffer.ByteBuf readBytes(java.nio.ByteBuffer)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledHeapByteBuf io.netty.buffer.ByteBuf setShort(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf int forEachByteDesc(int, int, io.netty.buffer.ByteBufProcessor) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf getBytes(int, java.io.OutputStream, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.ByteBuf readBytes(byte[], int, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.SlicedByteBuf io.netty.buffer.ByteBuf setBytes(int, byte[], int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf readBytes(java.nio.ByteBuffer)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf clear()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.DefaultByteBufHolder io.netty.buffer.ByteBufHolder duplicate()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledHeapByteBuf io.netty.buffer.ByteBuf setMedium(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.DuplicatedByteBuf io.netty.buffer.ByteBuf setBytes(int, io.netty.buffer.ByteBuf, int, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf getBytes(int, io.netty.buffer.ByteBuf, int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf discardReadBytes()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf markWriterIndex()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf readBytes(io.netty.buffer.ByteBuf)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf java.lang.String toString(int, int, java.nio.charset.Charset)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf int readBytes(java.nio.channels.GatheringByteChannel, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf writeLong(long)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.CompositeByteBuf addComponents(io.netty.buffer.ByteBuf...) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.CompositeByteBuf consolidate()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf writeByte(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBufUtil int compare(io.netty.buffer.ByteBuf, io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf readBytes(io.netty.buffer.ByteBuf)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf writeBytes(byte[]) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.ByteBuf getBytes(int, java.nio.ByteBuffer) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf writeBytes(java.nio.ByteBuffer)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf order(java.nio.ByteOrder)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf writeBytes(io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBufOutputStream ByteBufOutputStream(io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBufProcessor FIND_NON_CR'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf setMedium(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf getBytes(int, byte[]) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledHeapByteBuf java.nio.ByteBuffer[] nioBuffers(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf setBytes(int, java.nio.ByteBuffer)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.UnpooledDirectByteBuf io.netty.buffer.ByteBuf setBytes(int, java.nio.ByteBuffer)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.ByteBuf getBytes(int, io.netty.buffer.ByteBuf) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.ByteBuf setBytes(int, io.netty.buffer.ByteBuf, int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SlicedByteBuf io.netty.buffer.ByteBuf getBytes(int, io.netty.buffer.ByteBuf, int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledDirectByteBuf io.netty.buffer.ByteBuf getBytes(int, io.netty.buffer.ByteBuf, int, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf setBytes(int, java.nio.ByteBuffer) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf writeBoolean(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ReadOnlyByteBuf io.netty.buffer.ByteBuf getBytes(int, io.netty.buffer.ByteBuf, int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractReferenceCountedByteBuf io.netty.util.ReferenceCounted retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledUnsafeDirectByteBuf io.netty.buffer.ByteBuf setBytes(int, byte[], int, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf writeFloat(float)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.UnpooledUnsafeDirectByteBuf int getBytes(int, java.nio.channels.GatheringByteChannel, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ByteBufUtil int compare(io.netty.buffer.ByteBuf, io.netty.buffer.ByteBuf) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledUnsafeDirectByteBuf io.netty.buffer.ByteBuf getBytes(int, java.nio.ByteBuffer)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.ByteBuf readBytes(io.netty.buffer.ByteBuf, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf readerIndex(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.AbstractDerivedByteBuf io.netty.util.ReferenceCounted retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf writeFloat(float)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.CompositeByteBuf getBytes(int, byte[], int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf clear()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf setBoolean(int, boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf writeBytes(io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ByteBufInputStream ByteBufInputStream(io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf CompositeByteBuf(io.netty.buffer.ByteBufAllocator, boolean, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf readBytes(byte[], int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf getBytes(int, io.netty.buffer.ByteBuf, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SlicedByteBuf io.netty.buffer.ByteBuf getBytes(int, java.io.OutputStream, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf setBytes(int, byte[], int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBufAllocator io.netty.buffer.ByteBuf newHeapBuffer(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.SlicedByteBuf int getBytes(int, java.nio.channels.GatheringByteChannel, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf writeBytes(java.nio.ByteBuffer) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf readBytes(io.netty.buffer.ByteBuf, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf getBytes(int, io.netty.buffer.ByteBuf) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ByteBuf java.nio.ByteBuffer[] nioBuffers(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.Unpooled io.netty.buffer.ByteBuf wrappedBuffer(java.nio.ByteBuffer...) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf int setBytes(int, java.io.InputStream, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf CompositeByteBuf(io.netty.buffer.ByteBufAllocator, boolean, int, io.netty.buffer.ByteBuf...) 3'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledHeapByteBuf io.netty.buffer.ByteBufAllocator alloc()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf setBytes(int, byte[], int, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf getBytes(int, io.netty.buffer.ByteBuf, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf writeBytes(io.netty.buffer.ByteBuf, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ByteBufProcessor FIND_LF'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf setLong(int, long)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf setFloat(int, float)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf setIndex(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.Unpooled io.netty.buffer.ByteBuf copyFloat(float)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf writeBytes(io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.AbstractReferenceCountedByteBuf io.netty.buffer.ByteBuf retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf writeMedium(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf setBytes(int, byte[], int, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.Unpooled io.netty.buffer.ByteBuf wrappedBuffer(int, java.nio.ByteBuffer...) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractReferenceCountedByteBuf io.netty.util.ReferenceCounted retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf getBytes(int, java.io.OutputStream, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledDirectByteBuf io.netty.buffer.ByteBuf setBytes(int, byte[], int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBufProcessor FIND_NON_CRLF'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf int compareTo(io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf getBytes(int, io.netty.buffer.ByteBuf) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.Unpooled io.netty.buffer.CompositeByteBuf compositeBuffer(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledDirectByteBuf io.netty.buffer.ByteBuf setBytes(int, io.netty.buffer.ByteBuf, int, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf writeBytes(io.netty.buffer.ByteBuf, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SlicedByteBuf io.netty.buffer.ByteBuf setBytes(int, io.netty.buffer.ByteBuf, int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf setDouble(int, double)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ReadOnlyByteBuf io.netty.buffer.ByteBuf duplicate()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBufAllocator alloc()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledHeapByteBuf io.netty.buffer.ByteBuf getBytes(int, io.netty.buffer.ByteBuf, int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBufAllocator io.netty.buffer.CompositeByteBuf compositeBuffer()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf readBytes(byte[], int, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf writeBytes(byte[], int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ReadOnlyByteBuf int getBytes(int, java.nio.channels.GatheringByteChannel, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.AbstractReferenceCountedByteBuf io.netty.buffer.ByteBuf retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.DuplicatedByteBuf io.netty.buffer.ByteBuf setLong(int, long)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.Unpooled io.netty.buffer.ByteBuf copiedBuffer(byte[]...) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf readSlice(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.UnpooledUnsafeDirectByteBuf void freeDirect(java.nio.ByteBuffer) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.Unpooled io.netty.buffer.ByteBuf unreleasableBuffer(io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBufProcessor FIND_CRLF'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.DuplicatedByteBuf int setBytes(int, java.io.InputStream, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf setChar(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf readBytes(byte[]) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf writeByte(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledHeapByteBuf int readBytes(java.nio.channels.GatheringByteChannel, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.CompositeByteBuf addComponent(int, io.netty.buffer.ByteBuf) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.CompositeByteBuf getBytes(int, byte[], int, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf getBytes(int, io.netty.buffer.ByteBuf, int, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf getBytes(int, io.netty.buffer.ByteBuf, int, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf writeBytes(byte[], int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledHeapByteBuf io.netty.buffer.ByteBuf setInt(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBufAllocator io.netty.buffer.CompositeByteBuf compositeHeapBuffer(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf writeFloat(float)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf markWriterIndex()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SlicedByteBuf io.netty.buffer.ByteBuf duplicate()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.ByteBuf setBytes(int, byte[], int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf getBytes(int, io.netty.buffer.ByteBuf, int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf getBytes(int, io.netty.buffer.ByteBuf)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SlicedByteBuf int forEachByteDesc(int, int, io.netty.buffer.ByteBufProcessor) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf setZero(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledHeapByteBuf io.netty.buffer.ByteBuf setBytes(int, byte[], int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.ByteBuf setBytes(int, byte[], int, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf setBytes(int, io.netty.buffer.ByteBuf, int, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf readBytes(byte[], int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf writeBytes(io.netty.buffer.ByteBuf, int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf getBytes(int, byte[])'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf readBytes(java.nio.ByteBuffer) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf setBoolean(int, boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.Unpooled io.netty.buffer.ByteBuf copyDouble(double)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf setDouble(int, double)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.DefaultByteBufHolder io.netty.buffer.ByteBuf content()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledUnsafeDirectByteBuf io.netty.buffer.ByteBuf getBytes(int, io.netty.buffer.ByteBuf, int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf int forEachByteDesc(io.netty.buffer.ByteBufProcessor) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf setMedium(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.CompositeByteBuf setBytes(int, io.netty.buffer.ByteBuf, int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBufHolder io.netty.buffer.ByteBuf content()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.ByteBuf getBytes(int, java.io.OutputStream, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf writeZero(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.UnpooledDirectByteBuf io.netty.buffer.ByteBuf getBytes(int, java.nio.ByteBuffer)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.Unpooled io.netty.buffer.ByteBuf copyLong(long)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf writeZero(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.CompositeByteBuf setBytes(int, io.netty.buffer.ByteBuf, int, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledHeapByteBuf io.netty.buffer.ByteBuf setBytes(int, byte[], int, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledDirectByteBuf io.netty.buffer.ByteBuf getBytes(int, java.io.OutputStream, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf readBytes(io.netty.buffer.ByteBuf, int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledHeapByteBuf int setBytes(int, java.io.InputStream, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf writeBytes(io.netty.buffer.ByteBuf)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf getBytes(int, byte[], int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf readBytes(byte[]) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf readBytes(java.nio.ByteBuffer) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf writeBytes(io.netty.buffer.ByteBuf)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf int compareTo(io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf setBytes(int, java.nio.ByteBuffer) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.CompositeByteBuf setBytes(int, byte[], int, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf writerIndex(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf java.nio.ByteBuffer[] nioBuffers()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf readBytes(io.netty.buffer.ByteBuf, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf setBytes(int, byte[]) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf setShort(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBufAllocator io.netty.buffer.CompositeByteBuf compositeHeapBuffer()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.CompositeByteBuf consolidate(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf int getBytes(int, java.nio.channels.GatheringByteChannel, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf writeMedium(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf resetWriterIndex()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf int compareTo(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf SwappedByteBuf(io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledDirectByteBuf io.netty.buffer.ByteBuf setBytes(int, byte[], int, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf getBytes(int, byte[])'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledHeapByteBuf UnpooledHeapByteBuf(io.netty.buffer.ByteBufAllocator, int, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SlicedByteBuf SlicedByteBuf(io.netty.buffer.ByteBuf, int, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf setIndex(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf getBytes(int, io.netty.buffer.ByteBuf, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledDirectByteBuf int setBytes(int, java.io.InputStream, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf java.lang.String toString(int, int, java.nio.charset.Charset)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.DuplicatedByteBuf io.netty.buffer.ByteBuf setBytes(int, java.nio.ByteBuffer)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ReadOnlyByteBuf int forEachByteDesc(int, int, io.netty.buffer.ByteBufProcessor) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.ByteBuf setBytes(int, byte[]) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf getBytes(int, java.io.OutputStream, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBufAllocator io.netty.buffer.CompositeByteBuf compositeDirectBuffer()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf copy(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ByteBufOutputStream void writeChars(java.lang.String) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf writeBoolean(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf CompositeByteBuf(io.netty.buffer.ByteBufAllocator, boolean, int, java.lang.Iterable&lt;io.netty.buffer.ByteBuf&gt;) 3'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.Unpooled io.netty.buffer.CompositeByteBuf compositeBuffer()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf setBytes(int, io.netty.buffer.ByteBuf) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf readBytes(io.netty.buffer.ByteBuf, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf getBytes(int, java.nio.ByteBuffer) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.CompositeByteBuf setByte(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.Unpooled io.netty.buffer.ByteBuf wrappedBuffer(io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf order(java.nio.ByteOrder)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf setByte(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.ByteBuf readBytes(byte[]) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.UnpooledUnsafeDirectByteBuf io.netty.buffer.ByteBuf setBytes(int, io.netty.buffer.ByteBuf, int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf resetWriterIndex()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.DuplicatedByteBuf io.netty.buffer.ByteBuf setMedium(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBufUtil boolean equals(io.netty.buffer.ByteBuf, io.netty.buffer.ByteBuf) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf order(java.nio.ByteOrder)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledHeapByteBuf io.netty.buffer.ByteBuf getBytes(int, byte[], int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.CompositeByteBuf addComponents(int, io.netty.buffer.ByteBuf...) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.DuplicatedByteBuf io.netty.buffer.ByteBuf setByte(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledUnsafeDirectByteBuf io.netty.buffer.ByteBuf readBytes(java.nio.ByteBuffer) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.util.ReferenceCounted retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.UnpooledDirectByteBuf io.netty.buffer.ByteBuf setShort(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf getBytes(int, io.netty.buffer.ByteBuf, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ReadOnlyByteBuf io.netty.buffer.ByteBuf setBytes(int, io.netty.buffer.ByteBuf, int, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf int readBytes(java.nio.channels.GatheringByteChannel, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.UnpooledUnsafeDirectByteBuf int readBytes(java.nio.channels.GatheringByteChannel, int) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ByteBufProcessor FIND_NON_LINEAR_WHITESPACE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledUnsafeDirectByteBuf io.netty.buffer.ByteBuf getBytes(int, io.netty.buffer.ByteBuf, int, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf skipBytes(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.UnpooledHeapByteBuf io.netty.buffer.ByteBuf setByte(int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.ByteBuf getBytes(int, io.netty.buffer.ByteBuf, int, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf writeInt(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf int setBytes(int, java.io.InputStream, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.ByteBuf setBytes(int, io.netty.buffer.ByteBuf, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.DuplicatedByteBuf io.netty.buffer.ByteBuf setBytes(int, byte[], int, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf setFloat(int, float)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBufHolder io.netty.buffer.ByteBufHolder retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf int compareTo(java.lang.Object) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.Unpooled io.netty.buffer.ByteBuf copiedBuffer(java.lang.CharSequence, int, int, java.nio.charset.Charset) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SlicedByteBuf int setBytes(int, java.io.InputStream, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf readBytes(java.io.OutputStream, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf writeBytes(io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf writeBytes(java.nio.ByteBuffer)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf writerIndex(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.DuplicatedByteBuf io.netty.buffer.ByteBuf getBytes(int, io.netty.buffer.ByteBuf, int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf writeMedium(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.Unpooled io.netty.buffer.ByteBuf copiedBuffer(io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf int getBytes(int, java.nio.channels.GatheringByteChannel, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf readerIndex(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.CompositeByteBuf addComponents(java.lang.Iterable&lt;io.netty.buffer.ByteBuf&gt;)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf discardSomeReadBytes()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf readBytes(io.netty.buffer.ByteBuf, int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ByteBufUtil int hashCode(io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf writeBytes(java.nio.ByteBuffer) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.Unpooled io.netty.buffer.ByteBuf unmodifiableBuffer(io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf CompositeByteBuf(io.netty.buffer.ByteBufAllocator, boolean, int, java.lang.Iterable&lt;io.netty.buffer.ByteBuf&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf discardReadBytes()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf writeBytes(byte[])'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf java.lang.String toString(java.nio.charset.Charset)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.EmptyByteBuf io.netty.buffer.ByteBuf duplicate()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf capacity(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.DuplicatedByteBuf io.netty.buffer.ByteBuf getBytes(int, java.io.OutputStream, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ByteBuf io.netty.buffer.ByteBuf order(java.nio.ByteOrder)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.ReadOnlyByteBuf io.netty.buffer.ByteBuf setBytes(int, byte[], int, int) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.util.ReferenceCounted retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.ByteBufUtil boolean equals(io.netty.buffer.ByteBuf, io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.CompositeByteBuf io.netty.buffer.CompositeByteBuf discardReadComponents()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.SwappedByteBuf io.netty.buffer.ByteBuf capacity(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.buffer.AbstractByteBuf io.netty.buffer.ByteBuf readBytes(io.netty.buffer.ByteBuf, int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

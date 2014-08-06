@@ -1,0 +1,1040 @@
+<root>
+    <item name='io.netty.channel.socket.DefaultDatagramChannelConfig io.netty.channel.socket.DatagramChannelConfig setTimeToLive(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultDatagramChannelConfig io.netty.channel.socket.DatagramChannelConfig setMessageSizeEstimator(io.netty.channel.MessageSizeEstimator) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.ChannelFuture joinGroup(java.net.InetAddress, java.net.NetworkInterface, java.net.InetAddress, io.netty.channel.ChannelPromise) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.ChannelFuture leaveGroup(java.net.InetSocketAddress, java.net.NetworkInterface, io.netty.channel.ChannelPromise) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultServerSocketChannelConfig io.netty.channel.socket.ServerSocketChannelConfig setAllocator(io.netty.buffer.ByteBufAllocator)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultSocketChannelConfig javaSocket'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.ChannelFuture joinGroup(java.net.InetAddress, java.net.NetworkInterface, java.net.InetAddress) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.ChannelFuture block(java.net.InetAddress, java.net.NetworkInterface, java.net.InetAddress, io.netty.channel.ChannelPromise) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultDatagramChannelConfig io.netty.channel.socket.DatagramChannelConfig setNetworkInterface(java.net.NetworkInterface)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.ChannelFuture block(java.net.InetAddress, java.net.NetworkInterface, java.net.InetAddress) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.ChannelFuture leaveGroup(java.net.InetAddress, java.net.NetworkInterface, java.net.InetAddress, io.netty.channel.ChannelPromise) 3'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DatagramPacket io.netty.buffer.ByteBufHolder retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultSocketChannelConfig io.netty.channel.socket.SocketChannelConfig setKeepAlive(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.ServerSocketChannelConfig io.netty.channel.socket.ServerSocketChannelConfig setRecvByteBufAllocator(io.netty.channel.RecvByteBufAllocator) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultServerSocketChannelConfig io.netty.channel.ChannelConfig setWriteBufferHighWaterMark(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.ServerSocketChannelConfig io.netty.channel.socket.ServerSocketChannelConfig setAllocator(io.netty.buffer.ByteBufAllocator)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.ChannelFuture leaveGroup(java.net.InetSocketAddress, java.net.NetworkInterface, io.netty.channel.ChannelPromise) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.ChannelFuture leaveGroup(java.net.InetSocketAddress, java.net.NetworkInterface)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.ChannelFuture joinGroup(java.net.InetAddress, java.net.NetworkInterface, java.net.InetAddress) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultSocketChannelConfig io.netty.channel.ChannelConfig setWriteBufferLowWaterMark(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.ChannelFuture block(java.net.InetAddress, java.net.NetworkInterface, java.net.InetAddress, io.netty.channel.ChannelPromise) 3'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultDatagramChannelConfig io.netty.channel.ChannelConfig setWriteSpinCount(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.ChannelFuture block(java.net.InetAddress, java.net.NetworkInterface, java.net.InetAddress) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultDatagramChannelConfig io.netty.channel.ChannelConfig setMessageSizeEstimator(io.netty.channel.MessageSizeEstimator)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.ChannelFuture block(java.net.InetAddress, java.net.NetworkInterface, java.net.InetAddress)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.ChannelFuture leaveGroup(java.net.InetAddress)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultServerSocketChannelConfig io.netty.channel.socket.ServerSocketChannelConfig setPerformancePreferences(int, int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramPacket io.netty.channel.AddressedEnvelope retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultServerSocketChannelConfig javaSocket'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultServerSocketChannelConfig io.netty.channel.ChannelConfig setAllocator(io.netty.buffer.ByteBufAllocator)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.SocketChannelConfig io.netty.channel.socket.SocketChannelConfig setReuseAddress(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.SocketChannelConfig io.netty.channel.socket.SocketChannelConfig setAllocator(io.netty.buffer.ByteBufAllocator)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DatagramPacket io.netty.buffer.ByteBuf content()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.SocketChannelConfig io.netty.channel.socket.SocketChannelConfig setReceiveBufferSize(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultSocketChannelConfig io.netty.channel.socket.SocketChannelConfig setReceiveBufferSize(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannelConfig io.netty.channel.socket.DatagramChannelConfig setTimeToLive(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.ServerSocketChannelConfig io.netty.channel.socket.ServerSocketChannelConfig setAllocator(io.netty.buffer.ByteBufAllocator) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultServerSocketChannelConfig DefaultServerSocketChannelConfig(io.netty.channel.socket.ServerSocketChannel, java.net.ServerSocket) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramPacket io.netty.buffer.ByteBufHolder retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultServerSocketChannelConfig io.netty.channel.socket.ServerSocketChannelConfig setRecvByteBufAllocator(io.netty.channel.RecvByteBufAllocator)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultServerSocketChannelConfig io.netty.channel.socket.ServerSocketChannelConfig setWriteBufferLowWaterMark(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultSocketChannelConfig boolean setOption(io.netty.channel.ChannelOption&lt;T&gt;, T) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.SocketChannelConfig io.netty.channel.socket.SocketChannelConfig setMaxMessagesPerRead(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultDatagramChannelConfig io.netty.channel.socket.DatagramChannelConfig setRecvByteBufAllocator(io.netty.channel.RecvByteBufAllocator)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultServerSocketChannelConfig io.netty.channel.socket.ServerSocketChannelConfig setReceiveBufferSize(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.SocketChannelConfig io.netty.channel.socket.SocketChannelConfig setPerformancePreferences(int, int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultSocketChannelConfig io.netty.channel.socket.SocketChannelConfig setReuseAddress(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultSocketChannelConfig io.netty.channel.socket.SocketChannelConfig setWriteBufferHighWaterMark(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultDatagramChannelConfig io.netty.channel.ChannelConfig setRecvByteBufAllocator(io.netty.channel.RecvByteBufAllocator)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultServerSocketChannelConfig io.netty.channel.socket.ServerSocketChannelConfig setReuseAddress(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultSocketChannelConfig io.netty.channel.ChannelConfig setWriteSpinCount(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultSocketChannelConfig io.netty.channel.socket.SocketChannelConfig setAllocator(io.netty.buffer.ByteBufAllocator)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.ChannelFuture joinGroup(java.net.InetAddress, java.net.NetworkInterface, java.net.InetAddress, io.netty.channel.ChannelPromise) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.SocketChannelConfig io.netty.channel.socket.SocketChannelConfig setAutoRead(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.SocketChannelConfig io.netty.channel.socket.SocketChannelConfig setSoLinger(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultSocketChannelConfig io.netty.channel.socket.SocketChannelConfig setAllowHalfClosure(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannelConfig io.netty.channel.socket.DatagramChannelConfig setRecvByteBufAllocator(io.netty.channel.RecvByteBufAllocator) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.SocketChannelConfig io.netty.channel.socket.SocketChannelConfig setTcpNoDelay(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultSocketChannelConfig boolean setOption(io.netty.channel.ChannelOption&lt;T&gt;, T) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannelConfig io.netty.channel.socket.DatagramChannelConfig setLoopbackModeDisabled(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultDatagramChannelConfig io.netty.channel.socket.DatagramChannelConfig setMaxMessagesPerRead(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultDatagramChannelConfig io.netty.channel.socket.DatagramChannelConfig setReuseAddress(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultDatagramChannelConfig io.netty.channel.ChannelConfig setAllocator(io.netty.buffer.ByteBufAllocator) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.ChannelFuture leaveGroup(java.net.InetAddress, io.netty.channel.ChannelPromise) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.ServerSocketChannelConfig io.netty.channel.socket.ServerSocketChannelConfig setAutoRead(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DatagramPacket io.netty.util.ReferenceCounted retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.InternetProtocolFamily IPv6'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultDatagramChannelConfig boolean setOption(io.netty.channel.ChannelOption&lt;T&gt;, T) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.ServerSocketChannelConfig io.netty.channel.socket.ServerSocketChannelConfig setBacklog(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultDatagramChannelConfig io.netty.channel.ChannelConfig setRecvByteBufAllocator(io.netty.channel.RecvByteBufAllocator) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.ServerSocketChannelConfig io.netty.channel.socket.ServerSocketChannelConfig setPerformancePreferences(int, int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultSocketChannelConfig io.netty.channel.ChannelConfig setRecvByteBufAllocator(io.netty.channel.RecvByteBufAllocator) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.ChannelInputShutdownEvent INSTANCE'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultDatagramChannelConfig io.netty.channel.ChannelConfig setWriteBufferLowWaterMark(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultSocketChannelConfig io.netty.channel.ChannelConfig setMessageSizeEstimator(io.netty.channel.MessageSizeEstimator) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.ChannelFuture joinGroup(java.net.InetSocketAddress, java.net.NetworkInterface, io.netty.channel.ChannelPromise) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannelConfig io.netty.channel.socket.DatagramChannelConfig setBroadcast(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultServerSocketChannelConfig boolean setOption(io.netty.channel.ChannelOption&lt;T&gt;, T) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultDatagramChannelConfig io.netty.channel.socket.DatagramChannelConfig setWriteSpinCount(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.SocketChannelConfig io.netty.channel.socket.SocketChannelConfig setRecvByteBufAllocator(io.netty.channel.RecvByteBufAllocator)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.SocketChannelConfig io.netty.channel.socket.SocketChannelConfig setMessageSizeEstimator(io.netty.channel.MessageSizeEstimator)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.ServerSocketChannelConfig io.netty.channel.socket.ServerSocketChannelConfig setMessageSizeEstimator(io.netty.channel.MessageSizeEstimator) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DatagramPacket io.netty.channel.AddressedEnvelope retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.ServerSocketChannel io.netty.channel.socket.ServerSocketChannelConfig config()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultSocketChannelConfig io.netty.channel.socket.SocketChannelConfig setRecvByteBufAllocator(io.netty.channel.RecvByteBufAllocator)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultSocketChannelConfig io.netty.channel.ChannelConfig setMessageSizeEstimator(io.netty.channel.MessageSizeEstimator)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.SocketChannelConfig io.netty.channel.socket.SocketChannelConfig setSendBufferSize(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultServerSocketChannelConfig io.netty.channel.socket.ServerSocketChannelConfig setMessageSizeEstimator(io.netty.channel.MessageSizeEstimator)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultServerSocketChannelConfig DefaultServerSocketChannelConfig(io.netty.channel.socket.ServerSocketChannel, java.net.ServerSocket) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.ChannelFuture joinGroup(java.net.InetAddress)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.ChannelFuture joinGroup(java.net.InetAddress, java.net.NetworkInterface, java.net.InetAddress, io.netty.channel.ChannelPromise)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.ChannelFuture block(java.net.InetAddress, java.net.NetworkInterface, java.net.InetAddress, io.netty.channel.ChannelPromise)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultDatagramChannelConfig io.netty.channel.ChannelConfig setMaxMessagesPerRead(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.ChannelFuture joinGroup(java.net.InetSocketAddress, java.net.NetworkInterface) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.SocketChannel io.netty.channel.socket.SocketChannelConfig config()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultServerSocketChannelConfig io.netty.channel.ChannelConfig setMessageSizeEstimator(io.netty.channel.MessageSizeEstimator)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultSocketChannelConfig io.netty.channel.socket.SocketChannelConfig setMessageSizeEstimator(io.netty.channel.MessageSizeEstimator) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.InternetProtocolFamily IPv4'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultServerSocketChannelConfig io.netty.channel.ChannelConfig setWriteBufferLowWaterMark(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultServerSocketChannelConfig io.netty.channel.socket.ServerSocketChannelConfig setBacklog(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultServerSocketChannelConfig io.netty.channel.socket.ServerSocketChannelConfig setMaxMessagesPerRead(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.socket.DatagramChannelConfig config()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultDatagramChannelConfig DefaultDatagramChannelConfig(io.netty.channel.socket.DatagramChannel, java.net.DatagramSocket) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.ChannelFuture block(java.net.InetAddress, java.net.NetworkInterface, java.net.InetAddress, io.netty.channel.ChannelPromise) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.ChannelFuture leaveGroup(java.net.InetAddress, java.net.NetworkInterface, java.net.InetAddress, io.netty.channel.ChannelPromise) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultServerSocketChannelConfig T getOption(io.netty.channel.ChannelOption&lt;T&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.SocketChannelConfig io.netty.channel.socket.SocketChannelConfig setRecvByteBufAllocator(io.netty.channel.RecvByteBufAllocator) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultDatagramChannelConfig io.netty.channel.socket.DatagramChannelConfig setWriteBufferLowWaterMark(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.ChannelFuture joinGroup(java.net.InetAddress, java.net.NetworkInterface, java.net.InetAddress, io.netty.channel.ChannelPromise) 3'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.ChannelFuture joinGroup(java.net.InetAddress, io.netty.channel.ChannelPromise)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.ServerSocketChannelConfig io.netty.channel.socket.ServerSocketChannelConfig setRecvByteBufAllocator(io.netty.channel.RecvByteBufAllocator)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultDatagramChannelConfig io.netty.channel.socket.DatagramChannelConfig setConnectTimeoutMillis(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultSocketChannelConfig io.netty.channel.socket.SocketChannelConfig setWriteSpinCount(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.ChannelFuture joinGroup(java.net.InetSocketAddress, java.net.NetworkInterface) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.ChannelFuture block(java.net.InetAddress, java.net.InetAddress, io.netty.channel.ChannelPromise)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannelConfig io.netty.channel.socket.DatagramChannelConfig setAutoClose(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultDatagramChannelConfig boolean setOption(io.netty.channel.ChannelOption&lt;T&gt;, T) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultDatagramChannelConfig DefaultDatagramChannelConfig(io.netty.channel.socket.DatagramChannel, java.net.DatagramSocket) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.ChannelFuture leaveGroup(java.net.InetAddress, java.net.NetworkInterface, java.net.InetAddress, io.netty.channel.ChannelPromise) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultServerSocketChannelConfig io.netty.channel.ChannelConfig setRecvByteBufAllocator(io.netty.channel.RecvByteBufAllocator) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.ChannelFuture block(java.net.InetAddress, java.net.NetworkInterface, java.net.InetAddress) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannelConfig io.netty.channel.socket.DatagramChannelConfig setReuseAddress(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.ChannelFuture block(java.net.InetAddress, java.net.NetworkInterface, java.net.InetAddress, io.netty.channel.ChannelPromise) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.SocketChannelConfig io.netty.channel.socket.SocketChannelConfig setWriteSpinCount(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultDatagramChannelConfig io.netty.channel.socket.DatagramChannelConfig setSendBufferSize(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultSocketChannelConfig io.netty.channel.ChannelConfig setAutoClose(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultDatagramChannelConfig io.netty.channel.socket.DatagramChannelConfig setBroadcast(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.ServerSocketChannelConfig io.netty.channel.socket.ServerSocketChannelConfig setWriteSpinCount(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultSocketChannelConfig io.netty.channel.ChannelConfig setConnectTimeoutMillis(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultSocketChannelConfig io.netty.channel.ChannelConfig setRecvByteBufAllocator(io.netty.channel.RecvByteBufAllocator)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.SocketChannelConfig io.netty.channel.socket.SocketChannelConfig setAllowHalfClosure(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultServerSocketChannelConfig io.netty.channel.ChannelConfig setMessageSizeEstimator(io.netty.channel.MessageSizeEstimator) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.ServerSocketChannelConfig io.netty.channel.socket.ServerSocketChannelConfig setMaxMessagesPerRead(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultSocketChannelConfig io.netty.channel.socket.SocketChannelConfig setWriteBufferLowWaterMark(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultSocketChannelConfig io.netty.channel.socket.SocketChannelConfig setTrafficClass(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.ChannelFuture leaveGroup(java.net.InetAddress, io.netty.channel.ChannelPromise)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultServerSocketChannelConfig io.netty.channel.ChannelConfig setConnectTimeoutMillis(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.ChannelFuture leaveGroup(java.net.InetAddress, java.net.NetworkInterface, java.net.InetAddress, io.netty.channel.ChannelPromise)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DatagramPacket DatagramPacket(io.netty.buffer.ByteBuf, java.net.InetSocketAddress) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultServerSocketChannelConfig io.netty.channel.socket.ServerSocketChannelConfig setWriteBufferHighWaterMark(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultDatagramChannelConfig io.netty.channel.socket.DatagramChannelConfig setAllocator(io.netty.buffer.ByteBufAllocator) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultDatagramChannelConfig io.netty.channel.socket.DatagramChannelConfig setMessageSizeEstimator(io.netty.channel.MessageSizeEstimator)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramPacket io.netty.channel.socket.DatagramPacket retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannelConfig io.netty.channel.socket.DatagramChannelConfig setReceiveBufferSize(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultSocketChannelConfig io.netty.channel.ChannelConfig setWriteBufferHighWaterMark(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultSocketChannelConfig io.netty.channel.ChannelConfig setAllocator(io.netty.buffer.ByteBufAllocator) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultDatagramChannelConfig io.netty.channel.ChannelConfig setConnectTimeoutMillis(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannelConfig io.netty.channel.socket.DatagramChannelConfig setRecvByteBufAllocator(io.netty.channel.RecvByteBufAllocator)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.SocketChannelConfig io.netty.channel.socket.SocketChannelConfig setAutoClose(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultDatagramChannelConfig io.netty.channel.socket.DatagramChannelConfig setAllocator(io.netty.buffer.ByteBufAllocator)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.ChannelFuture joinGroup(java.net.InetSocketAddress, java.net.NetworkInterface)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultSocketChannelConfig io.netty.channel.socket.SocketChannelConfig setTcpNoDelay(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.ServerSocketChannelConfig io.netty.channel.socket.ServerSocketChannelConfig setReceiveBufferSize(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.ChannelFuture joinGroup(java.net.InetAddress, io.netty.channel.ChannelPromise) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultSocketChannelConfig io.netty.channel.ChannelConfig setMaxMessagesPerRead(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramPacket DatagramPacket(io.netty.buffer.ByteBuf, java.net.InetSocketAddress, java.net.InetSocketAddress) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultSocketChannelConfig io.netty.channel.socket.SocketChannelConfig setSendBufferSize(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultDatagramChannelConfig io.netty.channel.socket.DatagramChannelConfig setWriteBufferHighWaterMark(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultSocketChannelConfig io.netty.channel.ChannelConfig setAutoRead(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.SocketChannelConfig io.netty.channel.socket.SocketChannelConfig setTrafficClass(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultDatagramChannelConfig io.netty.channel.ChannelConfig setMessageSizeEstimator(io.netty.channel.MessageSizeEstimator) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultSocketChannelConfig io.netty.channel.socket.SocketChannelConfig setSoLinger(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.ChannelFuture joinGroup(java.net.InetSocketAddress, java.net.NetworkInterface, io.netty.channel.ChannelPromise) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.ServerSocketChannelConfig io.netty.channel.socket.ServerSocketChannelConfig setMessageSizeEstimator(io.netty.channel.MessageSizeEstimator)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.ServerSocketChannelConfig io.netty.channel.socket.ServerSocketChannelConfig setConnectTimeoutMillis(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultServerSocketChannelConfig boolean setOption(io.netty.channel.ChannelOption&lt;T&gt;, T) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramPacket io.netty.buffer.ByteBufHolder copy()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.ChannelFuture leaveGroup(java.net.InetAddress, java.net.NetworkInterface, java.net.InetAddress)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultServerSocketChannelConfig io.netty.channel.socket.ServerSocketChannelConfig setWriteSpinCount(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultSocketChannelConfig io.netty.channel.socket.SocketChannelConfig setAutoRead(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultServerSocketChannelConfig io.netty.channel.ChannelConfig setAutoRead(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.ChannelFuture leaveGroup(java.net.InetAddress, java.net.NetworkInterface, java.net.InetAddress) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.ServerSocketChannelConfig io.netty.channel.socket.ServerSocketChannelConfig setReuseAddress(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.ChannelFuture joinGroup(java.net.InetSocketAddress, java.net.NetworkInterface, io.netty.channel.ChannelPromise) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.SocketChannelConfig io.netty.channel.socket.SocketChannelConfig setAllocator(io.netty.buffer.ByteBufAllocator) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannelConfig io.netty.channel.socket.DatagramChannelConfig setTrafficClass(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DatagramPacket io.netty.channel.socket.DatagramPacket copy()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultDatagramChannelConfig io.netty.channel.ChannelConfig setAutoClose(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannelConfig io.netty.channel.socket.DatagramChannelConfig setMaxMessagesPerRead(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultDatagramChannelConfig io.netty.channel.ChannelConfig setAllocator(io.netty.buffer.ByteBufAllocator)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultDatagramChannelConfig io.netty.channel.socket.DatagramChannelConfig setInterface(java.net.InetAddress)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.SocketChannelConfig io.netty.channel.socket.SocketChannelConfig setConnectTimeoutMillis(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.ChannelFuture joinGroup(java.net.InetSocketAddress, java.net.NetworkInterface, io.netty.channel.ChannelPromise)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannelConfig io.netty.channel.socket.DatagramChannelConfig setSendBufferSize(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultDatagramChannelConfig io.netty.channel.socket.DatagramChannelConfig setAutoClose(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultDatagramChannelConfig io.netty.channel.socket.DatagramChannelConfig setReceiveBufferSize(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultSocketChannelConfig io.netty.channel.socket.SocketChannelConfig setMessageSizeEstimator(io.netty.channel.MessageSizeEstimator)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultSocketChannelConfig io.netty.channel.socket.SocketChannelConfig setAllocator(io.netty.buffer.ByteBufAllocator) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultDatagramChannelConfig io.netty.channel.socket.DatagramChannelConfig setRecvByteBufAllocator(io.netty.channel.RecvByteBufAllocator) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannelConfig io.netty.channel.socket.DatagramChannelConfig setMessageSizeEstimator(io.netty.channel.MessageSizeEstimator) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.ChannelFuture leaveGroup(java.net.InetSocketAddress, java.net.NetworkInterface, io.netty.channel.ChannelPromise)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultServerSocketChannelConfig io.netty.channel.socket.ServerSocketChannelConfig setAutoRead(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.ChannelFuture leaveGroup(java.net.InetAddress, java.net.NetworkInterface, java.net.InetAddress) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultDatagramChannelConfig io.netty.channel.socket.DatagramChannelConfig setTrafficClass(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultSocketChannelConfig io.netty.channel.socket.SocketChannelConfig setRecvByteBufAllocator(io.netty.channel.RecvByteBufAllocator) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.ChannelFuture leaveGroup(java.net.InetSocketAddress, java.net.NetworkInterface) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultServerSocketChannelConfig io.netty.channel.socket.ServerSocketChannelConfig setRecvByteBufAllocator(io.netty.channel.RecvByteBufAllocator) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.ChannelFuture joinGroup(java.net.InetAddress, java.net.NetworkInterface, java.net.InetAddress)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultSocketChannelConfig io.netty.channel.socket.SocketChannelConfig setPerformancePreferences(int, int, int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramPacket io.netty.util.ReferenceCounted retain(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannelConfig io.netty.channel.socket.DatagramChannelConfig setAllocator(io.netty.buffer.ByteBufAllocator)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.ChannelFuture block(java.net.InetAddress, java.net.InetAddress, io.netty.channel.ChannelPromise) 2'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultServerSocketChannelConfig io.netty.channel.ChannelConfig setWriteSpinCount(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannelConfig io.netty.channel.socket.DatagramChannelConfig setInterface(java.net.InetAddress)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultServerSocketChannelConfig io.netty.channel.socket.ServerSocketChannelConfig setAllocator(io.netty.buffer.ByteBufAllocator) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannelConfig io.netty.channel.socket.DatagramChannelConfig setConnectTimeoutMillis(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultServerSocketChannelConfig io.netty.channel.ChannelConfig setAllocator(io.netty.buffer.ByteBufAllocator) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.ChannelFuture leaveGroup(java.net.InetSocketAddress, java.net.NetworkInterface) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultServerSocketChannelConfig io.netty.channel.ChannelConfig setRecvByteBufAllocator(io.netty.channel.RecvByteBufAllocator)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.SocketChannelConfig io.netty.channel.socket.SocketChannelConfig setMessageSizeEstimator(io.netty.channel.MessageSizeEstimator) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DatagramPacket io.netty.channel.socket.DatagramPacket duplicate()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultDatagramChannelConfig io.netty.channel.socket.DatagramChannelConfig setAutoRead(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultSocketChannelConfig io.netty.channel.ChannelConfig setAllocator(io.netty.buffer.ByteBufAllocator)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultServerSocketChannelConfig io.netty.channel.ChannelConfig setMaxMessagesPerRead(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultServerSocketChannelConfig io.netty.channel.socket.ServerSocketChannelConfig setMessageSizeEstimator(io.netty.channel.MessageSizeEstimator) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultDatagramChannelConfig io.netty.channel.ChannelConfig setWriteBufferHighWaterMark(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.ChannelFuture leaveGroup(java.net.InetSocketAddress, java.net.NetworkInterface, io.netty.channel.ChannelPromise) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultSocketChannelConfig DefaultSocketChannelConfig(io.netty.channel.socket.SocketChannel, java.net.Socket) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.SocketChannelConfig io.netty.channel.socket.SocketChannelConfig setKeepAlive(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultServerSocketChannelConfig io.netty.channel.socket.ServerSocketChannelConfig setConnectTimeoutMillis(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultSocketChannelConfig T getOption(io.netty.channel.ChannelOption&lt;T&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannelConfig io.netty.channel.socket.DatagramChannelConfig setNetworkInterface(java.net.NetworkInterface)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultDatagramChannelConfig io.netty.channel.ChannelConfig setAutoRead(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramPacket io.netty.channel.socket.DatagramPacket retain()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannelConfig io.netty.channel.socket.DatagramChannelConfig setWriteSpinCount(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultDatagramChannelConfig T getOption(io.netty.channel.ChannelOption&lt;T&gt;) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannelConfig io.netty.channel.socket.DatagramChannelConfig setMessageSizeEstimator(io.netty.channel.MessageSizeEstimator)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultSocketChannelConfig io.netty.channel.socket.SocketChannelConfig setConnectTimeoutMillis(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultSocketChannelConfig io.netty.channel.socket.SocketChannelConfig setMaxMessagesPerRead(int)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultSocketChannelConfig io.netty.channel.socket.SocketChannelConfig setAutoClose(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannelConfig io.netty.channel.socket.DatagramChannelConfig setAllocator(io.netty.buffer.ByteBufAllocator) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DatagramPacket io.netty.buffer.ByteBufHolder duplicate()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DefaultSocketChannelConfig DefaultSocketChannelConfig(io.netty.channel.socket.SocketChannel, java.net.Socket) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannel io.netty.channel.ChannelFuture block(java.net.InetAddress, java.net.InetAddress)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DatagramChannelConfig io.netty.channel.socket.DatagramChannelConfig setAutoRead(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.socket.DefaultDatagramChannelConfig io.netty.channel.socket.DatagramChannelConfig setLoopbackModeDisabled(boolean)'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

@@ -1,0 +1,131 @@
+<root>
+    <item name='io.netty.channel.udt.nio.NioUdtMessageConnectorChannel io.netty.channel.udt.UdtChannelConfig config()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.udt.nio.NioUdtMessageConnectorChannel io.netty.channel.ChannelMetadata metadata()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.udt.nio.NioUdtProvider BYTE_CONNECTOR'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.udt.nio.NioUdtByteConnectorChannel int doReadBytes(io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.udt.nio.NioUdtProvider MESSAGE_RENDEZVOUS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.udt.nio.NioUdtAcceptorChannel io.netty.channel.ChannelConfig config()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.udt.nio.NioUdtMessageAcceptorChannel io.netty.channel.ChannelMetadata metadata()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.udt.nio.NioUdtProvider io.netty.channel.Channel newChannel()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.udt.nio.NioUdtByteConnectorChannel NioUdtByteConnectorChannel(com.barchart.udt.nio.SocketChannelUDT) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.udt.nio.NioUdtByteConnectorChannel io.netty.channel.udt.UdtChannelConfig config()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.udt.nio.NioUdtByteConnectorChannel io.netty.channel.ChannelMetadata metadata()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.udt.nio.NioUdtByteAcceptorChannel io.netty.channel.ChannelMetadata metadata()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.udt.nio.NioUdtByteConnectorChannel void doBind(java.net.SocketAddress) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.udt.nio.NioUdtByteConnectorChannel long doWriteFileRegion(io.netty.channel.FileRegion) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.udt.nio.NioUdtProvider MESSAGE_CONNECTOR'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.udt.nio.NioUdtAcceptorChannel void doBind(java.net.SocketAddress) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.udt.nio.NioUdtProvider T newChannel()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.udt.nio.NioUdtAcceptorChannel boolean doWriteMessage(java.lang.Object, io.netty.channel.ChannelOutboundBuffer) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.udt.nio.NioUdtAcceptorChannel boolean doConnect(java.net.SocketAddress, java.net.SocketAddress) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.udt.nio.NioUdtMessageConnectorChannel void doBind(java.net.SocketAddress) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.udt.nio.NioUdtMessageConnectorChannel io.netty.channel.ChannelConfig config()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.udt.nio.NioUdtByteConnectorChannel NioUdtByteConnectorChannel(io.netty.channel.Channel, com.barchart.udt.nio.SocketChannelUDT) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.udt.nio.NioUdtAcceptorChannel io.netty.channel.udt.UdtServerChannelConfig config()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.udt.nio.NioUdtProvider MESSAGE_ACCEPTOR'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.udt.nio.NioUdtAcceptorChannel NioUdtAcceptorChannel(com.barchart.udt.nio.ServerSocketChannelUDT) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.udt.nio.NioUdtByteConnectorChannel boolean doConnect(java.net.SocketAddress, java.net.SocketAddress) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.udt.nio.NioUdtProvider BYTE_ACCEPTOR'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.udt.nio.NioUdtByteConnectorChannel io.netty.channel.ChannelConfig config()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.udt.nio.NioUdtByteConnectorChannel int doWriteBytes(io.netty.buffer.ByteBuf) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.udt.nio.NioUdtMessageConnectorChannel boolean doConnect(java.net.SocketAddress, java.net.SocketAddress) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+        <annotation name='org.jetbrains.kannotator.runtime.annotations.Propagated'>
+            <val name="value" val="{org.jetbrains.kannotator.controlFlow.builder.analysis.NullabilityKey.class}"/>
+        </annotation>
+    </item>
+    <item name='io.netty.channel.udt.nio.NioUdtProvider BYTE_RENDEZVOUS'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.udt.nio.NioUdtMessageConnectorChannel NioUdtMessageConnectorChannel(io.netty.channel.Channel, com.barchart.udt.nio.SocketChannelUDT) 1'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.udt.nio.NioUdtMessageConnectorChannel NioUdtMessageConnectorChannel(com.barchart.udt.nio.SocketChannelUDT) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.udt.nio.NioUdtMessageConnectorChannel boolean doWriteMessage(java.lang.Object, io.netty.channel.ChannelOutboundBuffer) 0'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+    <item name='io.netty.channel.udt.nio.NioUdtAcceptorChannel io.netty.channel.udt.UdtChannelConfig config()'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>
