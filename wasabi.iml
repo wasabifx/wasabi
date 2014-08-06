@@ -40,6 +40,7 @@
     <orderEntry type="library" scope="TEST" name="Gradle: junit:junit:4.9" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.mockito:mockito-all:1.9.5" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.hamcrest:hamcrest-core:1.1" level="project" />
+    <orderEntry type="library" exported="" name="Gradle: com.netflix.rxjava:rxjava-core:0.20.0-RC4" level="project" />
   </component>
 </module>
 

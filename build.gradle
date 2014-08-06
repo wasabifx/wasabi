@@ -25,10 +25,10 @@ repositories {
     }
 }
 
-
 compileKotlin {
-    kotlinOptions.annotations = file('annotations/Gradle_ netty-all-4.0.17.Final')
+    kotlinOptions.annotations = file('annotations/Gradle_ io.netty_netty-all_4.0.17.Final')
 }
+
 
 dependencies {
     compile "org.codehaus.jackson:jackson-mapper-asl:1.9.12",
@@ -37,6 +37,7 @@ dependencies {
             "commons-logging:commons-logging:1.1.1",
             "org.apache.httpcomponents:httpclient:4.2.3",
             "org.apache.httpcomponents:httpcore:4.2.3",
+            "com.netflix.rxjava:rxjava-core:0.20.0-RC4",
             "org.codehaus.woodstox:woodstox-core-asl:4.1.4",
             "com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.1.3",
             "org.slf4j:slf4j-api:1.7.5",
