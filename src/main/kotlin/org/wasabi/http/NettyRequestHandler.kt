@@ -55,10 +55,12 @@ import io.netty.channel.SimpleChannelInboundHandler
 import org.wasabi.routing.ChannelLocator
 import io.netty.channel.ChannelProgressiveFuture
 import io.netty.channel.ChannelProgressiveFutureListener
+import org.wasabi.websocket.ChannelHandler
+import org.wasabi.websocket.Channel
 
 
 // TODO: This class needs cleaning up
-public class NettyRequestHandler(private val appServer: AppServer, routeLocator: RouteLocator, channelLocator: ChannelLocator): SimpleChannelInboundHandler<Any?>(), RouteLocator by routeLocator {
+public class NettyRequestHandler(private val appServer: AppServer, routeLocator: RouteLocator, channelLocator: ChannelLocator): SimpleChannelInboundHandler<Any?>(), RouteLocator by routeLocator , ChannelLocator by channelLocator{
 
     var request: Request? = null
     var body = ""
@@ -126,14 +128,22 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
         log!!.info("handleWebSocketRequest")
 
         // Check for closing websocket frame
+        // TODO this should probably be allowed to be handled in handler for cleanup etc.
         if (webSocketFrame is CloseWebSocketFrame)
         {
             handshaker?.close(ctx.channel(), webSocketFrame.retain())
         }
 
+        log?.info(handshaker?.uri().toString())
 
-         // TODO match path and call channel handler.
+        // Grab the handler for the current channel.
+        val handler = findChannelHandler(handshaker?.uri().toString()).handler
+        val channelExtension : ChannelHandler.() -> Unit = handler
+        val channelHandler = ChannelHandler(ctx, webSocketFrame)
+        channelHandler.channelExtension()
 
+        // Cleanup and flush the channel as per HTTP request.
+        writeResponse(ctx!!, response)
     }
 
     private fun handleStandardHttpRequest(ctx: ChannelHandlerContext?, msg: Any?)

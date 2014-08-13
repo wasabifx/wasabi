@@ -51,12 +51,12 @@ public open class AppServer(val configuration: AppConfiguration = AppConfigurati
         routes.add(Route(path, method, HashMap<String, String>(), *handler))
     }
 
-    private fun addChannel(path: String, vararg handler: ChannelHandler.() -> Unit) {
+    private fun addChannel(path: String, handler: ChannelHandler.() -> Unit) {
         var existingChannel = channels.filter{ it.path == path }
         if (existingChannel.count() >= 1) {
             throw ChannelAlreadyExistsException(existingChannel.first!!)
         }
-        channels.add(Channel(path, *handler))
+        channels.add(Channel(path, handler))
     }
 
     {
@@ -143,8 +143,8 @@ public open class AppServer(val configuration: AppConfiguration = AppConfigurati
         addRoute(HttpMethod.PATCH, path, *handler)
     }
 
-    public fun channel(path: String, vararg handler: ChannelHandler.() -> Unit) {
-        addChannel(path, *handler)
+    public fun channel(path: String, handler: ChannelHandler.() -> Unit) {
+        addChannel(path, handler)
     }
 
     public fun intercept(interceptor: Interceptor, path: String = "*", interceptOn: InterceptOn = InterceptOn.PreExecution) {
