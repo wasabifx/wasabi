@@ -94,18 +94,16 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
             // Here we catch the upgrade request and setup handshaker factory to negotiate client connection
             if ( msg is HttpRequest && (msg as HttpRequest).headers().get(HttpHeaders.Names.UPGRADE) == "websocket")
             {
-                // TODO remove websocket related logging.......
-
-                log!!.info("websocket upgrade")
                 // Setup Handshake
-                var wsFactory : WebSocketServerHandshakerFactory = WebSocketServerHandshakerFactory(getWebSocketLocation(msg as HttpRequest), null, false);
+                var wsFactory : WebSocketServerHandshakerFactory = WebSocketServerHandshakerFactory((msg as HttpRequest).getUri(), null, false);
 
                 handshaker = wsFactory.newHandshaker(msg as HttpRequest)
 
                 try {
-                    findChannelHandler(handshaker?.uri().toString()).handler
 
-                    log!!.info(handshaker?.uri().toString())
+                    log!!.info(handshaker?.uri())
+
+                    findChannelHandler(handshaker?.uri().toString()).handler
 
                     if (handshaker == null) {
                         WebSocketServerHandshakerFactory.sendUnsupportedWebSocketVersionResponse(ctx?.channel()!!);
@@ -129,16 +127,12 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
 
     private fun handleWebSocketRequest(ctx: ChannelHandlerContext, webSocketFrame: WebSocketFrame)
     {
-        log!!.info("handleWebSocketRequest")
-
         // Check for closing websocket frame
         // TODO this should probably be allowed to be handled in handler for cleanup etc.
         if (webSocketFrame is CloseWebSocketFrame)
         {
             handshaker?.close(ctx.channel(), webSocketFrame.retain())
         }
-
-        log?.info(handshaker?.uri().toString())
 
         // Grab the handler for the current channel.
         val handler = findChannelHandler(handshaker?.uri().toString()).handler
@@ -147,7 +141,7 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
         channelHandler.channelExtension()
 
         // Cleanup and flush the channel as per HTTP request.
-        writeSocketResponse(ctx!!, response)
+        writeSocketResponse(ctx, response)
     }
 
     private fun handleStandardHttpRequest(ctx: ChannelHandlerContext?, msg: Any?)
@@ -355,10 +349,6 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
                 request!!.bodyParams.putAll(deserializer!!.deserialize(data!!))
             }
         }
-    }
-
-    private fun getWebSocketLocation(request: HttpRequest) : String {
-        return "ws://" + request.getUri();
     }
 
 
