@@ -102,16 +102,25 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
 
                 handshaker = wsFactory.newHandshaker(msg as HttpRequest)
 
-                // TODO Make sure handler for uri the upgrade is requested against exists. bail with 404 if none set.
+                try {
+                    findChannelHandler(handshaker?.uri().toString()).handler
 
-                log!!.info(handshaker?.uri().toString())
+                    log!!.info(handshaker?.uri().toString())
 
-                if (handshaker == null) {
-                    WebSocketServerHandshakerFactory.sendUnsupportedWebSocketVersionResponse(ctx?.channel()!!);
-                } else {
-                    handshaker?.handshake(ctx?.channel()!!, msg as FullHttpRequest);
+                    if (handshaker == null) {
+                        WebSocketServerHandshakerFactory.sendUnsupportedWebSocketVersionResponse(ctx?.channel()!!);
+                    } else {
+                        handshaker?.handshake(ctx?.channel()!!, msg as FullHttpRequest);
+                    }
+                    return
                 }
-                return
+                catch(exception: RouteNotFoundException)
+                {
+                    // If we dont have a channel to support the requested URL we set not found and bail out.
+                    response.setStatus(StatusCodes.NotFound)
+                    writeResponse(ctx!!, response)
+                    return
+                }
             }
             handleStandardHttpRequest(ctx, msg)
         }
@@ -138,7 +147,7 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
         channelHandler.channelExtension()
 
         // Cleanup and flush the channel as per HTTP request.
-        writeResponse(ctx!!, response)
+        writeSocketResponse(ctx!!, response)
     }
 
     private fun handleStandardHttpRequest(ctx: ChannelHandlerContext?, msg: Any?)
@@ -306,6 +315,13 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
             lastContentFuture.addListener(ChannelFutureListener.CLOSE)
 
         }
+    }
+
+    private fun writeSocketResponse(ctx: ChannelHandlerContext, response: Response) {
+
+            runInterceptors(postRequestInterceptors)
+
+            ctx.writeAndFlush(LastHttpContent.EMPTY_LAST_CONTENT)
     }
 
     private fun addResponseHeaders(httpResponse: HttpResponse, response: Response) {
