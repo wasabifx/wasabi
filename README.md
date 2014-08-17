@@ -244,6 +244,8 @@ where path can be a specific route or *** to match all routes. Position indicate
 ```kotlin
   public enum class InterceptOn {
       PreRequest
+      PreExecution
+      PostExecution
       PostRequest
       Error
   }

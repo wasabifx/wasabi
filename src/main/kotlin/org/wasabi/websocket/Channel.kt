@@ -7,4 +7,4 @@ package org.wasabi.websocket
  * Time: 9:58 PM
  * To change this template use File | Settings | File Templates.
  */
-public data class Channel (val path: String, vararg val handler: ChannelHandler.() -> Unit)
+public data class Channel (val path: String, val handler: ChannelHandler.() -> Unit)
