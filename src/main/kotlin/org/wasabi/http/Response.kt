@@ -27,6 +27,7 @@ public class Response() {
     public var resourceId: String? = null
     public var location: String = ""
     public var contentType: String = ContentType.Text.Plain.toString()
+    public var contentLength: Long = 0
     public var statusCode: Int = 200
     public var statusDescription: String = ""
     public var allow: String = ""
@@ -59,7 +60,7 @@ public class Response() {
                 fileContentType = contentType
             }
             this.contentType = fileContentType ?: "application/unknown"
-            addRawHeader("Content-Length", file.length().toString())
+            this.contentLength = file.length()
             // TODO: Caching and redirect here too?
         } else {
             setStatus(StatusCodes.NotFound)
@@ -122,6 +123,10 @@ public class Response() {
         setResponseCookies()
         addRawHeader("ETag", etag)
         addRawHeader("Location", location)
+        addRawHeader("Content-Type", contentType)
+        if (contentLength > 0) {
+            addRawHeader("Content-Length", contentLength.toString())
+        }
     }
 }
 
