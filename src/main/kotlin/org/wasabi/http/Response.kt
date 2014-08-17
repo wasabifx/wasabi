@@ -17,6 +17,9 @@ import io.netty.handler.codec.http.ServerCookieEncoder
 import io.netty.handler.codec.http.DefaultCookie
 import java.util.ArrayList
 import org.wasabi.serializers.Serializer
+import org.joda.time.DateTime
+import org.joda.time.DateTimeZone
+import org.joda.time.format.DateTimeFormat
 
 
 public class Response() {
@@ -39,6 +42,9 @@ public class Response() {
     public val cookies : HashMap<String, Cookie> = HashMap<String, Cookie>()
     public var requestedContentTypes: ArrayList<String> = arrayListOf()
     public var negotiatedMediaType: String = ""
+    public var connection: String = "close"
+    public var cacheControl: String = "max-age=6000"
+    public var lastModified: DateTime? = null
 
 
 
@@ -53,15 +59,24 @@ public class Response() {
         if (file.exists()) {
             this.absolutePathToFileToStream = file.getAbsolutePath()
             var fileContentType : String?
-            if (contentType == "*/*") {
-                var mimeTypesMap : MimetypesFileTypeMap? = MimetypesFileTypeMap()
-                fileContentType = mimeTypesMap!!.getContentType(file)
-            } else {
-                fileContentType = contentType
+            when (contentType) {
+                "*/*" -> when {
+                    file.extension.compareToIgnoreCase("css") == 0 -> {
+                        fileContentType = "text/css"
+                    }
+                    else -> {
+                        var mimeTypesMap: MimetypesFileTypeMap? = MimetypesFileTypeMap()
+                        fileContentType = mimeTypesMap!!.getContentType(file)
+                    }
+                }
+                else -> {
+                    fileContentType = contentType
+                }
             }
             this.contentType = fileContentType ?: "application/unknown"
             this.contentLength = file.length()
-            // TODO: Caching and redirect here too?
+            this.lastModified = DateTime(file.lastModified())
+
         } else {
             setStatus(StatusCodes.NotFound)
         }
@@ -115,9 +130,6 @@ public class Response() {
         }
     }
 
-    public fun setCacheControl(cacheControl: CacheControl) {
-        addRawHeader("Cache-Control", cacheControl.toString())
-    }
 
     public fun setHeaders() {
         setResponseCookies()
@@ -127,6 +139,18 @@ public class Response() {
         if (contentLength > 0) {
             addRawHeader("Content-Length", contentLength.toString())
         }
+        addRawHeader("Connection", connection)
+        addRawHeader("Date", convertToDateFormat(DateTime.now()!!))
+        addRawHeader("Cache-Control", cacheControl)
+        if (lastModified != null) {
+            addRawHeader("Last-Modified", convertToDateFormat(lastModified!!))
+        }
+    }
+
+    public fun convertToDateFormat(dateTime: DateTime): String {
+        val dt = DateTime(dateTime, DateTimeZone.forID("GMT"))
+        val dtf = DateTimeFormat.forPattern("EEE, dd MMM yyyy HH:mm:ss")
+        return "${dtf?.print(dt).toString()} GMT"
     }
 }
 

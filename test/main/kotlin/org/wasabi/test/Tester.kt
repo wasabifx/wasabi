@@ -39,6 +39,7 @@ fun main(args: Array<String>) {
     appServer.enableAutoOptions()
     appServer.enableCORS(arrayListOf(CORSEntry()))
 
+    appServer.serveStaticFilesFromFolder("testData/public")
 
     appServer.get("/person", getPersons)
 
