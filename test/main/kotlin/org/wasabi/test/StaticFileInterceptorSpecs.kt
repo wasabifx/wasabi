@@ -26,7 +26,7 @@ public class StaticFileInterceptorSpecs: TestServerContext() {
         val response = get("http://localhost:${TestServer.definedPort}/style.css", hashMapOf())
 
 
-        assertEquals("application/octet-stream", response.headers.first( { it.getName() == "Content-Type"}).getValue())
+        assertEquals("text/css", response.headers.first( { it.getName() == "Content-Type"}).getValue())
     }
 
     spec fun requesting_an_non_existing_static_file_should_404() {
