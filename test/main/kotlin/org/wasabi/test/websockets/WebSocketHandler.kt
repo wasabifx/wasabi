@@ -19,7 +19,7 @@ import org.slf4j.LoggerFactory
 /**
  * Created by swishy on 15/08/14.
  */
-public abstract class WebSocketHandlerBase(val handshaker : WebSocketClientHandshaker) : SimpleChannelInboundHandler<Any?>() {
+public abstract class WebSocketHandlerBase(val handshaker : WebSocketClientHandshaker?) : SimpleChannelInboundHandler<Any?>() {
 
 
 
@@ -30,7 +30,7 @@ public abstract class WebSocketHandlerBase(val handshaker : WebSocketClientHands
     override fun channelRead0(ctx: ChannelHandlerContext?, msg: Any?) {
 
         var ch = ctx!!.channel();
-        if (!handshaker.isHandshakeComplete()) {
+        if (!handshaker!!.isHandshakeComplete()) {
             handshaker.finishHandshake(ch, msg as FullHttpResponse);
             handshakeFuture!!.setSuccess();
             this.handshakeCompleted(ch)
@@ -39,9 +39,7 @@ public abstract class WebSocketHandlerBase(val handshaker : WebSocketClientHands
 
         if (msg is FullHttpResponse) {
             var response = msg as FullHttpResponse;
-            throw IllegalStateException(
-                    "Unexpected FullHttpResponse (getStatus=" + response.getStatus() +
-                            ", content=" + response.content().toString(CharsetUtil.UTF_8) + ')');
+            throw IllegalStateException("Unexpected HTTP response");
         }
 
         var frame = msg as WebSocketFrame;
@@ -54,16 +52,16 @@ public abstract class WebSocketHandlerBase(val handshaker : WebSocketClientHands
         }
     }
 
-    public abstract fun handshakeCompleted(channel : Channel)
+    public abstract fun handshakeCompleted(channel : Channel?)
 
 
-    public abstract fun handleTextWebSocketFrame(channel : Channel, frame : TextWebSocketFrame)
+    public abstract fun handleTextWebSocketFrame(channel : Channel?, frame : TextWebSocketFrame)
 
 
-    public abstract fun handlePongWebSocketFrame(channel : Channel, frame : PongWebSocketFrame)
+    public abstract fun handlePongWebSocketFrame(channel : Channel?, frame : PongWebSocketFrame)
 
 
-    public abstract fun handleCloseWebSocketFrame(channel : Channel, frame : CloseWebSocketFrame)
+    public abstract fun handleCloseWebSocketFrame(channel : Channel?, frame : CloseWebSocketFrame)
 
 
     override fun handlerAdded(ctx : ChannelHandlerContext)
@@ -74,7 +72,7 @@ public abstract class WebSocketHandlerBase(val handshaker : WebSocketClientHands
     override fun channelActive(ctx : ChannelHandlerContext)
     {
         log!!.info("WebSocket Client active!");
-        handshaker.handshake(ctx.channel());
+        handshaker!!.handshake(ctx.channel());
     }
 
     override fun channelInactive(ctx : ChannelHandlerContext) {
