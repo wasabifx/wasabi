@@ -68,7 +68,7 @@ public class RoutesSpecs {
 
         val exception = fails({routeLocator.findRouteHandlers("/second", HttpMethod.GET)})
 
-        assertEquals(javaClass<InvalidMethodException>(), exception.javaClass)
+        assertEquals(javaClass<InvalidMethodException>(), exception?.javaClass)
 
     }
 
@@ -80,7 +80,7 @@ public class RoutesSpecs {
         TestServer.appServer.get( "/a", {})
         val exception = fails { TestServer.appServer.get( "/", {}) }
 
-        assertEquals(javaClass<RouteAlreadyExistsException>(), exception.javaClass)
+        assertEquals(javaClass<RouteAlreadyExistsException>(), exception?.javaClass)
         assertEquals("Path / with method GET already exists", exception?.getMessage())
     }
 }

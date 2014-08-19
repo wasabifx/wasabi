@@ -12,9 +12,21 @@ public class StaticFileInterceptorSpecs: TestServerContext() {
         TestServer.appServer.serveStaticFilesFromFolder("testData${File.separatorChar}public")
 
         val response = get("http://localhost:${TestServer.definedPort}/test.html", hashMapOf())
+        val response1 = get("http://localhost:${TestServer.definedPort}/error.html", hashMapOf())
 
 
         assertEquals("<!DOCTYPE html><head><title></title></head><body>This is an example static file</body></html>", response.body)
+        assertEquals("<!DOCTYPE html><head><title></title></head><body>Standard Error File</body></html>", response1.body)
+    }
+
+    spec fun requesting_an_existing_static_file_should_return_correct_content_type() {
+
+        TestServer.appServer.serveStaticFilesFromFolder("testData${File.separatorChar}public")
+
+        val response = get("http://localhost:${TestServer.definedPort}/style.css", hashMapOf())
+
+
+        assertEquals("text/css", response.headers.first( { it.getName() == "Content-Type"}).getValue())
     }
 
     spec fun requesting_an_non_existing_static_file_should_404() {

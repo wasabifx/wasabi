@@ -262,6 +262,7 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
 
         if (response.absolutePathToFileToStream != "") {
             httpResponse = DefaultHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus(response.statusCode, response.statusDescription));
+            response.setHeaders()
             addResponseHeaders(httpResponse, response)
             ctx.write(httpResponse)
 
