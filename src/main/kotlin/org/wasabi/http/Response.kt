@@ -64,6 +64,9 @@ public class Response() {
                     file.extension.compareToIgnoreCase("css") == 0 -> {
                         fileContentType = "text/css"
                     }
+                    file.extension.compareToIgnoreCase("js") == 0 -> {
+                        fileContentType = "application/javascript"
+                    }
                     else -> {
                         var mimeTypesMap: MimetypesFileTypeMap? = MimetypesFileTypeMap()
                         fileContentType = mimeTypesMap!!.getContentType(file)
