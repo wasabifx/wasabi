@@ -6,7 +6,7 @@ import org.wasabi.http.StatusCodes
 import org.wasabi.http.ContentType
 
 
-public class RouteHandler(val request: Request, val response: Response)  {
+public class RouteHandler(public val request: Request, public val response: Response)  {
 
     var executeNext = false
 
