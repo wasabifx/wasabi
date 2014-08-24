@@ -24,6 +24,6 @@ public class ETagInterceptor(private val objectTagFunc: (Any) -> String = { (obj
     }
 }
 
-fun AppServer.enableETag(path: String = "*", objectTagFunc: (Any) -> String = { obj -> obj.hashCode().toString() }) {
+public fun AppServer.enableETag(path: String = "*", objectTagFunc: (Any) -> String = { obj -> obj.hashCode().toString() }) {
     intercept(ETagInterceptor(objectTagFunc), path, interceptOn = InterceptOn.PostExecution)
 }

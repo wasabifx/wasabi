@@ -29,10 +29,10 @@ public class CORSInterceptor(val settings: ArrayList<CORSEntry>): Interceptor() 
     }
 }
 
-fun AppServer.enableCORSGlobally() {
+public fun AppServer.enableCORSGlobally() {
     enableCORS(arrayListOf(CORSEntry()))
 }
 
-fun AppServer.enableCORS(settings: ArrayList<CORSEntry>) {
+public fun AppServer.enableCORS(settings: ArrayList<CORSEntry>) {
     intercept(CORSInterceptor(settings), "*", InterceptOn.PostRequest)
 }

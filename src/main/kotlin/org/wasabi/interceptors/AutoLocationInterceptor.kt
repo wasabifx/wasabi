@@ -17,6 +17,6 @@ public class AutoLocationInterceptor(): Interceptor() {
     }
 }
 
-fun AppServer.enableAutoLocation(path: String = "*") {
+public fun AppServer.enableAutoLocation(path: String = "*") {
     intercept(AutoLocationInterceptor(), path, interceptOn = InterceptOn.PostRequest)
 }

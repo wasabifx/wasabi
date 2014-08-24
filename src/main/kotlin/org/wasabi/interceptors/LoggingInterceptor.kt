@@ -16,6 +16,6 @@ public class LoggingInterceptor: Interceptor() {
 
 }
 
-fun AppServer.logRequests() {
+public fun AppServer.logRequests() {
     intercept(LoggingInterceptor(), "*", InterceptOn.PreExecution)
 }

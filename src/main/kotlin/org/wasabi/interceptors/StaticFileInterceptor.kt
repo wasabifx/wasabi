@@ -24,7 +24,7 @@ public class StaticFileInterceptor(val folder: String): Interceptor() {
     }
 }
 
-fun AppServer.serveStaticFilesFromFolder(folder: String) {
+public fun AppServer.serveStaticFilesFromFolder(folder: String) {
     val staticInterceptor = StaticFileInterceptor(folder)
     intercept(staticInterceptor)
 }

@@ -18,6 +18,6 @@ public class FileBasedErrorInterceptor(val folder: String, val fileExtensions: S
     }
 }
 
-fun AppServer.serveErrorsFromFolder(folder: String, fileExtensions: String = "html", fallbackGenericFile: String = "error.html") {
+public fun AppServer.serveErrorsFromFolder(folder: String, fileExtensions: String = "html", fallbackGenericFile: String = "error.html") {
     intercept(FileBasedErrorInterceptor(folder, fileExtensions, fallbackGenericFile), "*", InterceptOn.Error)
 }
