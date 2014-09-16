@@ -1,0 +1,5 @@
+<root>
+    <item name='org.codehaus.jackson.map.ObjectMapper'>
+        <annotation name='org.jetbrains.annotations.NotNull'/>
+    </item>
+</root>

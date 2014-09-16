@@ -1,4 +1,4 @@
-package org.wasabi.interceptors
+package org.wasabi.storage
 
 import org.wasabi.http.Session
 
