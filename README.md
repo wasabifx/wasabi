@@ -58,7 +58,17 @@ The easiest way to use Wasabi is with Gradle.
 
   * Create it manually. See the [sample for the structure](tools/sample.gradle). Make sure you fill in the TODOs
 
+### Important: Versioning 
 
+Kotlin is still in development and so is Wasabi. The current master trunk of Wasabi (under 0.1-SNAPSHOT) uses the latest nightly build of Kotlin. As such, if you're using a released version of Kotlin, such as M8, you'll get binary format errors. To use the latest nightly builds of Kotlin (recommendeded), add the following repository to IntelliJ IDEA:
+
+http://teamcity.jetbrains.com/guestAuth/repository/download/bt345/.lastSuccessful/updatePlugins.xml
+
+under Preferences | Plugins | Browse Repositories | Manage Repositories
+
+and you'll be able to install the latest plugin. Alternatively if you're not using IntelliJ IDEA, you can download the artifacts from:
+
+http://teamcity.jetbrains.com/project.html?projectId=Kotlin&tab=projectOverview
 
 ### The AppServer ###
 Each Wasabi application is composed of a single *AppServer* on which you define route handlers. A route handler can respond to any of the HTTP verbs: GET, POST, PUT, DELETE, OPTIONS, HEAD. 
