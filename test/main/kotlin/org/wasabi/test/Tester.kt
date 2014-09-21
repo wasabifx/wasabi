@@ -46,6 +46,7 @@ fun main(args: Array<String>) {
     appServer.get("/person/:id", getPersonById)
 
     appServer.post("/person", createPerson)
+    appServer.get("/course", createPerson)
 
     appServer.get("/something", {
 

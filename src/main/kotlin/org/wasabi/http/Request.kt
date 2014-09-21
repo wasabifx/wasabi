@@ -54,7 +54,7 @@ public class Request(private val httpRequest: HttpRequest) {
             val mediaType = parts[0]
             var weight = 1
             if (parts.size == 2) {
-                val float = parts[1].drop(2).toFloat() * 10
+                val float = parts[1].trim().drop(2).toFloat() * 10
                 weight = float.toInt()
             }
             parsed.put(mediaType, weight)
