@@ -18,7 +18,7 @@ public class PatternMatchingChannelLocator(val channels: ArrayList<Channel>) : C
     override fun findChannelHandler(channel: String): Channel {
 
         // Handshaker has full uri on instance so we strip off the protocol and search for raw path
-        val matchingChannel = channels.filter { it.path == channel.split("ws://")[1] }
+        val matchingChannel = channels.filter { it.path == channel.split("ws://")[0] }
         if (matchingChannel.count() == 0) {
             throw ChannelNotFoundException()
         }
