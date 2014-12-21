@@ -17,7 +17,6 @@ import org.junit.Test as spec
             val session = request.session!!
 
             session.data = CustomSession("Joe")})
-   //     TestServer.appServer.get("/get_session", { response.send((request.session?.data as CustomSession).name)})
 
         get("http://localhost:${TestServer.definedPort}/set_session", hashMapOf())
         val response = get("http://localhost:${TestServer.definedPort}/get_session", hashMapOf())

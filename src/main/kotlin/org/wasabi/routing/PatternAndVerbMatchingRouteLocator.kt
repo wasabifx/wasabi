@@ -12,7 +12,7 @@ public class PatternAndVerbMatchingRouteLocator(val routes: ArrayList<Route>): R
 
         val segments1 = route1.path.split('/')
         val segments2 = path.split('/')
-        if (segments1.size != segments2.size) {
+        if (segments1.size() != segments2.size()) {
             return false
         }
         var i = 0
@@ -41,7 +41,8 @@ public class PatternAndVerbMatchingRouteLocator(val routes: ArrayList<Route>): R
         if (matchingVerbs.count() == 1) {
             return matchingVerbs.first!!
         }
-        throw InvalidMethodException(allowedMethods = Array<HttpMethod>(matchingPaths.size(), { i -> matchingPaths.get(i).method}))
+        val methods = array<HttpMethod>() // TODO: This needs to be filled
+        throw InvalidMethodException(allowedMethods = methods)
 
     }
 
