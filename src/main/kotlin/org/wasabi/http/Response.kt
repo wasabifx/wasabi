@@ -56,7 +56,7 @@ public class Response() {
     public fun streamFile(filename: String, contentType: String = "*/*") {
 
         val file = File(filename)
-        if (file.exists()) {
+        if (file.exists() && !file.isDirectory()) {
             this.absolutePathToFileToStream = file.getAbsolutePath()
             var fileContentType : String?
             when (contentType) {
