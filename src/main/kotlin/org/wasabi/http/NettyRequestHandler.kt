@@ -292,6 +292,7 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
                 if (response.negotiatedMediaType != "") {
                     val serializer = appServer.serializers.find { it.canSerialize(response.negotiatedMediaType) }
                     if (serializer != null) {
+                        response.contentType = response.negotiatedMediaType
                         buffer = serializer.serialize(response.sendBuffer!!)
                     } else {
                         response.setStatus(StatusCodes.UnsupportedMediaType)
