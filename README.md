@@ -32,11 +32,11 @@ Getting Started
 
 #### The Hello World of Wasabi ####
 ```kotlin
-  var server = AppServer()
+var server = AppServer()
   
-  server.get("/", { response.send("Hello World!") })
+server.get("/", { response.send("Hello World!") })
   
-  server.start()
+server.start()
 ```
 
 #### Starting a new application ####
@@ -58,6 +58,24 @@ The easiest way to use Wasabi is with Gradle.
 
   * Create it manually. See the [sample for the structure](tools/sample.gradle). Make sure you fill in the TODOs
 
+#### Including as a dependency (Gradle) ####
+
+For Gradle projects, 0.1-SNAPSHOT version can be included like this (`build.gradle` file):
+
+```groovie
+repositories {
+    // Other repositories you use.
+    maven { url 'http://repository.jetbrains.com/all' }
+}
+
+dependencies {
+    // Other dependencies you use.
+    compile 'org.wasabi:wasabi:0.1-SNAPSHOT'
+}
+```
+
+All versions can be found here: http://repository.jetbrains.com/all/org/wasabi/wasabi/
+
 ### Important: Versioning 
 
 Kotlin is still in development and so is Wasabi. The current master trunk of Wasabi (under 0.1-SNAPSHOT) uses the latest nightly build of Kotlin. As such, if you're using a released version of Kotlin, such as M8, you'll get binary format errors. To use the latest nightly builds of Kotlin (recommendeded), add the following repository to IntelliJ IDEA:
@@ -75,13 +93,12 @@ Each Wasabi application is composed of a single *AppServer* on which you define 
 A normal application consists of a section where you define a series of parameters for the application, followed by your handlers (i.e. your routing table). 
 
 ```kotlin
+var appServer = AppServer()
   
-  var appServer = AppServer()
+server.get("/customers", { .... } )
+server.post("/customer", { .... } )
   
-  server.get("/customers", { .... } )
-  server.post("/customer", { .... } )
-  
-  server.start()
+server.start()
 ```
 
 ### Route Handlers ###
@@ -107,9 +124,9 @@ By calling *next()* on each handler, the processing will continue.
 All verbs on *AppServer* have the following signature
 
 ```kotlin
-    public fun get(path: String, vararg handlers: RouteHandler.() -> Unit) {
-        addRoute(HttpMethod.GET, path, *handlers)
-    }
+public fun get(path: String, vararg handlers: RouteHandler.() -> Unit) {
+  addRoute(HttpMethod.GET, path, *handlers)
+}
 ```
 
 where you can pass one or multiple route handlers. Each one of these is an extension method to the class *RouteHandler*. This class has various properties, amongst which are
@@ -121,7 +138,7 @@ where you can pass one or multiple route handlers. Each one of these is an exten
 Wasabi supports route parameters. Define as many parameters as you like using : followed by the name of the parameter. Access it via request.routeParams["name"]
 
 ```kotlin
-   server.get("/customer/:id", { val customerId = request.routeParams["id"] } )
+server.get("/customer/:id", { val customerId = request.routeParams["id"] } )
 ```
 
 #### Query Parameters ####
@@ -130,13 +147,13 @@ Access query parameters using queryParams property of the request.
   http://localhost:3000/customer?name=Joe
   
 ```kotlin
-  server.get("/customer", { val customerName = request.queryParams["name"] } )
+server.get("/customer", { val customerName = request.queryParams["name"] } )
 ```
 
 #### Form Parameters ####
 Access form parameters using bodyParams property of the request.
 ```kotlin
-  server.post("/customer", { val customerNameFromForm = request.bodyParams["name"] } )
+server.post("/customer", { val customerNameFromForm = request.bodyParams["name"] } )
 ```  
 
 ### Organization of Route Handlers and Application layout ###
@@ -148,9 +165,9 @@ against is forcing people to group routes per class for instance. Having said th
 Defining logic for each route handler inline:
 
 ```kotlin
-   val appServer = AppServer()
-   
-   appServer.get("/customer", { response.send(customers) })
+val appServer = AppServer()
+
+appServer.get("/customer", { response.send(customers) })
 ```
 
 For very simple operations this might be ok however, it will soon become unmaintainable. 
@@ -159,9 +176,9 @@ For very simple operations this might be ok however, it will soon become unmaint
 Define route handlers as functions and reference them:
 
 ```
-   val appServer = AppServer()
-   
-   appServer.get("/customer", getCustomers)
+val appServer = AppServer()
+
+appServer.get("/customer", getCustomers)
 ```
 
 This means that your definition of route handlers pretty much becomes a routing table, which is what it should be. 
@@ -219,7 +236,7 @@ public class CustomerRoutes {
 *Note*
 Kotlin allows you to refer to a function by name using :: syntax. In principle you could also do:
 ```kotlin
-   appServer.get("/customer", ::getCustomer)
+appServer.get("/customer", ::getCustomer)
 ```
 and not require an explicit variable declaration for the function. However, this currently does not work with extension functions
 but hopefully will in the future.
@@ -236,9 +253,9 @@ I do not agree with such a broad and somewhat ambiguous term. I like to name thi
 An intercpetor implements the following trait
 
 ```kotlin
-  public trait Interceptor {
-    fun intercept(request: Request, response: Response): Boolean
-  }
+public trait Interceptor {
+  fun intercept(request: Request, response: Response): Boolean
+}
 ```
 
 You return true if you want the process to continue or false if you want to interrupt the request.
@@ -246,19 +263,19 @@ You return true if you want the process to continue or false if you want to inte
 To add an interceptor to the application, you use
 
 ```kotlin
-  server.interceptor(MyInterceptor(), path, position)
+server.interceptor(MyInterceptor(), path, position)
 ```
 
 where path can be a specific route or *** to match all routes. Position indicates when the intercept occurs. Possible positions are
 
 ```kotlin
-  public enum class InterceptOn {
-      PreRequest
-      PreExecution
-      PostExecution
-      PostRequest
-      Error
-  }
+ public enum class InterceptOn {
+     PreRequest
+     PreExecution
+     PostExecution
+     PostRequest
+     Error
+ }
 ```
 
 Out of the box, the following interceptors are available 
@@ -275,10 +292,10 @@ Most interceptor add extension methods to *AppServer* to make them easier (and m
 *ContentNegotiationInterceptor* and *StaticFileInterceptor*  would be used as so
 
 ```kotlin
-  val appServer = AppServer()
+val appServer = AppServer()
   
-  server.negotiateContent()
-  server.serveStaticFilesFromFolder("/public") 
+server.negotiateContent()
+server.serveStaticFilesFromFolder("/public") 
 ```
 ## Content Negotiation ##
 Wasabi ships with content negotiation out of the box, via a couple of interceptors. In particular:
@@ -298,12 +315,11 @@ or extensions to documents (e.g. /customer.json).
 The ContentNegotiationParser allows you to do this. Easiest way to use it is via the extension function:
 
 ```kotlin
-   server.parseContentNegotiationHeaders() {
-       onQueryParameter("format")
-       onExtension()
-       onAcceptHeader()
-   }
-
+server.parseContentNegotiationHeaders() {
+    onQueryParameter("format")
+    onExtension()
+    onAcceptHeader()
+}
 ```
 
 Based on the order in which you pass in onAcceptHeader, onExtension and onQueryParameter defines the priority. Above for instance
@@ -317,13 +333,10 @@ By default Content Negotiation is enabled. You can disable it via the AppConfigu
 will automatically serialize it and send it back to the client.
 
 ```kotlin
-   server.get("/customer/:id", {
-
-
-        val customer = getCustomerById(request.params["id"])
-
-        response.send(customer)
-   }
+server.get("/customer/:id", {
+  val customer = getCustomerById(request.params["id"])
+  response.send(customer)
+}
 ```
 
 Wasabi will automatically serialize that into Json, Xml or any other media type supported (see Serializers below)
@@ -349,7 +362,7 @@ If you need to manually override Content Negotiation, you can do so using the *n
 *negotiate* signature is:
 
 ```kotlin
-    public fun negotiate(vararg negotiations: Pair<String, Response.() -> Unit>)
+public fun negotiate(vararg negotiations: Pair<String, Response.() -> Unit>)
 ```
 
 You can pass in an unlimited number of media type, functions. Also, as the function is an extension function to *Response*, you have
