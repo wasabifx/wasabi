@@ -11,5 +11,5 @@ abstract public class Deserializer(vararg val mediaTypes: String) {
         }
         return false
     }
-    abstract fun deserialize(input: Any): HashMap<String, String>
+    abstract fun deserialize(input: Any): HashMap<String, Any>
 }

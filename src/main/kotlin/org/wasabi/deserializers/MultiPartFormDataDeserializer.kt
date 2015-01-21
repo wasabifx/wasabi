@@ -4,15 +4,11 @@ import io.netty.handler.codec.http.multipart.InterfaceHttpData
 import io.netty.handler.codec.http.multipart.InterfaceHttpData.HttpDataType
 import io.netty.handler.codec.http.multipart.Attribute
 import java.util.HashMap
-import io.netty.handler.codec.http.multipart.HttpPostRequestDecoder
-import io.netty.handler.codec.http.multipart.DefaultHttpDataFactory
-import io.netty.handler.codec.http.HttpContent
-import io.netty.handler.codec.http.multipart.HttpPostRequestDecoder.NotEnoughDataDecoderException
 
 public class MultiPartFormDataDeserializer: Deserializer("application/x-www-form-urlencoded", "multipart/form-data") {
-    val bodyParams = HashMap<String, String>()
+    val bodyParams = HashMap<String, Any>()
 
-    override fun deserialize(input: Any): HashMap<String, String> {
+    override fun deserialize(input: Any): HashMap<String, Any> {
         parseBodyParams(input as List<InterfaceHttpData>)
         return bodyParams
     }

@@ -103,7 +103,7 @@ public class HeaderSpecs: TestServerContext() {
 
         )
 
-        var bodyParams = HashMap<String, String>()
+        var bodyParams = HashMap<String, Any>()
 
 
 
@@ -155,7 +155,6 @@ public class HeaderSpecs: TestServerContext() {
 
 
 
-
     }
 
 
@@ -171,7 +170,7 @@ public class HeaderSpecs: TestServerContext() {
 
         )
 
-        var bodyParams = HashMap<String, String>()
+        var bodyParams = HashMap<String, Any>()
 
 
 

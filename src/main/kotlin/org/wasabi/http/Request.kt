@@ -35,7 +35,7 @@ public class Request(private val httpRequest: HttpRequest) {
     public val ifNoneMatch: String = getHeader("If-None-Match")
     public val queryParams: HashMap<String, String> = parseQueryParams()
     public val routeParams: HashMap<String, String> = HashMap<String, String>()
-    public val bodyParams: HashMap<String, String> = HashMap<String, String>()
+    public val bodyParams: HashMap<String, Any> = HashMap<String, Any>()
     public val cookies: HashMap<String, Cookie> = parseCookies()
     public val contentType: String = getHeader("Content-Type")
     public val chunked: Boolean = getHeader("Transfer-Encoding").compareToIgnoreCase("chunked") == 0
