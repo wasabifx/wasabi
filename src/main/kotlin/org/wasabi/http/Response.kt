@@ -43,7 +43,7 @@ public class Response() {
     public var requestedContentTypes: ArrayList<String> = arrayListOf()
     public var negotiatedMediaType: String = ""
     public var connection: String = "close"
-    public var cacheControl: String = "max-age=6000"
+    public var cacheControl: String = "max-age=0"
     public var lastModified: DateTime? = null
 
 
