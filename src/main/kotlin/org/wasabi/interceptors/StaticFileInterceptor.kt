@@ -13,7 +13,7 @@ public class StaticFileInterceptor(val folder: String): Interceptor() {
         if (request.method == HttpMethod.GET) {
             val fullPath = "${folder}${request.uri}"
             val file = File(fullPath)
-            if (file.exists()) {
+            if (file.exists() && file.isFile()) {
                 response.streamFile(fullPath)
             } else {
                 next()
