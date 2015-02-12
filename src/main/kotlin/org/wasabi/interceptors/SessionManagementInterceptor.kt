@@ -7,6 +7,8 @@ import org.wasabi.http.Session
 import org.wasabi.http.Cookie
 import java.util.UUID
 import java.util.Date
+import org.wasabi.storage.SessionStorage
+import org.wasabi.storage.InMemorySessionStorage
 
 public class SessionManagementInterceptor(val cookieKey: String = "_sessionID", sessionStorage: SessionStorage = InMemorySessionStorage()): Interceptor(), SessionStorage by sessionStorage {
 
