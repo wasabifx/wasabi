@@ -108,9 +108,10 @@ public class HeaderSpecs: TestServerContext() {
 
 
 
-        TestServer.appServer.post("/customer/",
+        TestServer.appServer.post("/customer",
                 {
 
+                    System.out.println(request.bodyParams)
 
                     bodyParams = request.bodyParams
                     response.send("/")
