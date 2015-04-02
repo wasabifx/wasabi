@@ -176,7 +176,7 @@ public class HeaderSpecs: TestServerContext() {
 
 
 
-        TestServer.appServer.post("/customer/",
+        TestServer.appServer.post("/customer",
                 {
 
 
