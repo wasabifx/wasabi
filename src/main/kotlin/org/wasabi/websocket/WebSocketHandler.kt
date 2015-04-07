@@ -1,4 +1,4 @@
-package org.wasabi.http
+package org.wasabi.websocket
 
 import io.netty.channel.ChannelHandlerContext
 import io.netty.handler.codec.http.websocketx.CloseWebSocketFrame
@@ -7,7 +7,6 @@ import io.netty.handler.codec.http.websocketx.WebSocketServerHandshaker
 import org.wasabi.app.AppServer
 import org.wasabi.routing.ChannelLocator
 import org.wasabi.routing.InterceptOn
-import org.wasabi.websocket.ChannelHandler
 
 public class WebSocketHandler(private val appServer: AppServer, channelLocator: ChannelLocator) : ChannelLocator by channelLocator {
 

@@ -50,6 +50,7 @@ import io.netty.channel.ChannelProgressiveFutureListener
 import org.wasabi.routing.*
 import org.wasabi.websocket.ChannelHandler
 import org.wasabi.websocket.Channel
+import org.wasabi.websocket.WebSocketHandler
 
 
 // TODO: This class needs cleaning up
