@@ -1,13 +1,13 @@
 buildscript {
-   ext.kotlin_version = '0.1-SNAPSHOT'
-   repositories {
+    project.ext.set("kotlin_version", '0.1-SNAPSHOT')
+    repositories {
         mavenCentral()
         maven {
             url "https://oss.sonatype.org/content/repositories/snapshots"
         }
     }
     dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$project.kotlin_version"
     }
 }
 
@@ -44,10 +44,10 @@ dependencies {
             "org.slf4j:slf4j-simple:1.7.5",
             "joda-time:joda-time:2.3"
 
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$project.kotlin_version"
 
     testCompile "junit:junit:4.9",
-         "org.mockito:mockito-all:1.9.5"
+            "org.mockito:mockito-all:1.9.5"
 }
 
 
@@ -117,7 +117,7 @@ publishing {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.11'
+    gradleVersion = '2.3'
 
     doLast() {
         def gradleOpts = "-XX:MaxPermSize=300m -Xmx1024m"
