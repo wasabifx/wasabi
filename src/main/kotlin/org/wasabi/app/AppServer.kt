@@ -42,6 +42,10 @@ public open class AppServer(val configuration: AppConfiguration = AppConfigurati
     public val serializers: ArrayList<Serializer> = arrayListOf(JsonSerializer(), XmlSerializer(), TextPlainSerializer())
     public val deserializers: ArrayList<Deserializer> = arrayListOf(MultiPartFormDataDeserializer(), JsonDeserializer())
 
+    init {
+        httpServer = HttpServer(this)
+        init()
+    }
 
     private fun addRoute(method: HttpMethod, path: String, vararg handler: RouteHandler.() -> Unit) {
         val existingRoute = routes.filter { it.path == path && it.method == method }
@@ -59,11 +63,6 @@ public open class AppServer(val configuration: AppConfiguration = AppConfigurati
         channels.add(Channel(path, handler))
     }
 
-    {
-        httpServer = HttpServer(this)
-        init()
-    }
-
     public fun init() {
         if (configuration.enableLogging) {
             intercept(LoggingInterceptor())
@@ -78,6 +77,7 @@ public open class AppServer(val configuration: AppConfiguration = AppConfigurati
             enableCORSGlobally()
         }
     }
+
     /**
      *  Returns true if the Server is running.
      */

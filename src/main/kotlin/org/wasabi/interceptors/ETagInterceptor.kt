@@ -7,7 +7,7 @@ import org.wasabi.app.AppServer
 import org.wasabi.routing.InterceptOn
 import org.wasabi
 
-public class ETagInterceptor(private val objectTagFunc: (Any) -> String = { (obj) -> obj.hashCode().toString() }): Interceptor() {
+public class ETagInterceptor(private val objectTagFunc: (Any) -> String = { obj -> obj.hashCode().toString() }): Interceptor() {
     override fun intercept(request: Request, response: Response) {
         if (response.sendBuffer != null) {
             val objectTag = objectTagFunc(response.sendBuffer!!)
