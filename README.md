@@ -19,7 +19,7 @@ as AngularJS or Ember. If you want a fully-fledged MVC framework in Kotlin, take
 features that allow you to create resource-orientated systems that help comply with ReSTful constraints.
 
 #### Current Status ####
-In development.
+In development. A lot of the stuff here is not ready for production. There are many experiments, quite a few hacks and things that are just wrong. So be warned. 
 
 #### Disclaimer ####
 A lot of the API and design of this framework is based on experience developing applications with other HTTP frameworks and the needs
