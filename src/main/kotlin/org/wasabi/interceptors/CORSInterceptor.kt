@@ -10,7 +10,7 @@ import org.wasabi.routing.InterceptOn
 public class CORSInterceptor(val settings: ArrayList<CORSEntry>): Interceptor() {
     override fun intercept(request: Request, response: Response) {
         for (setting in settings) {
-            if (setting.path == "*" || request.path.matches(setting.path)) {
+            if (setting.path == "*" || request.path.matches(setting.path.toRegex())) {
                 response.addRawHeader("Access-Control-Request-Method", setting.methods)
                 response.addRawHeader("Access-Control-Allow-Origin", setting.origins)
                 if (setting.headers != "") {

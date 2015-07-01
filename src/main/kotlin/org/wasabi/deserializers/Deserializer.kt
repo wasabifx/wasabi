@@ -5,7 +5,7 @@ import java.util.HashMap
 abstract public class Deserializer(vararg val mediaTypes: String) {
     open fun canDeserialize(mediaType: String): Boolean {
         for (supportedMediaType in mediaTypes) {
-            if (mediaType.matches(supportedMediaType)) {
+            if (mediaType.matches(supportedMediaType.toRegex())) {
                 return true
             }
         }

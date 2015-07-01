@@ -22,7 +22,7 @@ public class Request(private val httpRequest: HttpRequest) {
     public val method: HttpMethod = httpRequest.getMethod()!!
     public val host: String = getHeader("Host").takeWhile { it != ':' }
     public val protocol: String = "http" // TODO: Fix this.
-    public val isSecure: Boolean = protocol.compareToIgnoreCase("https") == 0
+    public val isSecure: Boolean = protocol.compareTo("https", ignoreCase = true) == 0
     val urlPort = getHeader("Host").dropWhile { it != ':' }.drop(1)
     public val port: Int = if (urlPort != "") urlPort.toInt() else 80
     public val connection: String = getHeader("Connection")
@@ -38,7 +38,7 @@ public class Request(private val httpRequest: HttpRequest) {
     public val bodyParams: HashMap<String, Any> = HashMap<String, Any>()
     public val cookies: HashMap<String, Cookie> = parseCookies()
     public val contentType: String = getHeader("Content-Type")
-    public val chunked: Boolean = getHeader("Transfer-Encoding").compareToIgnoreCase("chunked") == 0
+    public val chunked: Boolean = getHeader("Transfer-Encoding").compareTo("chunked", ignoreCase = true) == 0
     public val authorization: String = getHeader("Authorization")
     public val rawHeaders: List<Pair<String, String>> = httpRequest.headers().map({ it.key to it.value })
 

@@ -2,7 +2,7 @@ package org.wasabi.http
 
 public enum class NegotiateOn {
 
-    AcceptHeader
-    Extension
+    AcceptHeader,
+    Extension,
     QueryParameter
 }

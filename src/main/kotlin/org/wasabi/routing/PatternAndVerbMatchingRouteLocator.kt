@@ -20,7 +20,7 @@ public class PatternAndVerbMatchingRouteLocator(val routes: ArrayList<Route>): R
             if (segment.startsWith(':')) {
                 route1.params[segment.drop(1)] = segments2[i]
             } else {
-                if (segment.compareToIgnoreCase(segments2[i]) != 0) {
+                if (segment.compareTo(segments2[i], ignoreCase = true) != 0) {
                     return false
                 }
             }
@@ -39,9 +39,9 @@ public class PatternAndVerbMatchingRouteLocator(val routes: ArrayList<Route>): R
         val matchingVerbs = (matchingPaths.filter { it.method == method })
 
         if (matchingVerbs.count() == 1) {
-            return matchingVerbs.first!!
+            return matchingVerbs.firstOrNull()!!
         }
-        val methods = array<HttpMethod>() // TODO: This needs to be filled
+        val methods = arrayOf<HttpMethod>() // TODO: This needs to be filled
         throw InvalidMethodException(allowedMethods = methods)
 
     }

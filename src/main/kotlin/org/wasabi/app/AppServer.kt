@@ -50,7 +50,7 @@ public open class AppServer(val configuration: AppConfiguration = AppConfigurati
     private fun addRoute(method: HttpMethod, path: String, vararg handler: RouteHandler.() -> Unit) {
         val existingRoute = routes.filter { it.path == path && it.method == method }
         if (existingRoute.count() >= 1) {
-            throw RouteAlreadyExistsException(existingRoute.first!!)
+            throw RouteAlreadyExistsException(existingRoute.firstOrNull()!!)
         }
         routes.add(Route(path, method, HashMap<String, String>(), *handler))
     }
@@ -58,7 +58,7 @@ public open class AppServer(val configuration: AppConfiguration = AppConfigurati
     private fun addChannel(path: String, handler: ChannelHandler.() -> Unit) {
         var existingChannel = channels.filter{ it.path == path }
         if (existingChannel.count() >= 1) {
-            throw ChannelAlreadyExistsException(existingChannel.first!!)
+            throw ChannelAlreadyExistsException(existingChannel.firstOrNull()!!)
         }
         channels.add(Channel(path, handler))
     }

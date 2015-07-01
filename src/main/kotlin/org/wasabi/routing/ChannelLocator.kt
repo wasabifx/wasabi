@@ -9,6 +9,6 @@ import org.wasabi.websocket.Channel
  * Time: 10:45 PM
  * To change this template use File | Settings | File Templates.
  */
-public trait ChannelLocator {
+public interface ChannelLocator {
         fun findChannelHandler(path: String): Channel
 }

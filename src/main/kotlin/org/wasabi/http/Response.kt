@@ -61,10 +61,10 @@ public class Response() {
             var fileContentType : String?
             when (contentType) {
                 "*/*" -> when {
-                    file.extension.compareToIgnoreCase("css") == 0 -> {
+                    file.extension.compareTo("css", ignoreCase = true) == 0 -> {
                         fileContentType = "text/css"
                     }
-                    file.extension.compareToIgnoreCase("js") == 0 -> {
+                    file.extension.compareTo("js", ignoreCase = true) == 0 -> {
                         fileContentType = "application/javascript"
                     }
                     else -> {
@@ -96,7 +96,7 @@ public class Response() {
 
     public fun negotiate(vararg negotiations: Pair<String, Response.() -> Unit>) {
         for ((mediaType, func) in negotiations) {
-            if (requestedContentTypes.any { it.compareToIgnoreCase(mediaType) == 0}) {
+            if (requestedContentTypes.any { it.compareTo(mediaType, ignoreCase = true) == 0}) {
                 func()
                 negotiatedMediaType = mediaType
                 return

@@ -130,7 +130,7 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
             request!!.accept.mapTo(response.requestedContentTypes, { it.key })
 
             if (request!!.method == HttpMethod.POST || request!!.method == HttpMethod.PUT || request!!.method == HttpMethod.PATCH) {
-                deserializer = appServer.deserializers.find { it.canDeserialize(request!!.contentType)}
+                deserializer = appServer.deserializers.firstOrNull { it.canDeserialize(request!!.contentType) }
                 // TODO: Re-do this as it's now considering special case for multi-part
                 if (request!!.contentType.contains("application/x-www-form-urlencoded") || request!!.contentType.contains("multipart/form-data")) {
                     decoder = HttpPostRequestDecoder(factory, msg)
@@ -252,7 +252,7 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
 
             var lastContentFuture = ctx.writeAndFlush(LastHttpContent.EMPTY_LAST_CONTENT)
 
-            if (request!!.connection.compareToIgnoreCase("close") == 0) {
+            if (request!!.connection.compareTo("close", ignoreCase = true) == 0) {
                 lastContentFuture.addListener(ChannelFutureListener.CLOSE)
             }
         }  else {
@@ -268,7 +268,7 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
                 }
             } else {
                 if (response.negotiatedMediaType != "") {
-                    val serializer = appServer.serializers.find { it.canSerialize(response.negotiatedMediaType) }
+                    val serializer = appServer.serializers.firstOrNull { it.canSerialize(response.negotiatedMediaType) }
                     if (serializer != null) {
                         response.contentType = response.negotiatedMediaType
                         buffer = serializer.serialize(response.sendBuffer!!)

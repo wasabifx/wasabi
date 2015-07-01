@@ -85,7 +85,7 @@ val getPersons = routeHandler {
 
 val getPersonById = routeHandler {
 
-    val person = people.find { it.id == request.routeParams["id"]?.toInt()}
+    val person = people.firstOrNull { it.id == request.routeParams["id"]?.toInt() }
     if (person != null) {
         response.send(person)
     } else {

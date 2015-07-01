@@ -17,7 +17,7 @@ public class CachingSpecs: TestServerContext() {
 
         val response = get("http://localhost:${TestServer.definedPort}/cachePolicy", hashMapOf())
 
-        val cacheControlHeader = response.headers.find({ it.getName() == "Cache-Control"})?.getValue()
+        val cacheControlHeader = response.headers.firstOrNull({ it.getName() == "Cache-Control" })?.getValue()
 
         assertEquals("no-cache", cacheControlHeader)
 

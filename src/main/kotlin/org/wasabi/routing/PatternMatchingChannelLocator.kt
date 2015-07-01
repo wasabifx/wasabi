@@ -18,6 +18,6 @@ public class PatternMatchingChannelLocator(val channels: ArrayList<Channel>) : C
         }
 
         // We should only ever have one handler for a websocket channel
-        return matchingChannel.first!!
+        return matchingChannel.firstOrNull()!!
     }
 }

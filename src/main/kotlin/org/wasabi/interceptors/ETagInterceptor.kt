@@ -12,7 +12,7 @@ public class ETagInterceptor(private val objectTagFunc: (Any) -> String = { obj 
         if (response.sendBuffer != null) {
             val objectTag = objectTagFunc(response.sendBuffer!!)
             val incomingETag = request.ifNoneMatch
-            if (incomingETag.compareToIgnoreCase(objectTag) == 0) {
+            if (incomingETag.compareTo(objectTag, ignoreCase = true) == 0) {
                 response.setStatus(304, "Not modified")
             } else {
                 response.etag = objectTag

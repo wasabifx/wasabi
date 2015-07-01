@@ -77,11 +77,11 @@ public class HeaderSpecs: TestServerContext() {
         assertEquals("test-client", userAgent);
         assertEquals("Close", connection);
         assertEquals("max-age=0", cacheControl);
-        assertEquals(3, accept.size);
+        assertEquals(3, accept.size());
         assertEquals(4, accept["application/xhtml+xml"])
-        assertEquals(3, acceptEncoding.size);
-        assertEquals(2, acceptLanguage.size);
-        assertEquals(3, acceptCharset.size);
+        assertEquals(3, acceptEncoding.size());
+        assertEquals(2, acceptLanguage.size());
+        assertEquals(3, acceptCharset.size());
         assertEquals(2, queryParams.size())
         assertEquals("value1",queryParams["param1"])
         assertEquals("value2",queryParams["param2"])
