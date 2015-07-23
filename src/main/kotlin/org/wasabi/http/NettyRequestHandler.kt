@@ -223,9 +223,9 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
         for (interceptorEntry in interceptorsToRun) {
 
             val interceptor = interceptorEntry.interceptor
-            interceptor.intercept(request!!, response)
+            val executeNext = interceptor.intercept(request!!, response)
 
-            if (!interceptor.executeNext) {
+            if (!executeNext) {
                 bypassPipeline = true
                 break
             }

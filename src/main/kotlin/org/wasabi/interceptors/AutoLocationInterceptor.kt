@@ -8,12 +8,12 @@ import org.wasabi.routing.InterceptOn
 
 
 public class AutoLocationInterceptor(): Interceptor() {
-    override fun intercept(request: Request, response: Response) {
+    override fun intercept(request: Request, response: Response): Boolean {
         if (response.statusCode == StatusCodes.Created.code && response.resourceId != null) {
             response.location = "${request.protocol}://${request.host}:${request.port}${request.path}/${response.resourceId}"
         }
 
-        next()
+        return true
     }
 }
 

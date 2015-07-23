@@ -8,7 +8,8 @@ import org.wasabi.routing.InterceptOn
 import org.wasabi
 
 public class ETagInterceptor(private val objectTagFunc: (Any) -> String = { obj -> obj.hashCode().toString() }): Interceptor() {
-    override fun intercept(request: Request, response: Response) {
+    override fun intercept(request: Request, response: Response): Boolean {
+        var executeNext = false
         if (response.sendBuffer != null) {
             val objectTag = objectTagFunc(response.sendBuffer!!)
             val incomingETag = request.ifNoneMatch
@@ -16,11 +17,12 @@ public class ETagInterceptor(private val objectTagFunc: (Any) -> String = { obj 
                 response.setStatus(304, "Not modified")
             } else {
                 response.etag = objectTag
-                next()
+                executeNext = true
             }
         } else {
-            next()
+            executeNext = true
         }
+        return executeNext
     }
 }
 

@@ -15,7 +15,7 @@ public class SessionManagementInterceptor(val cookieKey: String = "_sessionID", 
         return UUID.randomUUID().toString()
     }
 
-    override fun intercept(request: Request, response: Response) {
+    override fun intercept(request: Request, response: Response): Boolean {
         val x = request.cookies[cookieKey]
         if (x != null && x.value != "") {
             // If we have a session bump the expiration time to keep it active
@@ -26,7 +26,7 @@ public class SessionManagementInterceptor(val cookieKey: String = "_sessionID", 
             storeSession(request.session!!)
             response.cookies[cookieKey] = Cookie(cookieKey, request.session!!.id, request.path, request.host, request.isSecure)
         }
-        next()
+        return true
     }
 }
 

@@ -17,7 +17,7 @@ public class ContentNegotiationParserInterceptor(val mappings: HashMap<String, S
     val orderQueue = LinkedList<Int>()
     var queryParameterName = ""
 
-    override fun intercept(request: Request, response: Response) {
+    override fun intercept(request: Request, response: Response): Boolean {
         var contentType = ""
 
         response.requestedContentTypes.clear()
@@ -49,7 +49,7 @@ public class ContentNegotiationParserInterceptor(val mappings: HashMap<String, S
             }
 
         }
-        next()
+        return true
     }
 
     fun onAcceptHeader(): ContentNegotiationParserInterceptor {

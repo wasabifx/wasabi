@@ -8,7 +8,7 @@ import org.wasabi.app.AppServer
 import org.wasabi.routing.InterceptOn
 
 public class CORSInterceptor(val settings: ArrayList<CORSEntry>): Interceptor() {
-    override fun intercept(request: Request, response: Response) {
+    override fun intercept(request: Request, response: Response): Boolean {
         for (setting in settings) {
             if (setting.path == "*" || request.path.matches(setting.path.toRegex())) {
                 response.addRawHeader("Access-Control-Request-Method", setting.methods)
@@ -22,10 +22,10 @@ public class CORSInterceptor(val settings: ArrayList<CORSEntry>): Interceptor() 
                 if (setting.preflightMaxAge != "") {
                     response.addRawHeader("Access-Control-Max-Age", setting.preflightMaxAge)
                 }
-                next()
+                return true
             }
         }
-        next()
+        return true
     }
 }
 
