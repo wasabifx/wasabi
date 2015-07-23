@@ -244,6 +244,8 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
             addResponseHeaders(httpResponse, response)
             ctx.write(httpResponse)
 
+            // TODO move to using block read of file and immediate push to channel.write
+
             var raf = RandomAccessFile(response.absolutePathToFileToStream, "r");
             var fileLength = raf.length();
 

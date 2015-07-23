@@ -2,8 +2,6 @@ package org.wasabi.http
 
 enum class StatusCodes(val code: Int) {
 
-    open val description: String
-        get() = this.toString().replace("([A-Z])".toRegex(), " $1")
     // 1XX
     Continue(100),
     SwitchingProtocols(101),
@@ -62,6 +60,9 @@ enum class StatusCodes(val code: Int) {
     VersionNotSupported(505),
     VariantAlsoNegotiates(506),
     InsufficientStorage(507),
-    BandwidthLimitExceeded(509)
+    BandwidthLimitExceeded(509);
+
+    open val description: String
+        get() = this.toString().replace("([A-Z])".toRegex(), " $1")
 
 }
