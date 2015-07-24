@@ -44,6 +44,8 @@ public class Request(private val httpRequest: HttpRequest) {
 
     public var session: Session? = null
 
+    // TODO add charset and parse method to split charset from contentType if it exists.
+
     private fun parseAcceptHeader(header: String): SortedMap<String, Int> {
 
         val parsed = hashMapOf<String, Int>()
