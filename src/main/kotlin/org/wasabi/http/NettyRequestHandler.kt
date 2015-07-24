@@ -1,6 +1,5 @@
 package org.wasabi.http
 
-import io.netty.channel.ChannelHandlerContext
 import io.netty.handler.codec.http.HttpRequest
 import io.netty.handler.codec.http.DefaultFullHttpResponse
 import io.netty.handler.codec.http
@@ -8,8 +7,8 @@ import io.netty.handler.codec.http.HttpVersion
 import io.netty.handler.codec.http.HttpContent
 import io.netty.handler.codec.http.LastHttpContent
 import io.netty.handler.codec.http.HttpResponseStatus
-import io.netty.channel.ChannelFutureListener
 import io.netty.buffer.Unpooled
+import io.netty.channel.*
 import io.netty.util.CharsetUtil
 import io.netty.handler.codec.http.DefaultHttpResponse
 import io.netty.handler.codec.http.multipart.HttpPostRequestDecoder
@@ -43,14 +42,14 @@ import io.netty.handler.codec.http.websocketx.TextWebSocketFrame
 import io.netty.handler.codec.http.websocketx.BinaryWebSocketFrame
 import io.netty.handler.codec.http.DefaultHttpRequest
 import io.netty.handler.codec.http.HttpHeaders
-import io.netty.channel.ChannelInboundHandlerAdapter
-import io.netty.channel.SimpleChannelInboundHandler
-import io.netty.channel.ChannelProgressiveFuture
-import io.netty.channel.ChannelProgressiveFutureListener
+import io.netty.handler.ssl.SslHandler
+import io.netty.handler.stream.ChunkedNioFile
 import org.wasabi.routing.*
 import org.wasabi.websocket.ChannelHandler
 import org.wasabi.websocket.Channel
 import org.wasabi.websocket.WebSocketHandler
+import java.io.FileInputStream
+import java.nio.channels.FileChannel
 
 
 // TODO: This class needs cleaning up
@@ -239,20 +238,24 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
         }
 
         if (response.absolutePathToFileToStream != "") {
+
             httpResponse = DefaultHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus(response.statusCode, response.statusDescription));
             response.setHeaders()
             addResponseHeaders(httpResponse, response)
             ctx.write(httpResponse)
 
-            // TODO move to using block read of file and immediate push to channel.write
 
-            var raf = RandomAccessFile(response.absolutePathToFileToStream, "r");
-            var fileLength = raf.length();
+            var streamFileFuture : ChannelFuture
+            var lastContentFuture : ChannelFuture
 
-            ctx.write(ChunkedFile(raf, 0, fileLength, 8192), ctx.newProgressivePromise());
+            var fileStream = FileInputStream(response.absolutePathToFileToStream)
 
+            var fileChannel = fileStream.getChannel()
 
-            var lastContentFuture = ctx.writeAndFlush(LastHttpContent.EMPTY_LAST_CONTENT)
+            // NOTE we can probably use DefaultFileRegion here but this allows for data modification on the fly.
+            ctx.write(ChunkedNioFile(fileChannel, 8192), ctx.newProgressivePromise())
+
+            lastContentFuture = ctx.writeAndFlush(LastHttpContent.EMPTY_LAST_CONTENT)
 
             if (request!!.connection.compareTo("close", ignoreCase = true) == 0) {
                 lastContentFuture.addListener(ChannelFutureListener.CLOSE)
