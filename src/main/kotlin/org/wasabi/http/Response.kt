@@ -53,7 +53,7 @@ public class Response() {
         location = url
     }
 
-    public fun streamFile(filename: String, contentType: String = "*/*") {
+    public fun setFileResponseHeaders(filename: String, contentType: String = "*/*") {
 
         val file = File(filename)
         if (file.exists() && !file.isDirectory()) {

@@ -50,6 +50,7 @@ import org.wasabi.websocket.Channel
 import org.wasabi.websocket.WebSocketHandler
 import java.io.FileInputStream
 import java.nio.channels.FileChannel
+import java.nio.charset.Charset
 
 
 // TODO: This class needs cleaning up
@@ -244,10 +245,6 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
             addResponseHeaders(httpResponse, response)
             ctx.write(httpResponse)
 
-
-            var streamFileFuture : ChannelFuture
-            var lastContentFuture : ChannelFuture
-
             var fileStream = FileInputStream(response.absolutePathToFileToStream)
 
             var fileChannel = fileStream.getChannel()
@@ -255,7 +252,7 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
             // NOTE we can probably use DefaultFileRegion here but this allows for data modification on the fly.
             ctx.write(ChunkedNioFile(fileChannel, 8192), ctx.newProgressivePromise())
 
-            lastContentFuture = ctx.writeAndFlush(LastHttpContent.EMPTY_LAST_CONTENT)
+            var lastContentFuture = ctx.writeAndFlush(LastHttpContent.EMPTY_LAST_CONTENT)
 
             if (request!!.connection.compareTo("close", ignoreCase = true) == 0) {
                 lastContentFuture.addListener(ChannelFutureListener.CLOSE)
@@ -305,7 +302,6 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
     }
 
     public override fun exceptionCaught(ctx: ChannelHandlerContext, cause: Throwable?) {
-        // TODO: Log actual message
         log!!.debug("Exception during web invocation: ${cause?.getMessage()}")
         log!!.debug(cause?.getStackTrace().toString())
         response.setStatus(StatusCodes.InternalServerError)
@@ -315,12 +311,12 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
 
     private fun deserializeBody(msg: HttpContent) {
         // TODO: Re-structure all this and fix it as it requires a special case for decoder
+        // TODO: Check we actually need to bother calling deserializer etc.
         if (decoder != null) {
             decoder!!.offer(msg)
             request!!.bodyParams.putAll(deserializer!!.deserialize(decoder!!.getBodyHttpDatas()))
         } else {
             // TODO: Add support for CharSet
-            // TODO: This shouldn't be called if bodyParams is empty.
             val buffer = msg.content()
             if (buffer.isReadable()) {
                 var data = buffer.toString(CharsetUtil.UTF_8)

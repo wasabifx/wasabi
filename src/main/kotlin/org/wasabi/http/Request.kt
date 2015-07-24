@@ -44,7 +44,6 @@ public class Request(private val httpRequest: HttpRequest) {
 
     public var session: Session? = null
 
-
     private fun parseAcceptHeader(header: String): SortedMap<String, Int> {
 
         val parsed = hashMapOf<String, Int>()

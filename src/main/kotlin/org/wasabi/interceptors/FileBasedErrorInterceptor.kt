@@ -14,7 +14,7 @@ public class FileBasedErrorInterceptor(val folder: String, val fileExtensions: S
         if (!file.exists()) {
             fileToServe = "${path}/error.html"
         }
-        response.streamFile(fileToServe)
+        response.setFileResponseHeaders(fileToServe)
 
         return false
     }

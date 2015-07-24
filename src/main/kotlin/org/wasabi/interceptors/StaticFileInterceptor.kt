@@ -15,7 +15,7 @@ public class StaticFileInterceptor(val folder: String): Interceptor() {
             val fullPath = "${folder}${request.uri}"
             val file = File(fullPath)
             if (file.exists() && file.isFile()) {
-                response.streamFile(fullPath)
+                response.setFileResponseHeaders(fullPath)
             } else {
                 executeNext = true
             }
