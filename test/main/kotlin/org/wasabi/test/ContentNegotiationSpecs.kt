@@ -27,6 +27,8 @@ public class ContentNegotiationSpecs : TestServerContext() {
 
         )
 
+
+
         TestServer.appServer.get("/customer/10", {
 
             val obj = object {

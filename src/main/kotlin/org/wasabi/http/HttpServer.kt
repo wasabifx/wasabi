@@ -15,7 +15,7 @@ public class HttpServer(private val appServer: AppServer) {
     val primaryGroup : NioEventLoopGroup
     val workerGroup :  NioEventLoopGroup
 
-    {
+    init {
         // Define worker groups
         primaryGroup = NioEventLoopGroup()
         workerGroup = NioEventLoopGroup()

@@ -39,7 +39,7 @@ public class PatternAndVerbMatchingRouteLocator(val routes: ArrayList<Route>): R
         val matchingVerbs = (matchingPaths.filter { it.method == method })
 
         if (matchingVerbs.count() == 1) {
-            return matchingVerbs.first!!
+            return matchingVerbs.first()!!
         }
         val methods = array<HttpMethod>() // TODO: This needs to be filled
         throw InvalidMethodException(allowedMethods = methods)

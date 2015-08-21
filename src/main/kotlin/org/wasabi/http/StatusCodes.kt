@@ -2,7 +2,6 @@ package org.wasabi.http
 
 
 
-[suppress("NON_FINAL_MEMBER_IN_FINAL_CLASS")] // Kotlin bug. Needed to avoid warning by compiler.
 enum class StatusCodes(val code: Int) {
 
     open val description: String
