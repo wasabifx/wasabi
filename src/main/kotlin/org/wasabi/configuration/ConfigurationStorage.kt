@@ -22,7 +22,7 @@ public class ConfigurationStorage {
         val jsonFile = File(jsonFilename)
         if (jsonFile.exists()) {
             try {
-                val configuration = objectMapper.readValue<AppConfiguration>(jsonFile, javaClass<AppConfiguration>())
+                val configuration = objectMapper.readValue<AppConfiguration>(jsonFile, AppConfiguration::class.java)
                 if (configuration != null) {
                     return configuration
                 } else {

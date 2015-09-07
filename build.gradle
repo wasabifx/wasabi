@@ -34,13 +34,13 @@ repositories {
 }
 
 compileKotlin {
-    kotlinOptions.annotations = file('annotations/Gradle_io.netty_netty-all_4.0.17.Final')
+    kotlinOptions.annotations = file('annotations/Gradle_io.netty_netty-all_4.0.31.Final')
 }
 
 
 dependencies {
     compile "org.codehaus.jackson:jackson-mapper-asl:1.9.12",
-            "io.netty:netty-all:4.0.29.Final",
+            "io.netty:netty-all:4.0.31.Final",
             "commons-codec:commons-codec:1.6",
             "commons-logging:commons-logging:1.1.1",
             "org.apache.httpcomponents:httpclient:4.2.3",
@@ -127,7 +127,7 @@ publishing {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.3'
+    gradleVersion = '2.5'
 
     doLast() {
         def gradleOpts = "-XX:MaxPermSize=300m -Xmx1024m"

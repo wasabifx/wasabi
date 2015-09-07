@@ -1,56 +1,24 @@
 package org.wasabi.http
 
-import io.netty.handler.codec.http.HttpRequest
-import io.netty.handler.codec.http.DefaultFullHttpResponse
-import io.netty.handler.codec.http
-import io.netty.handler.codec.http.HttpVersion
-import io.netty.handler.codec.http.HttpContent
-import io.netty.handler.codec.http.LastHttpContent
-import io.netty.handler.codec.http.HttpResponseStatus
 import io.netty.buffer.Unpooled
-import io.netty.channel.*
-import io.netty.util.CharsetUtil
-import io.netty.handler.codec.http.DefaultHttpResponse
-import io.netty.handler.codec.http.multipart.HttpPostRequestDecoder
-import io.netty.handler.codec.http.HttpMethod
+import io.netty.channel.ChannelFutureListener
+import io.netty.channel.ChannelHandlerContext
+import io.netty.channel.SimpleChannelInboundHandler
+import io.netty.handler.codec.http.*
 import io.netty.handler.codec.http.multipart.DefaultHttpDataFactory
-import io.netty.handler.codec.http.multipart.InterfaceHttpData
-import io.netty.handler.codec.http.multipart.HttpPostRequestDecoder.NotEnoughDataDecoderException
-import io.netty.handler.codec.http.multipart.InterfaceHttpData.HttpDataType
-import io.netty.handler.codec.http.multipart.Attribute
-import io.netty.handler.codec.http.multipart.HttpPostRequestDecoder.EndOfDataDecoderException
-import java.util.Collections
-import io.netty.handler.codec.http.CookieDecoder
-import io.netty.handler.codec.http.HttpResponse
-import org.wasabi.app.AppServer
-import org.wasabi.interceptors.Interceptor
-import org.wasabi.interceptors.InterceptorEntry
-import java.util.ArrayList
-import io.netty.handler.stream.ChunkedFile
-import java.io.RandomAccessFile
-import org.wasabi.deserializers.Deserializer
-import java.nio.ByteBuffer
-import org.slf4j.LoggerFactory
+import io.netty.handler.codec.http.multipart.HttpPostRequestDecoder
 import io.netty.handler.codec.http.websocketx.WebSocketFrame
-import io.netty.handler.codec.http.websocketx.CloseWebSocketFrame
 import io.netty.handler.codec.http.websocketx.WebSocketServerHandshaker
-import io.netty.handler.codec.http.FullHttpRequest
 import io.netty.handler.codec.http.websocketx.WebSocketServerHandshakerFactory
-import io.netty.handler.codec.http.websocketx.PingWebSocketFrame
-import io.netty.handler.codec.http.websocketx.PongWebSocketFrame
-import io.netty.handler.codec.http.websocketx.TextWebSocketFrame
-import io.netty.handler.codec.http.websocketx.BinaryWebSocketFrame
-import io.netty.handler.codec.http.DefaultHttpRequest
-import io.netty.handler.codec.http.HttpHeaders
-import io.netty.handler.ssl.SslHandler
 import io.netty.handler.stream.ChunkedNioFile
+import io.netty.util.CharsetUtil
+import org.slf4j.LoggerFactory
+import org.wasabi.app.AppServer
+import org.wasabi.deserializers.Deserializer
+import org.wasabi.interceptors.InterceptorEntry
 import org.wasabi.routing.*
-import org.wasabi.websocket.ChannelHandler
-import org.wasabi.websocket.Channel
 import org.wasabi.websocket.WebSocketHandler
 import java.io.FileInputStream
-import java.nio.channels.FileChannel
-import java.nio.charset.Charset
 
 
 // TODO: This class needs cleaning up
@@ -71,7 +39,7 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
 
     private var handshaker : WebSocketServerHandshaker? = null;
 
-    private var log = LoggerFactory.getLogger(javaClass<NettyRequestHandler>())
+    private var log = LoggerFactory.getLogger(NettyRequestHandler::class.java)
 
     private var bypassPipeline = false
 

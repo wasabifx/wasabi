@@ -1,17 +1,12 @@
 package org.wasabi.http
 
-import org.apache.http.client.methods.HttpRequestBase
-import io.netty.handler.codec.http.HttpRequest
-import java.util.Dictionary
-import java.util.ArrayList
-import io.netty.handler.codec.http.HttpMethod
 import io.netty.handler.codec.http.CookieDecoder
-import java.util.HashMap
-import java.util.Comparator
-import java.util.SortedMap
+import io.netty.handler.codec.http.HttpMethod
+import io.netty.handler.codec.http.HttpRequest
+import io.netty.handler.codec.http.multipart.Attribute
 import io.netty.handler.codec.http.multipart.InterfaceHttpData
 import io.netty.handler.codec.http.multipart.InterfaceHttpData.HttpDataType
-import io.netty.handler.codec.http.multipart.Attribute
+import java.util.*
 
 
 public class Request(private val httpRequest: HttpRequest) {
@@ -88,14 +83,14 @@ public class Request(private val httpRequest: HttpRequest) {
         val cookieList = hashMapOf<String, Cookie>()
         for (cookie in cookieSet?.iterator()) {
             var path = ""
-            if (cookie.getPath() != null) {
-                path = cookie.getPath()
+            if (cookie.path != null) {
+                path = cookie.path
             }
             var domain = ""
-            if (cookie.getDomain() != null) {
-                domain = cookie.getDomain()
+            if (cookie.domain != null) {
+                domain = cookie.domain
             }
-            cookieList[cookie.getName().toString()] = Cookie(cookie.getName().toString(), cookie.getValue().toString(), path, domain, cookie.isSecure())
+            cookieList[cookie.name.toString()] = Cookie(cookie.name.toString(), cookie.value.toString(), path, domain, cookie.isSecure)
         }
         return cookieList
     }

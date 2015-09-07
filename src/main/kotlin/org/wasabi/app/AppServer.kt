@@ -32,7 +32,7 @@ import org.wasabi.serializers.TextPlainSerializer
 
 public open class AppServer(val configuration: AppConfiguration = AppConfiguration()) {
 
-    private val logger = LoggerFactory.getLogger(javaClass<AppServer>())
+    private val logger = LoggerFactory.getLogger(AppServer::class.java)
     private val httpServer: HttpServer
     private var running = false
 

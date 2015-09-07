@@ -8,7 +8,7 @@ public class JsonDeserializer: Deserializer("application/json", "application/jso
     // TODO: This is temp as it doesn't correctly handle x.y properties
     override fun deserialize(input: Any): HashMap<String, Any> {
         val mapper = ObjectMapper()
-        val map = mapper.readValue(input as String, javaClass<HashMap<String, Any>>())!!
-        return map
+        val map = mapper.readValue(input as String, HashMap::class.java)!!
+        return map as HashMap<String, Any>
     }
 }
