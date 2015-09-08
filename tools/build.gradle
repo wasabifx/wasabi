@@ -2,15 +2,12 @@ public static String getDomain(String s) {
      String[] f = s.split('\\.')
      return f[1].capitalize()
 }
-task args
-args.map = [:]
 
 defaultTasks 'help'
 
 tasks.addRule("Pattern: <property>=<value>: Passes arguments to the scripts") { String taskName ->
     def match = taskName =~ /(.*?)=(.*?$)/
     if(match){
-        args.map[match[0][1]] = match[0][2]
         task(taskName) << {
         }
     }
@@ -23,7 +20,7 @@ Welcome to Wasabi
 
 To get started run: gradle -q server dir={directory} package={package}
 
-e.g.: gradle -q server dir=~/home/project/myAppfolder package=org.domain
+e.g.: gradle -q server -Pdir=~/home/project/myAppfolder -Ppackage=org.domain
 
 """)
 
@@ -31,18 +28,18 @@ e.g.: gradle -q server dir=~/home/project/myAppfolder package=org.domain
 
 }
 
-task setup(dependsOn: args) << {
-    if (!args.map.dir || !args.map.package) {
+task setup << {
+    if(!project.hasProperty('dir')||!project.hasProperty('package')){
         throw new GradleException('You need to specify a dir and package parameters')
     } else {
-        def directory = new File(args.map.dir)
+        def directory = new File(project.dir)
         println('Here we go...\n')
         directory.mkdirs()
-        println('Creating directory ' + args.map.dir + '...')
-        def sourcedir = new File(args.map.dir + '/src/main/kotlin')
+        println('Creating directory ' + project.dir + '...')
+        def sourcedir = new File(project.dir + '/src/main/kotlin')
         sourcedir.mkdirs()
         println('Creating src directory ...')
-        def testdir = new File(args.map.dir + '/src/test/kotlin')
+        def testdir = new File(project.dir + '/src/test/kotlin')
         testdir.mkdirs()
         println('Creating test directory ...')
 
@@ -51,13 +48,13 @@ task setup(dependsOn: args) << {
 
 task createGradle(dependsOn: setup) << {
         println('Creating build.gradle file ...')
-        def gradleFile = new File(args.map.dir+'/build.gradle')
+        def gradleFile = new File(project.dir+'/build.gradle')
        
          
-        def mainClass = args.map.package + '.' + getDomain(args.map.package) + 'Package'
+        def mainClass = project.package + '.' + getDomain(project.package) + 'Package'
         gradleFile.append("""\
 buildscript {
-    project.ext.kotlin_version = '0.6.1673'
+    project.ext.kotlin_version = '0.1-SNAPSHOT'
     repositories {
         mavenCentral()
         maven {
@@ -114,9 +111,9 @@ task wrapper(type: Wrapper) {
 
 task server(dependsOn: createGradle) << {
         println('Creating server ...')
-        def serverFile = new File(args.map.dir+'/src/main/kotlin/server.kt')
+        def serverFile = new File(project.dir+'/src/main/kotlin/server.kt')
         serverFile.append("""\
-package ${args.map.package}
+package ${project.package}
 
 import org.wasabi.app.AppServer
 
