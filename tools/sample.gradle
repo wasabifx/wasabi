@@ -1,5 +1,6 @@
 buildscript {
-    project.ext.kotlin_version = '0.6.1673'
+    // Keeps in sync with current development snapshots, good idea following current wasabi.
+    project.ext.kotlin_version = '0.1-SNAPSHOT'
     repositories {
         mavenCentral()
         maven {
@@ -47,5 +48,5 @@ sourceSets {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.8'
+    gradleVersion = '2.5'
 }
