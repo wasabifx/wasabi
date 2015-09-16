@@ -1,14 +1,16 @@
 package org.wasabi.test
 
+import org.wasabi.authentication.BasicAuthentication
+import org.wasabi.interceptors.AuthenticationInterceptor
+import org.wasabi.interceptors.useAuthentication
 import org.junit.Test as spec
-import org.wasabi.interceptors.useBasicAuthentication
 import kotlin.test.assertEquals
 
 public class BasicAuthenticationInterceptorSpecs : TestServerContext() {
 
-    spec fun requesting_a_protected_resource_should_return_authentication_required () {
+    @spec fun requesting_a_protected_resource_should_return_authentication_required () {
 
-        TestServer.appServer.useBasicAuthentication("protected", { user, pass -> user == pass }, "/protected")
+        TestServer.appServer.useAuthentication(BasicAuthentication("protected", { user, pass -> user == pass }, "/protected"))
 
         TestServer.appServer.get("/protected", { response.send("This should be proctected")})
 
@@ -16,7 +18,7 @@ public class BasicAuthenticationInterceptorSpecs : TestServerContext() {
 
         assertEquals(401, response.statusCode)
 
-
+        TestServer.appServer.interceptors.remove(4)
     }
 
 }

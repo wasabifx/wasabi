@@ -9,7 +9,7 @@ import java.io.File
 
 public class FileBasedErrorInterceptorSpecs : TestServerContext() {
 
-    spec fun when_an_error_occurs_and_corresponding_error_file_exists_it_should_serve_it() {
+    @spec fun when_an_error_occurs_and_corresponding_error_file_exists_it_should_serve_it() {
 
         TestServer.reset()
         TestServer.appServer.serveErrorsFromFolder("testData${File.separatorChar}public")
@@ -20,7 +20,7 @@ public class FileBasedErrorInterceptorSpecs : TestServerContext() {
         assertEquals("<!DOCTYPE html><head><title></title></head><body>Custom File 404</body></html>", response.body)
     }
 
-    spec fun when_an_error_occurs_and_corresponding_error_file_does_not_exist_it_should_serve_default_error_file() {
+    @spec fun when_an_error_occurs_and_corresponding_error_file_does_not_exist_it_should_serve_default_error_file() {
 
         TestServer.reset()
         TestServer.appServer.serveErrorsFromFolder("testData${File.separatorChar}public")

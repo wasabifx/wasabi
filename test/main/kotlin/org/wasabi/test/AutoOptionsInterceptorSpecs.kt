@@ -10,8 +10,8 @@ import org.junit.Ignore
 
 public class AutoOptionsInterceptorSpecs : TestServerContext() {
 
-    Ignore("We need to solve this issue.")
-    spec fun with_auto_options_disabled_options_should_return_method_not_allowed () {
+    @Ignore("We need to solve this issue.")
+    @spec fun with_auto_options_disabled_options_should_return_method_not_allowed () {
 
         TestServer.appServer.get("/person", {})
 
@@ -20,7 +20,7 @@ public class AutoOptionsInterceptorSpecs : TestServerContext() {
         assertEquals(StatusCodes.MethodNotAllowed.code, response.statusCode)
     }
 
-    spec fun auto_options_should_return_all_methods_available_for_a_specific_resource () {
+    @spec fun auto_options_should_return_all_methods_available_for_a_specific_resource () {
         TestServer.appServer.get("/person", {})
         TestServer.appServer.post("/person", {})
         TestServer.appServer.post("/customer", {})

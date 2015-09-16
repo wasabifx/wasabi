@@ -16,7 +16,7 @@ import java.util.SortedMap
 
 public class HeaderSpecs: TestServerContext() {
 
-    spec fun request_with_get_should_contain_all_fields() {
+    @spec fun request_with_get_should_contain_all_fields() {
 
 
         val headers = hashMapOf(
@@ -91,7 +91,7 @@ public class HeaderSpecs: TestServerContext() {
 
     }
 
-    spec fun request_with_url_form_encoded_post_should_contain_post_fields_in_bodyParams() {
+    @spec fun request_with_url_form_encoded_post_should_contain_post_fields_in_bodyParams() {
 
         val headers = hashMapOf(
                 "User-Agent" to "test-client",
@@ -129,7 +129,7 @@ public class HeaderSpecs: TestServerContext() {
     }
 
 
-    spec fun setting_a_cookie_when_making_a_request_should_set_the_cookie_value_in_the_request() {
+    @spec fun setting_a_cookie_when_making_a_request_should_set_the_cookie_value_in_the_request() {
 
         val headers = hashMapOf(
                 "User-Agent" to "test-client",
@@ -159,7 +159,7 @@ public class HeaderSpecs: TestServerContext() {
     }
 
 
-    Ignore("Fix Chunk encoding") spec fun request_with_url_form_encoded_post_and_chunked_encoding_should_contain_post_fields_in_bodyParams() {
+    @Ignore("Fix Chunk encoding") @spec fun request_with_url_form_encoded_post_and_chunked_encoding_should_contain_post_fields_in_bodyParams() {
 
         val headers = hashMapOf(
                 "User-Agent" to "test-client",

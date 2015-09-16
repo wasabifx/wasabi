@@ -11,7 +11,7 @@ import org.wasabi.interceptors.enableAutoLocation
 
 
 public class AutoLocationInterceptorSpecs : TestServerContext() {
-    spec fun with_auto_location_interceptor_enabled_when_setting_response_as_created_and_resourceId_it_should_return_location_on_post () {
+    @spec fun with_auto_location_interceptor_enabled_when_setting_response_as_created_and_resourceId_it_should_return_location_on_post () {
         val headers = hashMapOf(
                 "User-Agent" to "test-client",
                 "Cache-Control" to "max-age=0",

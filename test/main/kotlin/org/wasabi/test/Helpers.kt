@@ -25,10 +25,10 @@ import java.util.Random
 import java.net.BindException
 
 open public class TestServerContext {
-    Before fun initTest(): Unit {
+    @Before fun initTest(): Unit {
         TestServer.start()
     }
-    After fun postTest(): Unit {
+    @After fun postTest(): Unit {
         TestServer.reset()
     }
 }

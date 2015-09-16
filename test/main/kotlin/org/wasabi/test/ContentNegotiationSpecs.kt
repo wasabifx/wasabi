@@ -15,7 +15,7 @@ import org.wasabi.http.StatusCodes
 
 public class ContentNegotiationSpecs : TestServerContext() {
 
-    spec fun sending_an_object_should_encode_and_send_based_on_contentType() {
+    @spec fun sending_an_object_should_encode_and_send_based_on_contentType() {
 
         val headers = hashMapOf(
                 "User-Agent" to "test-client",
@@ -50,7 +50,7 @@ public class ContentNegotiationSpecs : TestServerContext() {
 
     }
 
-    spec fun manual_negotiation_should_execute_correct_body_structure_and_serialize_if_necessary() {
+    @spec fun manual_negotiation_should_execute_correct_body_structure_and_serialize_if_necessary() {
 
         val headers = hashMapOf(
                 "User-Agent" to "test-client",
@@ -92,7 +92,7 @@ public class ContentNegotiationSpecs : TestServerContext() {
     }
 
 
-    spec fun sending_content_type_when_using_send_should_serialize_using_the_requested_content_type() {
+    @spec fun sending_content_type_when_using_send_should_serialize_using_the_requested_content_type() {
 
         val headers = hashMapOf(
                 "User-Agent" to "test-client",

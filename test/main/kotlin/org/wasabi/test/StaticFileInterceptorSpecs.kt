@@ -7,7 +7,7 @@ import java.io.File
 
 public class StaticFileInterceptorSpecs: TestServerContext() {
 
-    spec fun requesting_an_existing_static_file_should_return_the_file() {
+    @spec fun requesting_an_existing_static_file_should_return_the_file() {
 
         TestServer.appServer.serveStaticFilesFromFolder("testData${File.separatorChar}public")
 
@@ -19,7 +19,7 @@ public class StaticFileInterceptorSpecs: TestServerContext() {
         assertEquals("<!DOCTYPE html><head><title></title></head><body>Standard Error File</body></html>", response1.body)
     }
 
-    spec fun requesting_an_existing_static_file_should_return_correct_content_type() {
+    @spec fun requesting_an_existing_static_file_should_return_correct_content_type() {
 
         TestServer.appServer.serveStaticFilesFromFolder("testData${File.separatorChar}public")
 
@@ -29,7 +29,7 @@ public class StaticFileInterceptorSpecs: TestServerContext() {
         assertEquals("text/css", response.headers.first( { it.getName() == "Content-Type"}).getValue())
     }
 
-    spec fun requesting_an_non_existing_static_file_should_404() {
+    @spec fun requesting_an_non_existing_static_file_should_404() {
 
         TestServer.appServer.serveStaticFilesFromFolder("testData${File.separatorChar}public")
 
@@ -40,7 +40,7 @@ public class StaticFileInterceptorSpecs: TestServerContext() {
         assertEquals(404, response.statusCode)
     }
 
-    spec fun requesting_an_existing_static_direcotry_should_go_to_next() {
+    @spec fun requesting_an_existing_static_direcotry_should_go_to_next() {
         TestServer.appServer.serveStaticFilesFromFolder("testData${File.separatorChar}public")
         TestServer.loadDefaultRoutes()
         val response = get("http://localhost:${TestServer.definedPort}/", hashMapOf())

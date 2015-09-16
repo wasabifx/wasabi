@@ -8,7 +8,7 @@ import org.wasabi.interceptors.parseContentNegotiationHeaders
 
 public class ContentNegotiatioParserInterceptorSpecs: TestServerContext() {
 
-    spec fun acceptHeader_should_parse_the_accept_header_into_requested_content_types_with_each_media_type_on_own_line() {
+    @spec fun acceptHeader_should_parse_the_accept_header_into_requested_content_types_with_each_media_type_on_own_line() {
 
         TestServer.appServer.parseContentNegotiationHeaders {
             onAcceptHeader()
@@ -49,7 +49,7 @@ public class ContentNegotiatioParserInterceptorSpecs: TestServerContext() {
 
     }
 
-    spec fun format_should_parse_the_url_query_into_requested_content_type() {
+    @spec fun format_should_parse_the_url_query_into_requested_content_type() {
 
         TestServer.appServer.parseContentNegotiationHeaders {
             onQueryParameter()

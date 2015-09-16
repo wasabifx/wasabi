@@ -10,7 +10,7 @@ import org.junit.Test as spec
     class CustomSession(val name: String) {
 
     }
-    Ignore("Session Management not implemented yet") spec fun should_store_session_data_in_the_session_object() {
+    @Ignore("Session Management not implemented yet") @spec fun should_store_session_data_in_the_session_object() {
 
         TestServer.appServer.enableSessionSupport()
         TestServer.appServer.get("/set_session", {

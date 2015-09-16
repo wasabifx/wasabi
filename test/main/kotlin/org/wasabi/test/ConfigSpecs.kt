@@ -10,7 +10,7 @@ import org.wasabi.app.AppConfiguration
 
 public class ConfigSpecs {
 
-    spec fun creating_an_app_server_without_explicit_configuration_should_use_default_debug_configuration() {
+    @spec fun creating_an_app_server_without_explicit_configuration_should_use_default_debug_configuration() {
         val appServer = AppServer()
 
         assertEquals(3000, appServer.configuration.port)
@@ -18,7 +18,7 @@ public class ConfigSpecs {
         assertEquals(true, appServer.configuration.enableLogging)
     }
 
-    spec fun creating_an_app_server_with_explicit_configuration_should_use_the_configuration_specified() {
+    @spec fun creating_an_app_server_with_explicit_configuration_should_use_the_configuration_specified() {
 
 
         val appServer = AppServer(
