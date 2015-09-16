@@ -18,6 +18,19 @@ public class BasicAuthenticationInterceptorSpecs : TestServerContext() {
 
         assertEquals(401, response.statusCode)
 
+        TestServer.appServer.interceptors.remove(3)
+    }
+
+    @spec fun requesting_a_unprotected_resource_should_return_success () {
+
+        TestServer.appServer.useAuthentication(BasicAuthentication("protected", { user, pass -> user == pass }, "/protected"))
+
+        TestServer.appServer.get("/protected", { response.send("This should be proctected")})
+
+        val response = get("http://localhost:${TestServer.definedPort}/", hashMapOf())
+
+        assertEquals(200, response.statusCode)
+
         TestServer.appServer.interceptors.remove(4)
     }
 
