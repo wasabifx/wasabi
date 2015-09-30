@@ -1,11 +1,9 @@
 package org.wasabi.interceptors
 
-import org.wasabi.interceptors.Interceptor
 import org.wasabi.http.Request
 import org.wasabi.http.Response
 import org.wasabi.app.AppServer
 import org.wasabi.routing.InterceptOn
-import org.wasabi
 
 public class ETagInterceptor(private val objectTagFunc: (Any) -> String = { obj -> obj.hashCode().toString() }): Interceptor() {
     override fun intercept(request: Request, response: Response): Boolean {
