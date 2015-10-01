@@ -220,6 +220,7 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
             // NOTE we can probably use DefaultFileRegion here but this allows for data modification on the fly.
             ctx.write(ChunkedNioFile(fileChannel, 8192), ctx.newProgressivePromise())
 
+            // TODO Get rid of this!!
             var lastContentFuture = ctx.writeAndFlush(LastHttpContent.EMPTY_LAST_CONTENT)
 
             if (request!!.connection.compareTo("close", ignoreCase = true) == 0) {
@@ -227,6 +228,8 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
             }
         }  else {
             // TODO: Make this a stream
+            // TODO: This should encapsulate the above file stream also so we get ditch the virtual two points of return
+            // TODO: The current file handling completely bypasses the postrequest interceptors ( badness9000 )
             var buffer = ""
             if (response.sendBuffer == null) {
                 buffer = response.statusDescription
