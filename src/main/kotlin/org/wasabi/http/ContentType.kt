@@ -17,8 +17,8 @@ class ContentType(val contentType: String, val contentSubtype: String, val param
     override fun equals(other: Any?) = when (other) {
         is ContentType -> contentType == other.contentType
                 && contentSubtype == other.contentSubtype
-                && parameters.size() == other.parameters.size()
-                && parameters.withIndices().all { it.second == other.parameters[it.first] }
+                && parameters.size == other.parameters.size
+                && parameters.indices.all { parameters.equals(other.parameters[it].first) }
         else -> false
     }
 
