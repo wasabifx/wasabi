@@ -6,7 +6,7 @@ import java.util.ArrayList
 
 class ContentType(val contentType: String, val contentSubtype: String, val parameters: List<Pair<String, String>> = listOf()) {
 
-    override fun toString() = if (parameters.size() == 0) "$contentType/$contentSubtype" else "$contentType/$contentSubtype; ${parameters.map { "${it.first}=${it.second}" }.joinToString("; ")}"
+    override fun toString() = if (parameters.size == 0) "$contentType/$contentSubtype" else "$contentType/$contentSubtype; ${parameters.map { "${it.first}=${it.second}" }.joinToString("; ")}"
 
     fun withParameter(name: String, value: String): ContentType {
         val newParameters = ArrayList<Pair<String, String>>(parameters)
@@ -26,12 +26,12 @@ class ContentType(val contentType: String, val contentSubtype: String, val param
         fun parse(value: String): ContentType {
             val parts = value.split(";")
             val content = parts[0].split("/")
-            if (content.size() != 2)
+            if (content.size != 2)
 
                 throw BadContentTypeFormat(value)
             val parameters = parts.drop(1).map {
                 val pair = it.trim().split("=")
-                if (pair.size() != 2)
+                if (pair.size != 2)
                     throw BadContentTypeFormat(value)
                 pair[0].trim() to pair[1].trim()
             }

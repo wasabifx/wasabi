@@ -52,9 +52,9 @@ fun main(args: Array<String>) {
 
         response.negotiate (
 
-                "text/html" with { send("Hello")},
+                "text/html" .with { send("Hello")},
 
-                "application/json" with { send("..some custom Json?")}
+                "application/json" .with { send("..some custom Json?")}
 
         )
 

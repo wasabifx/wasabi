@@ -19,7 +19,7 @@ public class RoutesSpecs {
         TestServer.reset()
         TestServer.appServer.get("/", { })
 
-        assertEquals(1, TestServer.appServer.routes.size())
+        assertEquals(1, TestServer.appServer.routes.size)
     }
 
 

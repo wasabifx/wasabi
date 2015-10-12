@@ -34,7 +34,7 @@ repositories {
 }
 
 compileKotlin {
-    kotlinOptions.annotations = file('annotations/Gradle_io.netty_netty-all_4.0.31.Final')
+    // kotlinOptions.annotations = file('annotations/Gradle_io.netty_netty-all_4.0.31.Final')
 }
 
 

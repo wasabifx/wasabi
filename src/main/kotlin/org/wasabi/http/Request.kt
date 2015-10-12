@@ -49,7 +49,7 @@ public class Request(private val httpRequest: HttpRequest) {
             val parts = entry.split(';')
             val mediaType = parts[0]
             var weight = 1
-            if (parts.size() == 2) {
+            if (parts.size == 2) {
                 val float = parts[1].trim().drop(2).toFloat() * 10
                 weight = float.toInt()
             }
@@ -63,11 +63,11 @@ public class Request(private val httpRequest: HttpRequest) {
     private fun parseQueryParams(): HashMap<String, String> {
         val queryParamsList = hashMapOf<String, String>()
         val urlParams = httpRequest.getUri()!!.split('?')
-        if (urlParams.size() == 2) {
+        if (urlParams.size == 2) {
             val queryNameValuePair = urlParams[1].split("&")
             for (entry in queryNameValuePair) {
                 val nameValuePair = entry.split('=')
-                if (nameValuePair.size() == 2) {
+                if (nameValuePair.size == 2) {
                     queryParamsList[nameValuePair[0]] = nameValuePair[1]
                 } else {
                     queryParamsList[nameValuePair[0]] = ""

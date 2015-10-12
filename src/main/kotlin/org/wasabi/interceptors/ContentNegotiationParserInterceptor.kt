@@ -21,7 +21,7 @@ public class ContentNegotiationParserInterceptor(val mappings: HashMap<String, S
         var contentType = ""
 
         response.requestedContentTypes.clear()
-        while (contentType == "" && orderQueue.size() > 0) {
+        while (contentType == "" && orderQueue.size > 0) {
             var connegType = orderQueue.removeFirst()
             when (connegType) {
                 ACCEPT_HEADER -> {

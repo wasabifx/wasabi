@@ -215,7 +215,7 @@ public class NettyRequestHandler(private val appServer: AppServer, routeLocator:
 
             var fileStream = FileInputStream(response.absolutePathToFileToStream)
 
-            var fileChannel = fileStream.getChannel()
+            var fileChannel = fileStream.channel
 
             // NOTE we can probably use DefaultFileRegion here but this allows for data modification on the fly.
             ctx.write(ChunkedNioFile(fileChannel, 8192), ctx.newProgressivePromise())

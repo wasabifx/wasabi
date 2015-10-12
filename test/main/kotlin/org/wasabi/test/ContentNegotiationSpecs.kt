@@ -72,8 +72,8 @@ public class ContentNegotiationSpecs : TestServerContext() {
             }
 
             response.negotiate(
-                    "text/html" with { send ("this is not the response you're looking for")},
-                    "application/json" with { send(obj) }
+                    "text/html".with { send ("this is not the response you're looking for")},
+                    "application/json" .with { send(obj) }
             )
 
         })

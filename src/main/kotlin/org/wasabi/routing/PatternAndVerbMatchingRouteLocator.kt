@@ -12,7 +12,7 @@ public class PatternAndVerbMatchingRouteLocator(val routes: ArrayList<Route>): R
 
         val segments1 = route1.path.split('/')
         val segments2 = path.split('/')
-        if (segments1.size() != segments2.size()) {
+        if (segments1.size != segments2.size) {
             return false
         }
         var i = 0

@@ -77,12 +77,12 @@ public class HeaderSpecs: TestServerContext() {
         assertEquals("test-client", userAgent);
         assertEquals("Close", connection);
         assertEquals("max-age=0", cacheControl);
-        assertEquals(3, accept.size());
+        assertEquals(3, accept.size);
         assertEquals(4, accept["application/xhtml+xml"])
-        assertEquals(3, acceptEncoding.size());
-        assertEquals(2, acceptLanguage.size());
-        assertEquals(3, acceptCharset.size());
-        assertEquals(2, queryParams.size())
+        assertEquals(3, acceptEncoding.size);
+        assertEquals(2, acceptLanguage.size);
+        assertEquals(3, acceptCharset.size);
+        assertEquals(2, queryParams.size)
         assertEquals("value1",queryParams["param1"])
         assertEquals("value2",queryParams["param2"])
         assertEquals("10", routeParams["id"])
@@ -121,7 +121,7 @@ public class HeaderSpecs: TestServerContext() {
         val fields = arrayListOf<BasicNameValuePair>(BasicNameValuePair("name", "joe"), BasicNameValuePair("email", "joe@joe.com"))
         postForm("http://localhost:${TestServer.definedPort}/customer", headers, fields)
 
-        assertEquals(2, bodyParams.size())
+        assertEquals(2, bodyParams.size)
         assertEquals("joe", bodyParams["name"])
         assertEquals("joe@joe.com", bodyParams["email"])
 
@@ -188,7 +188,7 @@ public class HeaderSpecs: TestServerContext() {
         val fields = arrayListOf<BasicNameValuePair>(BasicNameValuePair("name", "joe"), BasicNameValuePair("email", "joe@joe.com"))
         postForm("http://localhost:${TestServer.definedPort}/customer", headers, fields, true)
 
-        assertEquals(2, bodyParams.size())
+        assertEquals(2, bodyParams.size)
         assertEquals("joe", bodyParams["name"])
         assertEquals("joe@joe.com", bodyParams["email"])
 
