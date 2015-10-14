@@ -20,9 +20,8 @@ public class NettyPipelineInitializer(private val appServer: AppServer):
         pipeline.addLast("encoder", HttpResponseEncoder())
         pipeline.addLast("chunkedWriter", ChunkedWriteHandler());
         pipeline.addLast("aggregator", HttpObjectAggregator(1048576));
-        pipeline.addLast("handler", NettyRequestHandler(appServer, PatternAndVerbMatchingRouteLocator(appServer.routes), PatternMatchingChannelLocator(appServer.channels)))
+        pipeline.addLast("handler", NettyRequestHandler(appServer))
     }
-
 }
 
 

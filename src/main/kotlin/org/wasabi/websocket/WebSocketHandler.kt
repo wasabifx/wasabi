@@ -16,7 +16,7 @@ public class WebSocketHandler(private val appServer: AppServer, channelLocator: 
     val postRequestInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.PostRequest }
     val errorInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.Error }
 
-    fun handleWebSocketRequest(handshaker: WebSocketServerHandshaker, ctx: ChannelHandlerContext, webSocketFrame: WebSocketFrame)
+    fun handleRequest(handshaker: WebSocketServerHandshaker, ctx: ChannelHandlerContext, webSocketFrame: WebSocketFrame)
     {
         // Check for closing websocket frame
         // TODO this should probably be allowed to be handled in handler for cleanup etc.
