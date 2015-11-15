@@ -124,7 +124,7 @@ By calling *next()* on each handler, the processing will continue.
 All verbs on *AppServer* have the following signature
 
 ```kotlin
-public fun get(path: String, vararg handlers: RouteHandler.() -> Unit) {
+fun get(path: String, vararg handlers: RouteHandler.() -> Unit) {
   addRoute(HttpMethod.GET, path, *handlers)
 }
 ```
@@ -220,7 +220,7 @@ val getCustomerById  : RouteHandler.() -> Unit = {
 If for some reason you want to group by class, you can do so. Best way is to use a class object 
 
 ```kotlin
-public class CustomerRoutes {
+class CustomerRoutes {
 
     class object {
 
@@ -253,7 +253,7 @@ I do not agree with such a broad and somewhat ambiguous term. I like to name thi
 An intercpetor implements the following trait
 
 ```kotlin
-public trait Interceptor {
+trait Interceptor {
   fun intercept(request: Request, response: Response): Boolean
 }
 ```
@@ -269,7 +269,7 @@ server.interceptor(MyInterceptor(), path, position)
 where path can be a specific route or *** to match all routes. Position indicates when the intercept occurs. Possible positions are
 
 ```kotlin
- public enum class InterceptOn {
+ enum class InterceptOn {
      PreRequest
      PreExecution
      PostExecution
@@ -362,7 +362,7 @@ If you need to manually override Content Negotiation, you can do so using the *n
 *negotiate* signature is:
 
 ```kotlin
-public fun negotiate(vararg negotiations: Pair<String, Response.() -> Unit>)
+fun negotiate(vararg negotiations: Pair<String, Response.() -> Unit>)
 ```
 
 You can pass in an unlimited number of media type, functions. Also, as the function is an extension function to *Response*, you have
@@ -379,7 +379,7 @@ Each Serializer can take as parameters a variable number of strings which define
 for instance takes:
 
 ```kotlin
-public class JsonSerializer(): Serializer("application/json", "application/vnd\\.\\w*\\+json")
+class JsonSerializer(): Serializer("application/json", "application/vnd\\.\\w*\\+json")
 ```
 
 ## CORS Support ##
@@ -392,7 +392,7 @@ Wasabi provides CORS support via an Interceptor. You can enable CORS support in 
 Each CORSEntry consists of:
 
 ```kotlin
-public class CORSEntry(val path: String = "*",
+class CORSEntry(val path: String = "*",
                        val origins: String = "*",
                        val methods: String = "GET, POST, PUT, DELETE",
                        val headers: String = "Origin, X-Requested-With, Content-Type, Accept",
