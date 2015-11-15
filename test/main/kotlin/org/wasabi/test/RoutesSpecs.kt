@@ -9,6 +9,8 @@ import io.netty.handler.codec.http.HttpMethod
 import org.wasabi.routing.PatternAndVerbMatchingRouteLocator
 import org.wasabi.test.TestServer
 import org.wasabi.routing.InvalidMethodException
+import java.lang.reflect.Type
+import kotlin.reflect.KClass
 import kotlin.test.*
 
 
@@ -65,7 +67,7 @@ public class RoutesSpecs {
 
         val exception = assertFails({routeLocator.findRouteHandlers("/second", HttpMethod.GET)})
 
-        assertEquals(InvalidMethodException::class.java, exception?.javaClass)
+        assertEquals("Invalid method exception", exception?.message)
 
     }
 
@@ -77,8 +79,7 @@ public class RoutesSpecs {
         TestServer.appServer.get( "/a", {})
         val exception = assertFails { TestServer.appServer.get( "/", {}) }
 
-        assertEquals(RouteAlreadyExistsException::class.java, exception?.javaClass)
-        assertEquals("Path / with method GET already exists", exception?.getMessage())
+        assertEquals("Path / with method GET already exists", exception?.message)
     }
 }
 

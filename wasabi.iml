@@ -41,5 +41,6 @@
     <orderEntry type="library" scope="TEST" name="Gradle: junit:junit:4.9" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.mockito:mockito-all:1.9.5" level="project" />
     <orderEntry type="library" scope="TEST" name="Gradle: org.hamcrest:hamcrest-core:1.1" level="project" />
+    <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-reflect:0.1-SNAPSHOT" level="project" />
   </component>
 </module>

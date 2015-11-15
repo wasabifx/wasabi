@@ -32,7 +32,7 @@ public class ConfigStorageSpecs {
         val exception = assertFails({ configurationStorage.loadFromFile("non_existing_file") })
 
 
-        assertEquals(InvalidConfigurationException::class.java, exception?.javaClass)
+        assertEquals("Configuration file does not exist", exception?.message)
     }
 
     @spec fun loading_an_invalid_configuration_with_invalid_property_should_throw_invalid_configuration_exception_with_name_of_invalid_property() {
@@ -41,8 +41,7 @@ public class ConfigStorageSpecs {
 
         val exception = assertFails({ configurationStorage.loadFromFile("testData${File.separatorChar}production_bad_property.json")})
 
-        assertEquals(InvalidConfigurationException::class.java, exception?.javaClass)
-        assertEquals("Invalid property in configuration file: invalid_property", exception?.getMessage())
+        assertEquals("Invalid property in configuration file: invalid_property", exception?.message)
     }
 
     @spec fun loading_an_invalid_configuration_with_invalid_json_should_throw_invalid_configuration_exception() {
@@ -51,7 +50,6 @@ public class ConfigStorageSpecs {
 
         val exception = assertFails({ configurationStorage.loadFromFile("testData${File.separatorChar}production_bad_json.json")})
 
-        assertEquals(InvalidConfigurationException::class.java, exception?.javaClass)
         assertEquals("Invalid JSON in configuration file: [Source: testData${File.separatorChar}production_bad_json.json; line: 2, column: 6]", exception?.getMessage())
     }
 
@@ -61,7 +59,7 @@ public class ConfigStorageSpecs {
 
 
         val file = File.createTempFile("configuration", ".json")
-        configurationStorage.saveToFile(AppConfiguration(), file.getAbsolutePath())
+        configurationStorage.saveToFile(AppConfiguration(), file.absolutePath)
 
         file.readText()
 

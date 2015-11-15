@@ -1,5 +1,5 @@
 buildscript {
-    ext.kotlin_version = '0.1-SNAPSHOT'
+    ext.kotlin_version = '1.0.0-beta-1103'
     project.ext.set("kotlin_version", '0.1-SNAPSHOT')
     repositories {
         mavenCentral()
@@ -53,6 +53,7 @@ dependencies {
             "joda-time:joda-time:2.3"
 
     compile "org.jetbrains.kotlin:kotlin-stdlib:$project.kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-reflect:$project.kotlin_version"
 
     testCompile "junit:junit:4.9",
             "org.mockito:mockito-all:1.9.5"

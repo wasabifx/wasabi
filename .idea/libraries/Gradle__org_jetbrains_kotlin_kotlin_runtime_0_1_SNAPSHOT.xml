@@ -2,10 +2,12 @@
   <library name="Gradle: org.jetbrains.kotlin:kotlin-runtime:0.1-SNAPSHOT">
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-runtime/0.1-SNAPSHOT/5832056fd3187a009a317c3a64732791258e4bad/kotlin-runtime-0.1-SNAPSHOT.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-runtime/0.1-SNAPSHOT/5faf5f6911596ce5d5dd0f9e28b788168fbfcd0/kotlin-runtime-0.1-SNAPSHOT.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-runtime/0.1-SNAPSHOT/6ba2b10db90b6c57911fab8ea2a785895299d6d1/kotlin-runtime-0.1-SNAPSHOT-sources.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-runtime/0.1-SNAPSHOT/1eaa6d4bc4a8b444bc32352c4865b9183bb61f1e/kotlin-runtime-0.1-SNAPSHOT-sources.jar!/" />
     </SOURCES>
   </library>
 </component>
