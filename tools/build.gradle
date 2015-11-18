@@ -51,7 +51,7 @@ task createGradle(dependsOn: setup) << {
         def gradleFile = new File(project.dir+'/build.gradle')
        
          
-        def mainClass = project.package + '.' + getDomain(project.package) + 'Package'
+        def mainClass = project.package + '.' + 'ServerKt'
         gradleFile.append("""\
 buildscript {
     project.ext.kotlin_version = '0.1-SNAPSHOT'
