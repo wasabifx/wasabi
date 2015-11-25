@@ -5,6 +5,7 @@ import org.apache.http.impl.client.DefaultHttpClient
 import org.apache.http.client.methods.HttpGet
 import org.apache.http.client.methods.HttpDelete
 import org.apache.http.Header
+import org.apache.http.NameValuePair
 import java.util.HashMap
 import org.apache.http.client.methods.HttpPost
 import org.apache.http.client.entity.UrlEncodedFormEntity
@@ -100,6 +101,15 @@ public fun get(url: String, headers: HashMap<String,String> = hashMapOf()): org.
     params.setParameter("http.protocol.handle-redirects",false)
     get.setParams(params)
     return makeRequest(headers, get)
+}
+
+public fun post(url: String, headers: HashMap<String,String> = hashMapOf(), postParams: List<NameValuePair>): org.wasabi.test.HttpClientResponse {
+    val post = HttpPost(url)
+    val params = BasicHttpParams()
+    params.setParameter("http.protocol.handle-redirects",false)
+    post.setParams(params)
+    post.setEntity(UrlEncodedFormEntity(postParams));
+    return makeRequest(headers, post)
 }
 
 public fun options(url: String, headers: HashMap<String, String> = hashMapOf()): HttpClientResponse {
