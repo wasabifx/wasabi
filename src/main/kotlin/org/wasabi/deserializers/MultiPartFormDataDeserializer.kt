@@ -6,8 +6,6 @@ import io.netty.handler.codec.http.multipart.Attribute
 import java.util.HashMap
 
 public class MultiPartFormDataDeserializer: Deserializer("application/x-www-form-urlencoded", "multipart/form-data") {
-    // TODO Leaving this here as ref, need to properly fix this by declaring type and creating deserializer on demand?
-    // val bodyParams = HashMap<String, Any>()
 
     override fun deserialize(input: Any): HashMap<String, Any> {
         var bodyParams = HashMap<String, Any>()
