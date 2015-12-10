@@ -40,11 +40,11 @@ compileKotlin {
 
 dependencies {
     compile "org.codehaus.jackson:jackson-mapper-asl:1.9.12",
-            "io.netty:netty-all:4.0.31.Final",
-            "commons-codec:commons-codec:1.6",
+            "io.netty:netty-all:4.0.33.Final",
+            "commons-codec:commons-codec:1.9",
             "commons-logging:commons-logging:1.1.1",
-            "org.apache.httpcomponents:httpclient:4.2.3",
-            "org.apache.httpcomponents:httpcore:4.2.3",
+            "org.apache.httpcomponents:httpclient:4.5.1",
+            "org.apache.httpcomponents:httpcore:4.4.3",
             "com.netflix.rxjava:rxjava-core:0.20.0-RC4",
             "org.codehaus.woodstox:woodstox-core-asl:4.1.4",
             "com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.1.3",
