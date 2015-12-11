@@ -93,7 +93,7 @@ public class HttpRequestHandler(private val appServer: AppServer){
                 } catch (e: RouteNotFoundException) {
                     response.setStatus(StatusCodes.NotFound)
                 } catch (e: Exception) {
-                    log!!.debug("Exception during web invocation: ${e.getMessage()}")
+                    log!!.debug("Exception during web invocation: ${e.message}")
                     response.setStatus(StatusCodes.InternalServerError)
                 }
                 writeResponse(ctx!!, response)

@@ -50,7 +50,7 @@ public class ConfigStorageSpecs {
 
         val exception = assertFails({ configurationStorage.loadFromFile("testData${File.separatorChar}production_bad_json.json")})
 
-        assertEquals("Invalid JSON in configuration file: [Source: testData${File.separatorChar}production_bad_json.json; line: 2, column: 6]", exception?.getMessage())
+        assertEquals("Invalid JSON in configuration file: [Source: testData${File.separatorChar}production_bad_json.json; line: 2, column: 6]", exception?.message)
     }
 
     @spec fun saving_a_configuration_to_file_should_save_it_correctly() {

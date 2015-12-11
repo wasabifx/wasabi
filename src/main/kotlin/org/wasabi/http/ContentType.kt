@@ -1,7 +1,7 @@
 package org.wasabi.http
 
 import java.util.ArrayList
-
+import kotlin.reflect.KProperty
 
 
 class ContentType(val contentType: String, val contentSubtype: String, val parameters: List<Pair<String, String>> = listOf()) {
@@ -101,7 +101,7 @@ class ContentType(val contentType: String, val contentSubtype: String, val param
 class BadContentTypeFormat(value: String) : Exception("Bad Content-Type format: $value")
 
 class ReflectionContentTypeProperty(val parameters: List<Pair<String, String>> = listOf()) {
-    public operator fun getValue(group: Any, property: PropertyMetadata): ContentType {
+    public operator fun getValue(group: Any, property: KProperty<*>): ContentType {
         val contentType = group.javaClass.getSimpleName().toLowerCase()
         val contentSubtype = property.name.toLowerCase().replace("_", "-")
         return ContentType(contentType, contentSubtype, parameters)
@@ -109,7 +109,7 @@ class ReflectionContentTypeProperty(val parameters: List<Pair<String, String>> =
 }
 
 class XmlReflectionContentTypeProperty(val parameters: List<Pair<String, String>> = listOf()) {
-    public operator fun getValue(group: Any, property: PropertyMetadata): ContentType {
+    public operator fun getValue(group: Any, property: KProperty<*>): ContentType {
         val contentType = group.javaClass.getSimpleName().toLowerCase()
         val contentSubtype = property.name.toLowerCase().replace("_", "-") + "+xml"
         return ContentType(contentType, contentSubtype, parameters)
@@ -117,7 +117,7 @@ class XmlReflectionContentTypeProperty(val parameters: List<Pair<String, String>
 }
 
 class AnyReflectionContentTypeProperty(val parameters: List<Pair<String, String>> = listOf()) {
-    public operator fun getValue(group: Any, property: PropertyMetadata): ContentType {
+    public operator fun getValue(group: Any, property: KProperty<*>): ContentType {
         val contentType = group.javaClass.getSimpleName().toLowerCase()
         val contentSubtype = "*"
         return ContentType(contentType, contentSubtype, parameters)
