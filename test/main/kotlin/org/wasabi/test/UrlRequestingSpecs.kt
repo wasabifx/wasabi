@@ -1,17 +1,7 @@
 package org.wasabi.test
 
-import org.junit.Test as spec
-import org.wasabi.app.AppServer
-import org.apache.http.client.HttpClient
-import org.apache.http.impl.client.DefaultHttpClient
-import org.apache.http.client.methods.HttpGet
 import kotlin.test.assertEquals
-import org.apache.http.impl.client.BasicResponseHandler
-import org.wasabi.test.TestServer
-import org.wasabi.test.get
-import kotlin.test.fails
-import org.apache.http.client.HttpResponseException
-import org.wasabi.test.delete
+import org.junit.Test as spec
 
 public class UrlRequestingSpecs: TestServerContext() {
 

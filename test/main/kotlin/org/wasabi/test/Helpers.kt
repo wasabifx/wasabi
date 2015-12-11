@@ -1,29 +1,22 @@
 package org.wasabi.test
 
-import org.wasabi.app.AppServer
-import org.apache.http.impl.client.DefaultHttpClient
-import org.apache.http.client.methods.HttpGet
-import org.apache.http.client.methods.HttpDelete
 import org.apache.http.Header
 import org.apache.http.NameValuePair
-import java.util.HashMap
-import org.apache.http.client.methods.HttpPost
+import org.apache.http.client.config.RequestConfig
 import org.apache.http.client.entity.UrlEncodedFormEntity
-import java.util.ArrayList
-import org.apache.http.message.BasicNameValuePair
-import org.apache.http.client.methods.HttpRequestBase
+import org.apache.http.client.methods.*
+import org.apache.http.impl.client.BasicCookieStore
+import org.apache.http.impl.client.HttpClientBuilder
 import org.apache.http.impl.cookie.BasicClientCookie
-import org.wasabi.routing.Route
+import org.apache.http.message.BasicNameValuePair
 import org.apache.http.util.EntityUtils
-import org.junit.Before
 import org.junit.After
-import org.junit.BeforeClass
-import org.junit.AfterClass
-import org.apache.http.client.methods.HttpOptions
-import org.apache.http.params.BasicHttpParams
+import org.junit.Before
 import org.wasabi.app.AppConfiguration
-import java.util.Random
+import org.wasabi.app.AppServer
+import org.wasabi.routing.Route
 import java.net.BindException
+import java.util.*
 
 open public class TestServerContext {
     @Before fun initTest(): Unit {
@@ -68,25 +61,29 @@ object TestServer {
 }
 
 private fun makeRequest(headers: HashMap<String, String>, request: HttpRequestBase): org.wasabi.test.HttpClientResponse {
-    val httpClient = DefaultHttpClient()
+
+    val cookie = BasicClientCookie("someCookie", "someCookieValue")
+    cookie.path = request.uri?.path
+    cookie.domain = "localhost"
+
+    val cookieStore = BasicCookieStore();
+    cookieStore.addCookie(cookie)
+
+    val httpClient = HttpClientBuilder.create().setDefaultCookieStore(cookieStore).build();
     for ((key, value) in headers) {
         request.setHeader(key, value)
     }
     request.setHeader("Connection", "Close")
-    val cookie = BasicClientCookie("someCookie", "someCookieValue")
-    cookie.setPath(request.getURI()?.getPath())
-    cookie.setDomain("localhost")
-    val cookieStore = httpClient.getCookieStore()
-    cookieStore?.addCookie(cookie)
+
 
     val response = httpClient.execute(request)!!
 
-    val body = EntityUtils.toString(response.getEntity())!!
-    val responseHeaders = response.getAllHeaders()!!
+    val body = EntityUtils.toString(response.entity)!!
+    val responseHeaders = response.allHeaders!!
 
     return HttpClientResponse(responseHeaders, body,
-            response.getStatusLine()?.getStatusCode()!!,
-            response.getStatusLine()?.getReasonPhrase() ?: "")
+            response.statusLine?.statusCode!!,
+            response.statusLine?.reasonPhrase ?: "")
 
 
 }
@@ -96,19 +93,26 @@ public fun delete(url: String, headers: HashMap<String, String>): org.wasabi.tes
 }
 
 public fun get(url: String, headers: HashMap<String,String> = hashMapOf()): org.wasabi.test.HttpClientResponse {
+
+    val requestConfig = RequestConfig.custom()
+            .setRedirectsEnabled(false)
+            .build();
+
     val get = HttpGet(url)
-    val params = BasicHttpParams()
-    params.setParameter("http.protocol.handle-redirects",false)
-    get.setParams(params)
+    get.config = requestConfig
+
     return makeRequest(headers, get)
 }
 
 public fun post(url: String, headers: HashMap<String,String> = hashMapOf(), postParams: List<NameValuePair>): org.wasabi.test.HttpClientResponse {
+
+    val requestConfig = RequestConfig.custom()
+            .setRedirectsEnabled(false)
+            .build();
+
     val post = HttpPost(url)
-    val params = BasicHttpParams()
-    params.setParameter("http.protocol.handle-redirects",false)
-    post.setParams(params)
-    post.setEntity(UrlEncodedFormEntity(postParams));
+    post.config = requestConfig
+    post.entity = UrlEncodedFormEntity(postParams);
     return makeRequest(headers, post)
 }
 
@@ -120,9 +124,9 @@ public fun options(url: String, headers: HashMap<String, String> = hashMapOf()):
 public fun postForm(url: String, headers: HashMap<String, String>, fields: ArrayList<BasicNameValuePair>, chunked: Boolean = false): org.wasabi.test.HttpClientResponse {
     val httpPost = HttpPost(url)
     val entity = UrlEncodedFormEntity(fields, "UTF-8")
-    entity.setChunked(chunked)
+    entity.isChunked = chunked
     httpPost.setHeader("Content-Type", "application/x-www-form-urlencoded")
-    httpPost.setEntity(entity)
+    httpPost.entity = entity
     return org.wasabi.test.makeRequest(headers, httpPost)
 }
 
