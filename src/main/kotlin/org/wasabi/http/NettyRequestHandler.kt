@@ -78,8 +78,8 @@ public class NettyRequestHandler(private val appServer: AppServer): SimpleChanne
     }
 
     public override fun exceptionCaught(ctx: ChannelHandlerContext, cause: Throwable?) {
-        log!!.debug("Exception during web invocation: ${cause?.getMessage()}")
-        log!!.debug(cause?.getStackTrace().toString())
+        log!!.debug("Exception during web invocation: ${cause?.message}")
+        log!!.debug(cause?.stackTrace.toString())
         response.setStatus(StatusCodes.InternalServerError)
         response.setHeaders()
         ctx.write(response)

@@ -1,25 +1,13 @@
 package org.wasabi.http
 
-import io.netty.channel.ChannelHandlerContext
-import io.netty.handler.codec.http.DefaultHttpResponse
-import io.netty.handler.codec.http.HttpVersion
-import io.netty.util.CharsetUtil
-import io.netty.buffer.Unpooled
-import io.netty.handler.codec.http.HttpResponseStatus
-import io.netty.handler.codec.http.DefaultFullHttpResponse
-import io.netty.channel.ChannelFutureListener
-import java.util.HashMap
 import io.netty.handler.codec.http.HttpMethod
-import com.fasterxml.jackson.databind.ObjectMapper
-import java.io.File
-import javax.activation.MimetypesFileTypeMap
-import io.netty.handler.codec.http.ServerCookieEncoder
-import io.netty.handler.codec.http.DefaultCookie
-import java.util.ArrayList
-import org.wasabi.serializers.Serializer
+import io.netty.handler.codec.http.cookie.ServerCookieEncoder
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 import org.joda.time.format.DateTimeFormat
+import java.io.File
+import java.util.*
+import javax.activation.MimetypesFileTypeMap
 
 
 public class Response() {
@@ -129,7 +117,7 @@ public class Response() {
         for (cookie in cookies) {
             val name = cookie.value.name.toString()
             val value = cookie.value.value.toString()
-            addRawHeader("Set-Cookie", ServerCookieEncoder.encode(name, value).toString())
+            addRawHeader("Set-Cookie", ServerCookieEncoder.STRICT.encode(name, value).toString())
         }
     }
 

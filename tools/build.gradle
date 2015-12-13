@@ -18,7 +18,7 @@ task help << {
     println ("""\
 Welcome to Wasabi
 
-To get started run: gradle -q server dir={directory} package={package}
+To get started run: gradle -q server -Pdir={directory} -Ppackage={package}
 
 e.g.: gradle -q server -Pdir=~/home/project/myAppfolder -Ppackage=org.domain
 
@@ -51,7 +51,7 @@ task createGradle(dependsOn: setup) << {
         def gradleFile = new File(project.dir+'/build.gradle')
        
          
-        def mainClass = project.package + '.' + 'ServerKt'
+        def mainClass = project.package + '.' + getDomain(project.package) + 'Kt'
         gradleFile.append("""\
 buildscript {
     project.ext.kotlin_version = '0.1-SNAPSHOT'
