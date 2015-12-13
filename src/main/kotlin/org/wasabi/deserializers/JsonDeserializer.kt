@@ -1,7 +1,7 @@
 package org.wasabi.deserializers
 
 import java.util.HashMap
-import org.codehaus.jackson.map.ObjectMapper
+import com.fasterxml.jackson.databind.ObjectMapper
 
 
 public class JsonDeserializer: Deserializer("application/json", "application/json;\\s*charset=\\w*\\W*\\w*") {

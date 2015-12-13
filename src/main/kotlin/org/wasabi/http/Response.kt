@@ -10,7 +10,7 @@ import io.netty.handler.codec.http.DefaultFullHttpResponse
 import io.netty.channel.ChannelFutureListener
 import java.util.HashMap
 import io.netty.handler.codec.http.HttpMethod
-import org.codehaus.jackson.map.ObjectMapper
+import com.fasterxml.jackson.databind.ObjectMapper
 import java.io.File
 import javax.activation.MimetypesFileTypeMap
 import io.netty.handler.codec.http.ServerCookieEncoder
