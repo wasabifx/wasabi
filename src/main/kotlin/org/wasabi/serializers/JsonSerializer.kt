@@ -1,6 +1,6 @@
 package org.wasabi.serializers
 
-import org.codehaus.jackson.map.ObjectMapper
+import com.fasterxml.jackson.databind.ObjectMapper
 
 public class JsonSerializer(): Serializer("application/json", "application/vnd\\.\\w*\\+json") {
     override fun serialize(input: Any): String {
