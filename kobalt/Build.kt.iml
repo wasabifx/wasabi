@@ -4,6 +4,7 @@
     <exclude-output />
     <content url="file:///Library/Java/JavaVirtualMachines/jdk1.8.0_40.jdk/Contents/Home" />
     <content url="file://$MODULE_DIR$" />
+    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="kobalt.jar" level="project" />
   </component>

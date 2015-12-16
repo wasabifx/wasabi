@@ -2,7 +2,7 @@ import com.beust.kobalt.*
 import com.beust.kobalt.plugin.packaging.assemble
 import com.beust.kobalt.plugin.kotlin.*
 
-val kotlin_version = "1.0.0-beta-1103"
+val kotlin_version = "0.1-SNAPSHOT"
 
 val p = kotlinProject {
 
@@ -10,6 +10,8 @@ val p = kotlinProject {
     group = "com.example"
     artifactId = name
     version = "0.1"
+
+    val repos = repos("http://oss.sonatype.org/content/repositories/snapshots")
 
     sourceDirectories {
         path("src/main/kotlin")
@@ -32,8 +34,6 @@ val p = kotlinProject {
         compile("io.netty:netty-all:4.0.31.Final")
         compile("commons-codec:commons-codec:1.6")
         compile("commons-logging:commons-logging:1.1.1")
-        compile("org.apache.httpcomponents:httpclient:4.2.3")
-        compile("org.apache.httpcomponents:httpcore:4.2.3")
         compile("com.netflix.rxjava:rxjava-core:0.20.0-RC4")
         compile("org.slf4j:slf4j-api:1.7.5")
         compile("org.slf4j:slf4j-simple:1.7.5")
@@ -43,8 +43,8 @@ val p = kotlinProject {
     dependenciesTest {
         compile("junit:junit:4.9")
         compile("org.mockito:mockito-all:1.9.5")
-        compile("org.apache.httpcomponents:httpclient:4.2.3")
-        compile("org.apache.httpcomponents:httpcore:4.2.3")
+        compile("org.apache.httpcomponents:httpcore:4.3.3")
+        compile("org.apache.httpcomponents:httpclient:4.5.1")
     }
 
     assemble {
