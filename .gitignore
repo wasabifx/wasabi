@@ -7,3 +7,5 @@ lib/kotlin-runtime.jar
 build/
 .gradle/
 gradle.properties
+kobaltBuild/
+.kobalt
