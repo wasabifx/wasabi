@@ -1,13 +1,9 @@
 package org.wasabi.test
 
-import org.junit.Test as spec
-import org.wasabi.interceptors.enableAutoOptions
-import kotlin.test.assertEquals
 import org.wasabi.http.StatusCodes
-import org.wasabi.interceptors.disableAutoOptions
-import org.wasabi.interceptors.AutoOptionsInterceptor
-import org.junit.Ignore
 import org.wasabi.interceptors.enableAutoLocation
+import kotlin.test.assertEquals
+import org.junit.Test as spec
 
 
 public class AutoLocationInterceptorSpecs : TestServerContext() {
