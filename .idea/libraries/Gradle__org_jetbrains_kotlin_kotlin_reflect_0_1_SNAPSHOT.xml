@@ -1,11 +1,11 @@
 <component name="libraryTable">
   <library name="Gradle: org.jetbrains.kotlin:kotlin-reflect:0.1-SNAPSHOT">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/0.1-SNAPSHOT/6fc4d1bf4769b4fd764057b53f2d24077515dc9b/kotlin-reflect-0.1-SNAPSHOT.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/0.1-SNAPSHOT/81ec5bdea20c821ba6ac1abdd85de609ba090d15/kotlin-reflect-0.1-SNAPSHOT.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/0.1-SNAPSHOT/5dee08cd7a0d8e59467c9c8d6e0ae55d91793d65/kotlin-reflect-0.1-SNAPSHOT-sources.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-reflect/0.1-SNAPSHOT/ccebea794d40afcaa459b87a090a4602156698e/kotlin-reflect-0.1-SNAPSHOT-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

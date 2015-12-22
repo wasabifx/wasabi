@@ -1,8 +1,5 @@
 package org.wasabi.http
 
-import java.util.concurrent.Executors
-import java.net.InetSocketAddress
-import org.wasabi.app.AppConfiguration
 import io.netty.bootstrap.ServerBootstrap
 import io.netty.buffer.PooledByteBufAllocator
 import io.netty.channel.ChannelOption

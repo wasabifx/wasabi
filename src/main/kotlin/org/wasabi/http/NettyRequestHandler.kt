@@ -1,5 +1,7 @@
 package org.wasabi.http
 
+import co.paralleluniverse.fibers.Fiber
+import co.paralleluniverse.strands.SuspendableRunnable
 import io.netty.channel.ChannelFutureListener
 import io.netty.channel.ChannelHandlerContext
 import io.netty.channel.SimpleChannelInboundHandler
@@ -31,50 +33,48 @@ public class NettyRequestHandler(private val appServer: AppServer): SimpleChanne
     private var channelLocator = PatternMatchingChannelLocator(appServer.channels)
 
     override fun channelRead0(ctx: ChannelHandlerContext?, msg: Any?) {
-
-        if (msg is WebSocketFrame)
-        {
-            WebSocketHandler(appServer, channelLocator).handleRequest(handshaker!!, ctx!!, msg)
-        }
-
-
-        if (msg is FullHttpRequest)
-        {
-            // Here we catch the upgrade request and setup handshaker factory to negotiate client connection
-            if ( msg is HttpRequest && msg.headers().get(HttpHeaders.Names.UPGRADE) == "websocket")
-            {
-                // Setup Handshake
-                var wsFactory : WebSocketServerHandshakerFactory = WebSocketServerHandshakerFactory(msg.getUri(), null, false);
-
-                handshaker = wsFactory.newHandshaker(msg)
-
-                // TODO move into new websocket handler? do we want to complete handshake if theres no channelHandler?
-                try {
-
-                    log!!.info(handshaker?.uri())
-
-                    channelLocator.findChannelHandler(handshaker?.uri().toString()).handler
-
-                    if (handshaker == null) {
-                        WebSocketServerHandshakerFactory.sendUnsupportedVersionResponse(ctx?.channel()!!);
-                    } else {
-                        handshaker?.handshake(ctx?.channel()!!, msg);
-                    }
-                    return
+        Fiber<Void>(SuspendableRunnable() {
+            run {
+                if (msg is WebSocketFrame) {
+                    WebSocketHandler(appServer, channelLocator).handleRequest(handshaker!!, ctx!!, msg)
                 }
-                catch(exception: RouteNotFoundException)
-                {
-                    // If we dont have a handler to support the requested URL we set not found and bail out.
-                    response.setStatus(StatusCodes.NotFound)
-                    response.setHeaders()
-                    ctx!!.write(response)
-                    var lastContentFuture = ctx.writeAndFlush(LastHttpContent.EMPTY_LAST_CONTENT)
-                    lastContentFuture.addListener(ChannelFutureListener.CLOSE)
-                    return
+
+
+                if (msg is FullHttpRequest) {
+                    // Here we catch the upgrade request and setup handshaker factory to negotiate client connection
+                    if ( msg is HttpRequest && msg.headers().get(HttpHeaders.Names.UPGRADE) == "websocket") {
+                        // Setup Handshake
+                        var wsFactory: WebSocketServerHandshakerFactory = WebSocketServerHandshakerFactory(msg.getUri(), null, false);
+
+                        handshaker = wsFactory.newHandshaker(msg)
+
+                        // TODO move into new websocket handler? do we want to complete handshake if theres no channelHandler?
+                        try {
+
+                            log!!.info(handshaker?.uri())
+
+                            channelLocator.findChannelHandler(handshaker?.uri().toString()).handler
+
+                            if (handshaker == null) {
+                                WebSocketServerHandshakerFactory.sendUnsupportedVersionResponse(ctx?.channel()!!);
+                            } else {
+                                handshaker?.handshake(ctx?.channel()!!, msg);
+                            }
+                        } catch(exception: RouteNotFoundException) {
+                            // If we dont have a handler to support the requested URL we set not found and bail out.
+                            response.setStatus(StatusCodes.NotFound)
+                            response.setHeaders()
+                            ctx!!.write(response)
+                            var lastContentFuture = ctx.writeAndFlush(LastHttpContent.EMPTY_LAST_CONTENT)
+                            lastContentFuture.addListener(ChannelFutureListener.CLOSE)
+                        }
+                    }
+                    HttpRequestHandler(appServer).handleRequest(ctx, msg)
                 }
             }
-            HttpRequestHandler(appServer).handleRequest(ctx, msg)
-        }
+
+
+        }).start().join()
     }
 
     public override fun exceptionCaught(ctx: ChannelHandlerContext, cause: Throwable?) {
