@@ -48,14 +48,17 @@ dependencies {
             "com.fasterxml.jackson.core:jackson-databind:2.6.4",
             "com.fasterxml.jackson.core:jackson-annotations:2.6.4",
             "com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.6.3",
-            "com.fasterxml.woodstox:woodstox-core:5.0.1"
+            "com.fasterxml.woodstox:woodstox-core:5.0.1",
+            "co.paralleluniverse:quasar-core:0.7.2"
 
     compile "org.jetbrains.kotlin:kotlin-stdlib:$project.kotlin_version"
     compile "org.jetbrains.kotlin:kotlin-reflect:$project.kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-test:$project.kotlin_version"
 
     testCompile "junit:junit:4.9",
             "org.mockito:mockito-all:1.9.5",
             "org.apache.httpcomponents:httpclient:4.5.1"
+
 }
 
 
@@ -126,7 +129,7 @@ publishing {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.5'
+    gradleVersion = '2.9'
 
     doLast() {
         def gradleOpts = "-XX:MaxPermSize=300m -Xmx1024m"
