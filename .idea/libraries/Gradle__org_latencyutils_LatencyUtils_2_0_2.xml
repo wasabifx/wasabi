@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.latencyutils:LatencyUtils:2.0.2">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.latencyutils/LatencyUtils/2.0.2/dcfce0d8b128638aa20e58697b1c40ff09e342db/LatencyUtils-2.0.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.latencyutils/LatencyUtils/2.0.2/c51c48b983abf1747bf4ca93afd3376ceabb4e39/LatencyUtils-2.0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

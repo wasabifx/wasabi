@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/kobalt/Build.kt.iml" filepath="$PROJECT_DIR$/kobalt/Build.kt.iml" />
       <module fileurl="file://$PROJECT_DIR$/wasabi.iml" filepath="$PROJECT_DIR$/wasabi.iml" />
     </modules>
   </component>
