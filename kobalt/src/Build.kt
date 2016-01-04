@@ -36,7 +36,6 @@ val p = kotlinProject {
         compile("commons-logging:commons-logging:1.1.1")
         compile("com.netflix.rxjava:rxjava-core:0.20.0-RC4")
         compile("org.slf4j:slf4j-api:1.7.5")
-        compile("org.slf4j:slf4j-simple:1.7.5")
         compile("joda-time:joda-time:2.3")
     }
 
@@ -45,6 +44,7 @@ val p = kotlinProject {
         compile("org.mockito:mockito-all:1.9.5")
         compile("org.apache.httpcomponents:httpcore:4.3.3")
         compile("org.apache.httpcomponents:httpclient:4.5.1")
+        compile("org.slf4j:slf4j-simple:1.7.5")
     }
 
     assemble {
