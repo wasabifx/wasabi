@@ -13,6 +13,10 @@ val p = kotlinProject {
     artifactId = name
     version = "0.1"
 
+    sourceDirectoriesTest {
+        path("test")
+    }
+
     dependencies {
         compile("org.jetbrains.kotlin:kotlin-stdlib:" + kotlin_version)
         compile("org.jetbrains.kotlin:kotlin-reflect:" + kotlin_version)
@@ -31,6 +35,7 @@ val p = kotlinProject {
 
     dependenciesTest {
         compile("junit:junit:4.9")
+        compile("org.jetbrains.kotlin:kotlin-test:" + kotlin_version)
         compile("org.slf4j:slf4j-simple:1.7.5")
         compile("org.mockito:mockito-all:1.9.5")
         compile("org.apache.httpcomponents:httpcore:4.3.3")
