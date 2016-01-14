@@ -110,7 +110,7 @@ You can chain route handlers. For instance, if you want to log information about
     {
       val log = Log()
       
-      log.info("URI requested is ${request.uri}")
+      log.info("URI requested is ${it.request.uri}")
       it.next()
     },
     {
@@ -135,10 +135,10 @@ where you can pass one or multiple route handlers. Each one of these is an exten
 
 
 #### Route Parameters ####
-Wasabi supports route parameters. Define as many parameters as you like using : followed by the name of the parameter. Access it via request.routeParams["name"]
+Wasabi supports route parameters. Define as many parameters as you like using : followed by the name of the parameter. Access it via it.request.routeParams["name"]
 
 ```kotlin
-server.get("/customer/:id", { val customerId = request.routeParams["id"] } )
+server.get("/customer/:id", { val customerId = it.request.routeParams["id"] } )
 ```
 
 #### Query Parameters ####
@@ -147,13 +147,13 @@ Access query parameters using queryParams property of the request.
   http://localhost:3000/customer?name=Joe
   
 ```kotlin
-server.get("/customer", { val customerName = request.queryParams["name"] } )
+server.get("/customer", { val customerName = it.request.queryParams["name"] } )
 ```
 
 #### Form Parameters ####
 Access form parameters using bodyParams property of the request.
 ```kotlin
-server.post("/customer", { val customerNameFromForm = request.bodyParams["name"] } )
+server.post("/customer", { val customerNameFromForm = it.request.bodyParams["name"] } )
 ```  
 
 ### Organization of Route Handlers and Application layout ###
@@ -334,7 +334,7 @@ will automatically serialize it and send it back to the client.
 
 ```kotlin
 server.get("/customer/:id", {
-  val customer = getCustomerById(request.params["id"])
+  val customer = getCustomerById(it.request.params["id"])
   it.response.send(customer)
 }
 ```
@@ -348,7 +348,7 @@ If you need to manually override Content Negotiation, you can do so using the *n
    server.get("/customer/:id", {
 
 
-        val customer = getCustomerById(request.params["id"])
+        val customer = getCustomerById(it.request.params["id"])
 
         it.response.negotiate (
             "text/html" with { send("Joe Smith") },
