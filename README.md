@@ -34,7 +34,7 @@ Getting Started
 ```kotlin
 var server = AppServer()
   
-server.get("/", { response.send("Hello World!") })
+server.get("/", { it.response.send("Hello World!") })
   
 server.start()
 ```
@@ -111,10 +111,10 @@ You can chain route handlers. For instance, if you want to log information about
       val log = Log()
       
       log.info("URI requested is ${request.uri}")
-      next()
+      it.next()
     },
     {
-      response.send("Hello World!")
+      it.response.send("Hello World!")
     }
   )
 ```
@@ -167,7 +167,7 @@ Defining logic for each route handler inline:
 ```kotlin
 val appServer = AppServer()
 
-appServer.get("/customer", { response.send(customers) })
+appServer.get("/customer", { it.response.send(customers) })
 ```
 
 For very simple operations this might be ok however, it will soon become unmaintainable. 
@@ -335,7 +335,7 @@ will automatically serialize it and send it back to the client.
 ```kotlin
 server.get("/customer/:id", {
   val customer = getCustomerById(request.params["id"])
-  response.send(customer)
+  it.response.send(customer)
 }
 ```
 
@@ -350,7 +350,7 @@ If you need to manually override Content Negotiation, you can do so using the *n
 
         val customer = getCustomerById(request.params["id"])
 
-        response.negotiate (
+        it.response.negotiate (
             "text/html" with { send("Joe Smith") },
             "application/json" with { send(customer) }
         }
