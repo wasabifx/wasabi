@@ -55,9 +55,9 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-reflect:$project.kotlin_version"
     compile "org.jetbrains.kotlin:kotlin-test:$project.kotlin_version"
 
-    testCompile "junit:junit:4.9",
-            "org.mockito:mockito-all:1.9.5",
-            "org.apache.httpcomponents:httpclient:4.5.1"
+    testCompile "junit:junit:4.9"
+    testCompile "org.mockito:mockito-all:1.9.5"
+    testCompile "org.apache.httpcomponents:httpclient:4.5.1"
 
 }
 
