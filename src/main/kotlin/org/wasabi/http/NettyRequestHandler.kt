@@ -47,7 +47,7 @@ public class NettyRequestHandler(private val appServer: AppServer): SimpleChanne
                 var wsFactory : WebSocketServerHandshakerFactory = WebSocketServerHandshakerFactory(msg.getUri(), null, false);
 
                 handshaker = wsFactory.newHandshaker(msg)
-
+                
                 // TODO move into new websocket handler? do we want to complete handshake if theres no channelHandler?
                 try {
 

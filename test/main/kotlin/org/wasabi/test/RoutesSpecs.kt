@@ -14,7 +14,7 @@ import kotlin.reflect.KClass
 import kotlin.test.*
 
 
-public class RoutesSpecs {
+class RoutesSpecs {
 
     @spec fun adding_a_route_to_routing_table_should_store_it() {
 
@@ -67,7 +67,7 @@ public class RoutesSpecs {
 
         val exception = assertFails({routeLocator.findRouteHandlers("/second", HttpMethod.GET)})
 
-        assertEquals("Invalid method exception", exception?.message)
+        assertEquals("Invalid method exception", exception.message)
 
     }
 
@@ -79,7 +79,7 @@ public class RoutesSpecs {
         TestServer.appServer.get( "/a", {})
         val exception = assertFails { TestServer.appServer.get( "/", {}) }
 
-        assertEquals("Path / with method GET already exists", exception?.message)
+        assertEquals("Path / with method GET already exists", exception.message)
     }
 }
 
