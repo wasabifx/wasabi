@@ -1,5 +1,5 @@
 buildscript {
-    project.ext.set("kotlin_version", '0.1-SNAPSHOT')
+    ext.kotlin_version = '1.0.0-rc-1036'
     repositories {
         mavenCentral()
         maven {
@@ -10,7 +10,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$project.kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
@@ -58,6 +58,7 @@ dependencies {
     testCompile "junit:junit:4.9"
     testCompile "org.mockito:mockito-all:1.9.5"
     testCompile "org.apache.httpcomponents:httpclient:4.5.1"
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
 }
 
