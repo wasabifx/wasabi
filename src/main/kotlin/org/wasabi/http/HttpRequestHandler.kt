@@ -217,8 +217,6 @@ public class HttpRequestHandler(private val appServer: AppServer){
     }
 
     private fun deserializeBody(msg: HttpContent) {
-        // TODO: Re-structure all this and fix it as it requires a special case for decoder
-        // TODO: Check we actually need to bother calling deserializer etc.
         if (decoder != null) {
             decoder!!.offer(msg)
             request!!.bodyParams.putAll(deserializer!!.deserialize(decoder!!.getBodyHttpDatas()))
