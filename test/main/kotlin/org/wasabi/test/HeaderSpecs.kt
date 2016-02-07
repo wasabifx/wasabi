@@ -159,7 +159,7 @@ public class HeaderSpecs: TestServerContext() {
     }
 
 
-    @Ignore("Fix Chunk encoding") @spec fun request_with_url_form_encoded_post_and_chunked_encoding_should_contain_post_fields_in_bodyParams() {
+    @spec fun request_with_url_form_encoded_post_and_chunked_encoding_should_contain_post_fields_in_bodyParams() {
 
         val headers = hashMapOf(
                 "User-Agent" to "test-client",
@@ -173,28 +173,18 @@ public class HeaderSpecs: TestServerContext() {
 
         var bodyParams = HashMap<String, Any>()
 
-
-
-
         TestServer.appServer.post("/customer",
                 {
-
-
                     bodyParams = request.bodyParams
                     response.send("/")
-
                 })
 
-        val fields = arrayListOf<BasicNameValuePair>(BasicNameValuePair("name", "joe"), BasicNameValuePair("email", "joe@joe.com"))
+        val fields = arrayListOf(BasicNameValuePair("name", "joe"), BasicNameValuePair("email", "joe@joe.com"))
         postForm("http://localhost:${TestServer.definedPort}/customer", headers, fields, true)
 
         assertEquals(2, bodyParams.size)
         assertEquals("joe", bodyParams["name"])
         assertEquals("joe@joe.com", bodyParams["email"])
-
-
     }
-
-
 }
 

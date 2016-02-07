@@ -10,7 +10,6 @@ import org.junit.Ignore
 
 public class AutoOptionsInterceptorSpecs : TestServerContext() {
 
-    @Ignore("We need to solve this issue.")
     @spec fun with_auto_options_disabled_options_should_return_method_not_allowed () {
 
         TestServer.appServer.get("/person", {})
