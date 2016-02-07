@@ -4,22 +4,25 @@ import org.junit.Test as spec
  import kotlin.test.assertEquals
  import org.wasabi.interceptors.enableSessionSupport
  import org.junit.Ignore
+import org.wasabi.http.Session
 
  public class SessionManagementInterceptorSpecs: TestServerContext() {
 
     class CustomSession(val name: String) {
 
     }
-    @Ignore("Session Management not implemented yet") @spec fun should_store_session_data_in_the_session_object() {
+    @Ignore("Still broken") @spec fun should_extend_session_expiry_on_multiple_requests() {
 
         TestServer.appServer.enableSessionSupport()
-        TestServer.appServer.get("/set_session", {
-            val session = request.session!!
+        TestServer.appServer.get("/test_session", {
+            var foo = request.session
+        })
 
-            session.data = CustomSession("Joe")})
+        var response = get("http://localhost:${TestServer.definedPort}/test_session", hashMapOf())
 
-        get("http://localhost:${TestServer.definedPort}/set_session", hashMapOf())
-        val response = get("http://localhost:${TestServer.definedPort}/get_session", hashMapOf())
+        Thread.sleep(2000)
+
+        val response2 = get("http://localhost:${TestServer.definedPort}/test_session", hashMapOf())
 
         assertEquals("Joe", response.body)
     }

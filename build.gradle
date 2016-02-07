@@ -1,5 +1,5 @@
 buildscript {
-    project.ext.set("kotlin_version", '0.1-SNAPSHOT')
+    ext.kotlin_version = '0.1-SNAPSHOT'
     repositories {
         mavenCentral()
         maven {
@@ -10,7 +10,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$project.kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
@@ -37,7 +37,7 @@ compileKotlin {
 
 
 dependencies {
-    compile "io.netty:netty-all:4.0.33.Final",
+    compile "io.netty:netty-all:4.0.34.Final",
             "commons-codec:commons-codec:1.9",
             "commons-logging:commons-logging:1.1.1",
             "com.netflix.rxjava:rxjava-core:0.20.0-RC4",
@@ -49,11 +49,11 @@ dependencies {
             "com.fasterxml.jackson.core:jackson-annotations:2.6.4",
             "com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.6.3",
             "com.fasterxml.woodstox:woodstox-core:5.0.1",
-            "co.paralleluniverse:quasar-core:0.7.2"
+            "co.paralleluniverse:quasar-core:0.7.4"
 
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$project.kotlin_version"
-    compile "org.jetbrains.kotlin:kotlin-reflect:$project.kotlin_version"
-    compile "org.jetbrains.kotlin:kotlin-test:$project.kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+    compile "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
 
     testCompile "junit:junit:4.9"
     testCompile "org.mockito:mockito-all:1.9.5"

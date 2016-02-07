@@ -5,13 +5,13 @@ import org.wasabi.http.Response
 import org.wasabi.app.AppServer
 import org.wasabi.http.Session
 import org.wasabi.http.Cookie
+import org.wasabi.storage.InMemorySessionStorage
 import java.util.UUID
 import java.util.Date
 
 public class SessionManagementInterceptor(val cookieKey: String = "_sessionID", sessionStorage: SessionStorage = InMemorySessionStorage()): Interceptor(), SessionStorage by sessionStorage {
 
     private fun generateSessionID(): String {
-        // TODO: Tie this to IP/etc.
         return UUID.randomUUID().toString()
     }
 
