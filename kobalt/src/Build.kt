@@ -9,7 +9,7 @@ val repos = repos("http://repository.jetbrains.com/all", "https://oss.sonatype.o
 val p = project {
 
     name = "wasabi"
-    group = "com.example"
+    group = "org.wasabi"
     artifactId = name
     version = "0.1"
 
