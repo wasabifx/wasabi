@@ -3,7 +3,7 @@ import com.beust.kobalt.plugin.packaging.assemble
 import com.beust.kobalt.plugin.kotlin.*
 //import com.beust.kobalt.plugin.dokka.*
 
-val kotlin_version = "1.0.0-beta-4583"
+val kotlin_version = "1.0.0"
 val repos = repos("http://repository.jetbrains.com/all", "https://oss.sonatype.org/content/repositories/snapshots/")
 
 val p = kotlinProject {
