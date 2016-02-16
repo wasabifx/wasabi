@@ -6,7 +6,7 @@ import com.beust.kobalt.plugin.kotlin.*
 val kotlin_version = "1.0.0"
 val repos = repos("http://repository.jetbrains.com/all", "https://oss.sonatype.org/content/repositories/snapshots/")
 
-val p = kotlinProject {
+val p = project {
 
     name = "wasabi"
     group = "com.example"
