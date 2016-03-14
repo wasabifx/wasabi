@@ -34,23 +34,13 @@
     <orderEntry type="library" name="Gradle: com.fasterxml.jackson.core:jackson-annotations:2.6.4" level="project" />
     <orderEntry type="library" name="Gradle: com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.6.3" level="project" />
     <orderEntry type="library" name="Gradle: com.fasterxml.woodstox:woodstox-core:5.0.1" level="project" />
-    <orderEntry type="library" name="Gradle: co.paralleluniverse:quasar-core:0.7.4" level="project" />
     <orderEntry type="library" name="Gradle: com.fasterxml.jackson.module:jackson-module-jaxb-annotations:2.6.3" level="project" />
     <orderEntry type="library" name="Gradle: org.codehaus.woodstox:stax2-api:3.1.4" level="project" />
-    <orderEntry type="library" name="Gradle: io.dropwizard.metrics:metrics-core:3.1.2" level="project" />
-    <orderEntry type="library" name="Gradle: org.hdrhistogram:HdrHistogram:2.1.8" level="project" />
-    <orderEntry type="library" name="Gradle: org.latencyutils:LatencyUtils:2.0.2" level="project" />
-    <orderEntry type="library" name="Gradle: com.esotericsoftware:kryo:3.0.3" level="project" />
-    <orderEntry type="library" name="Gradle: de.javakaffee:kryo-serializers:0.37" level="project" />
-    <orderEntry type="library" name="Gradle: com.google.guava:guava:19.0" level="project" />
-    <orderEntry type="library" name="Gradle: com.esotericsoftware:reflectasm:1.10.1" level="project" />
-    <orderEntry type="library" name="Gradle: com.esotericsoftware:minlog:1.3.0" level="project" />
-    <orderEntry type="library" name="Gradle: org.objenesis:objenesis:2.1" level="project" />
-    <orderEntry type="library" name="Gradle: com.google.protobuf:protobuf-java:2.6.1" level="project" />
     <orderEntry type="library" name="Gradle: io.netty:netty-all:4.0.34.Final" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-stdlib:0.1-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-reflect:0.1-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-test:0.1-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Gradle: org.jetbrains.kotlin:kotlin-runtime:0.1-SNAPSHOT" level="project" />
+    <orderEntry type="library" name="Gradle: org.yaml:snakeyaml:1.17" level="project" />
   </component>
 </module>
