@@ -25,10 +25,11 @@ public data class AppConfiguration(
             // Here we are simply attempting to load a config in the current location under the
             // assumption Programmatic configuration wont have such present.
             var configuration = yaml.load(FileInputStream(File("wasabi.yaml"))) as Map<String, Object>
+            var wasabiConfiguration = configuration["wasabi"] as Map<String, Object>
             AppConfiguration::class.memberProperties.forEach {
                 if (it.name != "logger")
                 {
-                    javaClass.getDeclaredField(it.name).set(this, configuration[it.name]);
+                    javaClass.getDeclaredField(it.name).set(this, wasabiConfiguration[it.name]);
                 }
             }
         }

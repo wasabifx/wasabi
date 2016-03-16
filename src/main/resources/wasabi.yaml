@@ -1,9 +1,12 @@
 # Example configuration using defaults.
-port: 3000
-welcomeMessage: "Server starting"
-enableContentNegotiation: true
-enableLogging: true
-enableAutoOptions: false
-enableCORSGlobally: false
-sessionLifetime: 600
-enableXML11: false
+wasabi: {
+  port: 3000,
+  welcomeMessage: "Server starting",
+  enableContentNegotiation: true,
+  enableLogging: true,
+  enableAutoOptions: false,
+  enableCORSGlobally: false,
+  sessionLifetime: 600,
+  enableXML11: false
+}
+
