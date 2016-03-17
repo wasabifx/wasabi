@@ -6,6 +6,8 @@ import java.io.File
 import java.io.FileInputStream
 import kotlin.reflect.memberProperties
 
+var configuration : AppConfiguration = null!!;
+
 public data class AppConfiguration(
      var port: Int = 3000,
      var welcomeMessage: String = "Server starting on port $port",
@@ -32,6 +34,10 @@ public data class AppConfiguration(
                     javaClass.getDeclaredField(it.name).set(this, wasabiConfiguration[it.name]);
                 }
             }
+
+            // Populate our static var, currently one instance is only ever created
+            // so get's things going, TODO do better...
+            org.wasabi.app.configuration = this
         }
         catch(exception: Exception)
         {
