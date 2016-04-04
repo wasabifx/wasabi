@@ -17,23 +17,31 @@ public data class AppConfiguration(
      var enableCORSGlobally: Boolean = false,
      var sessionLifetime: Int = 600,
      var enableXML11: Boolean = false
-
 )
 {
     private val logger = LoggerFactory.getLogger(AppConfiguration::class.java)
+    var custom : Map<Any, Any>? = null
+
     init{
         var yaml = Yaml()
         try {
             // Here we are simply attempting to load a config in the current location under the
             // assumption Programmatic configuration wont have such present.
-            var configuration = yaml.load(FileInputStream(File("wasabi.yaml"))) as Map<String, Object>
+            var configuration = yaml.load(FileInputStream(File("wasabi.yaml"))) as MutableMap<String, Object>
             var wasabiConfiguration = configuration["wasabi"] as Map<String, Object>
             AppConfiguration::class.memberProperties.forEach {
+                // Ignore the logger ....
                 if (it.name != "logger")
                 {
                     javaClass.getDeclaredField(it.name).set(this, wasabiConfiguration[it.name]);
                 }
             }
+
+            // Drop wasabi from read config, its now set on object directly.
+            configuration.remove("wasabi")
+
+            // Assign custom config as immutable Map.
+            custom = configuration as Map<Any, Any>
 
             // Populate our static var, currently one instance is only ever created
             // so get's things going, TODO do better...
@@ -44,7 +52,6 @@ public data class AppConfiguration(
             logger!!.warn("Unable to load configuration from file: $exception, setting defaults or using constructor provided values.")
         }
     }
-
 }
 
 
