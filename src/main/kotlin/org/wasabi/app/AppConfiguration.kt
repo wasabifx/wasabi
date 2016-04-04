@@ -4,6 +4,7 @@ import org.slf4j.LoggerFactory
 import org.yaml.snakeyaml.Yaml
 import java.io.File
 import java.io.FileInputStream
+import java.util.*
 import kotlin.reflect.memberProperties
 
 var configuration : AppConfiguration = null!!;
@@ -20,15 +21,18 @@ public data class AppConfiguration(
 )
 {
     private val logger = LoggerFactory.getLogger(AppConfiguration::class.java)
-    var custom : Map<Any, Any>? = null
+    var custom : Map<Any, Any> = HashMap<Any, Any>()
 
     init{
         var yaml = Yaml()
         try {
             // Here we are simply attempting to load a config in the current location under the
             // assumption Programmatic configuration wont have such present.
-            var configuration = yaml.load(FileInputStream(File("wasabi.yaml"))) as MutableMap<String, Object>
-            var wasabiConfiguration = configuration["wasabi"] as Map<String, Object>
+            @Suppress("UNCHECKED_CAST")
+            var configuration = yaml.load(FileInputStream(File("wasabi.yaml"))) as MutableMap<Any, Any>
+
+            @Suppress("UNCHECKED_CAST")
+            var wasabiConfiguration = configuration["wasabi"] as Map<Any, Any>
             AppConfiguration::class.memberProperties.forEach {
                 // Ignore the logger ....
                 if (it.name != "logger")
