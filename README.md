@@ -410,9 +410,8 @@ Wasabi can automatically respond to OPTIONS for a specific path. You can enable 
 * Via AppConfiguration.enableAutoOptions 
 * Programatically using server.enableAutoOptions - same as above
 
-## Support ##
-There is a [Google Groups](https://groups.google.com/forum/#!forum/wasabifx) where we can provide support and have discussions on future directions, etc. 
-
+## Community ##
+We're mostly hanging out on the #wasabi Channel on [Kotlin's Slack](http://kotlinslackin.herokuapp.com). Join us there for questions and discussions. 
 
 
 
