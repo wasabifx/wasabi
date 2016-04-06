@@ -1,6 +1,13 @@
 Wasabi - An HTTP Framework
 ========================
 
+## Update ##
+
+Moving forward, I'm handing the reigns of this project over to @swishyTM who's been contributing for some time to it and has a vision of where we wanted to take it. It's sad for me to have to do this since this was my playground and I really enjoyed working on the project. However, I need to cut my commitments and this project does deserve more attention and in reaching a 1.0, which is something Dale will be more than capable of handling. For now the main repository will live here until Dale decides to move it under his own account.
+
+Thanks. 
+Hadi
+
 #### Description ####
 An HTTP Framework built with [Kotlin](http://kotlin.jetbrains.org) for the JVM. 
 
