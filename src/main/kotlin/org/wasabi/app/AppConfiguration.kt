@@ -7,7 +7,7 @@ import java.io.FileInputStream
 import java.util.*
 import kotlin.reflect.memberProperties
 
-var configuration : AppConfiguration = null!!;
+var configuration : AppConfiguration? = null;
 
 public data class AppConfiguration(
      var port: Int = 3000,
@@ -21,7 +21,7 @@ public data class AppConfiguration(
 )
 {
     private val logger = LoggerFactory.getLogger(AppConfiguration::class.java)
-    var custom : Map<Any, Any> = HashMap<Any, Any>()
+    var sections: Map<Any, Any> = HashMap<Any, Any>()
 
     init{
         var yaml = Yaml()
@@ -37,7 +37,13 @@ public data class AppConfiguration(
                 // Ignore the logger ....
                 if (it.name != "logger")
                 {
-                    javaClass.getDeclaredField(it.name).set(this, wasabiConfiguration[it.name]);
+                    try {
+                        javaClass.getDeclaredField(it.name).set(this, wasabiConfiguration[it.name]);
+                    }
+                    catch(exception: Exception)
+                    {
+                        logger!!.warn("${it.name} setting not found in config, using default.")
+                    }
                 }
             }
 
@@ -45,7 +51,7 @@ public data class AppConfiguration(
             configuration.remove("wasabi")
 
             // Assign custom config as immutable Map.
-            custom = configuration as Map<Any, Any>
+            sections = configuration as Map<Any, Any>
 
             // Populate our static var, currently one instance is only ever created
             // so get's things going, TODO do better...
