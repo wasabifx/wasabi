@@ -1,8 +1,8 @@
 package org.wasabi.interceptors
 
-import org.wasabi.http.Request
-import org.wasabi.http.Response
-import org.wasabi.http.NegotiateOn
+import org.wasabi.protocol.http.Request
+import org.wasabi.protocol.http.Response
+import org.wasabi.protocol.http.NegotiateOn
 import org.wasabi.app.AppServer
 import org.wasabi.routing.InterceptOn
 import java.util.PriorityQueue

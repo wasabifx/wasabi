@@ -2,7 +2,7 @@ package org.wasabi.test
 
 import org.junit.Test as spec
 import kotlin.test.assertEquals
-import org.wasabi.http.StatusCodes
+import org.wasabi.protocol.http.StatusCodes
 
 public class RedirectSpecs: TestServerContext() {
 

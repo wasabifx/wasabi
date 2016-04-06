@@ -1,4 +1,4 @@
-package org.wasabi.http
+package org.wasabi.protocol.http
 
 import java.util.ArrayList
 import kotlin.reflect.KProperty

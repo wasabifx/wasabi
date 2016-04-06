@@ -1,6 +1,6 @@
 package org.wasabi.storage
 
-import org.wasabi.http.Session
+import org.wasabi.protocol.http.Session
 import org.wasabi.interceptors.SessionStorage
 import java.util.concurrent.ConcurrentHashMap
 

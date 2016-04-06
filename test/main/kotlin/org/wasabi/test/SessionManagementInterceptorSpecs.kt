@@ -4,7 +4,7 @@ import org.junit.Test as spec
  import kotlin.test.assertEquals
  import org.wasabi.interceptors.enableSessionSupport
  import org.junit.Ignore
-import org.wasabi.http.Session
+import org.wasabi.protocol.http.Session
 
  public class SessionManagementInterceptorSpecs: TestServerContext() {
 

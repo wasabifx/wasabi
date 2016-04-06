@@ -1,7 +1,7 @@
 package org.wasabi.authentication
 
-import org.wasabi.http.Request
-import org.wasabi.http.Response
+import org.wasabi.protocol.http.Request
+import org.wasabi.protocol.http.Response
 
 /**
  * Created by cnwdaa1 on 15/09/2015.

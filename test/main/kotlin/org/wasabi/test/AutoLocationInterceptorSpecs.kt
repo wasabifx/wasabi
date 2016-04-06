@@ -1,6 +1,6 @@
 package org.wasabi.test
 
-import org.wasabi.http.StatusCodes
+import org.wasabi.protocol.http.StatusCodes
 import org.wasabi.interceptors.enableAutoLocation
 import kotlin.test.assertEquals
 import org.junit.Test as spec

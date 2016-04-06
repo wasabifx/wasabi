@@ -1,4 +1,4 @@
-package org.wasabi.http
+package org.wasabi.protocol.http
 
 import org.joda.time.DateTime
 import org.wasabi.app.AppServer

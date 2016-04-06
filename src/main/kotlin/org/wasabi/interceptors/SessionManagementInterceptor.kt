@@ -1,10 +1,10 @@
 package org.wasabi.interceptors
 
-import org.wasabi.http.Request
-import org.wasabi.http.Response
+import org.wasabi.protocol.http.Request
+import org.wasabi.protocol.http.Response
 import org.wasabi.app.AppServer
-import org.wasabi.http.Session
-import org.wasabi.http.Cookie
+import org.wasabi.protocol.http.Session
+import org.wasabi.protocol.http.Cookie
 import org.wasabi.storage.InMemorySessionStorage
 import java.util.UUID
 import java.util.Date

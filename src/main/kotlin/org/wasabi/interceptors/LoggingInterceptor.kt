@@ -1,7 +1,7 @@
 package org.wasabi.interceptors
 
-import org.wasabi.http.Request
-import org.wasabi.http.Response
+import org.wasabi.protocol.http.Request
+import org.wasabi.protocol.http.Response
 import org.slf4j.LoggerFactory
 import org.wasabi.routing.RouteHandler
 import org.wasabi.app.AppServer

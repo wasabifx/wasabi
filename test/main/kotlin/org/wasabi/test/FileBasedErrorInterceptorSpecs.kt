@@ -4,7 +4,7 @@ import org.junit.Test as spec
 import org.wasabi.interceptors.serveStaticFilesFromFolder
 import kotlin.test.assertEquals
 import org.wasabi.interceptors.serveErrorsFromFolder
-import org.wasabi.http.StatusCodes
+import org.wasabi.protocol.http.StatusCodes
 import java.io.File
 
 public class FileBasedErrorInterceptorSpecs : TestServerContext() {

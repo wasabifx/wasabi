@@ -1,4 +1,4 @@
-package org.wasabi.http
+package org.wasabi.protocol.http
 
 enum class StatusCodes(val code: Int) {
 

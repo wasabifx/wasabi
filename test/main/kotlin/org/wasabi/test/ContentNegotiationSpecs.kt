@@ -5,12 +5,12 @@ package org.wasabi.test
 import org.junit.Test as spec
 import org.wasabi.test.get
 import kotlin.test.assertEquals
-import org.wasabi.http.ContentType
+import org.wasabi.protocol.http.ContentType
 import org.wasabi.routing.InterceptOn
 import org.wasabi.test.TestServer
 import org.wasabi.interceptors.enableContentNegotiation
 import org.wasabi.routing.with
-import org.wasabi.http.StatusCodes
+import org.wasabi.protocol.http.StatusCodes
 
 
 public class ContentNegotiationSpecs : TestServerContext() {

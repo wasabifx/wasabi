@@ -1,7 +1,7 @@
 package org.wasabi.interceptors
 
-import org.wasabi.http.Request
-import org.wasabi.http.Response
+import org.wasabi.protocol.http.Request
+import org.wasabi.protocol.http.Response
 import io.netty.handler.codec.http.HttpMethod
 import org.wasabi.app.AppServer
 import org.wasabi.routing.InterceptOn

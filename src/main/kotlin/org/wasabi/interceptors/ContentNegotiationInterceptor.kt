@@ -1,13 +1,13 @@
 package org.wasabi.interceptors
 
-import org.wasabi.http.Request
-import org.wasabi.http.Response
+import org.wasabi.protocol.http.Request
+import org.wasabi.protocol.http.Response
 import org.wasabi.serializers.Serializer
 import org.wasabi.app.AppServer
 import org.wasabi.routing.InterceptOn
 import org.wasabi.serializers.JsonSerializer
 import org.wasabi.serializers.XmlSerializer
-import org.wasabi.http.StatusCodes
+import org.wasabi.protocol.http.StatusCodes
 
 
 public class ContentNegotiationInterceptor(val serializers: List<Serializer>): Interceptor() {

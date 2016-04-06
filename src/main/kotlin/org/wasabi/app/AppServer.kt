@@ -1,6 +1,6 @@
 package org.wasabi.app
 
-import org.wasabi.http.HttpServer
+import org.wasabi.protocol.http.HttpServer
 import org.wasabi.configuration.ConfigurationStorage
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory

@@ -1,4 +1,4 @@
-package org.wasabi.http
+package org.wasabi.protocol.http
 
 import io.netty.channel.ChannelFutureListener
 import io.netty.channel.ChannelHandlerContext

@@ -1,8 +1,7 @@
 package org.wasabi.routing
 
 import io.netty.handler.codec.http.HttpMethod
-import org.wasabi.app.AppServer
-import java.util.ArrayList
+import java.util.*
 
 
 public class PatternAndVerbMatchingRouteLocator(val routes: ArrayList<Route>): RouteLocator {
@@ -43,7 +42,6 @@ public class PatternAndVerbMatchingRouteLocator(val routes: ArrayList<Route>): R
         }
         val methods = arrayOf<HttpMethod>() // TODO: This needs to be filled
         throw InvalidMethodException(allowedMethods = methods)
-
     }
 
 

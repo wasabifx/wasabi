@@ -1,14 +1,12 @@
-package org.wasabi.http
+package org.wasabi.protocol.http
 
-import java.util.concurrent.Executors
-import java.net.InetSocketAddress
-import org.wasabi.app.AppConfiguration
 import io.netty.bootstrap.ServerBootstrap
 import io.netty.buffer.PooledByteBufAllocator
 import io.netty.channel.ChannelOption
 import io.netty.channel.nio.NioEventLoopGroup
 import io.netty.channel.socket.nio.NioServerSocketChannel
 import org.wasabi.app.AppServer
+import org.wasabi.core.NettyPipelineInitializer
 
 
 public class HttpServer(private val appServer: AppServer) {

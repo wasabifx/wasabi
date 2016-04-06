@@ -1,6 +1,6 @@
 package org.wasabi.interceptors
 
-import org.wasabi.http.Session
+import org.wasabi.protocol.http.Session
 
 public interface SessionStorage {
     fun storeSession(session: Session)

@@ -9,7 +9,7 @@ import java.util.ArrayList
 import org.wasabi.test.postForm
 import org.apache.http.message.BasicNameValuePair
 import org.junit.Ignore
-import org.wasabi.http.Cookie
+import org.wasabi.protocol.http.Cookie
 import java.util.HashMap
 import java.util.SortedMap
 

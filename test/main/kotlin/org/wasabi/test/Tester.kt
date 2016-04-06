@@ -3,7 +3,7 @@ package org.wasabi.test
 import org.wasabi.app.AppServer
 import org.wasabi.interceptors.enableContentNegotiation
 import org.wasabi.interceptors.parseContentNegotiationHeaders
-import org.wasabi.http.StatusCodes
+import org.wasabi.protocol.http.StatusCodes
 import org.wasabi.interceptors.enableAutoLocation
 import org.wasabi.interceptors.enableETag
 import org.wasabi.interceptors.serveStaticFilesFromFolder
@@ -11,7 +11,7 @@ import org.wasabi.routing.routeHandler
 import java.util.Date
 import org.wasabi.interceptors.enableAutoOptions
 import org.wasabi.interceptors.enableCORS
-import org.wasabi.http.CORSEntry
+import org.wasabi.protocol.http.CORSEntry
 import org.wasabi.routing.with
 import java.util.Calendar
 

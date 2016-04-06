@@ -1,9 +1,9 @@
 package org.wasabi.interceptors
 
-import org.wasabi.http.Request
-import org.wasabi.http.Response
+import org.wasabi.protocol.http.Request
+import org.wasabi.protocol.http.Response
 import java.util.ArrayList
-import org.wasabi.http.CORSEntry
+import org.wasabi.protocol.http.CORSEntry
 import org.wasabi.app.AppServer
 import org.wasabi.routing.InterceptOn
 

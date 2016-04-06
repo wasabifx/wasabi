@@ -1,8 +1,8 @@
 package org.wasabi.authentication
 
 import org.wasabi.encoding.decodeBase64
-import org.wasabi.http.Request
-import org.wasabi.http.Response
+import org.wasabi.protocol.http.Request
+import org.wasabi.protocol.http.Response
 
 public class BasicAuthentication(val realm: String, val callback: (String, String) -> Boolean, val path: String = "*") : Authentication {
     override fun authenticate(request: Request, response: Response): Boolean {

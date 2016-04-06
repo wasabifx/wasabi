@@ -1,4 +1,4 @@
-package org.wasabi.http
+package org.wasabi.core
 
 import io.netty.channel.ChannelInitializer
 import io.netty.channel.socket.SocketChannel
@@ -7,6 +7,7 @@ import io.netty.handler.codec.http.HttpRequestDecoder
 import io.netty.handler.codec.http.HttpResponseEncoder
 import io.netty.handler.stream.ChunkedWriteHandler
 import org.wasabi.app.AppServer
+import org.wasabi.protocol.http.NettyRequestHandler
 
 
 public class NettyPipelineInitializer(private val appServer: AppServer):
