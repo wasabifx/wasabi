@@ -11,20 +11,22 @@ import org.wasabi.http.Session
     class CustomSession(val name: String) {
 
     }
-    @Ignore("Still broken") @spec fun should_extend_session_expiry_on_multiple_requests() {
+    @Ignore("Still broken") @spec fun should_have_same_session_between_multiple_requests() {
 
         TestServer.appServer.enableSessionSupport()
         TestServer.appServer.get("/test_session", {
-            var foo = request.session
+
         })
 
+
+        // TODO make sure session id stays consistent between requests.
         var response = get("http://localhost:${TestServer.definedPort}/test_session", hashMapOf())
 
         Thread.sleep(2000)
 
         val response2 = get("http://localhost:${TestServer.definedPort}/test_session", hashMapOf())
 
-        assertEquals("Joe", response.body)
+        // assertEquals("Joe", response.body)
     }
 
 }
