@@ -17,7 +17,8 @@ public data class AppConfiguration(
      var enableAutoOptions: Boolean = false,
      var enableCORSGlobally: Boolean = false,
      var sessionLifetime: Int = 600,
-     var enableXML11: Boolean = false
+     var enableXML11: Boolean = false,
+     var maxHttpContentLength: Int = 1048576
 )
 {
     private val logger = LoggerFactory.getLogger(AppConfiguration::class.java)
@@ -59,7 +60,7 @@ public data class AppConfiguration(
         }
         catch(exception: Exception)
         {
-            logger!!.warn("Unable to load configuration from file: $exception, setting defaults or using constructor provided values.")
+            logger!!.warn("Unable to load configuration from file: $exception, using defaults or constructor provided values.")
         }
     }
 }
