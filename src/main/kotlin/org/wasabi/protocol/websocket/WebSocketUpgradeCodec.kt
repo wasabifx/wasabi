@@ -16,7 +16,7 @@ import java.util.*
 /**
  * Created by condaa1 on 9/04/16.
  */
-class WebSocketUpgradeCodec(val appServer: AppServer, val handlerName : String, val connectionHandler : WebSocketHandler): HttpServerUpgradeHandler.UpgradeCodec {
+class WebSocketUpgradeCodec(val appServer: AppServer, val handlerName : String): HttpServerUpgradeHandler.UpgradeCodec {
 
     private val log = LoggerFactory.getLogger(WebSocketUpgradeCodec::class.java)
 
@@ -36,7 +36,7 @@ class WebSocketUpgradeCodec(val appServer: AppServer, val handlerName : String, 
     override fun upgradeTo(ctx: ChannelHandlerContext?, upgradeRequest: FullHttpRequest?) {
         // Add the WebSocket connection handler to the pipeline immediately following the current handler.
         log.info("upgradeTo")
-        ctx!!.pipeline().addAfter(ctx.name(), handlerName, connectionHandler)
+        ctx!!.pipeline().addAfter(ctx.name(), handlerName, WebSocketHandler(appServer, handshaker))
     }
 
     override fun prepareUpgradeResponse(ctx: ChannelHandlerContext?, upgradeRequest: FullHttpRequest?, upgradeHeaders: HttpHeaders?): Boolean {

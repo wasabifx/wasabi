@@ -9,14 +9,13 @@ import io.netty.handler.codec.http.HttpResponseEncoder
 import io.netty.handler.stream.ChunkedWriteHandler
 import org.slf4j.LoggerFactory
 import org.wasabi.app.AppServer
-import org.wasabi.protocol.http.NettyRequestHandler
 
 /**
  * Created by condaa1 on 8/04/16.
  */
-class HttpInitializer(val appServer: AppServer) : SimpleChannelInboundHandler<HttpMessage>() {
+class HttpHandler(val appServer: AppServer) : SimpleChannelInboundHandler<HttpMessage>() {
 
-    private val logger = LoggerFactory.getLogger(HttpInitializer::class.java)
+    private val logger = LoggerFactory.getLogger(HttpHandler::class.java)
 
     override fun channelRead0(ctx: ChannelHandlerContext?, msg: HttpMessage?) {
         // If we get here no connection upgrade was requested, go HTTP1
