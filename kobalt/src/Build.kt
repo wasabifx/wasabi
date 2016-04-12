@@ -3,7 +3,7 @@ import com.beust.kobalt.plugin.packaging.assemble
 import com.beust.kobalt.plugin.kotlin.*
 //import com.beust.kobalt.plugin.dokka.*
 
-val kotlin_version = "1.0.0-beta-4583"
+val kotlin_version = "0.1-SNAPSHOT"
 val repos = repos("http://repository.jetbrains.com/all", "https://oss.sonatype.org/content/repositories/snapshots/")
 
 val p = kotlinProject {
@@ -11,7 +11,7 @@ val p = kotlinProject {
     name = "wasabi"
     group = "com.example"
     artifactId = name
-    version = "0.1"
+    version = "0.1-SNAPSHOT"
 
     dependencies {
         compile("org.jetbrains.kotlin:kotlin-stdlib:" + kotlin_version)
@@ -22,7 +22,7 @@ val p = kotlinProject {
         compile("com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.6.3")
         compile("com.fasterxml.woodstox:woodstox-core:5.0.1")
 
-        compile("io.netty:netty-all:4.0.31.Final")
+        compile("io.netty:netty-all:4.1.0.CR6")
         compile("commons-codec:commons-codec:1.6")
         compile("commons-logging:commons-logging:1.1.1")
         compile("org.slf4j:slf4j-api:1.7.5")
