@@ -5,9 +5,6 @@ import io.netty.channel.ChannelHandlerContext
 import io.netty.handler.codec.http2.*
 import org.slf4j.LoggerFactory
 
-/**
- * Created by condaa1 on 8/04/16.
- */
 class Http2Handler(decoder: Http2ConnectionDecoder, encoder: Http2ConnectionEncoder, settings: Http2Settings) : Http2ConnectionHandler(decoder, encoder, settings), Http2FrameListener {
 
     private val logger = LoggerFactory.getLogger(Http2Handler::class.java)

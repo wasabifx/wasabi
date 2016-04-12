@@ -10,9 +10,8 @@ import io.netty.handler.codec.http2.Http2ServerUpgradeCodec
 import io.netty.util.AsciiString
 import org.slf4j.LoggerFactory
 import org.wasabi.app.AppServer
-import org.wasabi.protocol.http.HttpHandler
+import org.wasabi.protocol.http.HttpPipelineInitializer
 import org.wasabi.protocol.http2.Http2HandlerBuilder
-import org.wasabi.protocol.websocket.WebSocketHandler
 import org.wasabi.protocol.websocket.WebSocketUpgradeCodec
 
 
@@ -42,7 +41,7 @@ public class NettyPipelineInitializer(private val appServer: AppServer):
         val codec = HttpServerCodec();
         pipeline.addLast(codec);
         pipeline.addLast("upgrade", HttpServerUpgradeHandler(codec, upgradeFactory))
-        pipeline.addLast("handler", HttpHandler(appServer))
+        pipeline.addLast("handler", HttpPipelineInitializer(appServer))
     }
 }
 

@@ -3,9 +3,6 @@ package org.wasabi.protocol.http2
 import io.netty.handler.codec.http2.*
 import io.netty.handler.logging.LogLevel.INFO
 
-/**
- * Created by condaa1 on 8/04/16.
- */
 class Http2HandlerBuilder : AbstractHttp2ConnectionHandlerBuilder<Http2Handler, Http2HandlerBuilder>() {
 
     private val logger : Http2FrameLogger = Http2FrameLogger(INFO, Http2Handler::class.java);

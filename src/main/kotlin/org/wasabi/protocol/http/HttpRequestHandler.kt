@@ -15,9 +15,6 @@ import org.wasabi.interceptors.InterceptorEntry
 import org.wasabi.routing.*
 import java.io.FileInputStream
 
-/**
- * Created by cnwdaa1 on 14/10/2015.
- */
 public class HttpRequestHandler(private val appServer: AppServer){
 
     var request: Request? = null
