@@ -129,7 +129,7 @@ publishing {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '2.9'
+    gradleVersion = '2.12'
 
     doLast() {
         def gradleOpts = "-XX:MaxPermSize=300m -Xmx1024m"

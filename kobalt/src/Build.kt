@@ -1,17 +1,16 @@
 import com.beust.kobalt.*
 import com.beust.kobalt.plugin.packaging.assemble
 import com.beust.kobalt.plugin.kotlin.*
-//import com.beust.kobalt.plugin.dokka.*
 
-val kotlin_version = "0.1-SNAPSHOT"
+val kotlin_version = "1.0-SNAPSHOT"
 val repos = repos("http://repository.jetbrains.com/all", "https://oss.sonatype.org/content/repositories/snapshots/")
 
-val p = kotlinProject {
+val p = project {
 
     name = "wasabi"
     group = "com.example"
     artifactId = name
-    version = "0.1-SNAPSHOT"
+    version = "0.1"
 
     dependencies {
         compile("org.jetbrains.kotlin:kotlin-stdlib:" + kotlin_version)
