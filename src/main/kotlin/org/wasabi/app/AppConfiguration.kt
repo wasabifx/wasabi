@@ -9,6 +9,7 @@ import kotlin.reflect.memberProperties
 
 var configuration : AppConfiguration? = null;
 
+
 public data class AppConfiguration(
      var port: Int = 3000,
      var welcomeMessage: String = "Server starting on port $port",
@@ -18,14 +19,16 @@ public data class AppConfiguration(
      var enableCORSGlobally: Boolean = false,
      var sessionLifetime: Int = 600,
      var enableXML11: Boolean = false,
-     var maxHttpContentLength: Int = 1048576
+     var maxHttpContentLength: Int = 1048576,
+     var sslEnabled: Boolean = false,
+     var sslCertificatePath: String = ""
 )
 {
     private val logger = LoggerFactory.getLogger(AppConfiguration::class.java)
     var sections: Map<Any, Any> = HashMap<Any, Any>()
 
     init{
-        var yaml = Yaml()
+        val yaml = Yaml()
         try {
             // Here we are simply attempting to load a config in the current location under the
             // assumption Programmatic configuration wont have such present.
@@ -54,13 +57,16 @@ public data class AppConfiguration(
             // Assign custom config as immutable Map.
             sections = configuration as Map<Any, Any>
 
-            // Populate our static var, currently one instance is only ever created
-            // so get's things going, TODO do better...
-            org.wasabi.app.configuration = this
+
         }
         catch(exception: Exception)
         {
             logger!!.warn("Unable to load configuration from file: $exception, using defaults or constructor provided values.")
+        }
+        finally {
+            // Populate our static var, currently one instance is only ever created
+            // so get's things going, TODO do better...
+            org.wasabi.app.configuration = this
         }
     }
 }

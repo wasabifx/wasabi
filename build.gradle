@@ -1,16 +1,16 @@
 buildscript {
     ext.kotlin_version = '0.1-SNAPSHOT'
+    ext.dokka_version = '0.9.7'
     repositories {
         mavenCentral()
+        jcenter()
         maven {
             url "https://oss.sonatype.org/content/repositories/snapshots"
-        }
-        maven {
-            url 'http://oss.sonatype.org/content/repositories/snapshots'
         }
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        // classpath "org.jetbrains.dokka:dokka-gradle-plugin:$dokka_version"
     }
 }
 
@@ -20,6 +20,7 @@ if (hasProperty("teamcity") && kotlin_version != '0.1-SNAPSHOT') {
     version = "0.1-SNAPSHOT"
 
 apply plugin: 'kotlin'
+// apply plugin: 'org.jetbrains.dokka'
 
 repositories {
     mavenCentral()
@@ -35,7 +36,6 @@ compileKotlin {
     // kotlinOptions.annotations = file('annotations/Gradle_io.netty_netty-all_4.0.31.Final')
 }
 
-
 dependencies {
     compile "io.netty:netty-all:4.1.0.CR6",
             "commons-codec:commons-codec:1.9",
@@ -49,7 +49,8 @@ dependencies {
             "com.fasterxml.jackson.core:jackson-annotations:2.6.4",
             "com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.6.3",
             "com.fasterxml.woodstox:woodstox-core:5.0.1",
-            "org.yaml:snakeyaml:1.17"
+            "org.yaml:snakeyaml:1.17",
+            "org.mortbay.jetty.alpn:alpn-boot:8.1.8.v20160420"
 
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
@@ -58,7 +59,7 @@ dependencies {
     testCompile "junit:junit:4.9"
     testCompile "org.mockito:mockito-all:1.9.5"
     testCompile "org.apache.httpcomponents:httpclient:4.5.1"
-
+    testCompile 'com.squareup.okhttp3:okhttp:3.2.0'
 }
 
 

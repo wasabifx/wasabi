@@ -1,33 +1,24 @@
 package org.wasabi.app
 
-import org.wasabi.protocol.http.HttpServer
-import org.wasabi.configuration.ConfigurationStorage
-import org.slf4j.Logger
-import org.slf4j.LoggerFactory
-import org.wasabi.routing.InterceptOn
-import java.util.ArrayList
-import org.wasabi.routing.Route
 import io.netty.handler.codec.http.HttpMethod
-import org.wasabi.routing.RouteHandler
-import org.wasabi.exceptions.RouteAlreadyExistsException
-import java.util.HashMap
-import org.wasabi.interceptors.InterceptorEntry
-import org.wasabi.interceptors.LoggingInterceptor
-import org.wasabi.interceptors.Interceptor
-import org.wasabi.serializers.Serializer
-import org.wasabi.serializers.JsonSerializer
-import org.wasabi.serializers.XmlSerializer
+import org.slf4j.LoggerFactory
 import org.wasabi.deserializers.Deserializer
-import org.wasabi.deserializers.MultiPartFormDataDeserializer
 import org.wasabi.deserializers.JsonDeserializer
-import org.wasabi.interceptors.enableAutoOptions
-import org.wasabi.interceptors.enableCORSGlobally
-import org.wasabi.interceptors.ContentNegotiationInterceptor
-import org.wasabi.interceptors.enableContentNegotiation
+import org.wasabi.deserializers.MultiPartFormDataDeserializer
+import org.wasabi.exceptions.RouteAlreadyExistsException
+import org.wasabi.interceptors.*
+import org.wasabi.protocol.http.HttpServer
+import org.wasabi.routing.ChannelAlreadyExistsException
+import org.wasabi.routing.InterceptOn
+import org.wasabi.routing.Route
+import org.wasabi.routing.RouteHandler
+import org.wasabi.serializers.JsonSerializer
+import org.wasabi.serializers.Serializer
+import org.wasabi.serializers.TextPlainSerializer
+import org.wasabi.serializers.XmlSerializer
 import org.wasabi.websocket.Channel
 import org.wasabi.websocket.ChannelHandler
-import org.wasabi.routing.ChannelAlreadyExistsException
-import org.wasabi.serializers.TextPlainSerializer
+import java.util.*
 
 
 public open class AppServer(val configuration: AppConfiguration = AppConfiguration()) {
@@ -56,7 +47,7 @@ public open class AppServer(val configuration: AppConfiguration = AppConfigurati
     }
 
     private fun addChannel(path: String, handler: ChannelHandler.() -> Unit) {
-        var existingChannel = channels.filter{ it.path == path }
+        val existingChannel = channels.filter{ it.path == path }
         if (existingChannel.count() >= 1) {
             throw ChannelAlreadyExistsException(existingChannel.firstOrNull()!!)
         }
