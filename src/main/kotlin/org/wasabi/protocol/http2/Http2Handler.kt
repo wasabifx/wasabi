@@ -10,11 +10,14 @@ import io.netty.util.CharsetUtil
 import org.slf4j.LoggerFactory
 import org.wasabi.app.AppServer
 import org.wasabi.interceptors.InterceptorEntry
+import org.wasabi.protocol.http.Request
+import org.wasabi.protocol.http.Response
 import org.wasabi.protocol.http.StatusCodes
 import org.wasabi.routing.InterceptOn
 import org.wasabi.routing.PatternAndVerbMatchingRouteLocator
 import org.wasabi.routing.Route
 import org.wasabi.routing.RouteHandler
+import java.util.*
 
 class Http2Handler(appServer: AppServer, decoder: Http2ConnectionDecoder, encoder: Http2ConnectionEncoder, settings: Http2Settings) : Http2ConnectionHandler(decoder, encoder, settings), Http2FrameListener {
 
@@ -27,7 +30,7 @@ class Http2Handler(appServer: AppServer, decoder: Http2ConnectionDecoder, encode
     val errorInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.Error }
     var routeLocator = PatternAndVerbMatchingRouteLocator(appServer.routes)
 
-    val RESPONSE_BYTES = unreleasableBuffer(copiedBuffer("Hello World", CharsetUtil.UTF_8));
+    val RESPONSE_BYTES = unreleasableBuffer(copiedBuffer("Hello Wasabi", CharsetUtil.UTF_8));
 
     var currentSettings : Http2Settings? = null
 
@@ -35,6 +38,9 @@ class Http2Handler(appServer: AppServer, decoder: Http2ConnectionDecoder, encode
     // TODO the interceptor chaining > handler execution needs to be done per stream in a stateless manner, need to relook
     // TODO at how this can be achieved, likely do such here and backport to the HTTP/1.* handler as it should clean
     // TODO things up nicely.
+
+    val requests: Map<Int, Request> = HashMap()
+    val responses: Map<Int, Response> = HashMap()
 
     private var bypassPipeline = false
 
@@ -160,6 +166,7 @@ class Http2Handler(appServer: AppServer, decoder: Http2ConnectionDecoder, encode
 
     override fun onWindowUpdateRead(ctx: ChannelHandlerContext?, streamId: Int, windowSizeIncrement: Int) {
         logger.info("onWindowUpdateRead")
+
     }
 
     override fun onSettingsAckRead(ctx: ChannelHandlerContext?) {
