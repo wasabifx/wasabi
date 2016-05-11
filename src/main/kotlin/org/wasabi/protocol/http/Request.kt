@@ -6,15 +6,44 @@ import io.netty.handler.codec.http.cookie.ServerCookieDecoder
 import io.netty.handler.codec.http.multipart.Attribute
 import io.netty.handler.codec.http.multipart.InterfaceHttpData
 import io.netty.handler.codec.http.multipart.InterfaceHttpData.HttpDataType
+import io.netty.handler.codec.http2.Http2Headers
+import org.slf4j.LoggerFactory
 import java.util.*
 
+public class Request() {
 
-public class Request(private val httpRequest: HttpRequest) {
+    private var log = LoggerFactory.getLogger(Request::class.java)
 
-    public val uri: String = httpRequest.getUri()!!
-    public val document: String = uri.drop(uri.lastIndexOf("/") + 1)
-    public val path: String = uri.split('?')[0]
-    public val method: HttpMethod = httpRequest.getMethod()!!
+    constructor(httpRequest: HttpRequest) : this() {
+        log.info("HttpRequest Constructor called.")
+        this.httpRequest = httpRequest
+        this.rawHeaders = httpRequest.headers().associate({it.key to it.value})
+        this.uri = httpRequest.uri!!
+        this.method = httpRequest.method!!
+        this.document = uri.drop(uri.lastIndexOf("/") + 1)
+        this.path = uri.split('?')[0]
+        log.info("HttpRequest Constructor completed.")
+    }
+
+    constructor(http2Headers: Http2Headers?) : this() {
+        this.http2Headers = http2Headers!!
+        this.rawHeaders = http2Headers.associate({it.key.toString() to it.value.toString()})
+        this.uri = http2Headers.path().toString()
+        this.method = HttpMethod(http2Headers.method().toString())
+        this.document = uri.drop(uri.lastIndexOf("/") + 1)
+        this.path = uri
+    }
+
+    lateinit var httpRequest : HttpRequest
+
+    lateinit var http2Headers : Http2Headers
+
+    lateinit var uri: String
+    lateinit var method: HttpMethod
+    // TODO Hashmap??
+    lateinit var rawHeaders: Map<String,String>
+    lateinit var document: String
+    lateinit var path: String
     public val host: String = getHeader("Host").takeWhile { it != ':' }
     public val protocol: String = "http" // TODO: Fix this.
     public val isSecure: Boolean = protocol.compareTo("https", ignoreCase = true) == 0
@@ -35,7 +64,7 @@ public class Request(private val httpRequest: HttpRequest) {
     public val contentType: String = getHeader("Content-Type")
     public val chunked: Boolean = getHeader("Transfer-Encoding").compareTo("chunked", ignoreCase = true) == 0
     public val authorization: String = getHeader("Authorization")
-    public val rawHeaders: List<Pair<String, String>> = httpRequest.headers().map({ it.key to it.value })
+
 
     public var session: Session? = null
 
@@ -58,11 +87,13 @@ public class Request(private val httpRequest: HttpRequest) {
         return parsed.toSortedMap<String, Int>()
     }
 
-    private fun getHeader(header: String) = httpRequest.headers()[header] ?: ""
+    // TODO fix should use raw
+    private fun getHeader(header: String) = this.rawHeaders[header] ?: ""
 
     private fun parseQueryParams(): HashMap<String, String> {
         val queryParamsList = hashMapOf<String, String>()
-        val urlParams = httpRequest.getUri()!!.split('?')
+        // TODO fix
+        val urlParams = uri.split('?')
         if (urlParams.size == 2) {
             val queryNameValuePair = urlParams[1].split("&")
             for (entry in queryNameValuePair) {
