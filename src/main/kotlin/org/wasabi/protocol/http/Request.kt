@@ -40,30 +40,61 @@ public class Request() {
 
     lateinit var uri: String
     lateinit var method: HttpMethod
-    // TODO Hashmap??
     lateinit var rawHeaders: Map<String,String>
     lateinit var document: String
     lateinit var path: String
-    public val host: String = getHeader("Host").takeWhile { it != ':' }
+    public val host: String by lazy {
+        getHeader("Host").takeWhile { it != ':' }
+    }
     public val protocol: String = "http" // TODO: Fix this.
     public val isSecure: Boolean = protocol.compareTo("https", ignoreCase = true) == 0
-    val urlPort = getHeader("Host").dropWhile { it != ':' }.drop(1)
-    public val port: Int = if (urlPort != "") urlPort.toInt() else 80
-    public val connection: String = getHeader("Connection")
-    public val cacheControl: String = getHeader("Cache-Control")
-    public val userAgent: String = getHeader("User-Agent")
-    public val accept: SortedMap<String, Int> = parseAcceptHeader("Accept")
-    public val acceptEncoding: SortedMap<String, Int> = parseAcceptHeader("Accept-Encoding")
-    public val acceptLanguage: SortedMap<String, Int> = parseAcceptHeader("Accept-Language")
-    public val acceptCharset: SortedMap<String, Int> = parseAcceptHeader("Accept-Charset")
-    public val ifNoneMatch: String = getHeader("If-None-Match")
-    public val queryParams: HashMap<String, String> = parseQueryParams()
+    public val urlPort: String by lazy {
+        getHeader("Host").dropWhile { it != ':' }.drop(1)
+    }
+    public val port: Int by lazy {
+        if (urlPort != "") urlPort.toInt() else 80
+    }
+    public val connection: String by lazy {
+        getHeader("Connection")
+    }
+    public val cacheControl: String by lazy {
+        getHeader("Cache-Control")
+    }
+    public val userAgent: String by lazy {
+        getHeader("User-Agent")
+    }
+    public val accept: SortedMap<String, Int> by lazy {
+        parseAcceptHeader("Accept")
+    }
+    public val acceptEncoding: SortedMap<String, Int> by lazy {
+        parseAcceptHeader("Accept-Encoding")
+    }
+    public val acceptLanguage: SortedMap<String, Int> by lazy {
+        parseAcceptHeader("Accept-Language")
+    }
+    public val acceptCharset: SortedMap<String, Int> by lazy {
+        parseAcceptHeader("Accept-Charset")
+    }
+    public val ifNoneMatch: String by lazy {
+        getHeader("If-None-Match")
+    }
+    public val queryParams: HashMap<String, String> by lazy {
+        parseQueryParams()
+    }
     public val routeParams: HashMap<String, String> = HashMap<String, String>()
     public val bodyParams: HashMap<String, Any> = HashMap<String, Any>()
-    public val cookies: HashMap<String, Cookie> = parseCookies()
-    public val contentType: String = getHeader("Content-Type")
-    public val chunked: Boolean = getHeader("Transfer-Encoding").compareTo("chunked", ignoreCase = true) == 0
-    public val authorization: String = getHeader("Authorization")
+    public val cookies: HashMap<String, Cookie> by lazy {
+        parseCookies()
+    }
+    public val contentType: String by lazy {
+        getHeader("Content-Type")
+    }
+    public val chunked: Boolean by lazy {
+        getHeader("Transfer-Encoding").compareTo("chunked", ignoreCase = true) == 0
+    }
+    public val authorization: String by lazy {
+        getHeader("Authorization")
+    }
 
 
     public var session: Session? = null
@@ -140,8 +171,6 @@ public class Request() {
             bodyParams[attribute.getName().toString()] = attribute.getValue().toString()
         }
     }
-
-
 }
 
 

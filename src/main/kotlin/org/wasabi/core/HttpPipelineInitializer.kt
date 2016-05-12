@@ -47,6 +47,6 @@ class HttpPipelineInitializer(val appServer: AppServer) : SimpleChannelInboundHa
         pipeline.addAfter(context.name(), "chunkedWriter", ChunkedWriteHandler());
         pipeline.addAfter("chunkedWriter", "http1", NettyRequestHandler(appServer));
         pipeline.replace(this, "aggregator", HttpObjectAggregator(1048576))
-        ctx.fireChannelRead(msg);
+        context.fireChannelRead(msg);
     }
 }

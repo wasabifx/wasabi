@@ -32,14 +32,20 @@ public class NettyRequestHandler(private val appServer: AppServer): SimpleChanne
 
     override fun channelRead0(ctx: ChannelHandlerContext?, msg: Any?) {
 
+        log.info("Channel READ HTTP1")
+
         if (msg is WebSocketFrame)
         {
+            log.info("WebSocket Frame")
             WebSocketHandler(appServer, channelLocator).handleRequest(handshaker!!, ctx!!, msg)
         }
 
 
         if (msg is FullHttpRequest)
         {
+
+            log.info("FullHttpRequest")
+
             // Here we catch the upgrade request and setup handshaker factory to negotiate client connection
             if ( msg is HttpRequest && msg.headers().get(HttpHeaders.Names.UPGRADE) == "websocket")
             {
@@ -73,6 +79,8 @@ public class NettyRequestHandler(private val appServer: AppServer): SimpleChanne
                     return
                 }
             }
+
+            log.info("Into HttpRequestHandler")
             HttpRequestHandler(appServer).handleRequest(ctx, msg)
         }
     }

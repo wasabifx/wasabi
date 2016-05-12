@@ -4,6 +4,7 @@ import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled.copiedBuffer
 import io.netty.buffer.Unpooled.unreleasableBuffer
 import io.netty.channel.ChannelHandlerContext
+import io.netty.handler.codec.http.HttpMethod
 import io.netty.handler.codec.http.HttpServerUpgradeHandler
 import io.netty.handler.codec.http2.*
 import io.netty.util.CharsetUtil
@@ -21,7 +22,7 @@ import java.util.*
 
 class Http2Handler(appServer: AppServer, decoder: Http2ConnectionDecoder, encoder: Http2ConnectionEncoder, settings: Http2Settings) : Http2ConnectionHandler(decoder, encoder, settings), Http2FrameListener {
 
-    private val logger = LoggerFactory.getLogger(Http2Handler::class.java)
+    private val log = LoggerFactory.getLogger(Http2Handler::class.java)
 
     val preRequestInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.PreRequest }
     val preExecutionInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.PreExecution }
@@ -39,13 +40,13 @@ class Http2Handler(appServer: AppServer, decoder: Http2ConnectionDecoder, encode
     // TODO at how this can be achieved, likely do such here and backport to the HTTP/1.* handler as it should clean
     // TODO things up nicely.
 
-    val requests: Map<Int, Request> = HashMap()
-    val responses: Map<Int, Response> = HashMap()
+    val requests: MutableMap<Int, Request> = hashMapOf<Int, Request>()
+    val responses: MutableMap<Int, Response> = hashMapOf< Int, Response>()
 
     private var bypassPipeline = false
 
     init {
-        logger.info("http2 handler init")
+        log.info("http2 handler init")
     }
 
     private fun sendResponse(ctx: ChannelHandlerContext?, streamId: Int, payload: ByteBuf?) {
@@ -56,8 +57,10 @@ class Http2Handler(appServer: AppServer, decoder: Http2ConnectionDecoder, encode
         ctx.flush();
     }
 
-    private fun runHandlers(routeHandlers : Route)
+    private fun runHandlers(streamId: Int, routeHandlers : Route)
     {
+        val request = this.requests[streamId]
+        var response = Response()
         // If the flag has been set no-op to allow the response to be flushed as is.
         if (bypassPipeline)
         {
@@ -66,12 +69,12 @@ class Http2Handler(appServer: AppServer, decoder: Http2ConnectionDecoder, encode
         for (handler in routeHandlers.handler) {
 
             val handlerExtension : RouteHandler.() -> Unit = handler
-/*            val routeHandler = RouteHandler(request!!, response)
+            val routeHandler = RouteHandler(request!!, response)
 
             routeHandler.handlerExtension()
             if (!routeHandler.executeNext) {
                 break
-            }*/
+            }
         }
     }
 
@@ -100,7 +103,7 @@ class Http2Handler(appServer: AppServer, decoder: Http2ConnectionDecoder, encode
     }
 
     override fun userEventTriggered(ctx: ChannelHandlerContext?, evt: Any?) {
-        logger.info("userEventTriggered")
+        log.info("userEventTriggered")
         if (evt is HttpServerUpgradeHandler.UpgradeEvent) {
             // If we get a non SSL HTTP/2 upgrade Write a response to the upgrade request
             val headers = DefaultHttp2Headers().status(StatusCodes.OK.code.toString());
@@ -110,11 +113,11 @@ class Http2Handler(appServer: AppServer, decoder: Http2ConnectionDecoder, encode
     }
 
     override fun onPingRead(ctx: ChannelHandlerContext?, data: ByteBuf?) {
-        logger.info("onPingRead")
+        log.info("onPingRead")
     }
 
     override fun onDataRead(ctx: ChannelHandlerContext?, streamId: Int, data: ByteBuf?, padding: Int, endOfStream: Boolean): Int {
-        logger.info("onDataRead")
+        log.info("onDataRead")
         val processed = data!!.readableBytes() + padding;
         if (endOfStream) {
             val headers = DefaultHttp2Headers().status(StatusCodes.OK.code.toString());
@@ -126,57 +129,78 @@ class Http2Handler(appServer: AppServer, decoder: Http2ConnectionDecoder, encode
     }
 
     override fun onSettingsRead(ctx: ChannelHandlerContext?, settings: Http2Settings?) {
-        logger.info("onSettingsRead")
+        log.info("onSettingsRead")
         this.currentSettings = settings
     }
 
     override fun onUnknownFrame(ctx: ChannelHandlerContext?, frameType: Byte, streamId: Int, flags: Http2Flags?, payload: ByteBuf?) {
-        logger.info("onUnknownFrame")
+        log.info("onUnknownFrame")
     }
 
     override fun onHeadersRead(ctx: ChannelHandlerContext?, streamId: Int, headers: Http2Headers?, padding: Int, endOfStream: Boolean) {
-        logger.info("onHeadersRead")
-        logger.info(headers.toString())
+        log.info("onHeadersRead")
+        log.info(headers.toString())
+        if (endOfStream) {
+            val request = Request(headers)
+            requests[streamId] = request
+            val routeHandlers = routeLocator.findRouteHandlers(request.path, HttpMethod(request.method.name()))
+            runHandlers(streamId, routeHandlers)
+            log.info("Are we there yet?")
+        }
     }
 
     override fun onHeadersRead(ctx: ChannelHandlerContext?, streamId: Int, headers: Http2Headers?, streamDependency: Int, weight: Short, exclusive: Boolean, padding: Int, endOfStream: Boolean) {
-        logger.info("onHeadersRead")
-        logger.info(headers.toString())
+        log.info("onHeadersRead")
+        log.info(headers.toString())
+        if (endOfStream) {
+            try {
+                val request = Request(headers)
+                requests[streamId] = request
+                val routeHandlers = routeLocator.findRouteHandlers(request.path, HttpMethod(request.method.name()))
+                runHandlers(streamId, routeHandlers)
+                log.info("Are we there yet?")
+            }
+            catch(exception : Exception) {
+                log.info(exception.message)
+            }
+
+
+        }
     }
 
     override fun onPushPromiseRead(ctx: ChannelHandlerContext?, streamId: Int, promisedStreamId: Int, headers: Http2Headers?, padding: Int) {
-        logger.info("onPushPromiseRead")
+        log.info("onPushPromiseRead")
     }
 
     override fun onPingAckRead(ctx: ChannelHandlerContext?, data: ByteBuf?) {
-        logger.info("onPingAckRead")
+        log.info("onPingAckRead")
     }
 
     override fun onRstStreamRead(ctx: ChannelHandlerContext?, streamId: Int, errorCode: Long) {
-        logger.info("onRstStreamRead")
+        log.info("onRstStreamRead")
     }
 
     override fun onPriorityRead(ctx: ChannelHandlerContext?, streamId: Int, streamDependency: Int, weight: Short, exclusive: Boolean) {
-        logger.info("onPriorityRead")
+        log.info("onPriorityRead")
     }
 
     override fun onGoAwayRead(ctx: ChannelHandlerContext?, lastStreamId: Int, errorCode: Long, debugData: ByteBuf?) {
-        logger.info("onGoAwayRead")
+        log.info("onGoAwayRead")
     }
 
     override fun onWindowUpdateRead(ctx: ChannelHandlerContext?, streamId: Int, windowSizeIncrement: Int) {
-        logger.info("onWindowUpdateRead")
+        log.info("onWindowUpdateRead")
 
     }
 
     override fun onSettingsAckRead(ctx: ChannelHandlerContext?) {
-        logger.info("HTTP2 Settings acknowledged")
+        log.info("HTTP2 Settings acknowledged")
     }
 
     override fun exceptionCaught(ctx: ChannelHandlerContext?, cause: Throwable?) {
         super.onError(ctx, cause)
         super.exceptionCaught(ctx, cause);
-        logger.error("Exception Caught: $cause");
+        log.error("Exception Caught: $cause");
         cause!!.printStackTrace()
         ctx!!.close();
     }

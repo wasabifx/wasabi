@@ -2,8 +2,6 @@ package org.wasabi.routing
 
 import org.wasabi.protocol.http.Request
 import org.wasabi.protocol.http.Response
-import org.wasabi.protocol.http.StatusCodes
-import org.wasabi.protocol.http.ContentType
 
 
 public class RouteHandler(public val request: Request, public val response: Response)  {

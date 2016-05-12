@@ -11,7 +11,6 @@ import io.netty.handler.ssl.SslContext
 import io.netty.util.AsciiString
 import org.slf4j.LoggerFactory
 import org.wasabi.app.AppServer
-import org.wasabi.core.HttpPipelineInitializer
 import org.wasabi.protocol.http.ProtocolNegotiator
 import org.wasabi.protocol.http2.Http2HandlerBuilder
 import org.wasabi.protocol.websocket.WebSocketUpgradeCodec
