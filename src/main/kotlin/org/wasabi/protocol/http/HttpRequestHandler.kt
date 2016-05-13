@@ -154,15 +154,15 @@ public class HttpRequestHandler(private val appServer: AppServer){
             addResponseHeaders(httpResponse, response)
             ctx.write(httpResponse)
 
-            var fileStream = FileInputStream(response.absolutePathToFileToStream)
+            val fileStream = FileInputStream(response.absolutePathToFileToStream)
 
-            var fileChannel = fileStream.channel
+            val fileChannel = fileStream.channel
 
             // NOTE we can probably use DefaultFileRegion here but this allows for data modification on the fly.
             ctx.write(ChunkedNioFile(fileChannel, 8192), ctx.newProgressivePromise())
 
             // TODO Get rid of this!!
-            var lastContentFuture = ctx.writeAndFlush(LastHttpContent.EMPTY_LAST_CONTENT)
+            val lastContentFuture = ctx.writeAndFlush(LastHttpContent.EMPTY_LAST_CONTENT)
 
             if (request!!.connection.compareTo("close", ignoreCase = true) == 0) {
                 lastContentFuture.addListener(ChannelFutureListener.CLOSE)
@@ -198,7 +198,7 @@ public class HttpRequestHandler(private val appServer: AppServer){
             addResponseHeaders(httpResponse, response)
             ctx.write(httpResponse)
 
-            var lastContentFuture = ctx.writeAndFlush(LastHttpContent.EMPTY_LAST_CONTENT)
+            val lastContentFuture = ctx.writeAndFlush(LastHttpContent.EMPTY_LAST_CONTENT)
 
             lastContentFuture.addListener(ChannelFutureListener.CLOSE)
 

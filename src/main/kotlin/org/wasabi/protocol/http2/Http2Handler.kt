@@ -1,6 +1,7 @@
 package org.wasabi.protocol.http2
 
 import io.netty.buffer.ByteBuf
+import io.netty.buffer.Unpooled
 import io.netty.buffer.Unpooled.copiedBuffer
 import io.netty.buffer.Unpooled.unreleasableBuffer
 import io.netty.channel.ChannelHandlerContext
@@ -18,9 +19,10 @@ import org.wasabi.routing.InterceptOn
 import org.wasabi.routing.PatternAndVerbMatchingRouteLocator
 import org.wasabi.routing.Route
 import org.wasabi.routing.RouteHandler
+import java.nio.charset.Charset
 import java.util.*
 
-class Http2Handler(appServer: AppServer, decoder: Http2ConnectionDecoder, encoder: Http2ConnectionEncoder, settings: Http2Settings) : Http2ConnectionHandler(decoder, encoder, settings), Http2FrameListener {
+class Http2Handler(val appServer: AppServer, decoder: Http2ConnectionDecoder, encoder: Http2ConnectionEncoder, settings: Http2Settings) : Http2ConnectionHandler(decoder, encoder, settings), Http2FrameListener {
 
     private val log = LoggerFactory.getLogger(Http2Handler::class.java)
 
@@ -49,18 +51,46 @@ class Http2Handler(appServer: AppServer, decoder: Http2ConnectionDecoder, encode
         log.info("http2 handler init")
     }
 
-    private fun sendResponse(ctx: ChannelHandlerContext?, streamId: Int, payload: ByteBuf?) {
+    private fun writeResponse(ctx: ChannelHandlerContext?, streamId: Int, response: Response) {
         // Send a frame for the response status
+
+        var buffer = ""
+        if (response.sendBuffer == null) {
+            buffer = response.statusDescription
+        } else if (response.sendBuffer is String) {
+            if (response.sendBuffer as String != "") {
+                buffer = (response.sendBuffer as String)
+            } else {
+                buffer = response.statusDescription
+            }
+        } else {
+            if (response.negotiatedMediaType != "") {
+                val serializer = appServer.serializers.firstOrNull { it.canSerialize(response.negotiatedMediaType) }
+                if (serializer != null) {
+                    response.contentType = response.negotiatedMediaType
+                    buffer = serializer.serialize(response.sendBuffer!!)
+                } else {
+                    response.setStatus(StatusCodes.UnsupportedMediaType)
+                }
+            }
+        }
+
+        // runInterceptors(postRequestInterceptors)
+
+
         val headers = DefaultHttp2Headers().status(StatusCodes.OK.code.toString());
         encoder().writeHeaders(ctx, streamId, headers, 0, false, ctx!!.newPromise());
-        encoder().writeData(ctx, streamId, payload, 0, true, ctx.newPromise());
+        encoder().writeData(ctx, streamId, Unpooled.copiedBuffer(buffer, CharsetUtil.UTF_8), 0, true, ctx.newPromise());
         ctx.flush();
     }
 
     private fun runHandlers(streamId: Int, routeHandlers : Route)
     {
         val request = this.requests[streamId]
-        var response = Response()
+        val response = Response()
+        // Assign to collection for later use.
+        this.responses.put(streamId, response)
+
         // If the flag has been set no-op to allow the response to be flushed as is.
         if (bypassPipeline)
         {
@@ -90,10 +120,9 @@ class Http2Handler(appServer: AppServer, decoder: Http2ConnectionDecoder, encode
         } else {
             interceptorsToRun = interceptors.filter { routeLocator.compareRouteSegments(route, it.path) }
         }
-        for (interceptorEntry in interceptorsToRun) {
+        for ((interceptor) in interceptorsToRun) {
 
-            val interceptor = interceptorEntry.interceptor
-/*            val executeNext = interceptor.intercept(request!!, response)
+            /*            val executeNext = interceptor.intercept(request!!, response)
 
             if (!executeNext) {
                 bypassPipeline = true
@@ -158,13 +187,12 @@ class Http2Handler(appServer: AppServer, decoder: Http2ConnectionDecoder, encode
                 requests[streamId] = request
                 val routeHandlers = routeLocator.findRouteHandlers(request.path, HttpMethod(request.method.name()))
                 runHandlers(streamId, routeHandlers)
+                writeResponse(ctx, streamId, responses[streamId]!!)
                 log.info("Are we there yet?")
             }
             catch(exception : Exception) {
                 log.info(exception.message)
             }
-
-
         }
     }
 
