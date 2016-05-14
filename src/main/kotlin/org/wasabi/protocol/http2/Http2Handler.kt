@@ -75,10 +75,9 @@ class Http2Handler(val appServer: AppServer, decoder: Http2ConnectionDecoder, en
             }
         }
 
-        // runInterceptors(postRequestInterceptors)
+        runInterceptors(postRequestInterceptors)
 
-
-        val headers = DefaultHttp2Headers().status(StatusCodes.OK.code.toString());
+        val headers = DefaultHttp2Headers().status(response.statusCode.toString());
         encoder().writeHeaders(ctx, streamId, headers, 0, false, ctx!!.newPromise());
         encoder().writeData(ctx, streamId, Unpooled.copiedBuffer(buffer, CharsetUtil.UTF_8), 0, true, ctx.newPromise());
         ctx.flush();
@@ -88,6 +87,7 @@ class Http2Handler(val appServer: AppServer, decoder: Http2ConnectionDecoder, en
     {
         val request = this.requests[streamId]
         val response = Response()
+
         // Assign to collection for later use.
         this.responses.put(streamId, response)
 
@@ -148,12 +148,19 @@ class Http2Handler(val appServer: AppServer, decoder: Http2ConnectionDecoder, en
     override fun onDataRead(ctx: ChannelHandlerContext?, streamId: Int, data: ByteBuf?, padding: Int, endOfStream: Boolean): Int {
         log.info("onDataRead")
         val processed = data!!.readableBytes() + padding;
-        if (endOfStream) {
-            val headers = DefaultHttp2Headers().status(StatusCodes.OK.code.toString());
-            encoder().writeHeaders(ctx, streamId, headers, 0, false, ctx!!.newPromise());
-            encoder().writeData(ctx, streamId, data, 0, true, ctx.newPromise());
-            ctx.flush();
+        try{
+            val request = requests[streamId]
+            if (endOfStream) {
+                val routeHandlers = routeLocator.findRouteHandlers(request!!.path, HttpMethod(request.method.name()))
+                runHandlers(streamId, routeHandlers)
+                writeResponse(ctx, streamId, responses[streamId]!!)
+            }
         }
+        catch(exception: Exception)
+        {
+            log.error(exception.message)
+        }
+
         return processed;
     }
 
@@ -169,26 +176,26 @@ class Http2Handler(val appServer: AppServer, decoder: Http2ConnectionDecoder, en
     override fun onHeadersRead(ctx: ChannelHandlerContext?, streamId: Int, headers: Http2Headers?, padding: Int, endOfStream: Boolean) {
         log.info("onHeadersRead")
         log.info(headers.toString())
-        if (endOfStream) {
-            val request = Request(headers)
-            requests[streamId] = request
+        val request = Request(headers)
+        requests[streamId] = request
+        if (endOfStream || request.method.toString() == "GET") {
             val routeHandlers = routeLocator.findRouteHandlers(request.path, HttpMethod(request.method.name()))
             runHandlers(streamId, routeHandlers)
-            log.info("Are we there yet?")
+            log.info("Headers 1")
         }
     }
 
     override fun onHeadersRead(ctx: ChannelHandlerContext?, streamId: Int, headers: Http2Headers?, streamDependency: Int, weight: Short, exclusive: Boolean, padding: Int, endOfStream: Boolean) {
         log.info("onHeadersRead")
         log.info(headers.toString())
-        if (endOfStream) {
+        val request = Request(headers)
+        requests[streamId] = request
+        if (endOfStream || request.method.toString() == "GET") {
             try {
-                val request = Request(headers)
-                requests[streamId] = request
                 val routeHandlers = routeLocator.findRouteHandlers(request.path, HttpMethod(request.method.name()))
                 runHandlers(streamId, routeHandlers)
                 writeResponse(ctx, streamId, responses[streamId]!!)
-                log.info("Are we there yet?")
+                log.info("Headers 2")
             }
             catch(exception : Exception) {
                 log.info(exception.message)

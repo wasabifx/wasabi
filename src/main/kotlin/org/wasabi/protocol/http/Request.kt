@@ -8,6 +8,7 @@ import io.netty.handler.codec.http.multipart.InterfaceHttpData
 import io.netty.handler.codec.http.multipart.InterfaceHttpData.HttpDataType
 import io.netty.handler.codec.http2.Http2Headers
 import org.slf4j.LoggerFactory
+import org.wasabi.app.configuration
 import java.util.*
 
 public class Request() {
@@ -22,6 +23,7 @@ public class Request() {
         this.method = httpRequest.method!!
         this.document = uri.drop(uri.lastIndexOf("/") + 1)
         this.path = uri.split('?')[0]
+        this.scheme = if (configuration!!.sslEnabled) "https" else "http"
         log.info("HttpRequest Constructor completed.")
     }
 
@@ -32,6 +34,7 @@ public class Request() {
         this.method = HttpMethod(http2Headers.method().toString())
         this.document = uri.drop(uri.lastIndexOf("/") + 1)
         this.path = uri
+        this.scheme = getHeader("scheme")
     }
 
     lateinit var httpRequest : HttpRequest
@@ -43,11 +46,17 @@ public class Request() {
     lateinit var rawHeaders: Map<String,String>
     lateinit var document: String
     lateinit var path: String
+    lateinit var scheme: String
+
     public val host: String by lazy {
         getHeader("Host").takeWhile { it != ':' }
     }
-    public val protocol: String = "http" // TODO: Fix this.
-    public val isSecure: Boolean = protocol.compareTo("https", ignoreCase = true) == 0
+    public val protocol: String by lazy {
+        this.scheme
+    }
+    public val isSecure: Boolean by lazy {
+        protocol.compareTo("https", ignoreCase = true) == 0
+    }
     public val urlPort: String by lazy {
         getHeader("Host").dropWhile { it != ':' }.drop(1)
     }
