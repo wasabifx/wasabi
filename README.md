@@ -224,12 +224,12 @@ val getCustomerById  : RouteHandler.() -> Unit = {
 
 ##### Grouping by class
 
-If for some reason you want to group by class, you can do so. Best way is to use a class object 
+If for some reason you want to group by class, you can do so. Best way is to use a companion object 
 
 ```kotlin
 class CustomerRoutes {
 
-    class object {
+    companion object {
 
         val createCustomer = routeHandler {
 
