@@ -51,8 +51,29 @@ class Http2Handler(val appServer: AppServer, decoder: Http2ConnectionDecoder, en
         log.info("http2 handler init")
     }
 
+    private fun executePipeline(streamId: Int, request: Request, ctx: ChannelHandlerContext) {
+        val routeHandlers = routeLocator.findRouteHandlers(request!!.path, HttpMethod(request.method.name()))
+
+        // process the route specific pre execution interceptors
+        runInterceptors(streamId, preExecutionInterceptors, routeHandlers)
+
+        // Execute the handlers for this route.
+        runHandlers(streamId, routeHandlers)
+
+        // process the route specific post execution interceptors
+        runInterceptors(streamId, postExecutionInterceptors, routeHandlers)
+
+        // Run global interceptors again
+        runInterceptors(streamId, postExecutionInterceptors)
+
+        writeResponse(ctx, streamId, responses[streamId]!!)
+    }
+
     private fun writeResponse(ctx: ChannelHandlerContext?, streamId: Int, response: Response) {
-        // Send a frame for the response status
+        // If we have a non successful status make sure the error interceptors know about it.
+        if (response.statusCode / 100 == 4 || response.statusCode / 100 == 5) {
+            runInterceptors(streamId, errorInterceptors)
+        }
 
         var buffer = ""
         if (response.sendBuffer == null) {
@@ -75,7 +96,7 @@ class Http2Handler(val appServer: AppServer, decoder: Http2ConnectionDecoder, en
             }
         }
 
-        runInterceptors(postRequestInterceptors)
+        runInterceptors(streamId, postRequestInterceptors)
 
         val headers = DefaultHttp2Headers().status(response.statusCode.toString());
         encoder().writeHeaders(ctx, streamId, headers, 0, false, ctx!!.newPromise());
@@ -108,7 +129,7 @@ class Http2Handler(val appServer: AppServer, decoder: Http2ConnectionDecoder, en
         }
     }
 
-    private fun runInterceptors(interceptors: List<InterceptorEntry>, route: Route? = null) {
+    private fun runInterceptors(streamId: Int, interceptors: List<InterceptorEntry>, route: Route? = null) {
         // If the flag has been set no-op to allow the response to be flushed as is.
         if (bypassPipeline)
         {
@@ -122,12 +143,12 @@ class Http2Handler(val appServer: AppServer, decoder: Http2ConnectionDecoder, en
         }
         for ((interceptor) in interceptorsToRun) {
 
-            /*            val executeNext = interceptor.intercept(request!!, response)
+            val executeNext = interceptor.intercept(requests[streamId]!!, responses[streamId]!!)
 
             if (!executeNext) {
                 bypassPipeline = true
                 break
-            }*/
+            }
         }
     }
 
@@ -151,9 +172,7 @@ class Http2Handler(val appServer: AppServer, decoder: Http2ConnectionDecoder, en
         try{
             val request = requests[streamId]
             if (endOfStream) {
-                val routeHandlers = routeLocator.findRouteHandlers(request!!.path, HttpMethod(request.method.name()))
-                runHandlers(streamId, routeHandlers)
-                writeResponse(ctx, streamId, responses[streamId]!!)
+                executePipeline(streamId, request!!, ctx!!)
             }
         }
         catch(exception: Exception)
@@ -192,9 +211,7 @@ class Http2Handler(val appServer: AppServer, decoder: Http2ConnectionDecoder, en
         requests[streamId] = request
         if (endOfStream || request.method.toString() == "GET") {
             try {
-                val routeHandlers = routeLocator.findRouteHandlers(request.path, HttpMethod(request.method.name()))
-                runHandlers(streamId, routeHandlers)
-                writeResponse(ctx, streamId, responses[streamId]!!)
+                executePipeline(streamId, request!!, ctx!!)
                 log.info("Headers 2")
             }
             catch(exception : Exception) {

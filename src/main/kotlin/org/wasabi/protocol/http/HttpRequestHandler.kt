@@ -221,7 +221,7 @@ public class HttpRequestHandler(private val appServer: AppServer){
             // TODO: Add support for CharSet
             val buffer = msg.content()
             if (buffer.isReadable()) {
-                var data = buffer.toString(CharsetUtil.UTF_8)
+                val data = buffer.toString(CharsetUtil.UTF_8)
                 request!!.bodyParams.putAll(deserializer!!.deserialize(data!!))
             }
         }
