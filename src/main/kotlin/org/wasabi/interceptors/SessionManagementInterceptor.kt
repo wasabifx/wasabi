@@ -19,7 +19,7 @@ public class SessionManagementInterceptor(val cookieKey: String = "_sessionID", 
         val x = request.cookies[cookieKey]
         if (x != null && x.value != "") {
             // If we have a session bump the expiration time to keep it active
-            request.session = loadSession(request.session!!.id)
+            request.session = loadSession(x.value)
             request.session!!.extendSession();
         } else {
             request.session = Session(generateSessionID())
