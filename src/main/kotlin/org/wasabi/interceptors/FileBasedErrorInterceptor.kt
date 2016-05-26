@@ -12,7 +12,7 @@ public class FileBasedErrorInterceptor(val folder: String, val fileExtensions: S
         var fileToServe = "${path}/${response.statusCode}.${fileExtensions}"
         val file = File(fileToServe)
         if (!file.exists()) {
-            fileToServe = "${path}/error.html"
+            fileToServe = "${path}/$fallbackGenericFile"
         }
         response.setFileResponseHeaders(fileToServe)
 
