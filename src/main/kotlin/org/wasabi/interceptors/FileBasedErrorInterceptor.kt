@@ -8,7 +8,7 @@ import org.wasabi.routing.InterceptOn
 
 public class FileBasedErrorInterceptor(val folder: String, val fileExtensions: String = "html", val fallbackGenericFile: String = "error.html"): Interceptor() {
     override fun intercept(request: Request, response: Response): Boolean {
-        val path = sanitizePath(folder)
+        val path = folder.trim('/')
         var fileToServe = "${path}/${response.statusCode}.${fileExtensions}"
         val file = File(fileToServe)
         if (!file.exists()) {

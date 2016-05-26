@@ -11,7 +11,7 @@ public class FavIconInterceptor(val icon: String): Interceptor() {
 
     override fun intercept(request: Request, response: Response): Boolean {
         if (request.method == HttpMethod.GET && request.uri.compareTo("/favicon.ico", ignoreCase = true) == 0) {
-            val path = sanitizePath(icon)
+            val path = icon.trim('/')
             response.setFileResponseHeaders(path, "image/x-icon")
             return false
         } else {
@@ -19,14 +19,6 @@ public class FavIconInterceptor(val icon: String): Interceptor() {
         }
     }
 
-}
-
-fun sanitizePath(path: String): String {
-    var sanitizedPath = path.removeSuffix("/")
-    if (sanitizedPath.startsWith("/")) {
-        sanitizedPath = sanitizedPath.dropWhile { it == '/' }
-    }
-    return sanitizedPath
 }
 
 fun AppServer.serveFavIconAs(icon: String) {
