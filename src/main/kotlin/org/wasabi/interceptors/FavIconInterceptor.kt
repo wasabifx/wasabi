@@ -23,8 +23,8 @@ public class FavIconInterceptor(val icon: String): Interceptor() {
 
 fun sanitizePath(path: String): String {
     var sanitizedPath = path.removeSuffix("/")
-    if (path.startsWith("/")) {
-        sanitizedPath = path.dropWhile { it == '/' }
+    if (sanitizedPath.startsWith("/")) {
+        sanitizedPath = sanitizedPath.dropWhile { it == '/' }
     }
     return sanitizedPath
 }
