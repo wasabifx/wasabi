@@ -24,8 +24,8 @@ public class SessionManagementInterceptor(val cookieKey: String = "_sessionID", 
         } else {
             request.session = Session(generateSessionID())
             storeSession(request.session!!)
-            response.cookies[cookieKey] = Cookie(cookieKey, request.session!!.id, request.path, request.host, request.isSecure)
         }
+        response.cookies[cookieKey] = Cookie(cookieKey, request.session!!.id, request.path, request.host, request.isSecure)
         return true
     }
 }

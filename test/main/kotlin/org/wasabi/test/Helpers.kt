@@ -60,14 +60,16 @@ object TestServer {
     }
 }
 
-private fun makeRequest(headers: HashMap<String, String>, request: HttpRequestBase): org.wasabi.test.HttpClientResponse {
-
-    val cookie = BasicClientCookie("someCookie", "someCookieValue")
-    cookie.path = request.uri?.path
-    cookie.domain = "localhost"
+private fun makeRequest(headers: HashMap<String, String>, request: HttpRequestBase, cookies: HashMap<String, String> = hashMapOf()): org.wasabi.test.HttpClientResponse {
 
     val cookieStore = BasicCookieStore();
-    cookieStore.addCookie(cookie)
+
+    for ((key, value) in cookies) {
+        val custom_cookie = BasicClientCookie(key, value)
+        custom_cookie.path = request.uri?.path
+        custom_cookie.domain = "localhost"
+        cookieStore.addCookie(custom_cookie)
+    }
 
     val httpClient = HttpClientBuilder.create().setDefaultCookieStore(cookieStore).build();
     for ((key, value) in headers) {
@@ -92,7 +94,7 @@ public fun delete(url: String, headers: HashMap<String, String>): org.wasabi.tes
     return makeRequest(headers, HttpDelete(url))
 }
 
-public fun get(url: String, headers: HashMap<String,String> = hashMapOf()): org.wasabi.test.HttpClientResponse {
+public fun get(url: String, headers: HashMap<String,String> = hashMapOf(), cookies: HashMap<String, String> = hashMapOf()): org.wasabi.test.HttpClientResponse {
 
     val requestConfig = RequestConfig.custom()
             .setRedirectsEnabled(false)
@@ -101,7 +103,7 @@ public fun get(url: String, headers: HashMap<String,String> = hashMapOf()): org.
     val get = HttpGet(url)
     get.config = requestConfig
 
-    return makeRequest(headers, get)
+    return makeRequest(headers, get, cookies)
 }
 
 public fun post(url: String, headers: HashMap<String,String> = hashMapOf(), postParams: List<NameValuePair>): org.wasabi.test.HttpClientResponse {
