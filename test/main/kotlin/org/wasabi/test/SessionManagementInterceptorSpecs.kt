@@ -20,15 +20,24 @@ import org.wasabi.protocol.http.Session
 
         // Make sure session id stays consistent between requests.
         var response = get("http://localhost:${TestServer.definedPort}/test_session", hashMapOf())
-        var session_id = response.headers.get(2)
-
-        Thread.sleep(2000)
+        var session_id = ""
+        response.headers.iterator().forEach {
+            if (it.name == "Set-Cookie") {
+                session_id = it.value
+            }
+        }
 
         // Set session cookie as you would expect the client to do...
-        val response2 = get("http://localhost:${TestServer.definedPort}/test_session", hashMapOf(), hashMapOf(Pair(session_id.value.split("=").first(), session_id.value.split("=").last())))
+        val response2 = get("http://localhost:${TestServer.definedPort}/test_session", hashMapOf(), hashMapOf(Pair(session_id.split("=").first(), session_id.split("=").last())))
 
         // Check it comes back and matches original.
-        assertEquals(session_id.value, response2.headers.get(2).value)
+        var session_id_2 = ""
+        response2.headers.iterator().forEach {
+            if (it.name == "Set-Cookie") {
+                session_id_2 = it.value
+            }
+        }
+        assertEquals(session_id, session_id_2)
     }
 
 }

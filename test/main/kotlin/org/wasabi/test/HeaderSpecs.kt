@@ -149,7 +149,7 @@ public class HeaderSpecs: TestServerContext() {
             response.send("Nothing")
 
         })
-        get("http://localhost:${TestServer.definedPort}/cookie", headers)
+        get("http://localhost:${TestServer.definedPort}/cookie", headers, hashMapOf(Pair("someCookie","someCookieValue")))
 
         assertEquals("someCookieValue", cookies["someCookie"]?.value)
 
