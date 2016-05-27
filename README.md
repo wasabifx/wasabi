@@ -126,6 +126,22 @@ You can chain route handlers. For instance, if you want to log information about
   )
 ```
 
+or as follows enforces JSON serialisation regardless of the request accept header.
+
+```kotlin
+  server.get("/",
+    {
+      val log = Log()
+
+      log.info("URI requested is ${request.uri}")
+      next()
+    },
+    {
+      response.send("Hello World!", "application/json")
+    }
+  )
+```
+
 By calling *next()* on each handler, the processing will continue. 
 
 All verbs on *AppServer* have the following signature
