@@ -31,4 +31,15 @@ public class AutoOptionsInterceptorSpecs : TestServerContext() {
 
     }
 
+    @spec fun testing_auto_options_shutdown () {
+        TestServer.appServer.enableAutoOptions()
+
+        assertEquals(1, TestServer.appServer.interceptors.count { it.interceptor is AutoOptionsInterceptor })
+
+        TestServer.appServer.disableAutoOptions()
+
+        assertEquals(0, TestServer.appServer.interceptors.count { it.interceptor is AutoOptionsInterceptor })
+
+    }
+
 }

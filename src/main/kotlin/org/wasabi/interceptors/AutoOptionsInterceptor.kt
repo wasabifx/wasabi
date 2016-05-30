@@ -31,5 +31,5 @@ public fun AppServer.enableAutoOptions() {
     intercept(AutoOptionsInterceptor(routes))
 }
 public fun AppServer.disableAutoOptions() {
-    this.interceptors.remove(AutoOptionsInterceptor(routes) as Any)
+    this.interceptors.removeAll { it.interceptor is AutoOptionsInterceptor }
 }
