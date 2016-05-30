@@ -10,14 +10,15 @@ import org.junit.Ignore
 
 public class AutoOptionsInterceptorSpecs : TestServerContext() {
 
-    @Ignore("We need to solve this issue.")
-    @spec fun with_auto_options_disabled_options_should_return_method_not_allowed () {
+    @spec fun testing_auto_options_shutdown () {
+        TestServer.appServer.enableAutoOptions()
 
-        TestServer.appServer.get("/person", {})
+        assertEquals(1, TestServer.appServer.interceptors.count { it.interceptor is AutoOptionsInterceptor })
 
-        val response = options("http://localhost:${TestServer.definedPort}/person")
+        TestServer.appServer.disableAutoOptions()
 
-        assertEquals(StatusCodes.MethodNotAllowed.code, response.statusCode)
+        assertEquals(0, TestServer.appServer.interceptors.count { it.interceptor is AutoOptionsInterceptor })
+
     }
 
     @spec fun auto_options_should_return_all_methods_available_for_a_specific_resource () {
@@ -31,15 +32,14 @@ public class AutoOptionsInterceptorSpecs : TestServerContext() {
 
     }
 
-    @spec fun testing_auto_options_shutdown () {
-        TestServer.appServer.enableAutoOptions()
+    @Ignore("We need to solve this issue.")
+    @spec fun with_auto_options_disabled_options_should_return_method_not_allowed () {
 
-        assertEquals(1, TestServer.appServer.interceptors.count { it.interceptor is AutoOptionsInterceptor })
+        TestServer.appServer.get("/person", {})
 
-        TestServer.appServer.disableAutoOptions()
+        val response = options("http://localhost:${TestServer.definedPort}/person")
 
-        assertEquals(0, TestServer.appServer.interceptors.count { it.interceptor is AutoOptionsInterceptor })
-
+        assertEquals(StatusCodes.MethodNotAllowed.code, response.statusCode)
     }
 
 }
