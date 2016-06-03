@@ -19,6 +19,7 @@ import org.wasabi.routing.InterceptOn
 import org.wasabi.routing.PatternAndVerbMatchingRouteLocator
 import org.wasabi.routing.Route
 import org.wasabi.routing.RouteHandler
+import java.net.InetSocketAddress
 import java.nio.charset.Charset
 import java.util.*
 
@@ -191,11 +192,11 @@ class Http2Handler(val appServer: AppServer, decoder: Http2ConnectionDecoder, en
 
     override fun onHeadersRead(ctx: ChannelHandlerContext?, streamId: Int, headers: Http2Headers?, streamDependency: Int, weight: Short, exclusive: Boolean, padding: Int, endOfStream: Boolean) {
         log.debug(headers.toString())
-        val request = Request(headers)
+        val request = Request(headers, ctx!!.channel().remoteAddress() as InetSocketAddress)
         requests[streamId] = request
         if (endOfStream || request.method.toString() == "GET") {
             try {
-                executePipeline(streamId, request, ctx!!)
+                executePipeline(streamId, request, ctx)
             }
             catch(exception : Exception) {
                 log.error(exception.message)

@@ -9,13 +9,14 @@ import io.netty.handler.codec.http.multipart.InterfaceHttpData.HttpDataType
 import io.netty.handler.codec.http2.Http2Headers
 import org.slf4j.LoggerFactory
 import org.wasabi.app.configuration
+import java.net.InetSocketAddress
 import java.util.*
 
 public class Request() {
 
     private var log = LoggerFactory.getLogger(Request::class.java)
 
-    constructor(httpRequest: HttpRequest) : this() {
+    constructor(httpRequest: HttpRequest, address: InetSocketAddress) : this() {
         log.info("HttpRequest Constructor called.")
         this.httpRequest = httpRequest
         this.rawHeaders = httpRequest.headers().associate({it.key to it.value})
@@ -24,10 +25,11 @@ public class Request() {
         this.document = uri.drop(uri.lastIndexOf("/") + 1)
         this.path = uri.split('?')[0]
         this.scheme = if (configuration!!.sslEnabled) "https" else "http"
+        this.remoteAddress = address
         log.info("HttpRequest Constructor completed.")
     }
 
-    constructor(http2Headers: Http2Headers?) : this() {
+    constructor(http2Headers: Http2Headers?, address: InetSocketAddress) : this() {
         this.http2Headers = http2Headers!!
         this.rawHeaders = http2Headers.associate({it.key.toString() to it.value.toString()})
         this.uri = http2Headers.path().toString()
@@ -35,6 +37,7 @@ public class Request() {
         this.document = uri.drop(uri.lastIndexOf("/") + 1)
         this.path = uri
         this.scheme = getHeader("scheme")
+        this.remoteAddress = address
     }
 
     lateinit var httpRequest : HttpRequest
@@ -47,6 +50,7 @@ public class Request() {
     lateinit var document: String
     lateinit var path: String
     lateinit var scheme: String
+    lateinit var remoteAddress: InetSocketAddress
 
     public val host: String by lazy {
         getHeader("Host").takeWhile { it != ':' }
@@ -127,7 +131,6 @@ public class Request() {
         return parsed.toSortedMap<String, Int>()
     }
 
-    // TODO fix should use raw
     private fun getHeader(header: String) = this.rawHeaders[header] ?: ""
 
     private fun parseQueryParams(): HashMap<String, String> {

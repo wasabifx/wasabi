@@ -14,6 +14,7 @@ import org.wasabi.deserializers.Deserializer
 import org.wasabi.interceptors.InterceptorEntry
 import org.wasabi.routing.*
 import java.io.FileInputStream
+import java.net.InetSocketAddress
 
 public class HttpRequestHandler(private val appServer: AppServer){
 
@@ -35,7 +36,7 @@ public class HttpRequestHandler(private val appServer: AppServer){
 
     public fun handleRequest(ctx: ChannelHandlerContext?, msg: Any?) {
         if (msg is HttpRequest) {
-            request = Request(msg)
+            request = Request(msg, ctx!!.channel().remoteAddress() as InetSocketAddress)
 
             request!!.accept.mapTo(response.requestedContentTypes, { it.key })
 
