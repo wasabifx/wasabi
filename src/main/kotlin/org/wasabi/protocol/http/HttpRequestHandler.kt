@@ -13,6 +13,7 @@ import org.wasabi.app.AppServer
 import org.wasabi.deserializers.Deserializer
 import org.wasabi.interceptors.InterceptorEntry
 import org.wasabi.routing.*
+import org.wasabi.routing.exceptions.ExceptionHandlerNotFoundException
 import java.io.FileInputStream
 import java.net.InetSocketAddress
 
@@ -33,6 +34,7 @@ public class HttpRequestHandler(private val appServer: AppServer){
     private var log = LoggerFactory.getLogger(HttpRequestHandler::class.java)
     // TODO make configurable.
     var routeLocator = PatternAndVerbMatchingRouteLocator(appServer.routes)
+    var exceptionLocator = ClassMatchingExceptionHandlerLocator(appServer.exceptionHandlers)
 
     public fun handleRequest(ctx: ChannelHandlerContext?, msg: Any?) {
         if (msg is HttpRequest) {
@@ -92,7 +94,15 @@ public class HttpRequestHandler(private val appServer: AppServer){
                     response.setStatus(StatusCodes.NotFound)
                 } catch (e: Exception) {
                     log!!.debug("Exception during web invocation: ${e.message}")
-                    response.setStatus(StatusCodes.InternalServerError)
+                    // bypassPipeline = true
+                    try {
+                        val handler = exceptionLocator.findExceptionHandlers(e).handler
+                        val extension : ExceptionHandler.() -> Unit = handler
+                        val exceptionHandler = ExceptionHandler(request!!, response, e)
+                        exceptionHandler.extension()
+                    } catch (exception: ExceptionHandlerNotFoundException) {
+                        response.setStatus(StatusCodes.InternalServerError)
+                    }
                 }
                 writeResponse(ctx!!, response)
             }
@@ -143,7 +153,7 @@ public class HttpRequestHandler(private val appServer: AppServer){
     }
 
     private fun writeResponse(ctx: ChannelHandlerContext, response: Response) {
-        var httpResponse : HttpResponse
+        val httpResponse : HttpResponse
         if (response.statusCode / 100 == 4 || response.statusCode / 100 == 5) {
             runInterceptors(errorInterceptors)
         }

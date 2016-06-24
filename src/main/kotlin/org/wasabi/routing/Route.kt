@@ -1,7 +1,5 @@
 package org.wasabi.routing
 
-import org.wasabi.protocol.http.Request
-import org.wasabi.protocol.http.Response
 import io.netty.handler.codec.http.HttpMethod
 import java.util.HashMap
 

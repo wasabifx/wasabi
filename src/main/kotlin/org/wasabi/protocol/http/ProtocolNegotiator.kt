@@ -9,6 +9,7 @@ import io.netty.handler.ssl.ApplicationProtocolNegotiationHandler
 import io.netty.handler.stream.ChunkedWriteHandler
 import org.slf4j.LoggerFactory
 import org.wasabi.app.AppServer
+import org.wasabi.app.configuration
 import org.wasabi.protocol.http2.Http2HandlerBuilder
 
 /**
@@ -57,6 +58,6 @@ class ProtocolNegotiator(val appServer: AppServer) : ApplicationProtocolNegotiat
         pipeline.addLast("encoder", HttpResponseEncoder())
         pipeline.addAfter(context.name(), "chunkedWriter", ChunkedWriteHandler());
         pipeline.addAfter("chunkedWriter", "http1", NettyRequestHandler(appServer));
-        pipeline.replace(this, "aggregator", HttpObjectAggregator(1048576))
+        pipeline.replace(this, "aggregator", HttpObjectAggregator(configuration!!.maxHttpContentLength))
     }
 }

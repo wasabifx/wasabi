@@ -32,7 +32,6 @@ public data class AppConfiguration(
         try {
             // Here we are simply attempting to load a config in the current location under the
             // assumption Programmatic configuration wont have such present.
-            @Suppress("UNCHECKED_CAST")
             var configuration = yaml.load(FileInputStream(File("wasabi.yaml"))) as MutableMap<Any, Any>
 
             @Suppress("UNCHECKED_CAST")

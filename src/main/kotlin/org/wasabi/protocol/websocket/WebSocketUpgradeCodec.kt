@@ -57,8 +57,7 @@ class WebSocketUpgradeCodec(val appServer: AppServer, val handlerName : String):
                 WebSocketServerHandshakerFactory.sendUnsupportedVersionResponse(ctx?.channel()!!);
             } else {
                 log.info("Handshake...")
-                var foo = handshaker?.handshake(ctx?.channel()!!, upgradeRequest);
-
+                handshaker?.handshake(ctx?.channel()!!, upgradeRequest);
             }
             return true
         }

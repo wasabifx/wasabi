@@ -156,7 +156,7 @@ class Http2Handler(val appServer: AppServer, decoder: Http2ConnectionDecoder, en
     }
 
     override fun onPingRead(ctx: ChannelHandlerContext?, data: ByteBuf?) {
-        log.debug("onPingRead")
+        // Handled by Netty
     }
 
     override fun onDataRead(ctx: ChannelHandlerContext?, streamId: Int, data: ByteBuf?, padding: Int, endOfStream: Boolean): Int {
@@ -176,7 +176,6 @@ class Http2Handler(val appServer: AppServer, decoder: Http2ConnectionDecoder, en
     }
 
     override fun onSettingsRead(ctx: ChannelHandlerContext?, settings: Http2Settings?) {
-        log.debug("onSettingsRead")
         this.currentSettings = settings
     }
 
@@ -230,6 +229,7 @@ class Http2Handler(val appServer: AppServer, decoder: Http2ConnectionDecoder, en
 
     override fun onSettingsAckRead(ctx: ChannelHandlerContext?) {
         log.debug("HTTP2 Settings acknowledged")
+
     }
 
     override fun exceptionCaught(ctx: ChannelHandlerContext?, cause: Throwable?) {

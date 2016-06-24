@@ -50,7 +50,7 @@ public class NettyRequestHandler(private val appServer: AppServer): SimpleChanne
             if ( msg is HttpRequest && msg.headers().get(HttpHeaders.Names.UPGRADE) == "websocket")
             {
                 // Setup Handshake
-                var wsFactory : WebSocketServerHandshakerFactory = WebSocketServerHandshakerFactory(msg.getUri(), null, false);
+                val wsFactory : WebSocketServerHandshakerFactory = WebSocketServerHandshakerFactory(msg.getUri(), null, false);
 
                 handshaker = wsFactory.newHandshaker(msg)
                 
@@ -74,7 +74,7 @@ public class NettyRequestHandler(private val appServer: AppServer): SimpleChanne
                     response.setStatus(StatusCodes.NotFound)
                     response.setHeaders()
                     ctx!!.write(response)
-                    var lastContentFuture = ctx.writeAndFlush(LastHttpContent.EMPTY_LAST_CONTENT)
+                    val lastContentFuture = ctx.writeAndFlush(LastHttpContent.EMPTY_LAST_CONTENT)
                     lastContentFuture.addListener(ChannelFutureListener.CLOSE)
                     return
                 }
@@ -91,7 +91,7 @@ public class NettyRequestHandler(private val appServer: AppServer): SimpleChanne
         response.setStatus(StatusCodes.InternalServerError)
         response.setHeaders()
         ctx.write(response)
-        var lastContentFuture = ctx.writeAndFlush(LastHttpContent.EMPTY_LAST_CONTENT)
+        val lastContentFuture = ctx.writeAndFlush(LastHttpContent.EMPTY_LAST_CONTENT)
         lastContentFuture.addListener(ChannelFutureListener.CLOSE)
     }
 }
