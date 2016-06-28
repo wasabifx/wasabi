@@ -10,12 +10,13 @@ import java.io.File
 public class StaticFileInterceptor(val folder: String, val useDefaultFile: Boolean = false, val defaultFile: String = "index.html") : Interceptor() {
     override fun intercept(request: Request, response: Response): Boolean {
         var executeNext = false
+
         if (request.method == HttpMethod.GET) {
             val fullPath = "${folder}${request.uri}"
             val file = File(fullPath)
             when {
                 file.exists() && file.isFile() -> response.setFileResponseHeaders(fullPath)
-                file.exists() && file.isDirectory() -> response.setFileResponseHeaders("${fullPath}/${defaultFile}")
+                file.exists() && file.isDirectory() && useDefaultFile -> response.setFileResponseHeaders("${fullPath}/${defaultFile}")
                 else -> executeNext = true
             }
         } else {
