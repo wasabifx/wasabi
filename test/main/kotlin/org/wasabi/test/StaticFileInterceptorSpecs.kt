@@ -47,4 +47,12 @@ public class StaticFileInterceptorSpecs: TestServerContext() {
         assertEquals("Root", response.body)
     }
 
+    @spec fun requesting_an_existing_static_direcotry_should_serve_when_default_file_is_turn_on() {
+
+        TestServer.appServer.serveStaticFilesFromFolder("testData${File.separatorChar}public", true, "test.html")
+
+        val response = get("http://localhost:${TestServer.definedPort}/", hashMapOf())
+
+        assertEquals("<!DOCTYPE html><head><title></title></head><body>This is an example static file</body></html>", response.body)
+    }
 }
