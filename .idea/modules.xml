@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/kobalt/Build.kt.iml" filepath="$PROJECT_DIR$/kobalt/Build.kt.iml" />
-      <module fileurl="file://$PROJECT_DIR$/wasabi.iml" filepath="$PROJECT_DIR$/wasabi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/wasabi.iml" filepath="$PROJECT_DIR$/.idea/modules/wasabi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/wasabi_main.iml" filepath="$PROJECT_DIR$/.idea/modules/wasabi_main.iml" group="wasabi" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/wasabi_test.iml" filepath="$PROJECT_DIR$/.idea/modules/wasabi_test.iml" group="wasabi" />
     </modules>
   </component>
 </project>
