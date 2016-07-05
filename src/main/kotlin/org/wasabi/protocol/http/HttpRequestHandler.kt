@@ -184,12 +184,11 @@ public class HttpRequestHandler(private val appServer: AppServer){
             // TODO: The current file handling completely bypasses the postrequest interceptors ( badness9000 )
             var buffer = ""
             if (response.sendBuffer == null) {
-                buffer = response.statusDescription
+                // Allows us to check downstream
+                buffer = ""
             } else if (response.sendBuffer is String) {
                 if (response.sendBuffer as String != "") {
                     buffer = (response.sendBuffer as String)
-                } else {
-                    buffer = response.statusDescription
                 }
             } else {
                 if (response.negotiatedMediaType != "") {
@@ -203,6 +202,13 @@ public class HttpRequestHandler(private val appServer: AppServer){
                 }
             }
             runInterceptors(postRequestInterceptors)
+
+            // TODO refactor above buffer logic.
+            // This allows postRequestInterceptors to override 405 and us to
+            // appropriately set the response to the description.
+            if(buffer == "") {
+                buffer = response.statusDescription
+            }
 
             httpResponse = DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus(response.statusCode, response.statusDescription), Unpooled.copiedBuffer(buffer, CharsetUtil.UTF_8))
             response.setHeaders()
