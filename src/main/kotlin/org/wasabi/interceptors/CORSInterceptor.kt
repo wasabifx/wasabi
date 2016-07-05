@@ -13,14 +13,14 @@ import org.wasabi.routing.Route
 public class CORSInterceptor(val routes: ArrayList<Route>, val settings: ArrayList<CORSEntry>): Interceptor() {
     override fun intercept(request: Request, response: Response): Boolean {
         if (request.method == HttpMethod.OPTIONS) {
-            val methods = routes.filter {
-                it.path == request.path
-            }.map {
-                it.method
-            }
-            response.addRawHeader("Allow", methods.joinToString(", "))
             for (setting in settings) {
                 if (setting.path == "*" || request.path.matches(setting.path.toRegex())) {
+                    val methods = routes.filter {
+                        it.path == request.path
+                    }.map {
+                        it.method
+                    }
+                    response.addRawHeader("Allow", methods.joinToString(", "))
                     response.addRawHeader("Access-Control-Request-Method", setting.methods)
                     response.addRawHeader("Access-Control-Allow-Origin", setting.origins)
                     if (setting.headers != "") {
@@ -32,9 +32,10 @@ public class CORSInterceptor(val routes: ArrayList<Route>, val settings: ArrayLi
                     if (setting.preflightMaxAge != "") {
                         response.addRawHeader("Access-Control-Max-Age", setting.preflightMaxAge)
                     }
+
+                    response.setStatus(StatusCodes.OK)
                 }
             }
-            response.setStatus(StatusCodes.OK)
         }
 
         return true
