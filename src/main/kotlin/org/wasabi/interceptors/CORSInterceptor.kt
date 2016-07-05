@@ -48,3 +48,7 @@ public fun AppServer.enableCORSGlobally() {
 public fun AppServer.enableCORS(settings: ArrayList<CORSEntry>) {
     intercept(CORSInterceptor(routes, settings), "*", InterceptOn.PostRequest)
 }
+
+public fun AppServer.disableCORS() {
+    this.interceptors.removeAll { it.interceptor is CORSInterceptor }
+}
