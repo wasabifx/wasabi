@@ -12,8 +12,9 @@ class CorsSpecs : TestServerContext(){
         //TestServer.appServer.enableAutoOptions()
         TestServer.appServer.enableCORS(arrayListOf(CORSEntry()))
 
-        // TODO Investigate....
-        assertEquals(2, TestServer.appServer.interceptors.count { it.interceptor is CORSInterceptor })
+        assertEquals(1, TestServer.appServer.interceptors.count { it.interceptor is CORSInterceptor })
+
+        TestServer.appServer.disableCORS()
     }
 
     @Test fun cors_should_return_access_control_allow_origin () {
@@ -27,6 +28,6 @@ class CorsSpecs : TestServerContext(){
         val response = options("http://localhost:${TestServer.definedPort}/person")
         assertEquals("GET, POST", response.headers.filter { it.getName() == "Allow"}.first().getValue())
 
-        TestServer.appServer.disableAutoOptions()
+        TestServer.appServer.disableCORS()
     }
 }

@@ -9,3 +9,6 @@ build/
 gradle.properties
 kobaltBuild/
 .kobalt
+.idea
+wasabi.iml
+
