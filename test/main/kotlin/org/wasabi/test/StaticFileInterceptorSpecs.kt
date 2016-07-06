@@ -54,5 +54,7 @@ public class StaticFileInterceptorSpecs: TestServerContext() {
         val response = get("http://localhost:${TestServer.definedPort}/", hashMapOf())
 
         assertEquals("<!DOCTYPE html><head><title></title></head><body>This is an example static file</body></html>", response.body)
+
+        TestServer.reset()
     }
 }
