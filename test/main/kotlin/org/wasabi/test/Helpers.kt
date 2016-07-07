@@ -56,7 +56,10 @@ object TestServer {
 
     public fun reset() {
         appServer.routes.clear()
+        appServer.interceptors.clear()
         appServer.channels.clear()
+
+        appServer.init()
     }
 }
 
