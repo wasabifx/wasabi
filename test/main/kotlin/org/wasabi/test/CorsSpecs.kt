@@ -24,7 +24,7 @@ class CorsSpecs : TestServerContext(){
 
         val response = options("http://localhost:${TestServer.definedPort}/person")
         assertEquals("GET", response.headers.filter { it.getName() == "Allow"}.first().getValue())
-        assertEquals("*", response.headers.filter { it.getName() == "Access-Control-Allow-Origin"}.first().getValue())
+        assertEquals("/person", response.headers.filter { it.getName() == "Access-Control-Allow-Origin"}.first().getValue())
         assertEquals("Origin, X-Requested-With, Content-Type, Accept", response.headers.filter { it.getName() == "Access-Control-Allow-Headers"}.first().getValue())
         assertEquals("GET, POST, PUT, DELETE", response.headers.filter { it.getName() == "Access-Control-Request-Method"}.first().getValue())
 
@@ -60,5 +60,18 @@ class CorsSpecs : TestServerContext(){
         val response = options("http://localhost:${TestServer.definedPort}/customer")
 
         assertEquals(405, response.statusCode)
+    }
+
+    @Test fun cors_should_return_correct_header_on_non_option_request () {
+        TestServer.appServer.get("/person", {})
+        TestServer.appServer.post("/customer", {})
+        TestServer.appServer.enableCORS(arrayListOf(CORSEntry(path = "/person")))
+
+        val response = options("http://localhost:${TestServer.definedPort}/person")
+
+        val getResponse = get("http://localhost:${TestServer.definedPort}/person")
+        assertEquals("/person", getResponse.headers.filter { it.getName() == "Access-Control-Allow-Origin"}.first().getValue())
+
+        TestServer.appServer.disableCORS()
     }
 }

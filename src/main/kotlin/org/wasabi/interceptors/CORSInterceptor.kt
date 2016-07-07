@@ -12,9 +12,12 @@ import org.wasabi.routing.Route
 
 public class CORSInterceptor(val routes: ArrayList<Route>, val settings: ArrayList<CORSEntry>): Interceptor() {
     override fun intercept(request: Request, response: Response): Boolean {
-        if (request.method == HttpMethod.OPTIONS) {
-            for (setting in settings) {
-                if (setting.path == "*" || request.path.matches(setting.path.toRegex())) {
+        for (setting in settings) {
+            if (setting.path == "*" || request.path.matches(setting.path.toRegex())) {
+                if (response.statusCode == StatusCodes.OK.code) {
+                    response.addRawHeader("Access-Control-Allow-Origin", setting.path)
+                }
+                if (request.method == HttpMethod.OPTIONS) {
                     val methods = routes.filter {
                         it.path == request.path
                     }.map {
@@ -22,7 +25,7 @@ public class CORSInterceptor(val routes: ArrayList<Route>, val settings: ArrayLi
                     }
                     response.addRawHeader("Allow", methods.joinToString(", "))
                     response.addRawHeader("Access-Control-Request-Method", setting.methods)
-                    response.addRawHeader("Access-Control-Allow-Origin", setting.origins)
+                    response.addRawHeader("Access-Control-Allow-Origin", setting.path)
                     if (setting.headers != "") {
                         response.addRawHeader("Access-Control-Allow-Headers", setting.headers)
                     }
