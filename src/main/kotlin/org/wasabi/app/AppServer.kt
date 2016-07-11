@@ -16,6 +16,7 @@ import org.wasabi.serializers.XmlSerializer
 import org.wasabi.websocket.Channel
 import org.wasabi.websocket.ChannelHandler
 import java.util.*
+import kotlin.reflect.KClass
 
 
 public open class AppServer(val configuration: AppConfiguration = AppConfiguration()) {
@@ -145,8 +146,8 @@ public open class AppServer(val configuration: AppConfiguration = AppConfigurati
         addChannel(path, handler)
     }
 
-    public fun exception(exception: Exception, handler: ExceptionHandler.() -> Unit) {
-        addExceptionHandler(exception.javaClass.name, handler)
+    public fun exception(exception: KClass<*>, handler: ExceptionHandler.() -> Unit) {
+        addExceptionHandler(exception.qualifiedName!!, handler)
     }
 
     public fun intercept(interceptor: Interceptor, path: String = "*", interceptOn: InterceptOn = InterceptOn.PreExecution) {
