@@ -433,6 +433,20 @@ Wasabi can automatically respond to OPTIONS for a specific path. You can enable 
 * Via AppConfiguration.enableAutoOptions 
 * Programatically using server.enableAutoOptions - same as above
 
+## Exception Handlers ##
+Wasabi allows registration of custom handlers by exception type also. You can register them as follows: 
+
+```kotlin
+val appServer = AppServer()
+appServer.exception(MyKewlException::class, { 
+    reponse.setStatus(418, "My brew is not as strong as yours!")
+    response.send("Out of beans: ${exception.message}")
+})
+```
+
+like other Wasabi handlers the registered exception handler gets passed the request and response as well as the 
+exception thrown.
+
 ## Community ##
 We're mostly hanging out on the #wasabi Channel on [Kotlin's Slack](http://kotlinslackin.herokuapp.com). Join us there for questions and discussions. 
 
