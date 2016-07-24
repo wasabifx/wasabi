@@ -7,17 +7,20 @@ import io.netty.handler.codec.http.HttpMethod
 import java.util.ArrayList
 import org.wasabi.routing.Route
 import org.wasabi.protocol.http.StatusCodes
+import org.wasabi.routing.PatternAndVerbMatchingRouteLocator
 
-public class AutoOptionsInterceptor(val routes: ArrayList<Route>): Interceptor() {
+class AutoOptionsInterceptor(val routes: ArrayList<Route>): Interceptor() {
     override fun intercept(request: Request, response: Response): Boolean {
         var executeNext = false
         if (request.method == HttpMethod.OPTIONS) {
-            val methods = routes.filter {
-                it.path == request.path
-            }.map {
-                it.method
-            }
-            response.addRawHeader("Allow", methods.joinToString(", "))
+            val routeLocator = PatternAndVerbMatchingRouteLocator(routes)
+
+            val allowedMethods = routes
+                .filter { routeLocator.compareRouteSegments(it, request.path) }
+                .map { it.method }
+                .toTypedArray()
+
+            response.setAllowedMethods(allowedMethods)
             response.setStatus(StatusCodes.OK)
         } else {
             executeNext = true
@@ -27,9 +30,9 @@ public class AutoOptionsInterceptor(val routes: ArrayList<Route>): Interceptor()
     }
 }
 
-public fun AppServer.enableAutoOptions() {
+fun AppServer.enableAutoOptions() {
     intercept(AutoOptionsInterceptor(routes))
 }
-public fun AppServer.disableAutoOptions() {
+fun AppServer.disableAutoOptions() {
     this.interceptors.removeAll { it.interceptor is AutoOptionsInterceptor }
 }
