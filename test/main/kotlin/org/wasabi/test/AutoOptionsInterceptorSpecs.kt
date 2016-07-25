@@ -28,7 +28,10 @@ public class AutoOptionsInterceptorSpecs : TestServerContext() {
         TestServer.appServer.enableAutoOptions()
 
         val response = options("http://localhost:${TestServer.definedPort}/person")
-        assertEquals("GET, POST", response.headers.filter { it.getName() == "Allow"}.first().getValue())
+
+        val allowHeader = response.headers.filter { it.name == "Allow"}.first()
+
+        assertEquals("GET,POST", allowHeader.value)
 
         TestServer.appServer.disableAutoOptions()
     }

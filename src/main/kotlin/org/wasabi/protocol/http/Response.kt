@@ -104,7 +104,7 @@ public class Response() {
     }
 
     public fun setAllowedMethods(allowedMethods: Array<HttpMethod>) {
-        allow = allowedMethods.joinToString(",")
+        addRawHeader("Allow", allowedMethods.map { it.name() }.joinToString(","))
     }
 
     public fun addRawHeader(name: String, value: String) {
