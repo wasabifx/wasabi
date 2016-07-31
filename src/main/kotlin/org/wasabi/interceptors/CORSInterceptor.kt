@@ -37,7 +37,6 @@ class CORSInterceptor(val routes: ArrayList<Route>, val settings: ArrayList<CORS
                         availableMethods.intersect(setting.methods)
                     }
 
-                    response.setAllowedMethods(allowedMethods.toTypedArray())
                     response.addRawHeader("Access-Control-Request-Method", allowedMethods.map { it.name() }.joinToString(","))
 
                     response.addRawHeader("Access-Control-Allow-Origin", setting.origins)
