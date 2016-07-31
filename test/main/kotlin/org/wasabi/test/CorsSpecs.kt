@@ -13,7 +13,7 @@ fun getHeader(headerName: String, response: HttpClientResponse): String? {
 }
 
 fun getCORSAllowHeader(response: HttpClientResponse): String? {
-    return getHeader("Access-Control-Request-Method", response)
+    return getHeader("Access-Control-Allow-Methods", response)
 }
 
 class CorsSpecs : TestServerContext(){
@@ -38,7 +38,7 @@ class CorsSpecs : TestServerContext(){
         val response = options("http://localhost:${TestServer.definedPort}/person")
         assertEquals("*", response.headers.filter { it.getName() == "Access-Control-Allow-Origin"}.first().getValue())
         assertEquals("Origin, X-Requested-With, Content-Type, Accept", response.headers.filter { it.getName() == "Access-Control-Allow-Headers"}.first().getValue())
-        assertEquals("GET,POST", response.headers.filter { it.getName() == "Access-Control-Request-Method"}.first().getValue())
+        assertEquals("GET,POST", getCORSAllowHeader(response))
 
         val response2 = options("http://localhost:${TestServer.definedPort}/customer")
         assertEquals(405, response2.statusCode)
@@ -57,12 +57,12 @@ class CorsSpecs : TestServerContext(){
         val response = options("http://localhost:${TestServer.definedPort}/person")
         assertEquals("*", response.headers.filter { it.getName() == "Access-Control-Allow-Origin"}.first().getValue())
         assertEquals("Origin, X-Requested-With, Content-Type, Accept", response.headers.filter { it.getName() == "Access-Control-Allow-Headers"}.first().getValue())
-        assertEquals("GET,POST,PUT", response.headers.filter { it.getName() == "Access-Control-Request-Method"}.first().getValue())
+        assertEquals("GET,POST,PUT", getCORSAllowHeader(response))
 
         val response2 = options("http://localhost:${TestServer.definedPort}/customer")
         assertEquals("*", response2.headers.filter { it.getName() == "Access-Control-Allow-Origin"}.first().getValue())
         assertEquals("Origin, X-Requested-With, Content-Type, Accept", response2.headers.filter { it.getName() == "Access-Control-Allow-Headers"}.first().getValue())
-        assertEquals("POST", response2.headers.filter { it.getName() == "Access-Control-Request-Method"}.first().getValue())
+        assertEquals("POST", getCORSAllowHeader(response2))
 
         TestServer.appServer.disableCORS()
     }
