@@ -1,9 +1,24 @@
 package org.wasabi.test
 
+import io.netty.handler.codec.http.HttpMethod
 import org.junit.Test
 import org.wasabi.interceptors.*
 import org.wasabi.protocol.http.CORSEntry
 import kotlin.test.assertEquals
+
+fun getHeader(headerName: String, response: HttpClientResponse): String? {
+    return response.headers
+            .filter { it.getName() == headerName}
+            .firstOrNull()?.value
+}
+
+fun getAllowHeader(response: HttpClientResponse): String? {
+    return getHeader("Allow", response)
+}
+
+fun getCORSAllowHeader(response: HttpClientResponse): String? {
+    return getHeader("Access-Control-Request-Method", response)
+}
 
 class CorsSpecs : TestServerContext(){
 
@@ -76,6 +91,62 @@ class CorsSpecs : TestServerContext(){
 
         val getResponse = get("http://localhost:${TestServer.definedPort}/person")
         assertEquals("/person", getResponse.headers.filter { it.getName() == "Access-Control-Allow-Origin"}.first().getValue())
+
+        TestServer.appServer.disableCORS()
+    }
+
+    @Test fun cors_should_return_correct_header_on_globally_enabled_cors () {
+        TestServer.appServer.get("/person", {})
+        TestServer.appServer.post("/person", {})
+        TestServer.appServer.patch("/person", {})
+        TestServer.appServer.head("/person", {})
+        TestServer.appServer.enableCORSGlobally()
+
+        val response = options("http://localhost:${TestServer.definedPort}/person")
+        assertEquals("GET,POST,PATCH,HEAD", getAllowHeader(response))
+        assertEquals("GET,POST,PATCH,HEAD", getCORSAllowHeader(response))
+
+        TestServer.appServer.disableCORS()
+    }
+
+    @Test fun cors_should_return_correct_header_on_custom_cors_rules () {
+        TestServer.appServer.get("/person", {})
+        TestServer.appServer.post("/person", {})
+        TestServer.appServer.patch("/person", {})
+
+        TestServer.appServer.get("/personalization", {})
+
+        TestServer.appServer.get("/account", {})
+        TestServer.appServer.post("/account", {})
+        TestServer.appServer.patch("/account", {})
+
+        TestServer.appServer.get("/thread", {})
+        TestServer.appServer.post("/thread", {})
+        TestServer.appServer.delete("/thread", {})
+
+        TestServer.appServer.enableCORS(
+            arrayListOf(
+                CORSEntry(path = "/person.*", methods = CORSEntry.ALL_AVAILABLE_METHODS),
+                CORSEntry(path = "/account.*", methods = setOf(HttpMethod.GET, HttpMethod.POST)),
+                CORSEntry(path = "/thread.*", methods = CORSEntry.NO_METHODS)
+            )
+        )
+
+        val personResponse = options("http://localhost:${TestServer.definedPort}/person")
+        assertEquals("GET,POST,PATCH", getAllowHeader(personResponse))
+        assertEquals("GET,POST,PATCH", getCORSAllowHeader(personResponse))
+
+        val personalizationResponse = options("http://localhost:${TestServer.definedPort}/personalization")
+        assertEquals("GET", getAllowHeader(personalizationResponse))
+        assertEquals("GET", getCORSAllowHeader(personalizationResponse))
+
+        val accountResponse = options("http://localhost:${TestServer.definedPort}/account")
+        assertEquals("GET,POST", getAllowHeader(accountResponse))
+        assertEquals("GET,POST", getCORSAllowHeader(accountResponse))
+
+        val threadResponse = options("http://localhost:${TestServer.definedPort}/thread")
+        assertEquals(null, getAllowHeader(threadResponse))
+        assertEquals(null, getCORSAllowHeader(threadResponse))
 
         TestServer.appServer.disableCORS()
     }

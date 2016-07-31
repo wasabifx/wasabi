@@ -23,14 +23,21 @@ class CORSInterceptor(val routes: ArrayList<Route>, val settings: ArrayList<CORS
                 if (response.statusCode == StatusCodes.OK.code) {
                     response.addRawHeader("Access-Control-Allow-Origin", setting.path)
                 }
+
                 // This handles the initial OPTIONS request during the CORS transfer.
                 if (request.method == HttpMethod.OPTIONS) {
-                    val allowedMethods = routes
+                    val availableMethods = routes
                             .filter { routeLocator.compareRouteSegments(it, request.path) }
                             .map { it.method }
-                            .toTypedArray()
+                            .toSet()
 
-                    response.setAllowedMethods(allowedMethods)
+                    val allowedMethods = if (setting.methods == CORSEntry.ALL_AVAILABLE_METHODS) {
+                        availableMethods
+                    } else {
+                        availableMethods.intersect(setting.methods)
+                    }
+
+                    response.setAllowedMethods(allowedMethods.toTypedArray())
                     response.addRawHeader("Access-Control-Request-Method", allowedMethods.map { it.name() }.joinToString(","))
 
                     response.addRawHeader("Access-Control-Allow-Origin", setting.origins)
