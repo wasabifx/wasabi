@@ -1,5 +1,6 @@
 package org.wasabi.test
 
+import org.junit.matchers.JUnitMatchers
 import org.junit.Test as spec
 import kotlin.test.assertEquals
 import java.io.File
@@ -39,7 +40,7 @@ class ConfigStorageSpecs {
 
         val exception = assertFails({ configurationStorage.loadFromFile("testData${File.separatorChar}production_bad_property.json")})
 
-        assertEquals("Invalid property in configuration file: invalid_property", exception.message)
+        assertTrue(exception.message!!.contains("Invalid property in configuration file: Unrecognized field \"invalid_property\" (class org.wasabi.app.AppConfiguration), not marked as ignorable"))
     }
 
     @spec fun loading_an_invalid_configuration_with_invalid_json_should_throw_invalid_configuration_exception() {
