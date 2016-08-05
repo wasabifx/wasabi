@@ -134,7 +134,7 @@ public class HttpRequestHandler(private val appServer: AppServer){
         {
             return
         }
-        var interceptorsToRun : List<InterceptorEntry>
+        val interceptorsToRun : List<InterceptorEntry>
         if (route == null) {
             interceptorsToRun = interceptors.filter { it.path == "*" }
         } else {
@@ -194,7 +194,9 @@ public class HttpRequestHandler(private val appServer: AppServer){
                 if (response.negotiatedMediaType != "") {
                     val serializer = appServer.serializers.firstOrNull { it.canSerialize(response.negotiatedMediaType) }
                     if (serializer != null) {
-                        response.contentType = response.negotiatedMediaType
+                        // TODO waiting on ISSUE-62 atm we are forcing UTF-8.
+                        // TODO Given we only have XML/JSON atm its not terrible but still sucks rocks.
+                        response.contentType = response.negotiatedMediaType +  ";charset=UTF-8"
                         buffer = serializer.serialize(response.sendBuffer!!)
                     } else {
                         response.setStatus(StatusCodes.UnsupportedMediaType)
@@ -233,11 +235,11 @@ public class HttpRequestHandler(private val appServer: AppServer){
     private fun deserializeBody(msg: HttpContent) {
         if (decoder != null) {
             decoder!!.offer(msg)
-            request!!.bodyParams.putAll(deserializer!!.deserialize(decoder!!.getBodyHttpDatas()))
+            request!!.bodyParams.putAll(deserializer!!.deserialize(decoder!!.bodyHttpDatas))
         } else {
             // TODO: Add support for CharSet
             val buffer = msg.content()
-            if (buffer.isReadable()) {
+            if (buffer.isReadable) {
                 val data = buffer.toString(CharsetUtil.UTF_8)
                 request!!.bodyParams.putAll(deserializer!!.deserialize(data!!))
             }

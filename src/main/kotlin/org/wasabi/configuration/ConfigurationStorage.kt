@@ -29,9 +29,9 @@ public class ConfigurationStorage {
                     throw InvalidConfigurationException("Could not read configuration")
                 }
             } catch (exception: UnrecognizedPropertyException) {
-                throw InvalidConfigurationException("Invalid property in configuration file: " + exception.getUnrecognizedPropertyName())
+                throw InvalidConfigurationException("Invalid property in configuration file: " + exception.message)
             } catch (exception: JsonParseException) {
-                throw InvalidConfigurationException("Invalid JSON in configuration file: " + exception.getLocation())
+                throw InvalidConfigurationException("Invalid JSON in configuration file: " + exception.location)
             }
         } else {
             throw InvalidConfigurationException("Configuration file does not exist")

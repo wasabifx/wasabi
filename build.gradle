@@ -44,12 +44,14 @@ dependencies {
             "org.slf4j:slf4j-api:1.7.5",
             "org.slf4j:slf4j-simple:1.7.5",
             "joda-time:joda-time:2.3",
-            "com.fasterxml.jackson.core:jackson-core:2.6.4",
-            "com.fasterxml.jackson.core:jackson-databind:2.6.4",
-            "com.fasterxml.jackson.core:jackson-annotations:2.6.4",
-            "com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.6.3",
+            "com.fasterxml.jackson.core:jackson-core:2.8.1",
+            "com.fasterxml.jackson.core:jackson-databind:2.8.1",
+            "com.fasterxml.jackson.core:jackson-annotations:2.8.1",
+            "com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.8.1",
+            "com.fasterxml.jackson.module:jackson-module-kotlin:2.8.1",
             "com.fasterxml.woodstox:woodstox-core:5.0.1",
             "org.yaml:snakeyaml:1.17",
+            // Used for HTTP2 support.
             "org.mortbay.jetty.alpn:alpn-boot:8.1.8.v20160420"
 
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"

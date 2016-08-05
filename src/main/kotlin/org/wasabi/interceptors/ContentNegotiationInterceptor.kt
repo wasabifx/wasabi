@@ -5,8 +5,6 @@ import org.wasabi.protocol.http.Response
 import org.wasabi.serializers.Serializer
 import org.wasabi.app.AppServer
 import org.wasabi.routing.InterceptOn
-import org.wasabi.serializers.JsonSerializer
-import org.wasabi.serializers.XmlSerializer
 import org.wasabi.protocol.http.StatusCodes
 
 
@@ -32,12 +30,6 @@ public class ContentNegotiationInterceptor(val serializers: List<Serializer>): I
         return executeNext
     }
 }
-
-
-
-
-
-
 
 public fun AppServer.enableContentNegotiation() {
     intercept(ContentNegotiationInterceptor(serializers), "*", InterceptOn.PostExecution)

@@ -8,6 +8,38 @@ import org.junit.Test as spec
 
 public class ContentNegotiationSpecs : TestServerContext() {
 
+    @spec fun requesting_charset_should_respond_with_such() {
+
+        val headers = hashMapOf(
+                "User-Agent" to "test-client",
+                "Cache-Control" to "max-age=0",
+                "Accept" to "application/json",
+                "Accept-Encoding" to "gzip,deflate,sdch",
+                "Accept-Language" to "en-US,en;q=0.8",
+                "Accept-Charset" to "utf-8"
+        )
+
+        val utf8Test = "Adélaïde"
+
+        TestServer.appServer.get("/customer/9", {
+
+            val obj = object {
+                val name = utf8Test
+                val email = utf8Test + "@foo.com"
+
+            }
+
+            response.send(obj)
+
+        })
+
+        val response = get("http://localhost:${TestServer.definedPort}/customer/9", headers)
+
+        assertEquals(StatusCodes.OK.code,response.statusCode)
+        assertEquals("{\"name\":\"Adélaïde\",\"email\":\"Adélaïde@foo.com\"}",response.body)
+
+    }
+
     @spec fun sending_an_object_should_encode_and_send_based_on_contentType() {
 
         val headers = hashMapOf(
@@ -17,7 +49,6 @@ public class ContentNegotiationSpecs : TestServerContext() {
                 "Accept-Encoding" to "gzip,deflate,sdch",
                 "Accept-Language" to "en-US,en;q=0.8",
                 "Accept-Charset" to "ISO-8859-1,utf-8;q=0.7,*;q=0.3"
-
         )
 
         TestServer.appServer.get("/customer/10", {
