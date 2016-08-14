@@ -147,4 +147,27 @@ public class ContentNegotiationSpecs : TestServerContext() {
         assertEquals("{\"name\":\"Joe\",\"email\":\"Joe@smith.com\"}",response.body)
 
     }
+
+    @spec fun should_apply_after_exception_appears() {
+        TestServer.appServer.exception(NullPointerException::class, {
+            response.send(exception)
+        })
+        TestServer.appServer.get("/throwException", { throw NullPointerException("Something went wrong") })
+        val expectedContentType = "application/json"
+        val headers = hashMapOf(
+                "User-Agent" to "test-client",
+                "Cache-Control" to "max-age=0",
+                "Accept" to expectedContentType,
+                "Accept-Encoding" to "gzip,deflate,sdch",
+                "Accept-Language" to "en-US,en;q=0.8",
+                "Accept-Charset" to "ISO-8859-1,utf-8;q=0.7,*;q=0.3"
+        )
+
+        val response = get("http://localhost:${TestServer.definedPort}/throwException", headers)
+
+        val actualContentType = response.headers.filter { it.name == "Content-Type" }
+                .first().value.split(";").first()
+        assertEquals(expectedContentType, actualContentType)
+        assertEquals("{\"cause\":null", response.body.substring(0, 13))
+    }
 }
