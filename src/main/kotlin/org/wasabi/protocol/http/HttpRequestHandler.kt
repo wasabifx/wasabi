@@ -81,10 +81,6 @@ public class HttpRequestHandler(private val appServer: AppServer){
 
                         // process the route specific post execution interceptors
                         runInterceptors(postExecutionInterceptors, routeHandlers)
-
-                        // Run global interceptors again
-                        runInterceptors(postExecutionInterceptors)
-
                     }
 
                 } catch (e: InvalidMethodException)  {
@@ -103,8 +99,13 @@ public class HttpRequestHandler(private val appServer: AppServer){
                     } catch (exception: ExceptionHandlerNotFoundException) {
                         response.setStatus(StatusCodes.InternalServerError)
                     }
+                } finally {
+                    if (!bypassPipeline) {
+                        // Run global interceptors again
+                        runInterceptors(postExecutionInterceptors)
+                    }
+                    writeResponse(ctx!!, response)
                 }
-                writeResponse(ctx!!, response)
             }
         }
     }
