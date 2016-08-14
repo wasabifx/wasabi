@@ -13,7 +13,6 @@ import org.wasabi.app.AppServer
 import org.wasabi.deserializers.Deserializer
 import org.wasabi.interceptors.InterceptorEntry
 import org.wasabi.routing.*
-import org.wasabi.routing.exceptions.ExceptionHandlerNotFoundException
 import java.io.FileInputStream
 import java.net.InetSocketAddress
 
@@ -91,14 +90,10 @@ public class HttpRequestHandler(private val appServer: AppServer){
                 } catch (e: Exception) {
                     log!!.debug("Exception during web invocation: ${e.message}")
                     // bypassPipeline = true
-                    try {
-                        val handler = exceptionLocator.findExceptionHandlers(e).handler
-                        val extension : ExceptionHandler.() -> Unit = handler
-                        val exceptionHandler = ExceptionHandler(request!!, response, e)
-                        exceptionHandler.extension()
-                    } catch (exception: ExceptionHandlerNotFoundException) {
-                        response.setStatus(StatusCodes.InternalServerError)
-                    }
+                    val handler = exceptionLocator.findExceptionHandlers(e).handler
+                    val extension: ExceptionHandler.() -> Unit = handler
+                    val exceptionHandler = ExceptionHandler(request!!, response, e)
+                    exceptionHandler.extension()
                 } finally {
                     if (!bypassPipeline) {
                         // Run global interceptors again

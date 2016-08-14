@@ -8,6 +8,7 @@ import org.wasabi.deserializers.MultiPartFormDataDeserializer
 import org.wasabi.exceptions.RouteAlreadyExistsException
 import org.wasabi.interceptors.*
 import org.wasabi.protocol.http.HttpServer
+import org.wasabi.protocol.http.StatusCodes
 import org.wasabi.routing.*
 import org.wasabi.serializers.JsonSerializer
 import org.wasabi.serializers.Serializer
@@ -27,7 +28,7 @@ public open class AppServer(val configuration: AppConfiguration = AppConfigurati
 
     public val routes: ArrayList<Route> = ArrayList<Route>()
     public val channels: ArrayList<Channel> = ArrayList<Channel>()
-    public val exceptionHandlers: ArrayList<RouteException> = ArrayList<RouteException>()
+    public val exceptionHandlers: MutableSet<RouteException> = mutableSetOf()
     public val interceptors : ArrayList<InterceptorEntry>  = ArrayList<InterceptorEntry>()
     public val serializers: ArrayList<Serializer> = arrayListOf(JsonSerializer(), XmlSerializer(), TextPlainSerializer())
     public val deserializers: ArrayList<Deserializer> = arrayListOf(MultiPartFormDataDeserializer(), JsonDeserializer())
@@ -54,12 +55,9 @@ public open class AppServer(val configuration: AppConfiguration = AppConfigurati
     }
 
     private fun addExceptionHandler(exceptionClass: String, handler: ExceptionHandler.() -> Unit) {
-        val existingHandler = exceptionHandlers.filter { it.exceptionClass == exceptionClass }
-        if (existingHandler.count() >= 1) {
-            throw HandlerAlreadyExistsException(existingHandler.firstOrNull()!!)
-        } else {
-            exceptionHandlers.add(RouteException(exceptionClass, handler))
-        }
+        val newRouteException = RouteException(exceptionClass, handler)
+        exceptionHandlers.remove(newRouteException)
+        exceptionHandlers.add(newRouteException)
     }
 
     public fun init() {
@@ -74,6 +72,10 @@ public open class AppServer(val configuration: AppConfiguration = AppConfigurati
         }
         if (configuration.enableCORSGlobally) {
             enableCORSGlobally()
+        }
+        exception {
+            logger.error("Uncaught exception: ", exception)
+            response.setStatus(StatusCodes.InternalServerError)
         }
     }
 
@@ -148,6 +150,10 @@ public open class AppServer(val configuration: AppConfiguration = AppConfigurati
 
     public fun exception(exception: KClass<*>, handler: ExceptionHandler.() -> Unit) {
         addExceptionHandler(exception.qualifiedName!!, handler)
+    }
+
+    public fun exception(handler: ExceptionHandler.() -> Unit) {
+        addExceptionHandler("", handler)
     }
 
     public fun intercept(interceptor: Interceptor, path: String = "*", interceptOn: InterceptOn = InterceptOn.PreExecution) {
