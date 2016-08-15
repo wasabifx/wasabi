@@ -58,6 +58,7 @@ object TestServer {
         appServer.routes.clear()
         appServer.interceptors.clear()
         appServer.channels.clear()
+        appServer.exceptionHandlers.clear();
 
         appServer.init()
     }
