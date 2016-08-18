@@ -8,6 +8,7 @@ import io.netty.handler.codec.http.HttpResponseEncoder
 import io.netty.handler.ssl.SslContext
 import org.slf4j.LoggerFactory
 import org.wasabi.app.AppServer
+import org.wasabi.app.configuration
 import org.wasabi.protocol.http.ProtocolNegotiator
 
 
@@ -29,7 +30,7 @@ public class NettyPipelineInitializer(private val appServer: AppServer, private 
         val pipeline = ch.pipeline()
         pipeline.addLast("decoder", HttpRequestDecoder())
         pipeline.addLast("encoder", HttpResponseEncoder())
-        pipeline.addLast("aggregator", HttpObjectAggregator(1048576))
+        pipeline.addLast("aggregator", HttpObjectAggregator(configuration!!.maxHttpContentLength))
         pipeline.addLast("handler", HttpPipelineInitializer(appServer))
     }
 }
