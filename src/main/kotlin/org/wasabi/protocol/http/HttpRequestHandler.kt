@@ -174,7 +174,18 @@ public class HttpRequestHandler(private val appServer: AppServer){
             if (request!!.connection.compareTo("close", ignoreCase = true) == 0) {
                 lastContentFuture.addListener(ChannelFutureListener.CLOSE)
             }
-        }  else {
+        } else if (response.negotiatedMediaType == "application/octet-stream") {
+            httpResponse = DefaultHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus(response.statusCode, response.statusDescription));
+            response.setHeaders()
+            addResponseHeaders(httpResponse, response)
+            ctx.write(httpResponse)
+            ctx.write(Unpooled.wrappedBuffer(response.sendBuffer as ByteArray))
+            val lastContentFuture = ctx.writeAndFlush(LastHttpContent.EMPTY_LAST_CONTENT)
+
+            if (request!!.connection.compareTo("close", ignoreCase = true) == 0) {
+                lastContentFuture.addListener(ChannelFutureListener.CLOSE)
+            }
+        } else {
             // TODO: Make this a stream
             // TODO: This should encapsulate the above file stream also so we get ditch the virtual two points of return
             // TODO: The current file handling completely bypasses the postrequest interceptors ( badness9000 )
