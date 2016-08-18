@@ -57,7 +57,7 @@ class ProtocolNegotiator(val appServer: AppServer) : ApplicationProtocolNegotiat
         pipeline.addLast("decoder", HttpRequestDecoder())
         pipeline.addLast("encoder", HttpResponseEncoder())
         pipeline.addAfter(context.name(), "chunkedWriter", ChunkedWriteHandler());
-        pipeline.addAfter("chunkedWriter", "http1", NettyRequestHandler(appServer));
+        pipeline.addAfter("chunkedWriter", "http1", HttpRequestHandler(appServer));
         pipeline.replace(this, "aggregator", HttpObjectAggregator(configuration!!.maxHttpContentLength))
     }
 }

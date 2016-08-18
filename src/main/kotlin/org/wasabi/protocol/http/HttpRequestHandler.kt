@@ -3,6 +3,7 @@ package org.wasabi.protocol.http
 import io.netty.buffer.Unpooled
 import io.netty.channel.ChannelFutureListener
 import io.netty.channel.ChannelHandlerContext
+import io.netty.channel.SimpleChannelInboundHandler
 import io.netty.handler.codec.http.*
 import io.netty.handler.codec.http.multipart.DefaultHttpDataFactory
 import io.netty.handler.codec.http.multipart.HttpPostRequestDecoder
@@ -16,7 +17,7 @@ import org.wasabi.routing.*
 import java.io.FileInputStream
 import java.net.InetSocketAddress
 
-public class HttpRequestHandler(private val appServer: AppServer){
+public class HttpRequestHandler(private val appServer: AppServer): SimpleChannelInboundHandler<Any?>(){
 
     var request: Request? = null
     val factory = DefaultHttpDataFactory(DefaultHttpDataFactory.MINSIZE)
@@ -35,7 +36,7 @@ public class HttpRequestHandler(private val appServer: AppServer){
     var routeLocator = PatternAndVerbMatchingRouteLocator(appServer.routes)
     var exceptionLocator = ClassMatchingExceptionHandlerLocator(appServer.exceptionHandlers)
 
-    public fun handleRequest(ctx: ChannelHandlerContext?, msg: Any?) {
+    override fun channelRead0(ctx: ChannelHandlerContext?, msg: Any?)  {
         if (msg is HttpRequest) {
             request = Request(msg, ctx!!.channel().remoteAddress() as InetSocketAddress)
 

@@ -2,12 +2,16 @@ package org.wasabi.core
 
 import io.netty.channel.ChannelHandlerContext
 import io.netty.channel.SimpleChannelInboundHandler
-import io.netty.handler.codec.http.*
+import io.netty.handler.codec.http.FullHttpRequest
+import io.netty.handler.codec.http.HttpHeaders
+import io.netty.handler.codec.http.HttpMessage
+import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler
 import io.netty.handler.stream.ChunkedWriteHandler
 import org.slf4j.LoggerFactory
 import org.wasabi.app.AppServer
-import org.wasabi.protocol.http.NettyRequestHandler
+import org.wasabi.protocol.http.HttpRequestHandler
 import org.wasabi.protocol.http2.Http2HandlerBuilder
+import org.wasabi.protocol.websocket.WebSocketFrameHandler
 
 class HttpPipelineInitializer(val appServer: AppServer) : SimpleChannelInboundHandler<HttpMessage>() {
 
@@ -17,7 +21,10 @@ class HttpPipelineInitializer(val appServer: AppServer) : SimpleChannelInboundHa
         // If we get here no connection upgrade was requested
         logger.info("Direct " + msg!!.protocolVersion() + " connection (no upgrade was attempted)");
 
-        logger.info(msg.protocolVersion().text());
+        // Increment the retain count due to our pipeline setup, if we don't it gets released during
+        // WebSocket handshake or post pipeline flush.
+        val fullMessage = msg as FullHttpRequest
+        fullMessage.retain()
 
         when(msg.protocolVersion().text()) {
             "HTTP/2.0"-> initHttp2Pipeline(ctx, msg)
@@ -40,13 +47,29 @@ class HttpPipelineInitializer(val appServer: AppServer) : SimpleChannelInboundHa
     private fun initHttpPipeline(ctx: ChannelHandlerContext?, msg: HttpMessage?)
     {
         logger.info("initHttpPipeline")
+
+        if (msg!!.headers().get(HttpHeaders.Names.UPGRADE) == "websocket") {
+            applyWebSocketPipeline(ctx, msg)
+        } else {
+            applyHttp1Pipeline(ctx, msg)
+        }
+
+    }
+
+    private fun applyWebSocketPipeline(ctx: ChannelHandlerContext?, msg: HttpMessage?) {
         val pipeline = ctx!!.pipeline();
         val context = pipeline.context(this);
-        pipeline.addLast("decoder", HttpRequestDecoder())
-        pipeline.addLast("encoder", HttpResponseEncoder())
+        // TODO check we have a channel handler for url and set below instead of "/ws"
+        pipeline.addLast(WebSocketServerProtocolHandler("/ws", null, true));
+        pipeline.addLast(WebSocketFrameHandler())
+        context.fireChannelRead(msg);
+    }
+
+    private fun applyHttp1Pipeline(ctx: ChannelHandlerContext?, msg: HttpMessage?) {
+        val pipeline = ctx!!.pipeline();
+        val context = pipeline.context(this);
         pipeline.addAfter(context.name(), "chunkedWriter", ChunkedWriteHandler());
-        pipeline.addAfter("chunkedWriter", "http1", NettyRequestHandler(appServer));
-        pipeline.replace(this, "aggregator", HttpObjectAggregator(1048576))
+        pipeline.addAfter("chunkedWriter", "http1", HttpRequestHandler(appServer));
         context.fireChannelRead(msg);
     }
 }
