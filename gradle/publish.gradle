@@ -12,8 +12,8 @@ publishing {
 }
 
 bintray {
-    user = ${BINTRAY_USER}
-    key = ${BINTRAY_KEY}
+    user = "${BINTRAY_USER}"
+    key = "${BINTRAY_KEY}"
     publications = ['MyMavenPublication']
     publish = true
     pkg {
