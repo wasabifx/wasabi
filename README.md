@@ -440,7 +440,7 @@ Contributions
 -------------
 There's a lot of work still pending and any help would be appreciated. Pull Requests welcome! 
 
-We have the project building on TeamCity. Click on the Icon at the top of this ReadMe to go to the build
+We have the project building on TeamCity. Click on the Icon at the top of this ReadMe to go to the build.
 
 
 
