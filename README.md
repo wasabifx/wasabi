@@ -71,7 +71,7 @@ repositories {
 
 dependencies {
     // Other dependencies you use.
-    compile 'org.wasabi:wasabi:0.1-SNAPSHOT'
+    compile 'org.wasabifx:wasabi:0.1-SNAPSHOT'
 }
 ```
 

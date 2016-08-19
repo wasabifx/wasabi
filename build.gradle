@@ -1,3 +1,13 @@
+buildscript {
+    ext.kotlin_version = '1.0.3'
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
 plugins {
     id "com.zoltu.kotlin" version "1.0.3"
     id "com.zoltu.git-versioning" version "2.0.21"
@@ -8,6 +18,7 @@ plugins {
 def kotlin_version = "1.0.3"
 
 apply from: 'gradle/package.gradle'
+apply plugin: 'kotlin'
 apply from: 'gradle/publish.gradle'
 
 repositories {
@@ -37,13 +48,17 @@ dependencies {
     // Used for HTTP2 support.
     compile "org.mortbay.jetty.alpn:alpn-boot:8.1.8.v20160420"
 
-    testCompile "junit:junit:4.9"
+    testCompile "junit:junit:4.12"
     testCompile "org.mockito:mockito-all:1.9.5"
     testCompile "org.apache.httpcomponents:httpclient:4.5.1"
     testCompile 'com.squareup.okhttp3:okhttp:3.2.0'
     testCompile "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
 }
 
+sourceSets {
+    main.java.srcDirs += 'src/main/kotlin'
+    test.java.srcDirs += 'test/main/kotlin'
+}
 test {
     // set heap size for the test JVM(s)
     minHeapSize = "128m"
