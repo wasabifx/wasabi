@@ -1,3 +1,6 @@
+[ ![Download](https://api.bintray.com/packages/wasabifx/wasabifx/wasabi/images/download.svg) ](https://bintray.com/wasabifx/wasabifx/wasabi/_latestVersion)
+[ ![TeamCity](http://teamcity.jetbrains.com/app/rest/builds/buildType:(id:Wasabi_FullBuild)/statusIcon)](http://teamcity.jetbrains.com/viewType.html?buildTypeId=Wasabi_FullBuild)
+
 Wasabi - An HTTP Framework
 ========================
 
@@ -74,8 +77,6 @@ dependencies {
     compile 'org.wasabi:wasabi:0.1-SNAPSHOT'
 }
 ```
-
-All versions can be found here: http://repository.jetbrains.com/all/org/wasabi/wasabi/
 
 ### Important: Versioning 
 
@@ -451,11 +452,7 @@ Contributions
 -------------
 There's a lot of work still pending and any help would be appreciated. Pull Requests welcome! 
 
-We have the project building on TeamCity. Click on the Icon to go to the build
-
-<a href="http://teamcity.jetbrains.com/viewType.html?buildTypeId=Wasabi_FullBuild">
-<img src="http://teamcity.jetbrains.com/app/rest/builds/buildType:(id:Wasabi_FullBuild)/statusIcon"/>
-</a>
+We have the project building on TeamCity. Click on the Icon at the top of this ReadMe to go to the build
 
 
 
