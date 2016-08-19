@@ -47,7 +47,7 @@ class HttpPipelineInitializer(val appServer: AppServer) : SimpleChannelInboundHa
 
     private fun initHttpPipeline(ctx: ChannelHandlerContext?, msg: HttpMessage?)
     {
-        logger.info("Initialising HTTP Pipeline")
+        logger.debug("Initialising HTTP Pipeline")
 
         if (msg!!.headers().get(HttpHeaders.Names.UPGRADE) == "websocket") {
             applyWebSocketPipeline(ctx, msg)

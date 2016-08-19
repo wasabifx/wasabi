@@ -6,10 +6,10 @@ import io.netty.handler.codec.http.HttpRequestDecoder
 import io.netty.handler.codec.http.HttpResponseEncoder
 import io.netty.handler.ssl.ApplicationProtocolNames
 import io.netty.handler.ssl.ApplicationProtocolNegotiationHandler
-import io.netty.handler.stream.ChunkedWriteHandler
 import org.slf4j.LoggerFactory
 import org.wasabi.app.AppServer
 import org.wasabi.app.configuration
+import org.wasabi.core.HttpPipelineInitializer
 import org.wasabi.protocol.http2.Http2HandlerBuilder
 
 /**
@@ -52,11 +52,9 @@ class ProtocolNegotiator(val appServer: AppServer) : ApplicationProtocolNegotiat
     {
         logger.debug("Initialising HTTP Pipeline")
         val pipeline = ctx!!.pipeline();
-        val context = pipeline.context(this);
         pipeline.addLast("decoder", HttpRequestDecoder())
         pipeline.addLast("encoder", HttpResponseEncoder())
-        pipeline.addAfter(context.name(), "chunkedWriter", ChunkedWriteHandler());
-        pipeline.addAfter("chunkedWriter", "http1", HttpRequestHandler(appServer));
-        pipeline.replace(this, "aggregator", HttpObjectAggregator(configuration!!.maxHttpContentLength))
+        pipeline.addLast("aggregator", HttpObjectAggregator(configuration!!.maxHttpContentLength))
+        pipeline.addLast("handler", HttpPipelineInitializer(appServer))
     }
 }

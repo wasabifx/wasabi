@@ -25,7 +25,7 @@ class NettyPipelineInitializer(private val appServer: AppServer, private val ssl
     }
 
     private fun initBasicChannel(ch: SocketChannel) {
-        logger.info("initBasicHandler")
+        logger.debug("Initialising initial Wasabi pipeline")
         val pipeline = ch.pipeline()
         pipeline.addLast("decoder", HttpRequestDecoder())
         pipeline.addLast("encoder", HttpResponseEncoder())
