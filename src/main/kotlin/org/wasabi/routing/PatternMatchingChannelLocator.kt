@@ -1,6 +1,6 @@
 package org.wasabi.routing
 
-import org.wasabi.websocket.Channel
+import org.wasabi.protocol.websocket.Channel
 import java.util.ArrayList
 
 /**

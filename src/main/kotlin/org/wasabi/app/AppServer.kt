@@ -14,8 +14,8 @@ import org.wasabi.serializers.JsonSerializer
 import org.wasabi.serializers.Serializer
 import org.wasabi.serializers.TextPlainSerializer
 import org.wasabi.serializers.XmlSerializer
-import org.wasabi.websocket.Channel
-import org.wasabi.websocket.ChannelHandler
+import org.wasabi.protocol.websocket.Channel
+import org.wasabi.protocol.websocket.ChannelHandler
 import java.util.*
 import kotlin.reflect.KClass
 

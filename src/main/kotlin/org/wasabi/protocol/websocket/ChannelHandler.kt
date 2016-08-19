@@ -1,4 +1,4 @@
-package org.wasabi.websocket
+package org.wasabi.protocol.websocket
 
 import io.netty.channel.ChannelHandlerContext
 import io.netty.handler.codec.http.websocketx.WebSocketFrame

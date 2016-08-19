@@ -1,4 +1,4 @@
-package org.wasabi.websocket
+package org.wasabi.protocol.websocket
 
 /**
  * Created with IntelliJ IDEA.
