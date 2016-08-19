@@ -1,3 +1,6 @@
+[ ![Download](https://api.bintray.com/packages/wasabifx/wasabifx/wasabi/images/download.svg) ](https://bintray.com/wasabifx/wasabifx/wasabi/_latestVersion)
+[ ![TeamCity](http://teamcity.jetbrains.com/app/rest/builds/buildType:(id:Wasabi_FullBuild)/statusIcon)](http://teamcity.jetbrains.com/viewType.html?buildTypeId=Wasabi_FullBuild)
+
 Wasabi - An HTTP Framework
 ========================
 
@@ -59,23 +62,9 @@ The easiest way to use Wasabi is with Gradle.
 
   * Create it manually. See the [sample for the structure](tools/sample.gradle). Make sure you fill in the TODOs
 
-#### Including as a dependency (Gradle) ####
+#### Including as a dependency (Gradle/Maven/Ivy) ####
 
-For Gradle projects, 0.1-SNAPSHOT version can be included like this (`build.gradle` file):
-
-```groovie
-repositories {
-    // Other repositories you use.
-    maven { url 'http://repository.jetbrains.com/all' }
-}
-
-dependencies {
-    // Other dependencies you use.
-    compile 'org.wasabi:wasabi:0.1-SNAPSHOT'
-}
-```
-
-All versions can be found here: http://repository.jetbrains.com/all/org/wasabi/wasabi/
+Follow the instructions on [BinTray](https://bintray.com/wasabifx/wasabifx/wasabi) for adding a dependency in your build system.
 
 ### Important: Versioning 
 
@@ -451,11 +440,7 @@ Contributions
 -------------
 There's a lot of work still pending and any help would be appreciated. Pull Requests welcome! 
 
-We have the project building on TeamCity. Click on the Icon to go to the build
-
-<a href="http://teamcity.jetbrains.com/viewType.html?buildTypeId=Wasabi_FullBuild">
-<img src="http://teamcity.jetbrains.com/app/rest/builds/buildType:(id:Wasabi_FullBuild)/statusIcon"/>
-</a>
+We have the project building on TeamCity. Click on the Icon at the top of this ReadMe to go to the build.
 
 
 
