@@ -6,6 +6,7 @@ publishing {
     publications {
         MyMavenPublication(MavenPublication) {
             from components.java
+            artifactId 'wasabi'
             artifact sourceJar
         }
     }
