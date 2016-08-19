@@ -1,0 +1,24 @@
+artifacts {
+    archives sourceJar
+}
+
+publishing {
+    publications {
+        MyMavenPublication(MavenPublication) {
+            from components.java
+            artifact sourceJar
+        }
+    }
+}
+
+bintray {
+    user = System.getenv('BINTRAY_USER')
+    key = System.getenv('BINTRAY_KEY')
+    publications = ['MyMavenPublication']
+    publish = true
+    pkg {
+        userOrg = 'wasabifx'
+        repo = 'wasabifx'
+        name = 'wasabi'
+    }
+}

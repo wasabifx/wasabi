@@ -1,0 +1,16 @@
+group 'org.wasabifx'
+
+jar {
+    manifest {
+        attributes(
+                "Implementation-Title": "wasabi",
+                "Implementation-Vendor": "wasabifx"
+        )
+    }
+}
+
+task sourceJar(type: Jar) {
+    from sourceSets.main.allSource
+    classifier "sources"
+    setManifest(jar.getManifest())
+}
