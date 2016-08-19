@@ -17,7 +17,7 @@ import org.wasabi.routing.*
 import java.io.FileInputStream
 import java.net.InetSocketAddress
 
-public class HttpRequestHandler(private val appServer: AppServer): SimpleChannelInboundHandler<Any?>(){
+class HttpRequestHandler(private val appServer: AppServer): SimpleChannelInboundHandler<Any?>(){
 
     var request: Request? = null
     val factory = DefaultHttpDataFactory(DefaultHttpDataFactory.MINSIZE)

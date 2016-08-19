@@ -17,7 +17,7 @@ import java.security.cert.CertificateFactory
 import javax.net.ssl.TrustManagerFactory
 
 
-public class HttpServer(private val appServer: AppServer) {
+class HttpServer(private val appServer: AppServer) {
 
     val bootstrap: ServerBootstrap
     val primaryGroup : NioEventLoopGroup
@@ -87,8 +87,7 @@ public class HttpServer(private val appServer: AppServer) {
         }
     }
 
-
-    public fun start(wait: Boolean = true) {
+    fun start(wait: Boolean = true) {
         val channel = bootstrap.bind(appServer.configuration.port)?.sync()?.channel()
 
         if (wait) {
@@ -96,7 +95,7 @@ public class HttpServer(private val appServer: AppServer) {
         }
     }
 
-    public fun stop() {
+    fun stop() {
 
         // Shutdown all event loops
         primaryGroup.shutdownGracefully()

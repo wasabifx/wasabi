@@ -40,18 +40,17 @@ class ProtocolNegotiator(val appServer: AppServer) : ApplicationProtocolNegotiat
      */
     private fun initHttp2Pipeline(ctx: ChannelHandlerContext?)
     {
-        logger.info("initHttp2Pipeline")
+        logger.debug("Initialising HTTP/2 Pipeline")
         val pipeline = ctx!!.pipeline()
         pipeline.addLast("http2", Http2HandlerBuilder(appServer).build());
     }
 
     /**
      * Here we setup our basic HTTP1 pipeline.
-     * TODO max size should be configuration property.
      */
     private fun initHttpPipeline(ctx: ChannelHandlerContext?)
     {
-        logger.info("initHttpPipeline")
+        logger.debug("Initialising HTTP Pipeline")
         val pipeline = ctx!!.pipeline();
         val context = pipeline.context(this);
         pipeline.addLast("decoder", HttpRequestDecoder())

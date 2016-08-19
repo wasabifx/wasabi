@@ -11,8 +11,7 @@ import org.wasabi.app.AppServer
 import org.wasabi.app.configuration
 import org.wasabi.protocol.http.ProtocolNegotiator
 
-
-public class NettyPipelineInitializer(private val appServer: AppServer, private val sslContext: SslContext?):
+class NettyPipelineInitializer(private val appServer: AppServer, private val sslContext: SslContext?):
                         ChannelInitializer<SocketChannel>() {
 
     private val logger = LoggerFactory.getLogger(NettyPipelineInitializer::class.java)
