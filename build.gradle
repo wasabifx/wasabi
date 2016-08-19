@@ -41,6 +41,7 @@ dependencies {
     testCompile "org.mockito:mockito-all:1.9.5"
     testCompile "org.apache.httpcomponents:httpclient:4.5.1"
     testCompile 'com.squareup.okhttp3:okhttp:3.2.0'
+    testCompile "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
 }
 
 test {

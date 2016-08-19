@@ -49,8 +49,8 @@ task setup << {
 task createGradle(dependsOn: setup) << {
         println('Creating build.gradle file ...')
         def gradleFile = new File(project.dir+'/build.gradle')
-       
-         
+
+
         def mainClass = project.package + '.' + 'ServerKt'
         gradleFile.append("""\
 buildscript {
@@ -82,7 +82,7 @@ repositories {
 }
 
 dependencies {
-    compile "org.wasabi:wasabi:0.1-SNAPSHOT"
+    compile "org.wasabifx:wasabi:0.1-SNAPSHOT"
     compile "org.jetbrains.kotlin:kotlin-stdlib:\$kotlin_version"
 
 }
@@ -115,7 +115,7 @@ task server(dependsOn: createGradle) << {
         serverFile.append("""\
 package ${project.package}
 
-import org.wasabi.app.AppServer
+import org.wasabifx.app.AppServer
 
 fun main(args: Array<String>) {
 
