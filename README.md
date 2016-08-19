@@ -62,21 +62,9 @@ The easiest way to use Wasabi is with Gradle.
 
   * Create it manually. See the [sample for the structure](tools/sample.gradle). Make sure you fill in the TODOs
 
-#### Including as a dependency (Gradle) ####
+#### Including as a dependency (Gradle/Maven/Ivy) ####
 
-For Gradle projects, 0.1-SNAPSHOT version can be included like this (`build.gradle` file):
-
-```groovie
-repositories {
-    // Other repositories you use.
-    maven { url 'http://repository.jetbrains.com/all' }
-}
-
-dependencies {
-    // Other dependencies you use.
-    compile 'org.wasabi:wasabi:0.1-SNAPSHOT'
-}
-```
+Follow the instructions on [BinTray](https://bintray.com/wasabifx/wasabifx/wasabi) for adding a dependency in your build system.
 
 ### Important: Versioning 
 
