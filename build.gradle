@@ -17,8 +17,8 @@ plugins {
 
 def kotlin_version = "1.0.3"
 
-apply from: 'gradle/package.gradle'
 apply plugin: 'kotlin'
+apply from: 'gradle/package.gradle'
 apply from: 'gradle/publish.gradle'
 
 repositories {
@@ -54,6 +54,7 @@ dependencies {
     testCompile 'com.squareup.okhttp3:okhttp:3.2.0'
     testCompile "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
 }
+
 
 sourceSets {
     main.java.srcDirs += 'src/main/kotlin'
