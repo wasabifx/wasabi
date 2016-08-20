@@ -1,6 +1,6 @@
 group 'org.wasabifx'
 
-println "##teamcity[setParameter name=\'buildVersion\' value=\'${version}\' Importance=\'high\'"
+println "##teamcity[setParameter name=\'buildVersion\' value=\'${version}\' Importance=\'high\']"
 
 jar {
     manifest {
