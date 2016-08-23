@@ -178,10 +178,14 @@ class HttpRequestHandler(private val appServer: AppServer): SimpleChannelInbound
             }
         } else if (response.negotiatedMediaType == "application/octet-stream") {
             httpResponse = DefaultHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus(response.statusCode, response.statusDescription));
+            val responseBytes = response.sendBuffer as ByteArray
+            if (response.contentLength <= 0) {
+                response.contentLength = responseBytes.size
+            }
             response.setHeaders()
             addResponseHeaders(httpResponse, response)
             ctx.write(httpResponse)
-            ctx.write(Unpooled.wrappedBuffer(response.sendBuffer as ByteArray))
+            ctx.write(Unpooled.wrappedBuffer(responseBytes))
             val lastContentFuture = ctx.writeAndFlush(LastHttpContent.EMPTY_LAST_CONTENT)
 
             if (request!!.connection.compareTo("close", ignoreCase = true) == 0) {
