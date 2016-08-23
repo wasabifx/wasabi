@@ -433,6 +433,21 @@ appServer.exception(MyKewlException::class, {
 like other Wasabi handlers the registered exception handler gets passed the request and response as well as the
 exception thrown.
 
+## WebSocket Support ##
+Wasabi has initial WebSocket support which automatically handles websocket handshake and socket upgrade.
+Wasabi allows the registration of multiple 'channels' per appserver and you can declare a handler per channel.
+As our websocket support matures we intend to allow the registration of interceptors and serializers in the 
+manner our HTTP / HTTP/2 pipeline does currently. 
+
+```kotlin
+    appServer.channel("/foo", {
+        if (frame is TextWebSocketFrame) {
+            val textFrame = frame as TextWebSocketFrame
+            response.frame = TextWebSocketFrame(textFrame.text().toUpperCase())
+        }
+    })
+```
+
 ## Community ##
 We're mostly hanging out on the #wasabi Channel on [Kotlin's Slack](http://kotlinslackin.herokuapp.com). Join us there for questions and discussions.
 
