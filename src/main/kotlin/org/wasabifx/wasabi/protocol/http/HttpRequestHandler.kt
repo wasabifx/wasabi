@@ -202,6 +202,10 @@ class HttpRequestHandler(private val appServer: AppServer): SimpleChannelInbound
             } else if (response.sendBuffer is String) {
                 if (response.sendBuffer as String != "") {
                     buffer = (response.sendBuffer as String)
+                    // Work around for edge case where manual JSON string is
+                    // generated and response type declared on route.
+                    if (response.negotiatedMediaType != "")
+                        response.contentType = response.negotiatedMediaType
                 }
             } else {
                 if (response.negotiatedMediaType != "") {
