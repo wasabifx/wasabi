@@ -11,12 +11,16 @@ class WebSocketFrameHandler(val handler: ChannelHandler.() -> Unit): SimpleChann
 
     override fun channelRead0(ctx: ChannelHandlerContext?, msg: WebSocketFrame?) {
 
-        // TODO wrap the frame ala wasabi HttpResponse so we can wrap interceptors into the pipeline and
-        // TODO wasabi users don't have to care about the underlying context.
+        // Init a new wrapper for the current frame.
+        val response = Response()
 
         // Grab the handler for the current channel.
         val channelExtension : ChannelHandler.() -> Unit = handler
-        val channelHandler = ChannelHandler(ctx, msg!!)
+        val channelHandler = ChannelHandler(ctx, msg!!, response)
         channelHandler.channelExtension()
+
+        // Write and flush the final frame
+        ctx!!.channel().write(response.frame)
+        ctx.flush()
     }
 }
