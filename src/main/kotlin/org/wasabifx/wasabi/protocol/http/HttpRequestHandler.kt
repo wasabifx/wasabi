@@ -180,7 +180,7 @@ class HttpRequestHandler(private val appServer: AppServer): SimpleChannelInbound
             httpResponse = DefaultHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus(response.statusCode, response.statusDescription));
             val responseBytes = response.sendBuffer as ByteArray
             if (response.contentLength <= 0) {
-                response.contentLength = responseBytes.size
+                response.contentLength = responseBytes.size.toLong()
             }
             response.setHeaders()
             addResponseHeaders(httpResponse, response)
