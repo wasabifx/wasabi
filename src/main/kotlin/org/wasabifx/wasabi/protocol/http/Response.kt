@@ -10,43 +10,43 @@ import java.util.*
 import javax.activation.MimetypesFileTypeMap
 
 
-public class Response() {
+class Response() {
 
-    public val rawHeaders: HashMap<String, String> = HashMap<String, String>()
+    val rawHeaders: HashMap<String, String> = HashMap<String, String>()
 
-    public var etag: String = ""
-    public var resourceId: String? = null
-    public var location: String = ""
-    public var contentType: String = ContentType.Companion.Text.Plain.toString()
-    public var contentLength: Long = 0
-    public var statusCode: Int = 200
-    public var statusDescription: String = ""
-    public var allow: String = ""
-    public var absolutePathToFileToStream: String = ""
+    var etag: String = ""
+    var resourceId: String? = null
+    var location: String = ""
+    var contentType: String = ContentType.Companion.Text.Plain.toString()
+    var contentLength: Long? = null
+    var statusCode: Int = 200
+    var statusDescription: String = ""
+    var allow: String = ""
+    var absolutePathToFileToStream: String = ""
         private set
-    public var sendBuffer: Any? = null
+    var sendBuffer: Any? = null
         private set
-    public var overrideContentNegotiation: Boolean = false
-    public val cookies : HashMap<String, Cookie> = HashMap<String, Cookie>()
-    public var requestedContentTypes: ArrayList<String> = arrayListOf()
-    public var negotiatedMediaType: String = ""
-    public var connection: String = "close"
-    public var cacheControl: String = "max-age=0"
-    public var lastModified: DateTime? = null
+    var overrideContentNegotiation: Boolean = false
+    val cookies : HashMap<String, Cookie> = HashMap<String, Cookie>()
+    var requestedContentTypes: ArrayList<String> = arrayListOf()
+    var negotiatedMediaType: String = ""
+    var connection: String = "close"
+    var cacheControl: String = "max-age=0"
+    var lastModified: DateTime? = null
 
 
 
-    public fun redirect(url: String, redirectType: StatusCodes = StatusCodes.Found) {
+    fun redirect(url: String, redirectType: StatusCodes = StatusCodes.Found) {
         setStatus(redirectType)
         location = url
     }
 
-    public fun setFileResponseHeaders(filename: String, contentType: String = "*/*") {
+    fun setFileResponseHeaders(filename: String, contentType: String = "*/*") {
 
         val file = File(filename)
-        if (file.exists() && !file.isDirectory()) {
+        if (file.exists() && !file.isDirectory) {
             this.absolutePathToFileToStream = file.getAbsolutePath()
-            var fileContentType : String?
+            val fileContentType : String?
             when (contentType) {
                 "*/*" -> when {
                     file.extension.compareTo("css", ignoreCase = true) == 0 -> {
@@ -56,7 +56,7 @@ public class Response() {
                         fileContentType = "application/javascript"
                     }
                     else -> {
-                        var mimeTypesMap: MimetypesFileTypeMap? = MimetypesFileTypeMap()
+                        val mimeTypesMap: MimetypesFileTypeMap? = MimetypesFileTypeMap()
                         fileContentType = mimeTypesMap!!.getContentType(file)
                     }
                 }
@@ -74,7 +74,7 @@ public class Response() {
     }
 
 
-    public fun send(obj: Any, contentType: String = "*/*") {
+    fun send(obj: Any, contentType: String = "*/*") {
         sendBuffer = obj
         if (contentType != "*/*") {
             negotiatedMediaType = contentType
@@ -82,7 +82,7 @@ public class Response() {
     }
 
 
-    public fun negotiate(vararg negotiations: Pair<String, Response.() -> Unit>) {
+    fun negotiate(vararg negotiations: Pair<String, Response.() -> Unit>) {
         for ((mediaType, func) in negotiations) {
             if (requestedContentTypes.any { it.compareTo(mediaType, ignoreCase = true) == 0}) {
                 func()
@@ -93,21 +93,21 @@ public class Response() {
         setStatus(StatusCodes.UnsupportedMediaType)
     }
 
-    public fun setStatus(statusCode: Int, statusDescription: String) {
+    fun setStatus(statusCode: Int, statusDescription: String) {
         this.statusCode = statusCode
         this.statusDescription = statusDescription
     }
 
-    public fun setStatus(statusCode: StatusCodes, statusDescription: String = statusCode.description) {
+    fun setStatus(statusCode: StatusCodes, statusDescription: String = statusCode.description) {
         this.statusCode = statusCode.code
         this.statusDescription = statusDescription
     }
 
-    public fun setAllowedMethods(allowedMethods: Array<HttpMethod>) {
+    fun setAllowedMethods(allowedMethods: Array<HttpMethod>) {
         addRawHeader("Allow", allowedMethods.map { it.name() }.joinToString(","))
     }
 
-    public fun addRawHeader(name: String, value: String) {
+    fun addRawHeader(name: String, value: String) {
         if (value != ""){
             rawHeaders[name] = value
         }
@@ -122,12 +122,12 @@ public class Response() {
     }
 
 
-    public fun setHeaders() {
+    fun setHeaders() {
         setResponseCookies()
         addRawHeader("ETag", etag)
         addRawHeader("Location", location)
         addRawHeader("Content-Type", contentType)
-        if (contentLength > 0) {
+        if (contentLength != null) {
             addRawHeader("Content-Length", contentLength.toString())
         }
         addRawHeader("Connection", connection)
@@ -138,7 +138,7 @@ public class Response() {
         }
     }
 
-    public fun convertToDateFormat(dateTime: DateTime): String {
+    fun convertToDateFormat(dateTime: DateTime): String {
         val dt = DateTime(dateTime, DateTimeZone.forID("GMT"))
         val dtf = DateTimeFormat.forPattern("EEE, dd MMM yyyy HH:mm:ss")
         return "${dtf?.print(dt).toString()} GMT"
