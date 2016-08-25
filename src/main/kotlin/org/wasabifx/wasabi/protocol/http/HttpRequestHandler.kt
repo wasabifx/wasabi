@@ -179,9 +179,7 @@ class HttpRequestHandler(private val appServer: AppServer): SimpleChannelInbound
         } else if (response.negotiatedMediaType == "application/octet-stream") {
             httpResponse = DefaultHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus(response.statusCode, response.statusDescription));
             val responseBytes = response.sendBuffer as ByteArray
-            if (response.contentLength != null) {
-                response.contentLength = responseBytes.size.toLong()
-            }
+            response.contentLength = responseBytes.size.toLong()
             response.setHeaders()
             addResponseHeaders(httpResponse, response)
             ctx.write(httpResponse)
