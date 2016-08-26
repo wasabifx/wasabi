@@ -7,7 +7,7 @@ import org.wasabifx.wasabi.app.AppServer
 import org.wasabifx.wasabi.protocol.http.StatusCodes
 
 
-class ContentNegotiationInterceptor(val serializers: List<Serializer>): Interceptor() {
+class ContentNegotiationInterceptor(val serializers: List<Serializer>): Interceptor {
     override fun intercept(request: Request, response: Response): Boolean {
         var executeNext = false
             if (response.negotiatedMediaType == "" && (response.sendBuffer != null) && !(response.sendBuffer is String)) {

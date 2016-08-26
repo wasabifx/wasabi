@@ -10,7 +10,7 @@ import org.wasabifx.wasabi.routing.PatternAndVerbMatchingRouteLocator
 import org.wasabifx.wasabi.routing.Route
 import java.util.*
 
-class CORSInterceptor(val routes: ArrayList<Route>, val settings: ArrayList<CORSEntry>): Interceptor() {
+class CORSInterceptor(val routes: ArrayList<Route>, val settings: ArrayList<CORSEntry>): Interceptor {
     override fun intercept(request: Request, response: Response): Boolean {
         val routeLocator = PatternAndVerbMatchingRouteLocator(routes)
 

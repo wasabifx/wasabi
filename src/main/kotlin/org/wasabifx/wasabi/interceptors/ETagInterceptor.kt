@@ -4,7 +4,7 @@ import org.wasabifx.wasabi.app.AppServer
 import org.wasabifx.wasabi.protocol.http.Request
 import org.wasabifx.wasabi.protocol.http.Response
 
-class ETagInterceptor(private val objectTagFunc: (Any) -> String = { obj -> obj.hashCode().toString() }): Interceptor() {
+class ETagInterceptor(private val objectTagFunc: (Any) -> String = { obj -> obj.hashCode().toString() }): Interceptor {
     override fun intercept(request: Request, response: Response): Boolean {
         var executeNext = false
         if (response.sendBuffer != null) {

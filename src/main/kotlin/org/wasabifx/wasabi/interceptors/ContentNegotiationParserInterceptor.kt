@@ -6,7 +6,7 @@ import org.wasabifx.wasabi.protocol.http.Response
 import java.util.*
 
 
-class ContentNegotiationParserInterceptor(val mappings: HashMap<String, String> = HashMap()): Interceptor() {
+class ContentNegotiationParserInterceptor(val mappings: HashMap<String, String> = HashMap()): Interceptor {
     val ACCEPT_HEADER = 0
     val QUERY_PARAM = 1
     val EXTENSION = 2

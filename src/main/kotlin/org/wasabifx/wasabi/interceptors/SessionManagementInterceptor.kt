@@ -8,7 +8,7 @@ import org.wasabifx.wasabi.protocol.http.Session
 import org.wasabifx.wasabi.storage.InMemorySessionStorage
 import java.util.*
 
-class SessionManagementInterceptor(val cookieKey: String = "_sessionID", sessionStorage: SessionStorage = InMemorySessionStorage()): Interceptor(), SessionStorage by sessionStorage {
+class SessionManagementInterceptor(val cookieKey: String = "_sessionID", sessionStorage: SessionStorage = InMemorySessionStorage()): Interceptor, SessionStorage by sessionStorage {
 
     private fun generateSessionID(): String {
         return UUID.randomUUID().toString()

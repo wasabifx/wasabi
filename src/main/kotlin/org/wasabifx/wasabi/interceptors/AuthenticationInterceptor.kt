@@ -8,7 +8,7 @@ import org.wasabifx.wasabi.protocol.http.Request
 import org.wasabifx.wasabi.protocol.http.Response
 import org.wasabifx.wasabi.protocol.http.StatusCodes
 
-class AuthenticationInterceptor(val implementation: Authentication ) : Interceptor() {
+class AuthenticationInterceptor(val implementation: Authentication ) : Interceptor {
     override fun intercept(request: Request, response: Response): Boolean {
         if (implementation.authenticate(request, response)) {
             return true

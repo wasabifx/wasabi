@@ -9,7 +9,7 @@ import org.wasabifx.wasabi.routing.Route
 import org.wasabifx.wasabi.protocol.http.StatusCodes
 import org.wasabifx.wasabi.routing.PatternAndVerbMatchingRouteLocator
 
-class AutoOptionsInterceptor(val routes: ArrayList<Route>): Interceptor() {
+class AutoOptionsInterceptor(val routes: ArrayList<Route>): Interceptor {
     override fun intercept(request: Request, response: Response): Boolean {
         var executeNext = false
         if (request.method == HttpMethod.OPTIONS) {

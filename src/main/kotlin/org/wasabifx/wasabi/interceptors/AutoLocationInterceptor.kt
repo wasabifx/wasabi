@@ -6,7 +6,7 @@ import org.wasabifx.wasabi.protocol.http.StatusCodes
 import org.wasabifx.wasabi.app.AppServer
 
 
-class AutoLocationInterceptor(): Interceptor() {
+class AutoLocationInterceptor(): Interceptor {
     override fun intercept(request: Request, response: Response): Boolean {
         if (response.statusCode == StatusCodes.Created.code && response.resourceId != null) {
             response.location = "${request.protocol}://${request.host}:${request.port}${request.path}/${response.resourceId}"

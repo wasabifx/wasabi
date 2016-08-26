@@ -7,7 +7,7 @@ import org.wasabifx.wasabi.protocol.http.Response
 import java.io.File
 
 
-public class StaticFileInterceptor(val folder: String, val useDefaultFile: Boolean = false, val defaultFile: String = "index.html") : Interceptor() {
+public class StaticFileInterceptor(val folder: String, val useDefaultFile: Boolean = false, val defaultFile: String = "index.html") : Interceptor {
     override fun intercept(request: Request, response: Response): Boolean {
         var executeNext = false
 

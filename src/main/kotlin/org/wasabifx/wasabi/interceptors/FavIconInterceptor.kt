@@ -6,7 +6,7 @@ import io.netty.handler.codec.http.HttpMethod
 import org.wasabifx.wasabi.app.AppServer
 
 
-class FavIconInterceptor(val icon: String): Interceptor() {
+class FavIconInterceptor(val icon: String): Interceptor {
 
     override fun intercept(request: Request, response: Response): Boolean {
         if (request.method == HttpMethod.GET && request.uri.compareTo("/favicon.ico", ignoreCase = true) == 0) {
