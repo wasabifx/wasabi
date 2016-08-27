@@ -17,6 +17,7 @@ import org.wasabifx.wasabi.interceptors.InterceptorEntry
 import org.wasabifx.wasabi.routing.*
 import java.io.FileInputStream
 import java.net.InetSocketAddress
+import java.util.*
 
 class HttpRequestHandler(private val appServer: AppServer): SimpleChannelInboundHandler<Any?>(){
 
@@ -34,7 +35,7 @@ class HttpRequestHandler(private val appServer: AppServer): SimpleChannelInbound
     var decoder : HttpPostRequestDecoder? = null
     private var log = LoggerFactory.getLogger(HttpRequestHandler::class.java)
     // TODO make configurable.
-    var routeLocator = PatternAndVerbMatchingRouteLocator(appServer.routes)
+    val routeLocator = PatternAndVerbMatchingRouteLocator(appServer.routes)
     var exceptionLocator = ClassMatchingExceptionHandlerLocator(appServer.exceptionHandlers)
 
     override fun channelRead0(ctx: ChannelHandlerContext?, msg: Any?)  {
@@ -72,7 +73,7 @@ class HttpRequestHandler(private val appServer: AppServer): SimpleChannelInbound
                     if (!bypassPipeline) {
 
                         val routeHandlers = routeLocator.findRouteHandlers(request!!.uri.split('?')[0], request!!.method)
-                        request!!.routeParams.putAll(routeHandlers.params)
+                        request!!.routeParams.putAll(getRouteParams(routeHandlers.path, request!!.uri.split('?')[0]))
 
                         // process the route specific pre execution interceptors
                         runInterceptors(preExecutionInterceptors, routeHandlers)
@@ -138,9 +139,8 @@ class HttpRequestHandler(private val appServer: AppServer): SimpleChannelInbound
         } else {
             interceptorsToRun = interceptors.filter { routeLocator.compareRouteSegments(route, it.path) }
         }
-        for (interceptorEntry in interceptorsToRun) {
+        for ((interceptor) in interceptorsToRun) {
 
-            val interceptor = interceptorEntry.interceptor
             val executeNext = interceptor.intercept(request!!, response)
 
             if (!executeNext) {
@@ -155,6 +155,7 @@ class HttpRequestHandler(private val appServer: AppServer): SimpleChannelInbound
         if (response.statusCode / 100 == 4 || response.statusCode / 100 == 5) {
             runInterceptors(errorInterceptors)
         }
+
 
         if (response.absolutePathToFileToStream != "") {
 
@@ -259,5 +260,24 @@ class HttpRequestHandler(private val appServer: AppServer): SimpleChannelInbound
                 request!!.bodyParams.putAll(deserializer!!.deserialize(data!!))
             }
         }
+    }
+
+    // TODO: Clean this up.
+    private fun getRouteParams(route: String, path: String): HashMap<String, String> {
+        val segments1 = route.split('/')
+        val segments2 = path.split('/')
+        if (segments1.size != segments2.size) {
+            return hashMapOf()
+        }
+        val params = hashMapOf<String, String>()
+        var i = 0
+        for (segment in segments1) {
+            if (segment.startsWith(':')) {
+                params.put(segment.drop(1), segments2[i])
+            }
+            i++
+        }
+        return params
+
     }
 }

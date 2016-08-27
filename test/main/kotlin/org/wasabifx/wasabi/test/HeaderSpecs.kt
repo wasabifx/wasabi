@@ -8,7 +8,7 @@ import kotlin.test.assertEquals
 import org.junit.Test as spec
 
 
-class HeaderSpecs: TestServerContext() {
+class HeaderSpecs : TestServerContext() {
 
     @spec fun request_with_get_should_contain_all_fields() {
 
@@ -31,54 +31,54 @@ class HeaderSpecs: TestServerContext() {
         var userAgent = ""
         var connection = ""
         var cacheControl = ""
-        var accept =  sortedMapOf<String, Int>()
-        var acceptEncoding =  sortedMapOf<String, Int>()
-        var acceptLanguage =  sortedMapOf<String, Int>()
-        var acceptCharset =  sortedMapOf<String, Int>()
+        var accept = sortedMapOf<String, Int>()
+        var acceptEncoding = sortedMapOf<String, Int>()
+        var acceptLanguage = sortedMapOf<String, Int>()
+        var acceptCharset = sortedMapOf<String, Int>()
         var queryParams = HashMap<String, String>()
         var routeParams = HashMap<String, String>()
 
 
 
         TestServer.appServer.get("/customer/:id/:section",
-        {
+                {
 
 
-                uri = request.uri
-                path = request.path
-                host = request.host
-                port = request.port
-                userAgent = request.userAgent
-                connection = request.connection
-                cacheControl = request.cacheControl
-                accept = request.accept
-                acceptEncoding = request.acceptEncoding
-                acceptLanguage = request.acceptLanguage
-                acceptCharset = request.acceptCharset
-                queryParams = request.queryParams
-                routeParams = request.routeParams
-                response.send("/")
+                    uri = request.uri
+                    path = request.path
+                    host = request.host
+                    port = request.port
+                    userAgent = request.userAgent
+                    connection = request.connection
+                    cacheControl = request.cacheControl
+                    accept = request.accept
+                    acceptEncoding = request.acceptEncoding
+                    acceptLanguage = request.acceptLanguage
+                    acceptCharset = request.acceptCharset
+                    queryParams = request.queryParams
+                    routeParams = request.routeParams
+                    response.send("/")
 
 
-        })
+                })
 
         get("http://localhost:${TestServer.definedPort}/customer/10/valid?param1=value1&param2=value2", headers)
 
-        assertEquals("/customer/10/valid?param1=value1&param2=value2", uri);
-        assertEquals("/customer/10/valid", path);
-        assertEquals("localhost", host);
-        assertEquals(TestServer.definedPort, port);
-        assertEquals("test-client", userAgent);
-        assertEquals("Close", connection);
-        assertEquals("max-age=0", cacheControl);
-        assertEquals(3, accept.size);
+        assertEquals("/customer/10/valid?param1=value1&param2=value2", uri)
+        assertEquals("/customer/10/valid", path)
+        assertEquals("localhost", host)
+        assertEquals(TestServer.definedPort, port)
+        assertEquals("test-client", userAgent)
+        assertEquals("Close", connection)
+        assertEquals("max-age=0", cacheControl)
+        assertEquals(3, accept.size)
         assertEquals(4, accept["application/xhtml+xml"])
-        assertEquals(3, acceptEncoding.size);
-        assertEquals(2, acceptLanguage.size);
-        assertEquals(3, acceptCharset.size);
+        assertEquals(3, acceptEncoding.size)
+        assertEquals(2, acceptLanguage.size)
+        assertEquals(3, acceptCharset.size)
         assertEquals(2, queryParams.size)
-        assertEquals("value1",queryParams["param1"])
-        assertEquals("value2",queryParams["param2"])
+        assertEquals("value1", queryParams["param1"])
+        assertEquals("value2", queryParams["param2"])
         assertEquals("10", routeParams["id"])
         assertEquals("valid", routeParams["section"])
 
@@ -143,11 +143,9 @@ class HeaderSpecs: TestServerContext() {
             response.send("Nothing")
 
         })
-        get("http://localhost:${TestServer.definedPort}/cookie", headers, hashMapOf(Pair("someCookie","someCookieValue")))
+        get("http://localhost:${TestServer.definedPort}/cookie", headers, hashMapOf(Pair("someCookie", "someCookieValue")))
 
         assertEquals("someCookieValue", cookies["someCookie"]?.value)
-
-
 
 
     }

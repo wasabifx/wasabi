@@ -1,12 +1,12 @@
 package org.wasabifx.wasabi.test
 
+import org.wasabifx.wasabi.app.AppConfiguration
 import java.util.Date
 import org.wasabifx.wasabi.app.AppServer
-import org.wasabifx.wasabi.interceptors.enableAutoOptions
-import org.wasabifx.wasabi.interceptors.enableCORS
-import org.wasabifx.wasabi.interceptors.enableContentNegotiation
-import org.wasabifx.wasabi.interceptors.serveStaticFilesFromFolder
+import org.wasabifx.wasabi.interceptors.*
 import org.wasabifx.wasabi.protocol.http.CORSEntry
+import org.wasabifx.wasabi.protocol.http.Request
+import org.wasabifx.wasabi.protocol.http.Response
 import org.wasabifx.wasabi.protocol.http.StatusCodes
 import org.wasabifx.wasabi.routing.routeHandler
 import org.wasabifx.wasabi.routing.with
@@ -30,37 +30,23 @@ fun main(args: Array<String>) {
 
 
 
-    val appServer = AppServer()
 
-    appServer.enableContentNegotiation()
-    appServer.enableAutoOptions()
-    appServer.enableCORS(arrayListOf(CORSEntry()))
+    val appServer = AppServer(AppConfiguration(port = 8080, enableLogging = false)).apply {
+        intercept(object : Interceptor {
+            override fun intercept(request: Request, response: Response): Boolean = true
+        }, "/api/:param/things", InterceptOn.PreExecution)
+        get("/api/:param1/things", {
+            val paramValue = request.routeParams["param1"]
+            if (paramValue == "abc123") {
+                response.send("ok!")
+            } else {
+                println("request param got messed up. should be 'abc123' but was $paramValue")
+                response.statusCode = 500
+                response.send("sad")
+            }
+        })
 
-    appServer.serveStaticFilesFromFolder("testData/public")
-
-    appServer.get("/person", getPersons)
-
-    appServer.get("/person/:id", getPersonById)
-
-    appServer.post("/person", createPerson)
-    appServer.get("/course", createPerson)
-
-    appServer.get("/something", {
-
-        response.negotiate (
-
-                "text/html" .with { send("Hello")},
-
-                "application/json" .with { send("..some custom Json?")}
-
-        )
-
-
-    })
-
-
-    appServer.get("/js", { response.send(people, "application/json") })
-
+    }
 
     appServer.start()
 }

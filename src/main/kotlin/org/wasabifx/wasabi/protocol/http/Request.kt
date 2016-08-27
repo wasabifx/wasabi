@@ -94,8 +94,8 @@ class Request() {
     val queryParams: HashMap<String, String> by lazy {
         parseQueryParams()
     }
-    val routeParams: HashMap<String, String> = HashMap<String, String>()
-    val bodyParams: HashMap<String, Any> = HashMap<String, Any>()
+    val routeParams: HashMap<String, String> = HashMap()
+    val bodyParams: HashMap<String, Any> = HashMap()
     val cookies: HashMap<String, Cookie> by lazy {
         parseCookies()
     }
