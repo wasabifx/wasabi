@@ -21,7 +21,7 @@ import java.util.*
 
 class HttpRequestHandler(private val appServer: AppServer): SimpleChannelInboundHandler<Any?>(){
 
-    var request: Request? = null
+    lateinit var request: Request
     val factory = DefaultHttpDataFactory(DefaultHttpDataFactory.MINSIZE)
     val preRequestInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.PreRequest }
     val preExecutionInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.PreExecution }
@@ -42,14 +42,14 @@ class HttpRequestHandler(private val appServer: AppServer): SimpleChannelInbound
         if (msg is HttpRequest) {
             request = Request(msg, ctx!!.channel().remoteAddress() as InetSocketAddress)
 
-            request!!.accept.mapTo(response.requestedContentTypes, { it.key })
+            request.accept.mapTo(response.requestedContentTypes, { it.key })
 
-            if (request!!.method == HttpMethod.POST || request!!.method == HttpMethod.PUT || request!!.method == HttpMethod.PATCH) {
-                deserializer = appServer.deserializers.firstOrNull { it.canDeserialize(request!!.contentType) }
+            if (request.method == HttpMethod.POST || request.method == HttpMethod.PUT || request.method == HttpMethod.PATCH) {
+                deserializer = appServer.deserializers.firstOrNull { it.canDeserialize(request.contentType) }
                 // TODO: Re-do this as it's now considering special case for multi-part
-                if (request!!.contentType.contains("application/x-www-form-urlencoded") || request!!.contentType.contains("multipart/form-data")) {
+                if (request.contentType.contains("application/x-www-form-urlencoded") || request.contentType.contains("multipart/form-data")) {
                     decoder = HttpPostRequestDecoder(factory, msg)
-                    chunkedTransfer = request!!.chunked
+                    chunkedTransfer = request.chunked
                 }
             }
         }
@@ -72,8 +72,8 @@ class HttpRequestHandler(private val appServer: AppServer): SimpleChannelInbound
                     // Only need to check here to stop RouteNotFoundException
                     if (!bypassPipeline) {
 
-                        val routeHandlers = routeLocator.findRouteHandlers(request!!.uri.split('?')[0], request!!.method)
-                        request!!.routeParams.putAll(getRouteParams(routeHandlers.path, request!!.uri.split('?')[0]))
+                        val routeHandlers = routeLocator.findRouteHandlers(request.uri.split('?')[0], request.method)
+                        request.routeParams.putAll(getRouteParams(routeHandlers.path, request.uri.split('?')[0]))
 
                         // process the route specific pre execution interceptors
                         runInterceptors(preExecutionInterceptors, routeHandlers)
@@ -95,7 +95,7 @@ class HttpRequestHandler(private val appServer: AppServer): SimpleChannelInbound
                     // bypassPipeline = true
                     val handler = exceptionLocator.findExceptionHandlers(e).handler
                     val extension: ExceptionHandler.() -> Unit = handler
-                    val exceptionHandler = ExceptionHandler(request!!, response, e)
+                    val exceptionHandler = ExceptionHandler(request, response, e)
                     exceptionHandler.extension()
                 } finally {
                     if (!bypassPipeline) {
@@ -118,7 +118,7 @@ class HttpRequestHandler(private val appServer: AppServer): SimpleChannelInbound
         for (handler in routeHandlers.handler) {
 
             val handlerExtension : RouteHandler.() -> Unit = handler
-            val routeHandler = RouteHandler(request!!, response)
+            val routeHandler = RouteHandler(request, response)
 
             routeHandler.handlerExtension()
             if (!routeHandler.executeNext) {
@@ -141,7 +141,7 @@ class HttpRequestHandler(private val appServer: AppServer): SimpleChannelInbound
         }
         for ((interceptor) in interceptorsToRun) {
 
-            val executeNext = interceptor.intercept(request!!, response)
+            val executeNext = interceptor.intercept(request, response)
 
             if (!executeNext) {
                 bypassPipeline = true
@@ -174,7 +174,7 @@ class HttpRequestHandler(private val appServer: AppServer): SimpleChannelInbound
             // TODO Get rid of this!!
             val lastContentFuture = ctx.writeAndFlush(LastHttpContent.EMPTY_LAST_CONTENT)
 
-            if (request!!.connection.compareTo("close", ignoreCase = true) == 0) {
+            if (request.connection.compareTo("close", ignoreCase = true) == 0) {
                 lastContentFuture.addListener(ChannelFutureListener.CLOSE)
             }
         } else if (response.negotiatedMediaType == "application/octet-stream") {
@@ -187,7 +187,7 @@ class HttpRequestHandler(private val appServer: AppServer): SimpleChannelInbound
             ctx.write(Unpooled.wrappedBuffer(responseBytes))
             val lastContentFuture = ctx.writeAndFlush(LastHttpContent.EMPTY_LAST_CONTENT)
 
-            if (request!!.connection.compareTo("close", ignoreCase = true) == 0) {
+            if (request.connection.compareTo("close", ignoreCase = true) == 0) {
                 lastContentFuture.addListener(ChannelFutureListener.CLOSE)
             }
         } else {
@@ -251,13 +251,13 @@ class HttpRequestHandler(private val appServer: AppServer): SimpleChannelInbound
     private fun deserializeBody(msg: HttpContent) {
         if (decoder != null) {
             decoder!!.offer(msg)
-            request!!.bodyParams.putAll(deserializer!!.deserialize(decoder!!.bodyHttpDatas))
+            request.bodyParams.putAll(deserializer!!.deserialize(decoder!!.bodyHttpDatas))
         } else {
             // TODO: Add support for CharSet
             val buffer = msg.content()
             if (buffer.isReadable) {
                 val data = buffer.toString(CharsetUtil.UTF_8)
-                request!!.bodyParams.putAll(deserializer!!.deserialize(data!!))
+                request.bodyParams.putAll(deserializer!!.deserialize(data!!))
             }
         }
     }
