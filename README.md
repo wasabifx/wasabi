@@ -61,7 +61,7 @@ The easiest way to use Wasabi is with Gradle.
 
 #### Including as a dependency (Gradle) ####
 
-For Gradle projects, 0.1-SNAPSHOT version can be included like this (`build.gradle` file):
+For Gradle projects, dependency can be included like this (`build.gradle` file):
 
 ```groovy
 repositories {
