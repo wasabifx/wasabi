@@ -66,7 +66,7 @@ For Gradle projects, 0.1-SNAPSHOT version can be included like this (`build.grad
 ```groovy
 repositories {
     // Other repositories you use.
-    maven { url 'https://bintray.com/wasabifx/wasabifx' }
+    maven { url 'https://dl.bintray.com/wasabifx/wasabifx' }
 }
 
 dependencies {
