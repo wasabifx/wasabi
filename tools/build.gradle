@@ -77,12 +77,12 @@ repositories {
         url "https://oss.sonatype.org/content/repositories/snapshots"
     }
     maven {
-        url "http://repository.jetbrains.com/all"
+        url 'https://dl.bintray.com/wasabifx/wasabifx'
     }
 }
 
 dependencies {
-    compile "org.wasabifx:wasabi:0.1-SNAPSHOT"
+    compile "org.wasabifx:wasabi:0.3.30"
     compile "org.jetbrains.kotlin:kotlin-stdlib:\$kotlin_version"
 
 }
@@ -115,7 +115,7 @@ task server(dependsOn: createGradle) << {
         serverFile.append("""\
 package ${project.package}
 
-import org.wasabifx.app.AppServer
+import org.wasabifx.wasabi.app.AppServer
 
 fun main(args: Array<String>) {
 
