@@ -181,6 +181,7 @@ class HttpRequestHandler(private val appServer: AppServer): SimpleChannelInbound
             httpResponse = DefaultHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus(response.statusCode, response.statusDescription));
             val responseBytes = response.sendBuffer as ByteArray
             response.contentLength = responseBytes.size.toLong()
+            response.contentType = response.negotiatedMediaType
             response.setHeaders()
             addResponseHeaders(httpResponse, response)
             ctx.write(httpResponse)
