@@ -170,4 +170,24 @@ class ContentNegotiationSpecs : TestServerContext() {
         assertEquals(expectedContentType, actualContentType)
         assertEquals("{\"cause\":null", response.body.substring(0, 13))
     }
+
+    @spec fun returning_content_as_string_with_custom_content_type_must_work() {
+        TestServer.appServer.get("/json", { response.send("{}", "application/json") })
+        TestServer.appServer.get("/xml", { response.send("<xml></xml>", "text/xml") })
+
+        val response = get("http://localhost:${TestServer.definedPort}/json")
+        assertEquals("application/json", getHeader("Content-Type", response))
+
+        val response2 = get("http://localhost:${TestServer.definedPort}/xml")
+        assertEquals("text/xml", getHeader("Content-Type", response2))
+    }
+
+    @spec fun setting_explicit_content_type_should_work() {
+        TestServer.appServer.get("/test", {
+            response.send("TEST".toByteArray(Charsets.UTF_8), "application/octet-stream" )
+        })
+
+        val response = get("http://localhost:${TestServer.definedPort}/test")
+        assertEquals("application/octet-stream", getHeader("Content-Type", response))
+    }
 }
