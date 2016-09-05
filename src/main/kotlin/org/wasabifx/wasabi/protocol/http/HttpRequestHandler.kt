@@ -1,5 +1,6 @@
 package org.wasabifx.wasabi.protocol.http
 
+import io.netty.buffer.ByteBuf
 import io.netty.buffer.Unpooled
 import io.netty.channel.ChannelFutureListener
 import io.netty.channel.ChannelHandlerContext
@@ -7,7 +8,9 @@ import io.netty.channel.SimpleChannelInboundHandler
 import io.netty.handler.codec.http.*
 import io.netty.handler.codec.http.multipart.DefaultHttpDataFactory
 import io.netty.handler.codec.http.multipart.HttpPostRequestDecoder
+import io.netty.handler.stream.ChunkedInput
 import io.netty.handler.stream.ChunkedNioFile
+import io.netty.handler.stream.ChunkedStream
 import io.netty.util.CharsetUtil
 import org.slf4j.LoggerFactory
 import org.wasabifx.wasabi.app.AppServer
@@ -156,45 +159,21 @@ class HttpRequestHandler(private val appServer: AppServer): SimpleChannelInbound
             runInterceptors(errorInterceptors)
         }
 
-
-        if (response.absolutePathToFileToStream != "") {
-
-            httpResponse = DefaultHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus(response.statusCode, response.statusDescription));
-            response.setHeaders()
-            addResponseHeaders(httpResponse, response)
-            ctx.write(httpResponse)
-
+        // @TODO move this charset stuff
+        var responseCharset = ""
+        val responseContentAsStream : ChunkedInput<ByteBuf> = if (response.absolutePathToFileToStream != "") {
+            // because Response.setFileResponseHeaders assigns contentType property, not negotiatedMediaType, we need to
+            // assign it back because later code sets contentType property with value of negotiatedMediaType :D
+            // should be fixed with another PR where Response class will be refactored in a way that it will use one
+            // contentType property, not two (contentType + negotiatedContentType)
+            response.negotiatedMediaType = response.contentType
             val fileStream = FileInputStream(response.absolutePathToFileToStream)
-
-            val fileChannel = fileStream.channel
-
-            // NOTE we can probably use DefaultFileRegion here but this allows for data modification on the fly.
-            ctx.write(ChunkedNioFile(fileChannel, 8192), ctx.newProgressivePromise())
-
-            // TODO Get rid of this!!
-            val lastContentFuture = ctx.writeAndFlush(LastHttpContent.EMPTY_LAST_CONTENT)
-
-            if (request.connection.compareTo("close", ignoreCase = true) == 0) {
-                lastContentFuture.addListener(ChannelFutureListener.CLOSE)
-            }
+            ChunkedNioFile(fileStream.channel, 8192)
         } else if (response.negotiatedMediaType == "application/octet-stream") {
-            httpResponse = DefaultHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus(response.statusCode, response.statusDescription));
             val responseBytes = response.sendBuffer as ByteArray
             response.contentLength = responseBytes.size.toLong()
-            response.contentType = response.negotiatedMediaType
-            response.setHeaders()
-            addResponseHeaders(httpResponse, response)
-            ctx.write(httpResponse)
-            ctx.write(Unpooled.wrappedBuffer(responseBytes))
-            val lastContentFuture = ctx.writeAndFlush(LastHttpContent.EMPTY_LAST_CONTENT)
-
-            if (request.connection.compareTo("close", ignoreCase = true) == 0) {
-                lastContentFuture.addListener(ChannelFutureListener.CLOSE)
-            }
+            ChunkedStream(responseBytes.inputStream())
         } else {
-            // TODO: Make this a stream
-            // TODO: This should encapsulate the above file stream also so we get ditch the virtual two points of return
-            // TODO: The current file handling completely bypasses the postrequest interceptors ( badness9000 )
             var buffer = ""
             if (response.sendBuffer == null) {
                 // Allows us to check downstream
@@ -202,25 +181,18 @@ class HttpRequestHandler(private val appServer: AppServer): SimpleChannelInbound
             } else if (response.sendBuffer is String) {
                 if (response.sendBuffer as String != "") {
                     buffer = (response.sendBuffer as String)
-                    // Work around for edge case where manual JSON string is
-                    // generated and response type declared on route.
-                    if (response.negotiatedMediaType != "")
-                        response.contentType = response.negotiatedMediaType
                 }
-            } else {
-                if (response.negotiatedMediaType != "") {
-                    val serializer = appServer.serializers.firstOrNull { it.canSerialize(response.negotiatedMediaType) }
-                    if (serializer != null) {
-                        // TODO waiting on ISSUE-62 atm we are forcing UTF-8.
-                        // TODO Given we only have XML/JSON atm its not terrible but still sucks rocks.
-                        response.contentType = response.negotiatedMediaType +  ";charset=UTF-8"
-                        buffer = serializer.serialize(response.sendBuffer!!)
-                    } else {
-                        response.setStatus(StatusCodes.UnsupportedMediaType)
-                    }
+            } else if (response.negotiatedMediaType != "") {
+                val serializer = appServer.serializers.firstOrNull { it.canSerialize(response.negotiatedMediaType) }
+                if (serializer != null) {
+                    // TODO waiting on ISSUE-62 atm we are forcing UTF-8.
+                    // TODO Given we only have XML/JSON atm its not terrible but still sucks rocks.
+                    responseCharset = ";charset=UTF-8"
+                    buffer = serializer.serialize(response.sendBuffer!!)
+                } else {
+                    response.setStatus(StatusCodes.UnsupportedMediaType)
                 }
             }
-            runInterceptors(postRequestInterceptors)
 
             // TODO refactor above buffer logic.
             // This allows postRequestInterceptors to override 405 and us to
@@ -228,16 +200,21 @@ class HttpRequestHandler(private val appServer: AppServer): SimpleChannelInbound
             if(buffer == "") {
                 buffer = response.statusDescription
             }
+            ChunkedStream(buffer.byteInputStream(Charsets.UTF_8))
+        }
 
-            httpResponse = DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus(response.statusCode, response.statusDescription), Unpooled.copiedBuffer(buffer, CharsetUtil.UTF_8))
-            response.setHeaders()
-            addResponseHeaders(httpResponse, response)
-            ctx.write(httpResponse)
+        runInterceptors(postRequestInterceptors)
 
-            val lastContentFuture = ctx.writeAndFlush(LastHttpContent.EMPTY_LAST_CONTENT)
+        httpResponse = DefaultHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus(response.statusCode, response.statusDescription))
+        response.contentType = response.negotiatedMediaType + responseCharset
+        response.setHeaders()
+        addResponseHeaders(httpResponse, response)
+        ctx.write(httpResponse)
+        ctx.write(responseContentAsStream)
+        val lastContentFuture = ctx.writeAndFlush(LastHttpContent.EMPTY_LAST_CONTENT)
 
+        if (request.connection.compareTo("close", ignoreCase = true) == 0) {
             lastContentFuture.addListener(ChannelFutureListener.CLOSE)
-
         }
     }
 
