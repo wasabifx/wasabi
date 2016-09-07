@@ -429,12 +429,35 @@ Wasabi allows the registration of multiple 'channels' per appserver and you can 
 As our websocket support matures we intend to allow the registration of interceptors and serializers in the 
 manner our HTTP / HTTP/2 pipeline does currently. 
 
+Example showing direct reply to the current client. 
+
 ```kotlin
     appServer.channel("/foo", {
         if (frame is TextWebSocketFrame) {
             val textFrame = frame as TextWebSocketFrame
-            response.frame = TextWebSocketFrame(textFrame.text().toUpperCase())
+            respond(ctx!!.channel(), TextWebSocketFrame(textFrame.text().toUpperCase()))
         }
+    })
+```
+
+Example showing message broadcast from channel.
+
+```kotlin
+    appServer.channel("/foo", {
+        if (frame is TextWebSocketFrame) {
+            val textFrame = frame as TextWebSocketFrame
+            broadcast(TextWebSocketFrame(textFrame.text().toUpperCase()))
+        }
+    })
+```
+
+Example showing triggering broadcast from webservice.
+
+```kotlin
+    appServer.post("/message", {
+        val message = request.bodyParams["message"]
+        broadcast("/foo", TextWebSocketFrame(message))
+        response.send()
     })
 ```
 
