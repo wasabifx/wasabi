@@ -5,13 +5,13 @@ import io.netty.channel.SimpleChannelInboundHandler
 import io.netty.handler.codec.http.FullHttpRequest
 import io.netty.handler.codec.http.HttpHeaders
 import io.netty.handler.codec.http.HttpMessage
-import io.netty.handler.codec.http.websocketx.WebSocketServerProtocolHandler
 import io.netty.handler.stream.ChunkedWriteHandler
 import org.slf4j.LoggerFactory
 import org.wasabifx.wasabi.app.AppServer
 import org.wasabifx.wasabi.protocol.http.HttpRequestHandler
 import org.wasabifx.wasabi.protocol.http2.Http2HandlerBuilder
 import org.wasabifx.wasabi.protocol.websocket.WebSocketFrameHandler
+import org.wasabifx.wasabi.protocol.websocket.WebSocketProtocolHandler
 import org.wasabifx.wasabi.routing.PatternMatchingChannelLocator
 
 class HttpPipelineInitializer(val appServer: AppServer) : SimpleChannelInboundHandler<HttpMessage>() {
@@ -60,10 +60,11 @@ class HttpPipelineInitializer(val appServer: AppServer) : SimpleChannelInboundHa
     private fun applyWebSocketPipeline(ctx: ChannelHandlerContext?, msg: HttpMessage?) {
         val fullMessage = msg as FullHttpRequest
         // TODO handle the channel not found exception gracefully...
-        val channel = PatternMatchingChannelLocator(appServer.channels).findChannelHandler(fullMessage.uri)
+        val path = fullMessage.uri
+        val channel = PatternMatchingChannelLocator(appServer.channels).findChannelHandler(path)
         val pipeline = ctx!!.pipeline();
         val context = pipeline.context(this);
-        pipeline.addLast(WebSocketServerProtocolHandler(fullMessage.uri, null, true));
+        pipeline.addLast(WebSocketProtocolHandler(path, null, true));
         pipeline.addLast(WebSocketFrameHandler(channel.handler))
         context.fireChannelRead(msg);
     }

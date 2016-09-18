@@ -1,20 +1,22 @@
 package org.wasabifx.wasabi.app
 
+import io.netty.channel.ChannelHandlerContext
 import io.netty.handler.codec.http.HttpMethod
 import org.slf4j.LoggerFactory
 import org.wasabifx.wasabi.deserializers.Deserializer
 import org.wasabifx.wasabi.deserializers.JsonDeserializer
 import org.wasabifx.wasabi.deserializers.MultiPartFormDataDeserializer
+import org.wasabifx.wasabi.interceptors.*
 import org.wasabifx.wasabi.protocol.http.HttpServer
 import org.wasabifx.wasabi.protocol.http.StatusCodes
+import org.wasabifx.wasabi.protocol.websocket.Channel
+import org.wasabifx.wasabi.protocol.websocket.ChannelHandler
+import org.wasabifx.wasabi.protocol.websocket.channelClients
 import org.wasabifx.wasabi.routing.*
-import org.wasabifx.wasabi.interceptors.*
 import org.wasabifx.wasabi.serializers.JsonSerializer
 import org.wasabifx.wasabi.serializers.Serializer
 import org.wasabifx.wasabi.serializers.TextPlainSerializer
 import org.wasabifx.wasabi.serializers.XmlSerializer
-import org.wasabifx.wasabi.protocol.websocket.Channel
-import org.wasabifx.wasabi.protocol.websocket.ChannelHandler
 import java.util.*
 import kotlin.reflect.KClass
 
@@ -51,6 +53,7 @@ open class AppServer(val configuration: AppConfiguration = AppConfiguration()) {
             throw ChannelAlreadyExistsException(existingChannel.firstOrNull()!!)
         }
         channels.add(Channel(path, handler))
+        channelClients.put(path, ArrayList<io.netty.channel.Channel>())
     }
 
     private fun addExceptionHandler(exceptionClass: String, handler: ExceptionHandler.() -> Unit) {

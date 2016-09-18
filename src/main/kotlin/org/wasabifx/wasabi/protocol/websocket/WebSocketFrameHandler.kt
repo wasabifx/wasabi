@@ -18,9 +18,5 @@ class WebSocketFrameHandler(val handler: ChannelHandler.() -> Unit): SimpleChann
         val channelExtension : ChannelHandler.() -> Unit = handler
         val channelHandler = ChannelHandler(ctx, msg!!, response)
         channelHandler.channelExtension()
-
-        // Write and flush the final frame
-        ctx!!.channel().write(response.frame)
-        ctx.flush()
     }
 }
