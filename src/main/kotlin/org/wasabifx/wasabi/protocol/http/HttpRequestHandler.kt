@@ -212,10 +212,7 @@ class HttpRequestHandler(private val appServer: AppServer): SimpleChannelInbound
         ctx.write(httpResponse)
         ctx.write(responseContentAsStream)
         val lastContentFuture = ctx.writeAndFlush(LastHttpContent.EMPTY_LAST_CONTENT)
-
-        if (request.connection.compareTo("close", ignoreCase = true) == 0) {
-            lastContentFuture.addListener(ChannelFutureListener.CLOSE)
-        }
+        lastContentFuture.addListener(ChannelFutureListener.CLOSE)
     }
 
     private fun addResponseHeaders(httpResponse: HttpResponse, response: Response) {
