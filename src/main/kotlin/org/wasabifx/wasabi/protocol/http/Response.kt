@@ -108,6 +108,10 @@ class Response() {
     }
 
     fun addRawHeader(name: String, value: String) {
+        if (this.getSupportedHeaderNames().contains(name)) {
+            throw InvalidHeaderNameException("Setting " + name + " header is not supported here. It should be handled as Response property")
+        }
+
         if (value != ""){
             rawHeaders[name] = value
         }
@@ -142,6 +146,20 @@ class Response() {
         }
 
         return headerList
+    }
+
+    private fun getSupportedHeaderNames() : List<String> {
+        return listOf(
+            "Etag",
+            "Location",
+            "Content-Type",
+            "Connection",
+            "Date",
+            "Cache-Control",
+            "Content-Length",
+            "Last-Modified",
+            "Set-Cookie"
+        )
     }
 
     private fun newHeaderItem(name: String, value: String): AbstractMap.SimpleImmutableEntry<String, String> {
