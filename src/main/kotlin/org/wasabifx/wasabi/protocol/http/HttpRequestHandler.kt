@@ -207,7 +207,6 @@ class HttpRequestHandler(private val appServer: AppServer): SimpleChannelInbound
 
         httpResponse = DefaultHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus(response.statusCode, response.statusDescription))
         response.contentType = response.negotiatedMediaType + responseCharset
-        response.setHeaders()
         addResponseHeaders(httpResponse, response)
         ctx.write(httpResponse)
         ctx.write(responseContentAsStream)
@@ -216,7 +215,7 @@ class HttpRequestHandler(private val appServer: AppServer): SimpleChannelInbound
     }
 
     private fun addResponseHeaders(httpResponse: HttpResponse, response: Response) {
-        for (header in response.rawHeaders) {
+        for (header in response.getHeaders()) {
             if (header.value != "") {
                 httpResponse.headers().add(header.key, header.value)
             }
