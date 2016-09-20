@@ -19,7 +19,7 @@ class Request() {
     constructor(httpRequest: HttpRequest, address: InetSocketAddress) : this() {
         log.info("HttpRequest Constructor called.")
         this.httpRequest = httpRequest
-        this.rawHeaders = httpRequest.headers().associate({it.key to it.value})
+        this.rawHeaders = httpRequest.headers().associate({it.key.toLowerCase() to it.value})
         this.uri = httpRequest.uri!!
         this.method = httpRequest.method!!
         this.document = uri.drop(uri.lastIndexOf("/") + 1)
@@ -31,7 +31,7 @@ class Request() {
 
     constructor(http2Headers: Http2Headers?, address: InetSocketAddress) : this() {
         this.http2Headers = http2Headers!!
-        this.rawHeaders = http2Headers.associate({it.key.toString() to it.value.toString()})
+        this.rawHeaders = http2Headers.associate({it.key.toString().toLowerCase() to it.value.toString()})
         this.uri = http2Headers.path().toString()
         this.method = HttpMethod(http2Headers.method().toString())
         this.document = uri.drop(uri.lastIndexOf("/") + 1)
@@ -131,7 +131,7 @@ class Request() {
         return parsed.toSortedMap<String, Int>()
     }
 
-    private fun getHeader(header: String) = this.rawHeaders[header] ?: ""
+    private fun getHeader(header: String) = this.rawHeaders[header.toLowerCase()] ?: ""
 
     private fun parseQueryParams(): HashMap<String, String> {
         val queryParamsList = hashMapOf<String, String>()
