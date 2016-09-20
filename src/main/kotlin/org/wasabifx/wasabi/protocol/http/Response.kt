@@ -12,7 +12,7 @@ import javax.activation.MimetypesFileTypeMap
 
 class Response() {
 
-    val rawHeaders: HashMap<String, String> = HashMap<String, String>()
+    private val rawHeaders: HashMap<String, String> = HashMap<String, String>()
 
     var etag: String = ""
     var resourceId: String? = null
@@ -113,29 +113,39 @@ class Response() {
         }
     }
 
-    private fun setResponseCookies() {
+    fun getHeaders(): List<AbstractMap.SimpleImmutableEntry<String, String>> {
+        val headerList = mutableListOf(
+            newHeaderItem("Etag", etag),
+            newHeaderItem("Location", location),
+            newHeaderItem("Content-Type", contentType),
+            newHeaderItem("Connection", connection),
+            newHeaderItem("Date", convertToDateFormat(DateTime.now()!!)),
+            newHeaderItem("Cache-Control", cacheControl)
+        )
+
+        for (rawHeaderItem in rawHeaders) {
+            headerList.add(newHeaderItem(rawHeaderItem.key, rawHeaderItem.value))
+        }
+
+        if (contentLength != null) {
+            headerList.add(newHeaderItem("Content-Length", contentLength.toString()))
+        }
+
+        if (lastModified != null) {
+            headerList.add(newHeaderItem("Last-Modified", convertToDateFormat(lastModified!!)))
+        }
+
         for (cookie in cookies) {
             val name = cookie.value.name.toString()
             val value = cookie.value.value.toString()
-            addRawHeader("Set-Cookie", ServerCookieEncoder.STRICT.encode(name, value).toString())
+            headerList.add(newHeaderItem("Set-Cookie", ServerCookieEncoder.STRICT.encode(name, value).toString()))
         }
+
+        return headerList
     }
 
-
-    fun setHeaders() {
-        setResponseCookies()
-        addRawHeader("ETag", etag)
-        addRawHeader("Location", location)
-        addRawHeader("Content-Type", contentType)
-        if (contentLength != null) {
-            addRawHeader("Content-Length", contentLength.toString())
-        }
-        addRawHeader("Connection", connection)
-        addRawHeader("Date", convertToDateFormat(DateTime.now()!!))
-        addRawHeader("Cache-Control", cacheControl)
-        if (lastModified != null) {
-            addRawHeader("Last-Modified", convertToDateFormat(lastModified!!))
-        }
+    private fun newHeaderItem(name: String, value: String): AbstractMap.SimpleImmutableEntry<String, String> {
+        return AbstractMap.SimpleImmutableEntry(name, value)
     }
 
     fun convertToDateFormat(dateTime: DateTime): String {
