@@ -8,12 +8,21 @@ import java.io.File
 
 
 public class StaticFileInterceptor(val folder: String, val useDefaultFile: Boolean = false, val defaultFile: String = "index.html") : Interceptor {
+
+    private val absoluteFolder: String = File(folder).absolutePath.toString()
+
     override fun intercept(request: Request, response: Response): Boolean {
         var executeNext = false
 
         if (request.method == HttpMethod.GET) {
-            val fullPath = "${folder}${request.uri}"
+            val uriPath = if( request.uri.contains("?") ) request.uri.substringBefore("?") else request.uri
+            val fullPath = "${absoluteFolder}${uriPath}"
             val file = File(fullPath)
+
+            if (!file.absolutePath.startsWith(absoluteFolder)) {
+                throw RuntimeException("Attempt to open file outside of static file folder")
+            }
+
             when {
                 file.exists() && file.isFile() -> response.setFileResponseHeaders(fullPath)
                 file.exists() && file.isDirectory() && useDefaultFile -> response.setFileResponseHeaders("${fullPath}/${defaultFile}")

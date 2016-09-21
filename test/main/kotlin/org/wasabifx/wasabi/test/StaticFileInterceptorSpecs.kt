@@ -57,4 +57,16 @@ class StaticFileInterceptorSpecs: TestServerContext() {
 
         TestServer.reset()
     }
+
+    @spec fun requesting_an_existing_static_file_with_additional_url_params_should_return_the_file() {
+
+        TestServer.appServer.serveStaticFilesFromFolder("testData${File.separatorChar}public")
+
+        val response = get("http://localhost:${TestServer.definedPort}/test.html?v=3", hashMapOf())
+        val response1 = get("http://localhost:${TestServer.definedPort}/error.html?test=test", hashMapOf())
+
+
+        assertEquals("<!DOCTYPE html><head><title></title></head><body>This is an example static file</body></html>", response.body)
+        assertEquals("<!DOCTYPE html><head><title></title></head><body>Standard Error File</body></html>", response1.body)
+    }
 }
