@@ -5,21 +5,27 @@ import org.wasabifx.wasabi.app.AppServer
 import org.wasabifx.wasabi.protocol.http.Request
 import org.wasabifx.wasabi.protocol.http.Response
 import java.io.File
+import java.net.URLDecoder
 
 
 public class StaticFileInterceptor(val folder: String, val useDefaultFile: Boolean = false, val defaultFile: String = "index.html") : Interceptor {
 
-    private val absoluteFolder: String = File(folder).absolutePath.toString()
+    private val absoluteFolder: String = File(folder).canonicalPath.toString()
 
     override fun intercept(request: Request, response: Response): Boolean {
         var executeNext = false
 
         if (request.method == HttpMethod.GET) {
-            val uriPath = if( request.uri.contains("?") ) request.uri.substringBefore("?") else request.uri
+
+            val uriPath = URLDecoder.decode(
+                if( request.uri.contains("?") ) request.uri.substringBefore("?") else request.uri,
+                Charsets.UTF_8.toString()
+            )
+
             val fullPath = "${absoluteFolder}${uriPath}"
             val file = File(fullPath)
 
-            if (!file.absolutePath.startsWith(absoluteFolder)) {
+            if (!file.canonicalPath.startsWith(absoluteFolder)) {
                 throw RuntimeException("Attempt to open file outside of static file folder")
             }
 
