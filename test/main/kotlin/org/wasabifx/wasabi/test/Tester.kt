@@ -36,6 +36,7 @@ fun main(args: Array<String>) {
             override fun intercept(request: Request, response: Response): Boolean = true
         }, "/api/:param/things", InterceptOn.PreExecution)
         get("/api/:param1/things", {
+
             val paramValue = request.routeParams["param1"]
             if (paramValue == "abc123") {
                 response.send("ok!")
@@ -47,6 +48,8 @@ fun main(args: Array<String>) {
         })
 
     }
+
+
 
     appServer.start()
 }
