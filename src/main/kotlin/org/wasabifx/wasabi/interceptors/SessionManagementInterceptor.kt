@@ -30,12 +30,14 @@ class SessionManagementInterceptor(val cookieKey: String = "_sessionID", session
                 }
             }
         }
-        response.cookies[cookieKey] = Cookie(cookieKey, request.session!!.id)
-        response.cookies[cookieKey]?.let {
-            it.setDomain(request.host)
-            it.isSecure = request.isSecure
-            it.setPath(request.path)
-        }
+
+        val tmpCookie = Cookie(cookieKey, request.session!!.id)
+        tmpCookie.setDomain(request.host)
+        tmpCookie.isSecure = request.isSecure
+        tmpCookie.setPath(request.path)
+
+        response.setCookie(tmpCookie)
+
         return true
     }
 }

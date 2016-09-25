@@ -146,6 +146,14 @@ class Response() {
         return headerList
     }
 
+    fun getCookie(name: String) : Cookie? {
+        return cookies[name] ?: null
+    }
+
+    fun setCookie(cookie: Cookie) {
+        cookies[cookie.name()] = cookie
+    }
+
     private fun getSupportedHeaderNames() : List<String> {
         return listOf(
             "Etag",
