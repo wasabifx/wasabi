@@ -12,7 +12,7 @@ import javax.activation.MimetypesFileTypeMap
 
 class Response() {
 
-    val rawHeaders: HashMap<String, String> = HashMap<String, String>()
+    private val rawHeaders: HashMap<String, String> = HashMap<String, String>()
 
     var etag: String = ""
     var resourceId: String? = null
@@ -108,34 +108,68 @@ class Response() {
     }
 
     fun addRawHeader(name: String, value: String) {
+        if (this.getSupportedHeaderNames().contains(name)) {
+            throw InvalidHeaderNameException("Setting " + name + " header is not supported here. It should be handled as Response property")
+        }
+
         if (value != ""){
             rawHeaders[name] = value
         }
     }
 
-    private fun setResponseCookies() {
-        for (cookie in cookies) {
-            val name = cookie.value.name.toString()
-            val value = cookie.value.value.toString()
-            addRawHeader("Set-Cookie", ServerCookieEncoder.STRICT.encode(name, value).toString())
+    fun getHeaders(): List<AbstractMap.SimpleImmutableEntry<String, String>> {
+        val headerList = mutableListOf(
+            newHeaderItem("Etag", etag),
+            newHeaderItem("Location", location),
+            newHeaderItem("Content-Type", contentType),
+            newHeaderItem("Connection", connection),
+            newHeaderItem("Date", convertToDateFormat(DateTime.now()!!)),
+            newHeaderItem("Cache-Control", cacheControl)
+        )
+
+        for (rawHeaderItem in rawHeaders) {
+            headerList.add(newHeaderItem(rawHeaderItem.key, rawHeaderItem.value))
         }
+
+        contentLength?.let {
+            headerList.add(newHeaderItem("Content-Length", it.toString()))
+        }
+
+        lastModified?.let {
+            headerList.add(newHeaderItem("Last-Modified", convertToDateFormat(it)))
+        }
+
+        for (cookie in cookies) {
+            headerList.add(newHeaderItem("Set-Cookie", cookie.toString()))
+        }
+
+        return headerList
     }
 
+    fun getCookie(name: String) : Cookie? {
+        return cookies[name] ?: null
+    }
 
-    fun setHeaders() {
-        setResponseCookies()
-        addRawHeader("ETag", etag)
-        addRawHeader("Location", location)
-        addRawHeader("Content-Type", contentType)
-        if (contentLength != null) {
-            addRawHeader("Content-Length", contentLength.toString())
-        }
-        addRawHeader("Connection", connection)
-        addRawHeader("Date", convertToDateFormat(DateTime.now()!!))
-        addRawHeader("Cache-Control", cacheControl)
-        if (lastModified != null) {
-            addRawHeader("Last-Modified", convertToDateFormat(lastModified!!))
-        }
+    fun setCookie(cookie: Cookie) {
+        cookies[cookie.name()] = cookie
+    }
+
+    private fun getSupportedHeaderNames() : List<String> {
+        return listOf(
+            "Etag",
+            "Location",
+            "Content-Type",
+            "Connection",
+            "Date",
+            "Cache-Control",
+            "Content-Length",
+            "Last-Modified",
+            "Set-Cookie"
+        )
+    }
+
+    private fun newHeaderItem(name: String, value: String): AbstractMap.SimpleImmutableEntry<String, String> {
+        return AbstractMap.SimpleImmutableEntry(name, value)
     }
 
     fun convertToDateFormat(dateTime: DateTime): String {
