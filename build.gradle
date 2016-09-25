@@ -1,10 +1,12 @@
 buildscript {
     ext.kotlin_version = '1.0.4'
+    ext.junit_version = '1.0.0-M2'
     repositories {
         mavenCentral()
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.junit.platform:junit-platform-gradle-plugin:$junit_version"
     }
 }
 
@@ -17,9 +19,18 @@ plugins {
 
 def kotlin_version = "1.0.4"
 
+
 apply plugin: 'kotlin'
 apply from: 'gradle/package.gradle'
 apply from: 'gradle/publish.gradle'
+apply plugin: 'org.junit.platform.gradle.plugin'
+
+junitPlatform {
+    engines {
+        include 'spek'
+    }
+}
+
 
 repositories {
     jcenter()
@@ -48,11 +59,13 @@ dependencies {
     // Used for HTTP2 support.
     compile "org.mortbay.jetty.alpn:alpn-boot:8.1.8.v20160420"
 
+    testCompile 'org.jetbrains.spek:spek-api:1.0.89'
     testCompile "junit:junit:4.12"
     testCompile "org.mockito:mockito-all:1.9.5"
     testCompile "org.apache.httpcomponents:httpclient:4.5.1"
     testCompile 'com.squareup.okhttp3:okhttp:3.2.0'
     testCompile "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
+    testRuntime 'org.jetbrains.spek:spek-junit-platform-engine:1.0.89'
 }
 
 
@@ -68,3 +81,4 @@ test {
     // set JVM arguments for the test JVM(s)
     jvmArgs '-XX:MaxPermSize=256m'
 }
+
