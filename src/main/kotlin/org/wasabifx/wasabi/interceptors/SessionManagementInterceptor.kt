@@ -15,16 +15,29 @@ class SessionManagementInterceptor(val cookieKey: String = "_sessionID", session
     }
 
     override fun intercept(request: Request, response: Response): Boolean {
-        val x = request.cookies[cookieKey]
-        if (x != null && x.value != "") {
-            // If we have a session bump the expiration time to keep it active
-            request.session = loadSession(x.value)
-            request.session!!.extendSession()
-        } else {
-            request.session = Session(generateSessionID())
-            storeSession(request.session!!)
+        if (request.cookies.containsKey(cookieKey)) {
+            val cookie = request.cookies.get(cookieKey)
+
+            if (cookie is Cookie) {
+                if (cookie.value() != "") {
+                    request.session = loadSession(cookie.value())
+                    request.session?.let {
+                        it.extendSession()
+                    }
+                } else {
+                    request.session = Session(generateSessionID())
+                    storeSession(request.session!!)
+                }
+            }
         }
-        response.cookies[cookieKey] = Cookie(cookieKey, request.session!!.id, request.path, request.host, request.isSecure)
+
+        val tmpCookie = Cookie(cookieKey, request.session!!.id)
+        tmpCookie.setDomain(request.host)
+        tmpCookie.isSecure = request.isSecure
+        tmpCookie.setPath(request.path)
+
+        response.setCookie(tmpCookie)
+
         return true
     }
 }

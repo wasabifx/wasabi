@@ -131,21 +131,27 @@ class Response() {
             headerList.add(newHeaderItem(rawHeaderItem.key, rawHeaderItem.value))
         }
 
-        if (contentLength != null) {
-            headerList.add(newHeaderItem("Content-Length", contentLength.toString()))
+        contentLength?.let {
+            headerList.add(newHeaderItem("Content-Length", it.toString()))
         }
 
-        if (lastModified != null) {
-            headerList.add(newHeaderItem("Last-Modified", convertToDateFormat(lastModified!!)))
+        lastModified?.let {
+            headerList.add(newHeaderItem("Last-Modified", convertToDateFormat(it)))
         }
 
         for (cookie in cookies) {
-            val name = cookie.value.name.toString()
-            val value = cookie.value.value.toString()
-            headerList.add(newHeaderItem("Set-Cookie", ServerCookieEncoder.STRICT.encode(name, value).toString()))
+            headerList.add(newHeaderItem("Set-Cookie", cookie.toString()))
         }
 
         return headerList
+    }
+
+    fun getCookie(name: String) : Cookie? {
+        return cookies[name] ?: null
+    }
+
+    fun setCookie(cookie: Cookie) {
+        cookies[cookie.name()] = cookie
     }
 
     private fun getSupportedHeaderNames() : List<String> {
