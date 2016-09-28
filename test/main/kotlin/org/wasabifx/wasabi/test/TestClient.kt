@@ -1,6 +1,6 @@
 package org.wasabifx.wasabi.test
 
-import com.sun.javaws.exceptions.InvalidArgumentException
+import com.fasterxml.jackson.databind.ObjectMapper
 import org.apache.http.client.entity.UrlEncodedFormEntity
 import org.apache.http.client.methods.*
 import org.apache.http.entity.StringEntity
@@ -26,12 +26,12 @@ class TestClient(val appServer: AppServer) {
     }
 
     fun sendSimpleRequest(url: String, method: String, headers: HashMap<String, String> = hashMapOf()): HttpClientResponse {
-        val httpRequest = getMethod(url, method)
-        return makeRequest(headers, httpRequest)
+        val httpRequest = createHttpRequestInstance(url, method)
+        return executeRequest(headers, httpRequest)
     }
 
     fun sendForm(url: String, method: String, fields: ArrayList<BasicNameValuePair>, headers: HashMap<String, String> = hashMapOf(), chunked: Boolean = false): HttpClientResponse {
-        val httpRequest = getMethod(url, method)
+        val httpRequest = createHttpRequestInstance(url, method)
 
         if (httpRequest is HttpEntityEnclosingRequestBase) {
             val entity = UrlEncodedFormEntity(fields, "UTF-8")
@@ -42,11 +42,21 @@ class TestClient(val appServer: AppServer) {
 
         // @TODO check GET case
 
-        return makeRequest(headers, httpRequest)
+        return executeRequest(headers, httpRequest)
+    }
+
+    fun sendForm(url: String, method: String, fields: HashMap<String, String>, headers: HashMap<String, String> = hashMapOf(), chunked: Boolean = false): HttpClientResponse {
+
+        val formFields = ArrayList<BasicNameValuePair>()
+        fields.forEach {
+            formFields.add(BasicNameValuePair(it.key, it.value))
+        }
+
+        return sendForm(url, method, formFields, headers, chunked)
     }
 
     fun sendJson(url: String, method: String, json: String, headers: HashMap<String, String> = hashMapOf()): HttpClientResponse {
-        val httpRequest = getMethod(url, method)
+        val httpRequest = createHttpRequestInstance(url, method)
 
         if (httpRequest is HttpEntityEnclosingRequestBase) {
             httpRequest.setHeader("Content-Type", "application/json")
@@ -55,10 +65,17 @@ class TestClient(val appServer: AppServer) {
 
         // @TODO check GET case
 
-        return makeRequest(headers, httpRequest)
+        return executeRequest(headers, httpRequest)
     }
 
-    private fun getMethod(url: String, method: String): HttpRequestBase {
+    fun sendJson(url: String, method: String, json: Any, headers: HashMap<String, String> = hashMapOf()): HttpClientResponse {
+        val objectMapper = ObjectMapper()
+        val jsonString = objectMapper.writeValueAsString(json)!!
+
+        return sendJson(url, method, jsonString, headers)
+    }
+
+    private fun createHttpRequestInstance(url: String, method: String): HttpRequestBase {
         val fullUrl = "http://localhost:" + appServer.configuration.port.toString() + url
 
         return when (method) {
@@ -74,7 +91,7 @@ class TestClient(val appServer: AppServer) {
         }
     }
 
-    private fun makeRequest(headers: HashMap<String, String>, request: HttpRequestBase, cookies: HashMap<String, String> = hashMapOf()): HttpClientResponse {
+    private fun executeRequest(headers: HashMap<String, String>, request: HttpRequestBase, cookies: HashMap<String, String> = hashMapOf()): HttpClientResponse {
 
         val cookieStore = BasicCookieStore()
 

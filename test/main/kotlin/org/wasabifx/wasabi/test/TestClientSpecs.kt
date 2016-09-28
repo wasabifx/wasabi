@@ -29,7 +29,7 @@ class TestClientSpecs : TestServerContext(){
         assertEquals("Correct2", client.sendSimpleRequest("/testget2", TestClient.GET).body)
     }
 
-    @Test fun test_json_post_put_patch_requests() {
+    @Test fun test_json_post_put_patch_json_string_requests() {
         TestServer.reset()
         TestServer.appServer.post("/json", { response.send(request.bodyParams["test"] ?: "key not found", "text/plain") })
         TestServer.appServer.put("/json", { response.send(request.bodyParams["test"] ?: "key not found", "text/plain") })
@@ -42,7 +42,29 @@ class TestClientSpecs : TestServerContext(){
         assertEquals("patchtest", client.sendJson("/json", TestClient.PATCH, """{"test":"patchtest"}""").body)
     }
 
-    @Test fun test_form_post_put_patch_requests() {
+    @Test fun test_json_post_put_patch_json_hashmap_requests() {
+        TestServer.reset()
+        TestServer.appServer.post("/json", { response.send(request.bodyParams["test"] ?: "key not found", "text/plain") })
+        TestServer.appServer.put("/json", { response.send(request.bodyParams["test"] ?: "key not found", "text/plain") })
+        TestServer.appServer.patch("/json", { response.send(request.bodyParams["test"] ?: "key not found", "text/plain") })
+
+        val client = TestClient(TestServer.appServer)
+
+        assertEquals("posttest", client.sendJson("/json", TestClient.POST, hashMapOf("test" to "posttest")).body)
+        assertEquals("puttest", client.sendJson("/json", TestClient.PUT, hashMapOf("test" to "puttest")).body)
+        assertEquals("patchtest", client.sendJson("/json", TestClient.PATCH, hashMapOf("test" to "patchtest")).body)
+    }
+
+    @Test fun test_json_post_json_multilevel_hashmap_request() {
+        TestServer.reset()
+        TestServer.appServer.post("/json", { response.send(request.bodyParams["test"] ?: "key not found", "application/json") })
+
+        val client = TestClient(TestServer.appServer)
+
+        assertEquals("""{"another":"weeee"}""", client.sendJson("/json", TestClient.POST, hashMapOf("test" to hashMapOf("another" to "weeee"))).body)
+    }
+
+    @Test fun test_form_post_put_patch_arraylist_requests() {
         TestServer.reset()
         TestServer.appServer.post("/form", { response.send(request.bodyParams["test"] ?: "key not found", "text/plain") })
         TestServer.appServer.put("/form", { response.send(request.bodyParams["test"] ?: "key not found", "text/plain") })
@@ -62,6 +84,19 @@ class TestClientSpecs : TestServerContext(){
         assertEquals("posttest", client.sendForm("/form", TestClient.POST, postFormFields).body)
         assertEquals("puttest", client.sendForm("/form", TestClient.PUT, putFormFields).body)
         assertEquals("patchtest", client.sendForm("/form", TestClient.PATCH, patchFormFields).body)
+    }
+
+    @Test fun test_form_post_put_patch_hashmap_requests() {
+        TestServer.reset()
+        TestServer.appServer.post("/form", { response.send(request.bodyParams["test"] ?: "key not found", "text/plain") })
+        TestServer.appServer.put("/form", { response.send(request.bodyParams["test"] ?: "key not found", "text/plain") })
+        TestServer.appServer.patch("/form", { response.send(request.bodyParams["test"] ?: "key not found", "text/plain") })
+
+        val client = TestClient(TestServer.appServer)
+
+        assertEquals("posttest", client.sendForm("/form", TestClient.POST, hashMapOf("test" to "posttest")).body)
+        assertEquals("puttest", client.sendForm("/form", TestClient.PUT, hashMapOf("test" to "puttest")).body)
+        assertEquals("patchtest", client.sendForm("/form", TestClient.PATCH, hashMapOf("test" to "patchtest")).body)
     }
 
     @Test fun test_delete_options_requests() {
