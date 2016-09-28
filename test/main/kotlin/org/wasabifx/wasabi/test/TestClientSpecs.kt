@@ -15,7 +15,7 @@ class TestClientSpecs : TestServerContext(){
 
         val client = TestClient(TestServer.appServer)
 
-        assertEquals("Correct", client.makeSimpleRequest("/testget", TestClient.GET).body)
+        assertEquals("Correct", client.sendSimpleRequest("/testget", TestClient.GET).body)
     }
 
     @Test fun test_multiple_get_requests() {
@@ -25,8 +25,8 @@ class TestClientSpecs : TestServerContext(){
 
         val client = TestClient(TestServer.appServer)
 
-        assertEquals("Correct", client.makeSimpleRequest("/testget", TestClient.GET).body)
-        assertEquals("Correct2", client.makeSimpleRequest("/testget2", TestClient.GET).body)
+        assertEquals("Correct", client.sendSimpleRequest("/testget", TestClient.GET).body)
+        assertEquals("Correct2", client.sendSimpleRequest("/testget2", TestClient.GET).body)
     }
 
     @Test fun test_json_post_put_patch_requests() {
@@ -73,8 +73,8 @@ class TestClientSpecs : TestServerContext(){
 
         val client = TestClient(TestServer.appServer)
 
-        assertEquals("delete method", client.makeSimpleRequest("/resource", TestClient.DELETE).body)
-        assertEquals("options method", client.makeSimpleRequest("/resource", TestClient.OPTIONS).body)
+        assertEquals("delete method", client.sendSimpleRequest("/resource", TestClient.DELETE).body)
+        assertEquals("options method", client.sendSimpleRequest("/resource", TestClient.OPTIONS).body)
     }
 
     // @TODO add methods which test additional headers in request.

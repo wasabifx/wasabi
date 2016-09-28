@@ -25,7 +25,7 @@ class TestClient(val appServer: AppServer) {
         val TRACE = "TRACE"
     }
 
-    fun makeSimpleRequest(url: String, method: String, headers: HashMap<String, String> = hashMapOf()): HttpClientResponse {
+    fun sendSimpleRequest(url: String, method: String, headers: HashMap<String, String> = hashMapOf()): HttpClientResponse {
         val httpRequest = getMethod(url, method)
         return makeRequest(headers, httpRequest)
     }
