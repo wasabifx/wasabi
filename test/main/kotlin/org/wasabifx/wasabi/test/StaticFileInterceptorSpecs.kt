@@ -76,7 +76,7 @@ class StaticFileInterceptorSpecs: TestServerContext() {
 
         val response = get("http://localhost:${TestServer.definedPort}/file%20with%20spaces%20in%20filename.txt", hashMapOf())
 
-        assertEquals("lorem ipsum", response.body.trim())
+        assertEquals("lorem ipsum", response.body?.trim())
     }
 
     @spec fun requesting_an_file_outside_of_static_folder_should_raise_internal_server_error() {
@@ -85,6 +85,6 @@ class StaticFileInterceptorSpecs: TestServerContext() {
 
         val response = get("http://localhost:${TestServer.definedPort}/..%2F..%2F..%2F..%2F..%2F..%2F..%2F..%2Fetc%2Fpasswd", hashMapOf())
 
-        assertEquals("Internal Server Error", response.body.trim())
+        assertEquals("Internal Server Error", response.body?.trim())
     }
 }
