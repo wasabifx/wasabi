@@ -38,9 +38,9 @@ class TestClient(val appServer: AppServer) {
             entity.isChunked = chunked
             httpRequest.setHeader("Content-Type", "application/x-www-form-urlencoded")
             httpRequest.entity = entity
+        } else {
+            throw Exception("Cannot send form with this HTTP method ($method).")
         }
-
-        // @TODO check GET case
 
         return executeRequest(headers, httpRequest)
     }
@@ -61,9 +61,9 @@ class TestClient(val appServer: AppServer) {
         if (httpRequest is HttpEntityEnclosingRequestBase) {
             httpRequest.setHeader("Content-Type", "application/json")
             httpRequest.entity = StringEntity(json)
+        } else {
+            throw Exception("Cannot send JSON with this HTTP method ($method).")
         }
-
-        // @TODO check GET case
 
         return executeRequest(headers, httpRequest)
     }
@@ -109,7 +109,7 @@ class TestClient(val appServer: AppServer) {
         request.setHeader("Connection", "Close")
 
         val response = httpClient.execute(request)!!
-        val body = EntityUtils.toString(response.entity)!!
+        val body = if (response.entity != null) { EntityUtils.toString(response.entity) } else { null }
         val responseHeaders = response.allHeaders!!
 
         return HttpClientResponse(responseHeaders, body,

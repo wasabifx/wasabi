@@ -99,18 +99,44 @@ class TestClientSpecs : TestServerContext(){
         assertEquals("patchtest", client.sendForm("/form", TestClient.PATCH, hashMapOf("test" to "patchtest")).body)
     }
 
+    @Test fun test_form_get_hashmap_request() {
+        TestServer.reset()
+        TestServer.appServer.get("/form", { response.send(request.queryParams["test"] ?: "key not found", "text/plain") })
+
+        val client = TestClient(TestServer.appServer)
+
+        var exceptionThrown = false
+
+        try {
+            client.sendForm("/form", TestClient.GET, hashMapOf("test" to "gettest"))
+        } catch (e: Exception) {
+            exceptionThrown = true
+        }
+
+        assertEquals(true, exceptionThrown)
+    }
+
     @Test fun test_delete_options_requests() {
         TestServer.reset()
         TestServer.appServer.delete("/resource", { response.send("delete method", "text/plain") })
         TestServer.appServer.options("/resource", { response.send("options method", "text/plain") })
-        // @TODO add head method test. For some unknown reason currently it doesn't work.
-
+        TestServer.appServer.head("/resource", { response.send("head method", "text/plain") })
 
         val client = TestClient(TestServer.appServer)
 
         assertEquals("delete method", client.sendSimpleRequest("/resource", TestClient.DELETE).body)
         assertEquals("options method", client.sendSimpleRequest("/resource", TestClient.OPTIONS).body)
+        assertEquals(null, client.sendSimpleRequest("/resource", TestClient.HEAD).body)
     }
 
-    // @TODO add methods which test additional headers in request.
+    @Test fun test_additional_header_requests() {
+        TestServer.reset()
+        TestServer.appServer.get("/resource", { response.send(request.acceptCharset.toString(), "text/plain") })
+        TestServer.appServer.post("/resource", { response.send(request.acceptCharset.toString(), "text/plain") })
+
+        val client = TestClient(TestServer.appServer)
+
+        assertEquals("{UTF-8=1}", client.sendSimpleRequest("/resource", TestClient.GET, hashMapOf("Accept-Charset" to "UTF-8")).body)
+        assertEquals("{UTF-8=1}", client.sendForm("/resource", TestClient.POST, hashMapOf("field" to "value"), hashMapOf("Accept-Charset" to "UTF-8")).body)
+    }
 }
