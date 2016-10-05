@@ -13,6 +13,6 @@ class BinaryContentSpecs: TestServerContext() {
                 })
 
         val response = get("http://localhost:${TestServer.definedPort}/binary/thing")
-        assertEquals(8, response.body.length)
+        assertEquals(8, response.body?.length)
     }
 }
