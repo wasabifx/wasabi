@@ -1,22 +1,39 @@
 package org.wasabifx.wasabi.test
 
+import org.jetbrains.spek.api.Spek
+import org.jetbrains.spek.api.dsl.*
 import org.wasabifx.wasabi.interceptors.serveStaticFilesFromFolder
 import org.junit.Test as spec
 import kotlin.test.assertEquals
 import java.io.File
 
+class StaticFileInterceptorSpec: Spek({
+
+    given("a server with StaticFileInterceptor configured") {
+        beforeEach {
+            TestServer.start()
+        }
+        afterEach {
+            TestServer.reset()
+        }
+
+        TestServer.appServer.serveStaticFilesFromFolder("testData${File.separatorChar}public")
+        on("requesting an existing static file") {
+            val response = get("http://localhost:${TestServer.definedPort}/test.html", hashMapOf())
+            it("should serve the file") {
+                assertEquals("<!DOCTYPE html><head><title></title></head><body>This is an example static file</body></html>", response.body)
+            }
+        }
+    }
+})
 class StaticFileInterceptorSpecs: TestServerContext() {
+
 
     @spec fun requesting_an_existing_static_file_should_return_the_file() {
 
-        TestServer.appServer.serveStaticFilesFromFolder("testData${File.separatorChar}public")
-
-        val response = get("http://localhost:${TestServer.definedPort}/test.html", hashMapOf())
-        val response1 = get("http://localhost:${TestServer.definedPort}/error.html", hashMapOf())
 
 
-        assertEquals("<!DOCTYPE html><head><title></title></head><body>This is an example static file</body></html>", response.body)
-        assertEquals("<!DOCTYPE html><head><title></title></head><body>Standard Error File</body></html>", response1.body)
+
     }
 
     @spec fun requesting_an_existing_static_file_should_return_correct_content_type() {
