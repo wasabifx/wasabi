@@ -30,11 +30,11 @@ class BodyParametersSpecs : TestServerContext() {
 
         val response = post("http://localhost:${TestServer.definedPort}/params", hashMapOf(), urlParameters)
 
-        assert(response.body.contains("1"))
+        assert(response.body?.contains("1") ?: false)
 
         val response2 = post("http://localhost:${TestServer.definedPort}/params", hashMapOf(), urlParameters2)
 
-        assert(response2.body.contains("1"))
+        assert(response2.body?.contains("1") ?: false)
 
     }
 

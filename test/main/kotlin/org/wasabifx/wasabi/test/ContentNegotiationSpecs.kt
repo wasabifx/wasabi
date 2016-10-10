@@ -168,7 +168,7 @@ class ContentNegotiationSpecs : TestServerContext() {
         val actualContentType = response.headers.filter { it.name == "Content-Type" }
                 .first().value.split(";").first()
         assertEquals(expectedContentType, actualContentType)
-        assertEquals("{\"cause\":null", response.body.substring(0, 13))
+        assertEquals("{\"cause\":null", response.body?.substring(0, 13))
     }
 
     @spec fun returning_content_as_string_with_custom_content_type_must_work() {
