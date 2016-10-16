@@ -38,7 +38,12 @@ class Response() {
         location = url
     }
 
+    @Deprecated("Use sendFile() instead", ReplaceWith("sendFile(filename, contentType)"))
     fun setFileResponseHeaders(filename: String, contentType: String = "*/*") {
+        this.sendFile(filename, contentType)
+    }
+
+    fun sendFile(filename: String, contentType: String = "*/*") {
 
         val file = File(filename)
         if (file.exists() && !file.isDirectory) {
