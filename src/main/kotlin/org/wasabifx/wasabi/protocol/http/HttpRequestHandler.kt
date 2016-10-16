@@ -161,15 +161,7 @@ class HttpRequestHandler(private val appServer: AppServer): SimpleChannelInbound
 
         // @TODO move this charset stuff
         var responseCharset = ""
-        val responseContentAsStream : ChunkedInput<ByteBuf> = if (response.absolutePathToFileToStream != "") {
-            // because Response.setFileResponseHeaders assigns contentType property, not negotiatedMediaType, we need to
-            // assign it back because later code sets contentType property with value of negotiatedMediaType :D
-            // should be fixed with another PR where Response class will be refactored in a way that it will use one
-            // contentType property, not two (contentType + negotiatedContentType)
-            response.negotiatedMediaType = response.contentType
-            val fileStream = FileInputStream(response.absolutePathToFileToStream)
-            ChunkedNioFile(fileStream.channel, 8192)
-        } else if (response.negotiatedMediaType == "application/octet-stream") {
+        val responseContentAsStream : ChunkedInput<ByteBuf> = if (response.negotiatedMediaType == "application/octet-stream" || response.sendBuffer is ByteArray) {
             val responseBytes = response.sendBuffer as ByteArray
             response.contentLength = responseBytes.size.toLong()
             ChunkedStream(responseBytes.inputStream())
