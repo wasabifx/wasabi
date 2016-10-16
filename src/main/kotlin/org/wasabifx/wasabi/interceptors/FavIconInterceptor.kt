@@ -11,7 +11,7 @@ class FavIconInterceptor(val icon: String): Interceptor {
     override fun intercept(request: Request, response: Response): Boolean {
         if (request.method == HttpMethod.GET && request.uri.compareTo("/favicon.ico", ignoreCase = true) == 0) {
             val path = icon.trim('/')
-            response.setFileResponseHeaders(path, "image/x-icon")
+            response.sendFile(path, "image/x-icon")
             return false
         } else {
             return true

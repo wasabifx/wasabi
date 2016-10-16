@@ -30,8 +30,8 @@ public class StaticFileInterceptor(val folder: String, val useDefaultFile: Boole
             }
 
             when {
-                file.exists() && file.isFile() -> response.setFileResponseHeaders(fullPath)
-                file.exists() && file.isDirectory() && useDefaultFile -> response.setFileResponseHeaders("${fullPath}/${defaultFile}")
+                file.exists() && file.isFile() -> response.sendFile(fullPath)
+                file.exists() && file.isDirectory() && useDefaultFile -> response.sendFile("${fullPath}/${defaultFile}")
                 else -> executeNext = true
             }
         } else {
