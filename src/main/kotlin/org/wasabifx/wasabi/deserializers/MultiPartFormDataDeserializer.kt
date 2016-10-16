@@ -3,6 +3,7 @@ package org.wasabifx.wasabi.deserializers
 import io.netty.handler.codec.http.multipart.InterfaceHttpData
 import io.netty.handler.codec.http.multipart.InterfaceHttpData.HttpDataType
 import io.netty.handler.codec.http.multipart.Attribute
+import io.netty.handler.codec.http.multipart.FileUpload
 import java.util.HashMap
 
 class MultiPartFormDataDeserializer: Deserializer("application/x-www-form-urlencoded", "multipart/form-data") {
@@ -12,7 +13,7 @@ class MultiPartFormDataDeserializer: Deserializer("application/x-www-form-urlenc
     // correctly return a 500 as something bad has happened...
     @Suppress("UNCHECKED_CAST")
     override fun deserialize(input: Any): HashMap<String, Any> {
-        var bodyParams = HashMap<String, Any>()
+        val bodyParams = HashMap<String, Any>()
         parseBodyParams(input as List<InterfaceHttpData>, bodyParams)
         return bodyParams
     }
@@ -24,10 +25,18 @@ class MultiPartFormDataDeserializer: Deserializer("application/x-www-form-urlenc
     }
 
     private fun addBodyParam(httpData: InterfaceHttpData, bodyParams: HashMap<String, Any>) {
-        // TODO: Add support for other types of attributes (namely file)
-        if (httpData.getHttpDataType() == HttpDataType.Attribute) {
-            val attribute = httpData as Attribute
-            bodyParams[attribute.getName().toString()] = attribute.getValue().toString()
+        when (httpData.httpDataType) {
+            HttpDataType.Attribute -> {
+                val attribute = httpData as Attribute
+                bodyParams[attribute.name] = attribute.value
+            }
+            HttpDataType.FileUpload -> {
+                val upload = httpData as FileUpload
+                bodyParams[upload.name] = upload.get()
+            }
+            HttpDataType.InternalAttribute -> {
+                // TODO: Add support for other types of attributes (namely InternalAttribute)
+            }
         }
     }
 
