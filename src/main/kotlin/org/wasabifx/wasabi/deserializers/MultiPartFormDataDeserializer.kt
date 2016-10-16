@@ -32,7 +32,7 @@ class MultiPartFormDataDeserializer: Deserializer("application/x-www-form-urlenc
             }
             HttpDataType.FileUpload -> {
                 val upload = httpData as FileUpload
-                bodyParams[upload.name] = upload.get()
+                bodyParams[upload.name] = org.wasabifx.wasabi.app.FileUpload(upload.filename, upload.get())
             }
             HttpDataType.InternalAttribute -> {
                 // TODO: Add support for other types of attributes (namely InternalAttribute)
