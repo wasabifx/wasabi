@@ -58,7 +58,14 @@ dependencies {
 
 sourceSets {
     main.java.srcDirs += 'src/main/kotlin'
-    test.java.srcDirs += 'test/main/kotlin'
+    test {
+        java {
+            srcDir 'test/main/kotlin'
+        }
+        resources {
+            srcDir 'test/main/resources'
+        }
+    }
 }
 test {
     // set heap size for the test JVM(s)

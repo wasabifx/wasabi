@@ -1,7 +1,6 @@
 package org.wasabifx.wasabi.protocol.http
 
 import io.netty.handler.codec.http.HttpMethod
-import io.netty.handler.codec.http.cookie.ServerCookieEncoder
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 import org.joda.time.format.DateTimeFormat
@@ -22,8 +21,6 @@ class Response() {
     var statusCode: Int = 200
     var statusDescription: String = ""
     var allow: String = ""
-    var absolutePathToFileToStream: String = ""
-        private set
     var sendBuffer: Any? = null
         private set
     var overrideContentNegotiation: Boolean = false
@@ -41,11 +38,17 @@ class Response() {
         location = url
     }
 
+    @Deprecated("Use sendFile() instead", ReplaceWith("sendFile(filename, contentType)"))
     fun setFileResponseHeaders(filename: String, contentType: String = "*/*") {
+        this.sendFile(filename, contentType)
+    }
+
+    fun sendFile(filename: String, contentType: String = "*/*") {
 
         val file = File(filename)
         if (file.exists() && !file.isDirectory) {
-            this.absolutePathToFileToStream = file.getAbsolutePath()
+            sendBuffer = file.readBytes()
+
             val fileContentType : String?
             when (contentType) {
                 "*/*" -> when {
@@ -64,7 +67,7 @@ class Response() {
                     fileContentType = contentType
                 }
             }
-            this.contentType = fileContentType ?: "application/unknown"
+            this.negotiatedMediaType = fileContentType ?: "application/unknown"
             this.contentLength = file.length()
             this.lastModified = DateTime(file.lastModified())
 
