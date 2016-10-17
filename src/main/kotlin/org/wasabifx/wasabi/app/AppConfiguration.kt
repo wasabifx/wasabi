@@ -10,64 +10,63 @@ var configuration : AppConfiguration? = null
 
 
 data class AppConfiguration(
-     var port: Int = 3000,
-     var welcomeMessage: String = "Server starting on port $port",
-     var enableContentNegotiation: Boolean = true,
-     var enableLogging: Boolean = true,
-     var enableAutoOptions: Boolean = false,
-     var enableCORSGlobally: Boolean = false,
-     var sessionLifetime: Int = 600,
-     var enableXML11: Boolean = false,
-     var maxHttpContentLength: Int = 1048576,
-     var sslEnabled: Boolean = false,
-     var sslCertificatePath: String = ""
+        var port: Int = 3000,
+        var welcomeMessage: String = "Server starting on port $port",
+        var enableContentNegotiation: Boolean = true,
+        var enableLogging: Boolean = true,
+        var enableAutoOptions: Boolean = false,
+        var enableCORSGlobally: Boolean = false,
+        var sessionLifetime: Int = 600,
+        var enableXML11: Boolean = false,
+        var maxHttpContentLength: Int = 1048576,
+        var sslEnabled: Boolean = false,
+        var sslCertificatePath: String = ""
 )
 {
     private val logger = org.slf4j.LoggerFactory.getLogger(AppConfiguration::class.java)
-    var sections: Map<Any, Any> = HashMap<Any, Any>()
+    var sections: Map<Any, Any> = HashMap()
 
     init{
-        val yaml = Yaml()
-        try {
-            // Here we are simply attempting to load a config in the current location under the
-            // assumption Programmatic configuration wont have such present.
-            var configuration = yaml.load(FileInputStream(File("wasabi.yaml"))) as MutableMap<Any, Any>
+        // Check we have a wasabi configuration, if not assume programmatic configuration.
+        val configurationFile = File("wasabi.yaml")
+        val exists = configurationFile.exists()
+        if(exists) {
+            val yaml = Yaml()
+            try {
+                @Suppress("UNCHECKED_CAST")
+                val configuration = yaml.load(FileInputStream(configurationFile)) as MutableMap<Any, Any>
 
-            @Suppress("UNCHECKED_CAST")
-            var wasabiConfiguration = configuration["wasabi"] as Map<Any, Any>
-            AppConfiguration::class.memberProperties.forEach {
-                // Ignore the logger ....
-                if (it.name != "logger")
-                {
-                    try {
-                        javaClass.getDeclaredField(it.name).set(this, wasabiConfiguration[it.name])
-                    }
-                    catch(exception: Exception)
+                @Suppress("UNCHECKED_CAST")
+                val wasabiConfiguration = configuration["wasabi"] as Map<Any, Any>
+                AppConfiguration::class.memberProperties.forEach {
+                    // Ignore the logger ....
+                    if (it.name != "logger")
                     {
-                        logger!!.warn("${it.name} setting not found in config, using default.")
+                        try {
+                            javaClass.getDeclaredField(it.name).set(this, wasabiConfiguration[it.name])
+                        }
+                        catch(exception: Exception)
+                        {
+                            logger!!.debug("${it.name} setting not found in config, using default.")
+                        }
                     }
                 }
+
+                // Drop wasabi from read config, its now set on object directly.
+                configuration.remove("wasabi")
+
+                // Assign custom config as immutable Map.
+                sections = configuration as Map<Any, Any>
+
+
             }
-
-            // Drop wasabi from read config, its now set on object directly.
-            configuration.remove("wasabi")
-
-            // Assign custom config as immutable Map.
-            sections = configuration as Map<Any, Any>
-
-
+            catch(exception: Exception)
+            {
+                logger!!.debug("Unable to load configuration from file: $exception, using defaults or constructor provided values.")
+            }
         }
-        catch(exception: Exception)
-        {
-            logger!!.warn("Unable to load configuration from file: $exception, using defaults or constructor provided values.")
-        }
-        finally {
-            // Populate our static var, currently one instance is only ever created
-            // so get's things going, TODO do better...
-            configuration = this
-        }
+        // Populate our static var, currently one instance is only ever created
+        // so get's things going.
+        configuration = this
     }
 }
-
-
-
