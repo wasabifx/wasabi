@@ -1,6 +1,5 @@
 package org.wasabifx.wasabi.app
 
-import io.netty.channel.ChannelHandlerContext
 import io.netty.handler.codec.http.HttpMethod
 import org.slf4j.LoggerFactory
 import org.wasabifx.wasabi.deserializers.Deserializer
@@ -27,7 +26,7 @@ open class AppServer(val configuration: AppConfiguration = AppConfiguration()) {
     private val httpServer: HttpServer
     private var running = false
 
-    val routes: ArrayList<Route> = ArrayList<Route>()
+    val routes: MutableSet<Route> = mutableSetOf()
     val channels: ArrayList<Channel> = ArrayList<Channel>()
     val exceptionHandlers: MutableSet<RouteException> = mutableSetOf()
     val interceptors : ArrayList<InterceptorEntry>  = ArrayList<InterceptorEntry>()
@@ -40,9 +39,9 @@ open class AppServer(val configuration: AppConfiguration = AppConfiguration()) {
     }
 
     private fun addRoute(method: HttpMethod, path: String, vararg handler: RouteHandler.() -> Unit) {
-        val existingRoute = routes.filter { it.path == path && it.method == method }
-        if (existingRoute.count() >= 1) {
-            throw RouteAlreadyExistsException(existingRoute.firstOrNull()!!)
+        val existingRoute = routes.findSimilar(method, path)
+        if (existingRoute != null) {
+            throw RouteAlreadyExistsException(existingRoute)
         }
         routes.add(Route(path, method, HashMap<String, String>(), *handler))
     }
