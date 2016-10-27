@@ -75,5 +75,13 @@ class RoutesSpecs {
 
         assertEquals("Path / with method GET already exists", exception.message)
     }
+
+    @spec fun adding_a_non_normal_route_in_the_routing_table_then_should_normalize_the_route() {
+
+        TestServer.reset()
+        TestServer.appServer.get( "unreachable", {})
+
+        assertEquals("/unreachable", TestServer.appServer.routes.first().path)
+    }
 }
 
