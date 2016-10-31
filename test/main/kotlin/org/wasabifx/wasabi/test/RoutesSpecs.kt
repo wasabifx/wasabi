@@ -107,7 +107,6 @@ class RoutesSpecs {
 
     }
 
-
     @spec fun adding_a_second_route_in_the_routing_table_with_matching_path_and_method_should_throw_exception_indicating_route_exists() {
 
         TestServer.reset()
