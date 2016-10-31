@@ -51,7 +51,7 @@ object TestServer {
         appServer.get("/first", { response.send("First")})
     }
 
-    val routes: ArrayList<Route>
+    val routes: Set<Route>
         get() = appServer.routes
 
     fun reset() {

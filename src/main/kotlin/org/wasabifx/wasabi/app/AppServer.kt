@@ -26,7 +26,7 @@ open class AppServer(val configuration: AppConfiguration = AppConfiguration()) {
     private val httpServer: HttpServer
     private var running = false
 
-    val routes: ArrayList<Route> = ArrayList<Route>()
+    val routes: MutableSet<Route> = mutableSetOf()
     val channels: ArrayList<Channel> = ArrayList<Channel>()
     val exceptionHandlers: MutableSet<RouteException> = mutableSetOf()
     val interceptors : ArrayList<InterceptorEntry>  = ArrayList<InterceptorEntry>()
@@ -40,9 +40,9 @@ open class AppServer(val configuration: AppConfiguration = AppConfiguration()) {
 
     private fun addRoute(method: HttpMethod, path: String, vararg handler: RouteHandler.() -> Unit) {
         val normalizedPath = normalizePath(path)
-        val existingRoute = routes.filter { it.path == normalizedPath && it.method == method }
-        if (existingRoute.count() >= 1) {
-            throw RouteAlreadyExistsException(existingRoute.firstOrNull()!!)
+        val existingRoute = routes.findSimilar(method, normalizedPath)
+        if (existingRoute != null) {
+            throw RouteAlreadyExistsException(existingRoute)
         }
         routes.add(Route(normalizedPath, method, HashMap<String, String>(), *handler))
     }
