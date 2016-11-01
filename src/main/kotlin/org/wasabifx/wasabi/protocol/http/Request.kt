@@ -17,7 +17,6 @@ class Request() {
     private var log = LoggerFactory.getLogger(Request::class.java)
 
     constructor(httpRequest: HttpRequest, address: InetSocketAddress) : this() {
-        log.info("HttpRequest Constructor called.")
         this.httpRequest = httpRequest
         this.rawHeaders = httpRequest.headers().associate({it.key.toLowerCase() to it.value})
         this.uri = httpRequest.uri!!
@@ -26,7 +25,6 @@ class Request() {
         this.path = uri.split('?')[0]
         this.scheme = if (configuration!!.sslEnabled) "https" else "http"
         this.remoteAddress = address
-        log.info("HttpRequest Constructor completed.")
     }
 
     constructor(http2Headers: Http2Headers?, address: InetSocketAddress) : this() {
