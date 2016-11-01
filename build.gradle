@@ -1,5 +1,5 @@
 buildscript {
-    ext.kotlin_version = '1.0.3'
+    ext.kotlin_version = '1.0.4'
     repositories {
         mavenCentral()
     }
@@ -8,65 +8,44 @@ buildscript {
     }
 }
 
-plugins {
-    id "com.zoltu.kotlin" version "1.0.3"
-    id "com.zoltu.git-versioning" version "2.0.21"
-    id "com.jfrog.bintray" version "1.7"
-    id "maven-publish"
-}
 
-def kotlin_version = "1.0.3"
+allprojects {
+    group = 'org.wasabifx.wasabi'
 
-apply plugin: 'kotlin'
-apply from: 'gradle/package.gradle'
-apply from: 'gradle/publish.gradle'
+    apply plugin: 'kotlin'
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+        compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
 
-repositories {
-    jcenter()
-    mavenCentral()
-}
+        compile "io.netty:netty-all:4.1.0.CR6"
+        compile "commons-codec:commons-codec:1.9"
+        compile "commons-logging:commons-logging:1.1.1"
+        compile "org.slf4j:slf4j-api:1.7.5"
+        compile "org.slf4j:slf4j-simple:1.7.5"
+        compile "joda-time:joda-time:2.3"
+        compile "com.fasterxml.jackson.core:jackson-core:2.8.1"
+        compile "com.fasterxml.jackson.core:jackson-databind:2.8.1"
+        compile "com.fasterxml.jackson.core:jackson-annotations:2.8.1"
+        compile "com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.8.1"
+        compile "com.fasterxml.jackson.module:jackson-module-kotlin:2.8.1"
+        compile "com.fasterxml.woodstox:woodstox-core:5.0.1"
+        compile "org.yaml:snakeyaml:1.17"
+        // Used for HTTP2 support.
+        compile "org.mortbay.jetty.alpn:alpn-boot:8.1.8.v20160420"
 
-dependencies {
-    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
-    compile "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
-
-    compile "io.netty:netty-all:4.1.0.CR6"
-    compile "commons-codec:commons-codec:1.9"
-    compile "commons-logging:commons-logging:1.1.1"
-    compile "com.netflix.rxjava:rxjava-core:0.20.0-RC4"
-    compile "org.slf4j:slf4j-api:1.7.5"
-    compile "org.slf4j:slf4j-simple:1.7.5"
-    compile "joda-time:joda-time:2.3"
-    compile "com.fasterxml.jackson.core:jackson-core:2.8.1"
-    compile "com.fasterxml.jackson.core:jackson-databind:2.8.1"
-    compile "com.fasterxml.jackson.core:jackson-annotations:2.8.1"
-    compile "com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.8.1"
-    compile "com.fasterxml.jackson.module:jackson-module-kotlin:2.8.1"
-    compile "com.fasterxml.woodstox:woodstox-core:5.0.1"
-    compile "org.yaml:snakeyaml:1.17"
-    // Used for HTTP2 support.
-    compile "org.mortbay.jetty.alpn:alpn-boot:8.1.8.v20160420"
-
-    testCompile "junit:junit:4.12"
-    testCompile "org.mockito:mockito-all:1.9.5"
-    testCompile "org.apache.httpcomponents:httpclient:4.5.1"
-    testCompile 'com.squareup.okhttp3:okhttp:3.2.0'
-    testCompile "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
-}
-
-
-sourceSets {
-    main.java.srcDirs += 'src/main/kotlin'
-    test {
-        java {
-            srcDir 'test/main/kotlin'
-        }
-        resources {
-            srcDir 'test/main/resources'
-        }
+        testCompile "junit:junit:4.12"
+        testCompile "org.apache.httpcomponents:httpclient:4.5.1"
+        testCompile 'com.squareup.okhttp3:okhttp:3.2.0'
+        testCompile "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
     }
 }
+
+
+
 test {
     // set heap size for the test JVM(s)
     minHeapSize = "128m"

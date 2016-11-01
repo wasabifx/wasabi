@@ -1,0 +1,4 @@
+rootProject.name = 'wasabi'
+include 'wasabi-core'
+include 'wasabi-samples'
+

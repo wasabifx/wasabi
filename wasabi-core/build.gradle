@@ -1,0 +1,17 @@
+plugins {
+     id "com.zoltu.kotlin" version "1.0.3"
+     id "com.zoltu.git-versioning" version "2.0.21"
+     id "com.jfrog.bintray" version "1.7"
+     id "maven-publish"
+}
+
+
+apply from: '../gradle/package.gradle'
+apply from: '../gradle/publish.gradle'
+
+
+
+sourceSets {
+     main.java.srcDirs += 'src/main/kotlin'
+     test.java.srcDirs += 'src/test/main/kotlin'
+}
