@@ -8,15 +8,6 @@ buildscript {
     }
 }
 
-plugins {
-    id "com.zoltu.kotlin" version "1.0.3"
-    id "com.zoltu.git-versioning" version "2.0.21"
-    id "com.jfrog.bintray" version "1.7"
-    id "maven-publish"
-}
-
-apply from: 'gradle/package.gradle'
-apply from: 'gradle/publish.gradle'
 
 allprojects {
     group = 'org.wasabifx.wasabi'
@@ -26,7 +17,6 @@ allprojects {
         jcenter()
         mavenCentral()
     }
-
     dependencies {
         compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
         compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
@@ -52,16 +42,9 @@ allprojects {
         testCompile 'com.squareup.okhttp3:okhttp:3.2.0'
         testCompile "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
     }
-
 }
 
 
-
-
-sourceSets {
-    main.java.srcDirs += 'src/main/kotlin'
-    test.java.srcDirs += 'src/test/main/kotlin'
-}
 
 test {
     // set heap size for the test JVM(s)

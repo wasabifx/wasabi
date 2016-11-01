@@ -1,5 +1,4 @@
-rootProject.name = "wasabi"
-
-include 'wasabi'
+rootProject.name = 'wasabi'
+include 'wasabi-core'
 include 'wasabi-samples'
 
