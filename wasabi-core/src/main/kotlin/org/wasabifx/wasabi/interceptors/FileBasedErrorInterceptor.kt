@@ -13,7 +13,7 @@ class FileBasedErrorInterceptor(val folder: String, val fileExtensions: String =
         if (!file.exists()) {
             fileToServe = "${path}/$fallbackGenericFile"
         }
-        response.setFileResponseHeaders(fileToServe)
+        response.sendFile(fileToServe)
 
         return false
     }

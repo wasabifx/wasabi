@@ -1,15 +1,14 @@
 package org.wasabifx.wasabi.interceptors
 
+import io.netty.handler.codec.http.HttpMethod
+import org.wasabifx.wasabi.app.AppServer
 import org.wasabifx.wasabi.protocol.http.Request
 import org.wasabifx.wasabi.protocol.http.Response
-import org.wasabifx.wasabi.app.AppServer
-import io.netty.handler.codec.http.HttpMethod
-import java.util.ArrayList
-import org.wasabifx.wasabi.routing.Route
 import org.wasabifx.wasabi.protocol.http.StatusCodes
 import org.wasabifx.wasabi.routing.PatternAndVerbMatchingRouteLocator
+import org.wasabifx.wasabi.routing.Route
 
-class AutoOptionsInterceptor(val routes: ArrayList<Route>): Interceptor {
+class AutoOptionsInterceptor(val routes: Set<Route>): Interceptor {
     override fun intercept(request: Request, response: Response): Boolean {
         var executeNext = false
         if (request.method == HttpMethod.OPTIONS) {

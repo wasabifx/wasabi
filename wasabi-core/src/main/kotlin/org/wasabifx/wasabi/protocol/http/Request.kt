@@ -156,15 +156,18 @@ class Request() {
         val cookieSet = ServerCookieDecoder.STRICT.decode(cookieHeader)
         val cookieList = hashMapOf<String, Cookie>()
         cookieSet?.iterator()?.forEach { cookie ->
-            var path = ""
+            val tmpCookie = Cookie(cookie.name().toString(), cookie.value().toString())
+
             if (cookie.path() != null) {
-                path = cookie.path()
+                tmpCookie.setPath(cookie.path())
             }
-            var domain = ""
+
             if (cookie.domain() != null) {
-                domain = cookie.domain()
+                tmpCookie.setDomain(cookie.domain())
             }
-            cookieList[cookie.name().toString()] = Cookie(cookie.name().toString(), cookie.value().toString(), path, domain, cookie.isSecure)
+
+            tmpCookie.isSecure = cookie.isSecure
+            cookieList[cookie.name().toString()] = tmpCookie
         }
         return cookieList
     }

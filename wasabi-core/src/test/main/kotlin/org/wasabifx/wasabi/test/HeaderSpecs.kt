@@ -145,7 +145,7 @@ class HeaderSpecs : TestServerContext() {
         })
         get("http://localhost:${TestServer.definedPort}/cookie", headers, hashMapOf(Pair("someCookie", "someCookieValue")))
 
-        assertEquals("someCookieValue", cookies["someCookie"]?.value)
+        assertEquals("someCookieValue", cookies["someCookie"]?.value())
 
 
     }

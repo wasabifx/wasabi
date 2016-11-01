@@ -51,7 +51,7 @@ object TestServer {
         appServer.get("/first", { response.send("First")})
     }
 
-    val routes: ArrayList<Route>
+    val routes: Set<Route>
         get() = appServer.routes
 
     fun reset() {
@@ -136,6 +136,6 @@ fun postForm(url: String, headers: HashMap<String, String>, fields: ArrayList<Ba
     return makeRequest(headers, httpPost)
 }
 
-data class HttpClientResponse(val headers: Array<Header>, val body: String, val statusCode: Int, val statusDescription: String)
+data class HttpClientResponse(val headers: Array<Header>, val body: String?, val statusCode: Int, val statusDescription: String)
 
 

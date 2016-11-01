@@ -1,6 +1,6 @@
 package org.wasabifx.wasabi.protocol.http
 
+import io.netty.handler.codec.http.cookie.DefaultCookie
 
-public class Cookie(val name: String, val value: String, val path: String, val domain: String, val isSecure: Boolean) {
 
-}
+class Cookie(name: String?, value: String?) : DefaultCookie(name, value)

@@ -1,7 +1,6 @@
 package org.wasabifx.wasabi.protocol.http
 
 import io.netty.handler.codec.http.HttpMethod
-import io.netty.handler.codec.http.cookie.ServerCookieEncoder
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 import org.joda.time.format.DateTimeFormat
@@ -22,8 +21,6 @@ class Response() {
     var statusCode: Int = 200
     var statusDescription: String = ""
     var allow: String = ""
-    var absolutePathToFileToStream: String = ""
-        private set
     var sendBuffer: Any? = null
         private set
     var overrideContentNegotiation: Boolean = false
@@ -41,11 +38,17 @@ class Response() {
         location = url
     }
 
+    @Deprecated("Use sendFile() instead", ReplaceWith("sendFile(filename, contentType)"))
     fun setFileResponseHeaders(filename: String, contentType: String = "*/*") {
+        this.sendFile(filename, contentType)
+    }
+
+    fun sendFile(filename: String, contentType: String = "*/*") {
 
         val file = File(filename)
         if (file.exists() && !file.isDirectory) {
-            this.absolutePathToFileToStream = file.getAbsolutePath()
+            sendBuffer = file.readBytes()
+
             val fileContentType : String?
             when (contentType) {
                 "*/*" -> when {
@@ -64,7 +67,7 @@ class Response() {
                     fileContentType = contentType
                 }
             }
-            this.contentType = fileContentType ?: "application/unknown"
+            this.negotiatedMediaType = fileContentType ?: "application/unknown"
             this.contentLength = file.length()
             this.lastModified = DateTime(file.lastModified())
 
@@ -131,21 +134,27 @@ class Response() {
             headerList.add(newHeaderItem(rawHeaderItem.key, rawHeaderItem.value))
         }
 
-        if (contentLength != null) {
-            headerList.add(newHeaderItem("Content-Length", contentLength.toString()))
+        contentLength?.let {
+            headerList.add(newHeaderItem("Content-Length", it.toString()))
         }
 
-        if (lastModified != null) {
-            headerList.add(newHeaderItem("Last-Modified", convertToDateFormat(lastModified!!)))
+        lastModified?.let {
+            headerList.add(newHeaderItem("Last-Modified", convertToDateFormat(it)))
         }
 
         for (cookie in cookies) {
-            val name = cookie.value.name.toString()
-            val value = cookie.value.value.toString()
-            headerList.add(newHeaderItem("Set-Cookie", ServerCookieEncoder.STRICT.encode(name, value).toString()))
+            headerList.add(newHeaderItem("Set-Cookie", cookie.toString()))
         }
 
         return headerList
+    }
+
+    fun getCookie(name: String) : Cookie? {
+        return cookies[name] ?: null
+    }
+
+    fun setCookie(cookie: Cookie) {
+        cookies[cookie.name()] = cookie
     }
 
     private fun getSupportedHeaderNames() : List<String> {
