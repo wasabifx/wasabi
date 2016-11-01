@@ -1,0 +1,33 @@
+package org.wasabifx.wasabi.test
+
+import org.junit.Test as spec
+import kotlin.test.assertEquals
+import org.wasabifx.wasabi.interceptors.serveErrorsFromFolder
+import org.wasabifx.wasabi.protocol.http.StatusCodes
+import java.io.File
+
+class FileBasedErrorInterceptorSpecs : TestServerContext() {
+
+    @spec fun when_an_error_occurs_and_corresponding_error_file_exists_it_should_serve_it() {
+
+        TestServer.reset()
+        TestServer.appServer.serveErrorsFromFolder("testData${File.separatorChar}public")
+
+        val response = get("http://localhost:${TestServer.definedPort}/notvalid", hashMapOf())
+
+        assertEquals(404, response.statusCode)
+        assertEquals("<!DOCTYPE html><head><title></title></head><body>Custom File 404</body></html>", response.body)
+    }
+
+    @spec fun when_an_error_occurs_and_corresponding_error_file_does_not_exist_it_should_serve_default_error_file() {
+
+        TestServer.reset()
+        TestServer.appServer.serveErrorsFromFolder("testData${File.separatorChar}public")
+
+        TestServer.appServer.get("/notvalid", { response.setStatus(StatusCodes.Forbidden)})
+        val response = get("http://localhost:${TestServer.definedPort}/notvalid", hashMapOf())
+
+        assertEquals(403, response.statusCode)
+        assertEquals("<!DOCTYPE html><head><title></title></head><body>Standard Error File</body></html>", response.body)
+    }
+}

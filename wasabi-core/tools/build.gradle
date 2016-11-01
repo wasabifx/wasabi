@@ -1,0 +1,155 @@
+public static String getDomain(String s) {
+     String[] f = s.split('\\.')
+     return f[1].capitalize()
+}
+
+defaultTasks 'help'
+
+tasks.addRule("Pattern: <property>=<value>: Passes arguments to the scripts") { String taskName ->
+    def match = taskName =~ /(.*?)=(.*?$)/
+    if(match){
+        task(taskName) << {
+        }
+    }
+}
+
+
+task help << {
+    println ("""\
+Welcome to Wasabi
+
+To get started run: gradle -q server -Pdir={directory} -Ppackage={package}
+
+e.g.: gradle -q server -Pdir=/home/username/project/myAppfolder -Ppackage=org.domain
+
+""")
+
+
+
+}
+
+task setup << {
+    if(!project.hasProperty('dir')||!project.hasProperty('package')){
+        throw new GradleException('You need to specify a dir and package parameters')
+    } else {
+        def directory = new File(project.dir)
+        println('Here we go...\n')
+        directory.mkdirs()
+        println('Creating directory ' + project.dir + '...')
+        def sourcedir = new File(project.dir + '/src/main/kotlin')
+        sourcedir.mkdirs()
+        println('Creating src directory ...')
+        def testdir = new File(project.dir + '/src/test/kotlin')
+        testdir.mkdirs()
+        println('Creating test directory ...')
+
+    }
+}
+
+task createGradle(dependsOn: setup) << {
+        println('Creating build.gradle file ...')
+        def gradleFile = new File(project.dir+'/build.gradle')
+
+
+        def mainClass = project.package + '.' + 'ServerKt'
+        gradleFile.append("""\
+buildscript {
+    project.ext.kotlin_version = '0.1-SNAPSHOT'
+    repositories {
+        mavenCentral()
+        maven {
+            url "https://oss.sonatype.org/content/repositories/snapshots"
+        }
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:\$kotlin_version"
+    }
+}
+
+apply plugin: 'kotlin'
+apply plugin: 'application'
+
+mainClassName = '${mainClass}'
+
+repositories {
+    mavenCentral()
+    maven {
+        url "https://oss.sonatype.org/content/repositories/snapshots"
+    }
+    maven {
+        url 'https://dl.bintray.com/wasabifx/wasabifx'
+    }
+}
+
+dependencies {
+    compile "org.wasabifx:wasabi:0.3.30"
+    compile "org.jetbrains.kotlin:kotlin-stdlib:\$kotlin_version"
+
+}
+
+sourceSets {
+    src {
+        main {
+            kotlin
+        }
+    }
+    test {
+        main {
+            kotlin
+        }
+    }
+    main.java.srcDirs += 'src/main/kotlin'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.8'
+}
+""")
+}
+
+
+
+task server(dependsOn: createGradle) << {
+        println('Creating server ...')
+        def serverFile = new File(project.dir+'/src/main/kotlin/server.kt')
+        serverFile.append("""\
+package ${project.package}
+
+import org.wasabifx.wasabi.app.AppServer
+
+fun main(args: Array<String>) {
+
+    val server = AppServer()
+
+    // insert routes here
+    server.get("/", { response.send ("Hello Wasabi")})
+
+    server.start()
+
+}
+""")
+
+
+
+    println('Done!')
+
+    println("""
+
+You can now import your Gradle project into your favorite IDE or use an editor.
+A default template has been created for you called server.kt. Define your routes there.
+
+Once you're ready to deploy, run:
+
+gradle distZip
+
+This will create a zip file with your application under build/distributions.
+Inside the zip there is a bin folder with two files named the same as your application.
+One is a shell script for Linux/OSX, the other for Windows. Running it will start your application.
+
+Have fun!
+
+
+
+""")
+
+}
