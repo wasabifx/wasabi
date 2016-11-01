@@ -2,7 +2,6 @@ package org.wasabifx.wasabi.test
 
 import okhttp3.OkHttpClient
 import okhttp3.Request
-import okhttp3.Response
 
 /**
  * Created by condaa1 on 15/04/16.
