@@ -1,16 +1,10 @@
 package org.wasabifx.wasabi.test
 
-import org.junit.Test as spec
-import okhttp3.MultipartBody
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import okhttp3.RequestBody
-import okhttp3.MediaType
+import okhttp3.*
 import org.wasabifx.wasabi.app.FileUpload
-import org.wasabifx.wasabi.configuration.ConfigurationStorage
-import org.wasabifx.wasabi.interceptors.serveErrorsFromFolder
 import org.wasabifx.wasabi.protocol.http.StatusCodes
 import java.io.File
+import org.junit.Test as spec
 
 class FileUploadSpec: TestServerContext() {
     @spec fun fileupload_works() {
