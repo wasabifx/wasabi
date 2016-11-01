@@ -32,7 +32,6 @@ dependencies {
     compile "io.netty:netty-all:4.1.0.CR6"
     compile "commons-codec:commons-codec:1.9"
     compile "commons-logging:commons-logging:1.1.1"
-    compile "com.netflix.rxjava:rxjava-core:0.20.0-RC4"
     compile "org.slf4j:slf4j-api:1.7.5"
     compile "org.slf4j:slf4j-simple:1.7.5"
     compile "joda-time:joda-time:2.3"
@@ -47,7 +46,6 @@ dependencies {
     compile "org.mortbay.jetty.alpn:alpn-boot:8.1.8.v20160420"
 
     testCompile "junit:junit:4.12"
-    testCompile "org.mockito:mockito-all:1.9.5"
     testCompile "org.apache.httpcomponents:httpclient:4.5.1"
     testCompile 'com.squareup.okhttp3:okhttp:3.2.0'
     testCompile "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
