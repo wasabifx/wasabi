@@ -1,5 +1,6 @@
 package org.wasabifx.wasabi.app
 
+import org.slf4j.LoggerFactory
 import org.yaml.snakeyaml.Yaml
 import java.io.File
 import java.io.FileInputStream
@@ -23,7 +24,7 @@ data class AppConfiguration(
      var sslCertificatePath: String = ""
 )
 {
-    private val logger = org.slf4j.LoggerFactory.getLogger(AppConfiguration::class.java)
+    private val logger = LoggerFactory.getLogger(AppConfiguration::class.java)
     var sections: Map<Any, Any> = HashMap<Any, Any>()
 
     init{

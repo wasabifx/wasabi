@@ -1,5 +1,5 @@
 buildscript {
-    ext.kotlin_version = '1.0.3'
+    ext.kotlin_version = '1.0.4'
     repositories {
         mavenCentral()
     }
@@ -15,7 +15,6 @@ plugins {
     id "maven-publish"
 }
 
-def kotlin_version = "1.0.3"
 
 apply plugin: 'kotlin'
 apply from: 'gradle/package.gradle'
@@ -29,7 +28,6 @@ repositories {
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compile "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
-    compile "org.jetbrains.kotlin:kotlin-test:$kotlin_version"
 
     compile "io.netty:netty-all:4.1.0.CR6"
     compile "commons-codec:commons-codec:1.9"
