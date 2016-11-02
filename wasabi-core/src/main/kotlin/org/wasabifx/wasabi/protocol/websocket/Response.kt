@@ -7,5 +7,5 @@ import io.netty.handler.codec.http.websocketx.WebSocketFrame
  * WebSocket realm also.s
  */
 class Response() {
-    public var frame: WebSocketFrame? = null
+    var frame: WebSocketFrame? = null
 }

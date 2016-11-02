@@ -3,7 +3,7 @@ package org.wasabifx.wasabi.test
 import kotlin.test.assertEquals
 import org.junit.Test as spec
 
-public class UrlRequestingSpecs: TestServerContext() {
+class UrlRequestingSpecs: TestServerContext() {
 
 
     val headers = hashMapOf(

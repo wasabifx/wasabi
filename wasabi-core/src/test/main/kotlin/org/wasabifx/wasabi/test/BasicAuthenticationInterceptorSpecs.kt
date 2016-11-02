@@ -6,7 +6,7 @@ import org.wasabifx.wasabi.interceptors.useAuthentication
 import kotlin.test.assertEquals
 import org.junit.Test as spec
 
-public class BasicAuthenticationInterceptorSpecs : TestServerContext() {
+class BasicAuthenticationInterceptorSpecs : TestServerContext() {
 
     @spec fun requesting_a_protected_resource_should_return_authentication_required () {
 

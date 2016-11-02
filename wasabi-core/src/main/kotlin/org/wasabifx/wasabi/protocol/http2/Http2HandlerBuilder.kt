@@ -7,7 +7,7 @@ import org.wasabifx.wasabi.app.AppServer
 
 class Http2HandlerBuilder(val appServer: AppServer) : AbstractHttp2ConnectionHandlerBuilder<Http2Handler, Http2HandlerBuilder>() {
 
-    private val frameLogger: Http2FrameLogger = Http2FrameLogger(INFO, Http2Handler::class.java);
+    private val frameLogger: Http2FrameLogger = Http2FrameLogger(INFO, Http2Handler::class.java)
     private val logger = LoggerFactory.getLogger(Http2HandlerBuilder::class.java)
 
 

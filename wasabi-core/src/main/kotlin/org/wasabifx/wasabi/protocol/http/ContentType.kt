@@ -101,24 +101,24 @@ class ContentType(val contentType: String, val contentSubtype: String, val param
 class BadContentTypeFormat(value: String) : Exception("Bad Content-Type format: $value")
 
 class ReflectionContentTypeProperty(val parameters: List<Pair<String, String>> = listOf()) {
-    public operator fun getValue(group: Any, property: KProperty<*>): ContentType {
-        val contentType = group.javaClass.getSimpleName().toLowerCase()
+    operator fun getValue(group: Any, property: KProperty<*>): ContentType {
+        val contentType = group.javaClass.simpleName.toLowerCase()
         val contentSubtype = property.name.toLowerCase().replace("_", "-")
         return ContentType(contentType, contentSubtype, parameters)
     }
 }
 
 class XmlReflectionContentTypeProperty(val parameters: List<Pair<String, String>> = listOf()) {
-    public operator fun getValue(group: Any, property: KProperty<*>): ContentType {
-        val contentType = group.javaClass.getSimpleName().toLowerCase()
+    operator fun getValue(group: Any, property: KProperty<*>): ContentType {
+        val contentType = group.javaClass.simpleName.toLowerCase()
         val contentSubtype = property.name.toLowerCase().replace("_", "-") + "+xml"
         return ContentType(contentType, contentSubtype, parameters)
     }
 }
 
 class AnyReflectionContentTypeProperty(val parameters: List<Pair<String, String>> = listOf()) {
-    public operator fun getValue(group: Any, property: KProperty<*>): ContentType {
-        val contentType = group.javaClass.getSimpleName().toLowerCase()
+    operator fun getValue(group: Any, property: KProperty<*>): ContentType {
+        val contentType = group.javaClass.simpleName.toLowerCase()
         val contentSubtype = "*"
         return ContentType(contentType, contentSubtype, parameters)
     }

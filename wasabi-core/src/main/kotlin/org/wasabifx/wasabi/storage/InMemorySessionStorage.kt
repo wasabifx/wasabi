@@ -4,7 +4,7 @@ import org.wasabifx.wasabi.protocol.http.Session
 import org.wasabifx.wasabi.interceptors.SessionStorage
 import java.util.concurrent.ConcurrentHashMap
 
-public class InMemorySessionStorage: SessionStorage {
+class InMemorySessionStorage: SessionStorage {
 
     val inMemorySession = ConcurrentHashMap<String, Session>()
 

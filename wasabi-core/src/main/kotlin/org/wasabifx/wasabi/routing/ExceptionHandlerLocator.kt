@@ -1,5 +1,5 @@
 package org.wasabifx.wasabi.routing
 
-public interface ExceptionHandlerLocator {
+interface ExceptionHandlerLocator {
     fun findExceptionHandlers(exception: Exception): RouteException
 }

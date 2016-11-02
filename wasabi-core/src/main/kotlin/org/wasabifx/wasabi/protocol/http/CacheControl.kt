@@ -1,6 +1,6 @@
 package org.wasabifx.wasabi.protocol.http
 
-public enum class CacheControl {
+enum class CacheControl {
 
     NoCache {
         override fun toString(): String {

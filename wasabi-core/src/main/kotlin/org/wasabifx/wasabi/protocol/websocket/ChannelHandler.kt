@@ -7,7 +7,7 @@ class ChannelHandler(val ctx: ChannelHandlerContext?, val frame: WebSocketFrame,
 
     var executeNext = false
 
-    public fun next() {
+    fun next() {
         executeNext = true
     }
 

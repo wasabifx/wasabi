@@ -21,7 +21,7 @@ class NettyPipelineInitializer(private val appServer: AppServer, private val ssl
     }
 
     private fun initSslChannel(ch: SocketChannel) {
-        ch.pipeline().addLast(sslContext!!.newHandler(ch.alloc()), ProtocolNegotiator(appServer));
+        ch.pipeline().addLast(sslContext!!.newHandler(ch.alloc()), ProtocolNegotiator(appServer))
     }
 
     private fun initBasicChannel(ch: SocketChannel) {

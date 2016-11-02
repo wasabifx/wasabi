@@ -56,21 +56,21 @@ class HttpServer(private val appServer: AppServer) {
             // attempt to read the file path into a stream.
             if (!sslCertificatePath.contentEquals("")) {
 
-                val fileStream = FileInputStream(sslCertificatePath);
+                val fileStream = FileInputStream(sslCertificatePath)
 
-                val certificateFactory = CertificateFactory.getInstance("X.509");
-                val caCertificate = certificateFactory.generateCertificate(fileStream);
+                val certificateFactory = CertificateFactory.getInstance("X.509")
+                val caCertificate = certificateFactory.generateCertificate(fileStream)
 
                 val trustManagerFactory = TrustManagerFactory
-                        .getInstance(TrustManagerFactory.getDefaultAlgorithm());
-                val keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
+                        .getInstance(TrustManagerFactory.getDefaultAlgorithm())
+                val keyStore = KeyStore.getInstance(KeyStore.getDefaultType())
 
                 // The keystore instance does't explicitly need to be derived from a
                 // file.
-                keyStore.load(null);
-                keyStore.setCertificateEntry("caCert", caCertificate);
+                keyStore.load(null)
+                keyStore.setCertificateEntry("caCert", caCertificate)
 
-                trustManagerFactory.init(keyStore);
+                trustManagerFactory.init(keyStore)
 
                 // val sslContext = SSLContext.getInstance("TLS");
                 // sslContext.init(null, trustManagerFactory.trustManagers, null);

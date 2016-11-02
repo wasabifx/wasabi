@@ -87,10 +87,10 @@ class Http2Handler(val appServer: AppServer, decoder: Http2ConnectionDecoder, en
 
         runInterceptors(streamId, postRequestInterceptors)
 
-        val headers = DefaultHttp2Headers().status(response.statusCode.toString());
-        encoder().writeHeaders(ctx, streamId, headers, 0, false, ctx!!.newPromise());
-        encoder().writeData(ctx, streamId, Unpooled.copiedBuffer(buffer, CharsetUtil.UTF_8), 0, true, ctx.newPromise());
-        ctx.flush();
+        val headers = DefaultHttp2Headers().status(response.statusCode.toString())
+        encoder().writeHeaders(ctx, streamId, headers, 0, false, ctx!!.newPromise())
+        encoder().writeData(ctx, streamId, Unpooled.copiedBuffer(buffer, CharsetUtil.UTF_8), 0, true, ctx.newPromise())
+        ctx.flush()
     }
 
     private fun runHandlers(streamId: Int, routeHandlers : Route)
@@ -145,10 +145,10 @@ class Http2Handler(val appServer: AppServer, decoder: Http2ConnectionDecoder, en
         if (evt is HttpServerUpgradeHandler.UpgradeEvent) {
             log.debug("HTTP/2 upgrade requested")
             // If we get a non SSL HTTP/2 upgrade Write a response to the upgrade request
-            val headers = DefaultHttp2Headers().status(StatusCodes.OK.code.toString());
-            encoder().writeHeaders(ctx, 1, headers, 0, true, ctx!!.newPromise());
+            val headers = DefaultHttp2Headers().status(StatusCodes.OK.code.toString())
+            encoder().writeHeaders(ctx, 1, headers, 0, true, ctx!!.newPromise())
         }
-        super.userEventTriggered(ctx, evt);
+        super.userEventTriggered(ctx, evt)
     }
 
     override fun onPingRead(ctx: ChannelHandlerContext?, data: ByteBuf?) {
@@ -156,7 +156,7 @@ class Http2Handler(val appServer: AppServer, decoder: Http2ConnectionDecoder, en
     }
 
     override fun onDataRead(ctx: ChannelHandlerContext?, streamId: Int, data: ByteBuf?, padding: Int, endOfStream: Boolean): Int {
-        val processed = data!!.readableBytes() + padding;
+        val processed = data!!.readableBytes() + padding
         try{
             val request = requests[streamId]
             if (endOfStream) {
@@ -168,7 +168,7 @@ class Http2Handler(val appServer: AppServer, decoder: Http2ConnectionDecoder, en
             log.error(exception.message)
         }
 
-        return processed;
+        return processed
     }
 
     override fun onSettingsRead(ctx: ChannelHandlerContext?, settings: Http2Settings?) {
@@ -230,9 +230,9 @@ class Http2Handler(val appServer: AppServer, decoder: Http2ConnectionDecoder, en
 
     override fun exceptionCaught(ctx: ChannelHandlerContext?, cause: Throwable?) {
         super.onError(ctx, cause)
-        super.exceptionCaught(ctx, cause);
-        log.error("Exception Caught: $cause");
+        super.exceptionCaught(ctx, cause)
+        log.error("Exception Caught: $cause")
         cause!!.printStackTrace()
-        ctx!!.close();
+        ctx!!.close()
     }
 }

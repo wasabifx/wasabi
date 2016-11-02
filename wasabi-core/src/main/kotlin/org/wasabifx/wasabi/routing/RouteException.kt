@@ -1,6 +1,6 @@
 package org.wasabifx.wasabi.routing
 
-public class RouteException(val exceptionClass: String, val handler: ExceptionHandler.() -> Unit){
+class RouteException(val exceptionClass: String, val handler: ExceptionHandler.() -> Unit){
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true

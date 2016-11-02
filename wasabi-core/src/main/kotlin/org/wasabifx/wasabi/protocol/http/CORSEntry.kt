@@ -2,7 +2,7 @@ package org.wasabifx.wasabi.protocol.http
 
 import io.netty.handler.codec.http.HttpMethod
 
-public class CORSEntry(val path: String = "*",
+class CORSEntry(val path: String = "*",
                        val origins: String = "*",
                        val methods: Set<HttpMethod>? = CORSEntry.ALL_AVAILABLE_METHODS,
                        val headers: String = "Origin, X-Requested-With, Content-Type, Accept",

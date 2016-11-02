@@ -5,7 +5,7 @@ import org.wasabifx.wasabi.interceptors.serveFavIconAs
 import kotlin.test.assertEquals
 import java.io.File
 
-public class FavIconInterceptorSpecs: TestServerContext() {
+class FavIconInterceptorSpecs: TestServerContext() {
 
     @spec fun requesting_favicon_should_return_favicon() {
         TestServer.appServer.serveFavIconAs("testData${File.separatorChar}public${File.separatorChar}favicon.ico")

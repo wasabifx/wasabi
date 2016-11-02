@@ -17,7 +17,7 @@ class StartupShutdownSpecs : TestServerContext() {
         //socket.close()
 
         // not really required as socket would throw exception if it cannot connect
-        assertEquals(true, socket.isConnected())
+        assertEquals(true, socket.isConnected)
         socket.close()
     }
 

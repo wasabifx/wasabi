@@ -22,6 +22,6 @@ class AutoLocationInterceptorSpecs : TestServerContext() {
             response.setStatus(StatusCodes.Created)
         })
         val response = postForm("http://localhost:${TestServer.definedPort}/person", headers, arrayListOf())
-        assertEquals("http://localhost:${TestServer.definedPort}/person/20", response.headers.filter { it.name == "Location" }.firstOrNull()?.getValue())
+        assertEquals("http://localhost:${TestServer.definedPort}/person/20", response.headers.filter { it.name == "Location" }.firstOrNull()?.value)
     }
 }

@@ -8,7 +8,7 @@ import java.io.File
 import java.net.URLDecoder
 
 
-public class StaticFileInterceptor(val folder: String, val useDefaultFile: Boolean = false, val defaultFile: String = "index.html") : Interceptor {
+class StaticFileInterceptor(val folder: String, val useDefaultFile: Boolean = false, val defaultFile: String = "index.html") : Interceptor {
 
     private val absoluteFolder: String = File(folder).canonicalPath.toString()
 
@@ -30,8 +30,8 @@ public class StaticFileInterceptor(val folder: String, val useDefaultFile: Boole
             }
 
             when {
-                file.exists() && file.isFile() -> response.sendFile(fullPath)
-                file.exists() && file.isDirectory() && useDefaultFile -> response.sendFile("${fullPath}/${defaultFile}")
+                file.exists() && file.isFile -> response.sendFile(fullPath)
+                file.exists() && file.isDirectory && useDefaultFile -> response.sendFile("${fullPath}/${defaultFile}")
                 else -> executeNext = true
             }
         } else {
@@ -41,7 +41,7 @@ public class StaticFileInterceptor(val folder: String, val useDefaultFile: Boole
     }
 }
 
-public fun AppServer.serveStaticFilesFromFolder(folder: String, useDefaultFile: Boolean = false, defaultFile: String = "index.html") {
+fun AppServer.serveStaticFilesFromFolder(folder: String, useDefaultFile: Boolean = false, defaultFile: String = "index.html") {
     val staticInterceptor = StaticFileInterceptor(folder, useDefaultFile, defaultFile)
     intercept(staticInterceptor)
 }

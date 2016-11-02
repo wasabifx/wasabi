@@ -56,8 +56,8 @@ fun main(args: Array<String>) {
 
 fun setDate(year: Int, month: Int, day: Int): Date {
     val cal = Calendar.getInstance()
-    cal.set(year, month - 1, day);
-    return cal.getTime()
+    cal.set(year, month - 1, day)
+    return cal.time
 }
 data class Customer(val id: Int, val name: String)
 

@@ -30,7 +30,7 @@ class ProtocolNegotiator(val appServer: AppServer) : ApplicationProtocolNegotiat
             "HTTP/1.1" -> initHttpPipeline(ctx)
             "HTTP/1.0" -> initHttpPipeline(ctx)
             else -> {
-                throw IllegalStateException("unknown protocol: " + protocol);
+                throw IllegalStateException("unknown protocol: " + protocol)
             }
         }
     }
@@ -42,7 +42,7 @@ class ProtocolNegotiator(val appServer: AppServer) : ApplicationProtocolNegotiat
     {
         logger.debug("Initialising HTTP/2 Pipeline")
         val pipeline = ctx!!.pipeline()
-        pipeline.addLast("http2", Http2HandlerBuilder(appServer).build());
+        pipeline.addLast("http2", Http2HandlerBuilder(appServer).build())
     }
 
     /**
@@ -51,7 +51,7 @@ class ProtocolNegotiator(val appServer: AppServer) : ApplicationProtocolNegotiat
     private fun initHttpPipeline(ctx: ChannelHandlerContext?)
     {
         logger.debug("Initialising HTTP Pipeline")
-        val pipeline = ctx!!.pipeline();
+        val pipeline = ctx!!.pipeline()
         pipeline.addLast("decoder", HttpRequestDecoder())
         pipeline.addLast("encoder", HttpResponseEncoder())
         pipeline.addLast("aggregator", HttpObjectAggregator(configuration!!.maxHttpContentLength))

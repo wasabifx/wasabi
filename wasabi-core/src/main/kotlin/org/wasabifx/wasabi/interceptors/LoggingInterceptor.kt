@@ -8,7 +8,7 @@ import org.wasabifx.wasabi.protocol.http.Response
 class LoggingInterceptor: Interceptor {
     override fun intercept(request: Request, response: Response): Boolean {
         var logger = LoggerFactory.getLogger(LoggingInterceptor::class.java)
-        logger!!.info("[${request.method.toString()}] - ${request.uri}")
+        logger!!.info("[${request.method}] - ${request.uri}")
         return true
     }
 
