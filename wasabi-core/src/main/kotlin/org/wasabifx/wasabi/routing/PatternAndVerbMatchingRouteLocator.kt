@@ -3,11 +3,10 @@ package org.wasabifx.wasabi.routing
 import io.netty.handler.codec.http.HttpMethod
 
 
-class PatternAndVerbMatchingRouteLocator(val routes: Set<Route>): RouteLocator {
+class PatternAndVerbMatchingRouteLocator(val routes: Set<Route>) : RouteLocator {
 
-
+    // TODO: Make creating segments part of start-up.
     override fun compareRouteSegments(route1: Route, path: String): Boolean {
-
         val segments1 = route1.path.split('/')
         val segments2 = path.split('/')
         if (segments1.size != segments2.size) {
@@ -15,10 +14,8 @@ class PatternAndVerbMatchingRouteLocator(val routes: Set<Route>): RouteLocator {
         }
         var i = 0
         for (segment in segments1) {
-            if (!segment.startsWith(':') &&
-                            segment.compareTo(segments2[i], ignoreCase = true) != 0) {
-                    return false
-
+            if (!segment.startsWith(':') && segment.compareTo(segments2[i], ignoreCase = true) != 0) {
+                return false
             }
             i++
         }
@@ -35,7 +32,7 @@ class PatternAndVerbMatchingRouteLocator(val routes: Set<Route>): RouteLocator {
 
         if (matchingVerbs.count() > 0) {
             val matchedRoute = if (matchingVerbs.count() == 1) matchingVerbs.first()
-                               else matchingVerbs.firstOrNull { it.path == path }
+            else matchingVerbs.firstOrNull { it.path == path }
             return matchedRoute ?: matchingVerbs.findMostWeightyBy(path)!!
         }
         val methods = arrayOf<HttpMethod>() // TODO: This needs to be filled

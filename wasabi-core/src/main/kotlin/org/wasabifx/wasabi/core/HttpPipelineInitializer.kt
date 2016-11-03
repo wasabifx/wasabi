@@ -29,8 +29,7 @@ class HttpPipelineInitializer(val appServer: AppServer) : SimpleChannelInboundHa
 
         when (msg.protocolVersion().text()) {
             "HTTP/2.0" -> initHttp2Pipeline(ctx, msg)
-            "HTTP/1.1" -> initHttpPipeline(ctx, msg)
-            "HTTP/1.0" -> initHttpPipeline(ctx, msg)
+            "HTTP/1.1", "HTTP/1.0" -> initHttpPipeline(ctx, msg)
             else -> {
                 throw IllegalStateException("unknown protocol: " + msg.protocolVersion().text())
             }
@@ -46,13 +45,11 @@ class HttpPipelineInitializer(val appServer: AppServer) : SimpleChannelInboundHa
 
     private fun initHttpPipeline(ctx: ChannelHandlerContext?, msg: HttpMessage?) {
         logger.debug("Initialising HTTP Pipeline")
-
         if (msg!!.headers().get(HttpHeaders.Names.UPGRADE) == "websocket") {
             applyWebSocketPipeline(ctx, msg)
         } else {
             applyHttp1Pipeline(ctx, msg)
         }
-
     }
 
     private fun applyWebSocketPipeline(ctx: ChannelHandlerContext?, msg: HttpMessage?) {

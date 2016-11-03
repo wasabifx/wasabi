@@ -112,7 +112,7 @@ class Response() {
 
     fun addRawHeader(name: String, value: String) {
         if (this.getSupportedHeaderNames().contains(name)) {
-            throw InvalidHeaderNameException("Setting " + name + " header is not supported here. It should be handled as Response property")
+            throw InvalidHeaderNameException("Setting $name header is not supported here. It should be handled as Response property")
         }
 
         if (value != ""){
