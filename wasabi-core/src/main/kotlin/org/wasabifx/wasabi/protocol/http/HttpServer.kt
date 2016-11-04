@@ -2,7 +2,7 @@ package org.wasabifx.wasabi.protocol.http
 
 import io.netty.bootstrap.ServerBootstrap
 import io.netty.buffer.PooledByteBufAllocator
-import io.netty.channel.ChannelOption
+import io.netty.channel.ChannelOption.ALLOCATOR
 import io.netty.channel.nio.NioEventLoopGroup
 import io.netty.channel.socket.nio.NioServerSocketChannel
 import io.netty.handler.codec.http2.Http2SecurityUtil
@@ -40,7 +40,7 @@ class HttpServer(private val appServer: AppServer) {
 
         bootstrap.group(primaryGroup, workerGroup)
         bootstrap.channel(NioServerSocketChannel::class.java)
-        bootstrap.childOption(ChannelOption.ALLOCATOR, PooledByteBufAllocator.DEFAULT)
+        bootstrap.childOption(ALLOCATOR, PooledByteBufAllocator.DEFAULT)
         bootstrap.childHandler(NettyPipelineInitializer(appServer, sslContext))
 
     }

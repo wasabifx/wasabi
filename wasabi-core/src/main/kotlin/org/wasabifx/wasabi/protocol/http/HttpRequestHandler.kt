@@ -204,9 +204,9 @@ class HttpRequestHandler(private val appServer: AppServer): SimpleChannelInbound
     }
 
     private fun addResponseHeaders(httpResponse: HttpResponse, response: Response) {
-        for (header in response.getHeaders()) {
-            if (header.value != "") {
-                httpResponse.headers().add(header.key, header.value)
+        for ((key, value) in response.getHeaders()) {
+            if (value != "") {
+                httpResponse.headers().add(key, value)
             }
         }
     }

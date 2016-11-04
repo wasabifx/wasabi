@@ -8,29 +8,39 @@ import java.io.File
 import java.util.*
 import javax.activation.MimetypesFileTypeMap
 
+val headerNames = listOf(
+        "Etag",
+        "Location",
+        "Content-Type",
+        "Connection",
+        "Date",
+        "Cache-Control",
+        "Content-Length",
+        "Last-Modified",
+        "Set-Cookie"
+)
 
 class Response() {
 
-    private val rawHeaders: HashMap<String, String> = HashMap<String, String>()
+    private val rawHeaders = HashMap<String, String>()
 
     var etag: String = ""
     var resourceId: String? = null
     var location: String = ""
     var contentType: String = ContentType.Companion.Text.Plain.toString()
-    var contentLength: Long? = null
+    var contentLength: Long = 0
     var statusCode: Int = 200
     var statusDescription: String = ""
     var allow: String = ""
     var sendBuffer: Any? = null
         private set
     var overrideContentNegotiation: Boolean = false
-    val cookies : HashMap<String, Cookie> = HashMap<String, Cookie>()
+    val cookies: HashMap<String, Cookie> = HashMap()
     var requestedContentTypes: ArrayList<String> = arrayListOf()
     var negotiatedMediaType: String = ""
     var connection: String = "close"
     var cacheControl: String = "max-age=0"
     var lastModified: DateTime? = null
-
 
 
     fun redirect(url: String, redirectType: StatusCodes = StatusCodes.Found) {
@@ -49,7 +59,7 @@ class Response() {
         if (file.exists() && !file.isDirectory) {
             sendBuffer = file.readBytes()
 
-            val fileContentType : String?
+            val fileContentType: String?
             when (contentType) {
                 "*/*" -> when {
                     file.extension.compareTo("css", ignoreCase = true) == 0 -> {
@@ -87,7 +97,7 @@ class Response() {
 
     fun negotiate(vararg negotiations: Pair<String, Response.() -> Unit>) {
         for ((mediaType, func) in negotiations) {
-            if (requestedContentTypes.any { it.compareTo(mediaType, ignoreCase = true) == 0}) {
+            if (requestedContentTypes.any { it.compareTo(mediaType, ignoreCase = true) == 0 }) {
                 func()
                 negotiatedMediaType = mediaType
                 return
@@ -111,68 +121,41 @@ class Response() {
     }
 
     fun addRawHeader(name: String, value: String) {
-        if (this.getSupportedHeaderNames().contains(name)) {
+        if (headerNames.contains(name)) {
             throw InvalidHeaderNameException("Setting $name header is not supported here. It should be handled as Response property")
         }
 
-        if (value != ""){
+        if (value != "") {
             rawHeaders[name] = value
         }
     }
 
-    fun getHeaders(): List<AbstractMap.SimpleImmutableEntry<String, String>> {
-        val headerList = mutableListOf(
-            newHeaderItem("Etag", etag),
-            newHeaderItem("Location", location),
-            newHeaderItem("Content-Type", contentType),
-            newHeaderItem("Connection", connection),
-            newHeaderItem("Date", convertToDateFormat(DateTime.now()!!)),
-            newHeaderItem("Cache-Control", cacheControl)
-        )
-
-        for (rawHeaderItem in rawHeaders) {
-            headerList.add(newHeaderItem(rawHeaderItem.key, rawHeaderItem.value))
+    fun getHeaders(): HashMap<String, String> {
+        rawHeaders["Etag"] = etag
+        rawHeaders["Location"] = location
+        rawHeaders["ContentType"] = contentType
+        rawHeaders["Connection"] = connection
+        rawHeaders["Date"] = convertToDateFormat(DateTime.now())
+        rawHeaders["Cache-Control"] = cacheControl
+        if (contentLength != 0L) {
+            rawHeaders["Content-Length"] = contentLength.toString()
         }
-
-        contentLength?.let {
-            headerList.add(newHeaderItem("Content-Length", it.toString()))
-        }
-
-        lastModified?.let {
-            headerList.add(newHeaderItem("Last-Modified", convertToDateFormat(it)))
+        if (lastModified != null) {
+            rawHeaders["Last-Modified"] = convertToDateFormat(lastModified!!)
         }
 
         for (cookie in cookies) {
-            headerList.add(newHeaderItem("Set-Cookie", cookie.toString()))
+            rawHeaders["Set-Cookie"]=  cookie.toString()
         }
-
-        return headerList
+        return rawHeaders
     }
 
-    fun getCookie(name: String) : Cookie? {
+    fun getCookie(name: String): Cookie? {
         return cookies[name] ?: null
     }
 
     fun setCookie(cookie: Cookie) {
         cookies[cookie.name()] = cookie
-    }
-
-    private fun getSupportedHeaderNames() : List<String> {
-        return listOf(
-            "Etag",
-            "Location",
-            "Content-Type",
-            "Connection",
-            "Date",
-            "Cache-Control",
-            "Content-Length",
-            "Last-Modified",
-            "Set-Cookie"
-        )
-    }
-
-    private fun newHeaderItem(name: String, value: String): AbstractMap.SimpleImmutableEntry<String, String> {
-        return AbstractMap.SimpleImmutableEntry(name, value)
     }
 
     fun convertToDateFormat(dateTime: DateTime): String {

@@ -7,6 +7,8 @@ class PatternAndVerbMatchingRouteLocator(val routes: Set<Route>) : RouteLocator 
 
     // TODO: Make creating segments part of start-up.
     override fun compareRouteSegments(route1: Route, path: String): Boolean {
+
+/*
         val segments1 = route1.path.split('/')
         val segments2 = path.split('/')
         if (segments1.size != segments2.size) {
@@ -19,6 +21,8 @@ class PatternAndVerbMatchingRouteLocator(val routes: Set<Route>) : RouteLocator 
             }
             i++
         }
+*/
+
         return true
     }
 

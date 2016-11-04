@@ -112,7 +112,6 @@ class Request() {
     // TODO add charset and parse method to split charset from contentType if it exists.
 
     private fun parseAcceptHeader(header: String): SortedMap<String, Int> {
-
         val parsed = hashMapOf<String, Int>()
         val entries = getHeader(header).split(',')
         for (entry in entries) {
@@ -125,7 +124,7 @@ class Request() {
             }
             parsed.put(mediaType, weight)
         }
-        return parsed.toSortedMap<String, Int>()
+        return parsed.toSortedMap()
     }
 
     private fun getHeader(header: String) = this.rawHeaders[header.toLowerCase()] ?: ""

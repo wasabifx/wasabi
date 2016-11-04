@@ -20,7 +20,7 @@ import java.util.*
 import kotlin.reflect.KClass
 
 
-open class AppServer(val configuration: AppConfiguration = AppConfiguration()) {
+class AppServer(val configuration: AppConfiguration = AppConfiguration()) {
 
     private val logger = LoggerFactory.getLogger(AppServer::class.java)
     private val httpServer: HttpServer
