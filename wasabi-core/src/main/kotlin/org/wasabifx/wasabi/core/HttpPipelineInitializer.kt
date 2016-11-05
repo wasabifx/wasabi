@@ -1,19 +1,6 @@
 package org.wasabifx.wasabi.core
 
-import io.netty.channel.ChannelHandlerContext
-import io.netty.channel.SimpleChannelInboundHandler
-import io.netty.handler.codec.http.FullHttpRequest
-import io.netty.handler.codec.http.HttpHeaders
-import io.netty.handler.codec.http.HttpMessage
-import io.netty.handler.stream.ChunkedWriteHandler
-import org.slf4j.LoggerFactory
-import org.wasabifx.wasabi.app.AppServer
-import org.wasabifx.wasabi.protocol.http.HttpRequestHandler
-import org.wasabifx.wasabi.protocol.http2.Http2HandlerBuilder
-import org.wasabifx.wasabi.protocol.websocket.WebSocketFrameHandler
-import org.wasabifx.wasabi.protocol.websocket.WebSocketProtocolHandler
-import org.wasabifx.wasabi.routing.PatternMatchingChannelLocator
-
+/*
 class HttpPipelineInitializer(val appServer: AppServer) : SimpleChannelInboundHandler<HttpMessage>() {
 
     private val logger = LoggerFactory.getLogger(HttpPipelineInitializer::class.java)
@@ -26,6 +13,7 @@ class HttpPipelineInitializer(val appServer: AppServer) : SimpleChannelInboundHa
         // WebSocket handshake or post pipeline flush.
         val fullMessage = msg as FullHttpRequest
         fullMessage.retain()
+        println("Channel read")
 
         when (msg.protocolVersion().text()) {
             "HTTP/2.0" -> initHttp2Pipeline(ctx, msg)
@@ -71,4 +59,4 @@ class HttpPipelineInitializer(val appServer: AppServer) : SimpleChannelInboundHa
         pipeline.addAfter("chunkedWriter", "http1", HttpRequestHandler(appServer))
         context.fireChannelRead(msg)
     }
-}
+}*/

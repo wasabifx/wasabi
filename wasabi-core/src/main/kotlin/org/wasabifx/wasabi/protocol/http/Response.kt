@@ -38,7 +38,7 @@ class Response() {
     val cookies: HashMap<String, Cookie> = HashMap()
     var requestedContentTypes: ArrayList<String> = arrayListOf()
     var negotiatedMediaType: String = ""
-    var connection: String = "close"
+    var connection: String = "keep-alive"
     var cacheControl: String = "max-age=0"
     var lastModified: DateTime? = null
 
@@ -135,8 +135,8 @@ class Response() {
         rawHeaders["Location"] = location
         rawHeaders["ContentType"] = contentType
         rawHeaders["Connection"] = connection
-        rawHeaders["Date"] = convertToDateFormat(DateTime.now())
-        rawHeaders["Cache-Control"] = cacheControl
+       // rawHeaders["Date"] = convertToDateFormat(DateTime.now())
+       // rawHeaders["Cache-Control"] = cacheControl
         if (contentLength != 0L) {
             rawHeaders["Content-Length"] = contentLength.toString()
         }

@@ -44,7 +44,7 @@ class AppServer(val configuration: AppConfiguration = AppConfiguration()) {
         if (existingRoute != null) {
             throw RouteAlreadyExistsException(existingRoute)
         }
-        routes.add(Route(normalizedPath, method, HashMap<String, String>(), *handler))
+        routes.add(Route(normalizedPath, method,  *handler))
     }
 
     private fun normalizePath(path: String): String {

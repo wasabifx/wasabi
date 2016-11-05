@@ -185,9 +185,9 @@ class Http2Handler(val appServer: AppServer, decoder: Http2ConnectionDecoder, en
         log.debug(headers.toString())
     }
 
-    override fun onHeadersRead(ctx: ChannelHandlerContext?, streamId: Int, headers: Http2Headers?, streamDependency: Int, weight: Short, exclusive: Boolean, padding: Int, endOfStream: Boolean) {
+    override fun onHeadersRead(ctx: ChannelHandlerContext, streamId: Int, headers: Http2Headers, streamDependency: Int, weight: Short, exclusive: Boolean, padding: Int, endOfStream: Boolean) {
         log.debug(headers.toString())
-        val request = Request(headers, ctx!!.channel().remoteAddress() as InetSocketAddress)
+        val request = Request(headers, ctx.channel().remoteAddress() as InetSocketAddress)
         requests[streamId] = request
         if (endOfStream || request.method.toString() == "GET") {
             try {

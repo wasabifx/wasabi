@@ -8,7 +8,7 @@ fun main(args: Array<String>) {
     val server = AppServer(AppConfiguration(enableLogging = false))
 
     server.get("/", {
-        response.send("Hello World!")
+        response.send("Hello World!", contentType = "text/plain")
     })
 
     server.start()

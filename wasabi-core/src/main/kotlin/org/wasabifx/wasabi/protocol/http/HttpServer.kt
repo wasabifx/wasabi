@@ -42,7 +42,7 @@ class HttpServer(private val appServer: AppServer) {
         bootstrap.channel(NioServerSocketChannel::class.java)
         bootstrap.childOption(ALLOCATOR, PooledByteBufAllocator.DEFAULT)
         bootstrap.childHandler(NettyPipelineInitializer(appServer, sslContext))
-
+    println("called init server")
     }
 
     private fun initialiseSsl() {
@@ -89,14 +89,14 @@ class HttpServer(private val appServer: AppServer) {
 
     fun start(wait: Boolean = true) {
         val channel = bootstrap.bind(appServer.configuration.port)?.sync()?.channel()
-
+        println("called start")
         if (wait) {
             channel?.closeFuture()?.sync()
         }
     }
 
     fun stop() {
-
+        println("Called stop")
         // Shutdown all event loops
         primaryGroup.shutdownGracefully()
         workerGroup.shutdownGracefully()

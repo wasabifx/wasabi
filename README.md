@@ -123,12 +123,12 @@ By calling *next()* on each handler, the processing will continue.
 All verbs on *AppServer* have the following signature
 
 ```kotlin
-fun get(path: String, vararg handlers: RouteHandler.() -> Unit) {
-  addRoute(HttpMethod.GET, path, *handlers)
+fun get(requestedPath: String, vararg handlers: RouteHandler.() -> Unit) {
+  addRoute(HttpMethod.GET, requestedPath, *handlers)
 }
 ```
 
-where you can pass one or multiple route handlers. Each one of these is an extension method to the class *RouteHandler*. This class has various properties, amongst which are
+where you can pass one or multiple route handlers. Each one of these is an extension requestMethod to the class *RouteHandler*. This class has various properties, amongst which are
 *request* and *response*. That is how you can access these properties from inside each of the functions without an explicit declaration.
 
 
@@ -262,10 +262,10 @@ You return true if you want the process to continue or false if you want to inte
 To add an interceptor to the application, you use
 
 ```kotlin
-server.interceptor(MyInterceptor(), path, position)
+server.interceptor(MyInterceptor(), requestedPath, position)
 ```
 
-where path can be a specific route or *** to match all routes. Position indicates when the intercept occurs. Possible positions are
+where requestedPath can be a specific route or *** to match all routes. Position indicates when the intercept occurs. Possible positions are
 
 ```kotlin
  enum class InterceptOn {
@@ -391,7 +391,7 @@ Wasabi provides CORS support via an Interceptor. You can enable CORS support in 
 Each CORSEntry consists of:
 
 ```kotlin
-class CORSEntry(val path: String = "*",
+class CORSEntry(val requestedPath: String = "*",
                        val origins: String = "*",
                        val methods: String = "GET, POST, PUT, DELETE",
                        val headers: String = "Origin, X-Requested-With, Content-Type, Accept",
@@ -404,7 +404,7 @@ class CORSEntry(val path: String = "*",
 with the corresponding defaults. Obviously you should only have one default.
 
 ## Auto Options Support ##
-Wasabi can automatically respond to OPTIONS for a specific path. You can enable this in multiple ways:
+Wasabi can automatically respond to OPTIONS for a specific requestedPath. You can enable this in multiple ways:
 
 * Via AppConfiguration.enableAutoOptions
 * Programatically using server.enableAutoOptions - same as above

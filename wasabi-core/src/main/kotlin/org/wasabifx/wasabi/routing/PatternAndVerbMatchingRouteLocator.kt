@@ -2,44 +2,39 @@ package org.wasabifx.wasabi.routing
 
 import io.netty.handler.codec.http.HttpMethod
 
-
+// TODO: Delete this class
 class PatternAndVerbMatchingRouteLocator(val routes: Set<Route>) : RouteLocator {
 
-    // TODO: Make creating segments part of start-up.
-    override fun compareRouteSegments(route1: Route, path: String): Boolean {
-
-/*
-        val segments1 = route1.path.split('/')
-        val segments2 = path.split('/')
-        if (segments1.size != segments2.size) {
+    override fun compareRouteSegments(routeEntry: Route, requestedPath: String): Boolean {
+        val segments2 = requestedPath.split('/')
+        if (routeEntry.segments.size != segments2.size) {
             return false
         }
         var i = 0
-        for (segment in segments1) {
+        for (segment in routeEntry.segments) {
             if (!segment.startsWith(':') && segment.compareTo(segments2[i], ignoreCase = true) != 0) {
                 return false
             }
             i++
         }
-*/
-
         return true
     }
 
-    override fun findRouteHandlers(path: String, method: HttpMethod): Route {
-        val matchingPaths = routes.filter { compareRouteSegments(it, path) }
+    override fun findRouteHandlers(requestedPath: String, requestMethod: HttpMethod): Route {
+        val matchingPaths = routes.filter { compareRouteSegments(it, requestedPath) }
         if (matchingPaths.count() == 0) {
             throw RouteNotFoundException()
         }
-
-        val matchingVerbs = (matchingPaths.filter { it.method == method })
+        val matchingVerbs = (matchingPaths.filter { it.method == requestMethod })
 
         if (matchingVerbs.count() > 0) {
-            val matchedRoute = if (matchingVerbs.count() == 1) matchingVerbs.first()
-            else matchingVerbs.firstOrNull { it.path == path }
-            return matchedRoute ?: matchingVerbs.findMostWeightyBy(path)!!
+            val matchedRoute =  if (matchingVerbs.count() == 1)
+                                    matchingVerbs.first()
+                                else
+                                    matchingVerbs.firstOrNull { it.path == requestedPath }
+
+            return matchedRoute ?: matchingVerbs.findMostWeightyBy(requestedPath)!!
         }
-        val methods = arrayOf<HttpMethod>() // TODO: This needs to be filled
-        throw InvalidMethodException(allowedMethods = methods)
+        throw MethodNotAllowedException( allowedMethods = matchingVerbs.map { it.method }.toTypedArray())
     }
 }

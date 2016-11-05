@@ -5,14 +5,10 @@ import org.wasabifx.wasabi.protocol.http.Response
 
 
 class RouteHandler(val request: Request, val response: Response)  {
-
     var executeNext = false
-
-
     fun next() {
         executeNext = true
     }
-
 }
 
 fun routeHandler(f: RouteHandler.()->Unit): RouteHandler.() -> Unit = f

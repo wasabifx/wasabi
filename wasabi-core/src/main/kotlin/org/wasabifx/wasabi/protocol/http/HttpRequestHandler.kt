@@ -1,135 +1,154 @@
 package org.wasabifx.wasabi.protocol.http
 
-import io.netty.buffer.ByteBuf
-import io.netty.channel.ChannelFutureListener
+import io.netty.buffer.Unpooled
 import io.netty.channel.ChannelHandlerContext
-import io.netty.channel.SimpleChannelInboundHandler
-import io.netty.handler.codec.http.*
-import io.netty.handler.codec.http.multipart.DefaultHttpDataFactory
-import io.netty.handler.codec.http.multipart.HttpPostRequestDecoder
-import io.netty.handler.stream.ChunkedInput
-import io.netty.handler.stream.ChunkedStream
-import io.netty.util.CharsetUtil
-import org.slf4j.LoggerFactory
+import io.netty.channel.ChannelInboundHandlerAdapter
+import io.netty.handler.codec.http.DefaultFullHttpResponse
+import io.netty.handler.codec.http.HttpMethod
+import io.netty.handler.codec.http.HttpRequest
+import io.netty.handler.codec.http.HttpResponseStatus.CONTINUE
+import io.netty.handler.codec.http.HttpResponseStatus.OK
+import io.netty.handler.codec.http.HttpUtil
+import io.netty.handler.codec.http.HttpVersion.HTTP_1_1
 import org.wasabifx.wasabi.app.AppServer
-import org.wasabifx.wasabi.deserializers.Deserializer
-import org.wasabifx.wasabi.interceptors.InterceptOn
-import org.wasabifx.wasabi.interceptors.InterceptorEntry
 import org.wasabifx.wasabi.routing.*
 import java.net.InetSocketAddress
-import java.util.*
 
-class HttpRequestHandler(private val appServer: AppServer): SimpleChannelInboundHandler<Any?>(){
 
-    lateinit var request: Request
-    val factory = DefaultHttpDataFactory(DefaultHttpDataFactory.MINSIZE)
-    val preRequestInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.PreRequest }
-    val preExecutionInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.PreExecution }
-    val postExecutionInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.PostExecution }
-    val postRequestInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.PostRequest }
-    val errorInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.Error }
-    var chunkedTransfer = false
-    private var bypassPipeline = false
-    val response = Response()
-    var deserializer : Deserializer? = null
-    var decoder : HttpPostRequestDecoder? = null
-    private var log = LoggerFactory.getLogger(HttpRequestHandler::class.java)
-    // TODO make configurable.
-    val routeLocator = PatternAndVerbMatchingRouteLocator(appServer.routes)
-    var exceptionLocator = ClassMatchingExceptionHandlerLocator(appServer.exceptionHandlers)
+fun findRoute(routes: Set<Route>, requestedPath: String, requestMethod: HttpMethod): Route {
+    val matchingPaths = routes.filter { it.compareSegmentsToPath(requestedPath) }
+    if (matchingPaths.count() == 0) {
+        throw RouteNotFoundException()
+    }
+    val matchingVerbs = (matchingPaths.filter { it.method == requestMethod })
 
-    override fun channelRead0(ctx: ChannelHandlerContext?, msg: Any?)  {
-        if (msg is HttpRequest) {
-            request = Request(msg, ctx!!.channel().remoteAddress() as InetSocketAddress)
+    if (matchingVerbs.count() > 0) {
+        val matchedRoute = if (matchingVerbs.count() == 1)
+            matchingVerbs.first()
+        else
+            matchingVerbs.firstOrNull { it.path == requestedPath }
 
-            request.accept.mapTo(response.requestedContentTypes, { it.key })
+        return matchedRoute ?: matchingVerbs.findMostWeightyBy(requestedPath)!!
+    }
+    throw MethodNotAllowedException(allowedMethods = matchingVerbs.map { it.method }.toTypedArray())
+}
 
-            if (request.method == HttpMethod.POST || request.method == HttpMethod.PUT || request.method == HttpMethod.PATCH) {
-                deserializer = appServer.deserializers.firstOrNull { it.canDeserialize(request.contentType) }
-                // TODO: Re-do this as it's now considering special case for multi-part
-                if (request.contentType.contains("application/x-www-form-urlencoded") || request.contentType.contains("multipart/form-data")) {
-                    decoder = HttpPostRequestDecoder(factory, msg)
-                    chunkedTransfer = request.chunked
-                }
-            }
-        }
-
-        if (msg is HttpContent) {
-
-            runInterceptors(preRequestInterceptors)
-
-            if (deserializer != null) {
-                // TODO: Add support for chunked transfer
-                deserializeBody(msg)
-            }
-
-            if (msg is LastHttpContent) {
-                try {
-
-                    // process all interceptors that are global
-                    runInterceptors(preExecutionInterceptors)
-
-                    // Only need to check here to stop RouteNotFoundException
-                    if (!bypassPipeline) {
-
-                        val routeHandlers = routeLocator.findRouteHandlers(request.uri.split('?')[0], request.method)
-                        request.routeParams.putAll(getRouteParams(routeHandlers.path, request.uri.split('?')[0]))
-
-                        // process the route specific pre execution interceptors
-                        runInterceptors(preExecutionInterceptors, routeHandlers)
-
-                        // Now that the global and route specific preexecution interceptors have run, execute the route handlers
-                        runHandlers(routeHandlers)
-
-                        // process the route specific post execution interceptors
-                        runInterceptors(postExecutionInterceptors, routeHandlers)
-                    }
-
-                } catch (e: InvalidMethodException)  {
-                    response.setAllowedMethods(e.allowedMethods)
-                    response.setStatus(StatusCodes.MethodNotAllowed)
-                } catch (e: RouteNotFoundException) {
-                    response.setStatus(StatusCodes.NotFound)
-                } catch (e: Exception) {
-                    log!!.debug("Exception during web invocation: ${e.message}")
-                    // bypassPipeline = true
-                    val handler = exceptionLocator.findExceptionHandlers(e).handler
-                    val extension: ExceptionHandler.() -> Unit = handler
-                    val exceptionHandler = ExceptionHandler(request, response, e)
-                    exceptionHandler.extension()
-                } finally {
-                    if (!bypassPipeline) {
-                        // Run global interceptors again
-                        runInterceptors(postExecutionInterceptors)
-                    }
-                    writeResponse(ctx!!, response)
-                }
-            }
-        }
+class HttpRequestHandler(private val appServer: AppServer) : ChannelInboundHandlerAdapter() {
+    override fun channelReadComplete(ctx: ChannelHandlerContext) {
+        ctx.flush()
     }
 
-    private fun runHandlers(routeHandlers : Route)
-    {
-        // If the flag has been set no-op to allow the response to be flushed as is.
-        if (bypassPipeline)
+    /*
+        lateinit var request: Request
+        val factory = DefaultHttpDataFactory(DefaultHttpDataFactory.MINSIZE)
+        val preRequestInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.PreRequest }
+        val preExecutionInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.PreExecution }
+        val postExecutionInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.PostExecution }
+        val postRequestInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.PostRequest }
+        val errorInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.Error }
+        var chunkedTransfer = false
+        private var bypassPipeline = false
+        val response = Response()
+        var deserializer : Deserializer? = null
+        var decoder : HttpPostRequestDecoder? = null
+       // private var log = LoggerFactory.getLogger(HttpRequestHandler::class.java)
+        // TODO make configurable.
+        val routeLocator = PatternAndVerbMatchingRouteLocator(appServer.routes)
+        var exceptionLocator = ClassMatchingExceptionHandlerLocator(appServer.exceptionHandlers)
+
+        override fun channelRead(ctx: ChannelHandlerContext?, msg: Any?)  {
+            if (msg is HttpRequest) {
+                request = Request(msg, ctx!!.channel().remoteAddress() as InetSocketAddress)
+
+                request.accept.mapTo(response.requestedContentTypes, { it.key })
+
+                if (request.method == HttpMethod.POST || request.method == HttpMethod.PUT || request.method == HttpMethod.PATCH) {
+                    deserializer = appServer.deserializers.firstOrNull { it.canDeserialize(request.contentType) }
+                    // TODO: Re-do this as it's now considering special case for multi-part
+                    if (request.contentType.contains("application/x-www-form-urlencoded") || request.contentType.contains("multipart/form-data")) {
+                        decoder = HttpPostRequestDecoder(factory, msg)
+                        chunkedTransfer = request.chunked
+                    }
+                }
+            }
+
+            if (msg is HttpContent) {
+
+                runInterceptors(preRequestInterceptors)
+
+                if (deserializer != null) {
+                    // TODO: Add support for chunked transfer
+                    deserializeBody(msg)
+                }
+
+                if (msg is LastHttpContent) {
+                    try {
+
+                        // process all interceptors that are global
+                        runInterceptors(preExecutionInterceptors)
+
+                        // Only need to check here to stop RouteNotFoundException
+                        if (!bypassPipeline) {
+
+                            val routeHandlers = routeLocator.findRoute(request.uri.split('?')[0], request.method)
+                            request.routeParams.putAll(setRouteParams(routeHandlers.path, request.uri.split('?')[0]))
+
+                            // process the route specific pre execution interceptors
+                            runInterceptors(preExecutionInterceptors, routeHandlers)
+
+                            // Now that the global and route specific preexecution interceptors have run, execute the route handlers
+                            runHandlers(routeHandlers)
+
+                            // process the route specific post execution interceptors
+                            runInterceptors(postExecutionInterceptors, routeHandlers)
+                        }
+
+                    } catch (e: InvalidMethodException)  {
+                        response.setAllowedMethods(e.allowedMethods)
+                        response.setStatus(StatusCodes.MethodNotAllowed)
+                    } catch (e: RouteNotFoundException) {
+                        response.setStatus(StatusCodes.NotFound)
+                    } catch (e: Exception) {
+               //         log!!.debug("Exception during web invocation: ${e.message}")
+                        // bypassPipeline = true
+                        val handler = exceptionLocator.findExceptionHandlers(e).handler
+                        val extension: ExceptionHandler.() -> Unit = handler
+                        val exceptionHandler = ExceptionHandler(request, response, e)
+                        exceptionHandler.extension()
+                    } finally {
+                        if (!bypassPipeline) {
+                            // Run global interceptors again
+                            runInterceptors(postExecutionInterceptors)
+                        }
+                        writeResponse(ctx!!, response)
+                    }
+                }
+            }
+        }
+
+        private fun runHandlers(routeHandlers : Route)
         {
-            return
-        }
-        for (handler in routeHandlers.handler) {
+            // If the flag has been set no-op to allow the response to be flushed as is.
+            if (bypassPipeline)
+            {
+                return
+            }
+            for (handler in routeHandlers.handler) {
 
-            val handlerExtension : RouteHandler.() -> Unit = handler
-            val routeHandler = RouteHandler(request, response)
+                val handlerExtension : RouteHandler.() -> Unit = handler
+                val routeHandler = RouteHandler(request, response)
 
-            routeHandler.handlerExtension()
-            if (!routeHandler.executeNext) {
-                break
+                routeHandler.handlerExtension()
+                if (!routeHandler.executeNext) {
+                    break
+                }
             }
         }
-    }
 
-    private fun runInterceptors(interceptors: List<InterceptorEntry>, route: Route? = null) {
-        // If the flag has been set no-op to allow the response to be flushed as is.
-        if (bypassPipeline)
+        private fun runInterceptors(interceptors: List<InterceptorEntry>, route: Route? = null) {
+            // If the flag has been set no-op to allow the response to be flushed as is.
+          */
+/*  if (bypassPipeline)
         {
             return
         }
@@ -148,7 +167,8 @@ class HttpRequestHandler(private val appServer: AppServer): SimpleChannelInbound
                 break
             }
         }
-    }
+   *//*
+ }
 
     private fun writeResponse(ctx: ChannelHandlerContext, response: Response) {
         val httpResponse : HttpResponse
@@ -196,11 +216,18 @@ class HttpRequestHandler(private val appServer: AppServer): SimpleChannelInbound
 
         httpResponse = DefaultHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus(response.statusCode, response.statusDescription))
         response.contentType = response.negotiatedMediaType + responseCharset
+        response.connection = "keep-alive"
+        response.contentLength = 12L
         addResponseHeaders(httpResponse, response)
         ctx.write(httpResponse)
         ctx.write(responseContentAsStream)
+
+*/
+/*
         val lastContentFuture = ctx.writeAndFlush(LastHttpContent.EMPTY_LAST_CONTENT)
         lastContentFuture.addListener(ChannelFutureListener.CLOSE)
+*//*
+
     }
 
     private fun addResponseHeaders(httpResponse: HttpResponse, response: Response) {
@@ -226,7 +253,7 @@ class HttpRequestHandler(private val appServer: AppServer): SimpleChannelInbound
     }
 
     // TODO: Clean this up.
-    private fun getRouteParams(route: String, path: String): HashMap<String, String> {
+    private fun setRouteParams(route: String, path: String): HashMap<String, String> {
         val segments1 = route.split('/')
         val segments2 = path.split('/')
         if (segments1.size != segments2.size) {
@@ -242,5 +269,53 @@ class HttpRequestHandler(private val appServer: AppServer): SimpleChannelInbound
         }
         return params
 
+    }
+*/
+    override fun channelRead(ctx: ChannelHandlerContext, msg: Any) {
+        if (msg is HttpRequest) {
+            try {
+                val request = Request(msg, ctx.channel().remoteAddress() as InetSocketAddress)
+                val response = Response()
+                val route = findRoute(appServer.routes, request.path, msg.method())
+                request.setRouteParams(route)
+                for (handler in route.handler) {
+                    val handlerExtension: RouteHandler.() -> Unit = handler
+                    val routeHandler = RouteHandler(request, response)
+                    routeHandler.handlerExtension()
+                    if (!routeHandler.executeNext) {
+                        break
+                    }
+                }
+                if (HttpUtil.is100ContinueExpected(msg)) {
+                    ctx.write(DefaultFullHttpResponse(HTTP_1_1, CONTINUE))
+                }
+                val keepAlive = HttpUtil.isKeepAlive(msg)
+                val content = "Hello World".toByteArray()
+                val nettyresponse = DefaultFullHttpResponse(HTTP_1_1, OK, Unpooled.wrappedBuffer(content))
+                nettyresponse.headers().set("Content-Type", "text/plain")
+                nettyresponse.headers().setInt("Content-Length", nettyresponse.content().readableBytes())
+
+                if (!keepAlive) {
+                    ctx.write(nettyresponse).addListener(io.netty.channel.ChannelFutureListener.CLOSE)
+                } else {
+                    nettyresponse.headers().set("Connection", "kee-alive")
+                    ctx.write(nettyresponse)
+                }
+
+            } catch (e: MethodNotAllowedException) {
+                // TODO: Clean up
+                val nettyresponse = DefaultFullHttpResponse(HTTP_1_1, OK, Unpooled.wrappedBuffer(e.message?.toByteArray()))
+                nettyresponse.headers().set("Content-Type", "text/plain")
+                nettyresponse.headers().setInt("Content-Length", nettyresponse.content().readableBytes())
+                    nettyresponse.headers().set("Connection", "kee-alive")
+                    ctx.write(nettyresponse)
+            }
+        }
+
+    }
+
+    override fun exceptionCaught(ctx: ChannelHandlerContext, cause: Throwable) {
+        cause.printStackTrace()
+        ctx.close()
     }
 }

@@ -7,35 +7,12 @@ import io.netty.handler.codec.http.multipart.Attribute
 import io.netty.handler.codec.http.multipart.InterfaceHttpData
 import io.netty.handler.codec.http.multipart.InterfaceHttpData.HttpDataType
 import io.netty.handler.codec.http2.Http2Headers
-import org.slf4j.LoggerFactory
 import org.wasabifx.wasabi.app.configuration
+import org.wasabifx.wasabi.routing.Route
 import java.net.InetSocketAddress
 import java.util.*
 
 class Request() {
-
-
-    constructor(httpRequest: HttpRequest, address: InetSocketAddress) : this() {
-        this.httpRequest = httpRequest
-        this.rawHeaders = httpRequest.headers().associate({it.key.toLowerCase() to it.value})
-        this.uri = httpRequest.uri!!
-        this.method = httpRequest.method!!
-        this.document = uri.drop(uri.lastIndexOf("/") + 1)
-        this.path = uri.split('?')[0]
-        this.scheme = if (configuration!!.sslEnabled) "https" else "http"
-        this.remoteAddress = address
-    }
-
-    constructor(http2Headers: Http2Headers?, address: InetSocketAddress) : this() {
-        this.http2Headers = http2Headers!!
-        this.rawHeaders = http2Headers.associate({it.key.toString().toLowerCase() to it.value.toString()})
-        this.uri = http2Headers.path().toString()
-        this.method = HttpMethod(http2Headers.method().toString())
-        this.document = uri.drop(uri.lastIndexOf("/") + 1)
-        this.path = uri
-        this.scheme = getHeader("scheme")
-        this.remoteAddress = address
-    }
 
     lateinit var httpRequest : HttpRequest
 
@@ -48,6 +25,48 @@ class Request() {
     lateinit var path: String
     lateinit var scheme: String
     lateinit var remoteAddress: InetSocketAddress
+
+    private val parsedRouteParams = hashMapOf<String, String>()
+
+    constructor(httpRequest: HttpRequest, address: InetSocketAddress) : this() {
+        this.httpRequest = httpRequest
+        this.rawHeaders = httpRequest.headers().associate({it.key.toLowerCase() to it.value})
+        this.uri = httpRequest.uri()
+        this.method = httpRequest.method()
+        this.document = uri.drop(uri.lastIndexOf("/") + 1)
+        this.path = uri.substringBefore("?")
+        this.scheme = if (configuration!!.sslEnabled) "https" else "http"
+        this.remoteAddress = address
+    }
+
+    constructor(http2Headers: Http2Headers, address: InetSocketAddress) : this() {
+        this.http2Headers = http2Headers
+        this.rawHeaders = http2Headers.associate({it.key.toString().toLowerCase() to it.value.toString()})
+        this.uri = http2Headers.path().toString()
+        this.method = HttpMethod(http2Headers.method().toString())
+        this.document = uri.drop(uri.lastIndexOf("/") + 1)
+        this.path = uri.substringBefore("?")
+        this.scheme = getHeader("scheme")
+        this.remoteAddress = address
+    }
+    val segments: List<String> by lazy {
+        path.split('/')
+    }
+
+    val routeParams: HashMap<String, String>
+        get() = parsedRouteParams
+
+    fun setRouteParams(route: Route) {
+        var i = 0
+        for (segment in route.segments) {
+            if (segment.startsWith(':')) {
+                parsedRouteParams.put(segment.drop(1), segments[i])
+            }
+            i++
+        }
+        segments.filter { it.startsWith(":") }
+    }
+
 
     val host: String by lazy {
         getHeader("Host").takeWhile { it != ':' }
@@ -91,7 +110,6 @@ class Request() {
     val queryParams: HashMap<String, String> by lazy {
         parseQueryParams()
     }
-    val routeParams: HashMap<String, String> = HashMap()
     val bodyParams: HashMap<String, Any> = HashMap()
     val cookies: HashMap<String, Cookie> by lazy {
         parseCookies()

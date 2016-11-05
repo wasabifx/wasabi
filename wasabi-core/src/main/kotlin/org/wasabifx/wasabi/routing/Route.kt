@@ -1,10 +1,13 @@
 package org.wasabifx.wasabi.routing
 
 import io.netty.handler.codec.http.HttpMethod
-import java.util.*
 
 
-class Route(val path: String, val method: HttpMethod, val params: HashMap<String, String>, vararg val handler: RouteHandler.() -> Unit) {
+class Route(val path: String, val method: HttpMethod, vararg val handler: RouteHandler.() -> Unit) {
+    val segments: List<String> by lazy {
+        path.split('/')
+    }
+
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other?.javaClass != javaClass) return false
@@ -21,6 +24,21 @@ class Route(val path: String, val method: HttpMethod, val params: HashMap<String
         var result = path.hashCode()
         result = 31 * result + method.hashCode()
         return result
+    }
+
+    fun compareSegmentsToPath(path: String): Boolean {
+        val segments2 = path.split('/')
+        if (segments.size != segments2.size) {
+            return false
+        }
+        var i = 0
+        for (segment in segments) {
+            if (!segment.startsWith(':') && segment.compareTo(segments2[i], ignoreCase = true) != 0) {
+                return false
+            }
+            i++
+        }
+        return true
     }
 }
 
