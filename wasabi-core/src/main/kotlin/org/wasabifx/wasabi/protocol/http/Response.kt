@@ -1,6 +1,7 @@
 package org.wasabifx.wasabi.protocol.http
 
 import io.netty.handler.codec.http.HttpMethod
+import io.netty.handler.codec.http.cookie.ServerCookieEncoder
 import org.joda.time.DateTime
 import org.joda.time.DateTimeZone
 import org.joda.time.format.DateTimeFormat
@@ -24,7 +25,7 @@ class Response() {
     var sendBuffer: Any? = null
         private set
     var overrideContentNegotiation: Boolean = false
-    val cookies : HashMap<String, Cookie> = HashMap<String, Cookie>()
+    val cookies : HashMap<String, Cookie> = HashMap()
     var requestedContentTypes: ArrayList<String> = arrayListOf()
     var negotiatedMediaType: String = ""
     var connection: String = "close"
@@ -142,8 +143,9 @@ class Response() {
             headerList.add(newHeaderItem("Last-Modified", convertToDateFormat(it)))
         }
 
-        for (cookie in cookies) {
-            headerList.add(newHeaderItem("Set-Cookie", cookie.toString()))
+        for ((cookieName, cookie) in cookies) {
+            val cookieString = ServerCookieEncoder.STRICT.encode(cookie)
+            headerList.add(newHeaderItem("Set-Cookie", cookieString))
         }
 
         return headerList
@@ -154,7 +156,7 @@ class Response() {
     }
 
     fun setCookie(cookie: Cookie) {
-        cookies[cookie.name()] = cookie
+        cookies.put(cookie.name(), cookie)
     }
 
     private fun getSupportedHeaderNames() : List<String> {
