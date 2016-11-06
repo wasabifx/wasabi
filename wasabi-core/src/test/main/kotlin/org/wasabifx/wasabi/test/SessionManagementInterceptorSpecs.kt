@@ -1,9 +1,12 @@
  package org.wasabifx.wasabi.test
 
+import io.netty.handler.codec.http.cookie.ServerCookieDecoder
+import io.netty.handler.codec.http.cookie.ServerCookieEncoder
 import org.junit.Test as spec
  import kotlin.test.assertEquals
 import org.junit.Ignore
 import org.wasabifx.wasabi.interceptors.enableSessionSupport
+import kotlin.test.assertTrue
 
  class SessionManagementInterceptorSpecs: TestServerContext() {
 
@@ -38,5 +41,24 @@ import org.wasabifx.wasabi.interceptors.enableSessionSupport
         }
         assertEquals(session_id, session_id_2)
     }
+
+     @spec fun cookie_should_have_root_path() {
+         TestServer.appServer.enableSessionSupport()
+         TestServer.appServer.get("/test-session", {
+             response.send("Test", "text/plain")
+         })
+
+         // Make sure session id stays consistent between requests.
+         val response = get("http://localhost:${TestServer.definedPort}/test-session", hashMapOf())
+
+         assertTrue(response.headers.filter { it.name == "Set-Cookie" }.count() > 0)
+
+         response.headers.forEach {
+             if (it.name == "Set-Cookie") {
+                 val parts = it.value.split(";")
+                 assertTrue(parts.filter { it.trim() == "Path=/" }.count() > 0)
+             }
+         }
+     }
 
 }
