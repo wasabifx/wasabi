@@ -303,7 +303,7 @@ class HttpRequestHandler(private val appServer: AppServer) : ChannelInboundHandl
                 }
 
             } catch (e: MethodNotAllowedException) {
-                // TODO: Clean up
+                // TODO: Clean up - this is a test. Later remove this and let channelRead throw exception. Handle it in an ExceptionHandler down the pipeline
                 val nettyresponse = DefaultFullHttpResponse(HTTP_1_1, OK, Unpooled.wrappedBuffer(e.message?.toByteArray()))
                 nettyresponse.headers().set("Content-Type", "text/plain")
                 nettyresponse.headers().setInt("Content-Length", nettyresponse.content().readableBytes())
@@ -314,6 +314,7 @@ class HttpRequestHandler(private val appServer: AppServer) : ChannelInboundHandl
 
     }
 
+    // TODO - remove this later.
     override fun exceptionCaught(ctx: ChannelHandlerContext, cause: Throwable) {
         cause.printStackTrace()
         ctx.close()
