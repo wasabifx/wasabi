@@ -30,9 +30,9 @@ class SessionManagementInterceptor(val cookieKey: String = "_sessionID", session
         }
 
         // ensure a session is there
-        val session = request.session ?: Session(generateSessionID()).apply{
+        val session = request.session ?: Session(generateSessionID()).apply {
             storeSession(this)
-            request.session=this
+            request.session = this
         }
 
         // send the cookie
