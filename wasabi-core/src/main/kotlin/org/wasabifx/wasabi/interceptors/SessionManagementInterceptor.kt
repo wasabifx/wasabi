@@ -34,7 +34,7 @@ class SessionManagementInterceptor(val cookieKey: String = "_sessionID", session
         val tmpCookie = Cookie(cookieKey, request.session!!.id)
         tmpCookie.setDomain(request.host)
         tmpCookie.isSecure = request.isSecure
-        tmpCookie.setPath(request.path)
+        tmpCookie.setPath("/")
 
         response.setCookie(tmpCookie)
 

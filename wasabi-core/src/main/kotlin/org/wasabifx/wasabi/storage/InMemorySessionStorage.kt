@@ -12,6 +12,8 @@ class InMemorySessionStorage: SessionStorage {
         inMemorySession.put(session.id, session)
     }
     override fun loadSession(sessionID: String): Session {
+        inMemorySession.putIfAbsent(sessionID, Session(sessionID))
+
         return inMemorySession.get(sessionID)!!
     }
 }
