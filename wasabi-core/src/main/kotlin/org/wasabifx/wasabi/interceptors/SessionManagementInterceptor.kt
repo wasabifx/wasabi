@@ -15,23 +15,28 @@ class SessionManagementInterceptor(val cookieKey: String = "_sessionID", session
     }
 
     override fun intercept(request: Request, response: Response): Boolean {
+
+        // try loading the session
         if (request.cookies.containsKey(cookieKey)) {
             val cookie = request.cookies.get(cookieKey)
-
             if (cookie is Cookie) {
                 if (cookie.value() != "") {
                     request.session = loadSession(cookie.value())
                     request.session?.let {
                         it.extendSession()
                     }
-                } else {
-                    request.session = Session(generateSessionID())
-                    storeSession(request.session!!)
                 }
             }
         }
 
-        val tmpCookie = Cookie(cookieKey, request.session!!.id)
+        // ensure a session is there
+        val session = request.session ?: Session(generateSessionID()).apply {
+            storeSession(this)
+            request.session = this
+        }
+
+        // send the cookie
+        val tmpCookie = Cookie(cookieKey, session.id)
         tmpCookie.setDomain(request.host)
         tmpCookie.isSecure = request.isSecure
         tmpCookie.setPath("/")
@@ -41,7 +46,6 @@ class SessionManagementInterceptor(val cookieKey: String = "_sessionID", session
         return true
     }
 }
-
 
 fun AppServer.enableSessionSupport() {
     intercept(SessionManagementInterceptor())
