@@ -4,7 +4,8 @@
 Wasabi - An HTTP Framework
 ========================
 
-#### Heads-up and 1.0 Release #### 
+#### Heads-up and 1.0 Release ####
+
 Wasabi's core is being re-written from scratch and we expect, once we're done, to have significant performance improvements. And we really mean significant. While these changes most likely won't change the surface API, there might be some variations (if deemed necessary to keep performance at its best). Once these changes are complete and a few other things have been taken care of, we'll be releasing 1.0.
 
 
