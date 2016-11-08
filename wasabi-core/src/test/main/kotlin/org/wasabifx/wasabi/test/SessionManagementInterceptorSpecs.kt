@@ -21,25 +21,34 @@ import kotlin.test.assertTrue
         })
 
         // Make sure session id stays consistent between requests.
-        var response = get("http://localhost:${TestServer.definedPort}/test_session", hashMapOf())
-        var session_id = ""
-        response.headers.iterator().forEach {
+        val response = get("http://localhost:${TestServer.definedPort}/test_session")
+        var cookieString = ""
+        response.headers.forEach {
             if (it.name == "Set-Cookie") {
-                session_id = it.value
+                cookieString = it.value
             }
         }
+
+        assertTrue(cookieString.length > 0)
+
+        /*
+         * cookieString value is this: _sessionID=057907cf-9a08-48ff-9fbe-43c8d5ebb0fb; Path=/; Domain=localhost
+         * so at first we split by ; so we will get _sessionID=057907cf-9a08-48ff-9fbe-43c8d5ebb0fb
+         * and then split by =
+         */
+        val (cookieName,sessionId) = cookieString.split(";")[0].split("=")
 
         // Set session cookie as you would expect the client to do...
-        val response2 = get("http://localhost:${TestServer.definedPort}/test_session", hashMapOf(), hashMapOf(Pair(session_id.split("=").first(), session_id.split("=").last())))
+        val response2 = get("http://localhost:${TestServer.definedPort}/test_session", hashMapOf(), hashMapOf(cookieName to sessionId))
 
         // Check it comes back and matches original.
-        var session_id_2 = ""
+        var cookieString2 = ""
         response2.headers.iterator().forEach {
             if (it.name == "Set-Cookie") {
-                session_id_2 = it.value
+                cookieString2 = it.value
             }
         }
-        assertEquals(session_id, session_id_2)
+        assertEquals(cookieString, cookieString2)
     }
 
      @spec fun cookie_should_have_root_path() {
