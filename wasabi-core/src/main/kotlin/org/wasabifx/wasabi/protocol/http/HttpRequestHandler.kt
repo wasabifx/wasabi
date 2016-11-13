@@ -33,6 +33,7 @@ fun findRoute(routes: Set<Route>, requestedPath: String, requestMethod: HttpMeth
     throw MethodNotAllowedException(allowedMethods = matchingVerbs.map { it.method }.toTypedArray())
 }
 
+// TODO - Move back to SimpleChannel (maybe). If not you have to free messages.
 class HttpRequestHandler(private val appServer: AppServer) : ChannelInboundHandlerAdapter() {
     override fun channelReadComplete(ctx: ChannelHandlerContext) {
         ctx.flush()
