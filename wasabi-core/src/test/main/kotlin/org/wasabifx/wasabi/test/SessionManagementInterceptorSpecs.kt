@@ -31,12 +31,7 @@ import kotlin.test.assertTrue
 
         assertTrue(cookieString.length > 0)
 
-        /*
-         * cookieString value is this: _sessionID=057907cf-9a08-48ff-9fbe-43c8d5ebb0fb; Path=/; Domain=localhost
-         * so at first we split by ; so we will get _sessionID=057907cf-9a08-48ff-9fbe-43c8d5ebb0fb
-         * and then split by =
-         */
-        val (cookieName,sessionId) = cookieString.split(";")[0].split("=")
+        val (cookieName,sessionId) = this.getCookieNameAndSessionId(cookieString)
 
         // Set session cookie as you would expect the client to do...
         val response2 = get("http://localhost:${TestServer.definedPort}/test_session", hashMapOf(), hashMapOf(cookieName to sessionId))
@@ -70,4 +65,7 @@ import kotlin.test.assertTrue
          }
      }
 
+     private fun getCookieNameAndSessionId(headerValue: String): List<String> {
+         return headerValue.split(";")[0].split("=")
+     }
 }
