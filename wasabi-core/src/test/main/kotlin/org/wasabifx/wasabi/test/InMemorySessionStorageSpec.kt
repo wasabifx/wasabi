@@ -14,4 +14,17 @@ class InMemorySessionStorageSpec {
         assertTrue(session is Session)
     }
 
+    @spec fun expired_sessions_should_be_removed() {
+        val inMemorySessionStorage = InMemorySessionStorage(100)
+
+        val session = inMemorySessionStorage.loadSession("this-id-does-not-exist-for-sure")
+        inMemorySessionStorage.loadSession("this-id-does-not-exist-for-sure2")
+
+        session.expirationDate = session.expirationDate.minusSeconds(session.TTL)
+
+        Thread.sleep(600)
+
+        assertTrue(inMemorySessionStorage.inMemorySession.count() == 1)
+    }
+
 }
