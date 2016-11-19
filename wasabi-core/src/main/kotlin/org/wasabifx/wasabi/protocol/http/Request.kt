@@ -128,8 +128,8 @@ class Request() {
     }
 
     fun header(header: String): String {
-        val originalHeader = this.rawHeaders.keys.firstOrNull { it.equals(header, ignoreCase = true) }
-        return if (originalHeader != null) this.rawHeaders[originalHeader].orEmpty() else ""
+        val originalHeader = this.rawHeaders.entries.firstOrNull { it.key.equals(header, ignoreCase = true) }
+        return originalHeader?.value?:""
     }
 
     private fun parseQueryParams(): HashMap<String, String> {
