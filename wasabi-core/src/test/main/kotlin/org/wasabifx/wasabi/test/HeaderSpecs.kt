@@ -225,9 +225,9 @@ class HeaderSpecs : TestServerContext() {
 
         get("http://localhost:${TestServer.definedPort}/customer", headers)
 
-        assertEquals(expectedHeaderValue, request.header(expectedHeaderName))
-        assertEquals(expectedHeaderValue, request.header(expectedHeaderName.toUpperCase()))
-        assertEquals(expectedHeaderValue, request.header(expectedHeaderName.toLowerCase()))
+        assertEquals(expectedHeaderValue, request.rawHeaders[expectedHeaderName])
+        assertEquals(expectedHeaderValue, request.rawHeaders[expectedHeaderName.toUpperCase()])
+        assertEquals(expectedHeaderValue, request.rawHeaders[expectedHeaderName.toLowerCase()])
     }
 }
 

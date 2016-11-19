@@ -16,7 +16,8 @@ class Request() {
 
     constructor(httpRequest: HttpRequest, address: InetSocketAddress) : this() {
         this.httpRequest = httpRequest
-        this.rawHeaders = httpRequest.headers().associate({it.key to it.value})
+        this.rawHeaders = httpRequest.headers()
+                .associateTo(TreeMap<String, String>(String.CASE_INSENSITIVE_ORDER), {it.key to it.value})
         this.uri = httpRequest.uri!!
         this.method = httpRequest.method!!
         this.document = uri.drop(uri.lastIndexOf("/") + 1)
@@ -27,12 +28,13 @@ class Request() {
 
     constructor(http2Headers: Http2Headers?, address: InetSocketAddress) : this() {
         this.http2Headers = http2Headers!!
-        this.rawHeaders = http2Headers.associate({it.key.toString() to it.value.toString()})
+        this.rawHeaders = http2Headers.associateTo(TreeMap<String, String>(String.CASE_INSENSITIVE_ORDER),
+                {it.key.toString() to it.value.toString()})
         this.uri = http2Headers.path().toString()
         this.method = HttpMethod(http2Headers.method().toString())
         this.document = uri.drop(uri.lastIndexOf("/") + 1)
         this.path = uri
-        this.scheme = header("scheme")
+        this.scheme = getHeader("scheme")
         this.remoteAddress = address
     }
 
@@ -49,7 +51,7 @@ class Request() {
     lateinit var remoteAddress: InetSocketAddress
 
     val host: String by lazy {
-        header("Host").takeWhile { it != ':' }
+        getHeader("Host").takeWhile { it != ':' }
     }
     val protocol: String by lazy {
         this.scheme
@@ -58,19 +60,19 @@ class Request() {
         protocol.compareTo("https", ignoreCase = true) == 0
     }
     val urlPort: String by lazy {
-        header("Host").dropWhile { it != ':' }.drop(1)
+        getHeader("Host").dropWhile { it != ':' }.drop(1)
     }
     val port: Int by lazy {
         if (urlPort != "") urlPort.toInt() else 80
     }
     val connection: String by lazy {
-        header("Connection")
+        getHeader("Connection")
     }
     val cacheControl: String by lazy {
-        header("Cache-Control")
+        getHeader("Cache-Control")
     }
     val userAgent: String by lazy {
-        header("User-Agent")
+        getHeader("User-Agent")
     }
     val accept: SortedMap<String, Int> by lazy {
         parseAcceptHeader("Accept")
@@ -85,7 +87,7 @@ class Request() {
         parseAcceptHeader("Accept-Charset")
     }
     val ifNoneMatch: String by lazy {
-        header("If-None-Match")
+        getHeader("If-None-Match")
     }
     val queryParams: HashMap<String, String> by lazy {
         parseQueryParams()
@@ -96,13 +98,13 @@ class Request() {
         parseCookies()
     }
     val contentType: String by lazy {
-        header("Content-Type")
+        getHeader("Content-Type")
     }
     val chunked: Boolean by lazy {
-        header("Transfer-Encoding").compareTo("chunked", ignoreCase = true) == 0
+        getHeader("Transfer-Encoding").compareTo("chunked", ignoreCase = true) == 0
     }
     val authorization: String by lazy {
-        header("Authorization")
+        getHeader("Authorization")
     }
 
 
@@ -113,7 +115,7 @@ class Request() {
     private fun parseAcceptHeader(header: String): SortedMap<String, Int> {
 
         val parsed = hashMapOf<String, Int>()
-        val entries = header(header).split(',')
+        val entries = getHeader(header).split(',')
         for (entry in entries) {
             val parts = entry.split(';')
             val mediaType = parts[0]
@@ -127,10 +129,7 @@ class Request() {
         return parsed.toSortedMap<String, Int>()
     }
 
-    fun header(header: String): String {
-        val originalHeader = this.rawHeaders.entries.firstOrNull { it.key.equals(header, ignoreCase = true) }
-        return originalHeader?.value?:""
-    }
+    private fun getHeader(header: String) = this.rawHeaders[header.toLowerCase()] ?: ""
 
     private fun parseQueryParams(): HashMap<String, String> {
         val queryParamsList = hashMapOf<String, String>()
@@ -151,7 +150,7 @@ class Request() {
     }
 
     private fun parseCookies(): HashMap<String, Cookie> {
-        val cookieHeader = header("Cookie")
+        val cookieHeader = getHeader("Cookie")
         val cookieSet = ServerCookieDecoder.STRICT.decode(cookieHeader)
         val cookieList = hashMapOf<String, Cookie>()
         cookieSet?.iterator()?.forEach { cookie ->
