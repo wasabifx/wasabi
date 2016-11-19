@@ -7,7 +7,6 @@ import io.netty.handler.codec.http.multipart.Attribute
 import io.netty.handler.codec.http.multipart.InterfaceHttpData
 import io.netty.handler.codec.http.multipart.InterfaceHttpData.HttpDataType
 import io.netty.handler.codec.http2.Http2Headers
-import org.slf4j.LoggerFactory
 import org.wasabifx.wasabi.app.configuration
 import java.net.InetSocketAddress
 import java.util.*
@@ -17,7 +16,7 @@ class Request() {
 
     constructor(httpRequest: HttpRequest, address: InetSocketAddress) : this() {
         this.httpRequest = httpRequest
-        this.rawHeaders = httpRequest.headers().associate({it.key.toLowerCase() to it.value})
+        this.rawHeaders = httpRequest.headers().associate({it.key to it.value})
         this.uri = httpRequest.uri!!
         this.method = httpRequest.method!!
         this.document = uri.drop(uri.lastIndexOf("/") + 1)
@@ -28,12 +27,12 @@ class Request() {
 
     constructor(http2Headers: Http2Headers?, address: InetSocketAddress) : this() {
         this.http2Headers = http2Headers!!
-        this.rawHeaders = http2Headers.associate({it.key.toString().toLowerCase() to it.value.toString()})
+        this.rawHeaders = http2Headers.associate({it.key.toString() to it.value.toString()})
         this.uri = http2Headers.path().toString()
         this.method = HttpMethod(http2Headers.method().toString())
         this.document = uri.drop(uri.lastIndexOf("/") + 1)
         this.path = uri
-        this.scheme = getHeader("scheme")
+        this.scheme = header("scheme")
         this.remoteAddress = address
     }
 
@@ -50,7 +49,7 @@ class Request() {
     lateinit var remoteAddress: InetSocketAddress
 
     val host: String by lazy {
-        getHeader("Host").takeWhile { it != ':' }
+        header("Host").takeWhile { it != ':' }
     }
     val protocol: String by lazy {
         this.scheme
@@ -59,19 +58,19 @@ class Request() {
         protocol.compareTo("https", ignoreCase = true) == 0
     }
     val urlPort: String by lazy {
-        getHeader("Host").dropWhile { it != ':' }.drop(1)
+        header("Host").dropWhile { it != ':' }.drop(1)
     }
     val port: Int by lazy {
         if (urlPort != "") urlPort.toInt() else 80
     }
     val connection: String by lazy {
-        getHeader("Connection")
+        header("Connection")
     }
     val cacheControl: String by lazy {
-        getHeader("Cache-Control")
+        header("Cache-Control")
     }
     val userAgent: String by lazy {
-        getHeader("User-Agent")
+        header("User-Agent")
     }
     val accept: SortedMap<String, Int> by lazy {
         parseAcceptHeader("Accept")
@@ -86,7 +85,7 @@ class Request() {
         parseAcceptHeader("Accept-Charset")
     }
     val ifNoneMatch: String by lazy {
-        getHeader("If-None-Match")
+        header("If-None-Match")
     }
     val queryParams: HashMap<String, String> by lazy {
         parseQueryParams()
@@ -97,13 +96,13 @@ class Request() {
         parseCookies()
     }
     val contentType: String by lazy {
-        getHeader("Content-Type")
+        header("Content-Type")
     }
     val chunked: Boolean by lazy {
-        getHeader("Transfer-Encoding").compareTo("chunked", ignoreCase = true) == 0
+        header("Transfer-Encoding").compareTo("chunked", ignoreCase = true) == 0
     }
     val authorization: String by lazy {
-        getHeader("Authorization")
+        header("Authorization")
     }
 
 
@@ -114,7 +113,7 @@ class Request() {
     private fun parseAcceptHeader(header: String): SortedMap<String, Int> {
 
         val parsed = hashMapOf<String, Int>()
-        val entries = getHeader(header).split(',')
+        val entries = header(header).split(',')
         for (entry in entries) {
             val parts = entry.split(';')
             val mediaType = parts[0]
@@ -128,7 +127,10 @@ class Request() {
         return parsed.toSortedMap<String, Int>()
     }
 
-    private fun getHeader(header: String) = this.rawHeaders[header.toLowerCase()] ?: ""
+    fun header(header: String): String {
+        val originalHeader = this.rawHeaders.keys.firstOrNull { it.equals(header, ignoreCase = true) }
+        return if (originalHeader != null) this.rawHeaders[originalHeader].orEmpty() else ""
+    }
 
     private fun parseQueryParams(): HashMap<String, String> {
         val queryParamsList = hashMapOf<String, String>()
@@ -149,7 +151,7 @@ class Request() {
     }
 
     private fun parseCookies(): HashMap<String, Cookie> {
-        val cookieHeader = getHeader("Cookie")
+        val cookieHeader = header("Cookie")
         val cookieSet = ServerCookieDecoder.STRICT.decode(cookieHeader)
         val cookieList = hashMapOf<String, Cookie>()
         cookieSet?.iterator()?.forEach { cookie ->
