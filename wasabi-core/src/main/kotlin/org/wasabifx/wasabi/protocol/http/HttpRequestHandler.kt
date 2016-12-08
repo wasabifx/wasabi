@@ -57,14 +57,13 @@ class HttpRequestHandler(private val appServer: AppServer): SimpleChannelInbound
         if (msg is HttpContent) {
 
             runInterceptors(preRequestInterceptors)
+            try {
+                if (deserializer != null) {
+                    // TODO: Add support for chunked transfer
+                    deserializeBody(msg)
+                }
 
-            if (deserializer != null) {
-                // TODO: Add support for chunked transfer
-                deserializeBody(msg)
-            }
-
-            if (msg is LastHttpContent) {
-                try {
+                if (msg is LastHttpContent) {
 
                     // process all interceptors that are global
                     runInterceptors(preExecutionInterceptors)
@@ -84,26 +83,25 @@ class HttpRequestHandler(private val appServer: AppServer): SimpleChannelInbound
                         // process the route specific post execution interceptors
                         runInterceptors(postExecutionInterceptors, routeHandlers)
                     }
-
-                } catch (e: InvalidMethodException)  {
-                    response.setAllowedMethods(e.allowedMethods)
-                    response.setStatus(StatusCodes.MethodNotAllowed)
-                } catch (e: RouteNotFoundException) {
-                    response.setStatus(StatusCodes.NotFound)
-                } catch (e: Exception) {
-                    log!!.debug("Exception during web invocation: ${e.message}")
-                    // bypassPipeline = true
-                    val handler = exceptionLocator.findExceptionHandlers(e).handler
-                    val extension: ExceptionHandler.() -> Unit = handler
-                    val exceptionHandler = ExceptionHandler(request, response, e)
-                    exceptionHandler.extension()
-                } finally {
-                    if (!bypassPipeline) {
-                        // Run global interceptors again
-                        runInterceptors(postExecutionInterceptors)
-                    }
-                    writeResponse(ctx!!, response)
                 }
+            } catch (e: InvalidMethodException) {
+                response.setAllowedMethods(e.allowedMethods)
+                response.setStatus(StatusCodes.MethodNotAllowed)
+            } catch (e: RouteNotFoundException) {
+                response.setStatus(StatusCodes.NotFound)
+            } catch (e: Exception) {
+                log!!.debug("Exception during web invocation: ${e.message}")
+                // bypassPipeline = true
+                val handler = exceptionLocator.findExceptionHandlers(e).handler
+                val extension: ExceptionHandler.() -> Unit = handler
+                val exceptionHandler = ExceptionHandler(request, response, e)
+                exceptionHandler.extension()
+            } finally {
+                if (!bypassPipeline) {
+                    // Run global interceptors again
+                    runInterceptors(postExecutionInterceptors)
+                }
+                writeResponse(ctx!!, response)
             }
         }
     }
