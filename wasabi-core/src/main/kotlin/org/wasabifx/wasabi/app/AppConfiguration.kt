@@ -3,6 +3,7 @@ package org.wasabifx.wasabi.app
 import org.yaml.snakeyaml.Yaml
 import java.io.File
 import java.io.FileInputStream
+import java.lang.Exception
 import java.util.*
 import kotlin.reflect.memberProperties
 
@@ -45,7 +46,7 @@ data class AppConfiguration(
                         try {
                             javaClass.getDeclaredField(it.name).set(this, wasabiConfiguration[it.name])
                         }
-                        catch(exception: Exception)
+                        catch(exception: Throwable)
                         {
                             logger!!.debug("${it.name} setting not found in config, using default.")
                         }
@@ -60,7 +61,7 @@ data class AppConfiguration(
 
 
             }
-            catch(exception: Exception)
+            catch(exception: Throwable)
             {
                 logger!!.debug("Unable to load configuration from file: $exception, using defaults or constructor provided values.")
             }

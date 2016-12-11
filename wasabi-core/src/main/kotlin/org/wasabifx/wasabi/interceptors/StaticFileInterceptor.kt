@@ -5,6 +5,7 @@ import org.wasabifx.wasabi.app.AppServer
 import org.wasabifx.wasabi.protocol.http.Request
 import org.wasabifx.wasabi.protocol.http.Response
 import java.io.File
+import java.lang.RuntimeException
 import java.net.URLDecoder
 
 

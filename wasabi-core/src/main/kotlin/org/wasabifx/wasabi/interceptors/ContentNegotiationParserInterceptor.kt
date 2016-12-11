@@ -3,6 +3,7 @@ package org.wasabifx.wasabi.interceptors
 import org.wasabifx.wasabi.app.AppServer
 import org.wasabifx.wasabi.protocol.http.Request
 import org.wasabifx.wasabi.protocol.http.Response
+import java.lang.IllegalArgumentException
 import java.util.*
 
 

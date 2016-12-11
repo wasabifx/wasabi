@@ -163,7 +163,7 @@ class Http2Handler(val appServer: AppServer, decoder: Http2ConnectionDecoder, en
                 executePipeline(streamId, request!!, ctx!!)
             }
         }
-        catch(exception: Exception)
+        catch(exception: Throwable)
         {
             log.error(exception.message)
         }
@@ -193,7 +193,7 @@ class Http2Handler(val appServer: AppServer, decoder: Http2ConnectionDecoder, en
             try {
                 executePipeline(streamId, request, ctx)
             }
-            catch(exception : Exception) {
+            catch(exception : Throwable) {
                 log.error(exception.message)
             }
         }

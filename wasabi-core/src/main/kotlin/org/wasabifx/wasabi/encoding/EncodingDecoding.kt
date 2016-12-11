@@ -1,6 +1,7 @@
 package org.wasabifx.wasabi.encoding
 
 import org.apache.commons.codec.binary.Base64
+import java.lang.IllegalArgumentException
 
 
 fun String.decodeBase64(encoding: String): String {

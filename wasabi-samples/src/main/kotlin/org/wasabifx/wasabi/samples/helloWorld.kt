@@ -8,7 +8,11 @@ fun main(args: Array<String>) {
     val server = AppServer(AppConfiguration(enableLogging = false))
 
     server.get("/", {
+      /*  Runnable {
+            Thread.sleep(3000)
+      */
         response.send("Hello World!", contentType = "text/plain")
+        //}
     })
 
     server.start()

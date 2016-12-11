@@ -14,6 +14,9 @@ allprojects {
 
     apply plugin: 'kotlin'
     repositories {
+        maven {
+            url  "http://dl.bintray.com/jetbrains/spek"
+        }
         jcenter()
         mavenCentral()
     }

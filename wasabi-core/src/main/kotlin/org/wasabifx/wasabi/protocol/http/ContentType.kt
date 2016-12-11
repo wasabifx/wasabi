@@ -98,7 +98,7 @@ class ContentType(val contentType: String, val contentSubtype: String, val param
 }
 
 
-class BadContentTypeFormat(value: String) : Exception("Bad Content-Type format: $value")
+class BadContentTypeFormat(value: String) : Throwable("Bad Content-Type format: $value")
 
 class ReflectionContentTypeProperty(val parameters: List<Pair<String, String>> = listOf()) {
     operator fun getValue(group: Any, property: KProperty<*>): ContentType {

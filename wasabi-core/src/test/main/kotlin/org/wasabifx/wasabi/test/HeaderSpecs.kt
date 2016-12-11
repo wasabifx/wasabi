@@ -112,7 +112,7 @@ class HeaderSpecs : TestServerContext() {
 
                 })
 
-        val fields = arrayListOf<BasicNameValuePair>(BasicNameValuePair("name", "joe"), BasicNameValuePair("email", "joe@joe.com"))
+        val fields = arrayListOf(BasicNameValuePair("name", "joe"), BasicNameValuePair("email", "joe@joe.com"))
         postForm("http://localhost:${TestServer.definedPort}/customer", headers, fields)
 
         assertEquals(2, bodyParams.size)

@@ -3,12 +3,10 @@ package org.wasabifx.wasabi.protocol.http
 import io.netty.buffer.Unpooled
 import io.netty.channel.ChannelHandlerContext
 import io.netty.channel.ChannelInboundHandlerAdapter
-import io.netty.handler.codec.http.DefaultFullHttpResponse
-import io.netty.handler.codec.http.HttpMethod
-import io.netty.handler.codec.http.HttpRequest
+import io.netty.channel.SimpleChannelInboundHandler
+import io.netty.handler.codec.http.*
 import io.netty.handler.codec.http.HttpResponseStatus.CONTINUE
 import io.netty.handler.codec.http.HttpResponseStatus.OK
-import io.netty.handler.codec.http.HttpUtil
 import io.netty.handler.codec.http.HttpVersion.HTTP_1_1
 import org.wasabifx.wasabi.app.AppServer
 import org.wasabifx.wasabi.routing.*
@@ -34,7 +32,49 @@ fun findRoute(routes: Set<Route>, requestedPath: String, requestMethod: HttpMeth
 }
 
 // TODO - Move back to SimpleChannel (maybe). If not you have to free messages.
-class HttpRequestHandler(private val appServer: AppServer) : ChannelInboundHandlerAdapter() {
+class HttpRequestHandler(private val appServer: AppServer) : SimpleChannelInboundHandler<FullHttpRequest>() {
+    override fun channelRead0(ctx: ChannelHandlerContext, msg: FullHttpRequest) {
+        try {
+            val request = Request(msg, ctx.channel().remoteAddress() as InetSocketAddress)
+            val response = Response()
+            val route = findRoute(appServer.routes, request.path, msg.method())
+            request.setRouteParams(route)
+            for (handler in route.handler) {
+                val handlerExtension: RouteHandler.() -> Unit = handler
+                val routeHandler = RouteHandler(request, response)
+                routeHandler.handlerExtension()
+                if (!routeHandler.executeNext) {
+                    break
+                }
+            }
+            if (HttpUtil.is100ContinueExpected(msg)) {
+                ctx.write(DefaultFullHttpResponse(HTTP_1_1, CONTINUE))
+            }
+            val keepAlive = HttpUtil.isKeepAlive(msg)
+            val content = "Hello World".toByteArray()
+            val nettyresponse = DefaultFullHttpResponse(HTTP_1_1, OK, Unpooled.wrappedBuffer(content))
+            nettyresponse.headers().set("Content-Type", "text/plain")
+            nettyresponse.headers().setInt("Content-Length", nettyresponse.content().readableBytes())
+
+            if (!keepAlive) {
+                ctx.write(nettyresponse).addListener(io.netty.channel.ChannelFutureListener.CLOSE)
+            } else {
+                nettyresponse.headers().set("Connection", "kee-alive")
+                ctx.write(nettyresponse)
+            }
+
+        } catch (e: MethodNotAllowedException) {
+            // TODO: Clean up - this is a test. Later remove this and let channelRead throw exception. Handle it in an ExceptionHandler down the pipeline
+            val nettyresponse = DefaultFullHttpResponse(HTTP_1_1, OK, Unpooled.wrappedBuffer(e.message?.toByteArray()))
+            nettyresponse.headers().set("Content-Type", "text/plain")
+            nettyresponse.headers().setInt("Content-Length", nettyresponse.content().readableBytes())
+            nettyresponse.headers().set("Connection", "kee-alive")
+            ctx.write(nettyresponse)
+        }
+
+
+    }
+
     override fun channelReadComplete(ctx: ChannelHandlerContext) {
         ctx.flush()
     }
@@ -272,48 +312,6 @@ class HttpRequestHandler(private val appServer: AppServer) : ChannelInboundHandl
 
     }
 */
-    override fun channelRead(ctx: ChannelHandlerContext, msg: Any) {
-        if (msg is HttpRequest) {
-            try {
-                val request = Request(msg, ctx.channel().remoteAddress() as InetSocketAddress)
-                val response = Response()
-                val route = findRoute(appServer.routes, request.path, msg.method())
-                request.setRouteParams(route)
-                for (handler in route.handler) {
-                    val handlerExtension: RouteHandler.() -> Unit = handler
-                    val routeHandler = RouteHandler(request, response)
-                    routeHandler.handlerExtension()
-                    if (!routeHandler.executeNext) {
-                        break
-                    }
-                }
-                if (HttpUtil.is100ContinueExpected(msg)) {
-                    ctx.write(DefaultFullHttpResponse(HTTP_1_1, CONTINUE))
-                }
-                val keepAlive = HttpUtil.isKeepAlive(msg)
-                val content = "Hello World".toByteArray()
-                val nettyresponse = DefaultFullHttpResponse(HTTP_1_1, OK, Unpooled.wrappedBuffer(content))
-                nettyresponse.headers().set("Content-Type", "text/plain")
-                nettyresponse.headers().setInt("Content-Length", nettyresponse.content().readableBytes())
-
-                if (!keepAlive) {
-                    ctx.write(nettyresponse).addListener(io.netty.channel.ChannelFutureListener.CLOSE)
-                } else {
-                    nettyresponse.headers().set("Connection", "kee-alive")
-                    ctx.write(nettyresponse)
-                }
-
-            } catch (e: MethodNotAllowedException) {
-                // TODO: Clean up - this is a test. Later remove this and let channelRead throw exception. Handle it in an ExceptionHandler down the pipeline
-                val nettyresponse = DefaultFullHttpResponse(HTTP_1_1, OK, Unpooled.wrappedBuffer(e.message?.toByteArray()))
-                nettyresponse.headers().set("Content-Type", "text/plain")
-                nettyresponse.headers().setInt("Content-Length", nettyresponse.content().readableBytes())
-                    nettyresponse.headers().set("Connection", "kee-alive")
-                    ctx.write(nettyresponse)
-            }
-        }
-
-    }
 
     // TODO - remove this later.
     override fun exceptionCaught(ctx: ChannelHandlerContext, cause: Throwable) {

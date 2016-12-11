@@ -2,6 +2,7 @@ package org.wasabifx.wasabi.test
 
 import org.wasabifx.wasabi.protocol.http.StatusCodes
 import org.wasabifx.wasabi.routing.with
+import java.lang.NullPointerException
 import kotlin.test.assertEquals
 import org.junit.Test as spec
 

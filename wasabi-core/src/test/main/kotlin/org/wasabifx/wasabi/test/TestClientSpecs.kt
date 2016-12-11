@@ -109,7 +109,7 @@ class TestClientSpecs : TestServerContext(){
 
         try {
             client.sendForm("/form", TestClient.GET, hashMapOf("test" to "gettest"))
-        } catch (e: Exception) {
+        } catch (e: Throwable) {
             exceptionThrown = true
         }
 

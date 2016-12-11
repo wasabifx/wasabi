@@ -39,7 +39,7 @@ class TestClient(val appServer: AppServer) {
             httpRequest.setHeader("Content-Type", "application/x-www-form-urlencoded")
             httpRequest.entity = entity
         } else {
-            throw Exception("Cannot send form with this HTTP method ($method).")
+            throw Throwable("Cannot send form with this HTTP method ($method).")
         }
 
         return executeRequest(headers, httpRequest)
@@ -62,7 +62,7 @@ class TestClient(val appServer: AppServer) {
             httpRequest.setHeader("Content-Type", "application/json")
             httpRequest.entity = StringEntity(json)
         } else {
-            throw Exception("Cannot send JSON with this HTTP method ($method).")
+            throw Throwable("Cannot send JSON with this HTTP method ($method).")
         }
 
         return executeRequest(headers, httpRequest)
@@ -87,7 +87,7 @@ class TestClient(val appServer: AppServer) {
             TestClient.HEAD -> { HttpHead(fullUrl) }
             TestClient.OPTIONS -> { HttpOptions(fullUrl) }
             TestClient.TRACE -> { HttpTrace(fullUrl) } // is not supported by wasabi server
-            else  -> { throw Exception("Invalid method") }
+            else  -> { throw Throwable("Invalid method") }
         }
     }
 

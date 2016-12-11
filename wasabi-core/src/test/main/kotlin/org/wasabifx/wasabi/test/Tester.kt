@@ -10,6 +10,7 @@ import org.wasabifx.wasabi.protocol.http.Response
 import org.wasabifx.wasabi.protocol.http.StatusCodes
 import org.wasabifx.wasabi.routing.routeHandler
 import org.wasabifx.wasabi.routing.with
+import java.math.BigDecimal
 import java.util.Calendar
 
 data class Person(val id: Int, val name: String, val email: String, val profession: String, val dateJoined: Date, val level: Int)

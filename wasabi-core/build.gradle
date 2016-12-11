@@ -9,7 +9,16 @@ plugins {
 apply from: '../gradle/package.gradle'
 apply from: '../gradle/publish.gradle'
 
+repositories {
+     maven {
+          url  "http://dl.bintray.com/jetbrains/spek"
+     }
+}
 
+dependencies {
+     testCompile 'org.jetbrains.spek:spek-api:1.1.19'
+     testCompile 'org.jetbrains.spek:spek-junit-platform-engine:1.1.19'
+}
 
 sourceSets {
      main.java.srcDirs += 'src/main/kotlin'

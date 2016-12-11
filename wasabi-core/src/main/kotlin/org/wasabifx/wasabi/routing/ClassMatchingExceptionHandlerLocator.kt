@@ -5,7 +5,7 @@ package org.wasabifx.wasabi.routing
  */
 class ClassMatchingExceptionHandlerLocator(val handlers: Set<RouteException>) : ExceptionHandlerLocator {
 
-    override fun findExceptionHandlers(exception: Exception): RouteException {
+    override fun findExceptionHandlers(exception: Throwable): RouteException {
         val matchingHandler = handlers.filter { it.exceptionClass == exception.javaClass.name}
         if (matchingHandler.count() == 0) {
             return handlers.filter { it.exceptionClass.isBlank() }.firstOrNull()!!

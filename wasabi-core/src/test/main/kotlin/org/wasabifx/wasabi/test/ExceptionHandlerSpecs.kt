@@ -30,7 +30,7 @@ class ExceptionHandlerSpecs {
         TestServer.reset()
         val defaultExceptionHandlersCount = TestServer.appServer.exceptionHandlers.size
 
-        TestServer.appServer.exception(Exception::class, { })
+        TestServer.appServer.exception(Throwable::class, { })
 
         assertEquals(defaultExceptionHandlersCount + 1, TestServer.appServer.exceptionHandlers.size)
     }
@@ -40,10 +40,10 @@ class ExceptionHandlerSpecs {
         val defaultExceptionHandlersCount = TestServer.appServer.exceptionHandlers.size
         val expectedExceptionHandler = exceptionHandler { response.setStatus(418, "I'm a teapot") }
 
-        TestServer.appServer.exception(Exception::class, { })
-        TestServer.appServer.exception(Exception::class, expectedExceptionHandler)
+        TestServer.appServer.exception(Throwable::class, { })
+        TestServer.appServer.exception(Throwable::class, expectedExceptionHandler)
 
-        val actualExceptionHandler = TestServer.appServer.exceptionHandlers.filter { it.exceptionClass == Exception::class.java.name }.last()
+        val actualExceptionHandler = TestServer.appServer.exceptionHandlers.filter { it.exceptionClass == Throwable::class.java.name }.last()
         assertEquals(defaultExceptionHandlersCount + 1, TestServer.appServer.exceptionHandlers.size)
         assertTrue(expectedExceptionHandler === actualExceptionHandler.handler)
     }
