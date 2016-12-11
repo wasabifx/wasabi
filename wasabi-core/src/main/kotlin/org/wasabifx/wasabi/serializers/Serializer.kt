@@ -1,13 +1,9 @@
 package org.wasabifx.wasabi.serializers
 
-abstract class Serializer(vararg val mediaTypes: String) {
+abstract class Serializer(val mediaTypes: MutableList<String>) {
+    open val name : String = javaClass.simpleName
     open fun canSerialize(mediaType: String): Boolean {
-        for (supportedMediaType in mediaTypes) {
-            if (mediaType.matches(supportedMediaType.toRegex())) {
-                return true
-            }
-        }
-        return false
+        return mediaTypes.any { mediaType.matches(it.toRegex()) }
     }
     abstract fun serialize(input: Any): String
 }
