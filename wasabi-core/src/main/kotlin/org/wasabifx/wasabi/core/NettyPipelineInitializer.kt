@@ -17,25 +17,19 @@ var inc = 0
 
 class NettyPipelineInitializer(private val appServer: AppServer, private val sslContext: SslContext?):
                         ChannelInitializer<SocketChannel>() {
-
-
-    private val logger = LoggerFactory.getLogger(NettyPipelineInitializer::class.java)
-
     override fun initChannel(channel: SocketChannel) {
         if (sslContext != null) initSslChannel(channel) else initBasicChannel(channel)
     }
 
     private fun initSslChannel(ch: SocketChannel) {
-   //     ch.pipeline().addLast(sslContext!!.newHandler(ch.alloc()), ProtocolNegotiator(appServer))
+        //ch.pipeline().addLast(sslContext!!.newHandler(ch.alloc()), ProtocolNegotiator(appServer))
     }
 
     private fun initBasicChannel(ch: SocketChannel) {
-        logger.debug("Initialising initial Wasabi pipeline")
-//        println(inc++)
         val pipeline = ch.pipeline()
         pipeline.addLast("codec", HttpServerCodec())
-        pipeline.addLast("aggregator", HttpObjectAggregator(configuration!!.maxHttpContentLength))
         pipeline.addAfter(pipeline.context(this).name(), "chunkedWriter", ChunkedWriteHandler())
+        pipeline.addLast("aggregator", HttpObjectAggregator(configuration!!.maxHttpContentLength))
         pipeline.addLast(HttpRequestHandler(appServer))
         //pipeline.addLast("handler", HttpPipelineInitializer(appServer))
     }

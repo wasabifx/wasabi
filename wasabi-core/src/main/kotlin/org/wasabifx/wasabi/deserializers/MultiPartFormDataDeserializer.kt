@@ -6,7 +6,7 @@ import io.netty.handler.codec.http.multipart.Attribute
 import io.netty.handler.codec.http.multipart.FileUpload
 import java.util.HashMap
 
-class MultiPartFormDataDeserializer: Deserializer("application/x-www-form-urlencoded", "multipart/form-data") {
+class MultiPartFormDataDeserializer: Deserializer(mutableListOf("application/x-www-form-urlencoded", "multipart/form-data")) {
 
     // Not much more we can do here without uglyness, if its not a
     // List<InterfaceHttpData> we should let the exception bubble and

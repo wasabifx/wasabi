@@ -49,6 +49,7 @@ fun main(args: Array<String>) {
 
     }
 
+    appServer.deserializers.first { it.name == "JsonDeserializer"}.mediaTypes.add("json/plapl")
     appServer.start()
 }
 

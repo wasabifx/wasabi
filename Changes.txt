@@ -1,0 +1,5 @@
+- Major Performance Improvements
+- Change to Serializer/Deserializer
+    Ability to add a list of supported media types without having to create new one (via mediaTypes property)
+        e.g. appServer.deserializers.first { it.name == "JsonDeserializer"}.mediaTypes.add("json/plapl")
+    Serializers/Deserializers now have a name property that defaults to the class name
