@@ -1,9 +1,14 @@
 package org.wasabifx.wasabi.test
 
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody
 import org.apache.http.NameValuePair
 import org.apache.http.message.BasicNameValuePair
 import org.wasabifx.wasabi.routing.routeHandler
+import java.nio.charset.Charset
 import java.util.*
+import kotlin.test.assertEquals
 import org.junit.Test as spec
 
 /**
@@ -46,5 +51,33 @@ class BodyParametersSpecs : TestServerContext() {
         urlParameters3.add(BasicNameValuePair("memberName", "bob"))
 
         post("http://localhost:${TestServer.definedPort}/body", hashMapOf(), urlParameters3)
+    }
+
+    @spec fun body_is_populated_even_with_invalid_content() {
+
+        val testValue = "FOO"
+
+        val headers = hashMapOf(
+                "User-Agent" to "test-client",
+                "Cache-Control" to "max-age=0",
+                "Accept" to "application/json",
+                "Accept-Charset" to "utf-8"
+        )
+
+        TestServer.appServer.post("/raw", {
+            response.send(String(request.body, Charset.forName("UTF-8")))
+        })
+
+        val client = OkHttpClient()
+        val body = RequestBody.create(null, "FOO")
+        val request = Request.Builder()
+                .url("http://localhost:${TestServer.definedPort}/raw")
+                .header("Accept", "application/json")
+                .header("Accept-Encoding", "gzip, deflate")
+                .method("POST", body)
+                .build()
+
+        val response = client.newCall(request).execute()
+        assertEquals(testValue, response.body().string())
     }
 }

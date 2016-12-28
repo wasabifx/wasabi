@@ -63,6 +63,11 @@ class HttpRequestHandler(private val appServer: AppServer): SimpleChannelInbound
                 deserializeBody(msg)
             }
 
+            val content = msg.content()
+
+            // Always assign raw body.
+            request.body = content.copy().array()
+
             if (msg is LastHttpContent) {
                 try {
 

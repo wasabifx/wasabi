@@ -48,6 +48,7 @@ class Request() {
     lateinit var path: String
     lateinit var scheme: String
     lateinit var remoteAddress: InetSocketAddress
+    lateinit var body: ByteArray
 
     val host: String by lazy {
         getHeader("Host").takeWhile { it != ':' }
