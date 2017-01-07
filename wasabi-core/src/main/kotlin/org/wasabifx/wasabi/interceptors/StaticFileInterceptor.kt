@@ -9,7 +9,7 @@ import java.lang.RuntimeException
 import java.net.URLDecoder
 
 
-class StaticFileInterceptor(val folder: String, val useDefaultFile: Boolean = false, val defaultFile: String = "index.html") : Interceptor {
+class StaticFileInterceptor(folder: String, val useDefaultFile: Boolean = false, val defaultFile: String = "index.html") : Interceptor {
 
     private val absoluteFolder: String = File(folder).canonicalPath.toString()
 
@@ -23,7 +23,7 @@ class StaticFileInterceptor(val folder: String, val useDefaultFile: Boolean = fa
                 Charsets.UTF_8.toString()
             )
 
-            val fullPath = "${absoluteFolder}${uriPath}"
+            val fullPath = "$absoluteFolder$uriPath"
             val file = File(fullPath)
 
             if (!file.canonicalPath.startsWith(absoluteFolder)) {

@@ -1,14 +1,14 @@
 package org.wasabifx.wasabi.protocol.http
 
 import io.netty.buffer.Unpooled
-import io.netty.channel.ChannelHandlerContext
-import io.netty.channel.ChannelInboundHandlerAdapter
-import io.netty.channel.SimpleChannelInboundHandler
+import io.netty.channel.*
 import io.netty.handler.codec.http.*
 import io.netty.handler.codec.http.HttpResponseStatus.CONTINUE
 import io.netty.handler.codec.http.HttpResponseStatus.OK
 import io.netty.handler.codec.http.HttpVersion.HTTP_1_1
 import org.wasabifx.wasabi.app.AppServer
+import org.wasabifx.wasabi.interceptors.InterceptOn
+import org.wasabifx.wasabi.interceptors.InterceptorEntry
 import org.wasabifx.wasabi.routing.*
 import java.net.InetSocketAddress
 
@@ -31,14 +31,28 @@ fun findRoute(routes: Set<Route>, requestedPath: String, requestMethod: HttpMeth
     throw MethodNotAllowedException(allowedMethods = matchingVerbs.map { it.method }.toTypedArray())
 }
 
-// TODO - Move back to SimpleChannel (maybe). If not you have to free messages.
+// Http Request -> HttpRequestHandler -> JsonHandler (passes in body of previous handler) ->
+
+// Http Request comes in
+// HttpRequestHandler decodes Headers
+// Passes body to correct Handler (JSon, Multipart )
+// Header, Body
+// RouteHandler (Header, Body)
+// OutboundSerializerHandlers
+// OutboundComposer (aggregates -> ....
+
+
+
 class HttpRequestHandler(private val appServer: AppServer) : SimpleChannelInboundHandler<FullHttpRequest>() {
+    val preRequestInterceptors = lazy { appServer.interceptors.filter { it.interceptOn == InterceptOn.PreRequest} }.value
+
     override fun channelRead0(ctx: ChannelHandlerContext, msg: FullHttpRequest) {
         try {
             val request = Request(msg, ctx.channel().remoteAddress() as InetSocketAddress)
             val response = Response()
             val route = findRoute(appServer.routes, request.path, msg.method())
             request.setRouteParams(route)
+            runPrerequestInterceptors(request, response, route)
             for (handler in route.handler) {
                 val handlerExtension: RouteHandler.() -> Unit = handler
                 val routeHandler = RouteHandler(request, response)
@@ -73,6 +87,16 @@ class HttpRequestHandler(private val appServer: AppServer) : SimpleChannelInboun
         }
 
 
+    }
+
+    private fun runPrerequestInterceptors(request: Request, response: Response, route: Route? = null) {
+        val interceptors = preRequestInterceptors.filter { if (route == null) { it.path == "*"} else { it.path == route.path }}
+        interceptors.forEach {
+            val continueRun = it.interceptor.intercept(request, response)
+            if (!continueRun) {
+                return@forEach
+            }
+        }
     }
 
     override fun channelReadComplete(ctx: ChannelHandlerContext) {
@@ -313,9 +337,4 @@ class HttpRequestHandler(private val appServer: AppServer) : SimpleChannelInboun
     }
 */
 
-    // TODO - remove this later.
-    override fun exceptionCaught(ctx: ChannelHandlerContext, cause: Throwable) {
-        cause.printStackTrace()
-        ctx.close()
-    }
 }
