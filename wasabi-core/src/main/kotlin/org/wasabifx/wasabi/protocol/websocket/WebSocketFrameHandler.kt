@@ -19,4 +19,11 @@ class WebSocketFrameHandler(val handler: ChannelHandler.() -> Unit): SimpleChann
         val channelHandler = ChannelHandler(ctx, msg!!, response)
         channelHandler.channelExtension()
     }
+
+    override fun channelInactive(ctx: ChannelHandlerContext?) {
+
+        // TODO work out the best way to fire something here to notify client has disconnected.
+
+        super.channelInactive(ctx)
+    }
 }
