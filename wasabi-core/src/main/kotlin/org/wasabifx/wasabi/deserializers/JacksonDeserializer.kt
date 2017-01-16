@@ -4,7 +4,7 @@ import java.util.HashMap
 import com.fasterxml.jackson.databind.ObjectMapper
 
 
-class JsonDeserializer: Deserializer(mutableListOf("application/json")) {
+class JacksonDeserializer : Deserializer(mutableListOf("application/json")) {
     // TODO: This is temp as it doesn't correctly handle x.y properties
 
     @Suppress("UNCHECKED_CAST")

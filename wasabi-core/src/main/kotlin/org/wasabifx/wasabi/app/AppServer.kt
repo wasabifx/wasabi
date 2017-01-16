@@ -3,7 +3,7 @@ package org.wasabifx.wasabi.app
 import io.netty.handler.codec.http.HttpMethod
 import org.slf4j.LoggerFactory
 import org.wasabifx.wasabi.deserializers.Deserializer
-import org.wasabifx.wasabi.deserializers.JsonDeserializer
+import org.wasabifx.wasabi.deserializers.JacksonDeserializer
 import org.wasabifx.wasabi.deserializers.MultiPartFormDataDeserializer
 import org.wasabifx.wasabi.interceptors.*
 import org.wasabifx.wasabi.protocol.http.HttpServer
@@ -12,7 +12,7 @@ import org.wasabifx.wasabi.protocol.websocket.Channel
 import org.wasabifx.wasabi.protocol.websocket.ChannelHandler
 import org.wasabifx.wasabi.protocol.websocket.channelClients
 import org.wasabifx.wasabi.routing.*
-import org.wasabifx.wasabi.serializers.JsonSerializer
+import org.wasabifx.wasabi.serializers.JacksonSerializer
 import org.wasabifx.wasabi.serializers.Serializer
 import org.wasabifx.wasabi.serializers.TextPlainSerializer
 import org.wasabifx.wasabi.serializers.XmlSerializer
@@ -30,8 +30,8 @@ class AppServer(val configuration: AppConfiguration = AppConfiguration()) {
     val channels: ArrayList<Channel> = ArrayList<Channel>()
     val exceptionHandlers: MutableSet<RouteException> = mutableSetOf()
     val interceptors : ArrayList<InterceptorEntry>  = ArrayList<InterceptorEntry>()
-    val serializers: ArrayList<Serializer> = arrayListOf(JsonSerializer(), XmlSerializer(), TextPlainSerializer())
-    val deserializers: ArrayList<Deserializer> = arrayListOf(MultiPartFormDataDeserializer(), JsonDeserializer())
+    val serializers: ArrayList<Serializer> = arrayListOf(JacksonSerializer(), XmlSerializer(), TextPlainSerializer())
+    val deserializers: ArrayList<Deserializer> = arrayListOf(MultiPartFormDataDeserializer(), JacksonDeserializer())
 
     init {
         httpServer = HttpServer(this)
