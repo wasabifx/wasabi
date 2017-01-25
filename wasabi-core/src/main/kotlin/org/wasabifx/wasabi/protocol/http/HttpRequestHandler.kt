@@ -34,9 +34,6 @@ class HttpRequestHandler(private val appServer: AppServer): SimpleChannelInbound
     var deserializer : Deserializer? = null
     var decoder : HttpPostRequestDecoder? = null
     private var log = LoggerFactory.getLogger(HttpRequestHandler::class.java)
-    // TODO make configurable.
-    val routeLocator = PatternAndVerbMatchingRouteLocator(appServer.routes)
-    var exceptionLocator = ClassMatchingExceptionHandlerLocator(appServer.exceptionHandlers)
 
     override fun channelRead0(ctx: ChannelHandlerContext?, msg: Any?)  {
         if (msg is HttpRequest) {
@@ -77,7 +74,7 @@ class HttpRequestHandler(private val appServer: AppServer): SimpleChannelInbound
                     // Only need to check here to stop RouteNotFoundException
                     if (!bypassPipeline) {
 
-                        val routeHandlers = routeLocator.findRouteHandlers(request.uri.split('?')[0], request.method)
+                        val routeHandlers = appServer.routeLocator.findRouteHandlers(request.uri.split('?')[0], request.method)
                         request.routeParams.putAll(getRouteParams(routeHandlers.path, request.uri.split('?')[0]))
 
                         // process the route specific pre execution interceptors
@@ -98,7 +95,7 @@ class HttpRequestHandler(private val appServer: AppServer): SimpleChannelInbound
                 } catch (e: Exception) {
                     log!!.debug("Exception during web invocation: ${e.message}")
                     // bypassPipeline = true
-                    val handler = exceptionLocator.findExceptionHandlers(e).handler
+                    val handler = appServer.exceptionLocator.findExceptionHandlers(e).handler
                     val extension: ExceptionHandler.() -> Unit = handler
                     val exceptionHandler = ExceptionHandler(request, response, e)
                     exceptionHandler.extension()
@@ -142,7 +139,7 @@ class HttpRequestHandler(private val appServer: AppServer): SimpleChannelInbound
         if (route == null) {
             interceptorsToRun = interceptors.filter { it.path == "*" }
         } else {
-            interceptorsToRun = interceptors.filter { routeLocator.compareRouteSegments(route, it.path) }
+            interceptorsToRun = interceptors.filter { appServer.routeLocator.compareRouteSegments(route, it.path) }
         }
         for ((interceptor) in interceptorsToRun) {
 
