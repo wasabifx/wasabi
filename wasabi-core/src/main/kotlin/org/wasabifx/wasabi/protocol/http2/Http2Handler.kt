@@ -29,7 +29,6 @@ class Http2Handler(val appServer: AppServer, decoder: Http2ConnectionDecoder, en
     val postExecutionInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.PostExecution }
     val postRequestInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.PostRequest }
     val errorInterceptors = appServer.interceptors.filter { it.interceptOn == InterceptOn.Error }
-    var routeLocator = PatternAndVerbMatchingRouteLocator(appServer.routes)
 
     var currentSettings : Http2Settings? = null
 
@@ -41,7 +40,7 @@ class Http2Handler(val appServer: AppServer, decoder: Http2ConnectionDecoder, en
     private var bypassPipeline = false
 
     private fun executePipeline(streamId: Int, request: Request, ctx: ChannelHandlerContext) {
-        val routeHandlers = routeLocator.findRouteHandlers(request.path, HttpMethod(request.method.name()))
+        val routeHandlers = appServer.routeLocator.findRouteHandlers(request.path, HttpMethod(request.method.name()))
 
         // process the route specific pre execution interceptors
         runInterceptors(streamId, preExecutionInterceptors, routeHandlers)
@@ -128,7 +127,7 @@ class Http2Handler(val appServer: AppServer, decoder: Http2ConnectionDecoder, en
         if (route == null) {
             interceptorsToRun = interceptors.filter { it.path == "*" }
         } else {
-            interceptorsToRun = interceptors.filter { routeLocator.compareRouteSegments(route, it.path) }
+            interceptorsToRun = interceptors.filter { appServer.routeLocator.compareRouteSegments(route, it.path) }
         }
         for ((interceptor) in interceptorsToRun) {
 

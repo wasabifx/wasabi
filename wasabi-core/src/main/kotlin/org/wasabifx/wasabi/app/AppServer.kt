@@ -19,8 +19,7 @@ import org.wasabifx.wasabi.serializers.XmlSerializer
 import java.util.*
 import kotlin.reflect.KClass
 
-
-class AppServer(val configuration: AppConfiguration = AppConfiguration()) {
+open class AppServer(val configuration: AppConfiguration = AppConfiguration()) {
 
     private val logger = LoggerFactory.getLogger(AppServer::class.java)
     private val httpServer: HttpServer
@@ -32,6 +31,10 @@ class AppServer(val configuration: AppConfiguration = AppConfiguration()) {
     val interceptors : ArrayList<InterceptorEntry>  = ArrayList<InterceptorEntry>()
     val serializers: ArrayList<Serializer> = arrayListOf(JacksonSerializer(), XmlSerializer(), TextPlainSerializer())
     val deserializers: ArrayList<Deserializer> = arrayListOf(MultiPartFormDataDeserializer(), JacksonDeserializer())
+
+    // TODO make configurable.
+    val routeLocator = PatternAndVerbMatchingRouteLocator(routes)
+    var exceptionLocator = ClassMatchingExceptionHandlerLocator(exceptionHandlers)
 
     init {
         httpServer = HttpServer(this)
