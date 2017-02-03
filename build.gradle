@@ -1,6 +1,9 @@
 buildscript {
-    ext.kotlin_version = '1.0.4'
+    ext.kotlin_version = '1.1-M04'
     repositories {
+        maven {
+            url "http://dl.bintray.com/kotlin/kotlin-eap-1.1"
+        }
         mavenCentral()
     }
     dependencies {
@@ -14,6 +17,9 @@ allprojects {
 
     apply plugin: 'kotlin'
     repositories {
+        maven {
+            url "http://dl.bintray.com/kotlin/kotlin-eap-1.1"
+        }
         maven {
             url  "http://dl.bintray.com/jetbrains/spek"
         }
@@ -59,5 +65,5 @@ test {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '3.1'
+    gradleVersion = '3.3'
 }
