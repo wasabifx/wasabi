@@ -70,6 +70,16 @@ The easiest way to use Wasabi is with Gradle.
 
 Follow the instructions on [BinTray](https://bintray.com/wasabifx/wasabifx/wasabi) for adding a dependency in your build system.
 
+You will need to add the repository to the repositories section also as per below.
+
+```groovy
+repositories {
+    mavenCentral()
+    maven{
+        url 'https://dl.bintray.com/wasabifx/wasabifx/'
+    }
+}
+```
 
 ### Important: Versioning
 
