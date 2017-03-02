@@ -88,7 +88,13 @@ class HttpServer(private val appServer: AppServer) {
     }
 
     fun start(wait: Boolean = true) {
-        val channel = bootstrap.bind(appServer.configuration.port)?.sync()?.channel()
+        val configuration = appServer.configuration
+
+        val channelFuture = configuration.hostname?.let {
+          bootstrap.bind(it, configuration.port)
+        } ?: bootstrap.bind(configuration.port)
+
+        val channel = channelFuture?.sync()?.channel()
 
         if (wait) {
             channel?.closeFuture()?.sync()

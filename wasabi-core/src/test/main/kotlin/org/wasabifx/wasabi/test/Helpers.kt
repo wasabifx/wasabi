@@ -32,7 +32,10 @@ open class TestServerContext {
 object TestServer {
 
     val definedPort: Int = Random().nextInt(30000) + 5000
-    var appServer: AppServer = AppServer(AppConfiguration(definedPort))
+    var appServer: AppServer = AppServer(AppConfiguration(
+      port = definedPort,
+      hostname = "127.0.0.1"
+    ))
 
     fun start() {
         try {
@@ -137,5 +140,3 @@ fun postForm(url: String, headers: HashMap<String, String>, fields: ArrayList<Ba
 }
 
 data class HttpClientResponse(val headers: Array<Header>, val body: String?, val statusCode: Int, val statusDescription: String)
-
-

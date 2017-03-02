@@ -14,6 +14,8 @@ class ConfigSpecs {
         val appServer = AppServer()
 
         assertEquals(3000, appServer.configuration.port)
+        assertEquals(null, appServer.configuration.hostname)
+
         assertEquals("Server starting on port 3000", appServer.configuration.welcomeMessage)
         assertEquals(true, appServer.configuration.enableLogging)
     }
@@ -32,6 +34,15 @@ class ConfigSpecs {
         assertEquals(false, appServer.configuration.enableLogging)
     }
 
+    @spec fun specifying_hostname_changes_default_welcome_message() {
+        val appServer = AppServer(
+                AppConfiguration(
+                        port = 5000,
+                        hostname = "127.0.0.1"))
 
+        assertEquals(5000, appServer.configuration.port)
+        assertEquals("127.0.0.1", appServer.configuration.hostname)
 
+        assertEquals("Server starting at 127.0.0.1:5000", appServer.configuration.welcomeMessage)
+    }
 }
