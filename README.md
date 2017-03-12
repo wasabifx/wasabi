@@ -8,7 +8,7 @@ Wasabi - An HTTP Framework
 
 tl;dr We are merging with [Ktor](https://github.com/kotlin/ktor). 
 
-Ktor and Wasabi both have the same goals - define a simple, extensible HTTP framework for the JVM, built with Kotlin. Wasabi was created before Ktor and Ktor is influenced significantly by Wasabi. The recent commitment by the core team (@swishy and @hhariri) has unfortunately been impacted due to other commitments and we've decided that the best way to move forward is to join efforts with the #Ktor team to provide the best possible experience for our users. Given Wasabi and Ktor similarity, migration shouldn't be an issue and both the Wasabi team as well as the Ktor team are here to help (reach out to us on [Kotlin Slack](https://kotlinlang.slack.com). 
+Ktor and Wasabi both have the same goals - define a simple, extensible HTTP framework for the JVM, built with Kotlin. Wasabi was created before Ktor and Ktor is influenced significantly by Wasabi. The recent commitment by the core team (@swishy and @hhariri) has unfortunately been impacted due to other commitments and we've decided that the best way to move forward is to join efforts with the #Ktor team to provide the best possible experience for our users. Given Wasabi and Ktor similarity, migration shouldn't be an issue and both the Wasabi team as well as the Ktor team are here to help (reach out to us on [Kotlin Slack](https://kotlinlang.slack.com)). 
 
 You can of course fork this project and continue it, or contribute your efforts to #Ktor!
 
