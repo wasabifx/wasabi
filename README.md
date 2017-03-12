@@ -4,10 +4,13 @@
 Wasabi - An HTTP Framework
 ========================
 
-#### Heads-up and 1.0 Release ####
+### IMPORTANT ###
 
-Wasabi's core is being re-written from scratch and we expect, once we're done, to have significant performance improvements. And we really mean significant. While these changes most likely won't change the surface API, there might be some variations (if deemed necessary to keep performance at its best). Once these changes are complete and a few other things have been taken care of, we'll be releasing 1.0.
+tl;dr We are merging with [Ktor](https://github.com/kotlin/ktor). 
 
+Ktor and Wasabi both have the same goals - define a simple, extensible HTTP framework for the JVM, built with Kotlin. Wasabi was created before Ktor and Ktor is influenced significantly by Wasabi. The recent commitment by the core team (@swishy and @hhariri) has unfortunately been impacted due to other commitments and we've decided that the best way to move forward is to join efforts with the #Ktor team to provide the best possible experience for our users. Given Wasabi and Ktor similarity, migration shouldn't be an issue and both the Wasabi team as well as the Ktor team are here to help (reach out to us on [Kotlin Slack](https://kotlinlang.slack.com). 
+
+You can of course fork this project and continue it, or contribute your efforts to #Ktor!
 
 #### Description ####
 An HTTP Framework built with [Kotlin](http://kotlin.jetbrains.org) for the JVM.
