@@ -4,7 +4,7 @@ import org.yaml.snakeyaml.Yaml
 import java.io.File
 import java.io.FileInputStream
 import java.util.*
-import kotlin.reflect.memberProperties
+import kotlin.reflect.full.memberProperties
 
 var configuration : AppConfiguration? = null
 
