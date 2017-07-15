@@ -93,7 +93,7 @@ Each Wasabi application is composed of a single *AppServer* on which you define 
 A normal application consists of a section where you define a series of parameters for the application, followed by your handlers (i.e. your routing table).
 
 ```kotlin
-var appServer = AppServer()
+var server = AppServer()
 
 server.get("/customers", { .... } )
 server.post("/customer", { .... } )
