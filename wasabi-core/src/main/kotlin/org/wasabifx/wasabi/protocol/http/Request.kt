@@ -7,7 +7,6 @@ import io.netty.handler.codec.http.multipart.Attribute
 import io.netty.handler.codec.http.multipart.InterfaceHttpData
 import io.netty.handler.codec.http.multipart.InterfaceHttpData.HttpDataType
 import io.netty.handler.codec.http2.Http2Headers
-import org.slf4j.LoggerFactory
 import org.wasabifx.wasabi.app.configuration
 import java.net.InetSocketAddress
 import java.util.*
@@ -17,7 +16,8 @@ class Request() {
 
     constructor(httpRequest: HttpRequest, address: InetSocketAddress) : this() {
         this.httpRequest = httpRequest
-        this.rawHeaders = httpRequest.headers().associate({it.key.toLowerCase() to it.value})
+        this.rawHeaders = httpRequest.headers()
+                .associateTo(TreeMap<String, String>(String.CASE_INSENSITIVE_ORDER), {it.key to it.value})
         this.uri = httpRequest.uri!!
         this.method = httpRequest.method!!
         this.document = uri.drop(uri.lastIndexOf("/") + 1)
@@ -28,7 +28,8 @@ class Request() {
 
     constructor(http2Headers: Http2Headers?, address: InetSocketAddress) : this() {
         this.http2Headers = http2Headers!!
-        this.rawHeaders = http2Headers.associate({it.key.toString().toLowerCase() to it.value.toString()})
+        this.rawHeaders = http2Headers.associateTo(TreeMap<String, String>(String.CASE_INSENSITIVE_ORDER),
+                {it.key.toString() to it.value.toString()})
         this.uri = http2Headers.path().toString()
         this.method = HttpMethod(http2Headers.method().toString())
         this.document = uri.drop(uri.lastIndexOf("/") + 1)

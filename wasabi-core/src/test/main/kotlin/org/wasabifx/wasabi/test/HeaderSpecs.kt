@@ -3,8 +3,10 @@ package org.wasabifx.wasabi.test
 
 import org.apache.http.message.BasicNameValuePair
 import org.wasabifx.wasabi.protocol.http.Cookie
+import org.wasabifx.wasabi.protocol.http.Request
 import java.util.*
 import kotlin.test.assertEquals
+import kotlin.test.assertTrue
 import org.junit.Test as spec
 
 
@@ -177,6 +179,55 @@ class HeaderSpecs : TestServerContext() {
         assertEquals(2, bodyParams.size)
         assertEquals("joe", bodyParams["name"])
         assertEquals("joe@joe.com", bodyParams["email"])
+    }
+
+    @spec fun request_with_get_should_contain_all_originally_sent_headers(){
+        val headers = hashMapOf(
+                "User-Agent" to "test-client",
+                "Cache-Control" to "max-age=0",
+                "Accept" to "text/html,application/xhtml+xml,application/xml",
+                "Accept-Encoding" to "gzip,deflate,sdch",
+                "Accept-Language" to "en-US,en;q=0.8",
+                "Accept-Charset" to "ISO-8859-1,utf-8;q=0.7,*;q=0.3",
+                "X-Custom-Header-That-Developers-Rely-On" to "something useful"
+        )
+
+        var rawHeaders = mapOf<String, String>()
+        TestServer.appServer.get("/customer",{
+            rawHeaders = request.rawHeaders
+        })
+
+        get("http://localhost:${TestServer.definedPort}/customer", headers)
+
+        headers.forEach {
+            assertTrue(rawHeaders.containsKey(it.key))
+            assertEquals(it.value, rawHeaders[it.key])
+        }
+    }
+
+    @spec fun request_header_should_return_header_by_case_insensitive_name(){
+        val expectedHeaderName = "X-Custom-Header-That-Developers-Rely-On"
+        val expectedHeaderValue = "something useful"
+        val headers = hashMapOf(
+                "User-Agent" to "test-client",
+                "Cache-Control" to "max-age=0",
+                "Accept" to "text/html,application/xhtml+xml,application/xml",
+                "Accept-Encoding" to "gzip,deflate,sdch",
+                "Accept-Language" to "en-US,en;q=0.8",
+                "Accept-Charset" to "ISO-8859-1,utf-8;q=0.7,*;q=0.3",
+                expectedHeaderName to expectedHeaderValue
+        )
+
+        var request = Request()
+        TestServer.appServer.get("/customer",{
+            request = this.request
+        })
+
+        get("http://localhost:${TestServer.definedPort}/customer", headers)
+
+        assertEquals(expectedHeaderValue, request.rawHeaders[expectedHeaderName])
+        assertEquals(expectedHeaderValue, request.rawHeaders[expectedHeaderName.toUpperCase()])
+        assertEquals(expectedHeaderValue, request.rawHeaders[expectedHeaderName.toLowerCase()])
     }
 }
 
