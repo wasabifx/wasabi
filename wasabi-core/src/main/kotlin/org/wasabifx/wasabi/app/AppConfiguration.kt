@@ -11,7 +11,8 @@ var configuration : AppConfiguration? = null
 
 data class AppConfiguration(
         var port: Int = 3000,
-        var welcomeMessage: String = "Server starting on port $port",
+        var hostname: String? = null,
+        var welcomeMessage: String = "Server starting ${hostname?.let { "at $hostname:$port"  } ?: "on port $port"}",
         var enableContentNegotiation: Boolean = true,
         var enableLogging: Boolean = true,
         var enableAutoOptions: Boolean = false,
