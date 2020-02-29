@@ -1,12 +1,10 @@
  package org.wasabifx.wasabi.test
 
-import io.netty.handler.codec.http.cookie.ServerCookieDecoder
-import io.netty.handler.codec.http.cookie.ServerCookieEncoder
 import org.junit.Test as spec
  import kotlin.test.assertEquals
-import org.junit.Ignore
 import org.wasabifx.wasabi.interceptors.enableSessionSupport
 import kotlin.test.assertTrue
+import kotlin.test.assertNotNull
 
  class SessionManagementInterceptorSpecs: TestServerContext() {
 
@@ -31,12 +29,7 @@ import kotlin.test.assertTrue
 
         assertTrue(cookieString.length > 0)
 
-        /*
-         * cookieString value is this: _sessionID=057907cf-9a08-48ff-9fbe-43c8d5ebb0fb; Path=/; Domain=localhost
-         * so at first we split by ; so we will get _sessionID=057907cf-9a08-48ff-9fbe-43c8d5ebb0fb
-         * and then split by =
-         */
-        val (cookieName,sessionId) = cookieString.split(";")[0].split("=")
+        val (cookieName,sessionId) = this.getCookieNameAndSessionId(cookieString)
 
         // Set session cookie as you would expect the client to do...
         val response2 = get("http://localhost:${TestServer.definedPort}/test_session", hashMapOf(), hashMapOf(cookieName to sessionId))
@@ -70,4 +63,45 @@ import kotlin.test.assertTrue
          }
      }
 
+     @spec fun session_should_support_multiple_variables() {
+        TestServer.appServer.enableSessionSupport()
+        TestServer.appServer.get("/set-session", {
+            request.session?.set("test", "lipsum1")
+            response.send("OK", "text/plain")
+        })
+
+        TestServer.appServer.get("/set-session2", {
+            request.session?.set("test2", "lipsum2")
+            response.send("OK", "text/plain")
+        })
+
+        TestServer.appServer.get("/get-session", {
+            response.send(request.session?.get("test") ?: "not found", "text/plain")
+        })
+
+        TestServer.appServer.get("/get-session2", {
+            response.send(request.session?.get("test2") ?: "not found", "text/plain")
+        })
+
+        val response = get("http://localhost:${TestServer.definedPort}/set-session")
+        val cookieString = response.headers
+            .filter { it.name == "Set-Cookie" }
+            .map { it.value }
+            .firstOrNull()
+
+        assertNotNull(cookieString)
+
+        cookieString?.let {
+            val (cookieName, sessionId) = this.getCookieNameAndSessionId(cookieString)
+
+            get("http://localhost:${TestServer.definedPort}/set-session2", hashMapOf(), hashMapOf(cookieName to sessionId))
+
+            assertEquals("lipsum1", get("http://localhost:${TestServer.definedPort}/get-session", hashMapOf(), hashMapOf(cookieName to sessionId)).body)
+            assertEquals("lipsum2", get("http://localhost:${TestServer.definedPort}/get-session2", hashMapOf(), hashMapOf(cookieName to sessionId)).body)
+        }
+     }
+
+     private fun getCookieNameAndSessionId(headerValue: String): List<String> {
+         return headerValue.split(";")[0].split("=")
+     }
 }
